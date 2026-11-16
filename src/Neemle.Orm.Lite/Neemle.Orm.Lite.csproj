@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- The package: analyzers/dotnet/cs (Neemle.Orm.Lite.Generator.dll), lib/net10.0 (Neemle.Orm.Lite.Runtime.dll) and
+       buildTransitive (the OrmLiteDefaultTenant CompilerVisibleProperty and the per-assembly actor-setting
+       initializer). One id, one version: $(OrmLiteVersion) in Directory.Build.props. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <PackageId>Neemle.Orm.Lite</PackageId>
+    <Version>$(OrmLiteVersion)</Version>
+    <Authors>Neemle</Authors>
+    <Description>Attribute-driven ORM for PostgreSQL: a source generator (entities, repositories, migrations) with the runtime it emits against. Pre-release: the emitted shape, the type names and the namespaces are unstable. Build properties OrmLiteActorSetting and OrmLiteDefaultTenant bind the history actor setting name and the default soft-delete tenant column.</Description>
+    <PackageTags>orm;postgresql;source-generator;migrations;soft-delete</PackageTags>
+    <RepositoryUrl>https://github.com/neemle/orm.lite</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/neemle/orm.lite</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IsPackable>true</IsPackable>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <IsAotCompatible>false</IsAotCompatible>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)../../artifacts/</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Neemle.Orm.Lite.Generator/Neemle.Orm.Lite.Generator.csproj" ReferenceOutputAssembly="false" OutputItemType="OrmLiteAnalyzerAssembly" />
+    <ProjectReference Include="../Neemle.Orm.Lite.Runtime/Neemle.Orm.Lite.Runtime.csproj" ReferenceOutputAssembly="false" OutputItemType="OrmLiteRuntimeAssembly" />
+  </ItemGroup>
+
+  <Target Name="OrmLitePackContent" BeforeTargets="_GetPackageFiles" DependsOnTargets="ResolveProjectReferences">
+    <ItemGroup>
+      <None Include="@(OrmLiteAnalyzerAssembly)" Pack="true" PackagePath="analyzers/dotnet/cs/" />
+      <None Include="@(OrmLiteRuntimeAssembly)" Pack="true" PackagePath="lib/net10.0/" />
+      <None Include="../../README.md" Pack="true" PackagePath="/" />
+      <None Include="assets/Neemle.Orm.Lite.props" Pack="true" PackagePath="buildTransitive/" />
+      <None Include="assets/Neemle.Orm.Lite.targets" Pack="true" PackagePath="buildTransitive/" />
+    </ItemGroup>
+  </Target>
+
+</Project>

@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Neemle.Orm.Lite.Generator/Neemle.Orm.Lite.Generator.csproj" />
+    <Project Path="src/Neemle.Orm.Lite.Runtime/Neemle.Orm.Lite.Runtime.csproj" />
+    <Project Path="src/Neemle.Orm.Lite/Neemle.Orm.Lite.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Neemle.Orm.Lite.Tests/Neemle.Orm.Lite.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,12 @@
+<Project>
+
+  <PropertyGroup Condition="Exists('$(MSBuildProjectFullPath)')">
+    <_HasDirectPackageReference>$([System.IO.File]::ReadAllText('$(MSBuildProjectFullPath)').Contains('&lt;PackageReference'))</_HasDirectPackageReference>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(_HasDirectPackageReference)' == 'True'">
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreLockedMode Condition="'$(RestoreLockedMode)' == ''">true</RestoreLockedMode>
+  </PropertyGroup>
+
+</Project>

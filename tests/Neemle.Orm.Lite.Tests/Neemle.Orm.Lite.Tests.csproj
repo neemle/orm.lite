@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- The library's own tests. They drive the generator over fixture sources through CSharpGeneratorDriver and
+       the query layer over a real in-process Microsoft.Data.Sqlite connection, so the project needs no
+       container or service. What SQLite cannot prove (the jsonb type, its operators and casts, the history
+       trigger, advisory locks) is a property of the server and is exercised where a PostgreSQL is available. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsAotCompatible>false</IsAotCompatible>
+    <RootNamespace>Neemle.Orm.Lite.Tests</RootNamespace>
+    <AssemblyName>Neemle.Orm.Lite.Tests</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.10" />
+    <!-- Microsoft.Data.Sqlite pulls in SQLitePCLRaw.lib.e_sqlite3 transitively, which carries a known
+         high-severity advisory (GHSA-2m69-gcr7-jv3q, NU1903); the direct reference overrides it with the patched release. -->
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="3.53.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="OrmLiteGolden/Fixtures/**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The generator is referenced as an ORDINARY assembly, not as an analyzer: this project DRIVES it over
+         fixture sources and reads back the diagnostics and the emitted text, whereas an analyzer reference would
+         run it over this project's own files and leave nothing to assert against. -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
+    <ProjectReference Include="../../src/Neemle.Orm.Lite.Runtime/Neemle.Orm.Lite.Runtime.csproj" />
+    <ProjectReference Include="../../src/Neemle.Orm.Lite.Generator/Neemle.Orm.Lite.Generator.csproj" />
+  </ItemGroup>
+
+</Project>

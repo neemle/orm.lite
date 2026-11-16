@@ -1,0 +1,19 @@
+<Project>
+
+  <!-- The runtime assembly is compiled into a consumer's AOT binary by ILC, so its AOT analyzers must be on in this
+       build. IsAotCompatible is unconditional on purpose: a TargetFramework condition never matches here (the
+       property is read before the project body sets it), the analyzers would stay off, and the build would still
+       exit 0. -->
+  <PropertyGroup>
+    <OrmLiteVersion>0.1.0-pre</OrmLiteVersion>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <IsAotCompatible>true</IsAotCompatible>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+    <WarningsAsErrors>$(WarningsAsErrors);CS8785;IL2026;IL3050</WarningsAsErrors>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+</Project>

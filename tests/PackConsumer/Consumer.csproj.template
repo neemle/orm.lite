@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>__OUTPUT__</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/gen</CompilerGeneratedFilesOutputPath>
+    <RestoreLockedMode>false</RestoreLockedMode>
+    <NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="gen/**" />
+    <PackageReference Include="Neemle.Orm.Lite" Version="__VERSION__" __ASSETS__ />
+  </ItemGroup>
+</Project>

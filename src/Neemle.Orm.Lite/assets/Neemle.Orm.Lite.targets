@@ -1,0 +1,38 @@
+<Project>
+
+  <Target Name="OrmLiteEmitActorSetting" BeforeTargets="CoreCompile" DependsOnTargets="ResolveReferences" Condition="'$(OrmLiteActorSetting)' != ''">
+    <PropertyGroup>
+      <OrmLiteActorSettingFile>$(IntermediateOutputPath)OrmLiteActorSetting.g.cs</OrmLiteActorSettingFile>
+    </PropertyGroup>
+    <ItemGroup>
+      <_OrmLiteRuntimeReference Include="@(ReferencePath)" Condition="'%(Filename)' == 'Neemle.Orm.Lite.Runtime'" />
+      <_OrmLiteActorSettingLine Include="// &lt;auto-generated/&gt;" />
+      <_OrmLiteActorSettingLine Include="#nullable enable" />
+      <_OrmLiteActorSettingLine Include="internal static class OrmLiteActorSettingInit" />
+      <_OrmLiteActorSettingLine Include="{" />
+      <_OrmLiteActorSettingLine Include="    [global::System.Runtime.CompilerServices.ModuleInitializer]" />
+      <_OrmLiteActorSettingLine Include="    internal static void Init() =&gt; global::Neemle.Orm.Lite.OrmLiteSettings.UseActorSetting(&quot;$(OrmLiteActorSetting)&quot;)%3B" />
+      <_OrmLiteActorSettingLine Include="}" />
+    </ItemGroup>
+    <WriteLinesToFile Condition="'@(_OrmLiteRuntimeReference)' != ''" File="$(OrmLiteActorSettingFile)" Lines="@(_OrmLiteActorSettingLine)" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <ItemGroup Condition="'@(_OrmLiteRuntimeReference)' != ''">
+      <Compile Include="$(OrmLiteActorSettingFile)" />
+      <FileWrites Include="$(OrmLiteActorSettingFile)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="OrmLiteAnalyzerScope" AfterTargets="ResolveLockFileAnalyzers" BeforeTargets="CoreCompile">
+    <ItemGroup>
+      <_OrmLiteReference Include="@(PackageReference)" Condition="'%(Identity)' == 'Neemle.Orm.Lite'" />
+    </ItemGroup>
+    <PropertyGroup>
+      <_OrmLiteExcludedAssets>@(_OrmLiteReference->'%(ExcludeAssets)')</_OrmLiteExcludedAssets>
+      <_OrmLiteLoadsAnalyzer Condition="'@(_OrmLiteReference)' != '' And !$(_OrmLiteExcludedAssets.Contains('analyzers'))">true</_OrmLiteLoadsAnalyzer>
+    </PropertyGroup>
+    <ItemGroup>
+      <_OrmLiteAnalyzer Include="@(Analyzer)" Condition="'%(Analyzer.NuGetPackageId)' == 'Neemle.Orm.Lite' And '$(_OrmLiteLoadsAnalyzer)' != 'true'" />
+      <Analyzer Remove="@(_OrmLiteAnalyzer)" />
+    </ItemGroup>
+  </Target>
+
+</Project>
