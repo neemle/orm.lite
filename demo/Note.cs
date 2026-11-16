@@ -25,9 +25,10 @@ public sealed class WelcomeNote : Migration
 {
     public const string Id = "00000000-0000-0000-0000-00000000d3a0";
 
-    public override void Up(MigrationBuilder b) => b.Sql(
-        "INSERT INTO notes (id, tenant_id, title, body, stars) VALUES ('" + Id
-        + "', '00000000-0000-0000-0000-000000000000', 'welcome', 'added by an explicit migration', 0)");
+    public override void Up(MigrationBuilder b) => b.InsertData(
+        "notes",
+        ["id", "tenant_id", "title", "body", "stars"],
+        [Id, "00000000-0000-0000-0000-000000000000", "welcome", "added by an explicit migration", 0]);
 
-    public override void Down(MigrationBuilder b) => b.Sql("DELETE FROM notes WHERE id = '" + Id + "'");
+    public override void Down(MigrationBuilder b) => b.DeleteData("notes", "id", Id);
 }

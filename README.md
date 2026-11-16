@@ -13,7 +13,7 @@ any 0.x release.
 The package is not on a public feed yet. Build it into the local feed folder `artifacts/` (which the repository's
 `nuget.config` already names) and reference it from a project:
 
-    ./scripts/pack.sh
+    dotnet pack src/Neemle.Orm.Lite -c Release -o artifacts
     dotnet add package Neemle.Orm.Lite --version 0.1.0-pre
     dotnet add package Npgsql
 
@@ -48,7 +48,8 @@ instead of lost data, and a record of who changed what.
 Wrap work in `using (DbActor.EnterUser(userId))` and every update, soft delete and restore on a `[SoftDelete]` table
 lands in `row_history` with that user. Run the whole walk-through, end to end, against a throwaway PostgreSQL:
 
-    ./scripts/demo.sh
+    docker compose -f demo/compose.yaml up -d --wait
+    dotnet run --project demo
 
 It ends with `demo ok`. The code is in [`demo/`](demo/) (about 100 lines, defaults only) and
 [`demo/README.md`](demo/README.md) explains each step and the defaults it relies on.
@@ -61,7 +62,10 @@ its indexes and history triggers, and an `<AssemblyName>Migrations` class whose 
 migration, generated and hand-written, in version order, one transaction each, under an advisory lock. Hand-written
 migrations are classes with `Up` and `Down` that must say whether they are reversible. Mistakes in the declarations
 (an unmapped property type, a `[SoftDelete]` entity without a tenant or a key, an irreversible migration with a
-`Down`) are build errors with `ORMLITEnnn` ids, not runtime surprises.
+`Down`) are build errors with `ORMLITEnnn` ids, not runtime surprises. A migration body is written with the typed
+`MigrationBuilder` (`CreateTable`, `AddColumn`, `CreateIndex`, `InsertData`, `DeleteData` and the rest);
+`MigrationBuilder.Sql(string)` is an escape hatch for a statement the builder has no method for, and you own that
+statement's dialect and safety.
 
 At run time the library holds the attributes, the query layer that turns lambdas into SQL, the migration
 infrastructure and the connection gate. The gate stamps the acting user onto every connection it hands out, which
@@ -87,17 +91,32 @@ assets and so the actor setting, and the generators do not run in it.
   `buildTransitive`
 - `tests/Neemle.Orm.Lite.Tests`: the library's own tests (the generator driven over fixtures, the query layer over an
   in-process SQLite; no database needed)
-- `tests/PackConsumer`: the throwaway consumers that `scripts/pack.sh` builds from the packed package
-- `demo/`: the demo, a consumer of the package
+- `tests/PackConsumer`: the throwaway consumers that `scripts/PackCheck.cs` builds from the packed package
+- `scripts/`: two file-based C# tools (`dotnet run scripts/X.cs`), no shell: `PackCheck.cs` (package entries, the
+  consumer matrix, the demo guard) and `NupkgTool.cs` (lists or shows a package's entries)
+- `.github/workflows/ci.yml`: build and test; pack, the consumer matrix and the demo against a PostgreSQL service
+- `demo/`: the demo, a consumer of the package, with a `compose.yaml` for a throwaway PostgreSQL
 
-## Scripts
+## Build, test, pack, demo
 
-Each works from a fresh clone, given the .NET SDK version in `global.json`:
+Plain dotnet commands, from a fresh clone, given the .NET SDK version in `global.json`:
 
-    ./scripts/build.sh     build the library and its tests
-    ./scripts/test.sh      run the tests (any dotnet test arguments are passed through)
-    ./scripts/pack.sh      pack into ./artifacts and prove the package with the consumer matrix
-    ./scripts/demo.sh      run the demo against a throwaway PostgreSQL (needs Docker, or set ORMLITE_DEMO_CONNECTION)
+    dotnet build Neemle.Orm.Lite.slnx -c Release       # the library and its tests
+    dotnet test Neemle.Orm.Lite.slnx -c Release        # the tests; no database needed
+    dotnet pack src/Neemle.Orm.Lite -c Release -o artifacts
+    docker compose -f demo/compose.yaml up -d --wait   # a throwaway PostgreSQL on 127.0.0.1:55432
+    dotnet run --project demo                          # the demo, a consumer of the package in ./artifacts
 
-The restores use committed lock files; after editing a `PackageReference`, run `./scripts/pack.sh --regenerate-locks`
-and `./scripts/build.sh -p:RestoreLockedMode=false` and commit the changed `packages.lock.json` files.
+To use your own database, set `ORMLITE_DEMO_CONNECTION` (default
+`Host=localhost;Port=55432;Username=postgres;Database=postgres`). The demo restores the package from `./artifacts`
+into `artifacts/.demo-packages`; after packing the same version again, delete
+`artifacts/.demo-packages/neemle.orm.lite` so the demo restores the new build.
+
+CI (`.github/workflows/ci.yml`) runs the same commands, then `dotnet run scripts/PackCheck.cs -- package artifacts`
+(the package entries and the throwaway-consumer matrix: default reference, runtime-only, analyzer-only, default tenant,
+actor setting, no declared dependencies, downstream project) and `-- demo-guard` (the demo must reference the package,
+never a project), and runs the demo against a PostgreSQL service container, requiring the `demo ok` line. CI packs into
+the workspace only; nothing is published.
+
+The restores use committed lock files; after editing a `PackageReference`, restore each project with
+`dotnet restore <project> --force-evaluate -p:RestoreLockedMode=false` and commit the changed `packages.lock.json` files.

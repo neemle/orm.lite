@@ -11,8 +11,8 @@ class, and it works. This folder is that, end to end, in about 100 lines.
        dotnet add package Neemle.Orm.Lite
        dotnet add package Npgsql
 
-   The package is not published yet: until it is, `./scripts/pack.sh` builds it into `artifacts/`, a local feed
-   that the root `nuget.config` already names (see "Run it" below).
+   The package is not published yet: until it is, `dotnet pack src/Neemle.Orm.Lite -c Release -o artifacts` builds it
+   into `artifacts/`, a local feed that the root `nuget.config` already names (see "Run it" below).
 
 2. Describe the table by decorating a class (`Note.cs`).
 
@@ -53,7 +53,7 @@ Who did it is recorded for you: wrap work in `using (DbActor.EnterUser(userId))`
 | Step | What happens |
 | --- | --- |
 | 1 | the generated migrations create the table, the unique-while-live index and the history triggers |
-| 2 | `WelcomeNote` (an explicit, reversible `[Migration]`) seeds a row |
+| 2 | `WelcomeNote` (an explicit, reversible `[Migration]`) seeds a row with the typed `InsertData` and removes it with `DeleteData` |
 | 3 | insert, update and a lambda query, with no SQL written |
 | 4 | a soft delete hides the row from queries; `IncludingDeleted()` still sees it |
 | 5 | the row is restored; the history lists the update, the delete and the restore with the acting user |
@@ -105,19 +105,21 @@ namespace (letters and digits of the assembly name only).
 
 ## Run it
 
-You need the .NET SDK pinned by `../global.json` and Docker (for a PostgreSQL you can throw away). From the
-repository root:
+You need the .NET SDK pinned by `../global.json` and a PostgreSQL. From the repository root:
 
-    ./scripts/demo.sh
+    dotnet pack src/Neemle.Orm.Lite -c Release -o artifacts
+    docker compose -f demo/compose.yaml up -d --wait
+    dotnet run --project demo
 
-It packs the library into `artifacts/` when the package is not there yet, starts a PostgreSQL container, runs this
-demo against it as a consumer of the package (no project reference), checks that the last line is `demo ok` and
-removes the container.
+The first command builds the package into `artifacts/`, a local feed that the root `nuget.config` names. The second
+starts a throwaway PostgreSQL (trust authentication, bound to 127.0.0.1:55432). The demo restores the library as a
+package, exactly as a consumer would (it never references the library project), runs, and its last line is `demo ok`.
+Stop the database with `docker compose -f demo/compose.yaml down`.
 
-To use a database you already have, set the connection string and the script starts nothing:
+To use a database you already have, set the connection string:
 
-    ORMLITE_DEMO_CONNECTION="Host=localhost;Username=postgres;Database=postgres" ./scripts/demo.sh
+    ORMLITE_DEMO_CONNECTION="Host=localhost;Username=postgres;Database=postgres" dotnet run --project demo
 
-The demo is also a plain console project: after `./scripts/pack.sh` has produced the package,
-`dotnet run --project demo` runs it against `ORMLITE_DEMO_CONNECTION` (default
-`Host=localhost;Username=postgres;Database=postgres`).
+The default is `Host=localhost;Port=55432;Username=postgres;Database=postgres`, the compose database. The demo restores
+into `artifacts/.demo-packages`; after packing the same version again, delete `artifacts/.demo-packages/neemle.orm.lite`
+so the new build is restored.

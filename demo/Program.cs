@@ -4,7 +4,7 @@ using OrmLiteDemo;
 using Npgsql;
 
 var connection = Environment.GetEnvironmentVariable("ORMLITE_DEMO_CONNECTION");
-if (string.IsNullOrWhiteSpace(connection)) connection = "Host=localhost;Username=postgres;Database=postgres";
+if (string.IsNullOrWhiteSpace(connection)) connection = "Host=localhost;Port=55432;Username=postgres;Database=postgres";
 
 await using var source = NpgsqlDataSource.Create(connection);
 var db = new OrmContext(new GatedDataSource(source, source, source));

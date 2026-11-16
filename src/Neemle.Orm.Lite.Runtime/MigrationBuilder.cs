@@ -75,4 +75,12 @@ namespace Neemle.Orm.Lite;
                 + ") VALUES " + values);
             return this;
         }
+
+        public MigrationBuilder DeleteData(string table, string column, params object?[] values)
+        {
+            if (values.Length == 0) throw new ArgumentException("DeleteData needs at least one value to match.", nameof(values));
+            _ops.Add("DELETE FROM " + _dialect.Quote(table) + " WHERE " + _dialect.Quote(column) + " IN ("
+                + string.Join(", ", values.Select(_dialect.Literal)) + ")");
+            return this;
+        }
     }

@@ -1,1 +1,7 @@
-<Project />
+<Project>
+
+  <PropertyGroup>
+    <RestorePackagesPath>$(MSBuildThisFileDirectory)../artifacts/.demo-packages</RestorePackagesPath>
+  </PropertyGroup>
+
+</Project>
