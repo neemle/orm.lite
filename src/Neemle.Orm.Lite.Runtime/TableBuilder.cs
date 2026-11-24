@@ -2,26 +2,47 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite;
 
     public sealed class TableBuilder
     {
-        private readonly List<string> _cols = new List<string>();
+        private readonly List<Node> _cols = new List<Node>();
+        private readonly List<Node> _constraints = new List<Node>();
         private readonly IDdlDialect _dialect;
 
         public TableBuilder() : this(new PgDdlDialect()) { }
         public TableBuilder(IDdlDialect dialect) { _dialect = dialect; }
 
-        public TableBuilder Column(string name, string type, bool nullable = true, bool primaryKey = false, string? defaultSql = null)
+        public IReadOnlyList<Node> Columns => _cols;
+
+        public IReadOnlyList<Node> Constraints => _constraints;
+
+        public TableBuilder Column(string name, ColumnType type, bool nullable = true, bool primaryKey = false, Node? defaultValue = null) =>
+            Add(name, new TypeRef(type), nullable, primaryKey, defaultValue);
+
+        public TableBuilder DecimalColumn(string name, int precision, int scale, bool nullable = true, bool primaryKey = false, Node? defaultValue = null) =>
+            Add(name, new TypeRef(ColumnType.Decimal, precision, scale), nullable, primaryKey, defaultValue);
+
+        internal TableBuilder AddConstraint(Node constraint)
         {
-            _cols.Add(_dialect.Quote(name) + " " + type + (nullable ? "" : " NOT NULL") + (primaryKey ? " PRIMARY KEY" : "")
-                + (defaultSql != null ? " DEFAULT " + defaultSql : ""));
+            _constraints.Add(constraint);
             return this;
         }
 
         public TableBuilder JsonbColumn(string name, bool nullable = true) =>
-            Column(name, Jsonb.ColumnType, nullable, false, nullable ? null : Jsonb.EmptyDocumentDefaultSql);
+            Column(name, ColumnType.Json, nullable, false, nullable ? null : Defaults.EmptyDocument);
 
-        public string Render() => string.Join(", ", _cols);
+        public string Render()
+        {
+            var provider = _dialect.Provider;
+            return string.Join(", ", _cols.Select(c => provider.CreateSerializer().Fragment(c)));
+        }
+
+        private TableBuilder Add(string name, Node type, bool nullable, bool primaryKey, Node? defaultValue)
+        {
+            _cols.Add(new ColumnDef(name, type, nullable, primaryKey, defaultValue));
+            return this;
+        }
     }

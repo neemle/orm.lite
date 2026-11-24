@@ -1,0 +1,10 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        UPDATE "corpus_notes" SET "title" = @p0, "status" = @p1, "payload" = @p2::jsonb, "body" = @p3 WHERE "id" = @p4
+    @p0 = String "x"
+    @p1 = String "Active"
+    @p2 = String "{\"k\":1}"
+    @p3 = DBNull
+    @p4 = Guid a0000000-0000-0000-0000-00000000000a
+-- outcome
+Int32 4

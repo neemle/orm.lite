@@ -1,0 +1,5 @@
+-- sql
+SELECT * FROM "corpus_notes" ORDER BY (SELECT (CASE WHEN pg_input_is_valid((s0."doc" ->> @p0), 'numeric') THEN (s0."doc" ->> @p0) END)::numeric FROM "corpus_tags" s0 WHERE (s0."note_id" = "corpus_notes"."id" AND s0."position" > @p1)) ASC NULLS LAST
+-- parameters (2)
+[0] String "rank"
+[1] Int32 1

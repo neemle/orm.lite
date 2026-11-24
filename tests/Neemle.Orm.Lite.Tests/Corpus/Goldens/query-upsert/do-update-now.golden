@@ -1,0 +1,6 @@
+-- sql
+INSERT INTO "corpus_notes" ("id", "title", "rank") VALUES (@p0, @p1, @p2) ON CONFLICT ("id") DO UPDATE SET "created_at" = now()
+-- parameters (3)
+[0] Guid a0000000-0000-0000-0000-00000000000a
+[1] String "t"
+[2] Int32 1

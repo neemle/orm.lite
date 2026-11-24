@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: the JSON clear key `legacy_name` is duplicated (Parameter 'clearedKeys')

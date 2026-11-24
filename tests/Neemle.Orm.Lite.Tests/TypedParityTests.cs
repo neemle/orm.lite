@@ -29,7 +29,7 @@ public sealed class TypedParityTests
     };
 
     private static Query<TypedRow> Q() =>
-        new(new OrmContext(new NeverUsedDataSource(), new PgDialect()),
+        new(TestContext.Of(new NeverUsedDataSource(), new PgDialect()),
             _ => throw new NotSupportedException("no rows are read here"));
 
     private static Expression<Func<TypedRow, object?>> NotAColumn() => r => r.Name.Length;

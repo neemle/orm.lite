@@ -1,0 +1,27 @@
+#1 ExecuteNonQuery conn=1 source=background tx=false
+    sql:
+        SELECT 'default lane'
+#2 ExecuteNonQuery conn=2 source=request tx=false
+    sql:
+        SELECT 'request lane'
+#3 ExecuteNonQuery conn=3 source=ops tx=false
+    sql:
+        SELECT set_config('ormlite.actor', @v, false)
+    @v = String "a0000000-0000-0000-0000-00000000000a"
+#4 ExecuteNonQuery conn=3 source=ops tx=false
+    sql:
+        SELECT 'ops lane as user'
+#5 ExecuteNonQuery conn=4 source=request tx=false
+    sql:
+        SELECT set_config('ormlite.actor', @v, false)
+    @v = String "system"
+#6 ExecuteScalar conn=4 source=request tx=false
+    sql:
+        SELECT 'request lane as system'
+#7 ExecuteReader conn=5 source=background tx=false
+    sql:
+        SELECT 'background lane reader'
+-- outcome
+connection string = Host=background
+request lane leases held=1 peak=1
+reader rows=False

@@ -22,9 +22,9 @@ public sealed class ProbeNote
 [Migration("0001_probe", Reversibility.Reversible)]
 public sealed class ProbeMigration : Migration
 {
-    public override void Up(MigrationBuilder b) => b.Sql("SELECT 'up'");
+    public override void Up(MigrationBuilder b) => b.Raw("postgres", "SELECT 'up'");
 
-    public override void Down(MigrationBuilder b) => b.Sql("SELECT 'down'");
+    public override void Down(MigrationBuilder b) => b.Raw("postgres", "SELECT 'down'");
 }
 
 public static class Probe

@@ -1,0 +1,5 @@
+-- sql
+SELECT "id", (("rank" > @p0 AND "active" = true)) FROM "corpus_notes" WHERE "title" = @p1
+-- parameters (2)
+[0] Int32 3
+[1] String "x"

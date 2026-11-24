@@ -1,0 +1,7 @@
+-- sql
+SELECT * FROM "corpus_notes" ORDER BY (SELECT array_position(ARRAY[@p1, @p2, @p3]::text[], (s0."doc" ->> @p0)) FROM "corpus_tags" s0 WHERE s0."note_id" = "corpus_notes"."id") ASC NULLS LAST
+-- parameters (4)
+[0] String "state"
+[1] String "open"
+[2] String "closed"
+[3] String "done"

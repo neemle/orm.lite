@@ -1,0 +1,3 @@
+-- refusal
+type: System.NotSupportedException
+message: PgDialect renders no SQL type for JsonValueOrder.9; Text is compared as the extracted text and never reaches this switch, so an arrival here is a new member of the enum that this dialect was not given an arm for.

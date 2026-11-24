@@ -1,0 +1,1 @@
+[0] CREATE INDEX IF NOT EXISTS "ix_samples_name_rank" ON "samples" ("name", "rank")

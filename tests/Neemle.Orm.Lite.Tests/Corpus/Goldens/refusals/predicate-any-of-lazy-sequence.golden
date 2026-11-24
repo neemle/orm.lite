@@ -1,0 +1,3 @@
+-- refusal
+type: System.NotSupportedException
+message: Db.AnyOf binds its collection as ONE array parameter, so it must already be materialised -- pass an array or a List<T>, never a lazy sequence, because the driver infers the array's element type from the object it is handed.

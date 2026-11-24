@@ -1,0 +1,4 @@
+[0] DROP TABLE IF EXISTS "we""ird"
+[1] ALTER TABLE "we""ird" ADD COLUMN IF NOT EXISTS "c""d" text
+[2] ALTER TABLE "t""" RENAME COLUMN "a""" TO "b"""
+[3] CREATE INDEX IF NOT EXISTS "i""" ON "t""" ("c""")

@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: Avg returns a double and would round a decimal column through a double; use AvgDecimal(column, scale), which rounds half away from zero to the scale you name and is exact on both providers.

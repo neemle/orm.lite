@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: a JSON remove-then-merge mutation must clear or set at least one member

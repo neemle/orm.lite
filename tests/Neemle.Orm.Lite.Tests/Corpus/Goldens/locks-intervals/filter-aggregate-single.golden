@@ -1,0 +1,3 @@
+-- sql
+SELECT count(*) FILTER (WHERE ("active" = true)) FROM "corpus_notes"
+-- parameters (0)

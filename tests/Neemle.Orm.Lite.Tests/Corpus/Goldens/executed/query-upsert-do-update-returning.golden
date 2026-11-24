@@ -1,0 +1,8 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        INSERT INTO "corpus_notes" ("id", "title") VALUES (@p0, @p1) ON CONFLICT ("id") DO UPDATE SET "title" = @p2, "views" = COALESCE("corpus_notes"."views", 0) + 1 RETURNING "id", "title"
+    @p0 = Guid a0000000-0000-0000-0000-00000000000a
+    @p1 = String "t"
+    @p2 = String "t"
+-- outcome
+[Guid a0000000-0000-0000-0000-00000000000a, String "t"]

@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "id" = @p0
+-- parameters (1)
+[0] Guid a0000000-0000-0000-0000-00000000000a

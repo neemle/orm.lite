@@ -1,0 +1,3 @@
+-- sql
+SELECT "status", "active", count(*) FROM "corpus_notes" GROUP BY "status", "active"
+-- parameters (0)

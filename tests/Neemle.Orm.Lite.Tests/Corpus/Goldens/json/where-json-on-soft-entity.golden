@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_tasks" WHERE "deleted_at" IS NULL AND jsonb_exists("doc", @p0)
+-- parameters (1)
+[0] String "k"

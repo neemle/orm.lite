@@ -1,34 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <!-- DB-layer source generators: the ORM generator (OrmGenerator.cs) and the migration runner
-       generator (MigrationGenerator.cs). They emit the schema, the ORM methods, the LINQ entry points and the migrator. -->
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <IsRoslynComponent>true</IsRoslynComponent>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <!-- Opt out of the unconditional `IsAotCompatible=true` in the library
-         `Directory.Build.props`. This assembly is a build-time Roslyn component loaded by the
-         compiler — ILC never sees it, so the AOT question does not apply. `IsAotCompatible` is only
-         meaningful on net6.0+; leaving the props default to reach a `netstandard2.0` project raises
-         `NETSDK1210`, and it is this line that keeps that count at zero. -->
+    <IsPackable>false</IsPackable>
     <IsAotCompatible>false</IsAotCompatible>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <NoWarn>$(NoWarn);RS1041</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all" />
-    <!-- C# code templates rendered by the engine. The extension is *.cs-template because
-         the SDK silently drops *.cs.* resources (the '.cs.' trips the manifest-name task).
-         Listed one by one, NOT globbed. Each entry below has exactly one caller
-         (OrmGenerator.cs / MigrationGenerator.cs), so an unused template fails to be found rather than riding along. -->
-    <EmbeddedResource Include="Templates/Entities.cs-template" />
-    <EmbeddedResource Include="Templates/Repo.cs-template" />
-    <EmbeddedResource Include="Templates/Migrations.cs-template" />
-    <!-- EnforceExtendedAnalyzerRules turns RS2008 on for the diagnostics. These two files are the fix it asks for:
-         each rule id, category and severity is recorded where a later change shows up as a diff. -->
+    <PackageReference Include="Neemle.CSharpComposer" Version="$(OrmLiteComposerVersion)" PrivateAssets="all" />
     <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
     <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
   </ItemGroup>

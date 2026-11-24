@@ -1,0 +1,1 @@
+DO $sd$ BEGIN PERFORM set_config('lock_timeout', '5s', true); IF NOT EXISTS (SELECT 1 FROM pg_attribute a WHERE a.attrelid = to_regclass('"samples"') AND a.attname = 'deleted_at' AND NOT a.attisdropped) THEN ALTER TABLE "samples" ADD COLUMN "deleted_at" timestamp with time zone NULL; COMMENT ON COLUMN "samples"."deleted_at" IS '0300_soft_column'; END IF; END $sd$

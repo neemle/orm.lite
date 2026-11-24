@@ -1,0 +1,5 @@
+#1 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT "rank" FROM "corpus_notes" LIMIT 1
+-- outcome
+Int32 7

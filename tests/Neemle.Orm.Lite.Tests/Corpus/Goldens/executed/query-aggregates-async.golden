@@ -1,0 +1,6 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT count(*), count(*) FILTER (WHERE ("active" = true)) FROM "corpus_notes" WHERE "rank" > @p0
+    @p0 = Int32 0
+-- outcome
+[Int64 5, Int64 2]

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using System.Data.Common;
+using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite;
 
@@ -15,35 +15,42 @@ namespace Neemle.Orm.Lite;
         private readonly string _table;
         private readonly Func<DbDataReader, T> _map;
         private readonly Func<string, string> _col;
-        private readonly ISqlDialect D;
-        private readonly List<string> _where = new List<string>();
+        private readonly List<Node> _where = new List<Node>();
         private readonly SoftDeleteMeta? _softDelete;
         private bool _live;
         private readonly List<object?> _params = new List<object?>();
-        private readonly Dictionary<string, string> _redact = new();
         private readonly OrmContext _db;
         private readonly RenderState _state;
         private readonly StatementExecutor _exec;
         private readonly PredicateTranslator _translator;
         private readonly SetClauses _setClauses;
+        private readonly SetTerms _set;
         private readonly JsonClauses _json;
         private readonly WriteStatements _writes;
+        private readonly WriteCompiler _compiler;
+        private readonly RowWrites<T> _rows;
         private readonly SelectClauses _select;
-        private readonly List<string> _aggregates = new List<string>();
-        private readonly List<string> _projection = new List<string>();
+        private readonly RowLockClauses _locks;
+        private readonly AggregateClauses _aggregates;
+        private readonly List<Node> _projection = new List<Node>();
 
         public Query(OrmContext db, Func<DbDataReader, T> map)
         {
             var meta = OrmMeta.Get(typeof(T));
-            _db = db; D = db.Dialect; _table = meta.Table; _map = map; _col = meta.Col;
+            _db = db; _table = meta.Table; _map = map; _col = meta.Col;
             _live = OrmMeta.TryGetSoftDelete(typeof(T), out _softDelete);
-            _state = new RenderState(D, _table, _col, _params);
+            _state = new RenderState(db.Dialect, db.Provider, _table, _col, _params);
             _exec = new StatementExecutor(db.DataSource, _state);
-            _select = new SelectClauses(D, _table);
+            _select = new SelectClauses(_table);
             _translator = new PredicateTranslator(_state);
-            _setClauses = new SetClauses(D);
+            _setClauses = new SetClauses(_state.Quote);
+            _set = new SetTerms(_state, _translator, _setClauses);
             _json = new JsonClauses(_state, _translator, _setClauses);
             _writes = new WriteStatements(_state, _softDelete);
+            _compiler = new WriteCompiler(_state, _select, _softDelete, OrmMeta.IsView(typeof(T)));
+            _rows = new RowWrites<T>(_translator, _writes);
+            _locks = new RowLockClauses(_state, _select);
+            _aggregates = new AggregateClauses(_state, _translator);
         }
 
         public Query<T> IncludingDeleted()
@@ -52,25 +59,24 @@ namespace Neemle.Orm.Lite;
             return this;
         }
 
-        private StringBuilder AppendWhere(StringBuilder sb, bool alwaysLive = false)
+        private Node LiveTerm() =>
+            new IsNull(new ColumnRef(_col(_softDelete!.Column), _state.Qualified ? new TableRef(_table) : null));
+
+        private enum LiveScope { PerQuery, Always, Never }
+
+        private Where? WhereNode(LiveScope scope = LiveScope.PerQuery)
         {
-            if (_live || (alwaysLive && _softDelete is not null))
+            var terms = new List<Node>();
+            var live = scope switch
             {
-                sb.Append(" WHERE ").Append(SoftDeleteSql.LiveTerm(D, _col(_softDelete!.Column)));
-                foreach (var term in _where) sb.Append(" AND ").Append(term);
-            }
-            else if (_where.Count > 0)
-                sb.Append(" WHERE ").Append(string.Join(" AND ", _where));
-            return sb;
+                LiveScope.Always => _live || _softDelete is not null,
+                LiveScope.Never => false,
+                _ => _live,
+            };
+            if (live) terms.Add(LiveTerm());
+            terms.AddRange(_where);
+            return terms.Count == 0 ? null : new Where(NodeList.Of(terms));
         }
-
-        private StringBuilder PhysicalDelete() => _writes.PhysicalDelete();
-
-        private StringBuilder DeleteStatement() =>
-            _softDelete is null
-                ? PhysicalDelete()
-                : new StringBuilder("UPDATE ").Append(D.Quote(_table))
-                    .Append(" SET ").Append(SoftDeleteSql.SetClause(D, _col(_softDelete.Column)));
 
         public Query<T> On(DbConnection connection, DbTransaction? transaction = null)
         {
@@ -84,6 +90,14 @@ namespace Neemle.Orm.Lite;
             return On(unitOfWork.Connection, unitOfWork.Transaction);
         }
 
+        public Statement CompileUpsert(
+            Row<T> row,
+            IReadOnlyList<Expression<Func<T, object?>>> conflictColumns,
+            OnConflict action,
+            IReadOnlyList<UpsertSet<T>>? sets = null,
+            IReadOnlyList<Expression<Func<T, object?>>>? returning = null) =>
+            CompileWrite(_rows.Upsert(row, conflictColumns, action, sets, returning).Tree);
+
         public (string Sql, List<object?> Parameters) RenderUpsert(
             Row<T> row,
             IReadOnlyList<Expression<Func<T, object?>>> conflictColumns,
@@ -91,12 +105,11 @@ namespace Neemle.Orm.Lite;
             IReadOnlyList<UpsertSet<T>>? sets = null,
             IReadOnlyList<Expression<Func<T, object?>>>? returning = null)
         {
-            var resolved = RowResolver.ResolveRow(_translator, row);
-            return _writes.RenderUpsert(
-                resolved, RowResolver.ResolveColumns(_translator, conflictColumns), action,
-                RowResolver.ResolveSets(_translator, resolved, sets), ResolveRegistered(returning));
+            var built = _rows.Upsert(row, conflictColumns, action, sets, returning);
+            return (CompileWrite(built.Tree).Text, built.Bound);
         }
 
+        [RequiresCapability(Capability.Upsert)]
         public async Task<List<object?[]>> UpsertAsync(
             Row<T> row,
             IReadOnlyList<Expression<Func<T, object?>>> conflictColumns,
@@ -104,55 +117,55 @@ namespace Neemle.Orm.Lite;
             IReadOnlyList<UpsertSet<T>>? sets = null,
             IReadOnlyList<Expression<Func<T, object?>>>? returning = null)
         {
-            var (text, ps) = RenderUpsert(row, conflictColumns, action, sets, returning);
+            var statement = CompileUpsert(row, conflictColumns, action, sets, returning);
             return await _exec.UpsertAsync(
-                text, ps, returning?.Count ?? 0, _writes.RefusesSoftDeletedConflict(action, sets?.Count ?? 0));
+                statement, returning?.Count ?? 0, _writes.RefusesSoftDeletedConflict(action, sets?.Count ?? 0));
         }
 
-        public string RenderUpdateReturning(IReadOnlyList<Expression<Func<T, object?>>> returning) =>
-            RenderUpdateReturningCore(ResolveRegistered(returning));
+        public Statement CompileUpdateReturning(IReadOnlyList<Expression<Func<T, object?>>> returning) =>
+            CompileUpdateReturningCore(_rows.Registered(returning));
 
-        private string RenderUpdateReturningCore(IReadOnlyList<string> returning)
+        public string RenderUpdateReturning(IReadOnlyList<Expression<Func<T, object?>>> returning) =>
+            CompileUpdateReturning(returning).Text;
+
+        private Statement CompileUpdateReturningCore(IReadOnlyList<string> returning)
         {
-            if (!D.SupportsReturning)
-                throw new NotSupportedException(
-                    $"{D.GetType().Name} cannot return columns from a write; select the affected ids first, "
-                    + "inside the same transaction.");
+            _compiler.RequireReturning("ids");
             if (_setClauses.Count == 0)
                 throw new InvalidOperationException("UpdateReturningAsync needs at least one Set().");
             if (_where.Count == 0)
                 throw new InvalidOperationException(
                     "UpdateReturningAsync requires a Where (refusing an unfiltered UPDATE).");
-            var sb = AppendWhere(
-                    new StringBuilder("UPDATE ").Append(D.Quote(_table)).Append(" SET ").Append(_setClauses.Joined))
-                .Append(D.ReturningClause(returning));
-            return sb.ToString();
+            return CompileQueryWrite("UpdateReturningAsync", new Update(
+                new TableRef(_table), _setClauses.Assignments, WhereNode(), _writes.ReturningOf(returning)));
         }
 
+        [RequiresCapability(Capability.Returning)]
         public async Task<List<object?[]>> UpdateReturningAsync(
             IReadOnlyList<Expression<Func<T, object?>>> returning) =>
-            await _exec.ReturningAsync(RenderUpdateReturningCore(ResolveRegistered(returning)), returning.Count);
+            await _exec.ReturningAsync(CompileUpdateReturningCore(_rows.Registered(returning)), returning.Count);
+
+        public Statement CompileDeleteReturning(IReadOnlyList<Expression<Func<T, object?>>> returning) =>
+            CompileDeleteReturningCore(_rows.Registered(returning));
 
         public string RenderDeleteReturning(IReadOnlyList<Expression<Func<T, object?>>> returning) =>
-            RenderDeleteReturningCore(ResolveRegistered(returning));
+            CompileDeleteReturning(returning).Text;
 
-        private string RenderDeleteReturningCore(IReadOnlyList<string> returning)
+        private Statement CompileDeleteReturningCore(IReadOnlyList<string> returning)
         {
-            if (!D.SupportsReturning)
-                throw new NotSupportedException(
-                    $"{D.GetType().Name} cannot return columns from a write; select the affected rows first, "
-                    + "inside the same transaction.");
+            _compiler.RequireReturning("rows");
             if (_where.Count == 0)
                 throw new InvalidOperationException(
                     "DeleteReturningAsync requires a Where (refusing an unfiltered DELETE).");
-            var sb = AppendWhere(DeleteStatement(), alwaysLive: true)
-                .Append(D.ReturningClause(returning));
-            return sb.ToString();
+            return CompileQueryWrite(
+                "DeleteReturningAsync",
+                _compiler.DeleteTree(WhereNode(LiveScope.Always), _writes.ReturningOf(returning)));
         }
 
+        [RequiresCapability(Capability.Returning)]
         public async Task<List<object?[]>> DeleteReturningAsync(
             IReadOnlyList<Expression<Func<T, object?>>> returning) =>
-            await _exec.ReturningAsync(RenderDeleteReturningCore(ResolveRegistered(returning)), returning.Count);
+            await _exec.ReturningAsync(CompileDeleteReturningCore(_rows.Registered(returning)), returning.Count);
 
         public Query<T> Where(Expression<Func<T, bool>> predicate)
         {
@@ -162,75 +175,52 @@ namespace Neemle.Orm.Lite;
 
         public Query<T> WhereExists<TOther>(Expression<Func<T, TOther, bool>> predicate)
         {
-            var outer = predicate.Parameters[0];
-            var inner = predicate.Parameters[1];
-            var meta = OrmMeta.Get(typeof(TOther));
-            var alias = _state.NextAlias();
-            _state.Scope[outer] = (D.Quote(_table), _col);
-            _state.Scope[inner] = (alias, meta.Col);
-            _where.Add("EXISTS (SELECT 1 FROM " + D.Quote(meta.Table) + " " + alias + " WHERE "
-                + _translator.Translate(predicate.Body)
-                + _state.LiveTermOf(typeof(TOther), alias, meta.Col) + ")");
-            _state.Scope.Remove(outer);
-            _state.Scope.Remove(inner);
+            _where.Add(CorrelatedExists.Of(_state, _translator, typeof(TOther), predicate));
             return this;
         }
 
         public Query<T> Redact(Expression<Func<T, object?>> column)
-        {
-            _redact[_translator.RawColumnOf(column.Body)] = "NULL";
-            return this;
-        }
+        { Redaction.Hide(_state, _translator, column.Body); return this; }
 
         public Query<T> RedactWhen(Expression<Func<T, object?>> column, Expression<Func<T, bool>> when)
-        {
-            var raw = _translator.RawColumnOf(column.Body);
-            var cond = _translator.Predicate(when.Parameters[0], when.Body);
-            _redact[raw] = "CASE WHEN " + cond + " THEN NULL ELSE " + D.Quote(raw) + " END";
-            return this;
-        }
+        { Redaction.HideWhen(_state, _translator, column.Body, when); return this; }
 
         public Query<T> OrderBy(Expression<Func<T, object?>> selector)
-        { _select.ReplaceOrder(_translator.ColumnOf(selector.Body) + " ASC"); return this; }
+        { _select.ReplaceOrder(PlainOrder.Of(_translator.OrderColumnOf(selector.Body), false)); return this; }
 
         public Query<T> OrderByDescending(Expression<Func<T, object?>> selector)
-        { _select.ReplaceOrder(_translator.ColumnOf(selector.Body) + " DESC"); return this; }
+        { _select.ReplaceOrder(PlainOrder.Of(_translator.OrderColumnOf(selector.Body), true)); return this; }
 
         public Query<T> ThenBy(Expression<Func<T, object?>> selector)
-        { _select.AddOrder(_translator.ColumnOf(selector.Body) + " ASC"); return this; }
+        { _select.AddOrder(PlainOrder.Of(_translator.OrderColumnOf(selector.Body), false)); return this; }
 
         public Query<T> ThenByDescending(Expression<Func<T, object?>> selector)
-        { _select.AddOrder(_translator.ColumnOf(selector.Body) + " DESC"); return this; }
+        { _select.AddOrder(PlainOrder.Of(_translator.OrderColumnOf(selector.Body), true)); return this; }
         public Query<T> Take(int n) { _select.Limit = n; return this; }
         public Query<T> Skip(int n) { _select.Offset = n; return this; }
 
+        [RequiresCapability(Capability.RowLock)]
         public Query<T> ForUpdate()
         {
-            if (!D.SupportsRowLock)
-                throw new NotSupportedException(
-                    $"{D.GetType().Name} has no row lock; a caller that needs one cannot be served by an "
-                    + "unlocked read.");
-            _select.LockRows();
+            _locks.ForUpdate();
             return this;
         }
 
+        [RequiresCapability(Capability.RowLock)]
+        [RequiresCapability(Capability.KeyPreservingRowLock)]
         public Query<T> ForNoKeyUpdate()
         {
-            if (!D.SupportsKeyPreservingRowLock)
-                throw new NotSupportedException(
-                    $"{D.GetType().Name} has no key-preserving row lock; a caller that needs to serialise writers "
-                    + "of a row WITHOUT blocking a foreign key that references it cannot be served by an unlocked "
-                    + "read, and must not be silently handed the stronger lock.");
-            _select.LockRowsKeyPreserving();
+            _locks.ForNoKeyUpdate();
             return this;
         }
 
         public Query<T> OrderByPredicate(Expression<Func<T, bool>> selector)
-        { _select.ReplaceOrder(PredicateTerm(selector) + " ASC"); return this; }
+        { _select.ReplaceOrder(PlainOrder.Of(PredicateTerm(selector), false)); return this; }
 
         public Query<T> ThenByPredicate(Expression<Func<T, bool>> selector)
-        { _select.AddOrder(PredicateTerm(selector) + " ASC"); return this; }
+        { _select.AddOrder(PlainOrder.Of(PredicateTerm(selector), false)); return this; }
 
+        [RequiresCapability(Capability.JsonDocument)]
         public Query<T> OrderByMovedFieldNumberOrEpochMillis(
             Expression<Func<T, object?>> document, MovedFieldKey key, Expression<Func<T, object?>> timestamp)
         {
@@ -238,131 +228,187 @@ namespace Neemle.Orm.Lite;
             return this;
         }
 
+        [RequiresCapability(Capability.JsonDocument)]
         public Query<T> OrderByJsonKey(
             Expression<Func<T, object?>> column, JsonKey key, bool descending, bool nullsFirst)
-        { _select.ReplaceOrder(_json.OrderTerm(column, key, descending, nullsFirst)); return this; }
+        { _select.ReplaceOrder(_json.KeyTerm(column, key, descending, nullsFirst)); return this; }
 
+        [RequiresCapability(Capability.JsonDocument)]
         public Query<T> ThenByJsonKey(
             Expression<Func<T, object?>> column, JsonKey key, bool descending, bool nullsFirst)
-        { _select.AddOrder(_json.OrderTerm(column, key, descending, nullsFirst)); return this; }
+        { _select.AddOrder(_json.KeyTerm(column, key, descending, nullsFirst)); return this; }
 
+        [RequiresCapability(Capability.JsonDocument)]
         public Query<T> OrderByJsonKeyOf<TOther>(
             Expression<Func<T, TOther, bool>> correlation,
             Expression<Func<TOther, object?>> column,
             JsonKeyOrdering ordering)
         {
-            _select.ReplaceOrder(_json.OrderTermOf(typeof(TOther), correlation, column, ordering));
+            _select.ReplaceOrder(_json.KeyOfTerm(typeof(TOther), correlation, column, ordering));
             return this;
         }
 
+        [RequiresCapability(Capability.JsonDocument)]
         public Query<T> ThenByJsonKeyOf<TOther>(
             Expression<Func<T, TOther, bool>> correlation,
             Expression<Func<TOther, object?>> column,
             JsonKeyOrdering ordering)
-        { _select.AddOrder(_json.OrderTermOf(typeof(TOther), correlation, column, ordering)); return this; }
+        { _select.AddOrder(_json.KeyOfTerm(typeof(TOther), correlation, column, ordering)); return this; }
 
-        private string PredicateTerm(Expression<Func<T, bool>> selector) =>
-            "(" + _translator.Predicate(selector.Parameters[0], selector.Body) + ")";
+        private Node PredicateTerm(Expression<Func<T, bool>> selector) =>
+            new Group(_translator.Predicate(selector.Parameters[0], selector.Body));
 
         public async Task<List<T>> ToListAsync() =>
-            await _exec.RowsAsync(RenderSelect(), _map);
+            await _exec.RowsAsync(CompileSelect(), _map);
 
         public async Task<List<TOut>> ProjectAsync<TOut>(
             IReadOnlyList<Expression<Func<T, object?>>> columns,
-            Func<DbDataReader, TOut> map)
-        {
-            if (columns.Count == 0)
-                throw new InvalidOperationException("ProjectAsync needs at least one column.");
-            return await _exec.RowsAsync(RenderProject(columns), map);
-        }
+            Func<DbDataReader, TOut> map) =>
+            await _exec.RowsAsync(CompileProject(columns), map);
 
-        public string RenderProject(IReadOnlyList<Expression<Func<T, object?>>> columns)
+        public Statement CompileProject(IReadOnlyList<Expression<Func<T, object?>>> columns) =>
+            CompileTree(BuildProject(columns));
+
+        public string RenderProject(IReadOnlyList<Expression<Func<T, object?>>> columns) =>
+            CompileProject(columns).Text;
+
+        internal Select BuildProject(IReadOnlyList<Expression<Func<T, object?>>> columns)
         {
             if (columns.Count == 0)
                 throw new InvalidOperationException("ProjectAsync needs at least one column.");
-            return _select.Render(string.Join(", ", columns.Select(c => _translator.ColumnOf(c.Body))), WhereText());
+            return _select.Build(columns.Select(c => _translator.MaskedColumnOf(c.Body)).ToList(), WhereNode());
         }
 
         public Query<T> ProjectColumn(Expression<Func<T, object?>> column)
-        { _projection.Add(_translator.ColumnOf(column.Body)); return this; }
+        { _projection.Add(_translator.MaskedColumnOf(column.Body)); return this; }
 
         public Query<T> ProjectPredicate(Expression<Func<T, bool>> predicate)
         { _projection.Add(PredicateTerm(predicate)); return this; }
 
-        public string RenderProjection()
+        public Statement CompileProjection() => CompileTree(BuildProjection());
+
+        public string RenderProjection() => CompileProjection().Text;
+
+        internal Select BuildProjection()
         {
             if (_projection.Count == 0)
                 throw new InvalidOperationException(
                     "ProjectionAsync needs at least one ProjectColumn/ProjectPredicate term.");
-            return _select.Render(string.Join(", ", _projection), WhereText());
+            return _select.Build(_projection, WhereNode());
         }
 
         public async Task<List<TOut>> ProjectionAsync<TOut>(Func<DbDataReader, TOut> map) =>
-            await _exec.RowsAsync(RenderProjection(), map);
+            await _exec.RowsAsync(CompileProjection(), map);
 
         public async Task<T?> FirstOrDefaultAsync()
-        { _select.Limit = 1; var l = await ToListAsync(); return l.Count > 0 ? l[0] : default; }
+        {
+            var rows = await _exec.RowsAsync(
+                CompileTree(_select.BuildFirst(SelectedColumns(), WhereNode(), lockRows: true)), _map);
+            return rows.Count > 0 ? rows[0] : default;
+        }
 
         public async Task<long> CountAsync()
         {
-            var sb = new StringBuilder("SELECT count(*) FROM ").Append(D.Quote(_table));
-            AppendWhere(sb);
-            return (long)(await _exec.ScalarAsync(sb.ToString()) ?? 0L);
+            RefuseClauses("CountAsync", ClauseRule.Aggregate);
+            return await CountRowsAsync();
+        }
+
+        private async Task<long> CountRowsAsync()
+        {
+            var tree = new Select([new Call(Fn.Count, [new Star()])], new TableRef(_table), WhereNode());
+            return (long)(await _exec.ScalarAsync(CompileTree(tree)) ?? 0L);
         }
 
         public async Task<long> SumAsync(Expression<Func<T, object?>> column)
         {
-            var sb = new StringBuilder("SELECT coalesce(sum(").Append(_translator.ColumnOf(column.Body))
-                .Append("), 0) FROM ").Append(D.Quote(_table));
-            AppendWhere(sb);
-            return System.Convert.ToInt64(await _exec.ScalarAsync(sb.ToString()) ?? 0L);
+            LongSum.Require(column.Body);
+            RefuseClauses("SumAsync", ClauseRule.Aggregate);
+            var sum = new Call(Fn.Sum, [_translator.ColumnOf(column.Body)]);
+            var tree = new Select([new Call(Fn.Coalesce, [sum, new IntLit(0)])], new TableRef(_table), WhereNode());
+            return System.Convert.ToInt64(await _exec.ScalarAsync(CompileTree(tree)) ?? 0L);
         }
+
+        internal Select BuildScalar(Expression<Func<T, object?>> column) =>
+            _select.BuildScalar([_translator.MaskedColumnOf(column.Body)], WhereNode());
+
+        public Statement CompileScalar(Expression<Func<T, object?>> column) => CompileTree(BuildScalar(column));
+
+        public string RenderScalar(Expression<Func<T, object?>> column) => CompileScalar(column).Text;
 
         public async Task<TCol> ScalarAsync<TCol>(Expression<Func<T, object?>> column)
         {
-            var sb = new StringBuilder("SELECT ").Append(_translator.ColumnOf(column.Body))
-                .Append(" FROM ").Append(D.Quote(_table));
-            AppendWhere(sb);
-            sb.Append(D.Page(1, null));
-            var v = await _exec.ScalarAsync(sb.ToString());
-            return v is null || v is DBNull ? default! : (TCol)v;
+            var v = await _exec.ScalarAsync(CompileScalar(column));
+            return ScalarValue.To<TCol>(v, _table, _translator.ColumnNameOf(column.Body));
         }
 
-        public async Task<bool> AnyAsync() => await CountAsync() > 0;
+        public async Task<bool> AnyAsync()
+        {
+            RefuseClauses("AnyAsync", ClauseRule.Aggregate);
+            return await CountRowsAsync() > 0;
+        }
 
         public Query<T> AggregateCount()
-        { _aggregates.Add(D.CountAllExpression); return this; }
+        { _aggregates.AddCount(); return this; }
 
         public Query<T> AggregateCountDistinct(Expression<Func<T, object?>> column)
-        { _aggregates.Add(D.CountDistinctExpression(_translator.ColumnOf(column.Body))); return this; }
+        { _aggregates.AddCountDistinct(column.Body); return this; }
 
         public Query<T> AggregateSum(Expression<Func<T, object?>> column)
-        { _aggregates.Add(D.SumCoalescedExpression(_translator.ColumnOf(column.Body))); return this; }
+        { _aggregates.AddSum(column.Body); return this; }
 
         public Query<T> AggregateMin(Expression<Func<T, object?>> column)
-        { _aggregates.Add(D.MinExpression(_translator.ColumnOf(column.Body))); return this; }
+        { _aggregates.AddMin(column.Body); return this; }
 
+        public Query<T> AggregateMax(Expression<Func<T, object?>> column)
+        { _aggregates.AddMax(column.Body); return this; }
+
+        public Query<T> AggregateAvg(Expression<Func<T, object?>> column)
+        { _aggregates.AddAvg(column.Body); return this; }
+
+        public Query<T> AggregateAvgDecimal(Expression<Func<T, object?>> column, int scale)
+        { _aggregates.AddAvgDecimal(column.Body, scale); return this; }
+
+        [RequiresCapability(Capability.AggregateFilter)]
         public Query<T> AggregateCountWhere(Expression<Func<T, bool>> filter)
-        {
-            if (!D.SupportsAggregateFilter)
-                throw new NotSupportedException(
-                    $"{D.GetType().Name} has no FILTER aggregate; a second statement would read a different snapshot.");
-            _aggregates.Add(D.CountFilterExpression(PredicateTerm(filter)));
-            return this;
-        }
+        { _aggregates.AddCountWhere(filter); return this; }
 
-        public string RenderAggregates()
+        public Statement CompileAggregates() => CompileTree(BuildAggregates());
+
+        public string RenderAggregates() => CompileAggregates().Text;
+
+        internal Select BuildAggregates()
         {
             if (_aggregates.Count == 0)
                 throw new InvalidOperationException("AggregatesAsync needs at least one aggregate term.");
-            var sb = new StringBuilder("SELECT ").Append(string.Join(", ", _aggregates))
-                .Append(" FROM ").Append(D.Quote(_table));
-            AppendWhere(sb);
-            return sb.ToString();
+            RefuseClauses("AggregatesAsync", ClauseRule.Aggregate);
+            return new Select(_aggregates.Terms, new TableRef(_table), WhereNode());
         }
 
         public async Task<object?[]> AggregatesAsync() =>
-            await _exec.AggregateRowAsync(RenderAggregates(), _aggregates.Count);
+            _aggregates.Exact(await _exec.AggregateRowAsync(CompileAggregates(), _aggregates.Count));
+
+        public Grouping<T, TKey> GroupBy<TKey>(Expression<Func<T, TKey>> key) =>
+            new(Host(), GroupKeys.Of(_translator, key.Body), r => r.Read<TKey>(0));
+
+        public Grouping<T, (TFirst, TSecond)> GroupBy<TFirst, TSecond>(
+            Expression<Func<T, TFirst>> first, Expression<Func<T, TSecond>> second) =>
+            new(Host(), GroupKeys.Of(_translator, first.Body, second.Body),
+                r => (r.Read<TFirst>(0), r.Read<TSecond>(1)));
+
+        public Grouping<T, (TFirst, TSecond, TThird)> GroupBy<TFirst, TSecond, TThird>(
+            Expression<Func<T, TFirst>> first,
+            Expression<Func<T, TSecond>> second,
+            Expression<Func<T, TThird>> third) =>
+            new(Host(),
+                GroupKeys.Of(_translator, first.Body, second.Body, third.Body),
+                r => (r.Read<TFirst>(0), r.Read<TSecond>(1), r.Read<TThird>(2)));
+
+        private GroupingHost Host()
+        {
+            RefuseClauses("GroupBy", ClauseRule.Grouping);
+            return new(_translator, _state, _exec, _db.Provider, _table, () => WhereNode(),
+                () => RefuseClauses("GroupBy", ClauseRule.Grouping));
+        }
 
         public Query<T> WhereIn<TOther>(
             Expression<Func<T, object?>> column,
@@ -377,86 +423,57 @@ namespace Neemle.Orm.Lite;
             if (!ReferenceEquals(built, sub))
                 throw new InvalidOperationException(
                     "A WhereIn builder must return the query instance it was given.");
-            var text = sub.RenderProject(new[] { selected });
-            _where.Add(_translator.ColumnOf(column.Body) + " IN (" + text + ")");
+            var query = sub.BuildProject(new[] { selected });
+            _where.Add(new InSubquery(_translator.PlainColumnOf(column.Body), query));
             _params.AddRange(sub._params);
             return this;
         }
 
-        public (string Sql, List<object?> Parameters) RenderInsertMany(IReadOnlyList<Row<T>> rows) =>
-            _writes.RenderInsertMany(RowResolver.ResolveInsertRows(_translator, rows));
+        public Statement CompileInsertMany(IReadOnlyList<Row<T>> rows) =>
+            CompileWrite(_rows.InsertMany(rows).Tree);
+
+        public (string Sql, List<object?> Parameters) RenderInsertMany(IReadOnlyList<Row<T>> rows)
+        {
+            var built = _rows.InsertMany(rows);
+            return (CompileWrite(built.Tree).Text, built.Bound);
+        }
 
         public async Task<int> InsertManyAsync(IReadOnlyList<Row<T>> rows)
         {
-            var chunks = InsertManyChunks.Split(RowResolver.ResolveInsertRows(_translator, rows), D.MaxBindParameters);
-            var statements = chunks.Select(_writes.RenderInsertMany).ToList();
-            return await _exec.InsertManyAsync(statements);
+            var chunks = _rows.InsertChunks(rows, _state.MaxBindParameters);
+            return await _exec.InsertManyAsync(chunks.Select(chunk => CompileWrite(chunk.Tree)).ToList());
         }
 
         public Query<T> Set(Expression<Func<T, object?>> column, object? value)
-        {
-            var target = _translator.ColumnOf(column.Body);
-            _setClauses.Add(target, target + " = " + _state.ValueSlot(value, _state.Slot(_params.Count)));
-            _params.Add(value);
-            return this;
-        }
+        { _set.Value(column.Body, value); return this; }
 
         public Query<T> SetNow(Expression<Func<T, object?>> column)
-        {
-            var target = _translator.ColumnOf(column.Body);
-            _setClauses.Add(target, target + " = " + D.NowExpression);
-            return this;
-        }
+        { _set.Now(column.Body); return this; }
 
         public Query<T> SetCoalesce(Expression<Func<T, object?>> column, object? value)
-        {
-            var target = _translator.ColumnOf(column.Body);
-            _setClauses.Add(target, D.CoalesceAssignment(target, _state.ValueSlot(value, _state.Slot(_params.Count))));
-            _params.Add(value);
-            return this;
-        }
+        { _set.CoalesceValue(column.Body, value); return this; }
 
+        [RequiresCapability(Capability.IntervalArithmetic)]
         public Query<T> SetNowPlusMinutes(Expression<Func<T, object?>> column, int minutes)
-        {
-            if (!D.SupportsIntervalArithmetic)
-                throw new NotSupportedException(
-                    $"{D.GetType().Name} has no interval arithmetic; computing the timestamp in the caller "
-                    + "would move the lease clock off the server that compares it.");
-            var target = _translator.ColumnOf(column.Body);
-            _setClauses.Add(target, target + " = " + D.NowPlusMinutesExpression(_state.Slot(_params.Count)));
-            _params.Add(minutes);
-            return this;
-        }
+        { _set.NowPlusMinutes(column.Body, minutes); return this; }
 
         public Query<T> SetIncrement(Expression<Func<T, object?>> column, int amount)
-        {
-            var target = _translator.ColumnOf(column.Body);
-            _setClauses.Add(target, D.IncrementAssignment(target, _state.Slot(_params.Count)));
-            _params.Add(amount);
-            return this;
-        }
+        { _set.Increment(column.Body, amount); return this; }
 
         public Query<T> SetColumn(Expression<Func<T, object?>> column, Expression<Func<T, object?>> source)
-        {
-            var target = _translator.ColumnOf(column.Body);
-            _setClauses.Add(target, target + " = " + _translator.ColumnOf(source.Body));
-            return this;
-        }
+        { _set.FromColumn(column.Body, source.Body); return this; }
 
         public Query<T> SetPredicate(Expression<Func<T, object?>> column, Expression<Func<T, bool>> value)
-        {
-            var target = _translator.ColumnOf(column.Body);
-            var rendered = _translator.Predicate(value.Parameters[0], value.Body);
-            _setClauses.Add(target, target + " = (" + rendered + ")");
-            return this;
-        }
+        { _set.FromPredicate(column.Body, value); return this; }
 
+        [RequiresCapability(Capability.JsonDocument)]
         public Query<T> SetJsonMerge(Expression<Func<T, object?>> document, Jsonb patch)
         {
             _json.Merge(document, patch);
             return this;
         }
 
+        [RequiresCapability(Capability.JsonDocument)]
         public Query<T> SetJsonRemoveThenMerge(
             Expression<Func<T, object?>> document,
             IReadOnlyList<MovedFieldKey> clearedKeys,
@@ -467,6 +484,7 @@ namespace Neemle.Orm.Lite;
             return this;
         }
 
+        [RequiresCapability(Capability.JsonDocument)]
         public Query<T> SetJsonMemberIncrement(
             Expression<Func<T, object?>> document, MovedFieldKey key, int amount)
         {
@@ -474,85 +492,119 @@ namespace Neemle.Orm.Lite;
             return this;
         }
 
-        public string RenderUpdate()
+        public Statement CompileUpdate()
         {
             if (_setClauses.Count == 0)
                 throw new InvalidOperationException("UpdateAsync requires at least one Set/SetNow.");
             if (_where.Count == 0)
                 throw new InvalidOperationException("UpdateAsync requires a Where (refusing an unfiltered UPDATE).");
-            return AppendWhere(new StringBuilder("UPDATE ").Append(D.Quote(_table))
-                .Append(" SET ").Append(_setClauses.Joined))
-                .ToString();
+            return CompileQueryWrite(
+                "UpdateAsync", new Update(new TableRef(_table), _setClauses.Assignments, WhereNode()));
         }
 
-        public async Task<int> UpdateAsync() =>
-            await _exec.NonQueryAsync(RenderUpdate());
+        public string RenderUpdate() => CompileUpdate().Text;
 
-        public string RenderDelete()
+        public async Task<int> UpdateAsync() =>
+            await _exec.NonQueryAsync(CompileUpdate());
+
+        public Statement CompileDelete()
         {
             if (_where.Count == 0)
                 throw new InvalidOperationException("DeleteAsync requires a Where (refusing an unfiltered DELETE).");
-            return AppendWhere(DeleteStatement(), alwaysLive: true)
-                .ToString();
+            return CompileQueryWrite("DeleteAsync", _compiler.DeleteTree(WhereNode(LiveScope.Always)));
         }
 
+        public string RenderDelete() => CompileDelete().Text;
+
         public async Task<int> DeleteAsync() =>
-            await _exec.NonQueryAsync(RenderDelete());
+            await _exec.NonQueryAsync(CompileDelete());
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public string RenderPurge()
+        public Statement CompilePurge()
         {
             if (_where.Count == 0)
                 throw new InvalidOperationException("PurgeAsync requires a Where (refusing an unfiltered DELETE).");
-            return AppendWhere(IncludingDeleted().PhysicalDelete()).ToString();
+            return CompileQueryWrite("PurgeAsync", new Delete(new TableRef(_table), WhereNode(LiveScope.Never)));
         }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public string RenderPurge() => CompilePurge().Text;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public async Task<int> PurgeAsync() =>
-            await _exec.NonQueryAsync(RenderPurge());
+            await _exec.NonQueryAsync(CompilePurge());
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Statement CompilePurge(IReadOnlyCollection<Guid> ids, Guid? tenantId) =>
+            CompileWrite(_writes.PurgeByKey(ids, tenantId));
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public string RenderPurge(IReadOnlyCollection<Guid> ids, Guid? tenantId) =>
-            _writes.RenderPurgeByKey(ids, tenantId);
+            CompilePurge(ids, tenantId).Text;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public async Task<int> PurgeAsync(IReadOnlyCollection<Guid> ids, Guid? tenantId)
-        {
-            var sql = RenderPurge(ids, tenantId);
-            _params.Add(ids.ToArray());
-            if (tenantId is { } tenant) _params.Add(tenant);
-            return await _exec.NonQueryAsync(sql);
-        }
+        public async Task<int> PurgeAsync(IReadOnlyCollection<Guid> ids, Guid? tenantId) =>
+            await _exec.NonQueryAsync(CompilePurge(ids, tenantId));
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Statement CompileRestore(IReadOnlyCollection<Guid> ids, Guid? tenantId) =>
+            CompileWrite(_writes.Restore(ids, tenantId));
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public string RenderRestore(IReadOnlyCollection<Guid> ids, Guid? tenantId) =>
-            _writes.RenderRestore(ids, tenantId);
+            CompileRestore(ids, tenantId).Text;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public async Task<int> RestoreAsync(IReadOnlyCollection<Guid> ids, Guid? tenantId)
-        {
-            var sql = RenderRestore(ids, tenantId);
-            _params.Add(ids.ToArray());
-            if (tenantId is { } tenant) _params.Add(tenant);
-            return await _exec.NonQueryAsync(sql);
-        }
+        public async Task<int> RestoreAsync(IReadOnlyCollection<Guid> ids, Guid? tenantId) =>
+            await _exec.NonQueryAsync(CompileRestore(ids, tenantId));
+
+        private Statement CompileWrite(Node tree) => _compiler.Write(tree);
+
+        private Statement CompileQueryWrite(string operation, Node tree) => _compiler.QueryWrite(operation, tree);
+
+        private void RefuseClauses(string operation, ClauseRule rule) => ClauseGuard.Require(_select, operation, rule);
 
         public IReadOnlyList<object?> BoundParameters => _params;
 
-        public IReadOnlyList<string> WhereClauses => _where;
+        public IReadOnlyList<string> WhereClauses => WhereTerms.Select(_state.Text).ToList();
+
+        public IReadOnlyList<Node> WhereTerms => _where;
 
         public void Bind(DbCommand cmd) => _exec.Bind(cmd);
 
-        public string RenderSelect() => _select.Render(SelectedColumns(), WhereText());
+        public Statement CompileSelect() => CompileTree(BuildSelect());
 
-        private string SelectedColumns() =>
-            _redact.Count == 0
-                ? "*"
-                : string.Join(", ", OrmMeta.Get(typeof(T)).Columns.Select(c =>
-                    _redact.TryGetValue(c, out var expr) ? expr + " AS " + D.Quote(c) : D.Quote(c)));
+        public string RenderSelect() => CompileSelect().Text;
 
-        private string WhereText() => AppendWhere(new StringBuilder()).ToString();
+        internal static Query<T> Definition(ISqlProvider provider)
+        {
+            var query = new Query<T>(
+                OrmContext.Detached(provider),
+                static _ => throw new NotSupportedException("a view definition maps no rows"));
+            query._state.Qualified = true;
+            return query;
+        }
 
-        private IReadOnlyList<string> ResolveRegistered(IReadOnlyList<Expression<Func<T, object?>>>? columns) =>
-            RowResolver.ResolveRegistered(_translator, columns);
+        internal string SourceTable => _table;
+
+        internal RenderState State => _state;
+
+        internal PredicateTranslator Translator => _translator;
+
+        internal Select BuildView(IEnumerable<Node> terms, NodeList? joins) =>
+            _select.Build(terms, WhereNode()) with { Joins = joins };
+
+        public ViewDefinition AsView<TView>(Action<ViewColumns<T, TView>> columns)
+        {
+            ArgumentNullException.ThrowIfNull(columns);
+            var projection = ViewColumns<T, TView>.Define(this, columns);
+            return new ViewDefinition(OrmMeta.Get(typeof(TView)).Table, projection.Build());
+        }
+
+        internal Select BuildSelect() => _select.Build(SelectedColumns(), WhereNode());
+
+        private Statement CompileTree(Node tree) =>
+            StatementCompiler.Compile(tree, _db.Provider, StatementKind.Read, _table);
+
+        private IEnumerable<Node> SelectedColumns() => Redaction.Selected(_state, typeof(T));
     }

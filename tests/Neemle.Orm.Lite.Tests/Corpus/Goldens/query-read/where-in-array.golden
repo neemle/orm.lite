@@ -1,0 +1,5 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "title" IN (@p0, @p1)
+-- parameters (2)
+[0] String "one"
+[1] String "two"

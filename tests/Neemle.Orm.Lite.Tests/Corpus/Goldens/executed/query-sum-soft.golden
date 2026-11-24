@@ -1,0 +1,5 @@
+#1 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT coalesce(sum("rank"), 0) FROM "corpus_tasks" WHERE "deleted_at" IS NULL
+-- outcome
+Int64 4

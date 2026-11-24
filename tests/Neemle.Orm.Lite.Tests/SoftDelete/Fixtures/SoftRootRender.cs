@@ -8,6 +8,6 @@ internal static class SoftRootRender
     static SoftRootRender() => RuntimeHelpers.RunClassConstructor(typeof(SoftDeleteDb).TypeHandle);
 
     public static Query<SoftRoot> Roots() => new(
-        new OrmContext(new NeverUsedDataSource(), new PgDialect()),
+        TestContext.Of(new NeverUsedDataSource(), new PgDialect()),
         SoftRoot.Map);
 }

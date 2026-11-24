@@ -115,7 +115,7 @@ public sealed class SoftDeleteRootRenderTests
         Assert.Empty(method.GetParameters());
     }
 
-    private static OrmContext Context() => new(new NeverUsedDataSource(), new PgDialect());
+    private static OrmContext Context() => TestContext.Of(new NeverUsedDataSource(), new PgDialect());
 
     private static Query<SoftRow> Soft() => new(Context(), _ => throw new NotSupportedException());
 

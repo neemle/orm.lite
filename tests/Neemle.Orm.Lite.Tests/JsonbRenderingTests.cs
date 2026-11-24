@@ -11,9 +11,9 @@ public sealed class JsonbRenderingTests
     static JsonbRenderingTests() =>
         OrmMeta.Register<FixtureDocument>("fixture_documents", Col, ["id", "payload", "label"]);
 
-    private static OrmContext Pg() => new(new NeverUsedDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), new PgDialect());
 
-    private static OrmContext Sqlite() => new(new NeverUsedDataSource(), new SqliteDialect());
+    private static OrmContext Sqlite() => TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
 
     private static Query<FixtureDocument> On(OrmContext ctx) =>
         new(ctx, _ => throw new NotSupportedException("no rows are read here"));
@@ -200,21 +200,21 @@ public sealed class JsonbRenderingTests
     }
 
     [Fact]
-    public void The_six_pre_existing_order_forms_render_the_bytes_they_rendered_before()
+    public void The_six_pre_existing_order_forms_render_with_the_stated_NULLS_LAST_and_nothing_else_moved()
     {
         Assert.Contains("ORDER BY \"label\" ASC", Query().OrderBy(d => d.Label).RenderSelect());
         Assert.Contains("ORDER BY \"label\" DESC", Query().OrderByDescending(d => d.Label).RenderSelect());
         Assert.Contains(
-            "ORDER BY \"label\" ASC, \"id\" ASC",
+            "ORDER BY \"label\" ASC NULLS LAST, \"id\" ASC NULLS LAST",
             Query().OrderBy(d => d.Label).ThenBy(d => d.Id).RenderSelect());
         Assert.Contains(
-            "ORDER BY \"label\" ASC, \"id\" DESC",
+            "ORDER BY \"label\" ASC NULLS LAST, \"id\" DESC NULLS LAST",
             Query().OrderBy(d => d.Label).ThenByDescending(d => d.Id).RenderSelect());
         Assert.Contains(
-            "ORDER BY (\"label\" = @p0) ASC",
+            "ORDER BY (\"label\" = @p0) ASC NULLS LAST",
             Query().OrderByPredicate(d => d.Label == "x").RenderSelect());
         Assert.Contains(
-            "ORDER BY \"id\" ASC, (\"label\" = @p0) ASC",
+            "ORDER BY \"id\" ASC NULLS LAST, (\"label\" = @p0) ASC NULLS LAST",
             Query().OrderBy(d => d.Id).ThenByPredicate(d => d.Label == "x").RenderSelect());
     }
 

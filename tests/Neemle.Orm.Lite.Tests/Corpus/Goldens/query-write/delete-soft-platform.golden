@@ -1,0 +1,4 @@
+-- sql
+UPDATE "corpus_platform_items" SET "deleted_at" = now() WHERE "deleted_at" IS NULL AND "code" = @p0
+-- parameters (1)
+[0] String "c"

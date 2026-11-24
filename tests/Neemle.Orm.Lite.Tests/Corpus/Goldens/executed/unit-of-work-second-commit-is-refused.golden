@@ -1,0 +1,4 @@
+#1 BEGIN conn=1 source=primary
+#2 COMMIT conn=1 source=primary
+-- outcome
+threw System.InvalidOperationException: this unit of work has already been committed; a second commit would silently succeed against a transaction that no longer exists and hide a double-run of the composition.

@@ -1,0 +1,17 @@
+# Classes that only run against a real PostgreSQL server, one per line: <class> TAB <reason>.
+# With --require-postgres the skip gate fails when a class listed here is absent from the TRX or has no Passed result,
+# which catches an unset or blank variable, a service that is not usable, and a deleted or renamed class.
+# Every class here must be server-only: each of its tests is skipped when the variable is unset. A class that
+# also runs without a server (PostgresRulesTests, for one) must not be listed, no gate can see that mistake.
+# Both skip mechanisms are covered: the fixture (RequireAvailable) and the PostgresFact attribute.
+# Written by hand from the test source, never captured from a run. Class names are compared byte for byte.
+Neemle.Orm.Lite.Tests.Behaviour.PostgresBehaviourTests	server only, skipped by the fixture
+Neemle.Orm.Lite.Tests.Behaviour.PostgresMigrationTests	server only, skipped by the fixture
+Neemle.Orm.Lite.Tests.Behaviour.PostgresHistoryTests	server only, skipped by the fixture
+Neemle.Orm.Lite.Tests.Nodes.PostgresMigrationSetTests	server only, skipped by the PostgresFact attribute
+Neemle.Orm.Lite.Tests.GeneratedRepositoryPostgresTests	server only, skipped by the PostgresFact attribute
+Neemle.Orm.Lite.Tests.Behaviour.PostgresJsonAgreementTests	server only, skipped by the fixture
+Neemle.Orm.Lite.Tests.Behaviour.PostgresRunValidationTests	server only, skipped by the fixture
+Neemle.Orm.Lite.Tests.Behaviour.PostgresMigrationLockTests	server only, skipped by the fixture
+Neemle.Orm.Lite.Tests.Behaviour.PostgresConcurrentRunnerTests	server only, skipped by the fixture
+Neemle.Orm.Lite.Tests.Behaviour.PostgresClosureUnaryTests	server only: closure unary executed suite, skipped by the fixture without a server

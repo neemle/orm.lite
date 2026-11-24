@@ -44,7 +44,7 @@ public sealed class SoftDeleteQueryWriteTests : SoftWriteProbe
     public void A_non_soft_entity_still_renders_a_physical_delete()
     {
         var sql = new Query<SoftReferrer>(
-            new OrmContext(new NeverUsedDataSource(), new PgDialect()),
+            TestContext.Of(new NeverUsedDataSource(), new PgDialect()),
             SoftReferrer.Map)
             .Where(r => r.Name == "x").RenderDelete();
 

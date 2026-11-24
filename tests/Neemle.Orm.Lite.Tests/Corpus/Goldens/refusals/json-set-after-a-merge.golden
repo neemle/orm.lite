@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: this statement already merges into a JSON document, and a Set() after it would assign a column the merge has already been built beside. Build every other assignment first and merge last.

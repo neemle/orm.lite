@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: OnConflict.DoUpdate names no UpsertSet, so it would update nothing and be written as a conflict that is ignored, silently, and a soft-deleted row in the way would be neither updated nor reported. Nothing was executed. Pass the sets to apply (UpsertSet.Inserted, Increment or Now), or use OnConflict.DoNothing.

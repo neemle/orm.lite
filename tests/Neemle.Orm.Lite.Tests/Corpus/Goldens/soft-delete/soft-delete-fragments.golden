@@ -1,0 +1,4 @@
+[0] "deleted_at" = now()
+[1] "deleted_at" IS NULL
+[2] s0."deleted_at" IS NULL
+[3] "t"."we""ird" IS NULL

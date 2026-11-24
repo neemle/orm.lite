@@ -1,0 +1,31 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT set_config('ormlite.actor', @v, false)
+    @v = String "system"
+#2 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT pg_advisory_lock(727274)
+#3 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE TABLE IF NOT EXISTS "schema_migrations" ("version" text NOT NULL PRIMARY KEY, "applied_at" timestamp with time zone NOT NULL DEFAULT now())
+#4 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT "version" FROM "schema_migrations"
+#5 BEGIN conn=1 source=primary
+#6 ExecuteNonQuery conn=1 source=primary tx=true
+    sql:
+        SET LOCAL lock_timeout = '5s'
+#7 ExecuteNonQuery conn=1 source=primary tx=true
+    sql:
+        DO $drift$ DECLARE current_index oid; BEGIN IF to_regclass('"fixture_notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"fixture_notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['title'])) = 1 THEN SELECT ic.oid INTO current_index FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid WHERE i.indrelid = to_regclass('"fixture_notes"') AND ic.relname = 'ix_fixture_notes_title'; IF current_index IS NULL AND EXISTS (SELECT 1 FROM pg_class x WHERE x.relname = 'ix_fixture_notes_title' AND x.relnamespace = (SELECT t.relnamespace FROM pg_class t WHERE t.oid = to_regclass('"fixture_notes"'))) THEN RAISE EXCEPTION 'Index name % is already held by another relation in the schema of table %: PostgreSQL index names are schema-global, so creating it would be skipped and the table would stay without its index. Rename the index.', 'ix_fixture_notes_title', 'fixture_notes'; END IF; IF current_index IS NOT NULL THEN CREATE TEMP TABLE "orm_ix_check" (LIKE "fixture_notes"); EXECUTE 'CREATE INDEX IF NOT EXISTS "ix_fixture_notes_title" ON "orm_ix_check" ("title")'; IF replace(pg_get_indexdef(current_index), concat(' ON ', (SELECT concat(quote_ident(n.nspname), '.', quote_ident(c.relname)) FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.oid = to_regclass('"fixture_notes"')), ' USING '), ' USING ') <> regexp_replace(pg_get_indexdef(to_regclass('pg_temp."ix_fixture_notes_title"')), E' ON \\S+ USING ', ' USING ') THEN DROP TABLE pg_temp."orm_ix_check"; EXECUTE 'DROP INDEX ' || current_index::regclass; ELSE DROP TABLE pg_temp."orm_ix_check"; END IF; END IF; END IF; END $drift$
+#8 ExecuteNonQuery conn=1 source=primary tx=true
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"fixture_notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"fixture_notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['title'])) = 1 THEN EXECUTE 'CREATE INDEX IF NOT EXISTS "ix_fixture_notes_title" ON "fixture_notes" ("title")'; END IF; END $reconcile$
+#9 ExecuteNonQuery conn=1 source=primary tx=true
+    sql:
+        INSERT INTO "schema_migrations" ("version") VALUES (@v)
+    @v = String "9900_orm_index_reconcile_OrmLiteGoldenFixtures_eb6e32bc81a12870"
+#10 COMMIT conn=1 source=primary
+#11 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT pg_advisory_unlock(727274)

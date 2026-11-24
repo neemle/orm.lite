@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_tasks" WHERE "deleted_at" IS NULL AND "project_id" IN (SELECT "project_id" FROM "corpus_tasks" WHERE "deleted_at" IS NULL AND "rank" > @p0)
+-- parameters (1)
+[0] Int32 2

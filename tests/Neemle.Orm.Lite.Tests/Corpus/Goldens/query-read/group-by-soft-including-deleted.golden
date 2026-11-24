@@ -1,0 +1,3 @@
+-- sql
+SELECT "project_id", count(*) FROM "corpus_tasks" GROUP BY "project_id"
+-- parameters (0)

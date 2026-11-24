@@ -1,0 +1,8 @@
+-- outcome
+"Host=h;No Reset On Close=true": System.InvalidOperationException: GatedDataSource refuses the request data source: its connection string sets No Reset On Close, which would let a pooled connection keep the previous caller's ormlite.actor. Remove No Reset On Close from the connection string.
+"Host=h;NoResetOnClose=on": System.InvalidOperationException: GatedDataSource refuses the request data source: its connection string sets No Reset On Close, which would let a pooled connection keep the previous caller's ormlite.actor. Remove No Reset On Close from the connection string.
+"Host=h;no_reset_on_close=1": System.InvalidOperationException: GatedDataSource refuses the request data source: its connection string sets No Reset On Close, which would let a pooled connection keep the previous caller's ormlite.actor. Remove No Reset On Close from the connection string.
+"Host=h;No Reset On Close=false": accepted
+"Host=h;No Reset On Close=off": accepted
+"Host=h": accepted
+"not a connection string": accepted

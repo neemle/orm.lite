@@ -1,0 +1,9 @@
+[0] untargeted do nothing =  ON CONFLICT DO NOTHING
+[1] targeted do nothing =  ON CONFLICT ("id") DO NOTHING
+[2] targeted with predicate =  ON CONFLICT ("a", "b") WHERE "deleted_at" IS NULL DO NOTHING
+[3] do update without sets =  ON CONFLICT ("id") DO NOTHING
+[4] do update parameter set =  ON CONFLICT ("id") DO UPDATE SET "title" = @p3
+[5] do update json parameter set =  ON CONFLICT ("id") DO UPDATE SET "doc" = @p4::jsonb
+[6] do update increment =  ON CONFLICT ("id") DO UPDATE SET "views" = "t"."views" + 5
+[7] do update clock =  ON CONFLICT ("id") DO UPDATE SET "seen_at" = now()
+[8] do update mixed with predicate =  ON CONFLICT ("id") WHERE x DO UPDATE SET "a" = @p0, "b" = "ta""ble"."b" + -1, "c" = now()

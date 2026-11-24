@@ -1,5 +1,6 @@
 using System.Collections.Immutable;
 using System.Runtime.Loader;
+using System.Text.RegularExpressions;
 using Neemle.Orm.Lite;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -15,22 +16,28 @@ internal static class MigrationGeneratorRun
 
     internal static string MigrationClass(string name, string version, string reversibility, string members = "", string baseType = "Migration") =>
         $"[Migration(\"{version}\", Reversibility.{reversibility})] public sealed class {name} : {baseType} "
-        + "{ public override void Up(MigrationBuilder b) => b.Sql(\"SELECT 'up'\"); " + members + " }\n";
+        + "{ public override void Up(MigrationBuilder b) => b.Raw(\"postgres\", \"SELECT 'up'\"); " + members + " }\n";
 
     internal static string DownOverride(string sql) =>
-        "public override void Down(MigrationBuilder b) => b.Sql(\"" + sql + "\");";
+        "public override void Down(MigrationBuilder b) => b.Raw(\"postgres\", \"" + sql + "\");";
 
-    internal static (ImmutableArray<Diagnostic> Diagnostics, string Generated, Compilation Output) Run(string source)
+    // A file cannot hold a file-scoped namespace and a block namespace (CS8955). A source that declares block
+    // namespaces of its own is therefore wrapped in a block namespace Fixture instead of getting the file-scoped
+    // header; the types still live under Fixture, so the full names the tests assert are the same.
+    private const string BlockHeader = "using System; using Neemle.Orm.Lite;\nnamespace Fixture\n{\n";
+
+    private static readonly Regex BlockNamespace = new(@"(?m)^\s*namespace\s+[\w.]+\s*(\{|$)");
+
+    internal static (ImmutableArray<Diagnostic> Diagnostics, string Generated, Compilation Output)
+        Run(string source) =>
+        RunWhole(BlockNamespace.IsMatch(source) ? BlockHeader + source + "\n}\n" : Header + source);
+
+    internal static (ImmutableArray<Diagnostic> Diagnostics, string Generated, Compilation Output) RunWhole(string source)
     {
-        var references = AppDomain.CurrentDomain.GetAssemblies()
-            .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
-            .Select(a => (MetadataReference)MetadataReference.CreateFromFile(a.Location))
-            .ToList();
-
         var compilation = CSharpCompilation.Create(
             "MigrationFixture" + Interlocked.Increment(ref assemblyCounter),
-            new[] { CSharpSyntaxTree.ParseText(Header + source) },
-            references,
+            new[] { CSharpSyntaxTree.ParseText(source) },
+            GeneratorReferences.All,
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary,
                 nullableContextOptions: NullableContextOptions.Enable));
 

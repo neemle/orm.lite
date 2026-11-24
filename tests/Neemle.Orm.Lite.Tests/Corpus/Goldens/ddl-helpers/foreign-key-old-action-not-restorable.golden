@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: the restored action is NO ACTION or RESTRICT: CASCADE (Parameter 'oldAction')

@@ -10,21 +10,14 @@ public sealed class SoftDeleteDeclarationGeneratorTests
 {
     private const string Header = "using System; using Neemle.Orm.Lite; namespace Fixture;\n";
 
-    private static (ImmutableArray<Diagnostic> Diagnostics, string Generated, ImmutableArray<Diagnostic> CompileErrors) Run(string source)
+    private static (ImmutableArray<Diagnostic> Diagnostics, string Generated, ImmutableArray<Diagnostic> CompileErrors, Compilation Output) Run(string source)
     {
         var tree = CSharpSyntaxTree.ParseText(Header + source);
-
-        var references = AppDomain.CurrentDomain.GetAssemblies()
-            .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
-            .Select(a => (MetadataReference)MetadataReference.CreateFromFile(a.Location))
-            .ToList();
-        references.Add(MetadataReference.CreateFromFile(typeof(SoftDeleteAttribute).Assembly.Location));
-        references.Add(MetadataReference.CreateFromFile(typeof(System.Data.Common.DbConnection).Assembly.Location));
 
         var compilation = CSharpCompilation.Create(
             "DeclarationGeneratorFixture",
             new[] { tree },
-            references.Distinct().ToList(),
+            GeneratorReferences.All,
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary,
                 nullableContextOptions: NullableContextOptions.Enable));
 
@@ -37,16 +30,7 @@ public sealed class SoftDeleteDeclarationGeneratorTests
             .Select(s => s.SourceText.ToString()));
 
         var errors = output.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error).ToImmutableArray();
-        return (run.Diagnostics, generated, errors);
-    }
-
-    private static string RegisterLineOf(string generated, string type)
-    {
-        var marker = "global::Neemle.Orm.Lite.OrmMeta.Register<global::Fixture." + type + ">(";
-        var start = generated.IndexOf(marker, StringComparison.Ordinal);
-        Assert.True(start >= 0, "no OrmMeta.Register line for " + type + " in the generated source");
-        var end = generated.IndexOf('\n', start);
-        return generated.Substring(start, end - start).TrimEnd('\r');
+        return (run.Diagnostics, generated, errors, output);
     }
 
     private static Diagnostic Refusal(ImmutableArray<Diagnostic> diagnostics)
@@ -59,7 +43,7 @@ public sealed class SoftDeleteDeclarationGeneratorTests
     [Fact(DisplayName = "[SoftDelete] by convention registers the DeletedAt property through the soft overload, and the output compiles")]
     public void The_conventional_declaration_registers_DeletedAt_through_the_soft_overload()
     {
-        var (diagnostics, generated, errors) = Run(@"
+        var (diagnostics, generated, errors, output) = Run(@"
 [Table(""docs""), SoftDelete(Tenant = SoftDeleteAttribute.Platform)]
 public class Doc
 {
@@ -69,15 +53,18 @@ public class Doc
 
         Assert.Empty(diagnostics);
         Assert.Empty(errors);
-        Assert.Equal(
-            "global::Neemle.Orm.Lite.OrmMeta.Register<global::Fixture.Doc>(DocOrm.Table, DocOrm.Column, new string[] { \"id\", \"deleted_at\",  }, new global::Neemle.Orm.Lite.SoftDeleteMeta(\"DeletedAt\", Platform: true, KeyColumn: \"id\", EntityToken: \"doc\", PropertyColumns: new string[][] { new string[] { \"Id\", \"id\" }, new string[] { \"DeletedAt\", \"deleted_at\" } }));",
-            RegisterLineOf(generated, "Doc"));
+        var meta = GeneratedModel.Of(output).Soft("Doc")!;
+        Assert.Equal("DeletedAt", meta.Column);
+        Assert.True(meta.Platform);
+        Assert.Equal("id", meta.KeyColumn);
+        Assert.Equal("doc", meta.EntityToken);
+        Assert.Equal(new[] { "Id>id", "DeletedAt>deleted_at" }, meta.PropertyColumns!.Select(p => p[0] + ">" + p[1]));
     }
 
     [Fact(DisplayName = "[SoftDelete(nameof(X))] overrides the conventional column")]
     public void A_named_column_overrides_the_convention()
     {
-        var (diagnostics, generated, errors) = Run(@"
+        var (diagnostics, generated, errors, output) = Run(@"
 [Table(""docs""), SoftDelete(nameof(RemovedAt), Tenant = SoftDeleteAttribute.Platform)]
 public class Doc
 {
@@ -87,13 +74,15 @@ public class Doc
 
         Assert.Empty(diagnostics);
         Assert.Empty(errors);
-        Assert.EndsWith(", new global::Neemle.Orm.Lite.SoftDeleteMeta(\"RemovedAt\", Platform: true, KeyColumn: \"id\", EntityToken: \"doc\", PropertyColumns: new string[][] { new string[] { \"Id\", \"id\" }, new string[] { \"RemovedAt\", \"removed_at\" } }));", RegisterLineOf(generated, "Doc"));
+        var meta = GeneratedModel.Of(output).Soft("Doc")!;
+        Assert.Equal("RemovedAt", meta.Column);
+        Assert.Equal(new[] { "Id>id", "RemovedAt>removed_at" }, meta.PropertyColumns!.Select(p => p[0] + ">" + p[1]));
     }
 
     [Fact(DisplayName = "an entity without [SoftDelete] keeps the plain Register line, byte for byte")]
     public void A_plain_entity_keeps_the_plain_register_line()
     {
-        var (diagnostics, generated, errors) = Run(@"
+        var (diagnostics, generated, errors, output) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -103,16 +92,15 @@ public class Doc
 
         Assert.Empty(diagnostics);
         Assert.Empty(errors);
-        Assert.Equal(
-            "global::Neemle.Orm.Lite.OrmMeta.Register<global::Fixture.Doc>(DocOrm.Table, DocOrm.Column, new string[] { \"id\", \"deleted_at\",  });",
-            RegisterLineOf(generated, "Doc"));
-        Assert.DoesNotContain("SoftDeleteMeta", generated, StringComparison.Ordinal);
+        var model = GeneratedModel.Of(output);
+        Assert.Null(model.Soft("Doc"));
+        Assert.Equal(new[] { "id", "deleted_at" }, model.Descriptor("Doc").ColumnNames);
     }
 
     [Fact(DisplayName = "ORMLITE002 refuses a [SoftDelete] column that is not a property of the entity")]
     public void A_missing_column_is_refused()
     {
-        var (diagnostics, generated, _) = Run(@"
+        var (diagnostics, generated, _, output) = Run(@"
 [Table(""docs""), SoftDelete]
 public class Doc
 {
@@ -123,7 +111,7 @@ public class Doc
         Assert.Contains("'Doc'", message, StringComparison.Ordinal);
         Assert.Contains("'DeletedAt'", message, StringComparison.Ordinal);
         Assert.Contains("is not a property of the entity", message, StringComparison.Ordinal);
-        Assert.DoesNotContain("SoftDeleteMeta", generated, StringComparison.Ordinal);
+        Assert.Null(GeneratedModel.Of(output).Descriptor("Doc").Soft);
     }
 
     [Theory(DisplayName = "ORMLITE002 refuses a [SoftDelete] column that is not System.DateTime?")]
@@ -132,7 +120,7 @@ public class Doc
     [InlineData("DateOnly?", "System.DateOnly?")]
     public void A_column_of_another_type_is_refused(string declared, string displayed)
     {
-        var (diagnostics, generated, _) = Run(@"
+        var (diagnostics, generated, _, output) = Run(@"
 [Table(""docs""), SoftDelete]
 public class Doc
 {
@@ -142,13 +130,13 @@ public class Doc
 
         var message = Refusal(diagnostics).GetMessage();
         Assert.Contains("is of type '" + displayed + "', not 'System.DateTime?'", message, StringComparison.Ordinal);
-        Assert.DoesNotContain("SoftDeleteMeta", generated, StringComparison.Ordinal);
+        Assert.Null(GeneratedModel.Of(output).Descriptor("Doc").Soft);
     }
 
     [Fact(DisplayName = "ORMLITE002 refuses a [SoftDelete] column excluded from the column set by [NotAColumn]")]
     public void A_column_excluded_by_NotAColumn_is_refused()
     {
-        var (diagnostics, generated, _) = Run(@"
+        var (diagnostics, generated, _, output) = Run(@"
 [Table(""docs""), SoftDelete]
 public class Doc
 {
@@ -158,7 +146,7 @@ public class Doc
 
         var message = Refusal(diagnostics).GetMessage();
         Assert.Contains("is excluded from the column set", message, StringComparison.Ordinal);
-        Assert.DoesNotContain("SoftDeleteMeta", generated, StringComparison.Ordinal);
+        Assert.Null(GeneratedModel.Of(output).Descriptor("Doc").Soft);
     }
 
     [Fact(DisplayName = "the three ORMLITE002 cases carry three distinct messages under the one id")]

@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" ORDER BY (SELECT (s0."doc" ->> @p0) FROM "corpus_tasks" s0 WHERE s0."project_id" = "corpus_notes"."owner_id" AND s0."deleted_at" IS NULL) ASC NULLS LAST
+-- parameters (1)
+[0] String "k"

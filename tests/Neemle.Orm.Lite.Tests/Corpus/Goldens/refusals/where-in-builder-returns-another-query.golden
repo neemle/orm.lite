@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: A WhereIn builder must return the query instance it was given.

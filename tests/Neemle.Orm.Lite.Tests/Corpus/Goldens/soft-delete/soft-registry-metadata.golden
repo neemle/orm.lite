@@ -1,0 +1,6 @@
+[0] corpus_tasks token=corpus_task key=id soft=deleted_at tenant=tenant_id platform=False label=name owners=[tenant_id,project_id] unversioned=[updated_at] pinned=[id,deleted_at,tenant_id,project_id] status=[status]
+[1] corpus_tasks json-of-updated-at=updatedAt column-of-json-updatedAt=updated_at type-column-of-project_id=null
+[2] corpus_platform_items token=corpus_platform_item key=id soft=deleted_at tenant=null platform=True label=code owners=[] unversioned=[] pinned=[id,deleted_at] status=[]
+[3] corpus_platform_items json-of-updated-at=null column-of-json-updatedAt=null type-column-of-project_id=null
+[4] corpus_projects token=project key=id soft=deleted_at tenant=id platform=False label=name owners=[id] unversioned=[] pinned=[id,deleted_at] status=[]
+[5] corpus_projects json-of-updated-at=null column-of-json-updatedAt=null type-column-of-project_id=null

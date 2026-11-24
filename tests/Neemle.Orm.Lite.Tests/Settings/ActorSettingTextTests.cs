@@ -1,5 +1,6 @@
 using System.Data.Common;
 using Neemle.Orm.Lite;
+using Neemle.Orm.Lite.Postgres;
 using Xunit;
 
 namespace Neemle.Orm.Lite.Tests.Settings;
@@ -31,7 +32,7 @@ public sealed class ActorSettingTextTests
     private static string Refusal()
     {
         var stub = new StubSource("Host=h;No Reset On Close=true");
-        return Assert.Throws<InvalidOperationException>(() => new GatedDataSource(stub, stub, stub)).Message;
+        return Assert.Throws<InvalidOperationException>(() => new GatedDataSource(PostgresProvider.Instance, stub, stub, stub)).Message;
     }
 
     [Fact(DisplayName = "the library default actor setting is ormlite.actor")]

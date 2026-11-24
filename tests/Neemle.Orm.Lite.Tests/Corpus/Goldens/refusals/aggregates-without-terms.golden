@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: AggregatesAsync needs at least one aggregate term.

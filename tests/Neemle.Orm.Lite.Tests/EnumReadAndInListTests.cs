@@ -37,7 +37,7 @@ public sealed class EnumReadAndInListTests : IAsyncLifetime
         await SeedAsync(HighB, "high two", "done", "high");
 
         OrmMeta.Register<EnumJob>("enum_jobs", Col, ["id", "name", "status", "priority"]);
-        _ctx = new OrmContext(new NeverUsedDataSource(), new SqliteDialect());
+        _ctx = TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
     }
 
     public async Task DisposeAsync() => await _connection.DisposeAsync();

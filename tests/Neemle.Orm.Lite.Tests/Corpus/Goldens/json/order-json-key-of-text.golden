@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" ORDER BY (SELECT (s0."doc" ->> @p0) FROM "corpus_tags" s0 WHERE s0."note_id" = "corpus_notes"."id") ASC NULLS LAST
+-- parameters (1)
+[0] String "label"

@@ -1,0 +1,6 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        UPDATE "corpus_tasks" SET "deleted_at" = now() WHERE "deleted_at" IS NULL AND "id" = @p0
+    @p0 = Guid a0000000-0000-0000-0000-00000000000a
+-- outcome
+Int32 1

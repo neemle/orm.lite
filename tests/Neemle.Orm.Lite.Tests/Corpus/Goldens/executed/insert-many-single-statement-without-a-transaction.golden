@@ -1,0 +1,11 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO "corpus_notes" ("id", "title", "rank") VALUES (@p0, @p1, @p2), (@p3, @p4, @p5)
+    @p0 = Guid a0000000-0000-0000-0000-00000000000a
+    @p1 = String "t0"
+    @p2 = Int32 0
+    @p3 = Guid b0000000-0000-0000-0000-00000000000b
+    @p4 = String "t1"
+    @p5 = Int32 1
+-- outcome
+Int32 1

@@ -1,0 +1,5 @@
+-- sql
+UPDATE "corpus_notes" SET "rank" = COALESCE("rank", 0) + @p0 WHERE "id" = @p1
+-- parameters (2)
+[0] Int32 3
+[1] Guid a0000000-0000-0000-0000-00000000000a

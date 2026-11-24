@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "body" IS NOT NULL
+-- parameters (0)

@@ -1,0 +1,5 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "title" = @p1 ORDER BY ("title" = @p0) ASC NULLS LAST
+-- parameters (2)
+[0] String "first"
+[1] String "second"

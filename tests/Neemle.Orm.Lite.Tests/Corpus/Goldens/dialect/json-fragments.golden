@@ -1,0 +1,27 @@
+[0] JsonDocumentParameter = @p0::jsonb
+[1] JsonKeyTextExpression = ("c" ->> @p0)
+[2] JsonKeyComparableExpression(Text) = ("c" ->> @p0)
+[3] JsonKeyComparableExpression(Number) = (CASE WHEN pg_input_is_valid(("c" ->> @p0), 'numeric') THEN ("c" ->> @p0) END)::numeric
+[4] JsonKeyComparableExpression(Boolean) = (CASE WHEN pg_input_is_valid(("c" ->> @p0), 'boolean') THEN ("c" ->> @p0) END)::boolean
+[5] ComparableParameter(Text) = @p1
+[6] ComparableParameter(Number) = (CASE WHEN pg_input_is_valid(@p1, 'numeric') THEN @p1 END)::numeric
+[7] ComparableParameter(Boolean) = (CASE WHEN pg_input_is_valid(@p1, 'boolean') THEN @p1 END)::boolean
+[8] JsonKeyRankExpression = array_position(ARRAY[@p1, @p2]::text[], ("c" ->> @p0))
+[9] JsonKeyExistsExpression = jsonb_exists("c", @p0)
+[10] JsonArrayContainsStringExpression = (jsonb_typeof(("c" -> @p0)) = 'array' AND jsonb_exists(("c" -> @p0), @p1))
+[11] JsonArrayContainsAnyExpression(one) = (jsonb_typeof(("c" -> @p0)) = 'array' AND (("c" -> @p0) @> to_jsonb(CAST(@p1 AS text))))
+[12] JsonArrayContainsAnyExpression(two) = (jsonb_typeof(("c" -> @p0)) = 'array' AND (("c" -> @p0) @> to_jsonb(CAST(@p1 AS text)) OR ("c" -> @p0) @> to_jsonb(CAST(@p2 AS text))))
+[13] JsonKeyIndexTextExpression = (("c" ->> 'k'))
+[14] JsonKeyIndexValueExpression = (("c" -> 'k'))
+[15] MovedFieldResolvedTextExpression = ("c" ->> 'it''s')
+[16] TextValueExpression = CAST(@p0 AS text)
+[17] JsonObjectAssignment(one) = jsonb_build_object(@p0::text, @p1)
+[18] JsonObjectAssignment(two) = jsonb_build_object(@p0::text, @p1, @p2::text, NULL::text)
+[19] JsonDocumentMergeAssignment = "c" = COALESCE("c", '{}'::jsonb) || @p0::jsonb
+[20] JsonDocumentRemoveThenMergeAssignment(none) = "c" = COALESCE("c", '{}'::jsonb) || @p0::jsonb
+[21] JsonDocumentRemoveThenMergeAssignment(two) = "c" = ((COALESCE("c", '{}'::jsonb) - @p0::text) - @p1::text) || @p2::jsonb
+[22] JsonMemberIncrementExpression = COALESCE(NULLIF(("c" ->> @p0), '')::int, 0) + @p1
+[23] JsonKeyOrderTerm(asc, nulls last) = ("c" ->> @p0) ASC NULLS LAST
+[24] JsonKeyOrderTerm(desc, nulls first) = ("c" ->> @p0) DESC NULLS FIRST
+[25] MovedFieldNumberOrEpochMillisOrderTerm = COALESCE((CASE WHEN pg_input_is_valid(("c" ->> @p0), 'double precision') THEN ("c" ->> @p0) END)::double precision, FLOOR(EXTRACT(EPOCH FROM "t") * 1000)::double precision) ASC
+[26] PgDialect.JsonMemberRemovedAssignment = "c" = "c" - 'it''s'

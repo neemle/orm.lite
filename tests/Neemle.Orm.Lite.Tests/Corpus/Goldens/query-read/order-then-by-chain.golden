@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" ORDER BY "title" ASC NULLS LAST, "rank" DESC NULLS LAST, "id" ASC NULLS LAST
+-- parameters (0)

@@ -1,0 +1,48 @@
+# A throwaway PostgreSQL for the PostgreSQL half of the test suite. The CI test job starts exactly this file with
+# `docker compose up --wait` and sets ORMLITE_TEST_POSTGRES for the test step; locally it is the same. Without a
+# server a plain `dotnet test` stays green and skips every PostgreSQL test. See README.md ("Build, test, pack, demo").
+#
+#   docker compose -f tests/compose.yaml up -d --wait     # start it and wait until it accepts connections
+#   ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test Neemle.Orm.Lite.slnx -c Release \
+#     --logger "trx;LogFileName=tests.trx" --results-directory TestResults -- xUnit.MaxParallelThreads=1
+#   dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx tests/skip-allowlist.txt \
+#     --require-postgres tests/skip-witness.txt
+#   docker compose -f tests/compose.yaml down             # stop and remove it; no volume is left behind
+#
+# The image (neemle/pg.lite, the PostgreSQL major in its tag) is built FROM scratch: it has no shell, so the health
+# check is the exec form of the server's own `postgres --healthcheck` (a CMD-SHELL check or `pg_isready` cannot run in
+# it) and `docker exec ... sh` does not work. It listens on 5432 inside, runs as user and group 70, reads POSTGRES_USER
+# (default postgres), POSTGRES_DB (default: the user) and POSTGRES_PASSWORD (required unless
+# POSTGRES_HOST_AUTH_METHOD=trust), and keeps its data in PGDATA, /var/lib/postgresql/data by default.
+#
+# Variables, with their defaults: ORMLITE_TEST_PG_IMAGE (neemle/pg.lite:19), ORMLITE_TEST_PG_PORT (55433, the host
+# port), ORMLITE_TEST_PG_USER (postgres; the role needs CREATE DATABASE, the tests create their own databases) and
+# ORMLITE_TEST_PG_TMPFS (/var/lib/postgresql/data:uid=70,gid=70,mode=0700). The server runs as user 70, so the
+# in-memory data directory is owned by it; the options were accepted by the image on the first run. If a later image
+# refuses the directory, that value is what to change.
+# The image major and the host port written here are the source; the demo's compose file takes the same major and has
+# its own port. scripts/ComposeCoherence.cs fails the CI test job when ci.yml, a README or the other compose file says
+# something else.
+name: orm-lite-tests
+
+services:
+  postgres:
+    image: ${ORMLITE_TEST_PG_IMAGE:-neemle/pg.lite:19}
+    environment:
+      # No password: any connection is accepted. Acceptable only because the port below is bound to loopback and the
+      # container is disposable. Never copy this setting to a database that holds anything real.
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: ${ORMLITE_TEST_PG_USER:-postgres}
+    ports:
+      # Loopback only, and a port that collides neither with the demo's 55432 nor with a PostgreSQL you already run.
+      - "127.0.0.1:${ORMLITE_TEST_PG_PORT:-55433}:5432"
+    tmpfs:
+      # The data directory in memory, so no volume is left behind.
+      - ${ORMLITE_TEST_PG_TMPFS:-/var/lib/postgresql/data:uid=70,gid=70,mode=0700}
+    healthcheck:
+      # What `up --wait` waits for. Exec form: the image has no shell.
+      test: ["CMD", "/usr/local/pgsql/bin/postgres", "--healthcheck"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+      start_period: 5s

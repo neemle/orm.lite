@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: RestoreAsync on a Platform entity takes no tenant.

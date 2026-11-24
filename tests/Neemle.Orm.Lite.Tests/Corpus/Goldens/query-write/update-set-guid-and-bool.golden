@@ -1,0 +1,6 @@
+-- sql
+UPDATE "corpus_notes" SET "owner_id" = @p0, "active" = @p1 WHERE "id" = @p2
+-- parameters (3)
+[0] Guid b0000000-0000-0000-0000-00000000000b
+[1] Boolean true
+[2] Guid a0000000-0000-0000-0000-00000000000a

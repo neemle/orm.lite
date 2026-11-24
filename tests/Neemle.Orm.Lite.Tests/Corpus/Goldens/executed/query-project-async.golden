@@ -1,0 +1,5 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT "id" FROM "corpus_notes" WHERE "active" = true
+-- outcome
+Int32 0

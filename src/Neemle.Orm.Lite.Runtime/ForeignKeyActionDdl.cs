@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite;
 
@@ -18,51 +19,37 @@ public static class ForeignKeyActionDdl
 
     private static readonly Regex Identifier = new(@"\A[a-z][a-z0-9_]{0,62}\z", RegexOptions.CultureInvariant);
 
-    public static string Up(
+    public static Node Up(
         string table, string constraint, IReadOnlyList<string> columns, string referencedTable, IReadOnlyList<string> referencedColumns,
         string newAction, string oldAction, string onUpdate = NoAction)
     {
         Check(table, constraint, columns, referencedTable, referencedColumns, newAction, oldAction, onUpdate);
-        return Alter(table, constraint, columns, referencedTable, referencedColumns, newAction, onUpdate);
+        return Convert(table, constraint, columns, referencedTable, referencedColumns, newAction, oldAction, onUpdate);
     }
 
-    public static string Down(
+    public static Node Down(
         string table, string constraint, IReadOnlyList<string> columns, string referencedTable, IReadOnlyList<string> referencedColumns,
         string newAction, string oldAction, string onUpdate = NoAction)
     {
         Check(table, constraint, columns, referencedTable, referencedColumns, newAction, oldAction, onUpdate);
-        return Alter(table, constraint, columns, referencedTable, referencedColumns, oldAction, onUpdate);
+        return Convert(table, constraint, columns, referencedTable, referencedColumns, oldAction, newAction, onUpdate);
     }
 
-    private static string Alter(
-        string table, string constraint, IReadOnlyList<string> columns, string referencedTable, IReadOnlyList<string> referencedColumns,
-        string action, string onUpdate)
+    public static ReferentialAction Parse(string action) => action switch
     {
-        return "DO $fk$ DECLARE current_action text; BEGIN"
-            + " PERFORM set_config('lock_timeout', '5s', true);"
-            + " SELECT c.confdeltype::text INTO current_action FROM pg_constraint c"
-            + " WHERE c.contype = 'f' AND c.conname = '" + constraint + "'"
-            + " AND c.conrelid = to_regclass('\"" + table + "\"');"
-            + " IF current_action IS NOT NULL AND current_action <> '" + Code(action) + "' THEN"
-            + " ALTER TABLE \"" + table + "\" DROP CONSTRAINT \"" + constraint + "\","
-            + " ADD CONSTRAINT \"" + constraint + "\" FOREIGN KEY (" + Quoted(columns) + ")"
-            + " REFERENCES \"" + referencedTable + "\" (" + Quoted(referencedColumns) + ")"
-            + " ON UPDATE " + onUpdate + " ON DELETE " + action + ";"
-            + " END IF;"
-            + " END $fk$";
-    }
-
-    public static string Code(string action) => action switch
-    {
-        Cascade => "c",
-        SetNull => "n",
-        NoAction => "a",
-        Restrict => "r",
+        Cascade => ReferentialAction.Cascade,
+        SetNull => ReferentialAction.SetNull,
+        NoAction => ReferentialAction.NoAction,
+        Restrict => ReferentialAction.Restrict,
         _ => throw new ArgumentException("not a referential action: " + action, nameof(action)),
     };
 
-    private static string Quoted(IReadOnlyList<string> names) =>
-        string.Join(", ", names.Select(n => "\"" + n + "\""));
+    private static Node Convert(
+        string table, string constraint, IReadOnlyList<string> columns, string referencedTable, IReadOnlyList<string> referencedColumns,
+        string target, string restore, string onUpdate) =>
+        new ConvertForeignKeyAction(
+            table, constraint, DdlLiterals.Columns(columns), referencedTable, DdlLiterals.Columns(referencedColumns),
+            Parse(target), Parse(restore), Parse(onUpdate));
 
     private static void Check(
         string table, string constraint, IReadOnlyList<string> columns, string referencedTable, IReadOnlyList<string> referencedColumns,

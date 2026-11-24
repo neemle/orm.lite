@@ -1,0 +1,1 @@
+SELECT entity, source_table, id, label, deleted_at, project_id FROM (SELECT 'corpus_task' AS entity, 'corpus_tasks' AS source_table, "id" AS id, left("name"::text, 200) AS label, "deleted_at" AS deleted_at, "project_id" AS project_id FROM "corpus_tasks" WHERE "tenant_id" = @w AND "deleted_at" IS NOT NULL) u ORDER BY deleted_at DESC, entity, id LIMIT @lim OFFSET @off

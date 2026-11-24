@@ -1,0 +1,7 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "rank" > @p0 AND "title" IN (@p1, @p2) AND "title" <> @p3
+-- parameters (4)
+[0] Int32 1
+[1] String "one"
+[2] String "two"
+[3] String "z"

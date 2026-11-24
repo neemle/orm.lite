@@ -32,7 +32,7 @@ public sealed class FixtureEnumQueryTests : IAsyncLifetime
         await SeedAsync(JobDone, "three", FixtureStatus.done, FixturePriority.high);
 
         OrmMeta.Register<FixtureJob>("fixture_jobs", Col, new[] { "id", "name", "status", "priority" });
-        _ctx = new OrmContext(new NeverUsedDataSource(), new SqliteDialect());
+        _ctx = TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
     }
 
     public async Task DisposeAsync() => await _connection.DisposeAsync();

@@ -1,0 +1,3 @@
+-- sql
+SELECT "id", "owner_id", "title", NULL AS "body", "rank", "views", "score", "price", "active", "status", "review", "created_at", "expires_at", "due", "payload", "meta" FROM "corpus_notes"
+-- parameters (0)

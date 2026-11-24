@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE EXISTS (SELECT 1 FROM "corpus_tasks" s0 WHERE s0."project_id" = "corpus_notes"."owner_id" AND s0."deleted_at" IS NULL)
+-- parameters (0)

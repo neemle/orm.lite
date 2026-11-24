@@ -1,0 +1,4 @@
+-- sql
+SELECT "status", count(*), count(DISTINCT "owner_id"), count(*) FILTER (WHERE ("rank" > @p0)), COALESCE(SUM(COALESCE("views", 0)), 0), min("created_at"), max("created_at"), avg("rank")::double precision FROM "corpus_notes" GROUP BY "status"
+-- parameters (1)
+[0] Int32 3

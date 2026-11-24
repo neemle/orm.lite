@@ -1,0 +1,5 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE (CASE WHEN pg_input_is_valid(("payload" ->> @p0), 'numeric') THEN ("payload" ->> @p0) END)::numeric = (CASE WHEN pg_input_is_valid(@p1, 'numeric') THEN @p1 END)::numeric
+-- parameters (2)
+[0] String "count"
+[1] String "10"

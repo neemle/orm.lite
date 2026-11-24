@@ -1,0 +1,6 @@
+-- sql
+UPDATE "corpus_notes" SET "meta" = COALESCE("meta", '{}'::jsonb) || jsonb_build_object(@p0::text, COALESCE(NULLIF(("meta" ->> @p0), '')::int, 0) + @p1) WHERE "id" = @p2
+-- parameters (3)
+[0] String "legacy_name"
+[1] Int32 4
+[2] Guid a0000000-0000-0000-0000-00000000000a

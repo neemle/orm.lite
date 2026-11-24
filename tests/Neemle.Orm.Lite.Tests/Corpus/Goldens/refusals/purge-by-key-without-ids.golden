@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: PurgeAsync requires at least one id (refusing an unfiltered DELETE).

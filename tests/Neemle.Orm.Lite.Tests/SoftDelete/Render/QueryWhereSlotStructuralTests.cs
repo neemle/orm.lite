@@ -9,11 +9,11 @@ public sealed class QueryWhereSlotStructuralTests
 {
     private static readonly string[] Writers = ["Where", "WhereExists", "WhereIn"];
 
-    private static readonly string[] Refusals = ["RenderUpdateReturningCore", "RenderDeleteReturningCore", "RenderUpdate", "RenderDelete", "RenderPurge"];
+    private static readonly string[] Refusals = ["CompileUpdateReturningCore", "CompileDeleteReturningCore", "CompileUpdate", "CompileDelete", "CompilePurge"];
 
-    private const string Renderer = "AppendWhere";
+    private const string Renderer = "WhereNode";
 
-    private const string Reader = "WhereClauses";
+    private const string Reader = "WhereTerms";
 
     private static (List<string> Allowed, List<string> Violations, int Declarations) Census()
     {
@@ -60,12 +60,12 @@ public sealed class QueryWhereSlotStructuralTests
             null => "<none>",
         };
 
-    [Fact(DisplayName = "Query.cs touches _where only in its declaration, Add in Where/WhereExists/WhereIn, Count == 0 in the five refusals, inside AppendWhere, and as the bare body of the WhereClauses read")]
+    [Fact(DisplayName = "Query.cs touches _where only in its declaration, Add in Where/WhereExists/WhereIn, Count == 0 in the five refusals, inside WhereNode, and as the bare body of the WhereTerms read")]
     public void Query_touches_the_where_slot_only_where_allowed()
     {
         var (_, violations, _) = Census();
         Assert.True(violations.Count == 0,
-            "Query.cs touches _where outside its allowed sites; render a WHERE clause through AppendWhere(sb), or read the clauses through WhereClauses:\n"
+            "Query.cs touches _where outside its allowed sites; render a WHERE clause through WhereNode(), or read the terms through WhereTerms:\n"
             + string.Join("\n", violations));
     }
 

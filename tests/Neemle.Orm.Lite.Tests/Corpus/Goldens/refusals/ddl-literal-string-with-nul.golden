@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: a string or character value holds a NUL character (U+0000), which no SQL text literal can carry; remove it from the value. (Parameter 'value')

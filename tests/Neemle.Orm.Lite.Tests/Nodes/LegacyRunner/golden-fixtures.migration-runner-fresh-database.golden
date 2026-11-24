@@ -1,0 +1,46 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT set_config('ormlite.actor', @v, false)
+    @v = String "system"
+#2 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE TABLE IF NOT EXISTS schema_migrations (version text PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now())
+#3 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT pg_advisory_lock(727274)
+#4 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT version FROM schema_migrations
+#5 BEGIN conn=1 source=primary
+#6 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE TABLE IF NOT EXISTS "fixture_notes" ("id" uuid NOT NULL PRIMARY KEY, "title" text NOT NULL DEFAULT ''::text, "revision" integer NOT NULL DEFAULT 0); CREATE TABLE IF NOT EXISTS "golden_authors" ("id" uuid NOT NULL PRIMARY KEY, "name" text NOT NULL DEFAULT ''::text, "rank" integer NOT NULL DEFAULT 0); CREATE TABLE IF NOT EXISTS "golden_author_tags" ("author_id" uuid NOT NULL, "tag_id" uuid NOT NULL, PRIMARY KEY ("author_id", "tag_id")); CREATE TABLE IF NOT EXISTS "golden_books" ("id" uuid NOT NULL PRIMARY KEY, "author_id" uuid NOT NULL, "editor_id" uuid, "title" text NOT NULL DEFAULT ''::text, "pages" integer NOT NULL DEFAULT 0, "copies" bigint NOT NULL DEFAULT 0, "weight" double precision NOT NULL DEFAULT 0, "price" numeric(12,4) NOT NULL, "in_print" boolean NOT NULL DEFAULT false, "format" text NOT NULL DEFAULT ''::text, "published_at" timestamp with time zone NOT NULL DEFAULT now(), "released_on" date, "extras" jsonb); CREATE TABLE IF NOT EXISTS "golden_tags" ("id" uuid NOT NULL PRIMARY KEY, "label" text NOT NULL DEFAULT ''::text)
+#7 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "0000_baseline_OrmLiteGoldenFixtures"
+#8 COMMIT conn=1 source=primary
+#9 BEGIN conn=1 source=primary
+#10 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE INDEX IF NOT EXISTS "ix_fixture_notes_title" ON "fixture_notes" ("title")
+#11 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "0001_orm_indexes_OrmLiteGoldenFixtures"
+#12 COMMIT conn=1 source=primary
+#13 BEGIN conn=1 source=primary
+#14 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SET LOCAL lock_timeout = '5s'
+#15 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"fixture_notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"fixture_notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['title'])) = 1 THEN EXECUTE 'CREATE INDEX IF NOT EXISTS "ix_fixture_notes_title" ON "fixture_notes" ("title")'; END IF; END $reconcile$
+#16 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "9900_orm_index_reconcile_OrmLiteGoldenFixtures_eb6e32bc81a12870"
+#17 COMMIT conn=1 source=primary
+#18 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT pg_advisory_unlock(727274)

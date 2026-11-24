@@ -1,0 +1,9 @@
+-- sql
+INSERT INTO "corpus_notes" ("id", "payload", "body", "status") VALUES (@p0, @p1::jsonb, @p2, @p3) ON CONFLICT ("id") DO UPDATE SET "payload" = @p4::jsonb, "body" = @p5
+-- parameters (6)
+[0] Guid a0000000-0000-0000-0000-00000000000a
+[1] Jsonb {"k":[1,2]}
+[2] null
+[3] Enum CorpusStatus.Draft
+[4] Jsonb {"k":[1,2]}
+[5] null

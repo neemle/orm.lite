@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../Packaging.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>Neemle.Orm.Lite.Postgres</RootNamespace>
+    <PackageId>Neemle.Orm.Lite.Postgres</PackageId>
+    <Description>PostgreSQL provider for Neemle.Orm.Lite: the serializer, the capability manifest, the Npgsql data source and the connection gate. Referencing this package registers the provider, so OrmLiteOptions.Provider = "postgres" resolves with no further code. Requires the Neemle.Orm.Lite package of the same version.</Description>
+    <PackageTags>orm;postgresql;npgsql</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Neemle.Orm.Lite.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Neemle.Orm.Lite/Neemle.Orm.Lite.csproj" PrivateAssets="none" />
+    <ProjectReference Include="../Neemle.Orm.Lite.Runtime/Neemle.Orm.Lite.Runtime.csproj" PrivateAssets="all" />
+    <ProjectReference Include="../Neemle.Orm.Lite.Sql/Neemle.Orm.Lite.Sql.csproj" PrivateAssets="all" />
+    <PackageReference Include="Npgsql" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="assets/Neemle.Orm.Lite.Postgres.props" Pack="true" PackagePath="buildTransitive/" />
+    <None Include="assets/ormlite.capabilities.postgres.txt" Pack="true" PackagePath="buildTransitive/" />
+  </ItemGroup>
+
+</Project>

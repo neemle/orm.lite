@@ -1,0 +1,9 @@
+[0] row_history
+[1] 9900_orm_history_reconcile_
+[2] row_history_capture
+[3] row_history_u
+[4] row_history_d
+[5] ormlite.actor
+[6] ormlite.actor
+[7] SELECT set_config('ormlite.actor', @v, false)
+[8] SELECT set_config('ormlite.actor', @v, false)

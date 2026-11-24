@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq.Expressions;
 using Neemle.Orm.Lite;
 using Xunit;
@@ -21,13 +20,13 @@ public class AnyOfAndRowLockRenderingTests
 
     private static readonly Guid Probe = Guid.Parse("66666666-6666-6666-6666-666666666666");
 
-    private static OrmContext Pg() => new(new UnreachableDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new UnreachableDataSource(), new PgDialect());
 
     private static Query<FixtureWidget> Widgets() =>
         new(Pg(), _ => throw new NotSupportedException());
 
     private static Query<FixtureWidget> Sqlite() =>
-        new(new OrmContext(new UnreachableDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
+        new(TestContext.Of(new UnreachableDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
 
     [Fact(DisplayName = "Db.AnyOf binds the WHOLE collection as ONE array parameter, where the existing Contains translation expands it into one placeholder per element — an unbounded id set otherwise runs at the driver's parameter limit")]
     public void AnyOf_binds_one_array_parameter_where_Contains_binds_one_per_element()
@@ -142,7 +141,8 @@ public class AnyOfAndRowLockRenderingTests
     [Fact(DisplayName = "OrderByPredicate orders by a translated boolean and ThenByPredicate appends, so an ordering over a computed scope needs no computed column in the SELECT list")]
     public void OrderByPredicate_orders_by_a_translated_boolean() =>
         Assert.Equal(
-            "SELECT \"name\" FROM \"fixture_widgets\" ORDER BY (\"name\" IS NOT NULL) ASC, (\"rank\" = @p0) ASC",
+            "SELECT \"name\" FROM \"fixture_widgets\" ORDER BY (\"name\" IS NOT NULL) ASC NULLS LAST, "
+            + "(\"rank\" = @p0) ASC NULLS LAST",
             Widgets().OrderByPredicate(w => w.Name != null).ThenByPredicate(w => w.Rank == 3)
                 .RenderProject([w => w.Name]));
 
@@ -179,7 +179,7 @@ public class AnyOfAndRowLockRenderingTests
 
         Assert.Equal(
             "UPDATE \"fixture_widgets\" SET \"name\" = \"id\" WHERE \"rank\" = @p0 AND \"id\" IN "
-            + "(SELECT \"id\" FROM \"fixture_widgets\" WHERE \"name\" = @p1 ORDER BY \"id\" ASC LIMIT 5)",
+            + "(SELECT \"id\" FROM \"fixture_widgets\" WHERE \"name\" = @p1 ORDER BY \"id\" ASC NULLS LAST LIMIT 5)",
             sql);
     }
 
@@ -248,24 +248,14 @@ public class AnyOfAndRowLockRenderingTests
     public void The_new_renderers_open_no_connection()
     {
         var source = new UnreachableDataSource();
-        var q = new Query<FixtureWidget>(
-            new OrmContext(source, new PgDialect()), _ => throw new NotSupportedException());
+        Query<FixtureWidget> Fresh() => new(
+            TestContext.Of(source, new PgDialect()), _ => throw new NotSupportedException());
+        var q = Fresh();
 
         q.Where(w => w.Rank == 1).ForUpdate().RenderSelect();
-        q.Where(w => w.Rank == 1).AggregateCount().RenderAggregates();
+        Fresh().Where(w => w.Rank == 1).AggregateCount().RenderAggregates();
         q.RenderInsertMany([new Row<FixtureWidget>().With(w => w.Id, 1)]);
 
         Assert.Equal(0, source.Touches);
-    }
-
-    private sealed class UnreachableDataSource : DbDataSource
-    {
-        public int Touches { get; private set; }
-        public override string ConnectionString => "fake://anyof";
-        protected override DbConnection CreateDbConnection()
-        {
-            Touches++;
-            throw new InvalidOperationException("this fixture must not open a connection.");
-        }
     }
 }

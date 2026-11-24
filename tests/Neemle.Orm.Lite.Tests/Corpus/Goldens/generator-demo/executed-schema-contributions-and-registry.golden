@@ -1,0 +1,97 @@
+-- schema
+CreateAll: CREATE TABLE IF NOT EXISTS "notes" ("id" uuid NOT NULL PRIMARY KEY, "tenant_id" uuid NOT NULL, "title" text NOT NULL DEFAULT '', "body" text NOT NULL DEFAULT '', "stars" integer NOT NULL DEFAULT 0, "deleted_at" timestamp with time zone)
+CreateIndexes:
+    CREATE UNIQUE INDEX IF NOT EXISTS "ix_notes_tenant_id_title_live" ON "notes" ("tenant_id", "title") WHERE "deleted_at" IS NULL
+ReconcileIndexes:
+    SET LOCAL lock_timeout = '5s'
+    DO $drift$ DECLARE current_index oid; BEGIN IF to_regclass('"notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['tenant_id', 'title', 'deleted_at'])) = 3 THEN SELECT ic.oid INTO current_index FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid WHERE i.indrelid = to_regclass('"notes"') AND ic.relname = 'ix_notes_tenant_id_title_live'; IF current_index IS NULL AND EXISTS (SELECT 1 FROM pg_class x WHERE x.relname = 'ix_notes_tenant_id_title_live' AND x.relnamespace = (SELECT t.relnamespace FROM pg_class t WHERE t.oid = to_regclass('"notes"'))) THEN RAISE EXCEPTION 'Index name % is already held by another relation in the schema of table %: PostgreSQL index names are schema-global, so creating it would be skipped and the table would stay without its index. Rename the index.', 'ix_notes_tenant_id_title_live', 'notes'; END IF; IF current_index IS NOT NULL THEN CREATE TEMP TABLE "orm_ix_check" (LIKE "notes"); EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_notes_tenant_id_title_live" ON "orm_ix_check" ("tenant_id", "title") WHERE "deleted_at" IS NULL'; IF replace(pg_get_indexdef(current_index), concat(' ON ', (SELECT concat(quote_ident(n.nspname), '.', quote_ident(c.relname)) FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.oid = to_regclass('"notes"')), ' USING '), ' USING ') <> regexp_replace(pg_get_indexdef(to_regclass('pg_temp."ix_notes_tenant_id_title_live"')), E' ON \\S+ USING ', ' USING ') THEN DROP TABLE pg_temp."orm_ix_check"; EXECUTE 'DROP INDEX ' || current_index::regclass; ELSE DROP TABLE pg_temp."orm_ix_check"; END IF; END IF; END IF; END $drift$
+    DO $reconcile$ BEGIN IF to_regclass('"notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['tenant_id', 'title', 'deleted_at'])) = 3 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_notes_tenant_id_title_live" ON "notes" ("tenant_id", "title") WHERE "deleted_at" IS NULL'; END IF; END $reconcile$
+    DO $collision$ DECLARE r record; BEGIN IF to_regclass('"notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['tenant_id', 'title', 'deleted_at'])) = 3 THEN FOR r IN SELECT ic.relname::text AS idx, c.conname::text AS con FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid LEFT JOIN pg_constraint c ON c.conindid = i.indexrelid AND c.contype IN ('u', 'p') WHERE i.indrelid = to_regclass('"notes"') AND i.indisunique AND i.indpred IS NULL AND i.indexprs IS NULL AND i.indnkeyatts = 2 AND (SELECT count(*) FROM unnest(i.indkey::int2[]) WITH ORDINALITY AS k(attnum, ord) JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = k.attnum WHERE k.ord <= i.indnkeyatts AND a.attname = ANY (ARRAY['tenant_id', 'title'])) = 2 LOOP RAISE EXCEPTION 'Live-only index % on table % over columns (%) cannot take effect: % % is unique over the same columns without a live-row predicate', 'ix_notes_tenant_id_title_live', 'notes', 'tenant_id, title', CASE WHEN r.con IS NULL THEN 'index' ELSE 'constraint' END, COALESCE(r.con, r.idx) USING HINT = 'Convert it with an explicit migration: create the partial index, then drop the total one.'; END LOOP; END IF; END $collision$
+IndexSetHash: d27e299df0226960
+HistoryTables:
+  notes key=id soft=deleted_at tenant=tenant_id unversioned=[] arguments-hash=777ee2e5851368bb
+HistorySetHash: e9dbcb569c4fbc15
+-- contributions
+version 0000_baseline_OrmLiteDemo reversibility=Irreversible down=none
+  up:
+    CREATE TABLE IF NOT EXISTS "notes" ("id" uuid NOT NULL PRIMARY KEY, "tenant_id" uuid NOT NULL, "title" text NOT NULL DEFAULT '', "body" text NOT NULL DEFAULT '', "stars" integer NOT NULL DEFAULT 0, "deleted_at" timestamp with time zone)
+version 0001_orm_indexes_OrmLiteDemo reversibility=Reversible down=none
+  up:
+    CREATE UNIQUE INDEX IF NOT EXISTS "ix_notes_tenant_id_title_live" ON "notes" ("tenant_id", "title") WHERE "deleted_at" IS NULL
+version 0100_welcome_note reversibility=Reversible down=declared
+  up:
+    INSERT INTO "notes" ("id", "tenant_id", "title", "body", "stars") VALUES ('00000000-0000-0000-0000-00000000d3a0', '00000000-0000-0000-0000-000000000000', 'welcome', 'added by an explicit migration', 0)
+  down:
+    DELETE FROM "notes" WHERE "id" IN ('00000000-0000-0000-0000-00000000d3a0')
+version 9900_orm_index_reconcile_OrmLiteDemo_d27e299df0226960 reversibility=Irreversible down=none
+  up:
+    SET LOCAL lock_timeout = '5s'
+    DO $drift$ DECLARE current_index oid; BEGIN IF to_regclass('"notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['tenant_id', 'title', 'deleted_at'])) = 3 THEN SELECT ic.oid INTO current_index FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid WHERE i.indrelid = to_regclass('"notes"') AND ic.relname = 'ix_notes_tenant_id_title_live'; IF current_index IS NULL AND EXISTS (SELECT 1 FROM pg_class x WHERE x.relname = 'ix_notes_tenant_id_title_live' AND x.relnamespace = (SELECT t.relnamespace FROM pg_class t WHERE t.oid = to_regclass('"notes"'))) THEN RAISE EXCEPTION 'Index name % is already held by another relation in the schema of table %: PostgreSQL index names are schema-global, so creating it would be skipped and the table would stay without its index. Rename the index.', 'ix_notes_tenant_id_title_live', 'notes'; END IF; IF current_index IS NOT NULL THEN CREATE TEMP TABLE "orm_ix_check" (LIKE "notes"); EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_notes_tenant_id_title_live" ON "orm_ix_check" ("tenant_id", "title") WHERE "deleted_at" IS NULL'; IF replace(pg_get_indexdef(current_index), concat(' ON ', (SELECT concat(quote_ident(n.nspname), '.', quote_ident(c.relname)) FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.oid = to_regclass('"notes"')), ' USING '), ' USING ') <> regexp_replace(pg_get_indexdef(to_regclass('pg_temp."ix_notes_tenant_id_title_live"')), E' ON \\S+ USING ', ' USING ') THEN DROP TABLE pg_temp."orm_ix_check"; EXECUTE 'DROP INDEX ' || current_index::regclass; ELSE DROP TABLE pg_temp."orm_ix_check"; END IF; END IF; END IF; END $drift$
+    DO $reconcile$ BEGIN IF to_regclass('"notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['tenant_id', 'title', 'deleted_at'])) = 3 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_notes_tenant_id_title_live" ON "notes" ("tenant_id", "title") WHERE "deleted_at" IS NULL'; END IF; END $reconcile$
+    DO $collision$ DECLARE r record; BEGIN IF to_regclass('"notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['tenant_id', 'title', 'deleted_at'])) = 3 THEN FOR r IN SELECT ic.relname::text AS idx, c.conname::text AS con FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid LEFT JOIN pg_constraint c ON c.conindid = i.indexrelid AND c.contype IN ('u', 'p') WHERE i.indrelid = to_regclass('"notes"') AND i.indisunique AND i.indpred IS NULL AND i.indexprs IS NULL AND i.indnkeyatts = 2 AND (SELECT count(*) FROM unnest(i.indkey::int2[]) WITH ORDINALITY AS k(attnum, ord) JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = k.attnum WHERE k.ord <= i.indnkeyatts AND a.attname = ANY (ARRAY['tenant_id', 'title'])) = 2 LOOP RAISE EXCEPTION 'Live-only index % on table % over columns (%) cannot take effect: % % is unique over the same columns without a live-row predicate', 'ix_notes_tenant_id_title_live', 'notes', 'tenant_id, title', CASE WHEN r.con IS NULL THEN 'index' ELSE 'constraint' END, COALESCE(r.con, r.idx) USING HINT = 'Convert it with an explicit migration: create the partial index, then drop the total one.'; END LOOP; END IF; END $collision$
+version 9900_orm_history_reconcile_OrmLiteDemo_e9dbcb569c4fbc15 reversibility=Irreversible down=none
+  up:
+    SET LOCAL lock_timeout = '5s'
+    CREATE TABLE IF NOT EXISTS row_history ( id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY, tenant_id uuid NULL, source_table text NOT NULL, row_id uuid NOT NULL, op text NOT NULL CHECK (op IN ('update', 'soft_delete', 'restore')), old_values jsonb NOT NULL, actor_user_id uuid NULL, actor_kind text NOT NULL CHECK (actor_kind IN ('user', 'system', 'unknown')), xact_id bigint NOT NULL, changed_at timestamptz NOT NULL DEFAULT now())
+    DO $rh$ BEGIN IF to_regclass('ix_row_history_source_row') IS NULL THEN CREATE INDEX ix_row_history_source_row ON row_history (source_table, row_id, id); END IF; END $rh$
+    DO $rh$ BEGIN IF to_regclass('ix_row_history_tenant_xact') IS NULL THEN CREATE INDEX ix_row_history_tenant_xact ON row_history (tenant_id, xact_id); END IF; END $rh$
+    DO $rh$ BEGIN IF to_regclass('ix_row_history_changed_at') IS NULL THEN CREATE INDEX ix_row_history_changed_at ON row_history (changed_at); END IF; END $rh$
+    CREATE OR REPLACE FUNCTION row_history_capture() RETURNS trigger LANGUAGE plpgsql AS $rh$
+    DECLARE
+      v_old jsonb;
+      v_new jsonb;
+      v_unversioned text[] := ARRAY[]::text[];
+      v_delta jsonb;
+      v_op text;
+      v_actor text;
+      v_actor_kind text;
+      v_actor_user uuid;
+      v_tenant uuid;
+      i int;
+    BEGIN
+      IF TG_OP = 'DELETE' THEN
+        DELETE FROM row_history
+         WHERE source_table = TG_TABLE_NAME AND row_id = (to_jsonb(OLD) ->> TG_ARGV[0])::uuid;
+        RETURN NULL;
+      END IF;
+      v_old := to_jsonb(OLD);
+      v_new := to_jsonb(NEW);
+      FOR i IN 3 .. TG_NARGS - 1 LOOP
+        v_unversioned := v_unversioned || TG_ARGV[i];
+      END LOOP;
+      v_delta := (SELECT coalesce(jsonb_object_agg(o.key, o.value), '{}'::jsonb)
+                    FROM jsonb_each(v_old) AS o(key, value)
+                   WHERE (v_new -> o.key) IS DISTINCT FROM o.value
+                     AND NOT (o.key = ANY (v_unversioned)));
+      IF v_delta = '{}'::jsonb THEN
+        RETURN NULL;
+      END IF;
+      v_op := CASE
+        WHEN v_old ->> TG_ARGV[1] IS NULL AND v_new ->> TG_ARGV[1] IS NOT NULL THEN 'soft_delete'
+        WHEN v_old ->> TG_ARGV[1] IS NOT NULL AND v_new ->> TG_ARGV[1] IS NULL THEN 'restore'
+        ELSE 'update' END;
+      IF TG_ARGV[2] <> '' THEN
+        v_tenant := (v_new ->> TG_ARGV[2])::uuid;
+      END IF;
+      v_actor := current_setting('ormlite.actor', true);
+      IF v_actor ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' THEN
+        v_actor_kind := 'user';
+        v_actor_user := v_actor::uuid;
+      ELSIF v_actor = 'system' THEN
+        v_actor_kind := 'system';
+      ELSE
+        v_actor_kind := 'unknown';
+      END IF;
+      INSERT INTO row_history (tenant_id, source_table, row_id, op, old_values, actor_user_id, actor_kind, xact_id)
+      VALUES (v_tenant, TG_TABLE_NAME, (v_old ->> TG_ARGV[0])::uuid, v_op, v_delta, v_actor_user, v_actor_kind,
+              pg_current_xact_id()::text::bigint);
+      RETURN NULL;
+    END
+    $rh$
+    DO $rh$ BEGIN IF to_regclass('"notes"') IS NOT NULL AND (NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"notes"') AND g.tgname = 'row_history_u' AND obj_description(g.oid, 'pg_trigger') = '777ee2e5851368bb') OR NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"notes"') AND g.tgname = 'row_history_d' AND obj_description(g.oid, 'pg_trigger') = '777ee2e5851368bb')) THEN CREATE OR REPLACE TRIGGER row_history_u AFTER UPDATE ON "notes" FOR EACH ROW WHEN (OLD IS DISTINCT FROM NEW) EXECUTE FUNCTION row_history_capture('id', 'deleted_at', 'tenant_id'); CREATE OR REPLACE TRIGGER row_history_d AFTER DELETE ON "notes" FOR EACH ROW EXECUTE FUNCTION row_history_capture('id', 'deleted_at', 'tenant_id'); COMMENT ON TRIGGER row_history_u ON "notes" IS '777ee2e5851368bb'; COMMENT ON TRIGGER row_history_d ON "notes" IS '777ee2e5851368bb'; END IF; END $rh$
+-- registry
+notes columns=[id,tenant_id,title,body,stars,deleted_at]
+  soft column=DeletedAt tenant=tenant_id platform=False key=id label=null token=note
+  live-only=[tenant_id,title] unversioned=[] owners=[] pinned=[] status=[]
+  property-columns=[Id>id;TenantId>tenant_id;Title>title;Body>body;Stars>stars;DeletedAt>deleted_at]
+  typed pinned=[id,deleted_at,tenant_id] owners=[tenant_id] soft-column=deleted_at

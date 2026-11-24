@@ -1,0 +1,5 @@
+#1 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT 1
+-- outcome
+alive=True timeout=2

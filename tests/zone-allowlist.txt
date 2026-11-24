@@ -1,0 +1,4 @@
+# Tests the zone gate allows to skip: none. The zone step of the CI test job runs only SQLite and in-process tests
+# (the filter leaves out every PostgreSQL class), so a skipped test there is a defect, not a design. The file exists
+# because scripts/SkipGate.cs always reads an allow-list; an empty one makes every skip a failure.
+# Format as tests/skip-allowlist.txt: <class>.<test method> TAB <reason>.

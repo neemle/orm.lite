@@ -1,0 +1,1 @@
+SELECT id, op, actor_user_id, actor_kind, ARRAY(SELECT k FROM jsonb_object_keys(old_values) AS k ORDER BY k), xact_id, changed_at FROM row_history WHERE source_table = @t AND row_id = @id AND EXISTS (SELECT 1 FROM "corpus_tasks" r WHERE r."id" = @id AND r."tenant_id" = @w) ORDER BY id DESC

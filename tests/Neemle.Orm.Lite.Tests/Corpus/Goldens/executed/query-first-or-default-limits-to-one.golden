@@ -1,0 +1,6 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT * FROM "corpus_notes" WHERE "id" = @p0 LIMIT 1
+    @p0 = Guid a0000000-0000-0000-0000-00000000000a
+-- outcome
+Boolean true

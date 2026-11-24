@@ -18,46 +18,34 @@ using Neemle.Orm.Lite;
 namespace Fixture;
 ";
 
-    private static (ImmutableArray<Diagnostic> Diagnostics, string Generated) Run(string source)
+    private static (ImmutableArray<Diagnostic> Diagnostics, string Generated, Compilation Output) Run(string source)
     {
         var tree = CSharpSyntaxTree.ParseText(EntityHeader + source);
-
-        var references = AppDomain.CurrentDomain.GetAssemblies()
-            .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
-            .Select(a => (MetadataReference)MetadataReference.CreateFromFile(a.Location))
-            .ToList();
-        references.Add(MetadataReference.CreateFromFile(typeof(Jsonb).Assembly.Location));
 
         var compilation = CSharpCompilation.Create(
             "JsonbGeneratorFixture",
             new[] { tree },
-            references.Distinct().ToList(),
+            GeneratorReferences.All,
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary,
                 nullableContextOptions: NullableContextOptions.Enable));
 
         var driver = CSharpGeneratorDriver.Create([new OrmGenerator().AsSourceGenerator()], null, null, GeneratorOptions.Pinned());
-        var run = driver.RunGenerators(compilation).GetRunResult();
+        var run = driver.RunGeneratorsAndUpdateCompilation(compilation, out var output, out _).GetRunResult();
 
         var generated = string.Join("\n", run.Results
             .SelectMany(r => r.GeneratedSources)
             .Select(s => s.SourceText.ToString()));
 
-        return (run.Diagnostics, generated);
+        return (run.Diagnostics, generated, output);
     }
 
-    private static string CreateAllOf(string generated)
-    {
-        const string marker = "public const string CreateAll = ";
-        var start = generated.IndexOf(marker, StringComparison.Ordinal);
-        Assert.True(start >= 0, "the generated schema class carries no CreateAll constant");
-        var end = generated.IndexOf('\n', start);
-        return generated.Substring(start, end - start);
-    }
+    private static string CreateAllOf(Compilation output) =>
+        string.Join("; ", GeneratedModel.Render(GeneratedModel.Of(output).Schema.Baseline()));
 
     [Fact]
     public void A_Jsonb_property_emits_a_jsonb_column_and_not_a_text_one()
     {
-        var (diagnostics, generated) = Run(@"
+        var (diagnostics, generated, output) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -67,15 +55,15 @@ public class Doc
 
         Assert.Empty(diagnostics);
 
-        var createAll = CreateAllOf(generated);
-        Assert.Contains("\\\"payload\\\" jsonb", createAll);
-        Assert.DoesNotContain("\\\"payload\\\" text", createAll);
+        var createAll = CreateAllOf(output);
+        Assert.Contains("\"payload\" jsonb", createAll);
+        Assert.DoesNotContain("\"payload\" text", createAll);
     }
 
     [Fact]
     public void A_non_nullable_Jsonb_column_carries_NOT_NULL_and_an_empty_document_default()
     {
-        var (_, generated) = Run(@"
+        var (_, generated, output) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -83,13 +71,13 @@ public class Doc
     public Jsonb Payload { get; set; } = Jsonb.Parse(""{}"");
 }");
 
-        Assert.Contains("\\\"payload\\\" jsonb NOT NULL DEFAULT '{}'::jsonb", CreateAllOf(generated));
+        Assert.Contains("\"payload\" jsonb NOT NULL DEFAULT '{}'::jsonb", CreateAllOf(output));
     }
 
     [Fact]
     public void A_nullable_Jsonb_column_carries_no_default_because_null_is_the_absent_value()
     {
-        var (_, generated) = Run(@"
+        var (_, generated, output) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -97,15 +85,15 @@ public class Doc
     public Jsonb? Payload { get; set; }
 }");
 
-        var createAll = CreateAllOf(generated);
-        Assert.Contains("\\\"payload\\\" jsonb", createAll);
-        Assert.DoesNotContain("\\\"payload\\\" jsonb DEFAULT", createAll);
+        var createAll = CreateAllOf(output);
+        Assert.Contains("\"payload\" jsonb", createAll);
+        Assert.DoesNotContain("\"payload\" jsonb DEFAULT", createAll);
     }
 
     [Fact]
     public void The_insert_and_update_placeholders_for_a_jsonb_column_carry_an_explicit_cast()
     {
-        var (_, generated) = Run(@"
+        var (_, generated, output) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -114,16 +102,19 @@ public class Doc
     public Jsonb? Payload { get; set; }
 }");
 
-        Assert.Contains("INSERT INTO \\\"docs\\\" (\\\"id\\\", \\\"title\\\", \\\"payload\\\") VALUES (@p0, @p1, @p2::jsonb)", generated);
-        Assert.Contains("\\\"payload\\\" = @s1::jsonb", generated);
-        Assert.Contains("\\\"title\\\" = @s0,", generated);
-        Assert.DoesNotContain("@p1::jsonb", generated);
+        var descriptor = GeneratedModel.Of(output).Descriptor("Doc");
+        var insert = GeneratedModel.Text(EntityStatements.Insert(descriptor, new object?[3]));
+        var update = GeneratedModel.Text(EntityStatements.Update(descriptor, new object?[3]));
+
+        Assert.Equal("INSERT INTO \"docs\" (\"id\", \"title\", \"payload\") VALUES (@p0, @p1, @p2::jsonb)", insert);
+        Assert.Equal("UPDATE \"docs\" SET \"title\" = @s0, \"payload\" = @s1::jsonb WHERE \"id\" = @key", update);
+        Assert.DoesNotContain("@p1::jsonb", insert);
     }
 
     [Fact]
     public void A_jsonb_column_is_read_through_FromStorage_and_bound_through_Json()
     {
-        var (_, generated) = Run(@"
+        var (_, generated, output) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -131,14 +122,16 @@ public class Doc
     public Jsonb? Payload { get; set; }
 }");
 
-        Assert.Contains("global::Neemle.Orm.Lite.Jsonb.FromStorage(r.GetString(", generated);
-        Assert.Contains("e.Payload?.Json", generated);
+        Assert.Contains("Jsonb.FromStorage(r.GetString(", generated);
+        Assert.Contains("OrmExec.Row(e.Id, e.Payload)", generated);
+        using var command = new Microsoft.Data.Sqlite.SqliteCommand();
+        Assert.Equal("{\"a\":1}", command.AddParam("x", Jsonb.Parse("{\"a\":1}")).Value);
     }
 
     [Fact]
     public void An_unmapped_property_type_FAILS_the_build_naming_the_property_and_the_type()
     {
-        var (diagnostics, _) = Run(@"
+        var (diagnostics, _, _) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -157,7 +150,7 @@ public class Doc
     [Fact]
     public void An_unmapped_property_is_NOT_emitted_as_a_text_column_which_is_the_fallback_being_closed()
     {
-        var (_, generated) = Run(@"
+        var (_, generated, output) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -165,15 +158,15 @@ public class Doc
     public TimeSpan Elapsed { get; set; }
 }");
 
-        var createAll = CreateAllOf(generated);
+        var createAll = CreateAllOf(output);
         Assert.DoesNotContain("elapsed", createAll, StringComparison.OrdinalIgnoreCase);
-        Assert.Contains("\\\"id\\\" uuid", createAll);
+        Assert.Contains("\"id\" uuid", createAll);
     }
 
     [Fact]
     public void The_refusal_names_the_ONE_property_that_is_unmapped_and_not_its_mapped_neighbours()
     {
-        var (diagnostics, _) = Run(@"
+        var (diagnostics, _, _) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -190,19 +183,19 @@ public class Doc
     }
 
     [Theory]
-    [InlineData("string Title { get; set; } = \"\";", "\\\"title\\\" text")]
-    [InlineData("int Rank { get; set; }", "\\\"rank\\\" integer")]
-    [InlineData("long Size { get; set; }", "\\\"size\\\" bigint")]
-    [InlineData("bool Live { get; set; }", "\\\"live\\\" boolean")]
-    [InlineData("double Ratio { get; set; }", "\\\"ratio\\\" double precision")]
-    [InlineData("decimal Cost { get; set; }", "\\\"cost\\\" numeric(12,4)")]
-    [InlineData("DateTime At { get; set; }", "\\\"at\\\" timestamp with time zone")]
-    [InlineData("DateOnly Day { get; set; }", "\\\"day\\\" date")]
-    [InlineData("Guid Owner { get; set; }", "\\\"owner\\\" uuid")]
+    [InlineData("string Title { get; set; } = \"\";", "\"title\" text")]
+    [InlineData("int Rank { get; set; }", "\"rank\" integer")]
+    [InlineData("long Size { get; set; }", "\"size\" bigint")]
+    [InlineData("bool Live { get; set; }", "\"live\" boolean")]
+    [InlineData("double Ratio { get; set; }", "\"ratio\" double precision")]
+    [InlineData("decimal Cost { get; set; }", "\"cost\" numeric(12, 4)")]
+    [InlineData("DateTime At { get; set; }", "\"at\" timestamp with time zone")]
+    [InlineData("DateOnly Day { get; set; }", "\"day\" date")]
+    [InlineData("Guid Owner { get; set; }", "\"owner\" uuid")]
     public void Every_type_that_was_mapped_before_this_ticket_still_maps_to_the_same_SQL_type(
         string declaration, string expectedColumn)
     {
-        var (diagnostics, generated) = Run(@"
+        var (diagnostics, generated, output) = Run(@"
 [Table(""docs"")]
 public class Doc
 {
@@ -211,7 +204,26 @@ public class Doc
 }");
 
         Assert.Empty(diagnostics);
-        Assert.Contains(expectedColumn, CreateAllOf(generated));
+        Assert.Contains(expectedColumn, CreateAllOf(output));
+    }
+
+    [Theory(DisplayName = "a [Numeric] decimal property declares its own precision and scale, in the table and in the descriptor, and an undeclared one keeps 12 and 4")]
+    [InlineData("[Numeric(19, 2)]", "\"cost\" numeric(19, 2)", "Nodes.ColumnType.Decimal, false, false, 19, 2")]
+    [InlineData("[Numeric(28, 10)]", "\"cost\" numeric(28, 10)", "Nodes.ColumnType.Decimal, false, false, 28, 10")]
+    [InlineData("", "\"cost\" numeric(12, 4)", "Nodes.ColumnType.Decimal, false, false)")]
+    public void A_numeric_attribute_declares_the_decimal_shape(string attribute, string expectedColumn, string expectedDescriptor)
+    {
+        var (diagnostics, generated, output) = Run(@"
+[Table(""docs"")]
+public class Doc
+{
+    [Key] public Guid Id { get; set; }
+    " + attribute + @" public decimal Cost { get; set; }
+}");
+
+        Assert.Empty(diagnostics);
+        Assert.Contains(expectedColumn, CreateAllOf(output));
+        Assert.Contains(expectedDescriptor, generated, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -226,13 +238,7 @@ public class Doc
     [Key] public Guid Id { get; set; }
 }");
 
-        var references = AppDomain.CurrentDomain.GetAssemblies()
-            .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
-            .Select(a => (MetadataReference)MetadataReference.CreateFromFile(a.Location))
-            .Distinct()
-            .ToList();
-
-        var compilation = CSharpCompilation.Create("JsonbUnresolved", new[] { tree }, references,
+        var compilation = CSharpCompilation.Create("JsonbUnresolved", new[] { tree }, GeneratorReferences.All,
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
         Assert.Contains(compilation.GetDiagnostics(), d => d.Id == "CS0246");
@@ -246,10 +252,8 @@ public class Doc
     }
 
     [Fact]
-    public void The_SQL_type_the_generator_emits_and_the_one_the_migration_builder_writes_are_ONE_string()
+    public void The_generator_names_the_jsonb_clr_type_the_runtime_defines()
     {
-        Assert.Equal(Jsonb.ColumnType, OrmGenerator.JsonbSqlType);
-        Assert.Equal(Jsonb.EmptyDocumentDefaultSql, OrmGenerator.JsonbEmptyDocumentDefaultSql);
         Assert.Equal(OrmGenerator.JsonbClrTypeName, typeof(Jsonb).FullName);
     }
 }

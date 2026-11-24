@@ -1,0 +1,9 @@
+#1 BEGIN conn=1 source=primary
+#2 ExecuteScalar conn=1 source=primary tx=true
+    sql:
+        SELECT max(id) FROM row_history WHERE source_table = @t AND row_id = @id AND EXISTS (SELECT 1 FROM "corpus_tasks" r WHERE r."id" = @id AND r."tenant_id" = @w)
+    @t = String "corpus_tasks"
+    @id = Guid a0000000-0000-0000-0000-00000000000a
+    @w = Guid 10000000-0000-0000-0000-000000000001
+-- outcome
+threw System.InvalidOperationException: no history row for corpus_tasks a0000000-0000-0000-0000-00000000000a

@@ -1,0 +1,6 @@
+#1 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT "rank" FROM "corpus_tasks" WHERE "deleted_at" IS NULL AND "name" = @p0 LIMIT 1
+    @p0 = String "n"
+-- outcome
+Int32 7

@@ -1,0 +1,4 @@
+[0] CREATE VIEW "corpus_view" AS SELECT "corpus_notes"."id" AS "id", s0."label" AS "title", "corpus_notes"."rank" AS "rank" FROM "corpus_notes" JOIN "corpus_tags" s0 ON (s0."note_id" = "corpus_notes"."id" AND s0."position" = 1)
+[1] COMMENT ON VIEW "corpus_view" IS '389eaeb853c8ec52'
+[2] CREATE VIEW "corpus_totals" AS SELECT count(*) AS "items", COALESCE(SUM(COALESCE("corpus_notes"."views", 0)), 0) AS "points", min("corpus_notes"."rank") AS "smallest" FROM "corpus_notes" WHERE "corpus_notes"."active" = true
+[3] COMMENT ON VIEW "corpus_totals" IS '1bbba832ed2eb1f9'

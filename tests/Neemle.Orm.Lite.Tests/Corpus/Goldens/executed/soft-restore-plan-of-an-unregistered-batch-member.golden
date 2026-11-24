@@ -1,0 +1,20 @@
+#1 BEGIN conn=1 source=primary
+#2 ExecuteReader conn=1 source=primary tx=true
+    sql:
+        SELECT op, xact_id, changed_at FROM row_history WHERE source_table = @t AND row_id = @id AND EXISTS (SELECT 1 FROM "corpus_tasks" r WHERE r."id" = @id AND r."tenant_id" = @w) ORDER BY id DESC LIMIT 1
+    @t = String "corpus_tasks"
+    @id = Guid a0000000-0000-0000-0000-00000000000a
+    @w = Guid 10000000-0000-0000-0000-000000000001
+#3 ExecuteReader conn=1 source=primary tx=true
+    sql:
+        SELECT h.source_table, h.row_id FROM row_history h WHERE h.tenant_id IS NOT DISTINCT FROM @w::uuid AND h.xact_id = @x AND h.changed_at = @c AND h.op = 'soft_delete' AND NOT EXISTS (SELECT 1 FROM row_history h2 WHERE h2.source_table = h.source_table AND h2.row_id = h.row_id AND h2.id > h.id)
+    @w = Guid 10000000-0000-0000-0000-000000000001
+    @x = Int64 77
+    @c = DateTime 2026-03-04T05:06:07.0000000Z
+#4 ExecuteReader conn=1 source=primary tx=true
+    sql:
+        SELECT "id", "tenant_id", "project_id" FROM "corpus_tasks" WHERE "id" = ANY(@ids) AND "tenant_id" = @w AND "deleted_at" IS NOT NULL ORDER BY "id" FOR UPDATE
+    @ids = Guid[] count=1 { Guid a0000000-0000-0000-0000-00000000000a }
+    @w = Guid 10000000-0000-0000-0000-000000000001
+-- outcome
+threw Neemle.Orm.Lite.SoftRestoreException: no soft-delete registry entry for table unknown_table; the batch cannot be restored whole

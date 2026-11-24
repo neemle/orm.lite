@@ -1,0 +1,3 @@
+-- refusal
+type: System.NotSupportedException
+message: Cannot compare the enum column Status (CorpusStatus) with >: enums are stored as their member NAME, so the database would rank the names as text, alphabetically and not by value, and the range would silently select the wrong rows. Nothing was executed. Compare with == or != (or Contains) against the members you mean, or read the rows and compare the enum values in memory.

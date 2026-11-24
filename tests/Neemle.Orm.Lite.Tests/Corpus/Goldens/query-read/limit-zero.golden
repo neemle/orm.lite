@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" LIMIT 0 OFFSET 0
+-- parameters (0)

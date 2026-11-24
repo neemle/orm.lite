@@ -1,0 +1,12 @@
+[0] Quote(plain) = "notes"
+[1] Quote(embedded quote) = "we""ird"
+[2] Quote(empty) = ""
+[3] Param(0) = @p0
+[4] Param(12) = @p12
+[5] Page(null, null) = ""
+[6] Page(5, null) = " LIMIT 5"
+[7] Page(null, 7) = " OFFSET 7"
+[8] Page(5, 7) = " LIMIT 5 OFFSET 7"
+[9] Page(0, 0) = " LIMIT 0 OFFSET 0"
+[10] MaxBindParameters = 65535
+[11] PingStatement = SELECT 1

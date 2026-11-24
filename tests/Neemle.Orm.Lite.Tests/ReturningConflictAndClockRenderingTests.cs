@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Neemle.Orm.Lite;
@@ -20,7 +19,7 @@ public class ReturningConflictAndClockRenderingTests
 
     private static string Col(string property) => property.ToLowerInvariant();
 
-    private static OrmContext Pg() => new(new UnreachableDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new UnreachableDataSource(), new PgDialect());
 
     private static Query<FixtureWidget> Widgets() =>
         new(Pg(), _ => throw new NotSupportedException());
@@ -127,11 +126,11 @@ public class ReturningConflictAndClockRenderingTests
     public void ThenBy_appends_and_OrderBy_resets()
     {
         Assert.Equal(
-            "SELECT \"name\" FROM \"fixture_widgets\" ORDER BY \"rank\" ASC, \"name\" DESC",
+            "SELECT \"name\" FROM \"fixture_widgets\" ORDER BY \"rank\" ASC NULLS LAST, \"name\" DESC NULLS LAST",
             Widgets().OrderBy(w => w.Rank).ThenByDescending(w => w.Name).RenderProject([w => w.Name]));
 
         Assert.Equal(
-            "SELECT \"name\" FROM \"fixture_widgets\" ORDER BY \"name\" ASC",
+            "SELECT \"name\" FROM \"fixture_widgets\" ORDER BY \"name\" ASC NULLS LAST",
             Widgets().OrderBy(w => w.Rank).ThenBy(w => w.Name).OrderBy(w => w.Name).RenderProject([w => w.Name]));
     }
 
@@ -140,7 +139,7 @@ public class ReturningConflictAndClockRenderingTests
     {
         var source = new UnreachableDataSource();
         var q = new Query<FixtureWidget>(
-            new OrmContext(source, new PgDialect()), _ => throw new NotSupportedException());
+            TestContext.Of(source, new PgDialect()), _ => throw new NotSupportedException());
 
         q.Where(w => w.Rank == 1).RenderDeleteReturning([w => w.Id]);
         Assert.Equal(0, source.Touches);
@@ -154,19 +153,8 @@ public class ReturningConflictAndClockRenderingTests
     public void A_dialect_without_returning_refuses_delete_returning()
     {
         var q = new Query<FixtureWidget>(
-            new OrmContext(new UnreachableDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
+            TestContext.Of(new UnreachableDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
 
         Assert.Throws<NotSupportedException>(() => q.Where(w => w.Rank == 1).RenderDeleteReturning([w => w.Id]));
-    }
-
-    private sealed class UnreachableDataSource : DbDataSource
-    {
-        public int Touches { get; private set; }
-        public override string ConnectionString => "fake://returning";
-        protected override DbConnection CreateDbConnection()
-        {
-            Touches++;
-            throw new InvalidOperationException("this fixture must not open a connection.");
-        }
     }
 }

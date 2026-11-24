@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE NOT (EXISTS (SELECT 1 FROM "corpus_tags" s0 WHERE s0."note_id" = "corpus_notes"."id"))
+-- parameters (0)

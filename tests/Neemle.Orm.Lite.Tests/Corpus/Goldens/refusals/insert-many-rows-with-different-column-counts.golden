@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: every row of an InsertManyAsync must name the SAME columns; a row naming a different set would bind a value into the wrong column rather than fail. (Parameter 'rows')

@@ -11,37 +11,40 @@ public sealed class LiveOnlyIndexGeneratorTests
         + "{ [Key] public Guid Id { get; set; } public string Scope { get; set; } = \"\"; public string Name { get; set; } = \"\"; public DateTime? DeletedAt { get; set; } }\n";
 
     private static string Statement(string name, string table, string unique, string where) =>
-        $"CREATE {unique}INDEX IF NOT EXISTS \\\"{name}\\\" ON \\\"{table}\\\" (\\\"scope\\\", \\\"name\\\"){where}";
+        $"CREATE {unique}INDEX IF NOT EXISTS \"{name}\" ON \"{table}\" (\"scope\", \"name\"){where}";
+
+    private static IReadOnlyList<string> Indexes(Compilation output) => GeneratedModel.Render(GeneratedModel.Of(output).Schema.Indexes());
 
     [Fact(DisplayName = "AC1 a LiveOnly unique index on a soft entity is emitted as a partial unique index over the live rows under a _live name")]
     public void A_live_only_index_is_a_partial_unique_index_under_a_live_name()
     {
-        var (diagnostics, generated, _) = Run(Entity("Doc", "docs", "[Index(\"Scope\", \"Name\", Unique = true, LiveOnly = true)]"));
+        var (diagnostics, _, output) = Run(Entity("Doc", "docs", "[Index(\"Scope\", \"Name\", Unique = true, LiveOnly = true)]"));
 
         Assert.Empty(diagnostics);
-        Assert.Contains(Statement("ix_docs_scope_name_live", "docs", "UNIQUE ", " WHERE \\\"deleted_at\\\" IS NULL"), generated);
+        Assert.Contains(Statement("ix_docs_scope_name_live", "docs", "UNIQUE ", " WHERE \"deleted_at\" IS NULL"), Indexes(output));
     }
 
     [Fact(DisplayName = "AC2 an index that is not LiveOnly is emitted exactly as before: no WHERE and no _live name")]
     public void A_plain_index_carries_no_predicate()
     {
-        var (diagnostics, generated, _) = Run(Entity("Doc", "docs",
+        var (diagnostics, _, output) = Run(Entity("Doc", "docs",
             "[Index(\"Scope\", \"Name\", Unique = true)] [Index(\"Name\", \"Scope\")]"));
 
         Assert.Empty(diagnostics);
-        Assert.Contains(Statement("ix_docs_scope_name", "docs", "UNIQUE ", ""), generated);
-        Assert.Contains("CREATE INDEX IF NOT EXISTS \\\"ix_docs_name_scope\\\" ON \\\"docs\\\" (\\\"name\\\", \\\"scope\\\")", generated);
-        Assert.DoesNotContain("_live", generated);
-        Assert.DoesNotContain(") WHERE ", generated);
+        var indexes = Indexes(output);
+        Assert.Contains(Statement("ix_docs_scope_name", "docs", "UNIQUE ", ""), indexes);
+        Assert.Contains("CREATE INDEX IF NOT EXISTS \"ix_docs_name_scope\" ON \"docs\" (\"name\", \"scope\")", indexes);
+        Assert.DoesNotContain(indexes, s => s.Contains("_live", StringComparison.Ordinal));
+        Assert.DoesNotContain(indexes, s => s.Contains(") WHERE ", StringComparison.Ordinal));
     }
 
     [Fact(DisplayName = "AC1 an explicit Name on a LiveOnly index is used as given")]
     public void An_explicit_name_is_kept_on_a_live_only_index()
     {
-        var (diagnostics, generated, _) = Run(Entity("Doc", "docs", "[Index(\"Scope\", \"Name\", Unique = true, LiveOnly = true, Name = \"uq_docs_live\")]"));
+        var (diagnostics, _, output) = Run(Entity("Doc", "docs", "[Index(\"Scope\", \"Name\", Unique = true, LiveOnly = true, Name = \"uq_docs_live\")]"));
 
         Assert.Empty(diagnostics);
-        Assert.Contains(Statement("uq_docs_live", "docs", "UNIQUE ", " WHERE \\\"deleted_at\\\" IS NULL"), generated);
+        Assert.Contains(Statement("uq_docs_live", "docs", "UNIQUE ", " WHERE \"deleted_at\" IS NULL"), Indexes(output));
     }
 
     [Fact(DisplayName = "AC3 ORMLITE004 refuses a LiveOnly index on an entity that is not [SoftDelete], naming the entity and the index")]

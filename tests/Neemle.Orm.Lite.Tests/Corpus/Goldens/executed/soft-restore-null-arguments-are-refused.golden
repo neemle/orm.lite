@@ -1,0 +1,7 @@
+#1 BEGIN conn=1 source=primary
+-- outcome
+PlanAsync null unit of work: System.ArgumentNullException: Value cannot be null. (Parameter 'uow')
+PlanAsync null root: System.ArgumentNullException: Value cannot be null. (Parameter 'root')
+IsDeletedUnderShareLockAsync null entry: System.ArgumentNullException: Value cannot be null. (Parameter 'entry')
+ApplyAsync null context: System.ArgumentNullException: Value cannot be null. (Parameter 'ctx')
+ApplyAsync null plan: System.ArgumentNullException: Value cannot be null. (Parameter 'plan')

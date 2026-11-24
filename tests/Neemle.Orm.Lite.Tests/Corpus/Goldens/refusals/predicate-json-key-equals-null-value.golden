@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentNullException
+message: Db.JsonKeyEquals compares the key's extracted VALUE, and comparing it to NULL matches no row at all rather than refusing. Use Db.JsonHasKey to ask whether the document carries the key -- it answers differently for an absent key and for a key whose value is JSON null, which this comparison cannot. (Parameter 'value')

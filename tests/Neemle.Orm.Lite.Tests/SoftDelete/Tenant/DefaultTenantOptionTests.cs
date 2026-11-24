@@ -22,14 +22,10 @@ public sealed class DefaultTenantOptionTests
     private static (ImmutableArray<Diagnostic> Diagnostics, string Generated, ImmutableArray<Diagnostic> CompileErrors) Run(
         string source, AnalyzerConfigOptionsProvider options)
     {
-        var references = AppDomain.CurrentDomain.GetAssemblies()
-            .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
-            .Select(a => (MetadataReference)MetadataReference.CreateFromFile(a.Location))
-            .ToList();
         var compilation = CSharpCompilation.Create(
             "DefaultTenantFixture",
             [CSharpSyntaxTree.ParseText(Header + source)],
-            references,
+            GeneratorReferences.All,
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, nullableContextOptions: NullableContextOptions.Enable));
 
         var driver = CSharpGeneratorDriver.Create([new OrmGenerator().AsSourceGenerator()], null, null, options)

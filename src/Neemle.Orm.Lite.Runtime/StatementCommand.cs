@@ -5,9 +5,15 @@ namespace Neemle.Orm.Lite;
 
     internal static class StatementCommand
     {
-        public static DbCommand Create(DbDataSource ds, DbConnection? conn, DbTransaction? tx, string sql)
+        public static DbCommand Create(DbDataSource ds, DbConnection? conn, DbTransaction? tx, Statement statement)
         {
-            if (conn is null) return ds.CreateCommand(sql);
+            var sql = statement.Text;
+            if (conn is null)
+            {
+                var gated = ds.CreateCommand(sql);
+                if (gated is GatedDataSource.GatedCommand command) command.Kind = statement.Kind;
+                return gated;
+            }
             var cmd = conn.CreateCommand();
             cmd.CommandText = sql;
             cmd.Transaction = tx;

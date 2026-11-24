@@ -1,0 +1,5 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE (CASE WHEN pg_input_is_valid(("payload" ->> @p0), 'boolean') THEN ("payload" ->> @p0) END)::boolean = (CASE WHEN pg_input_is_valid(@p1, 'boolean') THEN @p1 END)::boolean
+-- parameters (2)
+[0] String "flag"
+[1] String "true"

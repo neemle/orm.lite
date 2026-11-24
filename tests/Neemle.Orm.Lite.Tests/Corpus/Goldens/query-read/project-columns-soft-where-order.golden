@@ -1,0 +1,4 @@
+-- sql
+SELECT "id", "rank" FROM "corpus_tasks" WHERE "deleted_at" IS NULL AND "rank" > @p0 ORDER BY "name" ASC NULLS LAST LIMIT 3
+-- parameters (1)
+[0] Int32 0

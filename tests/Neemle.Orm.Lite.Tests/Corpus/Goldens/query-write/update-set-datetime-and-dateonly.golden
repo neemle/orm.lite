@@ -1,0 +1,6 @@
+-- sql
+UPDATE "corpus_notes" SET "created_at" = @p0, "due" = @p1 WHERE "id" = @p2
+-- parameters (3)
+[0] DateTime 2026-03-04T05:06:07.0000000Z
+[1] DateOnly 2026-07-08
+[2] Guid a0000000-0000-0000-0000-00000000000a

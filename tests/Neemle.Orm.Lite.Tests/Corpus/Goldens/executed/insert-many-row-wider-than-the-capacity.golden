@@ -1,0 +1,2 @@
+-- outcome
+threw System.InvalidOperationException: a row of 3 bound columns exceeds the dialect's capacity of 2 bind parameters per statement.

@@ -1,0 +1,6 @@
+[0] no tables = 55b686441ec82b88
+[1] tenant table = e4071fdc5c0927f5
+[2] platform table = 28d441b68fac0005
+[3] tenant then platform = 3525748bf40af974
+[4] platform then tenant = 7806d68ad12060f7
+[5] version name formula = 9900_orm_history_reconcile_Assembly_e4071fdc5c0927f5

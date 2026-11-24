@@ -1,24 +1,35 @@
 #nullable enable
 using System;
-using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
+using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Data.Common;
+using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite;
 
-    public sealed class OrmContext
+    public sealed class OrmContext : IAsyncDisposable
     {
+        private readonly IReadOnlyList<IAsyncDisposable> _owned;
+
         public DbDataSource DataSource { get; }
-        public ISqlDialect Dialect { get; }
-        public OrmContext(DbDataSource dataSource, ISqlDialect? dialect = null)
-        { DataSource = dataSource; Dialect = dialect ?? new PgDialect(); }
+        public ISqlDialect? Dialect { get; }
+        public ISqlProvider Provider { get; }
+        internal static OrmContext Detached(ISqlProvider provider) => new(null!, provider, null, []);
+
+        public OrmContext(DbDataSource dataSource, ISqlProvider provider, ISqlDialect? dialect = null)
+            : this(dataSource, provider, dialect, [])
+        {
+        }
+
+        internal OrmContext(
+            DbDataSource dataSource, ISqlProvider provider, ISqlDialect? dialect, IReadOnlyList<IAsyncDisposable> owned)
+        {
+            DataSource = dataSource;
+            Provider = provider ?? throw new ArgumentNullException(nameof(provider));
+            Dialect = dialect;
+            _owned = owned;
+        }
 
         public const int PingTimeoutSeconds = 2;
 
@@ -37,10 +48,25 @@ namespace Neemle.Orm.Lite;
             }
         }
 
+        public Task MigrateAsync(CancellationToken ct = default) =>
+            MigrationRunner.RunAsync(DataSource, Provider, OrmMigrationRegistry.Collect(), ct);
+
+        public Task MigrateAsync(IEnumerable<MigrationContribution> contributions, CancellationToken ct = default) =>
+            MigrationRunner.RunAsync(DataSource, Provider, contributions, ct);
+
+        public async ValueTask DisposeAsync()
+        {
+            foreach (var owned in _owned) await owned.DisposeAsync();
+        }
+
+        private string PingText() =>
+            Dialect?.PingStatement
+            ?? StatementCompiler.Compile(new Select([new IntLit(1)]), Provider, StatementKind.Read).Text;
+
         private async Task<bool> PingWithinTheDriversOwnDeadline()
         {
             using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(PingTimeoutSeconds));
-            await using var cmd = DataSource.CreateCommand(Dialect.PingStatement);
+            await using var cmd = DataSource.CreateCommand(PingText());
             cmd.CommandTimeout = PingTimeoutSeconds;
             await cmd.ExecuteScalarAsync(deadline.Token);
             return true;

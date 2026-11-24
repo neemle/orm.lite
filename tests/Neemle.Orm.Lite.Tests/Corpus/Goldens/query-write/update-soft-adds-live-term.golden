@@ -1,0 +1,5 @@
+-- sql
+UPDATE "corpus_tasks" SET "name" = @p0 WHERE "deleted_at" IS NULL AND "tenant_id" = @p1
+-- parameters (2)
+[0] String "n"
+[1] Guid 10000000-0000-0000-0000-000000000001

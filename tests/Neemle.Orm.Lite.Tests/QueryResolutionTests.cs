@@ -39,7 +39,7 @@ public sealed class QueryResolutionTests
         _ => throw new ArgumentOutOfRangeException(nameof(member), member, "Unknown FixtureDocument member."),
     };
 
-    private static OrmContext Pg() => new(new NeverUsedDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), new PgDialect());
 
     private static Func<DbDataReader, TRow> NoRows<TRow>() =>
         _ => throw new NotSupportedException("no rows are read here");

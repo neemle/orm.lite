@@ -1,0 +1,4 @@
+-- sql
+SELECT "title", count(*) FILTER (WHERE ("active" = true)) FROM "corpus_notes" GROUP BY "title" HAVING count(*) FILTER (WHERE ("active" = true)) >= @p0 ORDER BY "title" DESC NULLS LAST
+-- parameters (1)
+[0] Int64 2

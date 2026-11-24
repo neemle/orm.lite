@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: this JsonKey was never constructed: it is `default` and carries no key.

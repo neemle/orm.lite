@@ -1,0 +1,8 @@
+-- sql
+INSERT INTO "corpus_tasks" ("id", "tenant_id", "name", "rank") VALUES (@p0, @p1, @p2, @p3) ON CONFLICT ("tenant_id", "name") WHERE "deleted_at" IS NULL DO UPDATE SET "rank" = @p4 WHERE "corpus_tasks"."deleted_at" IS NULL
+-- parameters (5)
+[0] Guid a0000000-0000-0000-0000-00000000000a
+[1] Guid 10000000-0000-0000-0000-000000000001
+[2] String "n"
+[3] Int32 2
+[4] Int32 2

@@ -1,0 +1,8 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT * FROM "corpus_notes" ORDER BY "title" ASC NULLS LAST
+#2 ExecuteReader conn=2 source=primary tx=false
+    sql:
+        SELECT * FROM "corpus_notes" LIMIT 1
+-- outcome
+a0000000-0000-0000-0000-00000000000a:first, b0000000-0000-0000-0000-00000000000b:second first=first

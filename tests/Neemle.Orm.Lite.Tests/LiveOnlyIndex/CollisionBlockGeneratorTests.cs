@@ -1,4 +1,3 @@
-using System.Runtime.Loader;
 using Microsoft.CodeAnalysis;
 using Xunit;
 using static Neemle.Orm.Lite.Tests.MigrationReversibility.MigrationGeneratorRun;
@@ -12,16 +11,6 @@ public sealed class CollisionBlockGeneratorTests
     private static string Entity(string indexes) =>
         $"[Table(\"live_only_scoped\")] [SoftDelete(Tenant = SoftDeleteAttribute.Platform)] {indexes} public class Doc "
         + "{ [Key] public Guid Id { get; set; } public string Scope { get; set; } = \"\"; public string Name { get; set; } = \"\"; public string Code { get; set; } = \"\"; public DateTime? DeletedAt { get; set; } }\n";
-
-    private static Type SchemaOf(Compilation output)
-    {
-        using var stream = new MemoryStream();
-        var emitted = output.Emit(stream);
-        Assert.True(emitted.Success, string.Join("\n", emitted.Diagnostics.Where(d => d.Severity == DiagnosticSeverity.Error)));
-        stream.Position = 0;
-        var assembly = AssemblyLoadContext.Default.LoadFromStream(stream);
-        return assembly.GetType("Neemle.Orm.Lite.Generated." + output.AssemblyName + "Schema", throwOnError: true)!;
-    }
 
     private static string Fnv1a64(IEnumerable<string> statements)
     {
@@ -42,13 +31,15 @@ public sealed class CollisionBlockGeneratorTests
         }
     }
 
+    private static IReadOnlyList<string> Reconcile(Compilation output) => GeneratedModel.Render([GeneratedModel.Of(output).Schema.Reconcile()]);
+
     [Fact(DisplayName = "AC5: the reconcile list of a LiveOnly index holds exactly one collision block, immediately after that index's guard statement, naming the table, the key columns and the live index")]
     public void A_live_only_index_is_followed_by_one_collision_block()
     {
         var (diagnostics, _, output) = Run(Entity("[Index(\"Scope\", \"Name\", Unique = true, LiveOnly = true)] [Index(\"Scope\", \"Code\", Unique = true)]"));
         Assert.Empty(diagnostics);
 
-        var reconcile = (string[])SchemaOf(output).GetField("ReconcileIndexes")!.GetValue(null)!;
+        var reconcile = Reconcile(output).ToArray();
 
         var block = Assert.Single(reconcile, s => s.Contains(CollisionMarker, StringComparison.Ordinal));
         var at = Array.IndexOf(reconcile, block);
@@ -66,7 +57,7 @@ public sealed class CollisionBlockGeneratorTests
         var (diagnostics, _, output) = Run(Entity("[Index(\"Scope\", \"Name\", Unique = true)] [Index(\"Scope\", \"Code\")]"));
         Assert.Empty(diagnostics);
 
-        var reconcile = (string[])SchemaOf(output).GetField("ReconcileIndexes")!.GetValue(null)!;
+        var reconcile = Reconcile(output);
 
         Assert.NotEmpty(reconcile);
         Assert.DoesNotContain(reconcile, s => s.Contains(CollisionMarker, StringComparison.Ordinal));
@@ -77,12 +68,11 @@ public sealed class CollisionBlockGeneratorTests
     {
         var (diagnostics, _, output) = Run(Entity("[Index(\"Scope\", \"Name\", Unique = true, LiveOnly = true)] [Index(\"Scope\", \"Code\", Unique = true)]"));
         Assert.Empty(diagnostics);
-        var schema = SchemaOf(output);
+        var model = GeneratedModel.Of(output);
 
-        var creates = (string[])schema.GetField("CreateIndexes")!.GetValue(null)!;
-        var reconcile = (string[])schema.GetField("ReconcileIndexes")!.GetValue(null)!;
+        var creates = GeneratedModel.Render(model.Schema.Indexes());
 
-        Assert.Contains(reconcile, s => s.Contains(CollisionMarker, StringComparison.Ordinal));
-        Assert.Equal(Fnv1a64(creates), (string)schema.GetField("IndexSetHash")!.GetRawConstantValue()!);
+        Assert.Contains(GeneratedModel.Render([model.Schema.Reconcile()]), s => s.Contains(CollisionMarker, StringComparison.Ordinal));
+        Assert.Equal(Fnv1a64(creates), model.Schema.IndexSetHash);
     }
 }

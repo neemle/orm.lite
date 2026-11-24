@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_platform_items" WHERE "deleted_at" IS NULL
+-- parameters (0)

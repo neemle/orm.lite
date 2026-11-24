@@ -1,0 +1,6 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT t FROM unnest(@tables::text[]) AS t WHERE EXISTS (SELECT 1 FROM pg_class c WHERE c.oid = to_regclass(quote_ident(t)) AND c.relkind IN ('p', 'r'))
+    @tables = String[] count=4 { String "corpus_tasks", String "corpus_platform_items", String "corpus_projects", String "corpus_no_keys" }
+-- outcome
+hasMore=False skipped=[corpus_no_keys,corpus_platform_items,corpus_projects,corpus_tasks] rows=[]

@@ -1,0 +1,5 @@
+-- sql
+SELECT ("title" = @p0) FROM "corpus_notes" WHERE "title" = @p1
+-- parameters (2)
+[0] String "projected"
+[1] String "filtered"

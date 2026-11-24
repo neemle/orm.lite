@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite;
 
@@ -9,15 +10,19 @@ namespace Neemle.Orm.Lite;
     {
         private int _aliasCount;
 
-        internal RenderState(ISqlDialect dialect, string table, Func<string, string> col, List<object?> parameters)
+        internal RenderState(
+            ISqlDialect? dialect, ISqlProvider provider, string table, Func<string, string> col, List<object?> parameters)
         {
             Dialect = dialect;
+            Provider = provider;
             Table = table;
             Col = col;
             Params = parameters;
         }
 
-        internal ISqlDialect Dialect { get; }
+        internal ISqlDialect? Dialect { get; }
+
+        internal ISqlProvider Provider { get; }
 
         internal string Table { get; }
 
@@ -25,21 +30,81 @@ namespace Neemle.Orm.Lite;
 
         internal List<object?> Params { get; }
 
+        // Redact and RedactWhen: the column (by its SQL name) to what the query returns in its place.
+        internal Dictionary<string, Node> Redactions { get; } = new();
+
         internal int ParamBase { get; set; }
 
-        internal Dictionary<ParameterExpression, (string Q, Func<string, string> Col)> Scope { get; } = new();
+        internal bool Qualified { get; set; }
+
+        internal Dictionary<ParameterExpression, (Node? Owner, Func<string, string> Col)> Scope { get; } = new();
 
         internal string NextAlias() => "s" + _aliasCount++;
 
-        internal string Slot(int index) => Dialect.Param(ParamBase + index);
+        internal int AliasMark => _aliasCount;
 
-        internal string NextSlot() => Slot(Params.Count - 1);
+        // Runs a translation that has pushed `parameters` into Scope. They leave the scope however it ends, and when
+        // it throws the parameters it bound and the aliases it took (back to `aliasMark`) are given back, so the same
+        // query renders and executes as if the failed call had not been made.
+        internal T Scoped<T>(IReadOnlyList<ParameterExpression> parameters, int aliasMark, Func<T> translate)
+        {
+            var bound = Params.Count;
+            try
+            {
+                return translate();
+            }
+            catch
+            {
+                _aliasCount = aliasMark;
+                Params.RemoveRange(bound, Params.Count - bound);
+                throw;
+            }
+            finally
+            {
+                foreach (var p in parameters) Scope.Remove(p);
+            }
+        }
+
+        internal (int Aliases, int Parameters) Mark() => (_aliasCount, Params.Count);
+
+        internal void Rewind((int Aliases, int Parameters) mark)
+        {
+            _aliasCount = mark.Aliases;
+            Params.RemoveRange(mark.Parameters, Params.Count - mark.Parameters);
+        }
+
+        internal string DialectName => Dialect?.GetType().Name ?? Provider.Id;
+
+        internal bool Allows(Capability capability, Func<ISqlDialect, bool> legacy) =>
+            Dialect is null ? Provider.Capabilities.Of(capability) != Support.None : legacy(Dialect);
+
+        internal int MaxBindParameters => Dialect?.MaxBindParameters ?? Provider.MaxBindParameters;
+
+        internal string Quote(string identifier) =>
+            Dialect?.Quote(identifier) ?? Provider.CreateSerializer().Fragment(new ColumnRef(identifier));
+
+        internal string Slot(int index) =>
+            Dialect?.Param(ParamBase + index) ?? Provider.CreateSerializer().Fragment(new Param(ParamBase + index, null));
+
+        internal Param Bind(object? value)
+        {
+            Params.Add(value);
+            return new Param(ParamBase + Params.Count - 1, value);
+        }
+
+        internal Exception Refusal(Capability capability, string operation, string legacy) =>
+            Dialect is null
+                ? new CapabilityNotSupportedException(Provider.Id, operation, capability, Table, legacy)
+                : new NotSupportedException(legacy);
+
+        internal string Text(Node node) => Provider.CreateSerializer().Fragment(node);
 
         internal void RequireJsonDocumentDialect(string what)
         {
-            if (!Dialect.SupportsJsonDocument)
-                throw new NotSupportedException(
-                    $"{Dialect.GetType().Name} has no JSON document type, so it cannot {what}; a statement "
+            if (!Allows(Capability.JsonDocument, d => d.SupportsJsonDocument))
+                throw Refusal(
+                    Capability.JsonDocument, what,
+                    $"{DialectName} has no JSON document type, so it cannot {what}; a statement "
                     + "emitted anyway would carry PostgreSQL syntax to a server that cannot parse it.");
         }
 
@@ -49,15 +114,21 @@ namespace Neemle.Orm.Lite;
                 "a JSON key must be a string; a null key binds SQL NULL and every row then fails to "
                 + "match, which is an empty result rather than a refusal.");
 
-        internal string ValueSlot(object? value, string slot)
+        internal Node ValueOf(object? value, Param parameter)
         {
-            if (value is not Jsonb) return slot;
+            if (value is not Jsonb) return parameter;
             RequireJsonDocumentDialect("bind a JSON document");
-            return Dialect.JsonDocumentParameter(slot);
+            return new Cast(parameter, CastType.Json);
         }
 
-        internal string LiveTermOf(Type other, string alias, Func<string, string> col) =>
+        internal Node BindValue(object? value)
+        {
+            if (value is Jsonb) RequireJsonDocumentDialect("bind a JSON document");
+            return ValueOf(value, Bind(value));
+        }
+
+        internal Node? LiveTermOf(Type other, string alias, Func<string, string> col) =>
             OrmMeta.TryGetSoftDelete(other, out var soft)
-                ? " AND " + SoftDeleteSql.LiveTerm(Dialect, col(soft.Column), alias)
-                : "";
+                ? new IsNull(new ColumnRef(col(soft.Column), new AliasRef(alias)))
+                : null;
     }

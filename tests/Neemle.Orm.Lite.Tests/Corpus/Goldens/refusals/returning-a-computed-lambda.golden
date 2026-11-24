@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: a column lambda must select a member of its parameter, as in e => e.Name. (Parameter 'column')

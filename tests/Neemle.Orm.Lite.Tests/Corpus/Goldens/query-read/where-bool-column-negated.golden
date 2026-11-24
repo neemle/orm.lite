@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "active" = false
+-- parameters (0)

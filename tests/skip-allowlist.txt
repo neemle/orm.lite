@@ -1,0 +1,11 @@
+# Tests that are skipped ON PURPOSE, one per line: <class>.<test method> TAB <reason>.
+# The skip gate (scripts/SkipGate.cs) fails the test job on any skipped test that is not listed here, and on any
+# listed test that did not skip. A test that can run on PostgreSQL never belongs here: fix it or file a bug.
+# Written by hand from the test source, never captured from a run. Class and method are compared byte for byte.
+# Each entry's full explanation sits in the '#' lines above it; the reason on the entry line is a short label.
+# IndexSuite.cs, the Skip.IfNot(Sqlite, ...) test: PostgreSQL accepts any collation name and the server refuses an
+# unknown one, so the by-name refusal exists on SQLite only.
+Neemle.Orm.Lite.Tests.Behaviour.PostgresIndexTests.An_unknown_sqlite_collation_is_refused_by_name	SQLite-only by design
+# ScalarSuite.cs, Skip.IfNot sqlite: PostgreSQL hands a boolean over as Boolean, so reading it as a number is refused
+# there; the test pins the SQLite reading only.
+Neemle.Orm.Lite.Tests.Behaviour.PostgresScalarTests.A_bool_column_read_as_a_number_returns_one_on_sqlite	SQLite-only

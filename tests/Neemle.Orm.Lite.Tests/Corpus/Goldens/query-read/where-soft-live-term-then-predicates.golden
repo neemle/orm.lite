@@ -1,0 +1,5 @@
+-- sql
+SELECT * FROM "corpus_tasks" WHERE "deleted_at" IS NULL AND "tenant_id" = @p0 AND "rank" >= @p1
+-- parameters (2)
+[0] Guid 10000000-0000-0000-0000-000000000001
+[1] Int32 2

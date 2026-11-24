@@ -18,15 +18,7 @@ public sealed class SoftRestoreException(string message) : InvalidOperationExcep
 
 public static class SoftRestore
 {
-    private const string LatestHistorySql =
-        "SELECT op, xact_id, changed_at FROM row_history WHERE source_table = @t AND row_id = @id ORDER BY id DESC LIMIT 1";
-
-    private const string BatchSql =
-        "SELECT h.source_table, h.row_id FROM row_history h"
-        + " WHERE h.tenant_id IS NOT DISTINCT FROM @w::uuid AND h.xact_id = @x AND h.changed_at = @c AND h.op = 'soft_delete'"
-        + " AND NOT EXISTS (SELECT 1 FROM row_history h2 WHERE h2.source_table = h.source_table AND h2.row_id = h.row_id AND h2.id > h.id)";
-
-    private const string SoftDeleteOp = "soft_delete";
+    private const string SoftDeleteOp = HistoryStatements.SoftDeleteOp;
 
     public static async Task<SoftRestorePlan> PlanAsync(
         UnitOfWork uow, ISoftEntry root, Guid rootId, Guid tenantId)
@@ -34,7 +26,7 @@ public static class SoftRestore
         ArgumentNullException.ThrowIfNull(uow);
         ArgumentNullException.ThrowIfNull(root);
 
-        var (op, xact, changedAt) = await LatestHistoryAsync(uow, root.Table, rootId);
+        var (op, xact, changedAt) = await LatestHistoryAsync(uow, root, rootId, tenantId);
         var batched = string.Equals(op, SoftDeleteOp, StringComparison.Ordinal);
 
         var byTable = new SortedDictionary<string, SortedSet<Guid>>(StringComparer.Ordinal)
@@ -42,26 +34,16 @@ public static class SoftRestore
             [root.Table] = [rootId],
         };
         if (batched)
-            foreach (var (table, id) in await BatchMembersAsync(uow, root.Platform ? null : tenantId, xact!.Value, changedAt!.Value))
-            {
-                if (!byTable.TryGetValue(table, out var ids)) byTable[table] = ids = [];
-                ids.Add(id);
-            }
+            await AddBatchMembersAsync(uow, byTable, root.Platform ? null : tenantId, xact!.Value, changedAt!.Value);
 
-        var entries = OrmMeta.SoftTypedEntries();
-        var rows = new List<SoftRestoreRow>();
-        foreach (var (table, ids) in byTable)
-        {
-            var entry = entries.FirstOrDefault(e => string.Equals(e.Table, table, StringComparison.Ordinal) && e.KeyColumn.Length > 0)
-                ?? throw new SoftRestoreException("no soft-delete registry entry for table " + table + "; the batch cannot be restored whole");
-            if (!SameScope(root, entry)) continue;
-            rows.AddRange(await LockAsync(uow, entry, ids, tenantId));
-        }
+        var rows = await LockTablesAsync(uow, root, byTable, tenantId);
 
-        var rootLocked = rows.Any(r => r.Id == rootId && string.Equals(r.Entry.Table, root.Table, StringComparison.Ordinal));
+        var rootLocked = rows.Any(
+            r => r.Id == rootId && string.Equals(r.Entry.Table, root.Table, StringComparison.Ordinal));
         if (!rootLocked)
             return new SoftRestorePlan([], null, null, await RootStateAsync(uow, root, rootId, tenantId));
-        return new SoftRestorePlan(rows, batched ? xact : null, batched ? changedAt : null, SoftRestoreRootState.Deleted);
+        return new SoftRestorePlan(
+            rows, batched ? xact : null, batched ? changedAt : null, SoftRestoreRootState.Deleted);
     }
 
     public static async Task<bool?> IsDeletedUnderShareLockAsync(
@@ -70,14 +52,11 @@ public static class SoftRestore
         ArgumentNullException.ThrowIfNull(uow);
         ArgumentNullException.ThrowIfNull(entry);
 
-        var sql = "SELECT " + SoftTrashRead.Quote(entry.SoftColumn) + " IS NOT NULL FROM " + SoftTrashRead.Quote(entry.Table)
-            + " WHERE " + SoftTrashRead.Quote(entry.KeyColumn) + " = @k"
-            + (entry.Platform ? "" : " AND " + SoftTrashRead.Quote(entry.TenantColumn!) + " = @w")
-            + " FOR SHARE";
-        await using var cmd = Command(uow, sql);
-        cmd.AddParam("k", key);
-        if (!entry.Platform) cmd.AddParam("w", tenantId);
-        return await cmd.ExecuteScalarAsync() is bool deleted ? deleted : null;
+        var statement = HistoryStatements.Compile(uow.Provider, HistoryStatements.ShareLock(entry, key, tenantId));
+        await using var cmd = HistoryStatements.Command(uow.Connection, uow.Transaction, statement);
+        return await cmd.RunScalarAsync(statement.Kind) is { } deleted and not DBNull
+            ? HistoryReads.Flag(deleted)
+            : null;
     }
 
     public static async Task<int> ApplyAsync(OrmContext ctx, UnitOfWork uow, SoftRestorePlan plan, Guid tenantId)
@@ -87,14 +66,17 @@ public static class SoftRestore
         ArgumentNullException.ThrowIfNull(plan);
 
         var restored = 0;
-        foreach (var group in plan.Rows.GroupBy(r => r.Entry.Table, StringComparer.Ordinal).OrderBy(g => g.Key, StringComparer.Ordinal))
+        var groups = plan.Rows.GroupBy(r => r.Entry.Table, StringComparer.Ordinal)
+            .OrderBy(g => g.Key, StringComparer.Ordinal);
+        foreach (var group in groups)
         {
             var entry = group.First().Entry;
             var ids = group.Select(r => r.Id).ToList();
             var affected = await entry.Accept(new RestoreVisitor(ctx, uow, ids, entry.Platform ? null : tenantId));
             if (affected != ids.Count)
                 throw new SoftRestoreException(
-                    "restore of " + entry.Table + " changed " + affected + " of " + ids.Count + " locked rows; nothing is committed");
+                    "restore of " + entry.Table + " changed " + affected + " of " + ids.Count
+                    + " locked rows; nothing is committed");
             restored += affected;
         }
         return restored;
@@ -112,31 +94,55 @@ public static class SoftRestore
     private static bool SameScope(ISoftEntry root, ISoftEntry other) =>
         root.Platform == other.Platform
         && (root.TenantColumn is not null && string.Equals(root.TenantColumn, root.KeyColumn, StringComparison.Ordinal))
-            == (other.TenantColumn is not null && string.Equals(other.TenantColumn, other.KeyColumn, StringComparison.Ordinal));
+            == (other.TenantColumn is not null
+                && string.Equals(other.TenantColumn, other.KeyColumn, StringComparison.Ordinal));
 
     private static async Task<(string? Op, long? Xact, DateTime? ChangedAt)> LatestHistoryAsync(
-        UnitOfWork uow, string table, Guid rowId)
+        UnitOfWork uow, ISoftEntry root, Guid rowId, Guid tenantId)
     {
-        await using var cmd = Command(uow, LatestHistorySql);
-        cmd.AddParam("t", table);
-        cmd.AddParam("id", rowId);
-        await using var reader = await cmd.ExecuteReaderAsync();
+        var statement = HistoryStatements.Compile(uow.Provider, HistoryStatements.LatestVersion(root, rowId, tenantId));
+        await using var cmd = HistoryStatements.Command(uow.Connection, uow.Transaction, statement);
+        await using var reader = await cmd.RunReaderAsync(statement.Kind);
         if (!await reader.ReadAsync()) return (null, null, null);
-        return (
-            reader.GetFieldValue<string>(0),
-            reader.GetFieldValue<long>(1),
-            DateTime.SpecifyKind(reader.GetFieldValue<DateTime>(2), DateTimeKind.Utc));
+        return (reader.GetFieldValue<string>(0), reader.GetFieldValue<long>(1), HistoryReads.Instant(reader, 2));
+    }
+
+    private static async Task<List<SoftRestoreRow>> LockTablesAsync(
+        UnitOfWork uow, ISoftEntry root, SortedDictionary<string, SortedSet<Guid>> byTable, Guid tenantId)
+    {
+        var entries = OrmMeta.SoftTypedEntries();
+        var rows = new List<SoftRestoreRow>();
+        foreach (var (table, ids) in byTable)
+        {
+            var entry = entries.FirstOrDefault(
+                    e => string.Equals(e.Table, table, StringComparison.Ordinal) && e.KeyColumn.Length > 0)
+                ?? throw new SoftRestoreException(
+                    "no soft-delete registry entry for table " + table + "; the batch cannot be restored whole");
+            if (!SameScope(root, entry)) continue;
+            rows.AddRange(await LockAsync(uow, entry, ids, tenantId));
+        }
+        return rows;
+    }
+
+    private static async Task AddBatchMembersAsync(
+        UnitOfWork uow, SortedDictionary<string, SortedSet<Guid>> byTable, Guid? tenantId, long xact,
+        DateTime changedAt)
+    {
+        foreach (var (table, id) in await BatchMembersAsync(uow, tenantId, xact, changedAt))
+        {
+            if (!byTable.TryGetValue(table, out var ids)) byTable[table] = ids = [];
+            ids.Add(id);
+        }
     }
 
     private static async Task<List<(string Table, Guid Id)>> BatchMembersAsync(
         UnitOfWork uow, Guid? tenantId, long xact, DateTime changedAt)
     {
         var members = new List<(string, Guid)>();
-        await using var cmd = Command(uow, BatchSql);
-        cmd.AddParam("w", tenantId);
-        cmd.AddParam("x", xact);
-        cmd.AddParam("c", changedAt);
-        await using var reader = await cmd.ExecuteReaderAsync();
+        var statement = HistoryStatements.Compile(
+            uow.Provider, HistoryStatements.BatchMembers(tenantId, xact, changedAt));
+        await using var cmd = HistoryStatements.Command(uow.Connection, uow.Transaction, statement);
+        await using var reader = await cmd.RunReaderAsync(statement.Kind);
         while (await reader.ReadAsync())
             members.Add((reader.GetFieldValue<string>(0), reader.GetFieldValue<Guid>(1)));
         return members;
@@ -153,34 +159,23 @@ public static class SoftRestore
                 ownerColumns.Add(typed);
         }
 
-        var selected = string.Join(", ", new[] { entry.KeyColumn }.Concat(ownerColumns).Select(SoftTrashRead.Quote));
-        var sql = "SELECT " + selected + " FROM " + SoftTrashRead.Quote(entry.Table)
-            + " WHERE " + SoftTrashRead.Quote(entry.KeyColumn) + " = ANY(@ids)"
-            + (entry.Platform ? "" : " AND " + SoftTrashRead.Quote(entry.TenantColumn!) + " = @w")
-            + " AND " + SoftTrashRead.Quote(entry.SoftColumn) + " IS NOT NULL"
-            + " ORDER BY " + SoftTrashRead.Quote(entry.KeyColumn) + " FOR UPDATE";
-
+        var selected = new[] { entry.KeyColumn }.Concat(ownerColumns).ToList();
+        var statement = HistoryStatements.Compile(
+            uow.Provider, HistoryStatements.LockDeleted(entry, selected, ids, tenantId));
         var rows = new List<SoftRestoreRow>();
-        await using var cmd = Command(uow, sql);
-        cmd.AddParam("ids", ids.ToArray());
-        if (!entry.Platform) cmd.AddParam("w", tenantId);
-        await using var reader = await cmd.ExecuteReaderAsync();
+        await using var cmd = HistoryStatements.Command(uow.Connection, uow.Transaction, statement);
+        await using var reader = await cmd.RunReaderAsync(statement.Kind);
         while (await reader.ReadAsync())
         {
             var values = new Dictionary<string, object?>(StringComparer.Ordinal);
             for (var i = 0; i < ownerColumns.Count; i++)
-                values[ownerColumns[i]] = await reader.IsDBNullAsync(i + 1) ? null : reader.GetValue(i + 1);
+                values[ownerColumns[i]] = await reader.IsDBNullAsync(i + 1)
+                    ? null
+                    : HistoryReads.OwnerValue(
+                        reader.GetValue(i + 1), entry.Owners.Contains(ownerColumns[i], StringComparer.Ordinal));
             rows.Add(new SoftRestoreRow(entry, reader.GetFieldValue<Guid>(0), values));
         }
         return rows;
-    }
-
-    private static DbCommand Command(UnitOfWork uow, string sql)
-    {
-        var cmd = uow.Connection.CreateCommand();
-        cmd.CommandText = sql;
-        cmd.Transaction = uow.Transaction;
-        return cmd;
     }
 
     private sealed class RestoreVisitor(OrmContext ctx, UnitOfWork uow, IReadOnlyCollection<Guid> ids, Guid? tenantId)

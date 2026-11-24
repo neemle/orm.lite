@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" ORDER BY COALESCE((CASE WHEN pg_input_is_valid(("meta" ->> @p0), 'double precision') THEN ("meta" ->> @p0) END)::double precision, FLOOR(EXTRACT(EPOCH FROM "created_at") * 1000)::double precision) ASC
+-- parameters (1)
+[0] String "legacy_name"

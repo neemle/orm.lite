@@ -1,0 +1,4 @@
+-- sql
+SELECT "status", COALESCE(SUM(COALESCE("price", 0)), 0), min("price"), max("price"), round(avg("price"), 2) FROM "corpus_notes" GROUP BY "status" HAVING COALESCE(SUM(COALESCE("price", 0)), 0) >= @p0 ORDER BY COALESCE(SUM(COALESCE("price", 0)), 0) DESC NULLS LAST
+-- parameters (1)
+[0] Decimal 9.99

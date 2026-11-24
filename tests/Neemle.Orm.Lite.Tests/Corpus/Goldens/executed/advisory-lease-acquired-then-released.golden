@@ -1,0 +1,10 @@
+#1 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT pg_try_advisory_lock(@key)
+    @key = Int64 727274
+#2 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT pg_advisory_unlock(@key)
+    @key = Int64 727274
+-- outcome
+held=True

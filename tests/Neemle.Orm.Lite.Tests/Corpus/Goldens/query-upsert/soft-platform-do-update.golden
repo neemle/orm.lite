@@ -1,0 +1,6 @@
+-- sql
+INSERT INTO "corpus_platform_items" ("id", "code") VALUES (@p0, @p1) ON CONFLICT ("id") DO UPDATE SET "code" = @p2 WHERE "corpus_platform_items"."deleted_at" IS NULL
+-- parameters (3)
+[0] Guid a0000000-0000-0000-0000-00000000000a
+[1] String "c"
+[2] String "c"

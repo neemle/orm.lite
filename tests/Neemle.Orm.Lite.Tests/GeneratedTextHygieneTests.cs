@@ -11,10 +11,9 @@ public sealed class GeneratedTextHygieneTests
 
     private const string Source =
         "[Table(\"docs\")] [SoftDelete] public class Doc { [Key] public Guid Id { get; set; } "
-        + "public DateTime? DeletedAt { get; set; } public Guid ScopeId { get; set; } public string Title { get; set; } = \"\"; }\n"
-        + "[Repository] public partial class DocRepo { [Sql(\"SELECT COUNT(*) FROM docs\")] public partial System.Threading.Tasks.Task<long> CountAsync(); }\n";
+        + "public DateTime? DeletedAt { get; set; } public Guid ScopeId { get; set; } public string Title { get; set; } = \"\"; }\n";
 
-    [Fact(DisplayName = "the emitted entity, repository and migration text carries no comment line beyond the auto-generated header and no tracker cite")]
+    [Fact(DisplayName = "the emitted entity and migration text carries no comment line beyond the auto-generated header and no tracker cite")]
     public void The_generated_text_has_no_comment_lines_and_no_tracker_cites()
     {
         var source = Source + MigrationClass("M0001", "0001_docs_extra", "Reversible", DownOverride("SELECT 'down'"));
@@ -23,42 +22,22 @@ public sealed class GeneratedTextHygieneTests
 
         Assert.Empty(diagnostics);
         Assert.Contains("class DocOrm", generated, StringComparison.Ordinal);
-        Assert.Contains("partial class DocRepo", generated, StringComparison.Ordinal);
-        Assert.Contains("9900_orm_index_reconcile_", generated, StringComparison.Ordinal);
+        Assert.Contains("OrmSchema.Of(", generated, StringComparison.Ordinal);
+        Assert.Contains("MigrationContribution.For<global::Fixture.M0001>(", generated, StringComparison.Ordinal);
         var lines = generated.Split('\n').Select(l => l.Trim()).ToArray();
         Assert.Equal(3, lines.Count(l => l == Header));
         Assert.DoesNotContain(lines, l => l.StartsWith("//", StringComparison.Ordinal) && l != Header);
         Assert.DoesNotContain(lines, l => l.Contains(TrackerPrefix, StringComparison.Ordinal));
     }
 
-    private static string[] TemplateNames() =>
-        [.. Directory.EnumerateFiles(Path.Combine(RuntimeSources.LibraryRoot(), "src", "Neemle.Orm.Lite.Generator", "Templates"), "*.cs-template")
-            .Select(f => Path.GetFileName(f)!)
-            .Order(StringComparer.Ordinal)];
-
-    public static TheoryData<string> TemplateFiles()
+    [Fact(DisplayName = "the emitted text holds no SQL: no statement keyword, no quoted identifier and no type spelling reaches the generated source")]
+    public void The_generated_text_holds_no_sql()
     {
-        var data = new TheoryData<string>();
-        foreach (var name in TemplateNames())
-            data.Add(name);
-        return data;
-    }
+        var source = Source + MigrationClass("M0001", "0001_docs_extra", "Reversible", DownOverride("SELECT 'down'"));
 
-    [Fact(DisplayName = "the raw template set is exactly the three generator templates")]
-    public void The_template_set_is_the_three_generator_templates()
-    {
-        Assert.Equal(["Entities.cs-template", "Migrations.cs-template", "Repo.cs-template"], TemplateNames());
-    }
+        var (_, generated, _) = Run(source);
 
-    [Theory(DisplayName = "a raw generator template has no comment line beyond its first-line auto-generated header and no tracker cite")]
-    [MemberData(nameof(TemplateFiles))]
-    public void A_raw_template_has_no_comment_lines_and_no_tracker_cites(string file)
-    {
-        var text = File.ReadAllText(Path.Combine(RuntimeSources.LibraryRoot(), "src", "Neemle.Orm.Lite.Generator", "Templates", file));
-        var lines = text.Split('\n').Select(l => l.Trim()).ToArray();
-
-        Assert.Equal(Header, lines[0]);
-        Assert.DoesNotContain(lines.Skip(1), l => l.StartsWith("//", StringComparison.Ordinal));
-        Assert.DoesNotContain(lines, l => l.Contains(TrackerPrefix, StringComparison.Ordinal));
+        foreach (var word in new[] { "SELECT ", "INSERT INTO", "UPDATE \"", "DELETE FROM", "CREATE TABLE", "CREATE INDEX", "DO $", "timestamp with time zone", "::jsonb" })
+            Assert.DoesNotContain(word, generated, StringComparison.Ordinal);
     }
 }

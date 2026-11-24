@@ -101,7 +101,7 @@ public class WhereInCallbackIdentityTests
 
     private static Query<CallbackRow> Rows() =>
         new(
-            new OrmContext(new NeverUsedDataSource(), new PgDialect()),
+            TestContext.Of(new NeverUsedDataSource(), new PgDialect()),
             _ => throw new NotSupportedException());
 
     private static string Col(string property) => property.ToLowerInvariant();

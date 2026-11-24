@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: a foreign key needs at least one column (Parameter 'columns')

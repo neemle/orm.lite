@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "views" = @p0
+-- parameters (1)
+[0] Int64 2

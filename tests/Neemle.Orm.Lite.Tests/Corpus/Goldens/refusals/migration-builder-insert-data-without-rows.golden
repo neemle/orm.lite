@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: InsertData needs at least one row. (Parameter 'rows')

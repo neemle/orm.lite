@@ -1,0 +1,4 @@
+-- sql
+SELECT "id", "tenant_id", "project_id", "name", "rank", NULL AS "status", "updated_at", "doc", "deleted_at" FROM "corpus_tasks" WHERE "deleted_at" IS NULL AND "rank" = @p0
+-- parameters (1)
+[0] Int32 1

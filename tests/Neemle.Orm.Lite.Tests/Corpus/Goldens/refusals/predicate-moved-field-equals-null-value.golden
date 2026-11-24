@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentNullException
+message: Db.MovedFieldEquals compares the resolved value and comparing it to NULL matches no row at all rather than refusing. Use Db.MovedFieldIsNull, which renders IS NULL and answers for a document that says null AND for an absent member -- two populations an equality can never reach. (Parameter 'value')

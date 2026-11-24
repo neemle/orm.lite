@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: DeleteData needs at least one value to match. (Parameter 'values')

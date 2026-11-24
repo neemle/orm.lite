@@ -28,6 +28,9 @@ public sealed class RowHistoryTenantVocabularyTests
     [Fact(DisplayName = "the restore batch lookup filters row_history on tenant_id")]
     public void The_restore_lookup_filters_on_the_tenant_column()
     {
-        Assert.Contains("h.tenant_id IS NOT DISTINCT FROM", File.ReadAllText(RuntimeSources.Of("SoftRestore.cs")), StringComparison.Ordinal);
+        var statement = HistoryStatements.Compile(
+            Postgres.PostgresProvider.Instance, HistoryStatements.BatchMembers(Guid.NewGuid(), 1, DateTime.UtcNow));
+
+        Assert.Contains("h.tenant_id IS NOT DISTINCT FROM", statement.Text, StringComparison.Ordinal);
     }
 }

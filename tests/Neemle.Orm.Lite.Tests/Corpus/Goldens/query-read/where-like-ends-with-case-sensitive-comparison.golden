@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "title" LIKE @p0 ESCAPE '~'
+-- parameters (1)
+[0] String "%Suf"

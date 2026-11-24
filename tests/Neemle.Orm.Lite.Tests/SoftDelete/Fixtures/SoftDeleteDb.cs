@@ -47,7 +47,7 @@ public sealed class SoftDeleteDb : IAsyncLifetime
     {
         _connection = new SqliteConnection("Data Source=:memory:");
         await _connection.OpenAsync();
-        Ctx = new OrmContext(new NeverUsedDataSource(), new SqliteDialect());
+        Ctx = TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
 
         await ExecuteAsync(
             "CREATE TABLE soft_roots (id TEXT PRIMARY KEY, name TEXT NOT NULL, rank INTEGER NOT NULL, deleted_at TEXT NULL);" +

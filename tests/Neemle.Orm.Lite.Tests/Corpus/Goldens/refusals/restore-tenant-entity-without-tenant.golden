@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: RestoreAsync on a tenant entity requires its tenant column and a tenant id.

@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_tasks" WHERE "deleted_at" IS NULL AND "id" = ANY(@p0)
+-- parameters (1)
+[0] List<Guid> count=2 { Guid a0000000-0000-0000-0000-00000000000a, Guid b0000000-0000-0000-0000-00000000000b }

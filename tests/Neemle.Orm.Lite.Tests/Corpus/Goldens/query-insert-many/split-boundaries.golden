@@ -1,0 +1,9 @@
+[0] rows=0 width=3 capacity=9 -> 1 chunk(s) of 0
+[1] rows=1 width=3 capacity=9 -> 1 chunk(s) of 1
+[2] rows=3 width=3 capacity=9 -> 1 chunk(s) of 3
+[3] rows=4 width=3 capacity=9 -> 2 chunk(s) of 3, 1
+[4] rows=7 width=3 capacity=6 -> 4 chunk(s) of 2, 2, 2, 1
+[5] rows=5 width=3 capacity=7 -> 3 chunk(s) of 2, 2, 1
+[6] rows=6 width=1 capacity=2 -> 3 chunk(s) of 2, 2, 2
+[7] rows=2 width=0 capacity=5 -> 1 chunk(s) of 2
+[8] rows=2 width=3 capacity=3 -> 2 chunk(s) of 1, 1

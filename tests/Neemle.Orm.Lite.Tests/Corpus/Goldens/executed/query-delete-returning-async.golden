@@ -1,0 +1,6 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        UPDATE "corpus_tasks" SET "deleted_at" = now() WHERE "deleted_at" IS NULL AND "rank" > @p0 RETURNING "id"
+    @p0 = Int32 1
+-- outcome
+[Guid a0000000-0000-0000-0000-00000000000a; Guid b0000000-0000-0000-0000-00000000000b]

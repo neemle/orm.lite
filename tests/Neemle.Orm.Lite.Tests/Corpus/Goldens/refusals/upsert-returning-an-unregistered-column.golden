@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: "hidden" is not a registered column of CorpusPartial; a RETURNING list may name only generated columns, never a SQL fragment. (Parameter 'columns')

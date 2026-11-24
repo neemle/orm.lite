@@ -4,6 +4,7 @@ using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
+using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite
 {
@@ -19,13 +20,16 @@ namespace Neemle.Orm.Lite
             this.unlock = unlock;
         }
 
+        private int disposed;
+
         public async ValueTask DisposeAsync()
         {
+            if (Interlocked.Exchange(ref disposed, 1) != 0) return;
             try
             {
                 await unlock(connection);
             }
-            catch (DbException)
+            catch (Exception failure) when (failure is DbException or InvalidOperationException)
             {
             }
             finally
@@ -37,19 +41,23 @@ namespace Neemle.Orm.Lite
 
     public static class AdvisorySessionLocks
     {
-        public const string TryLockStatement = "SELECT pg_try_advisory_lock(@key)";
+        public static Node TryLock(long key) => new SessionLock(SessionLockOp.TryAcquire, new NamedParam("key", key));
 
-        public const string UnlockStatement = "SELECT pg_advisory_unlock(@key)";
+        public static Node Unlock(long key) => new SessionLock(SessionLockOp.Release, new NamedParam("key", key));
 
-        public static async Task<AdvisorySessionLease?> TryLeaseAsync(DbDataSource dataSource, long key, CancellationToken ct)
+        [RequiresCapability(Capability.SessionLock)]
+        public static async Task<AdvisorySessionLease?> TryLeaseAsync(ISqlProvider provider, DbDataSource dataSource, long key, CancellationToken ct)
         {
+            ArgumentNullException.ThrowIfNull(provider);
+            var tryLock = StatementCompiler.Compile(TryLock(key), provider, StatementKind.Read);
+            var unlock = StatementCompiler.Compile(Unlock(key), provider, StatementKind.Read);
             DbConnection connection;
             using (new TransactionScope(TransactionScopeOption.Suppress, TransactionScopeAsyncFlowOption.Enabled))
                 connection = await dataSource.OpenConnectionAsync(ct);
             try
             {
-                if (await CallAsync(connection, TryLockStatement, key, ct))
-                    return new AdvisorySessionLease(connection, held => CallAsync(held, UnlockStatement, key, CancellationToken.None));
+                if (await CallAsync(connection, tryLock, ct))
+                    return new AdvisorySessionLease(connection, held => CallAsync(held, unlock, CancellationToken.None));
             }
             catch
             {
@@ -61,12 +69,12 @@ namespace Neemle.Orm.Lite
             return null;
         }
 
-        private static async Task<bool> CallAsync(DbConnection connection, string statement, long key, CancellationToken ct)
+        private static async Task<bool> CallAsync(DbConnection connection, Statement statement, CancellationToken ct)
         {
             await using var cmd = connection.CreateCommand();
-            cmd.CommandText = statement;
-            cmd.AddParam("key", key);
-            return (bool)(await cmd.ExecuteScalarAsync(ct))!;
+            cmd.CommandText = statement.Text;
+            foreach (var parameter in statement.Parameters) cmd.AddParam(parameter.Name, parameter.Value);
+            return (bool)(await cmd.RunScalarAsync(statement.Kind, ct))!;
         }
     }
 }

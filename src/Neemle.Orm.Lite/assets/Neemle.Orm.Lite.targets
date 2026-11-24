@@ -1,6 +1,21 @@
 <Project>
 
-  <Target Name="OrmLiteEmitActorSetting" BeforeTargets="CoreCompile" DependsOnTargets="ResolveReferences" Condition="'$(OrmLiteActorSetting)' != ''">
+  <!-- The runtime refuses an actor setting that is not a lowercase prefix and a lowercase name joined by one dot (each
+       part 1 to 31 characters: a letter first, then letters, digits or underscores). The same rule is checked here, so a
+       bad value fails the build instead of the start-up of the application. -->
+  <Target Name="OrmLiteValidateActorSetting" BeforeTargets="CoreCompile" Condition="'$(OrmLiteActorSetting)' != ''">
+    <Error Code="ORMLITE032"
+           Text="The OrmLiteActorSetting build property is '$(OrmLiteActorSetting)', which is not a lowercase prefix and a lowercase name joined by one dot (for example app.actor; each part starts with a letter and has at most 31 letters, digits or underscores)."
+           Condition="!$([System.Text.RegularExpressions.Regex]::IsMatch('$(OrmLiteActorSetting)', '\A[a-z][a-z0-9_]{0,30}\.[a-z][a-z0-9_]{0,30}\z'))" />
+  </Target>
+
+  <!-- The files this package adds to the compilation are C#. A Visual Basic or F# project gets none of them. -->
+  <Target Name="OrmLiteActorSettingNotEmitted" BeforeTargets="CoreCompile" Condition="'$(OrmLiteActorSetting)' != '' And '$(Language)' != 'C#'">
+    <Warning Code="ORMLITE033"
+             Text="OrmLiteActorSetting is ignored in a $(Language) project: the package writes the initializer in C# only. Call Neemle.Orm.Lite.OrmLiteSettings.UseActorSetting from your own start-up code, or set the property in a C# project that your application references." />
+  </Target>
+
+  <Target Name="OrmLiteEmitActorSetting" BeforeTargets="CoreCompile" DependsOnTargets="OrmLiteValidateActorSetting;ResolveReferences" Condition="'$(OrmLiteActorSetting)' != '' And '$(Language)' == 'C#'">
     <PropertyGroup>
       <OrmLiteActorSettingFile>$(IntermediateOutputPath)OrmLiteActorSetting.g.cs</OrmLiteActorSettingFile>
     </PropertyGroup>
@@ -21,9 +36,57 @@
     </ItemGroup>
   </Target>
 
+  <Target Name="OrmLiteResolveProviders" BeforeTargets="GenerateMSBuildEditorConfigFileCore" DependsOnTargets="ResolveReferences" Condition="'@(OrmLiteProviderPackage)' != ''">
+    <ItemGroup>
+      <_OrmLiteReferenceName Include="@(ReferencePath->'%(Filename)')" />
+      <_OrmLiteProviderMissing Include="@(OrmLiteProviderPackage)" />
+      <_OrmLiteProviderMissing Remove="@(_OrmLiteReferenceName)" />
+      <_OrmLiteProviderInUse Include="@(OrmLiteProviderPackage)" />
+      <_OrmLiteProviderInUse Remove="@(_OrmLiteProviderMissing)" />
+    </ItemGroup>
+    <PropertyGroup Condition="'$(OrmLiteProviders)' == '' And '@(_OrmLiteProviderInUse)' != ''">
+      <OrmLiteProviders>@(_OrmLiteProviderInUse->'%(Provider)', ';')</OrmLiteProviders>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="OrmLiteEmitProviderRegistration" BeforeTargets="CoreCompile" DependsOnTargets="OrmLiteResolveProviders" Condition="'$(OrmLiteRegisterProviders)' != 'false' And '$(Language)' == 'C#'">
+    <PropertyGroup>
+      <OrmLiteProviderRegistrationFile>$(IntermediateOutputPath)OrmLiteProviderRegistration.g.cs</OrmLiteProviderRegistrationFile>
+    </PropertyGroup>
+    <ItemGroup>
+      <_OrmLiteRegistrationLine Include="// &lt;auto-generated/&gt;" />
+      <_OrmLiteRegistrationLine Include="#nullable enable" />
+      <_OrmLiteRegistrationLine Include="internal static class OrmLiteProviderRegistration" />
+      <_OrmLiteRegistrationLine Include="{" />
+      <_OrmLiteRegistrationLine Include="    [global::System.Runtime.CompilerServices.ModuleInitializer]" />
+      <_OrmLiteRegistrationLine Include="    internal static void Register()" />
+      <_OrmLiteRegistrationLine Include="    {" />
+      <_OrmLiteRegistrationLine Include="@(_OrmLiteProviderInUse->'        %(Factory).Register()%3B')" />
+      <_OrmLiteRegistrationLine Include="    }" />
+      <_OrmLiteRegistrationLine Include="}" />
+    </ItemGroup>
+    <WriteLinesToFile Condition="'@(_OrmLiteProviderInUse)' != ''" File="$(OrmLiteProviderRegistrationFile)" Lines="@(_OrmLiteRegistrationLine)" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <ItemGroup Condition="'@(_OrmLiteProviderInUse)' != ''">
+      <Compile Include="$(OrmLiteProviderRegistrationFile)" />
+      <FileWrites Include="$(OrmLiteProviderRegistrationFile)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="OrmLiteComposerAnalyzer" BeforeTargets="CoreCompile" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <_OrmLiteGeneratorAnalyzer Include="@(Analyzer)" Condition="'%(Analyzer.NuGetPackageId)' == 'Neemle.Orm.Lite'" />
+      <Analyzer Include="@(ReferencePath)" Condition="'@(_OrmLiteGeneratorAnalyzer)' != '' And '%(ReferencePath.NuGetPackageId)' == 'Neemle.CSharpComposer' And '%(ReferencePath.Filename)' == 'Neemle.CSharpComposer'" />
+    </ItemGroup>
+  </Target>
+
   <Target Name="OrmLiteAnalyzerScope" AfterTargets="ResolveLockFileAnalyzers" BeforeTargets="CoreCompile">
     <ItemGroup>
+      <_OrmLiteOtherReference Include="@(PackageReference)" />
+      <_OrmLiteOtherReference Remove="@(OrmLiteProviderPackage)" />
+      <_OrmLiteProviderReference Include="@(PackageReference)" />
+      <_OrmLiteProviderReference Remove="@(_OrmLiteOtherReference)" />
       <_OrmLiteReference Include="@(PackageReference)" Condition="'%(Identity)' == 'Neemle.Orm.Lite'" />
+      <_OrmLiteReference Include="@(_OrmLiteProviderReference)" />
     </ItemGroup>
     <PropertyGroup>
       <_OrmLiteExcludedAssets>@(_OrmLiteReference->'%(ExcludeAssets)')</_OrmLiteExcludedAssets>

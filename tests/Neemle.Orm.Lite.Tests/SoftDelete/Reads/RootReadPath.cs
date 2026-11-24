@@ -28,7 +28,7 @@ public sealed record RootReadPath(
             async q => [await q.SumAsync(r => r.Rank)],
             [SoftDeleteDb.LiveRank], [SoftDeleteDb.LiveRank + SoftDeleteDb.DeletedRank]),
 
-        new("ScalarAsync", [nameof(Query<SoftRoot>.ScalarAsync)],
+        new("ScalarAsync", [nameof(Query<SoftRoot>.ScalarAsync), nameof(Query<SoftRoot>.RenderScalar)],
             async q =>
             {
                 var rank = await q.Where(r => r.Name == SoftDeleteDb.DeletedName).ScalarAsync<object?>(r => r.Rank);

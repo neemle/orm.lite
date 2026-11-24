@@ -1,0 +1,4 @@
+-- outcome
+CreateConnection: System.NotSupportedException: GatedDataSource refuses CreateConnection: every connection is leased through the gate, so use OpenConnectionAsync instead.
+OpenConnection: System.NotSupportedException: GatedDataSource refuses OpenConnection: every connection is leased through the gate, so use OpenConnectionAsync instead.
+CreateBatch: System.NotSupportedException: GatedDataSource refuses CreateBatch: every connection is leased through the gate, so use CreateCommand and ExecuteNonQueryAsync, or a batch on a connection from OpenConnectionAsync instead.

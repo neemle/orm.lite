@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: DeleteReturningAsync requires a Where (refusing an unfiltered DELETE).

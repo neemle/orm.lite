@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "id" = ANY(@p0)
+-- parameters (1)
+[0] Guid[] count=2 { Guid b0000000-0000-0000-0000-00000000000b, Guid c0000000-0000-0000-0000-00000000000c }

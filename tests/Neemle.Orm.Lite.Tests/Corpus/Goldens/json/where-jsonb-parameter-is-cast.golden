@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "payload" = @p0::jsonb
+-- parameters (1)
+[0] Jsonb {"a":1}

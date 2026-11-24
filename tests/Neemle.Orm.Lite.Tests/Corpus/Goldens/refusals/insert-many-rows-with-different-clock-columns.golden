@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: every row of an InsertManyAsync must name the SAME database-clock columns. (Parameter 'rows')

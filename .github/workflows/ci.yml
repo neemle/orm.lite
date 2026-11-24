@@ -1,7 +1,13 @@
 name: ci
 
+# A pull request is built by its own pull_request run, so a push builds only the long-lived branches (and the audit
+# branches, which are pushed without a pull request to get a run); a branch with a pull request is not built twice.
 on:
   push:
+    branches:
+      - main
+      - wip-snapshot
+      - "orm-audit/**"
   pull_request:
 
 permissions:
@@ -12,45 +18,193 @@ env:
   DOTNET_NOLOGO: "1"
 
 jobs:
+  # The tests run once per .NET runtime, each leg on its own runner with its own throwaway PostgreSQL. The test
+  # project targets net10.0, so the .NET 11 leg builds it with the SDK 11 and lets the test host roll forward to the
+  # newest installed runtime (DOTNET_ROLL_FORWARD=LatestMajor); the .NET 10 leg names the default policy (Minor), so a
+  # runtime 11 that the runner image may carry is not used there. ORMLITE_EXPECT_DOTNET makes a test fail when the
+  # test host runs on another major than the leg names (TestHostRuntimeTests). scripts/MatrixShape.cs guards this.
   test:
+    name: test (.NET ${{ matrix.dotnet }})
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - dotnet: 10.0.x
+            roll-forward: Minor
+          - dotnet: 11.0.x
+            roll-forward: LatestMajor
+    env:
+      DOTNET_ROLL_FORWARD: ${{ matrix.roll-forward }}
+      ORMLITE_EXPECT_DOTNET: ${{ matrix.dotnet }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 10.0.x
+          dotnet-version: ${{ matrix.dotnet }}
+      - name: Print the SDK and the runtimes this leg runs on
+        run: dotnet --info
+      - name: Check that the skip gate refuses what it is meant to refuse
+        run: dotnet run scripts/SkipGate.cs -- self-test
+      - name: Check that the workflow-shape guard refuses what it is meant to refuse
+        run: dotnet run scripts/WorkflowShape.cs -- self-test
+      - name: Check that this workflow keeps the compose step, the variable and the gate
+        run: dotnet run scripts/WorkflowShape.cs -- check
+      - name: Check that the step guard refuses what it is meant to refuse
+        run: dotnet run scripts/StepShape.cs -- self-test
+      - name: Check that the test steps keep their thread cap and the zone step and its gate stand
+        run: dotnet run scripts/StepShape.cs -- check
+      - name: Check that the matrix guard refuses what it is meant to refuse
+        run: dotnet run scripts/MatrixShape.cs -- self-test
+      - name: Check that the test and AOT jobs keep their .NET 10 and .NET 11 legs
+        run: dotnet run scripts/MatrixShape.cs -- check
+      - name: Check that the compose guard refuses what it is meant to refuse
+        run: dotnet run scripts/ComposeCoherence.cs -- self-test
+      - name: Check that the image major and the host ports agree in the compose files, ci.yml and the READMEs
+        run: dotnet run scripts/ComposeCoherence.cs -- check
       - run: dotnet build Neemle.Orm.Lite.slnx -c Release
-      - run: dotnet test Neemle.Orm.Lite.slnx -c Release --no-build
+      - name: Start the throwaway PostgreSQL of tests/compose.yaml and wait until it is healthy
+        run: docker compose -f tests/compose.yaml up -d --wait --wait-timeout 120
+      - name: Log the image the moving PostgreSQL major tag resolved to, so a failing run names its image
+        shell: bash
+        run: |
+          for image in $(docker compose -f tests/compose.yaml config --images); do
+            docker image inspect "$image" --format '{{.RepoTags}} id={{.Id}} digests={{.RepoDigests}}'
+          done
+      - name: Run every test, the PostgreSQL ones against that server, one at a time
+        timeout-minutes: 15
+        env:
+          ORMLITE_TEST_POSTGRES: Host=127.0.0.1;Port=55433;Username=postgres
+        run: >-
+          dotnet test Neemle.Orm.Lite.slnx -c Release --no-build
+          --logger "trx;LogFileName=tests.trx" --logger "console;verbosity=detailed"
+          --results-directory TestResults
+          --blame-crash --blame-crash-dump-type mini
+          --blame-hang-timeout 10m --blame-hang-dump-type mini
+          -- xUnit.MaxParallelThreads=1
+      - name: Fail on a skipped test that is not on the allow-list and on a PostgreSQL class that did not run
+        run: >-
+          dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx tests/skip-allowlist.txt
+          --require-postgres tests/skip-witness.txt
+      - name: Run the data-literal tests again under a non-UTC time zone (guards the Local to UTC conversion)
+        env:
+          TZ: Pacific/Auckland
+        run: >-
+          dotnet test Neemle.Orm.Lite.slnx -c Release --no-build
+          --filter "FullyQualifiedName~DataLiteral&FullyQualifiedName!~Postgres"
+          --logger "trx;LogFileName=zone.trx" --results-directory TestResults
+          --blame-crash --blame-crash-dump-type mini
+          --blame-hang-timeout 10m --blame-hang-dump-type mini
+          -- xUnit.MaxParallelThreads=1
+      - name: Fail when a data-literal witness class did not run and pass under that zone
+        run: >-
+          dotnet run scripts/SkipGate.cs -- check TestResults/zone.trx tests/zone-allowlist.txt
+          --require-postgres tests/zone-witness.txt
+      - name: Keep the TRX files and the crash and hang dumps of this leg
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ matrix.dotnet }}
+          path: TestResults
+          if-no-files-found: ignore
+          retention-days: 14
 
   package:
+    needs: test
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:18-alpine
-        env:
-          POSTGRES_HOST_AUTH_METHOD: trust
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 2s
-          --health-timeout 3s
-          --health-retries 30
-    env:
-      ORMLITE_DEMO_CONNECTION: Host=localhost;Port=5432;Username=postgres;Database=postgres
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
-      - name: Pack into the local feed (nothing is published)
-        run: dotnet pack src/Neemle.Orm.Lite/Neemle.Orm.Lite.csproj -c Release -o artifacts -m:1
+      - name: Pack the three packages into the local feed (nothing is published)
+        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+      - name: Check that the README guard refuses what it is meant to refuse
+        run: dotnet run scripts/ReadmeCheck.cs -- self-test
+      - name: Check the README wiring, the public files and that PackCheck still runs the README guard
+        run: dotnet run scripts/ReadmeCheck.cs -- source
+      - name: Check that the assembly version guard refuses what it is meant to refuse
+        run: dotnet run scripts/PackVersions.cs -- self-test
       - name: Check the package entries and run the throwaway-consumer matrix
         run: dotnet run scripts/PackCheck.cs -- package artifacts
+      - name: Check that the demo guard refuses the bypasses it is meant to refuse
+        run: dotnet run scripts/PackCheck.cs -- demo-guard-self-test
       - name: Check that the demo consumes the package, not a project
         run: dotnet run scripts/PackCheck.cs -- demo-guard
-      - name: Run the demo against the PostgreSQL service
+
+  demo-sqlite:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Pack the three packages into the local feed (nothing is published)
+        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+      - name: Run the demo on SQLite with no service and no setting
         shell: bash
         run: |
           dotnet run --project demo -c Release | tee demo.log
           grep -qx 'demo ok' demo.log
+
+  demo-postgres:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OrmLite__Provider: postgres
+      OrmLite__Host: 127.0.0.1
+      OrmLite__Port: "55432"
+      OrmLite__Username: postgres
+      OrmLite__Database: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Start the throwaway PostgreSQL of demo/compose.yaml and wait until it is healthy
+        run: docker compose -f demo/compose.yaml up -d --wait --wait-timeout 120
+      - name: Pack the three packages into the local feed (nothing is published)
+        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+      - name: Run the demo, soft delete and history included, on a fresh PostgreSQL database, changing only the provider block
+        shell: bash
+        run: |
+          dotnet build demo -c Release --no-incremental
+          dotnet run --project demo -c Release --no-build | tee demo.log
+          grep -qx 'demo ok' demo.log
+
+  # The NativeAOT consumer is published once per .NET runtime. The shipped libraries stay net10.0 (a net11.0 consumer
+  # references them as they are); only the consumer's target framework follows the leg (AotSmokeTfm of the project),
+  # and the binary prints the runtime it was compiled for, which the last step compares with the leg.
+  aot-smoke:
+    name: aot-smoke (.NET ${{ matrix.dotnet }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - dotnet: 10.0.x
+            tfm: net10.0
+          - dotnet: 11.0.x
+            tfm: net11.0
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+      - name: Print the SDK and the runtimes this leg runs on
+        run: dotnet --info
+      - name: Publish a NativeAOT consumer that renders a Where() over closure unaries, then run it
+        shell: bash
+        env:
+          AOT_TFM: ${{ matrix.tfm }}
+        run: |
+          dotnet publish tests/AotSmoke -c Release -r linux-x64 -p:AotSmokeTfm=${{ matrix.tfm }} -o aot-out
+          ./aot-out/AotSmoke | tee aot.log
+          grep -qx 'aot smoke ok' aot.log
+          grep -q "^aot runtime: ${AOT_TFM#net}" aot.log

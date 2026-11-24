@@ -1,0 +1,4 @@
+[0] CASCADE -> c
+[1] SET NULL -> n
+[2] NO ACTION -> a
+[3] RESTRICT -> r

@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: UpdateAsync requires at least one Set/SetNow.

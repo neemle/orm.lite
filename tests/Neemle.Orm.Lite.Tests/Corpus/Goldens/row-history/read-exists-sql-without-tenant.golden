@@ -1,0 +1,1 @@
+SELECT EXISTS (SELECT 1 FROM "corpus_platform_items" r WHERE r."id" = @id)

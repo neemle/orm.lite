@@ -1,0 +1,6 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DELETE FROM "corpus_tasks" WHERE "rank" > @p0
+    @p0 = Int32 5
+-- outcome
+Int32 1

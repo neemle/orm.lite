@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "id" IN (SELECT "note_id" FROM "corpus_tags")
+-- parameters (0)

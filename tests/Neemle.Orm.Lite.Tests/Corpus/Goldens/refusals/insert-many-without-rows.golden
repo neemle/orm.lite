@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: InsertManyAsync needs at least one row.

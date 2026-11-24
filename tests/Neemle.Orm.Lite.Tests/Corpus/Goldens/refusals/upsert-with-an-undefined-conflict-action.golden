@@ -1,0 +1,4 @@
+-- refusal
+type: System.ArgumentOutOfRangeException
+message: OnConflict has no value 7; use OnConflict.DoNothing or OnConflict.DoUpdate. (Parameter 'action')
+Actual value was 7.

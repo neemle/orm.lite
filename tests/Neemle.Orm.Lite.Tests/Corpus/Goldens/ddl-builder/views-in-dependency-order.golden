@@ -1,0 +1,6 @@
+[0] CREATE VIEW "corpus_narrow_view" AS SELECT "corpus_notes"."id" AS "id" FROM "corpus_notes"
+[1] COMMENT ON VIEW "corpus_narrow_view" IS 'c1780c412dd04630'
+[2] CREATE VIEW "corpus_view" AS SELECT "corpus_narrow_view"."id" AS "id", "corpus_narrow_view"."id" AS "title", "corpus_narrow_view"."id" AS "rank" FROM "corpus_narrow_view"
+[3] COMMENT ON VIEW "corpus_view" IS 'b0c472b8bdab7d2a'
+[4] DROP VIEW IF EXISTS "corpus_view"
+[5] DROP VIEW IF EXISTS "corpus_narrow_view"

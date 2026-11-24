@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: Db.JsonArrayContainsAny needs at least one non-null value to test membership of. (Parameter 'values')

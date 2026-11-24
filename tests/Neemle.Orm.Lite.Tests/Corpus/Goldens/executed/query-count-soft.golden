@@ -1,0 +1,6 @@
+#1 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT count(*) FROM "corpus_tasks" WHERE "deleted_at" IS NULL AND "rank" > @p0
+    @p0 = Int32 1
+-- outcome
+Int64 3

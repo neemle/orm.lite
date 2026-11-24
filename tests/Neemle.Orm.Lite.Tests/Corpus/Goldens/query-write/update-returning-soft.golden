@@ -1,0 +1,5 @@
+-- sql
+UPDATE "corpus_tasks" SET "rank" = @p0 WHERE "deleted_at" IS NULL AND "id" = @p1 RETURNING "id"
+-- parameters (2)
+[0] Int32 1
+[1] Guid a0000000-0000-0000-0000-00000000000a

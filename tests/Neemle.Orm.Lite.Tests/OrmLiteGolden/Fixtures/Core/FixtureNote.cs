@@ -6,6 +6,6 @@ namespace GoldenFixtures;
 public class FixtureNote
 {
     [Key] public Guid Id { get; set; }
-    [Indexed] public string Title { get; set; } = "";
+    [Index] public string Title { get; set; } = "";
     public int Revision { get; set; }
 }

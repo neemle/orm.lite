@@ -1,0 +1,5 @@
+#1 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT "id" FROM "corpus_notes" LIMIT 1
+-- outcome
+Guid a0000000-0000-0000-0000-00000000000a

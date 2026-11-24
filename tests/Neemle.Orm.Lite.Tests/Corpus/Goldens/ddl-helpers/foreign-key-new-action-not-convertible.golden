@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: the converted action is CASCADE or SET NULL: RESTRICT (Parameter 'newAction')

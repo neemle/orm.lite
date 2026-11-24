@@ -44,7 +44,7 @@ public sealed class InsertManyChunkingTests : IDisposable
     private CountingSqliteDataSource Source() => new(_path, _recorder);
 
     private static OrmContext Ctx(DbDataSource source, int capacity = Capacity) =>
-        new(source, new SqliteDialect { MaxBindParameters = capacity });
+        TestContext.Of(source, new SqliteDialect { MaxBindParameters = capacity });
 
     private static Query<FixtureWidget> Widgets(OrmContext ctx) => new(ctx, Map);
 

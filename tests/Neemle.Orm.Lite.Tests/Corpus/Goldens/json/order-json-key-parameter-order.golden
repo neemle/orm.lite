@@ -1,0 +1,5 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "title" = @p0 ORDER BY ("payload" ->> @p1) ASC NULLS FIRST
+-- parameters (2)
+[0] String "w"
+[1] String "k"

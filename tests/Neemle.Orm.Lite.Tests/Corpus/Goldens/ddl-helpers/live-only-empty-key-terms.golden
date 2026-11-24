@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: a conversion needs at least one key term (Parameter 'keyTerms')

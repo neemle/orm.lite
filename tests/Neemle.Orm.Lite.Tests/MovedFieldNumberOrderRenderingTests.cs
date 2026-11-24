@@ -20,7 +20,7 @@ public sealed class MovedFieldNumberOrderRenderingTests
         OrmMeta.Register<FixtureRanked>("fixture_ranked", RankedCol, ["id", "field_document", "created_at"]);
 
     private static Query<FixtureRanked> Ranked(ISqlDialect dialect) => new(
-        new OrmContext(new NeverUsedDataSource(), dialect),
+        TestContext.Of(new NeverUsedDataSource(), dialect),
         _ => throw new NotSupportedException("no rows are read here"));
 
     private static Query<FixtureRanked> Ordered(ISqlDialect dialect, string key = "board_rank") =>
@@ -34,7 +34,8 @@ public sealed class MovedFieldNumberOrderRenderingTests
         Assert.Contains(
             "ORDER BY COALESCE((CASE WHEN pg_input_is_valid((\"field_document\" ->> @p0), 'double precision') "
             + "THEN (\"field_document\" ->> @p0) END)::double precision, "
-            + "FLOOR(EXTRACT(EPOCH FROM \"created_at\") * 1000)::double precision) ASC, \"created_at\" ASC, \"id\" ASC",
+            + "FLOOR(EXTRACT(EPOCH FROM \"created_at\") * 1000)::double precision) ASC, "
+            + "\"created_at\" ASC NULLS LAST, \"id\" ASC NULLS LAST",
             sql,
             StringComparison.Ordinal);
     }

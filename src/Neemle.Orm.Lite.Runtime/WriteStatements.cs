@@ -2,32 +2,51 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite;
+
+    internal sealed class BuiltWrite
+    {
+        internal BuiltWrite(Node tree, List<object?> bound)
+        {
+            Tree = tree;
+            Bound = bound;
+        }
+
+        internal Node Tree { get; }
+
+        internal List<object?> Bound { get; }
+    }
 
     internal sealed class WriteStatements
     {
         private readonly RenderState _state;
-        private readonly ISqlDialect D;
         private readonly SoftDeleteMeta? _softDelete;
 
         internal WriteStatements(RenderState state, SoftDeleteMeta? softDelete)
         {
             _state = state;
-            D = state.Dialect;
             _softDelete = softDelete;
         }
 
         internal bool RefusesSoftDeletedConflict(OnConflict action, int setCount) =>
             _softDelete is not null && action == OnConflict.DoUpdate && setCount > 0;
 
-        private string? LiveOnlyTargetPredicate(IReadOnlyList<string> conflictColumns) =>
+        private Node? LiveOnlyTargetPredicate(IReadOnlyList<string> conflictColumns) =>
             _softDelete is not null && _softDelete.IsLiveOnlyTarget(conflictColumns)
-                ? SoftDeleteSql.LiveTerm(D, _state.Col(_softDelete.Column))
+                ? new IsNull(new ColumnRef(_state.Col(_softDelete.Column)))
                 : null;
 
-        internal (string Sql, List<object?> Parameters) RenderUpsert(
+        private Node Bound(object? value, List<object?> bound)
+        {
+            var parameter = new Param(bound.Count, value);
+            var node = _state.ValueOf(value, parameter);
+            bound.Add(value);
+            return node;
+        }
+
+        internal BuiltWrite Upsert(
             ResolvedRow row,
             IReadOnlyList<string> conflictColumns,
             OnConflict action,
@@ -35,101 +54,97 @@ namespace Neemle.Orm.Lite;
             IReadOnlyList<string> returning)
         {
             ConflictGuard.RequireDefined(action);
-            if (!D.SupportsUpsert)
-                throw new NotSupportedException(
-                    $"{D.GetType().Name} has no upsert; express this as an explicit read-modify-write "
+            if (!_state.Allows(Capability.Upsert, d => d.SupportsUpsert))
+                throw _state.Refusal(Capability.Upsert, "upsert",
+                    $"{_state.DialectName} has no upsert; express this as an explicit read-modify-write "
                     + "inside a transaction.");
             ConflictGuard.RequireTarget(conflictColumns, action);
-            var ps = new List<object?>();
-            var (cols, placeholders) = ValuesAndClock(row, ps);
-            var resolved = BoundSets(row.Values, sets, ps);
-            var sql = InsertPrefix(cols, placeholders);
-            AppendConflict(sql, conflictColumns, action, resolved);
-            AppendReturning(sql, returning);
-            return (sql.ToString(), ps);
-        }
-
-        private (List<string> Cols, List<string> Placeholders) ValuesAndClock(ResolvedRow row, List<object?> ps)
-        {
-            var values = row.Values;
-            var cols = values.Keys.ToList();
-            var placeholders = new List<string>();
-            foreach (var c2 in cols)
-            { placeholders.Add(_state.ValueSlot(values[c2], D.Param(ps.Count))); ps.Add(values[c2]); }
-            foreach (var c2 in row.Clock) { cols.Add(c2); placeholders.Add(D.NowExpression); }
-            return (cols, placeholders);
-        }
-
-        private List<UpsertSet> BoundSets(
-            IReadOnlyDictionary<string, object?> values, IReadOnlyList<UpsertSet> sets, List<object?> ps)
-        {
-            var resolved = new List<UpsertSet>();
-            foreach (var s in sets)
+            UpsertSetGuard.RequireSets(action, sets.Count);
+            var bound = new List<object?>();
+            var columns = row.Values.Keys.ToList();
+            var cells = columns.Select(c => Bound(row.Values[c], bound)).ToList();
+            foreach (var clock in row.Clock)
             {
-                if (s.IncrementBy is not null || s.IsDatabaseClock) { resolved.Add(s); continue; }
-                var v = values.TryGetValue(s.Column, out var found) ? found : null;
-                if (v is Jsonb) _state.RequireJsonDocumentDialect("bind a JSON document");
-                resolved.Add(v is Jsonb
-                    ? UpsertSet.ToJsonDocumentParam(s.Column, ps.Count)
-                    : UpsertSet.ToParam(s.Column, ps.Count));
-                ps.Add(v);
+                columns.Add(clock);
+                cells.Add(new ClockNow());
             }
-            return resolved;
+            var assignments = ConflictAssignments(row.Values, sets, bound);
+            var tree = new Insert(
+                new TableRef(_state.Table),
+                ColumnList(columns),
+                [new ValuesRow(NodeList.Of(cells))],
+                ConflictOf(conflictColumns, action, assignments),
+                ReturningOf(returning));
+            return new BuiltWrite(tree, bound);
         }
 
-        private StringBuilder InsertPrefix(List<string> cols, List<string> placeholders) =>
-            new StringBuilder()
-                .Append("INSERT INTO ").Append(D.Quote(_state.Table))
-                .Append(" (").Append(string.Join(", ", cols.Select(D.Quote))).Append(')')
-                .Append(" VALUES (").Append(string.Join(", ", placeholders)).Append(')');
-
-        private void AppendConflict(
-            StringBuilder sql, IReadOnlyList<string> conflictColumns, OnConflict action, List<UpsertSet> resolved)
+        private List<Node> ConflictAssignments(
+            IReadOnlyDictionary<string, object?> values, IReadOnlyList<UpsertSet> sets, List<object?> bound)
         {
-            sql.Append(D.ConflictClause(
-                conflictColumns, action, resolved, _state.Table, LiveOnlyTargetPredicate(conflictColumns)));
-            if (RefusesSoftDeletedConflict(action, resolved.Count))
-                sql.Append(" WHERE ").Append(
-                    SoftDeleteSql.LiveTerm(D, _state.Col(_softDelete!.Column), D.Quote(_state.Table)));
+            var assignments = new List<Node>(sets.Count);
+            foreach (var set in sets)
+            {
+                var target = new ColumnRef(set.Column);
+                if (set.IncrementBy is long by)
+                    assignments.Add(new Assignment(target, Incremented(set.Column, by)));
+                else if (set.IsDatabaseClock)
+                    assignments.Add(new Assignment(target, new ClockNow()));
+                else
+                    assignments.Add(new Assignment(
+                        target, Bound(values.TryGetValue(set.Column, out var found) ? found : null, bound)));
+            }
+            return assignments;
         }
 
-        private void AppendReturning(StringBuilder sql, IReadOnlyList<string> returning)
+        // A NULL counter counts from zero, as SetIncrement does: NULL + 1 is NULL, so without COALESCE a counter that
+        // starts NULL would stay NULL however often the conflict hits.
+        private Node Incremented(string column, long by) =>
+            new Plus(new Coalesce(new ColumnRef(column, new TableRef(_state.Table)), new IntLit(0)), new IntLit(by));
+
+        private Conflict ConflictOf(IReadOnlyList<string> conflictColumns, OnConflict action, List<Node> assignments)
         {
-            if (returning.Count == 0) return;
-            if (!D.SupportsReturning)
-                throw new NotSupportedException(
-                    $"{D.GetType().Name} cannot return columns from a write; re-read the row instead.");
-            sql.Append(D.ReturningClause(returning));
+            var target = ColumnList(conflictColumns);
+            var targetWhere = LiveOnlyTargetPredicate(conflictColumns);
+            if (action == OnConflict.DoNothing || assignments.Count == 0) return new Conflict(target, targetWhere);
+            Node? guard = RefusesSoftDeletedConflict(action, assignments.Count)
+                ? new IsNull(new ColumnRef(_state.Col(_softDelete!.Column), new TableRef(_state.Table)))
+                : null;
+            return new Conflict(target, targetWhere, new ConflictUpdate(NodeList.Of(assignments), guard));
         }
 
-        internal (string Sql, List<object?> Parameters) RenderInsertMany(IReadOnlyList<ResolvedRow> resolvedRows)
+        private static NodeList ColumnList(IEnumerable<string> columns) =>
+            NodeList.Of(columns.Select(c => (Node)new ColumnRef(c)));
+
+        internal Returning? ReturningOf(IReadOnlyList<string> returning)
+        {
+            if (returning.Count == 0) return null;
+            if (!_state.Allows(Capability.Returning, d => d.SupportsReturning))
+                throw _state.Refusal(Capability.Returning, "a write that returns columns",
+                    $"{_state.DialectName} cannot return columns from a write; re-read the row instead.");
+            return new Returning(ColumnList(returning));
+        }
+
+        internal BuiltWrite InsertMany(IReadOnlyList<ResolvedRow> resolvedRows)
         {
             if (resolvedRows.Count == 0)
                 throw new InvalidOperationException("InsertManyAsync needs at least one row.");
             var clock = resolvedRows[0].Clock;
-            var cols = resolvedRows[0].Values.Keys.ToList();
-            var rows = resolvedRows.Select(r => r.Values).ToList();
-            var ps = new List<object?>();
-            var tuples = new List<string>(rows.Count);
-            foreach (var row in rows)
+            var columns = resolvedRows[0].Values.Keys.ToList();
+            var bound = new List<object?>();
+            var rows = new List<Node>(resolvedRows.Count);
+            foreach (var resolved in resolvedRows)
             {
-                var slots = new List<string>(cols.Count + clock.Count);
-                foreach (var c2 in cols) { slots.Add(_state.ValueSlot(row[c2], D.Param(ps.Count))); ps.Add(row[c2]); }
-                foreach (var _ in clock) slots.Add(D.NowExpression);
-                tuples.Add("(" + string.Join(", ", slots) + ")");
+                var cells = new List<Node>(columns.Count + clock.Count);
+                foreach (var column in columns) cells.Add(Bound(resolved.Values[column], bound));
+                foreach (var _ in clock) cells.Add(new ClockNow());
+                rows.Add(new ValuesRow(NodeList.Of(cells)));
             }
-
-            var all = cols.Concat(clock);
-            var sql = new StringBuilder("INSERT INTO ").Append(D.Quote(_state.Table))
-                .Append(" (").Append(string.Join(", ", all.Select(D.Quote))).Append(')')
-                .Append(" VALUES ").Append(string.Join(", ", tuples))
-                .ToString();
-            return (sql, ps);
+            var tree = new Insert(
+                new TableRef(_state.Table), ColumnList(columns.Concat(clock)), NodeList.Of(rows));
+            return new BuiltWrite(tree, bound);
         }
 
-        internal StringBuilder PhysicalDelete() => new StringBuilder("DELETE FROM ").Append(D.Quote(_state.Table));
-
-        internal string RenderPurgeByKey(IReadOnlyCollection<Guid> ids, Guid? tenantId)
+        internal Node PurgeByKey(IReadOnlyCollection<Guid> ids, Guid? tenantId)
         {
             if (ids is null) throw new ArgumentNullException(nameof(ids));
             if (ids.Count == 0)
@@ -140,13 +155,10 @@ namespace Neemle.Orm.Lite;
             var key = soft.KeyColumn ?? throw new InvalidOperationException(
                 "PurgeAsync by key requires the entity's key column in its [SoftDelete] metadata.");
             RequireTenantScope("PurgeAsync", soft, tenantId);
-            var sql = PhysicalDelete().Append(" WHERE ")
-                .Append(D.AnyOfExpression(D.Quote(key), _state.Slot(_state.Params.Count)));
-            AppendTenantTerm(sql, soft);
-            return sql.ToString();
+            return new Delete(new TableRef(_state.Table), new Where(KeyTerms(key, ids, soft, tenantId)));
         }
 
-        internal string RenderRestore(IReadOnlyCollection<Guid> ids, Guid? tenantId)
+        internal Node Restore(IReadOnlyCollection<Guid> ids, Guid? tenantId)
         {
             if (ids is null) throw new ArgumentNullException(nameof(ids));
             var soft = _softDelete
@@ -154,13 +166,22 @@ namespace Neemle.Orm.Lite;
             var key = soft.KeyColumn ?? throw new InvalidOperationException(
                 "RestoreAsync requires the entity's key column in its [SoftDelete] metadata.");
             RequireTenantScope("RestoreAsync", soft, tenantId);
-            var softColumn = D.Quote(_state.Col(soft.Column));
-            var sql = new StringBuilder("UPDATE ").Append(D.Quote(_state.Table))
-                .Append(" SET ").Append(softColumn).Append(" = NULL WHERE ")
-                .Append(D.AnyOfExpression(D.Quote(key), _state.Slot(_state.Params.Count)))
-                .Append(" AND ").Append(softColumn).Append(" IS NOT NULL");
-            AppendTenantTerm(sql, soft);
-            return sql.ToString();
+            var softColumn = new ColumnRef(_state.Col(soft.Column));
+            var terms = KeyTerms(key, ids, soft, tenantId, new IsNotNull(softColumn));
+            return new Update(
+                new TableRef(_state.Table), [new Assignment(softColumn, new NullLit())], new Where(terms));
+        }
+
+        private NodeList KeyTerms(
+            string key, IReadOnlyCollection<Guid> ids, SoftDeleteMeta soft, Guid? tenantId, Node? between = null)
+        {
+            var first = _state.ParamBase + _state.Params.Count;
+            var terms = new List<Node> { new AnyOf(new ColumnRef(key), new Param(first, ids.ToArray())) };
+            if (between is not null) terms.Add(between);
+            if (!soft.Platform)
+                terms.Add(new Compare(
+                    CompareOp.Equal, new ColumnRef(soft.TenantColumn!), new Param(first + 1, tenantId!.Value)));
+            return NodeList.Of(terms);
         }
 
         private static void RequireTenantScope(string verb, SoftDeleteMeta soft, Guid? tenantId)
@@ -170,12 +191,5 @@ namespace Neemle.Orm.Lite;
             if (!soft.Platform && (soft.TenantColumn is null || tenantId is null))
                 throw new InvalidOperationException(
                     $"{verb} on a tenant entity requires its tenant column and a tenant id.");
-        }
-
-        private void AppendTenantTerm(StringBuilder sql, SoftDeleteMeta soft)
-        {
-            if (!soft.Platform)
-                sql.Append(" AND ").Append(D.Quote(soft.TenantColumn!)).Append(" = ")
-                    .Append(_state.Slot(_state.Params.Count + 1));
         }
     }

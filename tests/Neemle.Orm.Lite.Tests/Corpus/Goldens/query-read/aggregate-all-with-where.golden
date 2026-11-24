@@ -1,0 +1,5 @@
+-- sql
+SELECT count(*), count(DISTINCT "owner_id"), COALESCE(SUM(COALESCE("rank", 0)), 0), min("rank"), count(*) FILTER (WHERE ("title" = @p0)), count(*) FILTER (WHERE ("title" = @p1)) FROM "corpus_notes" WHERE "active" = true
+-- parameters (2)
+[0] String "a"
+[1] String "b"

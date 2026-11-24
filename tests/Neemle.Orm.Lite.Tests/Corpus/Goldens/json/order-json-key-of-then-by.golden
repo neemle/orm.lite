@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" ORDER BY "title" ASC NULLS LAST, (SELECT (CASE WHEN pg_input_is_valid((s0."doc" ->> @p0), 'numeric') THEN (s0."doc" ->> @p0) END)::numeric FROM "corpus_tags" s0 WHERE s0."note_id" = "corpus_notes"."id") DESC NULLS LAST
+-- parameters (1)
+[0] String "rank"

@@ -31,7 +31,7 @@ public sealed class EqualsIgnoreCaseTests : IAsyncLifetime
         await SeedAsync(Wildcard, "ab@example.test", 3);
 
         OrmMeta.Register<FixtureWidget>("fixture_widgets", Col, new[] { "id", "name", "rank" });
-        _ctx = new OrmContext(new NeverUsedDataSource(), new SqliteDialect());
+        _ctx = TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
     }
 
     public async Task DisposeAsync() => await _connection.DisposeAsync();
@@ -95,7 +95,7 @@ public sealed class EqualsIgnoreCaseTests : IAsyncLifetime
     }
 
     private static Query<FixtureWidget> Detached(ISqlDialect dialect) =>
-        new(new OrmContext(new NeverUsedDataSource(), dialect), _ => throw new NotSupportedException());
+        new(TestContext.Of(new NeverUsedDataSource(), dialect), _ => throw new NotSupportedException());
 
     private Query<FixtureWidget> Query() => new Query<FixtureWidget>(_ctx, Map).On(_connection);
 

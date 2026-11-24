@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: an arrangement with no options ranks every row NULL, which orders nothing; Query<T> compares the extracted value instead of calling this member. (Parameter 'arrangedParameters')

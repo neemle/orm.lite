@@ -1,6 +1,7 @@
 #nullable enable
 using System;
 using System.Text.RegularExpressions;
+using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite;
 
@@ -12,41 +13,17 @@ public static class SoftDeleteColumnDdl
 
     private static readonly Regex VersionName = new(@"\A[a-z0-9][a-z0-9_]*\z", RegexOptions.CultureInvariant);
 
-    public static string Up(string table, string version)
+    public static Node Up(string table, string version)
     {
         Check(table, version);
-        return "DO $sd$ BEGIN"
-            + " PERFORM set_config('lock_timeout', '5s', true);"
-            + " IF NOT " + ColumnExists(table) + " THEN"
-            + " ALTER TABLE \"" + table + "\" ADD COLUMN \"" + Column + "\" timestamp with time zone NULL;"
-            + " COMMENT ON COLUMN \"" + table + "\".\"" + Column + "\" IS '" + version + "';"
-            + " END IF;"
-            + " END $sd$";
+        return new SoftDeleteColumn(table, version, false);
     }
 
-    public static string Down(string table, string version)
+    public static Node Down(string table, string version)
     {
         Check(table, version);
-        return "DO $sd$ DECLARE soft_rows bigint; BEGIN"
-            + " PERFORM set_config('lock_timeout', '5s', true);"
-            + " IF " + MarkerIs(table, version) + " THEN"
-            + " SELECT count(*) INTO soft_rows FROM \"" + table + "\" WHERE \"" + Column + "\" IS NOT NULL;"
-            + " IF soft_rows > 0 THEN"
-            + " RAISE EXCEPTION 'cannot drop " + Column + " from " + table + ": % soft-deleted row(s) would read as live', soft_rows;"
-            + " END IF;"
-            + " ALTER TABLE \"" + table + "\" DROP COLUMN \"" + Column + "\";"
-            + " END IF;"
-            + " END $sd$";
+        return new SoftDeleteColumn(table, version, true);
     }
-
-    private static string ColumnExists(string table) =>
-        "EXISTS (SELECT 1 FROM pg_attribute a WHERE a.attrelid = to_regclass('\"" + table + "\"')"
-        + " AND a.attname = '" + Column + "' AND NOT a.attisdropped)";
-
-    private static string MarkerIs(string table, string version) =>
-        "coalesce((SELECT col_description(a.attrelid, a.attnum) FROM pg_attribute a"
-        + " WHERE a.attrelid = to_regclass('\"" + table + "\"')"
-        + " AND a.attname = '" + Column + "' AND NOT a.attisdropped), '') = '" + version + "'";
 
     private static void Check(string table, string version)
     {

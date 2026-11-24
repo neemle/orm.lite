@@ -1,0 +1,4 @@
+-- sql
+DELETE FROM "corpus_notes" WHERE "rank" > @p0 AND "active" = true
+-- parameters (1)
+[0] Int32 1

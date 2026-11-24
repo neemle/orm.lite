@@ -1,0 +1,1 @@
+[0] CREATE TABLE IF NOT EXISTS "docs" ("id" uuid NOT NULL PRIMARY KEY, "loose" jsonb, "strict" jsonb NOT NULL DEFAULT '{}'::jsonb)

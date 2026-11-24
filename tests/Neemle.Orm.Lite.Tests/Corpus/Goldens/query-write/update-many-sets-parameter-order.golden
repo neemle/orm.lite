@@ -1,0 +1,8 @@
+-- sql
+UPDATE "corpus_notes" SET "title" = @p1, "body" = COALESCE(@p2, "body"), "views" = COALESCE("views", 0) + @p3, "created_at" = now(), "expires_at" = now() + make_interval(mins => @p4) WHERE "rank" > @p0
+-- parameters (5)
+[0] Int32 0
+[1] String "t"
+[2] String "b"
+[3] Int32 2
+[4] Int32 15

@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: UpdateAsync requires a Where (refusing an unfiltered UPDATE).

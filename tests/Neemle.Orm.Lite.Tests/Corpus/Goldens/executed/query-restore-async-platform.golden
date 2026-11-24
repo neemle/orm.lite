@@ -1,0 +1,6 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        UPDATE "corpus_platform_items" SET "deleted_at" = NULL WHERE "id" = ANY(@p0) AND "deleted_at" IS NOT NULL
+    @p0 = Guid[] count=2 { Guid a0000000-0000-0000-0000-00000000000a, Guid b0000000-0000-0000-0000-00000000000b }
+-- outcome
+Int32 1

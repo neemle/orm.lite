@@ -1,0 +1,6 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE (("views" = @p0 AND "score" >= @p1) AND "price" < @p2)
+-- parameters (3)
+[0] Int64 7
+[1] Double 1.5
+[2] Decimal 9.99

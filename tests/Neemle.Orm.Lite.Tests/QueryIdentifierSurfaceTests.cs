@@ -19,13 +19,18 @@ public sealed class QueryIdentifierSurfaceTests
         new(
             typeof(Query<>),
             [
+                "Action<ViewColumns<T, TView>>",
                 "Boolean",
                 "DbCommand",
                 "DbConnection",
                 "DbTransaction",
                 "Expression<Func<T, Boolean>>",
                 "Expression<Func<T, Object>>",
+                "Expression<Func<T, TFirst>>",
+                "Expression<Func<T, TKey>>",
                 "Expression<Func<T, TOther, Boolean>>",
+                "Expression<Func<T, TSecond>>",
+                "Expression<Func<T, TThird>>",
                 "Expression<Func<TOther, Object>>",
                 "Func<DbDataReader, T>",
                 "Func<DbDataReader, TOut>",

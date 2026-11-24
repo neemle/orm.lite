@@ -1,0 +1,17 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT t FROM unnest(@tables::text[]) AS t WHERE EXISTS (SELECT 1 FROM pg_class c WHERE c.oid = to_regclass(quote_ident(t)) AND c.relkind IN ('p', 'r'))
+    @tables = String[] count=4 { String "corpus_tasks", String "corpus_platform_items", String "corpus_projects", String "corpus_no_keys" }
+#2 ExecuteReader conn=2 source=primary tx=false
+    sql:
+        SELECT entity, source_table, id, label, deleted_at, project_id FROM (SELECT 'corpus_task' AS entity, 'corpus_tasks' AS source_table, "id" AS id, left("name"::text, 200) AS label, "deleted_at" AS deleted_at, "project_id" AS project_id FROM "corpus_tasks" WHERE "tenant_id" = @w AND "deleted_at" IS NOT NULL UNION ALL SELECT 'corpus_platform_item' AS entity, 'corpus_platform_items' AS source_table, "id" AS id, left("code"::text, 200) AS label, "deleted_at" AS deleted_at, NULL::uuid AS project_id FROM "corpus_platform_items" WHERE "deleted_at" IS NOT NULL UNION ALL SELECT 'project' AS entity, 'corpus_projects' AS source_table, "id" AS id, left("name"::text, 200) AS label, "deleted_at" AS deleted_at, "id" AS project_id FROM "corpus_projects" WHERE "id" = @w AND "deleted_at" IS NOT NULL) u ORDER BY deleted_at DESC, entity, id LIMIT @lim OFFSET @off
+    @w = Guid 10000000-0000-0000-0000-000000000001
+    @lim = Int32 3
+    @off = Int32 0
+#3 ExecuteReader conn=3 source=primary tx=false
+    sql:
+        SELECT p.t, p.id, h.actor_user_id, h.actor_kind, h.xact_id, h.changed_at FROM unnest(@tables::text[], @ids::uuid[]) AS p(t, id) CROSS JOIN LATERAL (SELECT actor_user_id, actor_kind, xact_id, changed_at FROM row_history x WHERE x.source_table = p.t AND x.row_id = p.id AND x.op = 'soft_delete' ORDER BY x.id DESC LIMIT 1) h
+    @tables = String[] count=2 { String "corpus_tasks", String "corpus_tasks" }
+    @ids = Guid[] count=2 { Guid a0000000-0000-0000-0000-00000000000a, Guid b0000000-0000-0000-0000-00000000000b }
+-- outcome
+hasMore=True skipped=[corpus_no_keys] rows=[corpus_task corpus_tasks a0000000-0000-0000-0000-00000000000a first Guid 30000000-0000-0000-0000-000000000003 Utc actor=Guid 30000000-0000-0000-0000-000000000003/user xact=Int64 77; corpus_task corpus_tasks b0000000-0000-0000-0000-00000000000b null null Utc actor=null/null xact=null]

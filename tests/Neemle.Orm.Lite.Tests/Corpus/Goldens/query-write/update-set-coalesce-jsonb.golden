@@ -1,0 +1,5 @@
+-- sql
+UPDATE "corpus_notes" SET "payload" = COALESCE(@p0::jsonb, "payload") WHERE "id" = @p1
+-- parameters (2)
+[0] Jsonb {}
+[1] Guid a0000000-0000-0000-0000-00000000000a

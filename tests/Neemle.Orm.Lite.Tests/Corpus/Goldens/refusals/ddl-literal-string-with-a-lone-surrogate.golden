@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: a string or character value holds half of a surrogate pair (a lone surrogate), which is not valid text and has no SQL text literal; remove it from the value. (Parameter 'value')

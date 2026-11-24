@@ -1,0 +1,12 @@
+#1 BEGIN conn=1 source=primary
+#2 ExecuteNonQuery conn=1 source=primary tx=true
+    sql:
+        UPDATE "corpus_platform_items" SET "deleted_at" = NULL WHERE "id" = ANY(@p0) AND "deleted_at" IS NOT NULL
+    @p0 = Guid[] count=1 { Guid a0000000-0000-0000-0000-00000000000a }
+#3 ExecuteNonQuery conn=1 source=primary tx=true
+    sql:
+        UPDATE "corpus_tasks" SET "deleted_at" = NULL WHERE "id" = ANY(@p0) AND "deleted_at" IS NOT NULL AND "tenant_id" = @p1
+    @p0 = Guid[] count=2 { Guid a0000000-0000-0000-0000-00000000000a, Guid b0000000-0000-0000-0000-00000000000b }
+    @p1 = Guid 10000000-0000-0000-0000-000000000001
+-- outcome
+Int32 3

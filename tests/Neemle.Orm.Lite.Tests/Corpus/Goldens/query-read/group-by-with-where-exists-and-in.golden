@@ -1,0 +1,5 @@
+-- sql
+SELECT "status", count(*) FROM "corpus_notes" WHERE "rank" > @p0 AND EXISTS (SELECT 1 FROM "corpus_tags" s0 WHERE s0."note_id" = "corpus_notes"."id") AND "id" IN (SELECT "note_id" FROM "corpus_tags" WHERE "label" = @p1) GROUP BY "status"
+-- parameters (2)
+[0] Int32 1
+[1] String "l"

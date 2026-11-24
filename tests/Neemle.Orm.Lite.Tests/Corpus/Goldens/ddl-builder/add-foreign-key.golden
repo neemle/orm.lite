@@ -1,0 +1,1 @@
+[0] ALTER TABLE "samples" ADD CONSTRAINT "fk_samples_owner" FOREIGN KEY ("owner_id") REFERENCES "owners" ("id")

@@ -1,0 +1,8 @@
+#1 BEGIN conn=1 source=primary
+#2 ExecuteReader conn=1 source=primary tx=true
+    sql:
+        SELECT "deleted_at" IS NOT NULL, "project_id" FROM "corpus_tasks" WHERE "id" = @id AND "tenant_id" = @w FOR UPDATE
+    @id = Guid a0000000-0000-0000-0000-00000000000a
+    @w = Guid 10000000-0000-0000-0000-000000000001
+-- outcome
+Boolean true Guid 30000000-0000-0000-0000-000000000003

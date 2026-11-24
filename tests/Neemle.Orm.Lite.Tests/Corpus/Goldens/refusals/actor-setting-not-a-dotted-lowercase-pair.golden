@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: An Orm.Lite actor setting is a lowercase prefix and a lowercase name joined by one dot, for example app.actor; got 'Bad Name'. (Parameter 'name')

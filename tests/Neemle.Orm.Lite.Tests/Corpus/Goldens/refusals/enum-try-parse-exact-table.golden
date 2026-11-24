@@ -1,0 +1,10 @@
+[0] null -> refused
+[1] String "" -> refused
+[2] String "  " -> refused
+[3] String "Draft" -> parsed Draft
+[4] String " Active " -> parsed Active
+[5] String "active" -> parsed Active
+[6] String "ARCHIVED" -> parsed Archived
+[7] String "Bogus" -> refused
+[8] String "7" -> refused
+[9] String "1" -> refused

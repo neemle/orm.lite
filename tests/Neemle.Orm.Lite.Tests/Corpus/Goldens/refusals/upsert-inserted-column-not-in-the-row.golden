@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: UpsertSet.Inserted names the column "rank", which the Row does not carry. (Parameter 'sets')

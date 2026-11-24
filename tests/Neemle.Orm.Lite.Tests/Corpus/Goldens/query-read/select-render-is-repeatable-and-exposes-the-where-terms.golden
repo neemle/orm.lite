@@ -1,0 +1,7 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "rank" > @p0 AND "title" = @p1
+-- second render equal: True
+-- where terms: "rank" > @p0 | "title" = @p1
+-- parameters (2)
+[0] Int32 1
+[1] String "w"

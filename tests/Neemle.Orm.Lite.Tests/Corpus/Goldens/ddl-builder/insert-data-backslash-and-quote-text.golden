@@ -1,0 +1,1 @@
+[0] INSERT INTO "samples" ("a", "b", "c") VALUES (E'a\\b', E'x\\''); DROP TABLE t; --', E'\\'), ('plain', E'\\', E'{"k":"a\\"b"}')

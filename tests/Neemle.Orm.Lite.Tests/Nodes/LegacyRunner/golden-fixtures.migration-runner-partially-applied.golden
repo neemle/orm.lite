@@ -1,0 +1,28 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT set_config('ormlite.actor', @v, false)
+    @v = String "system"
+#2 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE TABLE IF NOT EXISTS schema_migrations (version text PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now())
+#3 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT pg_advisory_lock(727274)
+#4 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT version FROM schema_migrations
+#5 BEGIN conn=1 source=primary
+#6 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SET LOCAL lock_timeout = '5s'
+#7 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"fixture_notes"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"fixture_notes"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['title'])) = 1 THEN EXECUTE 'CREATE INDEX IF NOT EXISTS "ix_fixture_notes_title" ON "fixture_notes" ("title")'; END IF; END $reconcile$
+#8 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "9900_orm_index_reconcile_OrmLiteGoldenFixtures_eb6e32bc81a12870"
+#9 COMMIT conn=1 source=primary
+#10 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT pg_advisory_unlock(727274)

@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: this MovedFieldKey was never constructed -- it is `default`, which carries no name. A default key would render an empty literal and silently match no member of any document, which is a wrong answer wearing the shape of a working one.

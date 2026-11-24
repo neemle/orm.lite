@@ -1,0 +1,6 @@
+#1 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT EXISTS (SELECT 1 FROM "corpus_platform_items" r WHERE r."id" = @id)
+    @id = Guid a0000000-0000-0000-0000-00000000000a
+-- outcome
+Boolean true

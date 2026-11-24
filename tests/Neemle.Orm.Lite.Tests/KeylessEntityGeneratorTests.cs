@@ -10,21 +10,14 @@ public sealed class KeylessEntityGeneratorTests
 {
     private const string Header = "using System; using Neemle.Orm.Lite; namespace Fixture;\n";
 
-    private static (ImmutableArray<Diagnostic> Diagnostics, string Generated, ImmutableArray<Diagnostic> CompileErrors) Run(string source)
+    private static (ImmutableArray<Diagnostic> Diagnostics, string Generated, ImmutableArray<Diagnostic> CompileErrors, Compilation Output) Run(string source)
     {
         var tree = CSharpSyntaxTree.ParseText(Header + source);
-
-        var references = AppDomain.CurrentDomain.GetAssemblies()
-            .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
-            .Select(a => (MetadataReference)MetadataReference.CreateFromFile(a.Location))
-            .ToList();
-        references.Add(MetadataReference.CreateFromFile(typeof(SoftDeleteAttribute).Assembly.Location));
-        references.Add(MetadataReference.CreateFromFile(typeof(System.Data.Common.DbConnection).Assembly.Location));
 
         var compilation = CSharpCompilation.Create(
             "KeylessGeneratorFixture",
             new[] { tree },
-            references.Distinct().ToList(),
+            GeneratorReferences.All,
             new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary,
                 nullableContextOptions: NullableContextOptions.Enable));
 
@@ -37,7 +30,7 @@ public sealed class KeylessEntityGeneratorTests
             .Select(s => s.SourceText.ToString()));
 
         var errors = output.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error).ToImmutableArray();
-        return (run.Diagnostics, generated, errors);
+        return (run.Diagnostics, generated, errors, output);
     }
 
     private const string Keyless = @"
@@ -59,7 +52,7 @@ public class Doc
     [Fact(DisplayName = "an entity with no [Key] generates source that compiles")]
     public void A_keyless_entity_generates_compilable_source()
     {
-        var (diagnostics, _, errors) = Run(Keyless);
+        var (diagnostics, _, errors, _) = Run(Keyless);
 
         Assert.Empty(diagnostics);
         Assert.Empty(errors);
@@ -68,23 +61,30 @@ public class Doc
     [Fact(DisplayName = "an entity with no [Key] emits no member that takes a key")]
     public void A_keyless_entity_emits_no_key_member()
     {
-        var (_, generated, _) = Run(Keyless);
+        var (_, _, _, output) = Run(Keyless);
 
-        Assert.Contains("public static async Task InsertAsync(global::Neemle.Orm.Lite.OrmContext db, global::Fixture.Pair e)", generated, StringComparison.Ordinal);
-        Assert.DoesNotContain("DeleteAsync", generated, StringComparison.Ordinal);
-        Assert.DoesNotContain("GetAsync", generated, StringComparison.Ordinal);
-        Assert.DoesNotContain("UpdateAsync", generated, StringComparison.Ordinal);
+        var members = GeneratedModel.Of(output).Class("PairOrm").GetMethods().Select(m => m.Name).ToArray();
+
+        Assert.Equal(2, members.Count(n => n == "InsertAsync"));
+        Assert.DoesNotContain("DeleteAsync", members);
+        Assert.DoesNotContain("GetAsync", members);
+        Assert.DoesNotContain("UpdateAsync", members);
     }
 
     [Fact(DisplayName = "an entity with a [Key] still emits the context and connection forms of Delete and Get")]
     public void A_keyed_entity_still_emits_its_key_members()
     {
-        var (diagnostics, generated, errors) = Run(Keyed);
+        var (diagnostics, _, errors, output) = Run(Keyed);
 
         Assert.Empty(diagnostics);
         Assert.Empty(errors);
-        Assert.Contains("DeleteAsync(global::Neemle.Orm.Lite.OrmContext db, global::System.Guid key)", generated, StringComparison.Ordinal);
-        Assert.Contains("DeleteAsync(DbConnection conn, global::System.Guid key)", generated, StringComparison.Ordinal);
-        Assert.Contains("GetAsync(global::Neemle.Orm.Lite.OrmContext db, global::System.Guid key)", generated, StringComparison.Ordinal);
+        var orm = GeneratedModel.Of(output).Class("DocOrm");
+        var key = typeof(Guid);
+        var context = typeof(OrmContext);
+        var connection = typeof(System.Data.Common.DbConnection);
+        Assert.NotNull(orm.GetMethod("DeleteAsync", [context, key]));
+        Assert.NotNull(orm.GetMethod("DeleteAsync", [context, connection, key]));
+        Assert.NotNull(orm.GetMethod("GetAsync", [context, key]));
+        Assert.NotNull(orm.GetMethod("GetAsync", [context, connection, key]));
     }
 }

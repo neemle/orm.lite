@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using Neemle.Orm.Lite;
 using Xunit;
 
@@ -14,7 +13,7 @@ public class GuardVersusBodyRefusalTests
     private static string Col(string property) => property.ToLowerInvariant();
 
     private static Query<FixtureWidget> Sqlite() =>
-        new(new OrmContext(new UnopenableDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
+        new(TestContext.Of(new UnreachableDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
 
     private static void AssertRefusedByTheBuildersGuardAndNotByTheFixtureBody(
         string guardedFlag, string builderMember, string guardWording, NotSupportedException refusal)
@@ -125,12 +124,5 @@ public class GuardVersusBodyRefusalTests
                 $"SqliteDialect.{member} no longer carries "
                 + $"\"{SqliteDialect.RefusalWordingOnlyThisFixturesOwnBodiesUse}\", so every guard-versus-body "
                 + "test that forbids that phrase has silently stopped being able to detect a removed guard.");
-    }
-
-    private sealed class UnopenableDataSource : DbDataSource
-    {
-        public override string ConnectionString => "fake://guard";
-        protected override DbConnection CreateDbConnection() =>
-            throw new InvalidOperationException("these are rendering pins and must not open a connection.");
     }
 }

@@ -1,0 +1,6 @@
+-- sql
+INSERT INTO "corpus_notes" ("id", "created_at", "owner_id") VALUES (@p0, @p1, @p2) ON CONFLICT ("id") DO NOTHING
+-- parameters (3)
+[0] Guid a0000000-0000-0000-0000-00000000000a
+[1] DateTime 2026-03-04T05:06:07.0000000Z
+[2] Guid b0000000-0000-0000-0000-00000000000b

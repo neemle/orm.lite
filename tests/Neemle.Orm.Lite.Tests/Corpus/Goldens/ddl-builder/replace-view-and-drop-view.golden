@@ -1,0 +1,3 @@
+[0] CREATE OR REPLACE VIEW "corpus_view" AS SELECT "corpus_notes"."id" AS "id", "corpus_notes"."title" AS "title", "corpus_notes"."rank" AS "rank" FROM "corpus_notes" WHERE "corpus_notes"."rank" > 2
+[1] COMMENT ON VIEW "corpus_view" IS 'bfd638eca806d051'
+[2] DROP VIEW IF EXISTS "corpus_view"

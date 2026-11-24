@@ -1,0 +1,12 @@
+#1 BEGIN conn=1 source=primary
+#2 ExecuteNonQuery conn=1 source=primary tx=true
+    sql:
+        SELECT pg_advisory_xact_lock(hashtextextended(@k, 0))
+    @k = String "key-1"
+#3 ExecuteNonQuery conn=1 source=primary tx=true
+    sql:
+        SELECT pg_advisory_xact_lock_shared(hashtextextended(@k, 0))
+    @k = String "key-2"
+#4 COMMIT conn=1 source=primary
+-- outcome
+committed=True

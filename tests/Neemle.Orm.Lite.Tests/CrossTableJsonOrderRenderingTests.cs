@@ -28,7 +28,7 @@ public sealed class CrossTableJsonOrderRenderingTests
         OrmMeta.Register<FixtureDocument>("fixture_documents", DocumentCol, ["id", "payload", "label"]);
         OrmMeta.Register<FixtureOwner>("fixture_owners", OwnerCol, ["id", "name"]);
         return new Query<FixtureOwner>(
-            new OrmContext(new NeverUsedDataSource(), dialect),
+            TestContext.Of(new NeverUsedDataSource(), dialect),
             _ => throw new NotSupportedException("no rows are read here"));
     }
 

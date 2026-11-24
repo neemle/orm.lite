@@ -11,7 +11,12 @@
 
   <ItemGroup>
     <PackageReference Include="Neemle.Orm.Lite" Version="0.1.0-pre" />
-    <PackageReference Include="Npgsql" Version="10.0.3" />
+    <PackageReference Include="Neemle.Orm.Lite.Sqlite" Version="0.1.0-pre" />
+    <PackageReference Include="Neemle.Orm.Lite.Postgres" Version="0.1.0-pre" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

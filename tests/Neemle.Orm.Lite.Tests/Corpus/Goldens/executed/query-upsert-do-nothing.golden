@@ -1,0 +1,9 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO "corpus_notes" ("id", "title", "status", "payload", "created_at") VALUES (@p0, @p1, @p2, @p3::jsonb, now()) ON CONFLICT ("id") DO NOTHING
+    @p0 = Guid a0000000-0000-0000-0000-00000000000a
+    @p1 = String "t"
+    @p2 = String "Draft"
+    @p3 = String "{}"
+-- outcome
+[]

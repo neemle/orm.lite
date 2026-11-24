@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE jsonb_exists("payload", @p0)
+-- parameters (1)
+[0] String "name"

@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: the aggregate belongs to a different grouping. (Parameter 'aggregate')

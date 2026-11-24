@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: this statement already merges into a JSON document; a second merge would be a second assignment to the same column and PostgreSQL refuses that with 42701.

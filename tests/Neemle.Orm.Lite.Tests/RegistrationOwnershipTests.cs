@@ -79,7 +79,7 @@ public sealed class RegistrationOwnershipTests
 
         Assert.Equal(
             typeof(ReadOnlySpan<string>),
-            typeof(OrmMeta).GetMethod(nameof(OrmMeta.Register))!.GetParameters()[2].ParameterType);
+            typeof(OrmMeta).GetMethods().Single(m => m.Name == nameof(OrmMeta.Register) && m.GetParameters().Length == 4).GetParameters()[2].ParameterType);
     }
 
     [Fact(DisplayName = "the two views are still ONE registration after the type change, and a copy holding the same names is not mistaken for one")]

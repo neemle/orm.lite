@@ -1,0 +1,4 @@
+[0] up: CREATE TABLE IF NOT EXISTS "samples" ("id" uuid NOT NULL PRIMARY KEY, "name" text)
+[1] up: CREATE INDEX IF NOT EXISTS "ix_samples_name" ON "samples" ("name")
+[2] down: DROP INDEX IF EXISTS "ix_samples_name"
+[3] down: DROP TABLE IF EXISTS "samples"

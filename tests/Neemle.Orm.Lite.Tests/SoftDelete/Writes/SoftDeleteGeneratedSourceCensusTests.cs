@@ -5,9 +5,6 @@ namespace Neemle.Orm.Lite.Tests.SoftDelete.Writes;
 
 public sealed class SoftDeleteGeneratedSourceCensusTests
 {
-    private const string DeleteByKeyMember = "public static async Task<int> DeleteAsync(DbConnection conn, ";
-    private const string UpdateMember = "public static async Task UpdateAsync(DbConnection conn, ";
-
     private const string SoftEntity =
         "[Table(\"census_softs\")] [SoftDelete(Tenant = SoftDeleteAttribute.Platform)] public class CensusSoft { [Key] public Guid Id { get; set; } "
         + "public string Name { get; set; } = \"\"; public int Rank { get; set; } public DateTime? DeletedAt { get; set; } }\n";
@@ -16,60 +13,52 @@ public sealed class SoftDeleteGeneratedSourceCensusTests
         "[Table(\"census_plains\")] public class CensusPlain { [Key] public Guid Id { get; set; } "
         + "public string Name { get; set; } = \"\"; public DateTime? DeletedAt { get; set; } }\n";
 
-    private static readonly string Generated = Run();
+    private static readonly (string Generated, GeneratedModel Model) Run = Generate();
 
-    private static string Run()
+    private static (string, GeneratedModel) Generate()
     {
         var run = MigrationGeneratorRun.Run(SoftEntity + PlainEntity);
         Assert.Empty(run.Diagnostics);
-        return run.Generated;
+        return (run.Generated, GeneratedModel.Of(run.Output));
     }
 
-    private static string BodyOf(string entity, string member)
+    private static string DeleteText(string type) =>
+        GeneratedModel.Text(EntityStatements.Delete(Run.Model.Descriptor(type), Guid.Empty));
+
+    private static string UpdateText(string type)
     {
-        var start = Generated.IndexOf("public static class " + entity + "Orm", StringComparison.Ordinal);
-        Assert.True(start >= 0, entity);
-        var at = Generated.IndexOf(member, start, StringComparison.Ordinal);
-        Assert.True(at >= 0, entity + " " + member);
-        var end = Generated.IndexOf("\n    }\n", at, StringComparison.Ordinal);
-        return Generated[at..end];
+        var descriptor = Run.Model.Descriptor(type);
+        return GeneratedModel.Text(EntityStatements.Update(descriptor, new object?[descriptor.Columns.Count]));
     }
 
-    [Fact(DisplayName = "AC3-r2: the generated DeleteAsync(key) of a soft entity delegates to the runtime renderer and carries no SET, now() or DELETE literal of its own")]
+    [Fact(DisplayName = "AC3-r2: the generated DeleteAsync(key) of a soft entity hands the descriptor to the runtime and carries no statement literal of its own; the statement the runtime builds is the soft one")]
     public void The_generated_soft_delete_body_carries_no_statement_literal()
     {
-        var body = BodyOf("CensusSoft", DeleteByKeyMember);
-
-        Assert.Contains("global::Neemle.Orm.Lite.SoftDeleteSql.DeleteByKey(", body);
-        Assert.DoesNotContain("SET", body);
-        Assert.DoesNotContain("now()", body, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("DELETE", body);
-        Assert.DoesNotContain("UPDATE", body);
+        Assert.Contains("OrmExec.DeleteAsync(", Run.Generated, StringComparison.Ordinal);
+        Assert.DoesNotContain("UPDATE", Run.Generated, StringComparison.Ordinal);
+        Assert.DoesNotContain("DELETE", Run.Generated, StringComparison.Ordinal);
+        Assert.DoesNotContain("now()", Run.Generated, StringComparison.OrdinalIgnoreCase);
+        Assert.Equal("UPDATE \"census_softs\" SET \"deleted_at\" = now() WHERE \"id\" = @k AND \"deleted_at\" IS NULL", DeleteText("CensusSoft"));
     }
 
-    [Fact(DisplayName = "AC3 control: the generated DeleteAsync(key) of a non-soft entity keeps its physical DELETE literal and does not delegate")]
+    [Fact(DisplayName = "AC3 control: the DeleteAsync(key) statement of a non-soft entity stays the physical DELETE")]
     public void The_generated_non_soft_delete_body_keeps_the_physical_delete()
     {
-        var body = BodyOf("CensusPlain", DeleteByKeyMember);
-
-        Assert.Contains("DELETE FROM \\\"census_plains\\\" WHERE \\\"id\\\" = @k", body);
-        Assert.DoesNotContain("SoftDeleteSql", body);
+        Assert.Equal("DELETE FROM \"census_plains\" WHERE \"id\" = @k", DeleteText("CensusPlain"));
     }
 
-    [Fact(DisplayName = "AC4: the generated whole-entity UpdateAsync of a soft entity leaves the soft column out of SET and adds the live predicate")]
+    [Fact(DisplayName = "AC4: the whole-entity UpdateAsync statement of a soft entity leaves the soft column out of SET and adds the live predicate")]
     public void The_generated_soft_update_leaves_the_soft_column_out_of_the_set_clause()
     {
-        var body = BodyOf("CensusSoft", UpdateMember);
+        var text = UpdateText("CensusSoft");
 
-        Assert.Contains("UPDATE \\\"census_softs\\\" SET \\\"name\\\" = @s0, \\\"rank\\\" = @s1 WHERE \\\"id\\\" = @key AND \\\"deleted_at\\\" IS NULL", body);
-        Assert.DoesNotContain("\\\"deleted_at\\\" = ", body);
+        Assert.Equal("UPDATE \"census_softs\" SET \"name\" = @s0, \"rank\" = @s1 WHERE \"id\" = @key AND \"deleted_at\" IS NULL", text);
+        Assert.DoesNotContain("\"deleted_at\" = ", text);
     }
 
-    [Fact(DisplayName = "AC4 control: the generated whole-entity UpdateAsync of a non-soft entity still assigns a column named like the soft column and has no live predicate")]
+    [Fact(DisplayName = "AC4 control: the whole-entity UpdateAsync statement of a non-soft entity still assigns a column named like the soft column and has no live predicate")]
     public void The_generated_non_soft_update_is_unchanged()
     {
-        var body = BodyOf("CensusPlain", UpdateMember);
-
-        Assert.Contains("UPDATE \\\"census_plains\\\" SET \\\"name\\\" = @s0, \\\"deleted_at\\\" = @s1 WHERE \\\"id\\\" = @key\"", body);
+        Assert.Equal("UPDATE \"census_plains\" SET \"name\" = @s0, \"deleted_at\" = @s1 WHERE \"id\" = @key", UpdateText("CensusPlain"));
     }
 }

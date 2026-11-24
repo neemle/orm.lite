@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: RestoreAsync requires a [SoftDelete] entity.

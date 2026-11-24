@@ -1,0 +1,3 @@
+-- sql
+DELETE FROM "corpus_tasks" WHERE "id" = ANY(@p0) AND "tenant_id" = @p1
+-- parameters (0)

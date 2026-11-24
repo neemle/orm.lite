@@ -1,14 +1,40 @@
+# A throwaway PostgreSQL for running the demo on PostgreSQL instead of SQLite. Nothing in the demo needs it: on
+# SQLite the demo runs with no service at all. See demo/README.md ("The same demo on PostgreSQL").
+#
+#   docker compose -f demo/compose.yaml up -d --wait      # start it and wait until it accepts connections
+#   OrmLite__Provider=postgres OrmLite__Host=localhost OrmLite__Port=55432 OrmLite__Username=postgres \
+#     OrmLite__Database=postgres dotnet run --project demo
+#   docker compose -f demo/compose.yaml down              # stop and remove it; no volume is left behind (`down -v`
+#                                                         # is harmless, there is none to remove)
+#
+# The settings on the demo's side are the five OrmLite__* variables above; they override the "OrmLite" block of
+# appsettings.json. The demo expects a fresh database each time: after `down` the next `up` starts an empty one.
+#
+# The image is built FROM scratch and has no shell: the health check is the exec form of the server's own
+# `postgres --healthcheck` (a CMD-SHELL check or `pg_isready` cannot run in it) and `docker exec ... sh` does not work.
+# The image major is the one of tests/compose.yaml, and the host port below is the source of the demo's port in
+# ci.yml and the READMEs: scripts/ComposeCoherence.cs fails the CI test job when any of them says something else.
 name: orm-lite-demo
 
 services:
   postgres:
-    image: postgres:18-alpine
+    image: neemle/pg.lite:19
     environment:
+      # No password: any connection is accepted. Acceptable only because the port below is bound to loopback and the
+      # container is disposable. Never copy this setting to a database that holds anything real.
       POSTGRES_HOST_AUTH_METHOD: trust
     ports:
+      # Host port 55432 (not 5432, so it does not collide with a PostgreSQL you already run), on 127.0.0.1 only, so
+      # nothing outside this machine can reach it.
       - "127.0.0.1:55432:5432"
+    tmpfs:
+      # The data directory in memory, so no volume is left behind: the image declares its data directory a VOLUME, and
+      # without this every up/down would leave an anonymous volume. The server runs as user and group 70.
+      - /var/lib/postgresql/data:uid=70,gid=70,mode=0700
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 1s
-      timeout: 3s
-      retries: 60
+      # What `up --wait` waits for: the server answering its own health check, every 2 seconds for up to 30 tries.
+      test: ["CMD", "/usr/local/pgsql/bin/postgres", "--healthcheck"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+      start_period: 5s

@@ -1,0 +1,35 @@
+<Project>
+
+  <PropertyGroup>
+    <Authors>Neemle</Authors>
+    <Copyright>Copyright (c) 2026 Neemle</Copyright>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReleaseNotes>First pre-release (0.1.0-pre); the API is unstable. See CHANGELOG.md.</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/neemle/orm.lite</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)../artifacts/</PackageOutputPath>
+    <IsPackable>true</IsPackable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OrmLitePackageLicense Condition="'$(OrmLitePackageLicense)' == ''">MIT</OrmLitePackageLicense>
+    <PackageLicenseExpression>$(OrmLitePackageLicense)</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <Target Name="OrmLitePinCoreVersion" AfterTargets="_GetProjectReferenceVersions">
+    <ItemGroup>
+      <_ProjectReferencesWithVersions Update="@(_ProjectReferencesWithVersions)" Condition="'%(Filename)' == 'Neemle.Orm.Lite'" ProjectVersion="[$(OrmLiteVersion)]" />
+    </ItemGroup>
+  </Target>
+
+  <!-- The README that ships is the short consumer page src/PackageReadme/README.md, never the repository README.md,
+       which is the contributor and GitHub page. The file keeps the name README.md so PackageReadmeFile matches it.
+       scripts/ReadmeCheck.cs fails the build gate when this item points anywhere else. -->
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)PackageReadme/README.md" Pack="true" PackagePath="/" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)../LICENSE" Pack="true" PackagePath="/" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)PackageAssets/icon.png" Pack="true" PackagePath="/" Visible="false" />
+  </ItemGroup>
+
+</Project>

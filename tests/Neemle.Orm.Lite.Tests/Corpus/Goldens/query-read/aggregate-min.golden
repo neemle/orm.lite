@@ -1,0 +1,3 @@
+-- sql
+SELECT min("created_at") FROM "corpus_notes"
+-- parameters (0)

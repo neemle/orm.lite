@@ -1,0 +1,10 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT a.attname FROM pg_constraint k CROSS JOIN LATERAL unnest(k.conkey) WITH ORDINALITY AS c(attnum, ord) JOIN pg_attribute a ON a.attrelid = k.conrelid AND a.attnum = c.attnum WHERE k.conname = @n AND k.contype IN ('p', 'u', 'x') AND pg_table_is_visible(k.conrelid) ORDER BY c.ord
+    @n = String "ix_corpus_tasks_name"
+#2 ExecuteReader conn=2 source=primary tx=false
+    sql:
+        SELECT a.attname FROM pg_class r JOIN pg_index i ON i.indexrelid = r.oid CROSS JOIN LATERAL unnest(i.indkey::int2[]) WITH ORDINALITY AS c(attnum, ord) JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = c.attnum WHERE r.relname = @n AND r.relkind = 'i' AND pg_table_is_visible(r.oid) AND c.attnum > 0 AND c.ord <= i.indnkeyatts ORDER BY c.ord
+    @n = String "ix_corpus_tasks_name"
+-- outcome
+ix_corpus_tasks_name [name]

@@ -1,0 +1,8 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "rank" > @p0 AND "title" = @p1 AND "id" IN (SELECT "note_id" FROM "corpus_tags" WHERE "label" = @p2 AND "position" < @p3) AND "views" > @p4
+-- parameters (5)
+[0] Int32 1
+[1] String "x"
+[2] String "l"
+[3] Int32 9
+[4] Int64 2

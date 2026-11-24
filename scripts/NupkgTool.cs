@@ -1,5 +1,6 @@
 #:property EnableAotAnalyzer=false
 #:property EnableTrimAnalyzer=false
+#:property PublishAot=false
 using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Text;

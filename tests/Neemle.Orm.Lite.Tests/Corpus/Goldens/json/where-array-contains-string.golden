@@ -1,0 +1,5 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE (jsonb_typeof(("payload" -> @p0)) = 'array' AND jsonb_exists(("payload" -> @p0), @p1))
+-- parameters (2)
+[0] String "tags"
+[1] String "red"

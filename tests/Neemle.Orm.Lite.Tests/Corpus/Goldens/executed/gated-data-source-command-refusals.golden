@@ -1,0 +1,8 @@
+-- outcome
+Prepare: System.NotSupportedException: GatedDataSource refuses Prepare: every connection is leased through the gate, so use an Execute*Async member instead.
+ExecuteNonQuery: System.NotSupportedException: GatedDataSource refuses ExecuteNonQuery: every connection is leased through the gate, so use ExecuteNonQueryAsync instead.
+ExecuteScalar: System.NotSupportedException: GatedDataSource refuses ExecuteScalar: every connection is leased through the gate, so use ExecuteScalarAsync instead.
+ExecuteReader: System.NotSupportedException: GatedDataSource refuses ExecuteReader: every connection is leased through the gate, so use ExecuteReaderAsync instead.
+set Connection: System.NotSupportedException: GatedDataSource refuses setting Connection on a data-source command: every connection is leased through the gate, so use OpenConnectionAsync and that connection's CreateCommand instead.
+set Transaction: System.NotSupportedException: GatedDataSource refuses setting Transaction on a data-source command: every connection is leased through the gate, so use OpenConnectionAsync and that connection's CreateCommand instead.
+Connection=True Transaction=True text=SELECT 1

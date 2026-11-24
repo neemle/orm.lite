@@ -1,0 +1,5 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT count(*) FROM "corpus_notes"
+-- outcome
+[]

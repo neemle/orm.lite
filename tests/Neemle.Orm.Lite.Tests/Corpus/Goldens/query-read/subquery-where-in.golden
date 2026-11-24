@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "id" IN (SELECT "note_id" FROM "corpus_tags" WHERE "position" > @p0)
+-- parameters (1)
+[0] Int32 1

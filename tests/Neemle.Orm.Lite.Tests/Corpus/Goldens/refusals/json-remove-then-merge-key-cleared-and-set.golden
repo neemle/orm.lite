@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: the JSON member `legacy_name` cannot be cleared and set in the same mutation, or set twice (Parameter 'setKeys')

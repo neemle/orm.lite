@@ -1,5 +1,4 @@
 using System;
-using System.Data.Common;
 using Neemle.Orm.Lite;
 using Xunit;
 
@@ -13,7 +12,7 @@ public class MinAggregateTests
     }
 
     private static Query<FixtureWidget> Widgets(ISqlDialect dialect) =>
-        new(new OrmContext(new UnreachableDataSource(), dialect), _ => throw new NotSupportedException());
+        new(TestContext.Of(new UnreachableDataSource(), dialect), _ => throw new NotSupportedException());
 
     [Fact(DisplayName = "AggregateMin adds a min() term to the SAME single aggregate statement, after the terms already added, so a text value rides the same scan as the counts")]
     public void AggregateMin_joins_the_one_aggregate_statement()
@@ -33,11 +32,4 @@ public class MinAggregateTests
         Assert.Equal(
             "SELECT min(\"name\") FROM \"fixture_widgets\"",
             Widgets(new SqliteDialect()).AggregateMin(w => w.Name).RenderAggregates());
-
-    private sealed class UnreachableDataSource : DbDataSource
-    {
-        public override string ConnectionString => "fake://minaggregate";
-        protected override DbConnection CreateDbConnection() =>
-            throw new InvalidOperationException("this fixture must not open a connection.");
-    }
 }

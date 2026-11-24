@@ -1,0 +1,12 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT t FROM unnest(@tables::text[]) AS t WHERE EXISTS (SELECT 1 FROM pg_class c WHERE c.oid = to_regclass(quote_ident(t)) AND c.relkind IN ('p', 'r'))
+    @tables = String[] count=4 { String "corpus_tasks", String "corpus_platform_items", String "corpus_projects", String "corpus_no_keys" }
+#2 ExecuteReader conn=2 source=primary tx=false
+    sql:
+        SELECT entity, source_table, id, label, deleted_at, project_id FROM (SELECT 'corpus_task' AS entity, 'corpus_tasks' AS source_table, "id" AS id, left("name"::text, 200) AS label, "deleted_at" AS deleted_at, "project_id" AS project_id FROM "corpus_tasks" WHERE "tenant_id" = @w AND "deleted_at" IS NOT NULL) u ORDER BY deleted_at DESC, entity, id LIMIT @lim OFFSET @off
+    @w = Guid 10000000-0000-0000-0000-000000000001
+    @lim = Int32 11
+    @off = Int32 0
+-- outcome
+hasMore=False skipped=[corpus_no_keys,corpus_platform_items,corpus_projects] rows=[]

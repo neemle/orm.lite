@@ -28,7 +28,9 @@ public sealed partial class SoftPurgeGeneratedSourceCensusTests
     private static readonly (System.Collections.Immutable.ImmutableArray<Diagnostic> Diagnostics, string Generated, Compilation Output) Run =
         MigrationGeneratorRun.Run(SoftEntity + OwnerEntity + TagEntity + PlainEntity);
 
-    [GeneratedRegex(@"DELETE FROM \\""([^\\""]+)\\""")]
+    private static readonly GeneratedModel Model = GeneratedModel.Of(Run.Output);
+
+    [GeneratedRegex(@"DELETE FROM ""([^""]+)""")]
     private static partial Regex DeleteTarget();
 
     private static string ClassBody(string name)
@@ -39,6 +41,17 @@ public sealed partial class SoftPurgeGeneratedSourceCensusTests
         return next < 0 ? Run.Generated[start..] : Run.Generated[start..next];
     }
 
+    private static IEnumerable<string> PhysicalDeletes()
+    {
+        foreach (var type in new[] { "CensusSoft", "CensusOwner", "CensusTag", "CensusPlain" })
+        {
+            var descriptor = Model.Descriptor(type);
+            yield return GeneratedModel.Text(EntityStatements.Delete(descriptor, Guid.Empty));
+            foreach (var link in descriptor.ManyToMany)
+                yield return GeneratedModel.Text(EntityStatements.RemoveLink(link, Guid.Empty, Guid.Empty));
+        }
+    }
+
     [Fact(DisplayName = "AC7: the generated source of soft and non-soft entities compiles clean")]
     public void The_generated_source_compiles()
     {
@@ -46,10 +59,11 @@ public sealed partial class SoftPurgeGeneratedSourceCensusTests
         Assert.Empty(Run.Output.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error));
     }
 
-    [Fact(DisplayName = "AC7 census: no generated statement physically deletes from a soft-delete table, so only the purge surface can")]
-    public void No_generated_literal_deletes_from_a_soft_table()
+    [Fact(DisplayName = "AC7 census: no statement the generated entities build physically deletes from a soft-delete table, so only the purge surface can")]
+    public void No_generated_statement_deletes_from_a_soft_table()
     {
-        var targets = DeleteTarget().Matches(Run.Generated).Select(m => m.Groups[1].Value).Distinct().Order(StringComparer.Ordinal).ToArray();
+        var targets = PhysicalDeletes().Select(s => DeleteTarget().Match(s)).Where(m => m.Success).Select(m => m.Groups[1].Value)
+            .Distinct().Order(StringComparer.Ordinal).ToArray();
 
         Assert.Equal(["census_owner_tags", "census_plains", "census_tags"], targets);
         Assert.Empty(targets.Intersect(SoftTables));
@@ -62,29 +76,30 @@ public sealed partial class SoftPurgeGeneratedSourceCensusTests
     {
         var body = ClassBody(entity + "Purge");
 
-        Assert.Equal(2, Regex.Matches(body, "public static async Task<int> DeleteWhereAsync\\(").Count);
+        Assert.Equal(2, Regex.Matches(body, "public static async global::System.Threading.Tasks.Task<int> DeleteWhereAsync\\(").Count);
         Assert.Equal(2, Regex.Matches(body, Regex.Escape("Orm.Query(db)")).Count);
-        Assert.Equal(2, Regex.Matches(body, Regex.Escape(".Where(where).PurgeAsync()")).Count);
-        Assert.Contains("global::System.Linq.Expressions.Expression<global::System.Func<global::Fixture." + entity + ", bool>> where", body);
+        Assert.Equal(2, Regex.Matches(body, Regex.Escape(".Where(@where).PurgeAsync()")).Count);
+        Assert.Contains("global::System.Linq.Expressions.Expression<global::System.Func<global::Fixture." + entity + ", bool>> @where", body);
         Assert.Contains("global::Neemle.Orm.Lite.UnitOfWork uow", body);
         Assert.DoesNotContain("DELETE", body);
         Assert.DoesNotContain("CommandText", body);
     }
 
-    [Fact(DisplayName = "AC7 control: a non-soft entity gets no Purge class and keeps its physical generated DeleteAsync")]
+    [Fact(DisplayName = "AC7 control: a non-soft entity gets no Purge class and keeps its physical DeleteAsync statement")]
     public void A_non_soft_entity_gets_no_purge_surface()
     {
         Assert.DoesNotContain("CensusPlainPurge", Run.Generated);
         Assert.DoesNotContain("CensusTagPurge", Run.Generated);
-        Assert.Contains("DELETE FROM \\\"census_plains\\\" WHERE \\\"id\\\" = @k", ClassBody("CensusPlainOrm"));
+        Assert.Equal("DELETE FROM \"census_plains\" WHERE \"id\" = @k", GeneratedModel.Text(EntityStatements.Delete(Model.Descriptor("CensusPlain"), Guid.Empty)));
     }
 
-    [Fact(DisplayName = "AC7: the Orm class of a soft entity carries no DELETE statement and no purge member")]
+    [Fact(DisplayName = "AC7: the Orm class of a soft entity carries no DELETE statement and no purge member, and its DeleteAsync statement is the soft one")]
     public void The_orm_class_of_a_soft_entity_exposes_no_physical_delete()
     {
         var body = ClassBody("CensusSoftOrm");
 
         Assert.DoesNotContain("DELETE", body);
         Assert.DoesNotContain("Purge", body);
+        Assert.StartsWith("UPDATE \"census_softs\"", GeneratedModel.Text(EntityStatements.Delete(Model.Descriptor("CensusSoft"), Guid.Empty)));
     }
 }

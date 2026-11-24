@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: "title" is missing from a row of an InsertManyAsync; every row must name the SAME columns in the same order. (Parameter 'rows')

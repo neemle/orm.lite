@@ -1,1 +1,26 @@
-<Project />
+<Project>
+
+  <Target Name="FreshenOrmLitePackages" BeforeTargets="Restore">
+    <ItemGroup>
+      <_PackedPackage Include="$(MSBuildThisFileDirectory)../artifacts/Neemle.Orm.Lite*.nupkg" />
+    </ItemGroup>
+    <GetFileHash Files="@(_PackedPackage)" Algorithm="SHA256" HashEncoding="hex" Condition="'@(_PackedPackage)' != ''">
+      <Output TaskParameter="Items" ItemName="_PackedHash" />
+    </GetFileHash>
+    <PropertyGroup>
+      <_PackedStamp>@(_PackedHash->'%(Filename)=%(FileHash)', ';')</_PackedStamp>
+      <_PackedStampFile>$(RestorePackagesPath)/.packed-stamp</_PackedStampFile>
+      <_PackedStampSeen Condition="Exists('$(_PackedStampFile)')">$([System.IO.File]::ReadAllText('$(_PackedStampFile)'))</_PackedStampSeen>
+      <_PackedIsStale Condition="'$(_PackedStamp)' != '$(_PackedStampSeen)'">true</_PackedIsStale>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(_PackedIsStale)' == 'true'">
+      <_RestoredLibrary Include="@(PackageReference)" Condition="$([System.String]::new('%(Identity)').StartsWith('Neemle.Orm.Lite'))">
+        <Folder>$(RestorePackagesPath)/$([System.String]::new('%(Identity)').ToLowerInvariant())</Folder>
+      </_RestoredLibrary>
+    </ItemGroup>
+    <RemoveDir Directories="@(_RestoredLibrary->'%(Folder)')" Condition="'$(_PackedIsStale)' == 'true'" />
+    <MakeDir Directories="$(RestorePackagesPath)" Condition="'$(_PackedIsStale)' == 'true'" />
+    <WriteLinesToFile File="$(_PackedStampFile)" Lines="$(_PackedStamp)" Overwrite="true" WriteOnlyWhenDifferent="true" Condition="'$(_PackedIsStale)' == 'true'" />
+  </Target>
+
+</Project>

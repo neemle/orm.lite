@@ -1,0 +1,5 @@
+#1 ExecuteScalar conn=1 source=primary tx=false
+    sql:
+        SELECT coalesce(sum("views"), 0) FROM "corpus_notes" WHERE "active" = true
+-- outcome
+Int64 12

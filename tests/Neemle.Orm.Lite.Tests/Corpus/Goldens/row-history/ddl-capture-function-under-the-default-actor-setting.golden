@@ -1,0 +1,52 @@
+CREATE OR REPLACE FUNCTION row_history_capture() RETURNS trigger LANGUAGE plpgsql AS $rh$
+DECLARE
+  v_old jsonb;
+  v_new jsonb;
+  v_unversioned text[] := ARRAY[]::text[];
+  v_delta jsonb;
+  v_op text;
+  v_actor text;
+  v_actor_kind text;
+  v_actor_user uuid;
+  v_tenant uuid;
+  i int;
+BEGIN
+  IF TG_OP = 'DELETE' THEN
+    DELETE FROM row_history
+     WHERE source_table = TG_TABLE_NAME AND row_id = (to_jsonb(OLD) ->> TG_ARGV[0])::uuid;
+    RETURN NULL;
+  END IF;
+  v_old := to_jsonb(OLD);
+  v_new := to_jsonb(NEW);
+  FOR i IN 3 .. TG_NARGS - 1 LOOP
+    v_unversioned := v_unversioned || TG_ARGV[i];
+  END LOOP;
+  v_delta := (SELECT coalesce(jsonb_object_agg(o.key, o.value), '{}'::jsonb)
+                FROM jsonb_each(v_old) AS o(key, value)
+               WHERE (v_new -> o.key) IS DISTINCT FROM o.value
+                 AND NOT (o.key = ANY (v_unversioned)));
+  IF v_delta = '{}'::jsonb THEN
+    RETURN NULL;
+  END IF;
+  v_op := CASE
+    WHEN v_old ->> TG_ARGV[1] IS NULL AND v_new ->> TG_ARGV[1] IS NOT NULL THEN 'soft_delete'
+    WHEN v_old ->> TG_ARGV[1] IS NOT NULL AND v_new ->> TG_ARGV[1] IS NULL THEN 'restore'
+    ELSE 'update' END;
+  IF TG_ARGV[2] <> '' THEN
+    v_tenant := (v_new ->> TG_ARGV[2])::uuid;
+  END IF;
+  v_actor := current_setting('ormlite.actor', true);
+  IF v_actor ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' THEN
+    v_actor_kind := 'user';
+    v_actor_user := v_actor::uuid;
+  ELSIF v_actor = 'system' THEN
+    v_actor_kind := 'system';
+  ELSE
+    v_actor_kind := 'unknown';
+  END IF;
+  INSERT INTO row_history (tenant_id, source_table, row_id, op, old_values, actor_user_id, actor_kind, xact_id)
+  VALUES (v_tenant, TG_TABLE_NAME, (v_old ->> TG_ARGV[0])::uuid, v_op, v_delta, v_actor_user, v_actor_kind,
+          pg_current_xact_id()::text::bigint);
+  RETURN NULL;
+END
+$rh$

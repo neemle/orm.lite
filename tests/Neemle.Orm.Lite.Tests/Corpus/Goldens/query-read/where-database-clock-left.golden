@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE now() >= "expires_at"
+-- parameters (0)

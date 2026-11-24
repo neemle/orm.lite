@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "owner_id" IS NULL
+-- parameters (0)

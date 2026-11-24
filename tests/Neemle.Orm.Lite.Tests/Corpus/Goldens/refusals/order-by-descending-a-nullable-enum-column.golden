@@ -1,0 +1,3 @@
+-- refusal
+type: System.NotSupportedException
+message: Cannot order by the enum column Review (CorpusStatus?): enums are stored as their member NAME, so the database would rank the names as text, alphabetically and not by value, and the rows would silently come back in an order the enum does not have. Nothing was executed. Order by a column that holds the order you mean (an integer rank, for example), or read the rows and sort the enum values in memory.

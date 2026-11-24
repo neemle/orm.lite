@@ -1,0 +1,7 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        UPDATE "corpus_notes" SET "rank" = @p0 WHERE "id" = @p1 RETURNING "id", "title"
+    @p0 = Int32 1
+    @p1 = Guid a0000000-0000-0000-0000-00000000000a
+-- outcome
+[Guid a0000000-0000-0000-0000-00000000000a, String "n"]

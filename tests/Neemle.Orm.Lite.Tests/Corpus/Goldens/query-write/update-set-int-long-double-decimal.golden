@@ -1,0 +1,8 @@
+-- sql
+UPDATE "corpus_notes" SET "rank" = @p0, "views" = @p1, "score" = @p2, "price" = @p3 WHERE "id" = @p4
+-- parameters (5)
+[0] Int32 4
+[1] Int64 5
+[2] Double 6.5
+[3] Decimal 7.25
+[4] Guid a0000000-0000-0000-0000-00000000000a

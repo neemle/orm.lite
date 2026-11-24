@@ -1,0 +1,247 @@
+#1 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT set_config('ormlite.actor', @v, false)
+    @v = String "system"
+#2 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE TABLE IF NOT EXISTS schema_migrations (version text PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now())
+#3 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT pg_advisory_lock(727274)
+#4 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT version FROM schema_migrations
+#5 BEGIN conn=1 source=primary
+#6 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE TABLE IF NOT EXISTS "ce_accounts" ("id" uuid NOT NULL PRIMARY KEY, "code" text NOT NULL DEFAULT ''::text, "name" text NOT NULL DEFAULT ''::text, "deleted_at" timestamp with time zone); CREATE TABLE IF NOT EXISTS "ce_projects" ("id" uuid NOT NULL PRIMARY KEY, "tenant_id" uuid NOT NULL, "title" text NOT NULL DEFAULT ''::text, "state" text NOT NULL DEFAULT ''::text, "updated_at" timestamp with time zone NOT NULL DEFAULT now(), "deleted_at" timestamp with time zone); CREATE TABLE IF NOT EXISTS "ce_project_labels" ("project_id" uuid NOT NULL, "label_id" uuid NOT NULL, PRIMARY KEY ("project_id", "label_id")); CREATE TABLE IF NOT EXISTS "ce_tasks" ("id" uuid NOT NULL PRIMARY KEY, "owner_scope" uuid NOT NULL, "project_id" uuid NOT NULL, "parent_id" uuid, "name" text NOT NULL DEFAULT ''::text, "removed_at" timestamp with time zone); CREATE TABLE IF NOT EXISTS "ce_labels" ("id" uuid NOT NULL PRIMARY KEY, "text" text NOT NULL DEFAULT ''::text); CREATE TABLE IF NOT EXISTS "ce_members" ("id" uuid NOT NULL PRIMARY KEY, "handle" text NOT NULL DEFAULT ''::text, "deleted_at" timestamp with time zone); CREATE TABLE IF NOT EXISTS "ce_everything" ("id" uuid NOT NULL PRIMARY KEY, "optional_guid" uuid, "text" text NOT NULL DEFAULT ''::text, "optional_text" text, "count" integer NOT NULL DEFAULT 0, "optional_count" integer, "big" bigint NOT NULL DEFAULT 0, "flag" boolean NOT NULL DEFAULT false, "ratio" double precision NOT NULL DEFAULT 0, "amount" numeric(12,4) NOT NULL, "stamp" timestamp with time zone NOT NULL DEFAULT now(), "optional_stamp" timestamp with time zone, "day" date NOT NULL, "optional_day" date, "level" text NOT NULL DEFAULT ''::text, "optional_level" text, "document" jsonb NOT NULL DEFAULT '{}'::jsonb, "optional_document" jsonb, "custom_name" text NOT NULL DEFAULT ''::text, "searchable" text NOT NULL DEFAULT ''::text, "unique" text NOT NULL DEFAULT ''::text); CREATE TABLE IF NOT EXISTS "ce_keyless" ("note" text NOT NULL DEFAULT ''::text, "counter" integer NOT NULL DEFAULT 0); CREATE TABLE IF NOT EXISTS "ce_internal" ("id" uuid NOT NULL PRIMARY KEY, "name" text NOT NULL DEFAULT ''::text)
+#7 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "0000_baseline_CorpusEntities"
+#8 COMMIT conn=1 source=primary
+#9 BEGIN conn=1 source=primary
+#10 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE UNIQUE INDEX IF NOT EXISTS "ix_ce_accounts_code_live" ON "ce_accounts" ("code") WHERE "deleted_at" IS NULL
+#11 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE INDEX IF NOT EXISTS "ix_ce_accounts_name" ON "ce_accounts" ("name")
+#12 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE INDEX IF NOT EXISTS "ix_ce_projects_title" ON "ce_projects" ("title")
+#13 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE UNIQUE INDEX IF NOT EXISTS "ix_ce_projects_tenant_id_title_live" ON "ce_projects" ("tenant_id", "title") WHERE "deleted_at" IS NULL
+#14 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE INDEX IF NOT EXISTS "ix_projects_state" ON "ce_projects" ("tenant_id", "state")
+#15 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE UNIQUE INDEX IF NOT EXISTS "ix_ce_tasks_project_id_name" ON "ce_tasks" ("project_id", "name")
+#16 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE INDEX IF NOT EXISTS "ix_ce_everything_searchable" ON "ce_everything" ("searchable")
+#17 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE UNIQUE INDEX IF NOT EXISTS "ix_ce_everything_unique" ON "ce_everything" ("unique")
+#18 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "0001_orm_indexes_CorpusEntities"
+#19 COMMIT conn=1 source=primary
+#20 BEGIN conn=1 source=primary
+#21 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE TABLE IF NOT EXISTS "ce_extra" ("id" uuid NOT NULL PRIMARY KEY, "doc" jsonb)
+#22 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        ALTER TABLE "ce_extra" ADD COLUMN IF NOT EXISTS "note" text
+#23 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        ALTER TABLE "ce_extra" ADD COLUMN IF NOT EXISTS "more" jsonb NOT NULL DEFAULT '{}'::jsonb
+#24 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE INDEX IF NOT EXISTS "ix_extra_note" ON "ce_extra" ("note")
+#25 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE UNIQUE INDEX IF NOT EXISTS "uq_extra_note" ON "ce_extra" ("note")
+#26 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "0100_reversible_with_down"
+#27 COMMIT conn=1 source=primary
+#28 BEGIN conn=1 source=primary
+#29 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        ALTER TABLE "ce_extra" RENAME COLUMN "note" TO "remark"
+#30 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        ALTER TABLE "ce_extra" ADD CONSTRAINT "fk_extra_owner" FOREIGN KEY ("owner_id") REFERENCES "ce_accounts" ("id")
+#31 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO "ce_labels" ("id", "text") VALUES ('00000000-0000-0000-0000-0000000000aa', 'seed'), ('00000000-0000-0000-0000-0000000000bb', 'it''s')
+#32 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DELETE FROM "ce_labels" WHERE "text" IN ('stale', 'older')
+#33 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "0200_reversible_without_down"
+#34 COMMIT conn=1 source=primary
+#35 BEGIN conn=1 source=primary
+#36 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        ALTER TABLE "ce_extra" DROP COLUMN IF EXISTS "remark"
+#37 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT 'irreversible'
+#38 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "0300_irreversible"
+#39 COMMIT conn=1 source=primary
+#40 BEGIN conn=1 source=primary
+#41 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $sd$ BEGIN PERFORM set_config('lock_timeout', '5s', true); IF NOT EXISTS (SELECT 1 FROM pg_attribute a WHERE a.attrelid = to_regclass('"ce_labels"') AND a.attname = 'deleted_at' AND NOT a.attisdropped) THEN ALTER TABLE "ce_labels" ADD COLUMN "deleted_at" timestamp with time zone NULL; COMMENT ON COLUMN "ce_labels"."deleted_at" IS '0400_helper_blocks'; END IF; END $sd$
+#42 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $lc$ DECLARE owner_constraint name; BEGIN PERFORM set_config('lock_timeout', '5s', true); IF to_regclass('"uq_projects_title"') IS NOT NULL THEN CREATE UNIQUE INDEX IF NOT EXISTS "ix_projects_title_live" ON "ce_projects" ("tenant_id", lower("title")) WHERE "deleted_at" IS NULL; COMMENT ON INDEX "ix_projects_title_live" IS '0400_helper_blocks'; SELECT c.conname INTO owner_constraint FROM pg_constraint c WHERE c.conrelid = to_regclass('"ce_projects"') AND c.conindid = to_regclass('"uq_projects_title"') AND c.contype IN ('u', 'p'); IF owner_constraint IS NULL THEN DROP INDEX "uq_projects_title"; ELSE EXECUTE format('ALTER TABLE "ce_projects" DROP CONSTRAINT %I', owner_constraint); END IF; ELSE CREATE UNIQUE INDEX IF NOT EXISTS "ix_projects_title_live" ON "ce_projects" ("tenant_id", lower("title")) WHERE "deleted_at" IS NULL; END IF; END $lc$
+#43 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $fk$ DECLARE current_action text; BEGIN PERFORM set_config('lock_timeout', '5s', true); SELECT c.confdeltype::text INTO current_action FROM pg_constraint c WHERE c.contype = 'f' AND c.conname = 'fk_tasks_project' AND c.conrelid = to_regclass('"ce_tasks"'); IF current_action IS NOT NULL AND current_action <> 'c' THEN ALTER TABLE "ce_tasks" DROP CONSTRAINT "fk_tasks_project", ADD CONSTRAINT "fk_tasks_project" FOREIGN KEY ("project_id") REFERENCES "ce_projects" ("id") ON UPDATE NO ACTION ON DELETE CASCADE; END IF; END $fk$
+#44 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "0400_helper_blocks"
+#45 COMMIT conn=1 source=primary
+#46 BEGIN conn=1 source=primary
+#47 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SET LOCAL lock_timeout = '5s'
+#48 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE TABLE IF NOT EXISTS row_history ( id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY, tenant_id uuid NULL, source_table text NOT NULL, row_id uuid NOT NULL, op text NOT NULL CHECK (op IN ('update', 'soft_delete', 'restore')), old_values jsonb NOT NULL, actor_user_id uuid NULL, actor_kind text NOT NULL CHECK (actor_kind IN ('user', 'system', 'unknown')), xact_id bigint NOT NULL, changed_at timestamptz NOT NULL DEFAULT now())
+#49 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $rh$ BEGIN IF to_regclass('ix_row_history_source_row') IS NULL THEN CREATE INDEX ix_row_history_source_row ON row_history (source_table, row_id, id); END IF; END $rh$
+#50 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $rh$ BEGIN IF to_regclass('ix_row_history_tenant_xact') IS NULL THEN CREATE INDEX ix_row_history_tenant_xact ON row_history (tenant_id, xact_id); END IF; END $rh$
+#51 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $rh$ BEGIN IF to_regclass('ix_row_history_changed_at') IS NULL THEN CREATE INDEX ix_row_history_changed_at ON row_history (changed_at); END IF; END $rh$
+#52 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        CREATE OR REPLACE FUNCTION row_history_capture() RETURNS trigger LANGUAGE plpgsql AS $rh$
+        DECLARE
+          v_old jsonb;
+          v_new jsonb;
+          v_unversioned text[] := ARRAY[]::text[];
+          v_delta jsonb;
+          v_op text;
+          v_actor text;
+          v_actor_kind text;
+          v_actor_user uuid;
+          v_tenant uuid;
+          i int;
+        BEGIN
+          IF TG_OP = 'DELETE' THEN
+            DELETE FROM row_history
+             WHERE source_table = TG_TABLE_NAME AND row_id = (to_jsonb(OLD) ->> TG_ARGV[0])::uuid;
+            RETURN NULL;
+          END IF;
+          v_old := to_jsonb(OLD);
+          v_new := to_jsonb(NEW);
+          FOR i IN 3 .. TG_NARGS - 1 LOOP
+            v_unversioned := v_unversioned || TG_ARGV[i];
+          END LOOP;
+          v_delta := (SELECT coalesce(jsonb_object_agg(o.key, o.value), '{}'::jsonb)
+                        FROM jsonb_each(v_old) AS o(key, value)
+                       WHERE (v_new -> o.key) IS DISTINCT FROM o.value
+                         AND NOT (o.key = ANY (v_unversioned)));
+          IF v_delta = '{}'::jsonb THEN
+            RETURN NULL;
+          END IF;
+          v_op := CASE
+            WHEN v_old ->> TG_ARGV[1] IS NULL AND v_new ->> TG_ARGV[1] IS NOT NULL THEN 'soft_delete'
+            WHEN v_old ->> TG_ARGV[1] IS NOT NULL AND v_new ->> TG_ARGV[1] IS NULL THEN 'restore'
+            ELSE 'update' END;
+          IF TG_ARGV[2] <> '' THEN
+            v_tenant := (v_new ->> TG_ARGV[2])::uuid;
+          END IF;
+          v_actor := current_setting('ormlite.actor', true);
+          IF v_actor ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' THEN
+            v_actor_kind := 'user';
+            v_actor_user := v_actor::uuid;
+          ELSIF v_actor = 'system' THEN
+            v_actor_kind := 'system';
+          ELSE
+            v_actor_kind := 'unknown';
+          END IF;
+          INSERT INTO row_history (tenant_id, source_table, row_id, op, old_values, actor_user_id, actor_kind, xact_id)
+          VALUES (v_tenant, TG_TABLE_NAME, (v_old ->> TG_ARGV[0])::uuid, v_op, v_delta, v_actor_user, v_actor_kind,
+                  pg_current_xact_id()::text::bigint);
+          RETURN NULL;
+        END
+        $rh$
+#53 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $rh$ BEGIN IF to_regclass('"ce_accounts"') IS NOT NULL AND (NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"ce_accounts"') AND g.tgname = 'row_history_u' AND obj_description(g.oid, 'pg_trigger') = '0cd466b26777dff0') OR NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"ce_accounts"') AND g.tgname = 'row_history_d' AND obj_description(g.oid, 'pg_trigger') = '0cd466b26777dff0')) THEN CREATE OR REPLACE TRIGGER row_history_u AFTER UPDATE ON "ce_accounts" FOR EACH ROW WHEN (OLD IS DISTINCT FROM NEW) EXECUTE FUNCTION row_history_capture('id', 'deleted_at', ''); CREATE OR REPLACE TRIGGER row_history_d AFTER DELETE ON "ce_accounts" FOR EACH ROW EXECUTE FUNCTION row_history_capture('id', 'deleted_at', ''); COMMENT ON TRIGGER row_history_u ON "ce_accounts" IS '0cd466b26777dff0'; COMMENT ON TRIGGER row_history_d ON "ce_accounts" IS '0cd466b26777dff0'; END IF; END $rh$
+#54 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $rh$ BEGIN IF to_regclass('"ce_members"') IS NOT NULL AND (NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"ce_members"') AND g.tgname = 'row_history_u' AND obj_description(g.oid, 'pg_trigger') = '0cd466b26777dff0') OR NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"ce_members"') AND g.tgname = 'row_history_d' AND obj_description(g.oid, 'pg_trigger') = '0cd466b26777dff0')) THEN CREATE OR REPLACE TRIGGER row_history_u AFTER UPDATE ON "ce_members" FOR EACH ROW WHEN (OLD IS DISTINCT FROM NEW) EXECUTE FUNCTION row_history_capture('id', 'deleted_at', ''); CREATE OR REPLACE TRIGGER row_history_d AFTER DELETE ON "ce_members" FOR EACH ROW EXECUTE FUNCTION row_history_capture('id', 'deleted_at', ''); COMMENT ON TRIGGER row_history_u ON "ce_members" IS '0cd466b26777dff0'; COMMENT ON TRIGGER row_history_d ON "ce_members" IS '0cd466b26777dff0'; END IF; END $rh$
+#55 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $rh$ BEGIN IF to_regclass('"ce_projects"') IS NOT NULL AND (NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"ce_projects"') AND g.tgname = 'row_history_u' AND obj_description(g.oid, 'pg_trigger') = 'f9f559f7dd954d26') OR NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"ce_projects"') AND g.tgname = 'row_history_d' AND obj_description(g.oid, 'pg_trigger') = 'f9f559f7dd954d26')) THEN CREATE OR REPLACE TRIGGER row_history_u AFTER UPDATE ON "ce_projects" FOR EACH ROW WHEN (OLD IS DISTINCT FROM NEW) EXECUTE FUNCTION row_history_capture('id', 'deleted_at', 'tenant_id', 'updated_at'); CREATE OR REPLACE TRIGGER row_history_d AFTER DELETE ON "ce_projects" FOR EACH ROW EXECUTE FUNCTION row_history_capture('id', 'deleted_at', 'tenant_id', 'updated_at'); COMMENT ON TRIGGER row_history_u ON "ce_projects" IS 'f9f559f7dd954d26'; COMMENT ON TRIGGER row_history_d ON "ce_projects" IS 'f9f559f7dd954d26'; END IF; END $rh$
+#56 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $rh$ BEGIN IF to_regclass('"ce_tasks"') IS NOT NULL AND (NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"ce_tasks"') AND g.tgname = 'row_history_u' AND obj_description(g.oid, 'pg_trigger') = '2609ae322d46a821') OR NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"ce_tasks"') AND g.tgname = 'row_history_d' AND obj_description(g.oid, 'pg_trigger') = '2609ae322d46a821')) THEN CREATE OR REPLACE TRIGGER row_history_u AFTER UPDATE ON "ce_tasks" FOR EACH ROW WHEN (OLD IS DISTINCT FROM NEW) EXECUTE FUNCTION row_history_capture('id', 'removed_at', 'owner_scope'); CREATE OR REPLACE TRIGGER row_history_d AFTER DELETE ON "ce_tasks" FOR EACH ROW EXECUTE FUNCTION row_history_capture('id', 'removed_at', 'owner_scope'); COMMENT ON TRIGGER row_history_u ON "ce_tasks" IS '2609ae322d46a821'; COMMENT ON TRIGGER row_history_d ON "ce_tasks" IS '2609ae322d46a821'; END IF; END $rh$
+#57 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "9900_orm_history_reconcile_CorpusEntities_75a913ef24f4eca1"
+#58 COMMIT conn=1 source=primary
+#59 BEGIN conn=1 source=primary
+#60 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SET LOCAL lock_timeout = '5s'
+#61 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"ce_accounts"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_accounts"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['code', 'deleted_at'])) = 2 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_ce_accounts_code_live" ON "ce_accounts" ("code") WHERE "deleted_at" IS NULL'; END IF; END $reconcile$
+#62 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $collision$ DECLARE r record; BEGIN IF to_regclass('"ce_accounts"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_accounts"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['code', 'deleted_at'])) = 2 THEN FOR r IN SELECT ic.relname::text AS idx, c.conname::text AS con FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid LEFT JOIN pg_constraint c ON c.conindid = i.indexrelid AND c.contype IN ('u', 'p') WHERE i.indrelid = to_regclass('"ce_accounts"') AND i.indisunique AND i.indpred IS NULL AND i.indexprs IS NULL AND i.indnkeyatts = 1 AND (SELECT count(*) FROM unnest(i.indkey::int2[]) WITH ORDINALITY AS k(attnum, ord) JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = k.attnum WHERE k.ord <= i.indnkeyatts AND a.attname = ANY (ARRAY['code'])) = 1 LOOP RAISE EXCEPTION 'Live-only index % on table % over columns (%) cannot take effect: % % is unique over the same columns without a live-row predicate', 'ix_ce_accounts_code_live', 'ce_accounts', 'code', CASE WHEN r.con IS NULL THEN 'index' ELSE 'constraint' END, COALESCE(r.con, r.idx) USING HINT = 'Convert it with an explicit migration: create the partial index, then drop the total one.'; END LOOP; END IF; END $collision$
+#63 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"ce_accounts"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_accounts"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['name'])) = 1 THEN EXECUTE 'CREATE INDEX IF NOT EXISTS "ix_ce_accounts_name" ON "ce_accounts" ("name")'; END IF; END $reconcile$
+#64 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"ce_projects"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_projects"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['title'])) = 1 THEN EXECUTE 'CREATE INDEX IF NOT EXISTS "ix_ce_projects_title" ON "ce_projects" ("title")'; END IF; END $reconcile$
+#65 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"ce_projects"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_projects"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['tenant_id', 'title', 'deleted_at'])) = 3 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_ce_projects_tenant_id_title_live" ON "ce_projects" ("tenant_id", "title") WHERE "deleted_at" IS NULL'; END IF; END $reconcile$
+#66 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $collision$ DECLARE r record; BEGIN IF to_regclass('"ce_projects"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_projects"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['tenant_id', 'title', 'deleted_at'])) = 3 THEN FOR r IN SELECT ic.relname::text AS idx, c.conname::text AS con FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid LEFT JOIN pg_constraint c ON c.conindid = i.indexrelid AND c.contype IN ('u', 'p') WHERE i.indrelid = to_regclass('"ce_projects"') AND i.indisunique AND i.indpred IS NULL AND i.indexprs IS NULL AND i.indnkeyatts = 2 AND (SELECT count(*) FROM unnest(i.indkey::int2[]) WITH ORDINALITY AS k(attnum, ord) JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = k.attnum WHERE k.ord <= i.indnkeyatts AND a.attname = ANY (ARRAY['tenant_id', 'title'])) = 2 LOOP RAISE EXCEPTION 'Live-only index % on table % over columns (%) cannot take effect: % % is unique over the same columns without a live-row predicate', 'ix_ce_projects_tenant_id_title_live', 'ce_projects', 'tenant_id, title', CASE WHEN r.con IS NULL THEN 'index' ELSE 'constraint' END, COALESCE(r.con, r.idx) USING HINT = 'Convert it with an explicit migration: create the partial index, then drop the total one.'; END LOOP; END IF; END $collision$
+#67 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"ce_projects"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_projects"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['tenant_id', 'state'])) = 2 THEN EXECUTE 'CREATE INDEX IF NOT EXISTS "ix_projects_state" ON "ce_projects" ("tenant_id", "state")'; END IF; END $reconcile$
+#68 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"ce_tasks"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_tasks"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['project_id', 'name'])) = 2 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_ce_tasks_project_id_name" ON "ce_tasks" ("project_id", "name")'; END IF; END $reconcile$
+#69 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"ce_everything"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_everything"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['searchable'])) = 1 THEN EXECUTE 'CREATE INDEX IF NOT EXISTS "ix_ce_everything_searchable" ON "ce_everything" ("searchable")'; END IF; END $reconcile$
+#70 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        DO $reconcile$ BEGIN IF to_regclass('"ce_everything"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"ce_everything"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['unique'])) = 1 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_ce_everything_unique" ON "ce_everything" ("unique")'; END IF; END $reconcile$
+#71 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        INSERT INTO schema_migrations (version) VALUES (@v)
+    @v = String "9900_orm_index_reconcile_CorpusEntities_e3aab199192c293c"
+#72 COMMIT conn=1 source=primary
+#73 ExecuteNonQuery conn=1 source=primary tx=false
+    sql:
+        SELECT pg_advisory_unlock(727274)

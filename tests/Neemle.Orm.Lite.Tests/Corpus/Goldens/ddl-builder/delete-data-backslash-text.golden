@@ -1,0 +1,1 @@
+[0] DELETE FROM "samples" WHERE "k" IN (E'a\\b', 'plain', E'end\\')

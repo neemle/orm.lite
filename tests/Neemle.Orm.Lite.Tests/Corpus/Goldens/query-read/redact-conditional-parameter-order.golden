@@ -1,0 +1,5 @@
+-- sql
+SELECT "id", "owner_id", "title", CASE WHEN "title" = @p0 THEN NULL ELSE "body" END AS "body", "rank", "views", "score", "price", "active", "status", "review", "created_at", "expires_at", "due", "payload", "meta" FROM "corpus_notes" WHERE "title" = @p1
+-- parameters (2)
+[0] String "red"
+[1] String "filter"

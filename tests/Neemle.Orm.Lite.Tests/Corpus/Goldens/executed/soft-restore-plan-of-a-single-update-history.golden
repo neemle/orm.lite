@@ -1,0 +1,14 @@
+#1 BEGIN conn=1 source=primary
+#2 ExecuteReader conn=1 source=primary tx=true
+    sql:
+        SELECT op, xact_id, changed_at FROM row_history WHERE source_table = @t AND row_id = @id AND EXISTS (SELECT 1 FROM "corpus_tasks" r WHERE r."id" = @id AND r."tenant_id" = @w) ORDER BY id DESC LIMIT 1
+    @t = String "corpus_tasks"
+    @id = Guid a0000000-0000-0000-0000-00000000000a
+    @w = Guid 10000000-0000-0000-0000-000000000001
+#3 ExecuteReader conn=1 source=primary tx=true
+    sql:
+        SELECT "id", "tenant_id", "project_id" FROM "corpus_tasks" WHERE "id" = ANY(@ids) AND "tenant_id" = @w AND "deleted_at" IS NOT NULL ORDER BY "id" FOR UPDATE
+    @ids = Guid[] count=1 { Guid a0000000-0000-0000-0000-00000000000a }
+    @w = Guid 10000000-0000-0000-0000-000000000001
+-- outcome
+root=Deleted xact=null changed=null rows=[corpus_tasks a0000000-0000-0000-0000-00000000000a {tenant_id=Guid 10000000-0000-0000-0000-000000000001, project_id=Guid 30000000-0000-0000-0000-000000000003}]

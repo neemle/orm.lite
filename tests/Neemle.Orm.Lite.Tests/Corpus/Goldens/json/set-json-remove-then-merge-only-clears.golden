@@ -1,0 +1,6 @@
+-- sql
+UPDATE "corpus_notes" SET "meta" = (COALESCE("meta", '{}'::jsonb) - @p0::text) || @p1::jsonb WHERE "id" = @p2
+-- parameters (3)
+[0] String "legacy_name"
+[1] Jsonb {}
+[2] Guid a0000000-0000-0000-0000-00000000000a

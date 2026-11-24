@@ -3,55 +3,35 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Neemle.Orm.Lite;
 
-public sealed class GatedDataSource(DbDataSource request, DbDataSource background, DbDataSource ops) : DbDataSource
+public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request, DbDataSource background, DbDataSource ops) : DbDataSource
 {
     private static readonly ConditionalWeakTable<DbConnection, Lease> s_leases = new();
 
-    private readonly DbDataSource _request = Checked(request, nameof(request));
-    private readonly DbDataSource _background = Checked(background, nameof(background));
-    private readonly DbDataSource _ops = Checked(ops, nameof(ops));
+    private readonly ISqlProvider _provider = provider ?? throw new ArgumentNullException(nameof(provider));
+    private OrmDiagnostics _diagnostics = OrmDiagnostics.Disabled(provider);
+    private readonly DbDataSource _request = Checked(provider, request, nameof(request));
+    private readonly DbDataSource _background = Checked(provider, background, nameof(background));
+    private readonly DbDataSource _ops = Checked(provider, ops, nameof(ops));
+
+    internal GatedDataSource(ISqlProvider provider, DbDataSource request, DbDataSource background, DbDataSource ops, OrmDiagnostics diagnostics)
+        : this(provider, request, background, ops) => _diagnostics = diagnostics;
+
+    public ISqlProvider Provider => _provider;
 
     public override string ConnectionString => _background.ConnectionString;
 
-    private static DbDataSource Checked(DbDataSource? source, string name)
+    private static DbDataSource Checked(ISqlProvider? provider, DbDataSource? source, string name)
     {
+        if (provider is null) throw new ArgumentNullException(nameof(provider));
         if (source is null) throw new ArgumentNullException(name);
-        if (SetsNoResetOnClose(source.ConnectionString))
-            throw new InvalidOperationException(
-                $"GatedDataSource refuses the {name} data source: its connection string sets No Reset On Close, "
-                + "which would let a pooled connection keep the previous caller's "
-                + OrmLiteSettings.ActorSetting + ". Remove No Reset On Close from the connection string.");
+        provider.ValidateDataSource(name, source);
         return source;
-    }
-
-    private static bool SetsNoResetOnClose(string? connectionString)
-    {
-        if (string.IsNullOrWhiteSpace(connectionString)) return false;
-        var builder = new DbConnectionStringBuilder();
-        try
-        {
-            builder.ConnectionString = connectionString;
-        }
-        catch (ArgumentException)
-        {
-            return false;
-        }
-
-        foreach (string key in builder.Keys)
-        {
-            var normalised = key.Replace(" ", "").Replace("_", "").ToLowerInvariant();
-            if (normalised != "noresetonclose") continue;
-            var value = Convert.ToString(builder[key], CultureInfo.InvariantCulture)?.Trim().ToLowerInvariant();
-            if (value is not ("false" or "no" or "off" or "0")) return true;
-        }
-        return false;
     }
 
     private DbDataSource LaneSource(DbLaneKind lane) => lane switch
@@ -71,22 +51,21 @@ public sealed class GatedDataSource(DbDataSource request, DbDataSource backgroun
         }
 
         await inner.OpenAsync(ct);
-        var lease = new Lease(DbLane.CurrentScope);
+        var lease = new Lease(DbLane.CurrentScope, _diagnostics);
         lease.Acquire();
         s_leases.Add(inner, lease);
         inner.StateChange += lease.OnStateChange;
 
-        if (DbActor.Current is { } actor)
+        try
         {
-            try
-            {
-                await DbActor.StampAsync(inner, actor, ct);
-            }
-            catch
-            {
-                await inner.CloseAsync();
-                throw;
-            }
+            await (DbActor.Current is { } actor
+                ? _provider.StampActorAsync(inner, actor, ct)
+                : _provider.ClearActorAsync(inner, ct));
+        }
+        catch
+        {
+            await inner.CloseAsync();
+            throw;
         }
         return inner;
     }
@@ -120,9 +99,18 @@ public sealed class GatedDataSource(DbDataSource request, DbDataSource backgroun
     private static NotSupportedException Refused(string member, string instead) =>
         new($"GatedDataSource refuses {member}: every connection is leased through the gate, so use {instead} instead.");
 
-    private sealed class Lease(DbLaneScope? scope)
+    internal static Lease? LeaseOf(DbConnection? connection) =>
+        connection is not null && s_leases.TryGetValue(connection, out var lease) ? lease : null;
+
+    internal sealed class Lease(DbLaneScope? scope, OrmDiagnostics diagnostics)
     {
         private int _released;
+
+        internal OrmDiagnostics Diagnostics { get; } = diagnostics;
+
+        internal long ConnectionId { get; } = diagnostics.Active ? OrmDiagnostics.NextId() : 0;
+
+        internal TransactionTrace? Transaction { get; set; }
 
         public void Acquire() => scope?.Acquire();
 
@@ -141,8 +129,10 @@ public sealed class GatedDataSource(DbDataSource request, DbDataSource backgroun
         }
     }
 
-    private sealed class GatedCommand : DbCommand
+    internal sealed class GatedCommand : DbCommand
     {
+        internal StatementKind Kind { get; set; } = StatementKind.Read;
+
         private readonly GatedDataSource _gate;
         private readonly DbConnection _connection;
         private readonly DbCommand _inner;
@@ -226,7 +216,7 @@ public sealed class GatedDataSource(DbDataSource request, DbDataSource backgroun
             await _gate.LeaseAsync(_connection, cancellationToken);
             try
             {
-                return await _inner.ExecuteNonQueryAsync(cancellationToken);
+                return await _inner.RunNonQueryAsync(Kind, cancellationToken);
             }
             finally
             {
@@ -239,7 +229,7 @@ public sealed class GatedDataSource(DbDataSource request, DbDataSource backgroun
             await _gate.LeaseAsync(_connection, cancellationToken);
             try
             {
-                return await _inner.ExecuteScalarAsync(cancellationToken);
+                return await _inner.RunScalarAsync(Kind, cancellationToken);
             }
             finally
             {
@@ -253,7 +243,7 @@ public sealed class GatedDataSource(DbDataSource request, DbDataSource backgroun
             await _gate.LeaseAsync(_connection, cancellationToken);
             try
             {
-                return await _inner.ExecuteReaderAsync(behavior | CommandBehavior.CloseConnection, cancellationToken);
+                return await _inner.RunReaderAsync(Kind, cancellationToken, behavior | CommandBehavior.CloseConnection);
             }
             catch
             {

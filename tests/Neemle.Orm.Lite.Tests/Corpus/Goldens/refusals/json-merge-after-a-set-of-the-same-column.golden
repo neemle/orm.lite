@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: this statement already assigns "meta", so merging into it would be a second assignment to the same column -- PostgreSQL refuses that with 42701. A merge beside a whole-document assignment is also two answers to the question the merge exists to answer: what did THIS request change.

@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: DeleteData cannot match a null value: an IN list never matches NULL, so the delete would silently skip it. (Parameter 'values')

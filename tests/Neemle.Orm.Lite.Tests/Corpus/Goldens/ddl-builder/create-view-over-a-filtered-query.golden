@@ -1,0 +1,2 @@
+[0] CREATE VIEW "corpus_view" AS SELECT "corpus_notes"."id" AS "id", "corpus_notes"."title" AS "title", "corpus_notes"."rank" AS "rank" FROM "corpus_notes" WHERE (("corpus_notes"."rank" > 1 AND "corpus_notes"."title" = 'x') AND "corpus_notes"."status" = 'Active')
+[1] COMMENT ON VIEW "corpus_view" IS 'd30c7c5e08806ee4'

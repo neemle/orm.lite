@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "owner_id" IS NOT DISTINCT FROM @p0
+-- parameters (1)
+[0] null

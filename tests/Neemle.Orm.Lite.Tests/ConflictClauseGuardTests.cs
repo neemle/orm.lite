@@ -16,7 +16,10 @@ public sealed class ConflictClauseGuardTests
         [new[] { "id" }, OnConflict.DoNothing, new[] { UpsertSet.ToParam("rank", 0) }, " ON CONFLICT (\"id\") DO NOTHING"],
         [new[] { "id" }, OnConflict.DoUpdate, new UpsertSet[0], " ON CONFLICT (\"id\") DO NOTHING"],
         [new[] { "id" }, OnConflict.DoUpdate, new[] { UpsertSet.ToParam("rank", 0) }, " ON CONFLICT (\"id\") DO UPDATE SET \"rank\" = @p0"],
-        [new[] { "id" }, OnConflict.DoUpdate, new[] { UpsertSet.Increment("rank", 1) }, " ON CONFLICT (\"id\") DO UPDATE SET \"rank\" = \"t\".\"rank\" + 1"],
+        [
+            new[] { "id" }, OnConflict.DoUpdate, new[] { UpsertSet.Increment("rank", 1) },
+            " ON CONFLICT (\"id\") DO UPDATE SET \"rank\" = \"t\".\"rank\" + 1",
+        ],
         [new[] { "id" }, OnConflict.DoUpdate, new[] { UpsertSet.Now("updated") }, " ON CONFLICT (\"id\") DO UPDATE SET \"updated\" = now()"],
         [new[] { "id" }, OnConflict.DoUpdate, new[] { UpsertSet.ToJsonDocumentParam("doc", 0) }, " ON CONFLICT (\"id\") DO UPDATE SET \"doc\" = @p0::jsonb"],
     ];
@@ -60,7 +63,7 @@ public sealed class ConflictClauseGuardTests
     private static Query<FixtureWidget> NonUpsertQuery()
     {
         OrmMeta.Register<FixtureWidget>("fixture_widgets", p => p.ToLowerInvariant(), ["id", "name", "rank"]);
-        return new(new OrmContext(new NeverUsedDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
+        return new(TestContext.Of(new NeverUsedDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
     }
 
     private static Row<FixtureWidget> WidgetRow() => new Row<FixtureWidget>().With(w => w.Id, Guid.NewGuid());

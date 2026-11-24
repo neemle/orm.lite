@@ -1,0 +1,3 @@
+-- outcome
+SELECT pg_try_advisory_lock(@key)
+SELECT pg_advisory_unlock(@key)

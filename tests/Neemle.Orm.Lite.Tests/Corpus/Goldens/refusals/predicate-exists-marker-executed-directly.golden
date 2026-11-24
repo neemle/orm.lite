@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: Db.Exists is a query marker and cannot be executed directly.

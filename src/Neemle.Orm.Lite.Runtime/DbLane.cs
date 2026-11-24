@@ -10,9 +10,17 @@ public static class DbLane
 {
     private static readonly AsyncLocal<DbLaneScope?> s_scope = new();
 
-    public static DbLaneKind Current => s_scope.Value?.Lane ?? DbLaneKind.Background;
+    public static DbLaneKind Current => CurrentScope?.Lane ?? DbLaneKind.Background;
 
-    internal static DbLaneScope? CurrentScope => s_scope.Value;
+    internal static DbLaneScope? CurrentScope
+    {
+        get
+        {
+            var scope = s_scope.Value;
+            while (scope is { IsDisposed: true }) scope = scope.Previous;
+            return scope;
+        }
+    }
 
     public static DbLaneScope Enter(DbLaneKind lane)
     {
@@ -21,7 +29,10 @@ public static class DbLane
         return scope;
     }
 
-    internal static void Restore(DbLaneScope? previous) => s_scope.Value = previous;
+    internal static void Leave(DbLaneScope scope)
+    {
+        if (ReferenceEquals(s_scope.Value, scope)) s_scope.Value = scope.Previous;
+    }
 }
 
 public sealed class DbLaneScope : IDisposable
@@ -43,6 +54,10 @@ public sealed class DbLaneScope : IDisposable
 
     public int PeakLeases => Volatile.Read(ref _peak);
 
+    internal DbLaneScope? Previous => _previous;
+
+    internal bool IsDisposed => Volatile.Read(ref _disposed) != 0;
+
     internal void Acquire()
     {
         var held = Interlocked.Increment(ref _held);
@@ -60,6 +75,6 @@ public sealed class DbLaneScope : IDisposable
     public void Dispose()
     {
         if (Interlocked.Exchange(ref _disposed, 1) == 0)
-            DbLane.Restore(_previous);
+            DbLane.Leave(this);
     }
 }

@@ -23,10 +23,10 @@ public class IntervalAndProjectionRenderingTests
     private static string Col(string property) => property.ToLowerInvariant();
 
     private static Query<Lease> Leases() =>
-        new(new OrmContext(new NeverUsedDataSource(), new PgDialect()), _ => throw new NotSupportedException());
+        new(TestContext.Of(new NeverUsedDataSource(), new PgDialect()), _ => throw new NotSupportedException());
 
     private static Query<Lease> SqliteLeases() =>
-        new(new OrmContext(new NeverUsedDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
+        new(TestContext.Of(new NeverUsedDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
 
     [Fact(DisplayName = "SetNowPlusMinutes offsets the DATABASE clock by a BOUND minute count, so a lease expiry is minted by the same server that later compares it against now()")]
     public void SetNowPlusMinutes_offsets_the_database_clock()
@@ -147,7 +147,7 @@ public class IntervalAndProjectionRenderingTests
     public void Rendering_opens_no_connection()
     {
         var source = new NeverUsedDataSource();
-        var ctx = new OrmContext(source, new PgDialect());
+        var ctx = TestContext.Of(source, new PgDialect());
 
         var update = "";
         var projection = "";

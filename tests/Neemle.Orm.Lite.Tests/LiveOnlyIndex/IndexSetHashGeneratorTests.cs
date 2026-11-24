@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using Xunit;
 using static Neemle.Orm.Lite.Tests.MigrationReversibility.MigrationGeneratorRun;
 
@@ -12,10 +11,10 @@ public sealed class IndexSetHashGeneratorTests
 
     private static string HashOf(string source)
     {
-        var (diagnostics, generated, _) = Run(source);
+        var (diagnostics, _, output) = Run(source);
 
         Assert.Empty(diagnostics);
-        return Regex.Match(generated, "IndexSetHash = \"([0-9a-f]{16})\"").Groups[1].Value;
+        return GeneratedModel.Of(output).Schema.IndexSetHash;
     }
 
     [Fact(DisplayName = "AC4: the same entity declared with and without LiveOnly yields a different index-set hash")]

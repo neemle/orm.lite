@@ -1,0 +1,11 @@
+-- sql
+INSERT INTO "corpus_notes" ("id", "payload", "body", "status") VALUES (@p0, @p1::jsonb, @p2, @p3), (@p4, @p5::jsonb, @p6, @p7)
+-- parameters (8)
+[0] Guid a0000000-0000-0000-0000-00000000000a
+[1] Jsonb {}
+[2] null
+[3] Enum CorpusStatus.Active
+[4] Guid b0000000-0000-0000-0000-00000000000b
+[5] Jsonb [1]
+[6] String "x"
+[7] Enum CorpusStatus.Draft

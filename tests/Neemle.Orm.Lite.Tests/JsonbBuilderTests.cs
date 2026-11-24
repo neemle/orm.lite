@@ -48,7 +48,7 @@ public sealed class JsonbBuilderTests
     {
         var builder = new MigrationBuilder();
         builder.CreateTable("work_item_field_values", t => t
-            .Column("work_item_id", "uuid", nullable: false, primaryKey: true)
+            .Column("work_item_id", Neemle.Orm.Lite.Nodes.ColumnType.Uuid, nullable: false, primaryKey: true)
             .JsonbColumn("values", nullable: false));
 
         Assert.Equal(

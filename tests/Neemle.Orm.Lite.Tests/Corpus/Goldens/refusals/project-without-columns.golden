@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: ProjectAsync needs at least one column.

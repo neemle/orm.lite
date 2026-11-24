@@ -26,43 +26,50 @@ namespace Neemle.Orm.Lite;
         }
 
         public static async Task<int> RunAsync(
-            DbDataSource ds, DbConnection? connection, DbTransaction? transaction, ISqlDialect dialect,
-            IReadOnlyList<(string Sql, List<object?> Parameters)> statements)
+            ISqlProvider provider, DbDataSource ds, DbConnection? connection, DbTransaction? transaction,
+            IReadOnlyList<Statement> statements)
         {
-            if (statements.Count == 1 || transaction is not null)
-                return await RunAllAsync(ds, connection, transaction, dialect, statements);
-            return await RunInOwnTransactionAsync(ds, connection, dialect, statements);
+            if (transaction is not null) return await RunAllAsync(ds, connection, transaction, statements);
+            if (statements.Count == 1)
+            {
+                await using var writer = await provider.EnterWriteAsync(ds);
+                return await RunAllAsync(ds, connection, transaction, statements);
+            }
+            return await RunInOwnTransactionAsync(provider, ds, connection, statements);
         }
 
         private static async Task<int> RunInOwnTransactionAsync(
-            DbDataSource ds, DbConnection? connection, ISqlDialect dialect,
-            IReadOnlyList<(string Sql, List<object?> Parameters)> statements)
+            ISqlProvider provider, DbDataSource ds, DbConnection? connection, IReadOnlyList<Statement> statements)
         {
-            if (connection is not null) return await RunInTransactionOnAsync(ds, connection, dialect, statements);
+            if (connection is not null) return await RunInTransactionOnAsync(provider, ds, connection, statements);
             await using var opened = await ds.OpenConnectionAsync();
-            return await RunInTransactionOnAsync(ds, opened, dialect, statements);
+            return await RunInTransactionOnAsync(provider, ds, opened, statements);
         }
 
         private static async Task<int> RunInTransactionOnAsync(
-            DbDataSource ds, DbConnection connection, ISqlDialect dialect,
-            IReadOnlyList<(string Sql, List<object?> Parameters)> statements)
+            ISqlProvider provider, DbDataSource ds, DbConnection connection, IReadOnlyList<Statement> statements)
         {
-            await using var tx = await connection.BeginTransactionAsync();
-            var affected = await RunAllAsync(ds, connection, tx, dialect, statements);
+            var started = await provider.BeginTransactionAsync(connection, ds);
+            await using var release = started.Release;
+            await using var tx = started.Transaction;
+            using var trace = TransactionTrace.Begin(connection);
+            var affected = await RunAllAsync(ds, connection, tx, statements);
             await tx.CommitAsync();
+            trace?.Commit();
             return affected;
         }
 
         private static async Task<int> RunAllAsync(
-            DbDataSource ds, DbConnection? connection, DbTransaction? transaction, ISqlDialect dialect,
-            IReadOnlyList<(string Sql, List<object?> Parameters)> statements)
+            DbDataSource ds, DbConnection? connection, DbTransaction? transaction,
+            IReadOnlyList<Statement> statements)
         {
             var affected = 0;
-            foreach (var (sql, ps) in statements)
+            foreach (var statement in statements)
             {
-                await using var cmd = StatementCommand.Create(ds, connection, transaction, sql);
-                for (var i = 0; i < ps.Count; i++) cmd.AddParam(dialect.Param(i).TrimStart('@'), ps[i] ?? DBNull.Value);
-                affected += await cmd.ExecuteNonQueryAsync();
+                await using var cmd = StatementCommand.Create(ds, connection, transaction, statement);
+                foreach (var parameter in statement.Parameters)
+                    cmd.AddParam(parameter.Name, parameter.Value ?? DBNull.Value);
+                affected += await cmd.RunNonQueryAsync(statement.Kind);
             }
             return affected;
         }

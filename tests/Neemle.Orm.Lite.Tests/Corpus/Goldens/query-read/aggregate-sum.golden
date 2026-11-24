@@ -1,0 +1,3 @@
+-- sql
+SELECT COALESCE(SUM(COALESCE("views", 0)), 0) FROM "corpus_notes"
+-- parameters (0)

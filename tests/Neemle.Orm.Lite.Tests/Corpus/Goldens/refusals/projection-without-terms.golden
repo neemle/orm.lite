@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: ProjectionAsync needs at least one ProjectColumn/ProjectPredicate term.

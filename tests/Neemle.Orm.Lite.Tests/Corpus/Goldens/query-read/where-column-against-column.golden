@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "created_at" <= "expires_at"
+-- parameters (0)

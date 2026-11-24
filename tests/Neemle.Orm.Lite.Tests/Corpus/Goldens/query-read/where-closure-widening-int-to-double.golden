@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE "score" = @p0
+-- parameters (1)
+[0] Double 2

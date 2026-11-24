@@ -1,0 +1,3 @@
+-- sql
+SELECT max("created_at") FROM "corpus_notes"
+-- parameters (0)

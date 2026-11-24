@@ -1,3 +1,4 @@
+using Neemle.Orm.Lite.Postgres;
 using Neemle.Orm.Lite;
 using Xunit;
 using static Neemle.Orm.Lite.Tests.MigrationReversibility.MigrationGeneratorRun;
@@ -13,7 +14,7 @@ public sealed class MigrationDownGenerationTests
         + "public abstract class DownBase : Migration { " + DownOverride("SELECT 'inherited down'") + " }\n"
         + MigrationClass("InheritedDown", "0004_inherited_down", "Reversible", baseType: "DownBase")
         + MigrationClass("OverloadIsNotDown", "0005_overload_is_not_down", "Reversible",
-            "public void Down(MigrationBuilder b, int other) => b.Sql(\"SELECT 'overload'\");");
+            "public void Down(MigrationBuilder b, int other) => b.Raw(\"postgres\", \"SELECT 'overload'\");");
 
     private static readonly string[] Declared =
         ["0001_with_down", "0002_without_down", "0003_irreversible", "0004_inherited_down", "0005_overload_is_not_down"];
@@ -37,7 +38,7 @@ public sealed class MigrationDownGenerationTests
         var entry = Of(Contributions(), "0001_with_down");
 
         Assert.Equal(["SELECT 'down'"], Statements(entry.Down));
-        Assert.Equal(["SELECT 'up'"], entry.Ops());
+        Assert.Equal(["SELECT 'up'"], entry.Render(PostgresProvider.Instance));
     }
 
     [Fact(DisplayName = "a class that does not override Down, an unrelated Down overload, and every generated entry carry a null Down")]
@@ -57,12 +58,17 @@ public sealed class MigrationDownGenerationTests
         Assert.Equal(["SELECT 'inherited down'"], Statements(Of(Contributions(), "0004_inherited_down").Down));
     }
 
-    [Fact(DisplayName = "the generated RunAsync never calls Down")]
-    public void Run_async_never_calls_down()
+    [Fact(DisplayName = "the generated source holds no runner, and the core runner calls Down only to revert a version it is asked to revert")]
+    public void The_runner_calls_down_only_to_revert()
     {
         var generated = Run(Source).Generated;
-        var run = generated[generated.IndexOf("Task RunAsync(", StringComparison.Ordinal)..];
 
-        Assert.DoesNotContain("Down", run, StringComparison.Ordinal);
+        Assert.DoesNotContain("RunAsync", generated, StringComparison.Ordinal);
+        var runner = File.ReadAllText(RuntimeSources.Of("MigrationRunner.cs"));
+        var revert = runner.IndexOf("public static async Task RevertAsync(", StringComparison.Ordinal);
+        var nodes = runner.IndexOf("private static IReadOnlyList<Node> NodesOf(", StringComparison.Ordinal);
+        Assert.True(revert >= 0 && nodes > revert);
+        Assert.Contains("Down", runner[revert..nodes], StringComparison.Ordinal);
+        Assert.DoesNotContain("Down", runner.Remove(revert, nodes - revert), StringComparison.Ordinal);
     }
 }

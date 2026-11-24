@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: NaN has no portable literal; write a finite number. (Parameter 'value')

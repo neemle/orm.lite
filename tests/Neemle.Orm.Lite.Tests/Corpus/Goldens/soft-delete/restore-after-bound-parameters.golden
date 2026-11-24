@@ -1,0 +1,4 @@
+-- sql
+UPDATE "corpus_tasks" SET "deleted_at" = NULL WHERE "id" = ANY(@p1) AND "deleted_at" IS NOT NULL AND "tenant_id" = @p2
+-- parameters (1)
+[0] Int32 1

@@ -1,0 +1,3 @@
+-- sql
+SELECT avg("rank")::double precision FROM "corpus_notes"
+-- parameters (0)

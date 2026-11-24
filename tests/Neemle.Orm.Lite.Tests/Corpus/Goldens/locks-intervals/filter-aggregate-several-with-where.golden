@@ -1,0 +1,6 @@
+-- sql
+SELECT count(*) FILTER (WHERE ("active" = true)), count(*) FILTER (WHERE (("title" = @p1 OR "title" = @p2))) FROM "corpus_notes" WHERE "rank" > @p0
+-- parameters (3)
+[0] Int32 0
+[1] String "a"
+[2] String "b"

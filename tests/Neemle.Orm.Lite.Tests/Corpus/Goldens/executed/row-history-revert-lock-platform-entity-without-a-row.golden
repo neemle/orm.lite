@@ -1,0 +1,7 @@
+#1 BEGIN conn=1 source=primary
+#2 ExecuteReader conn=1 source=primary tx=true
+    sql:
+        SELECT "deleted_at" IS NOT NULL, NULL::uuid FROM "corpus_platform_items" WHERE "id" = @id FOR UPDATE
+    @id = Guid a0000000-0000-0000-0000-00000000000a
+-- outcome
+Boolean true

@@ -1,0 +1,1 @@
+UPDATE "corpus_tasks" SET "deleted_at" = now() WHERE "id" = @k AND "deleted_at" IS NULL

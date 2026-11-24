@@ -10,9 +10,9 @@ public sealed class JsonArrayContainsAnyTests
     static JsonArrayContainsAnyTests() =>
         OrmMeta.Register<FixtureDocument>("fixture_documents", Col, ["id", "payload", "label"]);
 
-    private static OrmContext Pg() => new(new NeverUsedDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), new PgDialect());
 
-    private static OrmContext Sqlite() => new(new NeverUsedDataSource(), new SqliteDialect());
+    private static OrmContext Sqlite() => TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
 
     private static Query<FixtureDocument> On(OrmContext ctx) =>
         new(ctx, _ => throw new NotSupportedException("no rows are read here"));

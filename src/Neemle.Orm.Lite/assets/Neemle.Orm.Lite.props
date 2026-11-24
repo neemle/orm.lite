@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <CompilerVisibleProperty Include="OrmLiteDefaultTenant" />
+    <CompilerVisibleProperty Include="OrmLiteProviders" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: not a migration version: V-1 (Parameter 'version')

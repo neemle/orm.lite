@@ -1,0 +1,1 @@
+SELECT EXISTS (SELECT 1 FROM "corpus_tasks" r WHERE r."id" = @id AND r."tenant_id" = @w)

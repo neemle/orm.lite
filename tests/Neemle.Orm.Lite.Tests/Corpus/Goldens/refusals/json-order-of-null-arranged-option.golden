@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentNullException
+message: an arranged option value must be a string; a null element binds SQL NULL, which array_position matches against a value-absent row and would rank those rows among the real options instead of at the end. (Parameter 'arrangement')

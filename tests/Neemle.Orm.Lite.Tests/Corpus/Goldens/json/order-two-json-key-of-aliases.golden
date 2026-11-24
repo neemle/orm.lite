@@ -1,0 +1,5 @@
+-- sql
+SELECT * FROM "corpus_notes" ORDER BY (SELECT (s0."doc" ->> @p0) FROM "corpus_tags" s0 WHERE s0."note_id" = "corpus_notes"."id") ASC NULLS LAST, (SELECT (CASE WHEN pg_input_is_valid((s1."doc" ->> @p1), 'boolean') THEN (s1."doc" ->> @p1) END)::boolean FROM "corpus_tags" s1 WHERE s1."note_id" = "corpus_notes"."id") DESC NULLS FIRST
+-- parameters (2)
+[0] String "a"
+[1] String "b"

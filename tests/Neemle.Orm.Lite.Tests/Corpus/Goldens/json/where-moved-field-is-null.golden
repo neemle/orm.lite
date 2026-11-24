@@ -1,0 +1,3 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE ("meta" ->> 'legacy_name') IS NULL
+-- parameters (0)

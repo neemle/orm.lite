@@ -1,0 +1,92 @@
+-- schema
+CreateAll: CREATE TABLE IF NOT EXISTS "to_notes" ("id" uuid NOT NULL PRIMARY KEY, "scope_id" uuid NOT NULL, "tenant_id" uuid NOT NULL, "title" text NOT NULL DEFAULT '', "deleted_at" timestamp with time zone); CREATE TABLE IF NOT EXISTS "to_named" ("id" uuid NOT NULL PRIMARY KEY, "scope_id" uuid NOT NULL, "tenant_id" uuid NOT NULL, "deleted_at" timestamp with time zone)
+CreateIndexes:
+ReconcileIndexes:
+    SET LOCAL lock_timeout = '5s'
+IndexSetHash: cbf29ce484222325
+HistoryTables:
+  to_named key=id soft=deleted_at tenant=tenant_id unversioned=[] arguments-hash=777ee2e5851368bb
+  to_notes key=id soft=deleted_at tenant=tenant_id unversioned=[] arguments-hash=777ee2e5851368bb
+HistorySetHash: 58a560a7fa6d2d7f
+-- contributions
+version 0000_baseline_TenantOptionDefault reversibility=Irreversible down=none
+  up:
+    CREATE TABLE IF NOT EXISTS "to_notes" ("id" uuid NOT NULL PRIMARY KEY, "scope_id" uuid NOT NULL, "tenant_id" uuid NOT NULL, "title" text NOT NULL DEFAULT '', "deleted_at" timestamp with time zone)
+    CREATE TABLE IF NOT EXISTS "to_named" ("id" uuid NOT NULL PRIMARY KEY, "scope_id" uuid NOT NULL, "tenant_id" uuid NOT NULL, "deleted_at" timestamp with time zone)
+version 0001_orm_indexes_TenantOptionDefault reversibility=Reversible down=none
+  up:
+version 9900_orm_index_reconcile_TenantOptionDefault_cbf29ce484222325 reversibility=Irreversible down=none
+  up:
+    SET LOCAL lock_timeout = '5s'
+version 9900_orm_history_reconcile_TenantOptionDefault_58a560a7fa6d2d7f reversibility=Irreversible down=none
+  up:
+    SET LOCAL lock_timeout = '5s'
+    CREATE TABLE IF NOT EXISTS row_history ( id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY, tenant_id uuid NULL, source_table text NOT NULL, row_id uuid NOT NULL, op text NOT NULL CHECK (op IN ('update', 'soft_delete', 'restore')), old_values jsonb NOT NULL, actor_user_id uuid NULL, actor_kind text NOT NULL CHECK (actor_kind IN ('user', 'system', 'unknown')), xact_id bigint NOT NULL, changed_at timestamptz NOT NULL DEFAULT now())
+    DO $rh$ BEGIN IF to_regclass('ix_row_history_source_row') IS NULL THEN CREATE INDEX ix_row_history_source_row ON row_history (source_table, row_id, id); END IF; END $rh$
+    DO $rh$ BEGIN IF to_regclass('ix_row_history_tenant_xact') IS NULL THEN CREATE INDEX ix_row_history_tenant_xact ON row_history (tenant_id, xact_id); END IF; END $rh$
+    DO $rh$ BEGIN IF to_regclass('ix_row_history_changed_at') IS NULL THEN CREATE INDEX ix_row_history_changed_at ON row_history (changed_at); END IF; END $rh$
+    CREATE OR REPLACE FUNCTION row_history_capture() RETURNS trigger LANGUAGE plpgsql AS $rh$
+    DECLARE
+      v_old jsonb;
+      v_new jsonb;
+      v_unversioned text[] := ARRAY[]::text[];
+      v_delta jsonb;
+      v_op text;
+      v_actor text;
+      v_actor_kind text;
+      v_actor_user uuid;
+      v_tenant uuid;
+      i int;
+    BEGIN
+      IF TG_OP = 'DELETE' THEN
+        DELETE FROM row_history
+         WHERE source_table = TG_TABLE_NAME AND row_id = (to_jsonb(OLD) ->> TG_ARGV[0])::uuid;
+        RETURN NULL;
+      END IF;
+      v_old := to_jsonb(OLD);
+      v_new := to_jsonb(NEW);
+      FOR i IN 3 .. TG_NARGS - 1 LOOP
+        v_unversioned := v_unversioned || TG_ARGV[i];
+      END LOOP;
+      v_delta := (SELECT coalesce(jsonb_object_agg(o.key, o.value), '{}'::jsonb)
+                    FROM jsonb_each(v_old) AS o(key, value)
+                   WHERE (v_new -> o.key) IS DISTINCT FROM o.value
+                     AND NOT (o.key = ANY (v_unversioned)));
+      IF v_delta = '{}'::jsonb THEN
+        RETURN NULL;
+      END IF;
+      v_op := CASE
+        WHEN v_old ->> TG_ARGV[1] IS NULL AND v_new ->> TG_ARGV[1] IS NOT NULL THEN 'soft_delete'
+        WHEN v_old ->> TG_ARGV[1] IS NOT NULL AND v_new ->> TG_ARGV[1] IS NULL THEN 'restore'
+        ELSE 'update' END;
+      IF TG_ARGV[2] <> '' THEN
+        v_tenant := (v_new ->> TG_ARGV[2])::uuid;
+      END IF;
+      v_actor := current_setting('ormlite.actor', true);
+      IF v_actor ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' THEN
+        v_actor_kind := 'user';
+        v_actor_user := v_actor::uuid;
+      ELSIF v_actor = 'system' THEN
+        v_actor_kind := 'system';
+      ELSE
+        v_actor_kind := 'unknown';
+      END IF;
+      INSERT INTO row_history (tenant_id, source_table, row_id, op, old_values, actor_user_id, actor_kind, xact_id)
+      VALUES (v_tenant, TG_TABLE_NAME, (v_old ->> TG_ARGV[0])::uuid, v_op, v_delta, v_actor_user, v_actor_kind,
+              pg_current_xact_id()::text::bigint);
+      RETURN NULL;
+    END
+    $rh$
+    DO $rh$ BEGIN IF to_regclass('"to_named"') IS NOT NULL AND (NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"to_named"') AND g.tgname = 'row_history_u' AND obj_description(g.oid, 'pg_trigger') = '777ee2e5851368bb') OR NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"to_named"') AND g.tgname = 'row_history_d' AND obj_description(g.oid, 'pg_trigger') = '777ee2e5851368bb')) THEN CREATE OR REPLACE TRIGGER row_history_u AFTER UPDATE ON "to_named" FOR EACH ROW WHEN (OLD IS DISTINCT FROM NEW) EXECUTE FUNCTION row_history_capture('id', 'deleted_at', 'tenant_id'); CREATE OR REPLACE TRIGGER row_history_d AFTER DELETE ON "to_named" FOR EACH ROW EXECUTE FUNCTION row_history_capture('id', 'deleted_at', 'tenant_id'); COMMENT ON TRIGGER row_history_u ON "to_named" IS '777ee2e5851368bb'; COMMENT ON TRIGGER row_history_d ON "to_named" IS '777ee2e5851368bb'; END IF; END $rh$
+    DO $rh$ BEGIN IF to_regclass('"to_notes"') IS NOT NULL AND (NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"to_notes"') AND g.tgname = 'row_history_u' AND obj_description(g.oid, 'pg_trigger') = '777ee2e5851368bb') OR NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"to_notes"') AND g.tgname = 'row_history_d' AND obj_description(g.oid, 'pg_trigger') = '777ee2e5851368bb')) THEN CREATE OR REPLACE TRIGGER row_history_u AFTER UPDATE ON "to_notes" FOR EACH ROW WHEN (OLD IS DISTINCT FROM NEW) EXECUTE FUNCTION row_history_capture('id', 'deleted_at', 'tenant_id'); CREATE OR REPLACE TRIGGER row_history_d AFTER DELETE ON "to_notes" FOR EACH ROW EXECUTE FUNCTION row_history_capture('id', 'deleted_at', 'tenant_id'); COMMENT ON TRIGGER row_history_u ON "to_notes" IS '777ee2e5851368bb'; COMMENT ON TRIGGER row_history_d ON "to_notes" IS '777ee2e5851368bb'; END IF; END $rh$
+-- registry
+to_named columns=[id,scope_id,tenant_id,deleted_at]
+  soft column=DeletedAt tenant=tenant_id platform=False key=id label=null token=named
+  live-only=[] unversioned=[] owners=[] pinned=[] status=[]
+  property-columns=[Id>id;ScopeId>scope_id;TenantId>tenant_id;DeletedAt>deleted_at]
+  typed pinned=[id,deleted_at,tenant_id] owners=[tenant_id] soft-column=deleted_at
+to_notes columns=[id,scope_id,tenant_id,title,deleted_at]
+  soft column=DeletedAt tenant=tenant_id platform=False key=id label=null token=note
+  live-only=[] unversioned=[] owners=[] pinned=[] status=[]
+  property-columns=[Id>id;ScopeId>scope_id;TenantId>tenant_id;Title>title;DeletedAt>deleted_at]
+  typed pinned=[id,deleted_at,tenant_id] owners=[tenant_id] soft-column=deleted_at

@@ -1,0 +1,7 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE (jsonb_typeof(("payload" -> @p0)) = 'array' AND (("payload" -> @p0) @> to_jsonb(CAST(@p1 AS text)) OR ("payload" -> @p0) @> to_jsonb(CAST(@p2 AS text)) OR ("payload" -> @p0) @> to_jsonb(CAST(@p3 AS text))))
+-- parameters (4)
+[0] String "tags"
+[1] String "red"
+[2] String "green"
+[3] String "blue"

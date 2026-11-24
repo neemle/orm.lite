@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: No ORM metadata registered for Neemle.Orm.Lite.Tests.Corpus.CorpusUnregistered

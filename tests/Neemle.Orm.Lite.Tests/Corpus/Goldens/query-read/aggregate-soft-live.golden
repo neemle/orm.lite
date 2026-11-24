@@ -1,0 +1,4 @@
+-- sql
+SELECT count(*), count(*) FILTER (WHERE ("rank" > @p0)) FROM "corpus_tasks" WHERE "deleted_at" IS NULL
+-- parameters (1)
+[0] Int32 1

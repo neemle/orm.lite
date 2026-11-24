@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentNullException
+message: Having compares the aggregate to a value, and comparing it to NULL matches no group. (Parameter 'value')

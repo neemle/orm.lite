@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: Db.Now is a query marker and cannot be executed directly.

@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: an untargeted ON CONFLICT cannot DO UPDATE; PostgreSQL requires a conflict target to know which row to update. Name the columns, or use OnConflict.DoNothing.

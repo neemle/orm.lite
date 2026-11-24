@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE ("meta" ->> 'legacy_name') = CAST(@p0 AS text)
+-- parameters (1)
+[0] String "x"

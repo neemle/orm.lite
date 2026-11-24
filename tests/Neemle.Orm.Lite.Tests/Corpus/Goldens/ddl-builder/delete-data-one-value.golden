@@ -1,0 +1,1 @@
+[0] DELETE FROM "samples" WHERE "id" IN ('a')

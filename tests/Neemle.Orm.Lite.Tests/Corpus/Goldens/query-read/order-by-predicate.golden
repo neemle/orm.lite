@@ -1,0 +1,4 @@
+-- sql
+SELECT * FROM "corpus_notes" ORDER BY ("rank" > @p0) ASC NULLS LAST
+-- parameters (1)
+[0] Int32 3

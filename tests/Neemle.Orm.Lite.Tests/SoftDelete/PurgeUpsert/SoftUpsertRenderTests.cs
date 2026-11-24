@@ -15,7 +15,7 @@ public sealed class SoftUpsertRenderTests
     {
         _ = SoftRootRender.Roots();
         return new Query<SoftReferrer>(
-            new OrmContext(new NeverUsedDataSource(), new PgDialect()),
+            TestContext.Of(new NeverUsedDataSource(), new PgDialect()),
             SoftReferrer.Map);
     }
 
@@ -55,12 +55,15 @@ public sealed class SoftUpsertRenderTests
         Assert.Equal("INSERT INTO \"soft_roots\" (\"id\", \"name\") VALUES (@p0, @p1) ON CONFLICT (\"id\") DO NOTHING", sql);
     }
 
-    [Fact(DisplayName = "AC6 control: a DoUpdate with no assignments is DO NOTHING in the dialect and carries no live predicate")]
-    public void A_soft_do_update_without_assignments_is_do_nothing()
+    [Fact(DisplayName =
+        "ORML-14 a DoUpdate with no assignments is refused by name, it is no longer written as DO NOTHING")]
+    public void A_soft_do_update_without_assignments_is_refused()
     {
-        var (sql, _) = SoftRootRender.Roots().RenderUpsert(RootValues, [r => r.Id], OnConflict.DoUpdate);
+        var refusal = Assert.Throws<InvalidOperationException>(
+            () => SoftRootRender.Roots().RenderUpsert(RootValues, [r => r.Id], OnConflict.DoUpdate));
 
-        Assert.EndsWith(" ON CONFLICT (\"id\") DO NOTHING", sql, StringComparison.Ordinal);
+        Assert.Contains("OnConflict.DoUpdate names no UpsertSet", refusal.Message, StringComparison.Ordinal);
+        Assert.Contains("OnConflict.DoNothing", refusal.Message, StringComparison.Ordinal);
     }
 
     [Fact(DisplayName = "AC6 control: a DoUpdate upsert into a non-soft entity renders exactly as before, with no live predicate")]

@@ -1,0 +1,7 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE (("rank" > @p0 AND ("payload" ->> @p1) = @p2) AND jsonb_exists("meta", @p3))
+-- parameters (4)
+[0] Int32 1
+[1] String "k"
+[2] String "v"
+[3] String "m"

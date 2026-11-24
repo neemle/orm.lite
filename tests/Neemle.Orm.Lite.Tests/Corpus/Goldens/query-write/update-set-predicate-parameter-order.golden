@@ -1,0 +1,6 @@
+-- sql
+UPDATE "corpus_notes" SET "active" = ("title" = @p0), "rank" = @p1 WHERE "id" = @p2
+-- parameters (3)
+[0] String "p"
+[1] Int32 1
+[2] Guid a0000000-0000-0000-0000-00000000000a

@@ -1,0 +1,6 @@
+-- sql
+SELECT * FROM "corpus_notes" WHERE ((("rank" > @p0 OR "title" = @p1) AND NOT ("views" < @p2)) AND ("active" = true OR "active" = false))
+-- parameters (3)
+[0] Int32 1
+[1] String "x"
+[2] Int64 3

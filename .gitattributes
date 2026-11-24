@@ -1,0 +1,2 @@
+tests/Neemle.Orm.Lite.Tests/Corpus/Goldens/** -text
+tests/Neemle.Orm.Lite.Tests/Corpus/INDEX.md -text

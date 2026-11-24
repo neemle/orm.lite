@@ -10,35 +10,34 @@ public sealed class LiveOnlyUpsertTargetTests
         $"[Table(\"docs\")] [SoftDelete(Tenant = SoftDeleteAttribute.Platform)] {indexes} public class Doc "
         + "{ [Key] public Guid Id { get; set; } public string Scope { get; set; } = \"\"; public string Name { get; set; } = \"\"; public DateTime? DeletedAt { get; set; } }\n";
 
-    private static string Tail() =>
-        ", EntityToken: \"doc\", PropertyColumns: new string[][] { new string[] { \"Id\", \"id\" }, new string[] { \"Scope\", \"scope\" }, new string[] { \"Name\", \"name\" }, new string[] { \"DeletedAt\", \"deleted_at\" } }));";
-
-    private static string RegisterLine(string generated)
+    private static SoftDeleteMeta MetaOf(string source)
     {
-        var start = generated.IndexOf("OrmMeta.Register<global::Fixture.Doc>(", StringComparison.Ordinal);
-        Assert.True(start >= 0);
-        return generated.Substring(start, generated.IndexOf('\n', start) - start);
+        var (diagnostics, _, output) = Run(source);
+        Assert.Empty(diagnostics);
+        return GeneratedModel.Of(output).Soft("Doc")!;
     }
 
-    [Fact(DisplayName = "AC8 the Register line carries the column set of every LiveOnly index, taken from the index the CREATE statement is built from")]
-    public void The_register_line_carries_the_live_only_column_sets()
+    [Fact(DisplayName = "AC8 the registration carries the column set of every LiveOnly index, taken from the index the CREATE statement is built from")]
+    public void The_registration_carries_the_live_only_column_sets()
     {
-        var (diagnostics, generated, _) = Run(Entity(
+        var meta = MetaOf(Entity(
             "[Index(\"Scope\", \"Name\", Unique = true, LiveOnly = true)] [Index(\"Name\", Unique = true, LiveOnly = true)] [Index(\"Scope\", Unique = true)]"));
 
-        Assert.Empty(diagnostics);
-        Assert.EndsWith(
-            ", new global::Neemle.Orm.Lite.SoftDeleteMeta(\"DeletedAt\", new string[][] { new string[] { \"scope\", \"name\" }, new string[] { \"name\" } }, Platform: true, KeyColumn: \"id\"" + Tail(),
-            RegisterLine(generated).TrimEnd('\r'));
+        Assert.Equal(new[] { new[] { "scope", "name" }, new[] { "name" } }, meta.LiveOnlyIndexes);
+        Assert.True(meta.Platform);
+        Assert.Equal("id", meta.KeyColumn);
+        Assert.Equal("doc", meta.EntityToken);
+        Assert.Equal(new[] { "Id>id", "Scope>scope", "Name>name", "DeletedAt>deleted_at" }, meta.PropertyColumns!.Select(p => p[0] + ">" + p[1]));
     }
 
-    [Fact(DisplayName = "AC8 a soft entity without a LiveOnly index keeps its Register line byte for byte")]
-    public void A_soft_entity_without_live_only_keeps_its_register_line()
+    [Fact(DisplayName = "AC8 a soft entity without a LiveOnly index registers no LiveOnly column set")]
+    public void A_soft_entity_without_live_only_registers_no_set()
     {
-        var (diagnostics, generated, _) = Run(Entity("[Index(\"Scope\", \"Name\", Unique = true)]"));
+        var meta = MetaOf(Entity("[Index(\"Scope\", \"Name\", Unique = true)]"));
 
-        Assert.Empty(diagnostics);
-        Assert.EndsWith(", new global::Neemle.Orm.Lite.SoftDeleteMeta(\"DeletedAt\", Platform: true, KeyColumn: \"id\"" + Tail(), RegisterLine(generated).TrimEnd('\r'));
+        Assert.Null(meta.LiveOnlyIndexes);
+        Assert.True(meta.Platform);
+        Assert.Equal("id", meta.KeyColumn);
     }
 
     [Theory(DisplayName = "AC8 a conflict target matches a LiveOnly index exactly as a column set, in any order")]

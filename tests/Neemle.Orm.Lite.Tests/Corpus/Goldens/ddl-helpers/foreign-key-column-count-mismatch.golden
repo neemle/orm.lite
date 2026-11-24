@@ -1,0 +1,3 @@
+-- refusal
+type: System.ArgumentException
+message: a foreign key needs as many referenced columns as columns (Parameter 'referencedColumns')

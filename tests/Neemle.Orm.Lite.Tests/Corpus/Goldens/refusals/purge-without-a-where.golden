@@ -1,0 +1,3 @@
+-- refusal
+type: System.InvalidOperationException
+message: PurgeAsync requires a Where (refusing an unfiltered DELETE).

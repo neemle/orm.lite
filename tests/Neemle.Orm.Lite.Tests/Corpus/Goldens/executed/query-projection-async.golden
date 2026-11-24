@@ -1,0 +1,7 @@
+#1 ExecuteReader conn=1 source=primary tx=false
+    sql:
+        SELECT "id", ("rank" > @p0) FROM "corpus_notes" WHERE "title" = @p1
+    @p0 = Int32 2
+    @p1 = String "w"
+-- outcome
+Int32 0

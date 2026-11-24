@@ -18,14 +18,14 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.10" />
-    <!-- Microsoft.Data.Sqlite pulls in SQLitePCLRaw.lib.e_sqlite3 transitively, which carries a known
-         high-severity advisory (GHSA-2m69-gcr7-jv3q, NU1903); the direct reference overrides it with the patched release. -->
-    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="3.53.3" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.13" />
+    <PackageReference Include="Xunit.SkippableFact" Version="1.5.23" />
+    <PackageReference Include="Npgsql" Version="10.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="OrmLiteGolden/Fixtures/**" />
+    <Compile Remove="Corpus/GeneratorFixtures/**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +34,9 @@
          run it over this project's own files and leave nothing to assert against. -->
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
     <ProjectReference Include="../../src/Neemle.Orm.Lite.Runtime/Neemle.Orm.Lite.Runtime.csproj" />
+    <ProjectReference Include="../../src/Neemle.Orm.Lite.Sql/Neemle.Orm.Lite.Sql.csproj" />
+    <ProjectReference Include="../../src/Neemle.Orm.Lite.Postgres/Neemle.Orm.Lite.Postgres.csproj" />
+    <ProjectReference Include="../../src/Neemle.Orm.Lite.Sqlite/Neemle.Orm.Lite.Sqlite.csproj" />
     <ProjectReference Include="../../src/Neemle.Orm.Lite.Generator/Neemle.Orm.Lite.Generator.csproj" />
   </ItemGroup>
 

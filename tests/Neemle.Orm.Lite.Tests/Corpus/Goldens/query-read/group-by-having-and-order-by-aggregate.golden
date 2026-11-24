@@ -1,0 +1,5 @@
+-- sql
+SELECT "rank", count(*), COALESCE(SUM(COALESCE("views", 0)), 0) FROM "corpus_notes" GROUP BY "rank" HAVING (count(*) > @p0 AND COALESCE(SUM(COALESCE("views", 0)), 0) <= @p1) ORDER BY count(*) DESC NULLS LAST, "rank" ASC NULLS LAST LIMIT 5 OFFSET 10
+-- parameters (2)
+[0] Int64 1
+[1] Int64 900

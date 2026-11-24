@@ -1,0 +1,5 @@
+-- sql
+UPDATE "corpus_tasks" SET "doc" = COALESCE("doc", '{}'::jsonb) || @p0::jsonb WHERE "deleted_at" IS NULL AND "id" = @p1
+-- parameters (2)
+[0] Jsonb {"x":1}
+[1] Guid a0000000-0000-0000-0000-00000000000a

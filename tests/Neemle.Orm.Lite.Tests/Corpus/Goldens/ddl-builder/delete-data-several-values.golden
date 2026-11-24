@@ -1,0 +1,1 @@
+[0] DELETE FROM "samples" WHERE "rank" IN (1, 2, 3)

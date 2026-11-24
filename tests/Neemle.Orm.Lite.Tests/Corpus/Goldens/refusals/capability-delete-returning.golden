@@ -1,0 +1,3 @@
+-- refusal
+type: System.NotSupportedException
+message: NoCapabilityDialect cannot return columns from a write; select the affected rows first, inside the same transaction.
