@@ -98,14 +98,14 @@ Every provider declares, for each capability, whether the database does it nativ
 it with the same or stronger meaning, or whether it is not available. A declaration or call that needs a capability
 the provider does not have is refused by name before any statement runs, and at build time when the project's
 providers are known. The capability table and the other provider differences are in the
-[repository README](https://github.com/neemle/orm.lite#capabilities-per-provider).
+[provider reference](https://github.com/neemle/orm.lite/blob/HEAD/docs/providers.md).
 
 ## Documentation
 
 The documentation is kept in the public repository, which is the single home of the user documentation:
 
-- [README](https://github.com/neemle/orm.lite#readme): configuration, capabilities per provider, migrations,
-  limitations and build properties.
+- [Documentation](https://github.com/neemle/orm.lite/tree/HEAD/docs): installation, configuration, guides,
+  and reference.
 - [Demo](https://github.com/neemle/orm.lite/tree/HEAD/demo): a runnable program that walks the library chapter by
   chapter on SQLite and on PostgreSQL, with comments in every file.
 

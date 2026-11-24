@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 // ComposeCoherence keeps the PostgreSQL image major and the host ports written once (ORML-79). The compose files are
 // the source: the image default and the host port default of tests/compose.yaml, the image and the host port of
-// demo/compose.yaml. Everything else that repeats a value (ci.yml, the READMEs, the comments of the compose files)
+// demo/compose.yaml. Everything else that repeats a value (ci.yml, the development and demo docs, the comments of the compose files)
 // must say the same, so a change to a source that misses a repetition fails here instead of in a hosted run.
 //   check          the container port of both servers is 5432, both servers use one image major, the two host ports
 //                  differ, and every repetition of the major and of each port equals its source
@@ -16,7 +16,7 @@ internal static class ComposeCoherence
     private const RegexOptions Opt = RegexOptions.CultureInvariant | RegexOptions.Multiline;
 
     private static readonly string[] Paths =
-        [".github/workflows/ci.yml", "tests/compose.yaml", "demo/compose.yaml", "README.md", "demo/README.md"];
+        [".github/workflows/ci.yml", "tests/compose.yaml", "demo/compose.yaml", "docs/development.md", "demo/README.md"];
 
     private static readonly Regex TestImage =
         new(@"^\s*image:\s*\$\{ORMLITE_TEST_PG_IMAGE:-neemle/pg\.lite:(?<major>\d+)\}", Opt);
@@ -95,11 +95,11 @@ internal static class ComposeCoherence
         var rules = new (Regex Pattern, string Source, string Meaning, string[] Files)[]
         {
             (Major, v.Major, "the PostgreSQL major",
-                ["tests/compose.yaml", "demo/compose.yaml", "README.md", "demo/README.md"]),
+                ["tests/compose.yaml", "demo/compose.yaml", "docs/development.md", "demo/README.md"]),
             (TestUse, v.Test, "the host port of the test server",
-                [".github/workflows/ci.yml", "tests/compose.yaml", "README.md"]),
+                [".github/workflows/ci.yml", "tests/compose.yaml", "docs/development.md"]),
             (DemoUse, v.Demo, "the host port of the demo server",
-                [".github/workflows/ci.yml", "demo/compose.yaml", "README.md", "demo/README.md"]),
+                [".github/workflows/ci.yml", "demo/compose.yaml", "docs/development.md", "demo/README.md"]),
         };
         foreach (var (pattern, source, meaning, files) in rules)
             foreach (var file in files)
@@ -123,10 +123,10 @@ internal static class ComposeCoherence
             "    image: ${ORMLITE_TEST_PG_IMAGE:-neemle/pg.lite:19}\n    ports:\n"
             + "      - \"127.0.0.1:${ORMLITE_TEST_PG_PORT:-55433}:5432\"\n",
         ["demo/compose.yaml"] = "    image: neemle/pg.lite:19\n    ports:\n      - \"127.0.0.1:55432:5432\"\n",
-        ["README.md"] =
+        ["docs/development.md"] =
             "the `neemle/pg.lite:19` image, `ORMLITE_TEST_PG_PORT`, default 55433,\n"
             + "'Host=127.0.0.1;Port=55433;Username=postgres'\n"
-            + "OrmLite__Port=55432 on 127.0.0.1:55432\n",
+            + "published on 127.0.0.1:55432\n",
         ["demo/README.md"] = "neemle/pg.lite:19 OrmLite__Port=55432 published on 127.0.0.1:55432 only\n",
     };
 
@@ -138,10 +138,10 @@ internal static class ComposeCoherence
         ("tests container port", "tests/compose.yaml", "}:5432", "}:5433", "container port 5433, not 5432"),
         ("demo container port", "demo/compose.yaml", ":5432\"", ":5433\"", "container port 5433, not 5432"),
         ("demo image major", "demo/compose.yaml", "pg.lite:19", "pg.lite:18", "differs from the tests image major 19"),
-        ("readme image major", "README.md", "pg.lite:19", "pg.lite:18", "README.md says the PostgreSQL major is 18"),
+        ("readme image major", "docs/development.md", "pg.lite:19", "pg.lite:18", "docs/development.md says the PostgreSQL major is 18"),
         ("demo readme image major", "demo/README.md", "pg.lite:19", "pg.lite:20", "demo/README.md says the PostgreSQL"),
-        ("readme test port", "README.md", "Port=55433", "Port=5433", "README.md says the host port of the test"),
-        ("readme demo port", "README.md", "OrmLite__Port=55432", "OrmLite__Port=5432", "the demo server is 5432"),
+        ("readme test port", "docs/development.md", "Port=55433", "Port=5433", "docs/development.md says the host port of the test"),
+        ("development demo port", "docs/development.md", "127.0.0.1:55432", "127.0.0.1:5432", "the demo server is 5432"),
         ("demo readme loopback port", "demo/README.md", "1:55432", "1:55499", "the demo server is 55499"),
         ("same host port", "demo/compose.yaml", "1:55432", "1:55433", "publish the same host port 55433"),
         ("no test port variable", "tests/compose.yaml", "ORMLITE_TEST_PG_PORT", "OTHER", "has no loopback port line"),
