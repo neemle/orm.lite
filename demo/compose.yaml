@@ -13,7 +13,7 @@
 # The image is built FROM scratch and has no shell: the health check is the exec form of the server's own
 # `postgres --healthcheck` (a CMD-SHELL check or `pg_isready` cannot run in it) and `docker exec ... sh` does not work.
 # The image major is the one of tests/compose.yaml, and the host port below is the source of the demo's port in
-# ci.yml and the READMEs: scripts/ComposeCoherence.cs fails the CI test job when any of them says something else.
+# ci.yml and the READMEs: scripts/ComposeCoherence.cs fails the CI static stage when any of them says something else.
 name: orm-lite-demo
 
 services:

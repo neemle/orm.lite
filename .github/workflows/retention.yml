@@ -1,0 +1,51 @@
+name: retention
+
+# Keeps the newest workflow runs of this repository (20 by default, never fewer than 5) and deletes the older completed
+# ones; deleting a run deletes its logs and artifacts. It touches no branch, tag, release or file of the repository:
+# scripts/RunRetention.cs calls the GitHub API for the list of runs and for the deletion of one run only, and
+# scripts/RetentionShape.cs pins this file (its triggers, its permissions, its steps).
+# A manual run lists what it would delete when `dry_run` is true (the default) and deletes nothing. A scheduled run has
+# no input: it only lists, until the repository variable RETENTION_APPLY is set to `true`.
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: List the runs that would be deleted and delete nothing
+        type: boolean
+        default: true
+      keep:
+        description: How many of the newest runs to keep (at least 5)
+        type: number
+        default: 20
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: retention
+  cancel-in-progress: false
+
+jobs:
+  retention:
+    name: retention
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Check that the retention script refuses what it is meant to refuse
+        run: dotnet run scripts/RunRetention.cs -- self-test
+      - name: List the runs beyond the newest ones, and delete them unless this is a dry run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RETENTION_KEEP: ${{ inputs.keep }}
+          RETENTION_DRY_RUN: ${{ inputs.dry_run }}
+          RETENTION_APPLY: ${{ vars.RETENTION_APPLY }}
+        run: dotnet run scripts/RunRetention.cs -- run

@@ -5,10 +5,9 @@
 // must not lose: the main test step is bounded by a step timeout below the job's, with a console log that names the
 // last test; every `dotnet test` step caps xUnit at one thread (the parallel run was killed for memory); the
 // data-literal tests run once more under a non-UTC TZ with a TRX and a gate of their own (the default UTC runner
-// cannot tell the Local to UTC conversion of a moment from none); and the two steps that run
-// scripts/ComposeCoherence.cs and the two that run scripts/MatrixShape.cs (the .NET 10 and .NET 11 legs) are there.
-// scripts/WorkflowShape.cs guards the rest of the shape and requires the two steps that run this script. The matrix
-// itself (strategy, name, env) sits beside the steps and is read past, so each leg is judged as one job test.
+// cannot tell the Local to UTC conversion of a moment from none). scripts/StageShape.cs requires the two steps that
+// run this script in job static (stage 1); scripts/WorkflowShape.cs guards the rest of the shape of job test. The
+// matrix itself (strategy, name, env) sits beside the steps and is read past, so each leg is judged as one job test.
 //   dotnet run scripts/StepShape.cs -- check [<ci.yml>]    exit 0 pass, 1 shape failure, 2 usage
 //   dotnet run scripts/StepShape.cs -- self-test           no workflow needed; every assertion has a negative case
 // The reader knows the indentation ci.yml uses (job at 2, steps at 6, keys at 8) and fails closed on anything else.
@@ -51,9 +50,6 @@ List<string> Judge(string text)
         f.Add("TZ is set outside the env of a step of job test");
     if (zones.Count != 1) f.Add($"job test must have exactly one step with env TZ, it has {zones.Count}");
     else Zone(steps, runs, zones[0], f);
-    foreach (var token in new[] { "ComposeCoherence.cs -- self-test", "ComposeCoherence.cs -- check",
-        "MatrixShape.cs -- self-test", "MatrixShape.cs -- check" })
-        if (!runs.Any(r => Has(r, token))) f.Add("job test has no step running `" + token + "`");
     foreach (var i in Enumerable.Range(0, runs.Count).Where(i => Has(runs[i], "dotnet test") && !zones.Contains(i)))
         MainStep(lines, steps[i], (i + 1, runs[i]), f);
     return f;
@@ -164,7 +160,8 @@ string Good() => """
 name: ci
 jobs:
   test:
-    name: test (.NET ${{ matrix.dotnet }})
+    name: 2 test (.NET ${{ matrix.dotnet }})
+    needs: static
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -180,10 +177,6 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet }}
-      - run: dotnet run scripts/ComposeCoherence.cs -- self-test
-      - run: dotnet run scripts/ComposeCoherence.cs -- check
-      - run: dotnet run scripts/MatrixShape.cs -- self-test
-      - run: dotnet run scripts/MatrixShape.cs -- check
       - run: dotnet build X
       - name: Test
         timeout-minutes: 15
@@ -208,6 +201,7 @@ jobs:
         with:
           name: test-results-${{ matrix.dotnet }}
           path: TestResults
+          retention-days: 7
   package:
     runs-on: ubuntu-latest
     steps:
@@ -274,10 +268,6 @@ List<Case> CaseTable() =>
     a step timeout that is no number~sub~timeout-minutes: 15~timeout-minutes: soon~needs a numeric `timeout-minutes`
     a job timeout below the step timeout~sub~timeout-minutes: 30~timeout-minutes: 10~must be below the timeout-minutes
     no job timeout~drop~timeout-minutes: 30~~must be below the timeout-minutes of job test (-1)
-    no compose guard self-test~drop~ComposeCoherence.cs -- self-test~~no step running `ComposeCoherence.cs -- self-test`
-    no compose guard check~drop~ComposeCoherence.cs -- check~~no step running `ComposeCoherence.cs -- check`
-    no matrix guard self-test~drop~MatrixShape.cs -- self-test~~no step running `MatrixShape.cs -- self-test`
-    no matrix guard check~drop~MatrixShape.cs -- check~~no step running `MatrixShape.cs -- check`
     no console logger~sub~ --logger "console;verbosity=detailed"~~lacks `--logger "console;verbosity=detailed"`
     """.Split('\n', StringSplitOptions.RemoveEmptyEntries).Select(l => l.Split('~'))
         .Select(p => (p[0].Trim(), p[1], p[2].Replace("\\n", "\n"), p[3].Replace("\\n", "\n"), p[4])).ToList();

@@ -18,13 +18,62 @@ env:
   DOTNET_NOLOGO: "1"
 
 jobs:
+  # The pipeline runs in four ordered stages, each a set of jobs that need the one before: 1 static (every guard and
+  # self-test that needs no server, and a strict build), 2 test (one leg per .NET runtime), 3 package (pack and the
+  # consumer matrix, and the NativeAOT smoke legs) and 4 demo (the two demos). A stage starts only when the one before
+  # it passed, so a broken gate or build stops the run early; the jobs of one stage run in parallel. The test legs
+  # build again instead of taking the build of stage 1 (one more build in the run, and no artifact hand-off to go
+  # wrong). scripts/StageShape.cs pins the stages, the needs and the steps each stage must keep.
+  static:
+    name: 1 static
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Print the SDK and the runtimes this stage runs on
+        run: dotnet --info
+      - name: Check that the skip gate refuses what it is meant to refuse
+        run: dotnet run scripts/SkipGate.cs -- self-test
+      - name: Check that the workflow-shape guard refuses what it is meant to refuse
+        run: dotnet run scripts/WorkflowShape.cs -- self-test
+      - name: Check that this workflow keeps the compose step, the variable and the gate
+        run: dotnet run scripts/WorkflowShape.cs -- check
+      - name: Check that the step guard refuses what it is meant to refuse
+        run: dotnet run scripts/StepShape.cs -- self-test
+      - name: Check that the test steps keep their thread cap and the zone step and its gate stand
+        run: dotnet run scripts/StepShape.cs -- check
+      - name: Check that the matrix guard refuses what it is meant to refuse
+        run: dotnet run scripts/MatrixShape.cs -- self-test
+      - name: Check that the test and AOT jobs keep their .NET 10 and .NET 11 legs
+        run: dotnet run scripts/MatrixShape.cs -- check
+      - name: Check that the compose guard refuses what it is meant to refuse
+        run: dotnet run scripts/ComposeCoherence.cs -- self-test
+      - name: Check that the image major and the host ports agree in the compose files, ci.yml and the READMEs
+        run: dotnet run scripts/ComposeCoherence.cs -- check
+      - name: Check that the stage guard refuses what it is meant to refuse
+        run: dotnet run scripts/StageShape.cs -- self-test
+      - name: Check that the jobs keep their stages, their needs and the steps of each stage
+        run: dotnet run scripts/StageShape.cs -- check
+      - name: Check that the retention guard refuses what it is meant to refuse
+        run: dotnet run scripts/RetentionShape.cs -- self-test
+      - name: Check that the retention workflow keeps its narrow shape
+        run: dotnet run scripts/RetentionShape.cs -- check
+      - name: Check that the run selection of the retention script keeps the newest runs and refuses a low limit
+        run: dotnet run scripts/RunRetention.cs -- self-test
+      - name: Build the solution in Release with every warning an error
+        run: dotnet build Neemle.Orm.Lite.slnx -c Release -warnaserror
+
   # The tests run once per .NET runtime, each leg on its own runner with its own throwaway PostgreSQL. The test
   # project targets net10.0, so the .NET 11 leg builds it with the SDK 11 and lets the test host roll forward to the
   # newest installed runtime (DOTNET_ROLL_FORWARD=LatestMajor); the .NET 10 leg names the default policy (Minor), so a
   # runtime 11 that the runner image may carry is not used there. ORMLITE_EXPECT_DOTNET makes a test fail when the
   # test host runs on another major than the leg names (TestHostRuntimeTests). scripts/MatrixShape.cs guards this.
   test:
-    name: test (.NET ${{ matrix.dotnet }})
+    name: 2 test (.NET ${{ matrix.dotnet }})
+    needs: static
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -45,24 +94,6 @@ jobs:
           dotnet-version: ${{ matrix.dotnet }}
       - name: Print the SDK and the runtimes this leg runs on
         run: dotnet --info
-      - name: Check that the skip gate refuses what it is meant to refuse
-        run: dotnet run scripts/SkipGate.cs -- self-test
-      - name: Check that the workflow-shape guard refuses what it is meant to refuse
-        run: dotnet run scripts/WorkflowShape.cs -- self-test
-      - name: Check that this workflow keeps the compose step, the variable and the gate
-        run: dotnet run scripts/WorkflowShape.cs -- check
-      - name: Check that the step guard refuses what it is meant to refuse
-        run: dotnet run scripts/StepShape.cs -- self-test
-      - name: Check that the test steps keep their thread cap and the zone step and its gate stand
-        run: dotnet run scripts/StepShape.cs -- check
-      - name: Check that the matrix guard refuses what it is meant to refuse
-        run: dotnet run scripts/MatrixShape.cs -- self-test
-      - name: Check that the test and AOT jobs keep their .NET 10 and .NET 11 legs
-        run: dotnet run scripts/MatrixShape.cs -- check
-      - name: Check that the compose guard refuses what it is meant to refuse
-        run: dotnet run scripts/ComposeCoherence.cs -- self-test
-      - name: Check that the image major and the host ports agree in the compose files, ci.yml and the READMEs
-        run: dotnet run scripts/ComposeCoherence.cs -- check
       - run: dotnet build Neemle.Orm.Lite.slnx -c Release
       - name: Start the throwaway PostgreSQL of tests/compose.yaml and wait until it is healthy
         run: docker compose -f tests/compose.yaml up -d --wait --wait-timeout 120
@@ -124,9 +155,10 @@ jobs:
           name: test-results-${{ matrix.dotnet }}
           path: TestResults
           if-no-files-found: ignore
-          retention-days: 14
+          retention-days: 7
 
   package:
+    name: 3 package
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -150,54 +182,12 @@ jobs:
       - name: Check that the demo consumes the package, not a project
         run: dotnet run scripts/PackCheck.cs -- demo-guard
 
-  demo-sqlite:
-    needs: test
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
-      - name: Pack the three packages into the local feed (nothing is published)
-        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
-      - name: Run the demo on SQLite with no service and no setting
-        shell: bash
-        run: |
-          dotnet run --project demo -c Release | tee demo.log
-          grep -qx 'demo ok' demo.log
-
-  demo-postgres:
-    needs: test
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      OrmLite__Provider: postgres
-      OrmLite__Host: 127.0.0.1
-      OrmLite__Port: "55432"
-      OrmLite__Username: postgres
-      OrmLite__Database: postgres
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
-      - name: Start the throwaway PostgreSQL of demo/compose.yaml and wait until it is healthy
-        run: docker compose -f demo/compose.yaml up -d --wait --wait-timeout 120
-      - name: Pack the three packages into the local feed (nothing is published)
-        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
-      - name: Run the demo, soft delete and history included, on a fresh PostgreSQL database, changing only the provider block
-        shell: bash
-        run: |
-          dotnet build demo -c Release --no-incremental
-          dotnet run --project demo -c Release --no-build | tee demo.log
-          grep -qx 'demo ok' demo.log
-
   # The NativeAOT consumer is published once per .NET runtime. The shipped libraries stay net10.0 (a net11.0 consumer
   # references them as they are); only the consumer's target framework follows the leg (AotSmokeTfm of the project),
   # and the binary prints the runtime it was compiled for, which the last step compares with the leg.
   aot-smoke:
-    name: aot-smoke (.NET ${{ matrix.dotnet }})
+    name: 3 aot-smoke (.NET ${{ matrix.dotnet }})
+    needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -224,3 +214,48 @@ jobs:
           ./aot-out/AotSmoke | tee aot.log
           grep -qx 'aot smoke ok' aot.log
           grep -q "^aot runtime: ${AOT_TFM#net}" aot.log
+
+  demo-sqlite:
+    name: 4 demo-sqlite
+    needs: package
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Pack the three packages into the local feed (nothing is published)
+        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+      - name: Run the demo on SQLite with no service and no setting
+        shell: bash
+        run: |
+          dotnet run --project demo -c Release | tee demo.log
+          grep -qx 'demo ok' demo.log
+
+  demo-postgres:
+    name: 4 demo-postgres
+    needs: package
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OrmLite__Provider: postgres
+      OrmLite__Host: 127.0.0.1
+      OrmLite__Port: "55432"
+      OrmLite__Username: postgres
+      OrmLite__Database: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Start the throwaway PostgreSQL of demo/compose.yaml and wait until it is healthy
+        run: docker compose -f demo/compose.yaml up -d --wait --wait-timeout 120
+      - name: Pack the three packages into the local feed (nothing is published)
+        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+      - name: Run the demo, soft delete and history included, on a fresh PostgreSQL database, changing only the provider block
+        shell: bash
+        run: |
+          dotnet build demo -c Release --no-incremental
+          dotnet run --project demo -c Release --no-build | tee demo.log
+          grep -qx 'demo ok' demo.log

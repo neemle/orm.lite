@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 //   check          the container port of both servers is 5432, both servers use one image major, the two host ports
 //                  differ, and every repetition of the major and of each port equals its source
 //   self-test      a passing fixture and one mutated negative per assertion
-// scripts/StepShape.cs requires the two steps of the ci.yml test job that run this script.
+// scripts/StageShape.cs requires the two steps of the ci.yml static job (stage 1) that run this script.
 internal static class ComposeCoherence
 {
     private const RegexOptions Opt = RegexOptions.CultureInvariant | RegexOptions.Multiline;

@@ -21,8 +21,8 @@
 # in-memory data directory is owned by it; the options were accepted by the image on the first run. If a later image
 # refuses the directory, that value is what to change.
 # The image major and the host port written here are the source; the demo's compose file takes the same major and has
-# its own port. scripts/ComposeCoherence.cs fails the CI test job when ci.yml, a README or the other compose file says
-# something else.
+# its own port. scripts/ComposeCoherence.cs fails the CI static stage when ci.yml, a README or the other compose file
+# says something else.
 name: orm-lite-tests
 
 services:

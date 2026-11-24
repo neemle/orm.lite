@@ -587,19 +587,24 @@ assets and so the actor setting, and the generators do not run in it.
 - `tests/compose.yaml`, `tests/skip-allowlist.txt`, `tests/skip-witness.txt`: the throwaway PostgreSQL that is the local
   twin of the CI test job's service, and the two lists the skip gate reads
 - `tests/PackConsumer`: the throwaway consumers that `scripts/PackCheck.cs` builds from the packed package
-- `scripts/`: ten file-based C# tools (`dotnet run scripts/X.cs`), no shell: `PackCheck.cs` (package entries, the
+- `scripts/`: thirteen file-based C# tools (`dotnet run scripts/X.cs`), no shell: `PackCheck.cs` (package entries, the
   consumer matrix, the demo guard), `ReadmeCheck.cs` (the packed README is the consumer README, and no file names
   documentation outside this repository), `PackVersions.cs` (every packed assembly carries the package version),
   `NupkgTool.cs` (lists or shows a package's entries), `CorpusCapture.cs` (the rendered-text corpus), `SkipGate.cs`
   (fails the test job on a skipped test that is not allow-listed), `WorkflowShape.cs` (fails when the workflow drops
   the compose step, the variable or the gate), `StepShape.cs` (fails when a test step loses its one-thread cap or
   the zone step and its gate go, or the main test step its 15-minute timeout and its console log),
-  `MatrixShape.cs` (fails when the test and AOT jobs lose a .NET 10 or .NET 11 leg or run a leg on the wrong runtime)
-  and `ComposeCoherence.cs` (the PostgreSQL image major and the two host ports are written in the compose files and
-  must be the same in `ci.yml` and the READMEs)
-- `.github/workflows/ci.yml`: build and test against the PostgreSQL of `tests/compose.yaml`, with the skip gate, once on
-  .NET 10 and once on .NET 11; the NativeAOT smoke consumer on both; pack, the consumer matrix and the guards; the demo
-  on SQLite (no service) and on PostgreSQL (the server of `demo/compose.yaml`)
+  `MatrixShape.cs` (fails when the test and AOT jobs lose a .NET 10 or .NET 11 leg or run a leg on the wrong runtime),
+  `ComposeCoherence.cs` (the PostgreSQL image major and the two host ports are written in the compose files and
+  must be the same in `ci.yml` and the READMEs), `StageShape.cs` (fails when a CI job loses its stage, its `needs` or a
+  gate step of its stage), `RetentionShape.cs` (fails when the retention workflow widens its triggers, its permissions
+  or its steps) and `RunRetention.cs` (the retention script itself)
+- `.github/workflows/ci.yml`: four ordered stages. Stage 1 runs the guards and a strict build; stage 2 builds and tests
+  against the PostgreSQL of `tests/compose.yaml`, with the skip gate, once on .NET 10 and once on .NET 11; stage 3 packs
+  with the consumer matrix and the guards that need the packages, and runs the NativeAOT smoke consumer on both
+  runtimes; stage 4 runs the demo on SQLite (no service) and on PostgreSQL (the server of `demo/compose.yaml`)
+- `.github/workflows/retention.yml`: keeps the newest 20 workflow runs and deletes the older ones with their artifacts
+  (see "Build, test, pack, demo")
 - there is no documentation folder: the user documentation is this README and the commented `demo/` (see
   "Documentation" below)
 - `demo/`: the demo, a consumer of the packages, with an `appsettings.json` block that names the provider and a
@@ -658,10 +663,10 @@ skip, on a malformed or inconsistent TRX, and on a class of `tests/skip-witness.
 classes) that is absent or has no passed result. `dotnet run scripts/WorkflowShape.cs -- check` fails when an edit
 removes the compose step, the variable, the logger or the gate step from the test job, or loosens `tests/compose.yaml`
 or `demo/compose.yaml` (the image tag, the exec-form health check, the loopback ports, the tmpfs); both tools have a
-`self-test` that CI runs first. The same run locally, against the throwaway server of `tests/compose.yaml` (image
-`ORMLITE_TEST_PG_IMAGE`, default `neemle/pg.lite:19`; host port `ORMLITE_TEST_PG_PORT`, default 55433; the file's
-header lists the other variables for the image's own port, role and data path; the demo's own throwaway server is
-`demo/compose.yaml`, on the same image):
+`self-test` that CI runs first (in stage 1, before any test runs). The same run locally, against the throwaway server of
+`tests/compose.yaml` (image `ORMLITE_TEST_PG_IMAGE`, default `neemle/pg.lite:19`; host port `ORMLITE_TEST_PG_PORT`,
+default 55433; the file's header lists the other variables for the image's own port, role and data path; the demo's
+own throwaway server is `demo/compose.yaml`, on the same image):
 
     docker compose -f tests/compose.yaml up -d --wait
     ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test tests/Neemle.Orm.Lite.Tests -c Release \
@@ -708,6 +713,25 @@ provider consumers Npgsql and Microsoft.Data.Sqlite, from the package cache (`OR
 demo on SQLite (no service) and against a PostgreSQL started from `demo/compose.yaml` with `docker compose up --wait`,
 requiring the `demo ok` line from each, the soft delete, restore and history chapter included (see demo/README.md).
 CI packs into the workspace only; nothing is published.
+
+The CI jobs run in four ordered stages, each a set of jobs that `needs` the one before: `1 static` (every guard and
+self-test that needs no server, then `dotnet build -c Release -warnaserror`), `2 test` (one leg per .NET runtime),
+`3 package` and `3 aot-smoke` (the packages with the consumer matrix, and the NativeAOT smoke on both runtimes), and
+`4 demo-sqlite` and `4 demo-postgres`. A stage starts only when the one before it passed, so a broken gate or build
+stops the run early, and the jobs of one stage run in parallel; the test legs build again rather than take the build
+of stage 1 (one extra build in the run, and no artifact hand-off). `scripts/StageShape.cs` fails when a job loses its
+stage name, its `needs` or a gate step of its stage, when a job-level `if:` or a `continue-on-error` could skip a stage,
+or when an uploaded artifact has no `retention-days`; the test results are kept for 7 days.
+
+`.github/workflows/retention.yml` runs daily and on request, and keeps the newest 20 workflow runs of the repository
+(the `keep` input, never fewer than 5). It deletes every older completed run, which deletes its logs and artifacts, and
+never the run it is executing in nor a run that is queued, in progress or waiting. Its token has `actions: write` and
+`contents: read` only, and `scripts/RunRetention.cs` calls the GitHub API for the list of runs and for the deletion of
+one run, nothing else, so no branch, tag, release or file is touched. A manual run has a `dry_run` input that is true
+by default and only lists what it would delete; a scheduled run lists only, until the repository variable
+`RETENTION_APPLY` is `true`. `scripts/RunRetention.cs -- self-test` checks the selection (fewer runs than the limit,
+exactly the limit, more, unsorted input, the current run, runs that are not completed, a limit below 5 and ties in the
+creation time) and `scripts/RetentionShape.cs` pins the workflow; both run in stage 1.
 
 `dotnet run scripts/PackCheck.cs -- package artifacts` also runs `dotnet run scripts/ReadmeCheck.cs -- all artifacts`:
 each of the three packages must carry `src/PackageReadme/README.md` as its `README.md`, that file must have the

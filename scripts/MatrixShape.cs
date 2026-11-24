@@ -1,23 +1,25 @@
 #:property EnableAotAnalyzer=false
 #:property EnableTrimAnalyzer=false
 #:property PublishAot=false
-// Matrix guard for the jobs `test` and `aot-smoke` of .github/workflows/ci.yml. Both run once per .NET runtime, 10.0.x
-// and 11.0.x, because a runtime change (the decimal conversion of a double differs on .NET 11) went unnoticed while
-// only .NET 10 ran the tests. A leg that silently ran on the wrong runtime, or a matrix that lost a leg, tests nothing.
-// Facts a green build must not lose: the strategy is fail-fast false with exactly the two legs (no exclude, no other
-// axis); the job is named by its version and runs on ubuntu-latest; the one setup-dotnet step installs the leg's
-// version; a `dotnet --info` step comes before the build; every uploaded artifact is named by the leg. The test job
-// sets DOTNET_ROLL_FORWARD (Minor on 10, LatestMajor on 11) and ORMLITE_EXPECT_DOTNET at the job env and nowhere else,
-// and keeps its upload of TestResults; the aot-smoke job passes its target framework to the publish and compares the
-// runtime the binary prints. No other job uses a matrix. scripts/StepShape.cs requires the two steps that run this
-// script; scripts/WorkflowShape.cs lets job test carry a strategy and guards the rest of its shape.
+// Matrix guard for the jobs `test` (stage 2) and `aot-smoke` (stage 3) of .github/workflows/ci.yml. Both run once per
+// .NET runtime, 10.0.x and 11.0.x, because a runtime change (the decimal conversion of a double differs on .NET 11)
+// went unnoticed while only .NET 10 ran the tests. A leg that silently ran on the wrong runtime, or a matrix that lost
+// a leg, tests nothing. Facts a green build must not lose: the strategy is fail-fast false with exactly the two legs
+// (no exclude, no other axis); the job is named by its stage and its version (`2 test (.NET ...)`, `3 aot-smoke
+// (.NET ...)`) and runs on ubuntu-latest; the one setup-dotnet step installs the leg's version; a `dotnet --info` step
+// comes before the build; every uploaded artifact is named by the leg. The test job sets DOTNET_ROLL_FORWARD (Minor on
+// 10, LatestMajor on 11) and ORMLITE_EXPECT_DOTNET at the job env and nowhere else (no step may override either), and
+// keeps its upload of TestResults for 7 days; the aot-smoke job passes its target framework to the publish and
+// compares the runtime the binary prints. No other job uses a matrix. scripts/StageShape.cs requires the two steps
+// that run this script in job static and the needs of both jobs; scripts/WorkflowShape.cs lets job test carry a
+// strategy and guards the rest of its shape.
 //   dotnet run scripts/MatrixShape.cs -- check [<ci.yml>]    exit 0 pass, 1 shape failure, 2 usage
 //   dotnet run scripts/MatrixShape.cs -- self-test           no workflow needed; every assertion has a negative case
 // The reader knows the indentation ci.yml uses (job at 2, keys at 4, steps at 6) and fails closed on anything else.
 using System.Text.RegularExpressions;
 using static System.StringComparison;
 using Case = (string Name, string Op, string A, string B, string Expect);
-using Spec = (string Job, string Second, string[] Legs);
+using Spec = (string Job, string Label, string Second, string[] Legs);
 
 if (args.Length == 1 && args[0] == "self-test") return SelfTest();
 if (args.Length is 1 or 2 && args[0] == "check") return Check(args.Length == 2 ? args[1] : ".github/workflows/ci.yml");
@@ -39,9 +41,9 @@ int Check(string path)
 
 Spec[] Specs() =>
 [
-    ("test", "roll-forward",
+    ("test", "2 test", "roll-forward",
         new[] { "dotnet: 10.0.x roll-forward: Minor", "dotnet: 11.0.x roll-forward: LatestMajor" }),
-    ("aot-smoke", "tfm", new[] { "dotnet: 10.0.x tfm: net10.0", "dotnet: 11.0.x tfm: net11.0" }),
+    ("aot-smoke", "3 aot-smoke", "tfm", new[] { "dotnet: 10.0.x tfm: net10.0", "dotnet: 11.0.x tfm: net11.0" }),
 ];
 
 List<string> Judge(string text)
@@ -147,7 +149,7 @@ List<string> Legs(List<string> include)
 
 void Header(Spec spec, List<string> job, List<string> f)
 {
-    var name = "    name: " + spec.Job + " (.NET ${{ matrix.dotnet }})";
+    var name = "    name: " + spec.Label + " (.NET ${{ matrix.dotnet }})";
     if (!job.Contains(name))
         f.Add("job " + spec.Job + " lacks the line `" + name.Trim() + "` (a leg named by its version)");
     if (!job.Contains("    runs-on: ubuntu-latest")) f.Add("job " + spec.Job + " lacks `runs-on: ubuntu-latest`");
@@ -185,8 +187,10 @@ void TestRules(List<string> lines, List<string> job, List<string> f)
     foreach (var l in job.Where(l => l.Contains("GITHUB_ENV") || l.Contains("--roll-forward")))
         f.Add("job test must not change its roll-forward policy or its environment: " + l.Trim());
     var kept = StepsOf(job).Any(s => s.Contains("uses: actions/upload-artifact@v4") && s.Contains("if: always()")
-        && s.Contains("path: TestResults") && s.Contains("name: test-results-${{ matrix.dotnet }}"));
-    if (!kept) f.Add("job test must keep an always() upload of TestResults named test-results-${{ matrix.dotnet }}");
+        && s.Contains("path: TestResults") && s.Contains("name: test-results-${{ matrix.dotnet }}")
+        && s.Contains("retention-days: 7"));
+    if (!kept)
+        f.Add("job test must keep an always() upload of TestResults named test-results-${{ matrix.dotnet }}, 7 days");
 }
 
 // the variable is set at the env of the job, and no other line of the file names it (a step env or an inline
@@ -219,7 +223,8 @@ string Good() => """
 name: ci
 jobs:
   test:
-    name: test (.NET ${{ matrix.dotnet }})
+    name: 2 test (.NET ${{ matrix.dotnet }})
+    needs: static
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -248,6 +253,7 @@ jobs:
         with:
           name: test-results-${{ matrix.dotnet }}
           path: TestResults
+          retention-days: 7
   package:
     needs: test
     runs-on: ubuntu-latest
@@ -256,7 +262,8 @@ jobs:
         with:
           dotnet-version: 10.0.x
   aot-smoke:
-    name: aot-smoke (.NET ${{ matrix.dotnet }})
+    name: 3 aot-smoke (.NET ${{ matrix.dotnet }})
+    needs: test
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -352,8 +359,10 @@ string StrategyCases() => """
     """;
 
 string RuleCases() => """
-    unnamed leg~sub~name: test (.NET ${{ matrix.dotnet }})~name: test~job test lacks the line `name: test
-    unnamed aot leg~sub~name: aot-smoke (.NET ${{ matrix.dotnet }})~name: aot-smoke~job aot-smoke lacks the line
+    unnamed leg~sub~name: 2 test (.NET ${{ matrix.dotnet }})~name: test~job test lacks the line `name: 2 test
+    unnamed aot leg~sub~name: 3 aot-smoke (.NET ${{ matrix.dotnet }})~name: aot-smoke~job aot-smoke lacks the line
+    a leg in the wrong stage~sub~name: 2 test (~name: 3 test (~job test lacks the line `name: 2 test
+    an aot leg in the wrong stage~sub~name: 3 aot-smoke (~name: 2 aot-smoke (~job aot-smoke lacks the line
     runner by expression~sub~runs-on: ubuntu-latest\n    timeout~runs-on: x\n    timeout~lacks `runs-on: ubuntu-latest`
     a fixed version~sub~dotnet-version: ${{ matrix.dotnet }}~dotnet-version: 10.0.x~must install exactly
     a second version~ins~dotnet-version: ${{ matrix.dotnet }}~          dotnet-version: 9.0.x~must install exactly
@@ -362,6 +371,8 @@ string RuleCases() => """
     info after the build~before~run: dotnet build X~name: Print~step must come before the build
     an upload without the leg~sub~name: test-results-${{ matrix.dotnet }}~name: test-results~must name its artifact
     no upload~sub~uses: actions/upload-artifact@v4~uses: actions/cache@v4~must keep an always() upload
+    no retention days~drop~retention-days: 7~~must keep an always() upload
+    a longer retention~sub~retention-days: 7~retention-days: 90~must keep an always() upload
     an upload that is not always~sub~if: always()~if: success()~must keep an always() upload
     an upload of another path~sub~path: TestResults~path: out~must keep an always() upload
     no roll-forward variable~drop~DOTNET_ROLL_FORWARD: ${{~~DOTNET_ROLL_FORWARD must be set once

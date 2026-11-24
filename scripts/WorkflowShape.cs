@@ -9,7 +9,8 @@
 //   dotnet run scripts/WorkflowShape.cs -- check [<ci.yml> [<tests-compose> [<demo-compose>]]]
 //                                                               exit 0 pass, 1 shape failure, 2 usage
 //   dotnet run scripts/WorkflowShape.cs -- self-test          no workflow needed; every assertion has a negative case
-// scripts/StepShape.cs guards the zone step and the thread cap of the test step; this one requires its two steps.
+// scripts/StepShape.cs guards the zone step and the thread cap of the test step; scripts/StageShape.cs guards the
+// stages (the job names, the needs, the guard steps of the static stage), so here job test must need `static`.
 // The reader understands the block-YAML subset ci.yml uses (no anchors, no flow style) and fails closed on the rest.
 using Case = (string Name, string Kind, string A, string B, string Expect);
 using Node = (int Line, int Col, string Key, string Value, int Parent);
@@ -239,7 +240,7 @@ void TestJob(List<Node> n, int job, List<string> f)
     if (runsOn < 0) f.Add("job test has no runs-on");
     if (labels.Contains("self-hosted", StringComparison.OrdinalIgnoreCase))
         f.Add("job test runs on a self-hosted runner (trust authentication is accepted on hosted runners only)");
-    if (Kid(n, job, "needs") >= 0) f.Add("job test must not have `needs:`");
+    if (Text(n, Kid(n, job, "needs")) != "static") f.Add("job test must have `needs: static`");
     foreach (var i in Under(n, job).Where(i => n[i].Key == "continue-on-error"))
         f.Add($"line {n[i].Line}: continue-on-error inside job test");
     Steps(n, job, f);
@@ -258,9 +259,7 @@ int Find(List<Node> n, List<int> steps, string token) =>
 void Steps(List<Node> n, int job, List<string> f)
 {
     var steps = Kids(n, Kid(n, job, "steps"));
-    var order = new[] { "SkipGate.cs -- self-test", "WorkflowShape.cs -- self-test", "WorkflowShape.cs -- check",
-        "StepShape.cs -- self-test", "StepShape.cs -- check", "dotnet build", "-f tests/compose.yaml up -d --wait",
-        "dotnet test", "SkipGate.cs -- check" };
+    var order = new[] { "dotnet build", "-f tests/compose.yaml up -d --wait", "dotnet test", "SkipGate.cs -- check" };
     var at = order.Select(token => Find(n, steps, token)).ToArray();
     for (var k = 0; k < order.Length; k++)
         if (at[k] < 0) f.Add("job test has no step running `" + order[k] + "`");
@@ -269,8 +268,8 @@ void Steps(List<Node> n, int job, List<string> f)
     foreach (var s in at.Where(s => s >= 0).Select(s => steps[s]))
         if (Text(n, Kid(n, s, "if")) is { Length: > 0 } c && c != "success()")
             f.Add($"line {n[s].Line}: a step has `if: {c}`");
-    if (at[7] >= 0) TestStep(n, steps[at[7]], f);
-    if (at[8] >= 0) GateStep(Run(n, steps[at[8]]), f);
+    if (at[2] >= 0) TestStep(n, steps[at[2]], f);
+    if (at[3] >= 0) GateStep(Run(n, steps[at[3]]), f);
 }
 
 void TestStep(List<Node> n, int step, List<string> f)
@@ -316,7 +315,8 @@ void DemoPostgres(List<Node> n, int job, List<string> f)
 
 string FxTest() => """
   test:
-    name: test (.NET ${{ matrix.dotnet }})
+    name: 2 test (.NET ${{ matrix.dotnet }})
+    needs: static
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -332,12 +332,6 @@ string FxTest() => """
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet }}
-      - name: Check the gate
-        run: dotnet run scripts/SkipGate.cs -- self-test
-      - run: dotnet run scripts/WorkflowShape.cs -- self-test
-      - run: dotnet run scripts/WorkflowShape.cs -- check
-      - run: dotnet run scripts/StepShape.cs -- self-test
-      - run: dotnet run scripts/StepShape.cs -- check
       - run: dotnet build Neemle.Orm.Lite.slnx -c Release
       - run: docker compose -f tests/compose.yaml up -d --wait
       - name: Test
@@ -351,7 +345,8 @@ string FxTest() => """
 
 string FxAot() => """
   aot-smoke:
-    name: aot-smoke (.NET ${{ matrix.dotnet }})
+    name: 3 aot-smoke (.NET ${{ matrix.dotnet }})
+    needs: test
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -524,11 +519,8 @@ List<Case> StepCases() => Cases("""
     continue-on-error on the gate~ins~--require-postgres w~        continue-on-error: true~continue-on-error
     no gate step~drop~SkipGate.cs -- check~~no step running `SkipGate.cs -- check`
     no test step~sub~dotnet test ~dotnet echo ~no step running `dotnet test`
-    no shape check~drop~WorkflowShape.cs -- check~~no step running `WorkflowShape.cs -- check`
-    no step-shape self-test~drop~StepShape.cs -- self-test~~no step running `StepShape.cs -- self-test`
-    no step-shape check~drop~StepShape.cs -- check~~no step running `StepShape.cs -- check`
     gate before the test~before~SkipGate.cs -- check~- name: Test~must come after `dotnet test`
-    build before the shape self-test~before~dotnet build~WorkflowShape.cs -- self-test~must come after
+    no build step~sub~dotnet build~dotnet restore~no step running `dotnet build`
     if on the test step~ins~- name: Test~        if: always()~a step has `if: always()`
     if on the gate step~ins~--require-postgres w~        if: always()~a step has `if: always()`
     gate without the witness list~sub~ --require-postgres w~~lacks `--require-postgres`
@@ -539,7 +531,9 @@ List<Case> StepCases() => Cases("""
 List<Case> PostureCases() => Cases("""
     no timeout~drop~timeout-minutes~~no numeric timeout-minutes
     a self-hosted runner~sub~runs-on: ubuntu-latest~runs-on: self-hosted~self-hosted runner
-    needs on the test job~ins~    timeout-minutes: 30~    needs: demo-postgres~must not have `needs:`
+    no needs on the test job~drop~    needs: static~~job test must have `needs: static`
+    the wrong needs on the test job~sub~    needs: static~    needs: demo-postgres~job test must have `needs: static`
+    a list of needs on the test job~sub~    needs: static~    needs: [static]~job test must have `needs: static`
     a write permission~sub~contents: read~contents: write~is not read
     a write permission on the job~ins~    timeout-minutes: 30~    permissions:\n      id-token: write~is not read
     no permissions~cut~permissions:~env:~no top-level `permissions:`
