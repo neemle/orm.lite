@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 120" role="img" aria-labelledby="orm-lite-mark-title orm-lite-mark-desc">
+  <title id="orm-lite-mark-title">orm.lite</title>
+  <desc id="orm-lite-mark-desc">A cobalt O formed by two complementary rounded shapes, representing an object and its relational mapping.</desc>
+  <g fill="#5260E8">
+    <path d="M40 0h48c22.091 0 40 17.909 40 40v30h-28V46c0-11.046-8.954-20-20-20H48c-11.046 0-20 8.954-20 20v24H0V40C0 17.909 17.909 0 40 0Z"/>
+    <path d="M0 78h28c0 9.941 8.954 18 20 18h32c11.046 0 20-8.059 20-18h28v2c0 22.091-17.909 40-40 40H40C17.909 120 0 102.091 0 80Z"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="orm-lite-icon-title orm-lite-icon-desc">
+  <title id="orm-lite-icon-title">orm.lite icon</title>
+  <desc id="orm-lite-icon-desc">A white O formed by two complementary rounded shapes on a cobalt rounded square.</desc>
+  <rect width="512" height="512" rx="80" fill="#5260E8"/>
+  <g transform="translate(76 87.25) scale(2.8125)" fill="#FFFFFF">
+    <path d="M40 0h48c22.091 0 40 17.909 40 40v28h-28V46c0-11.046-8.954-20-20-20H48c-11.046 0-20 8.954-20 20v22H0V40C0 17.909 17.909 0 40 0Z"/>
+    <path d="M0 80h28c0 8.837 8.954 16 20 16h32c11.046 0 20-7.163 20-16h28c0 22.091-17.909 40-40 40H40C17.909 120 0 102.091 0 80Z"/>
+  </g>
+</svg>
