@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../Packaging.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <!-- The package of the library itself carries the bare library name. -->
+    <PackageId>$(OrmLiteRoot)</PackageId>
+    <Description>Attribute-driven ORM for .NET: source generator, soft delete, row history, typed queries</Description>
+    <PackageTags>orm;source-generator;migrations;soft-delete;postgresql;sqlite</PackageTags>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <IsAotCompatible>false</IsAotCompatible>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Neemle.CSharpComposer" Version="$(OrmLiteComposerVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Generator/Generator.csproj" ReferenceOutputAssembly="false" OutputItemType="OrmLiteAnalyzerAssembly" />
+    <ProjectReference Include="../Runtime/Runtime.csproj" ReferenceOutputAssembly="false" OutputItemType="OrmLiteRuntimeAssembly" />
+    <ProjectReference Include="../Sql/Sql.csproj" ReferenceOutputAssembly="false" OutputItemType="OrmLiteSqlAssembly" />
+  </ItemGroup>
+
+  <Target Name="OrmLitePackContent" BeforeTargets="_GetPackageFiles" DependsOnTargets="ResolveProjectReferences">
+    <ItemGroup>
+      <None Include="@(OrmLiteAnalyzerAssembly)" Pack="true" PackagePath="analyzers/dotnet/cs/" />
+      <None Include="@(OrmLiteRuntimeAssembly)" Pack="true" PackagePath="lib/net10.0/" />
+      <None Include="@(OrmLiteSqlAssembly)" Pack="true" PackagePath="lib/net10.0/" />
+      <None Include="@(OrmLiteRuntimeAssembly->'%(RootDir)%(Directory)%(Filename).xml')"
+            Pack="true" PackagePath="lib/net10.0/" />
+      <None Include="@(OrmLiteSqlAssembly->'%(RootDir)%(Directory)%(Filename).xml')"
+            Pack="true" PackagePath="lib/net10.0/" />
+      <None Include="assets/Neemle.OrmLite.props" Pack="true" PackagePath="buildTransitive/" />
+      <None Include="assets/Neemle.OrmLite.targets" Pack="true" PackagePath="buildTransitive/" />
+    </ItemGroup>
+  </Target>
+
+</Project>

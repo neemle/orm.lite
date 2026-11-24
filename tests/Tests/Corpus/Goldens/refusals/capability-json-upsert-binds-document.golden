@@ -1,0 +1,3 @@
+-- refusal
+type: Neemle.OrmLite.CapabilityNotSupportedException
+message: provider 'no-capability' does not support Upsert, which upsert requires (table 'corpus_notes'). no-capability has no upsert; express this as an explicit read-modify-write inside a transaction.

@@ -11,7 +11,7 @@
 //       references both) and returns an OrmContext, here called db.
 //   db.MigrateAsync(): applies every migration not yet recorded in the schema_migrations table, in version order: the
 //       ones the source generator wrote from the [Table] classes and the hand-written [Migration] classes.
-//   The generated repositories (NoteOrm and the others, namespace Neemle.Orm.Lite.Generated): typed Insert, Update,
+//   The generated repositories (NoteOrm and the others, namespace Neemle.OrmLite.Generated): typed Insert, Update,
 //       Get, Delete and Query, written at build time from the entity classes. No SQL is written anywhere in the demo.
 //   Query<T>: lambdas (n => n.Title == title) are turned into a tree of nodes and then into SQL by the provider.
 //   Diagnostics sink: see SlowQueryReport.cs.
@@ -42,8 +42,8 @@
 //   Tracker/Migrations.cs and Tracker/Entities.cs, and the views are Tracker/Views.cs. demo/README.md says which
 //   file shows which chapter.
 
-using Neemle.Orm.Lite;
-using Neemle.Orm.Lite.Generated;
+using Neemle.OrmLite;
+using Neemle.OrmLite.Generated;
 using OrmLiteDemo;
 
 // The settings: provider and credentials come from appsettings.json (next to the program) and OrmLite__* environment

@@ -25,8 +25,8 @@
 //   - step 7: three history lines (restore, soft_delete, update: newest first), all by the same user id. The INSERT
 //     is not in the history, only later changes. The user id differs on every run because it is generated.
 
-using Neemle.Orm.Lite;
-using Neemle.Orm.Lite.Generated;
+using Neemle.OrmLite;
+using Neemle.OrmLite.Generated;
 
 namespace OrmLiteDemo;
 

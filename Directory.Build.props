@@ -5,6 +5,10 @@
        property is read before the project body sets it), the analyzers would stay off, and the build would still
        exit 0. -->
   <PropertyGroup>
+    <!-- The one place the library name is written. Under src/ and tests/ every project folder is a short name
+         (Runtime, Sql, Postgres, ...) and src/Directory.Build.props and tests/Directory.Build.props derive the
+         assembly name, the root namespace and the package id from it as <root>.<folder>. -->
+    <OrmLiteRoot>Neemle.OrmLite</OrmLiteRoot>
     <OrmLiteVersion>0.1.0-pre</OrmLiteVersion>
     <!-- Every project of the repository, shipped or not, carries the one version: the Runtime, Sql and Generator
          assemblies are packed into the core package and must not keep the SDK default 1.0.0. AssemblyVersion and

@@ -1,4 +1,4 @@
-# Neemle.Orm.Lite
+# Neemle.OrmLite
 
 A small, attribute-driven ORM for .NET on PostgreSQL or SQLite. You decorate plain classes; a source generator writes
 the table mappings, the entity methods and the schema migrations at build time. The runtime that the generated code
@@ -24,13 +24,13 @@ so a provider reference brings the core, the generator and the build assets with
 
 | Package | What it is |
 | --- | --- |
-| `Neemle.Orm.Lite.Sqlite` | the SQLite provider (Microsoft.Data.Sqlite) |
-| `Neemle.Orm.Lite.Postgres` | the PostgreSQL provider (Npgsql) |
-| `Neemle.Orm.Lite` | the runtime, the standard SQL grammar kit and the source generator; pulled in by either provider |
+| `Neemle.OrmLite.Sqlite` | the SQLite provider (Microsoft.Data.Sqlite) |
+| `Neemle.OrmLite.Postgres` | the PostgreSQL provider (Npgsql) |
+| `Neemle.OrmLite` | the runtime, the standard SQL grammar kit and the source generator; pulled in by either provider |
 
 ```
-dotnet add package Neemle.Orm.Lite.Sqlite --prerelease
-dotnet add package Neemle.Orm.Lite.Postgres --prerelease
+dotnet add package Neemle.OrmLite.Sqlite --prerelease
+dotnet add package Neemle.OrmLite.Postgres --prerelease
 ```
 
 Referencing a provider package is enough: the build emits the provider's registration into your project, so
@@ -45,7 +45,7 @@ whole program, on SQLite.
 Describe a table by decorating a class (`Note.cs`):
 
 ```csharp
-using Neemle.Orm.Lite;
+using Neemle.OrmLite;
 
 namespace Notes;
 
@@ -61,8 +61,8 @@ public sealed class Note
 Open the database, create the schema, use it (`Program.cs`):
 
 ```csharp
-using Neemle.Orm.Lite;
-using Neemle.Orm.Lite.Generated;
+using Neemle.OrmLite;
+using Neemle.OrmLite.Generated;
 using Notes;
 
 await using var db = await OrmLite.OpenAsync(new OrmLiteOptions { Provider = "sqlite", Path = "notes.db" });
@@ -88,7 +88,7 @@ lets `OrmLite__*` environment variables override it setting by setting:
 await using var db = await OrmLite.OpenAsync(OrmLiteOptions.Load());
 ```
 
-To switch to PostgreSQL, reference `Neemle.Orm.Lite.Postgres` as well and change the block; no code changes:
+To switch to PostgreSQL, reference `Neemle.OrmLite.Postgres` as well and change the block; no code changes:
 
 ```json
 { "OrmLite": { "Provider": "postgres", "Host": "localhost", "Port": 5432, "Username": "postgres", "Database": "mydb" } }

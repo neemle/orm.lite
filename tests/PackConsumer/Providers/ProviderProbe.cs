@@ -1,5 +1,5 @@
-using Neemle.Orm.Lite;
-using Neemle.Orm.Lite.Generated;
+using Neemle.OrmLite;
+using Neemle.OrmLite.Generated;
 
 namespace PackConsumer;
 

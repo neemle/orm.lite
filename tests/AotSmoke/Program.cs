@@ -1,6 +1,6 @@
 using AotSmoke;
-using Neemle.Orm.Lite;
-using Neemle.Orm.Lite.Postgres;
+using Neemle.OrmLite;
+using Neemle.OrmLite.Postgres;
 
 // ORML-66 (n4): under NativeAOT, a Where() over closure unaries (a negation, a logical not, a narrowing cast) renders
 // and binds the values C# computes. The unary evaluator compiles one delegate per operator shape; this proves that

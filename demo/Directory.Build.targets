@@ -2,7 +2,7 @@
 
   <Target Name="FreshenOrmLitePackages" BeforeTargets="Restore">
     <ItemGroup>
-      <_PackedPackage Include="$(MSBuildThisFileDirectory)../artifacts/Neemle.Orm.Lite*.nupkg" />
+      <_PackedPackage Include="$(MSBuildThisFileDirectory)../artifacts/Neemle.OrmLite*.nupkg" />
     </ItemGroup>
     <GetFileHash Files="@(_PackedPackage)" Algorithm="SHA256" HashEncoding="hex" Condition="'@(_PackedPackage)' != ''">
       <Output TaskParameter="Items" ItemName="_PackedHash" />
@@ -14,7 +14,7 @@
       <_PackedIsStale Condition="'$(_PackedStamp)' != '$(_PackedStampSeen)'">true</_PackedIsStale>
     </PropertyGroup>
     <ItemGroup Condition="'$(_PackedIsStale)' == 'true'">
-      <_RestoredLibrary Include="@(PackageReference)" Condition="$([System.String]::new('%(Identity)').StartsWith('Neemle.Orm.Lite'))">
+      <_RestoredLibrary Include="@(PackageReference)" Condition="$([System.String]::new('%(Identity)').StartsWith('Neemle.OrmLite'))">
         <Folder>$(RestorePackagesPath)/$([System.String]::new('%(Identity)').ToLowerInvariant())</Folder>
       </_RestoredLibrary>
     </ItemGroup>

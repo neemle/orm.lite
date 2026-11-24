@@ -3,6 +3,6 @@
 # TestResults/zone.trx or has no Passed result, which catches a filter that matches nothing, a renamed class and a
 # class that skipped. Written by hand from the test source, never captured from a run. The flag name belongs to the
 # gate; for this list it names the classes that must have run, whatever the provider.
-Neemle.Orm.Lite.Tests.DataLiterals.DataLiteralRenderingTests	asserts the Local moment renders as its UTC instant
-Neemle.Orm.Lite.Tests.Behaviour.SqliteDataLiteralTests	writes a Local moment and finds it by the bound parameter text
-Neemle.Orm.Lite.Tests.DataLiterals.LocalZoneInForceTests	proves the declared zone is in force in the test host
+Neemle.OrmLite.Tests.DataLiterals.DataLiteralRenderingTests	asserts the Local moment renders as its UTC instant
+Neemle.OrmLite.Tests.Behaviour.SqliteDataLiteralTests	writes a Local moment and finds it by the bound parameter text
+Neemle.OrmLite.Tests.DataLiterals.LocalZoneInForceTests	proves the declared zone is in force in the test host

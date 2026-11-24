@@ -1,3 +1,0 @@
--- refusal
-type: Neemle.Orm.Lite.CapabilityNotSupportedException
-message: provider 'no-capability' does not support IntervalArithmetic, which SetNowPlusMinutes requires (table 'corpus_notes'). no-capability has no interval arithmetic; computing the timestamp in the caller would move the lease clock off the server that compares it.

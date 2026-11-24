@@ -37,9 +37,9 @@
 //   and these 02xx versions run after the baseline and before the reconciliations.
 //   Chapter 8 (Chapters.cs) reads the final result back from the database catalog.
 
-using Neemle.Orm.Lite;
-using Neemle.Orm.Lite.Generated;
-using Neemle.Orm.Lite.Nodes;
+using Neemle.OrmLite;
+using Neemle.OrmLite.Generated;
+using Neemle.OrmLite.Nodes;
 
 namespace OrmLiteDemo;
 

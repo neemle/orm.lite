@@ -19,7 +19,7 @@
 
   <Target Name="OrmLitePinCoreVersion" AfterTargets="_GetProjectReferenceVersions">
     <ItemGroup>
-      <_ProjectReferencesWithVersions Update="@(_ProjectReferencesWithVersions)" Condition="'%(Filename)' == 'Neemle.Orm.Lite'" ProjectVersion="[$(OrmLiteVersion)]" />
+      <_ProjectReferencesWithVersions Update="@(_ProjectReferencesWithVersions)" Condition="'%(Filename)' == 'Core'" ProjectVersion="[$(OrmLiteVersion)]" />
     </ItemGroup>
   </Target>
 

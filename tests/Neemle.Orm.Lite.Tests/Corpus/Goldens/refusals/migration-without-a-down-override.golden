@@ -1,3 +1,0 @@
--- refusal
-type: System.NotSupportedException
-message: Neemle.Orm.Lite.Tests.Corpus.Cases.RefusalCases+NoDownMigration does not override Down.

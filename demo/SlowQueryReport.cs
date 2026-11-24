@@ -21,7 +21,7 @@
 //     values are absent (see Print).
 //   - The statement text is what the database received, cut to 72 characters on one line for the printout.
 
-using Neemle.Orm.Lite;
+using Neemle.OrmLite;
 
 namespace OrmLiteDemo;
 

@@ -61,12 +61,12 @@ string[] StaticTokens() =>
     "dotnet run scripts/StageShape.cs -- self-test", "dotnet run scripts/StageShape.cs -- check",
     "dotnet run scripts/RetentionShape.cs -- self-test", "dotnet run scripts/RetentionShape.cs -- check",
     "dotnet run scripts/RunRetention.cs -- self-test",
-    "dotnet build Neemle.Orm.Lite.slnx -c Release -warnaserror",
+    "dotnet build Neemle.OrmLite.slnx -c Release -warnaserror",
 ];
 
 string[] PackageTokens() =>
 [
-    "dotnet pack Neemle.Orm.Lite.slnx",
+    "dotnet pack Neemle.OrmLite.slnx",
     "dotnet run scripts/ReadmeCheck.cs -- self-test", "dotnet run scripts/ReadmeCheck.cs -- source",
     "dotnet run scripts/PackVersions.cs -- self-test", "dotnet run scripts/PackCheck.cs -- package artifacts",
     "dotnet run scripts/PackCheck.cs -- demo-guard-self-test", "dotnet run scripts/PackCheck.cs -- demo-guard",
@@ -203,13 +203,13 @@ jobs:
       - run: dotnet run scripts/RetentionShape.cs -- self-test
       - run: dotnet run scripts/RetentionShape.cs -- check
       - run: dotnet run scripts/RunRetention.cs -- self-test
-      - run: dotnet build Neemle.Orm.Lite.slnx -c Release -warnaserror
+      - run: dotnet build Neemle.OrmLite.slnx -c Release -warnaserror
   test:
     name: 2 test (.NET ${{ matrix.dotnet }})
     needs: static
     runs-on: ubuntu-latest
     steps:
-      - run: dotnet build Neemle.Orm.Lite.slnx -c Release
+      - run: dotnet build Neemle.OrmLite.slnx -c Release
       - name: Test
         run: >-
           dotnet test X --no-build
@@ -227,7 +227,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+      - run: dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
       - run: dotnet run scripts/ReadmeCheck.cs -- self-test
       - run: dotnet run scripts/ReadmeCheck.cs -- source
       - run: dotnet run scripts/PackVersions.cs -- self-test

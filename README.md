@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-# Neemle.Orm.Lite
+# Neemle.OrmLite
 
 A small, attribute-driven ORM for .NET on PostgreSQL or SQLite. You decorate plain classes; a source generator writes the
 table mappings, the entity methods and the schema migrations at build time. The runtime that the generated code
@@ -29,9 +29,9 @@ provider reference brings the core, the generator and the build assets with it.
 
 | Package | What it is | Install |
 | --- | --- | --- |
-| `Neemle.Orm.Lite` | the provider-neutral runtime, the standard SQL grammar kit and the source generator | pulled in by either provider |
-| `Neemle.Orm.Lite.Sqlite` | the SQLite provider (Microsoft.Data.Sqlite) | `dotnet add package Neemle.Orm.Lite.Sqlite` |
-| `Neemle.Orm.Lite.Postgres` | the PostgreSQL provider (Npgsql) | `dotnet add package Neemle.Orm.Lite.Postgres` |
+| `Neemle.OrmLite` | the provider-neutral runtime, the standard SQL grammar kit and the source generator | pulled in by either provider |
+| `Neemle.OrmLite.Sqlite` | the SQLite provider (Microsoft.Data.Sqlite) | `dotnet add package Neemle.OrmLite.Sqlite` |
+| `Neemle.OrmLite.Postgres` | the PostgreSQL provider (Npgsql) | `dotnet add package Neemle.OrmLite.Postgres` |
 
 Referencing a provider package is enough: the build emits the provider's registration into your project, so
 `OrmLiteOptions { Provider = "sqlite" }` (or `"postgres"`) resolves with no further code. There is no default provider; a
@@ -40,14 +40,14 @@ provider that is not referenced is a start-up error that names the package to ad
 The packages are not on a public feed yet. Build them into the local feed folder `artifacts/` (which the repository's
 `nuget.config` already names) before adding them:
 
-    dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+    dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
 
 The packages target net10.0, and every consumer CI builds is net10.0 (a plain reference, central package management, a
 lock file, `PrivateAssets=all`); a later .NET version is expected to work, and CI runs the tests and the NativeAOT smoke
 consumer on both .NET 10 and .NET 11 (see "Build, test, pack, demo"). The source
 generator is a net10.0 analyzer, so the compiler that loads it must run on .NET 10 or later (the `dotnet` CLI of the
 .NET 10 SDK, or an IDE whose compiler host is .NET 10); a compiler hosted on .NET Framework, as in older Visual Studio
-builds, cannot load it. The `Neemle.Orm.Lite` package depends on Neemle.CSharpComposer, which NuGet resolves; the
+builds, cannot load it. The `Neemle.OrmLite` package depends on Neemle.CSharpComposer, which NuGet resolves; the
 package holds no copy of it.
 
 The PostgreSQL provider needs PostgreSQL 16 or newer: the JSON comparisons write `pg_input_is_valid`, which the server
@@ -66,11 +66,11 @@ schema tool. Everything below was run as written against the packed packages, on
 
        dotnet new console -n Notes && cd Notes
        dotnet nuget add source /path/to/orm.lite/artifacts --name orm-lite-local
-       dotnet add package Neemle.Orm.Lite.Sqlite --prerelease
+       dotnet add package Neemle.OrmLite.Sqlite --prerelease
 
 2. Describe a table by decorating a class (`Note.cs`):
 
-       using Neemle.Orm.Lite;
+       using Neemle.OrmLite;
 
        namespace Notes;
 
@@ -84,8 +84,8 @@ schema tool. Everything below was run as written against the packed packages, on
 
 3. Open the database, create the schema, use it (`Program.cs`):
 
-       using Neemle.Orm.Lite;
-       using Neemle.Orm.Lite.Generated;
+       using Neemle.OrmLite;
+       using Neemle.OrmLite.Generated;
        using Notes;
 
        await using var db = await OrmLite.OpenAsync(new OrmLiteOptions { Provider = "sqlite", Path = "notes.db" });
@@ -129,7 +129,7 @@ name what is wrong; nothing is ignored silently.
 
 Reference the PostgreSQL package as well and change the block; no code changes:
 
-    dotnet add package Neemle.Orm.Lite.Postgres --prerelease
+    dotnet add package Neemle.OrmLite.Postgres --prerelease
 
     { "OrmLite": { "Provider": "postgres", "Host": "localhost", "Port": 5432, "Username": "postgres", "Database": "mydb" } }
 
@@ -144,7 +144,7 @@ does not use (`Path` for PostgreSQL, `Host` for SQLite) are refused by name, not
 [README](demo/README.md). It references the packages from `artifacts/`, never a project, exactly as a consumer
 does:
 
-    dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+    dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
     dotnet run --project demo                       # SQLite: creates a throwaway database file, removes it afterwards
 
 and on PostgreSQL by changing the one `OrmLite` block (here through environment variables, which override
@@ -238,8 +238,8 @@ Every provider declares, for each capability, `Native` (the database does it), `
 the same or stronger meaning) or `None`. A declaration or call that needs a capability the provider does not have is
 refused by name before any statement runs, and at build time when the project's providers are known (`ORMLITE015`,
 `ORMLITE016`). This table is the content of the two manifests the packages ship
-(`src/Neemle.Orm.Lite.Postgres/assets/ormlite.capabilities.postgres.txt` and
-`src/Neemle.Orm.Lite.Sqlite/assets/ormlite.capabilities.sqlite.txt`), which a test compares with the providers'
+(`src/Postgres/assets/ormlite.capabilities.postgres.txt` and
+`src/Sqlite/assets/ormlite.capabilities.sqlite.txt`), which a test compares with the providers'
 declarations; at run time `db.Provider.Capabilities.Manifest()` prints the active provider's.
 
 A manifest also states `MaxIdentifierBytes` when the provider keeps only so many bytes of a name. PostgreSQL keeps 63
@@ -580,12 +580,12 @@ assets and so the actor setting, and the generators do not run in it.
 
 ## Repository layout
 
-- `src/Neemle.Orm.Lite.Generator`: the net10.0 analyzer (entity and migration generators and the capability analyzer; they render through Neemle.CSharpComposer)
-- `src/Neemle.Orm.Lite.Runtime`: the runtime assembly (attributes, migrations, query layer, history, soft delete)
-- `src/Neemle.Orm.Lite.Sql`: the standard SQL grammar kit the providers share
-- `src/Neemle.Orm.Lite.Postgres`, `src/Neemle.Orm.Lite.Sqlite`: the providers; each packs its assembly, its capability
+- `src/Generator`: the net10.0 analyzer (entity and migration generators and the capability analyzer; they render through Neemle.CSharpComposer)
+- `src/Runtime`: the runtime assembly (attributes, migrations, query layer, history, soft delete)
+- `src/Sql`: the standard SQL grammar kit the providers share
+- `src/Postgres`, `src/Sqlite`: the providers; each packs its assembly, its capability
   manifest and the props file that declares it to the build
-- `src/Neemle.Orm.Lite`: the core packer: analyzer in `analyzers/dotnet/cs`, runtime and Sql kit in `lib/net10.0`, build
+- `src/Core`: the core packer: analyzer in `analyzers/dotnet/cs`, runtime and Sql kit in `lib/net10.0`, build
   assets in `buildTransitive`
 - `src/Packaging.props`: the metadata the three packages share
 - `src/PackageAssets`: the SVG logo and icon originals, plus the 128 x 128 `icon.png` used by all three packages;
@@ -593,7 +593,7 @@ assets and so the actor setting, and the generators do not run in it.
 - `CHANGELOG.md`: what changed in each version of the packages
 - `src/PackageReadme/README.md`: the short consumer README that is packed into all three packages, in place of this
   file; it links only to public URLs of this repository
-- `tests/Neemle.Orm.Lite.Tests`: the library's own tests (the generator driven over fixtures, the query layer over an
+- `tests/Tests`: the library's own tests (the generator driven over fixtures, the query layer over an
   in-process SQLite; the PostgreSQL half needs a server, see "Build, test, pack, demo")
 - `tests/compose.yaml`, `tests/skip-allowlist.txt`, `tests/skip-witness.txt`: the throwaway PostgreSQL that is the local
   twin of the CI test job's service, and the two lists the skip gate reads
@@ -625,9 +625,9 @@ assets and so the actor setting, and the generators do not run in it.
 
 Plain dotnet commands, from a fresh clone, with the .NET 10 SDK or a later one:
 
-    dotnet build Neemle.Orm.Lite.slnx -c Release       # the library and its tests
-    dotnet test Neemle.Orm.Lite.slnx -c Release        # the tests; no database needed
-    dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1   # the three packages
+    dotnet build Neemle.OrmLite.slnx -c Release       # the library and its tests
+    dotnet test Neemle.OrmLite.slnx -c Release        # the tests; no database needed
+    dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1   # the three packages
     dotnet run --project demo                          # the demo on SQLite, a consumer of the packages in ./artifacts
 
 The demo needs no database server. To run it on PostgreSQL, start the throwaway one and override the provider block
@@ -680,7 +680,7 @@ default 55433; the file's header lists the other variables for the image's own p
 own throwaway server is `demo/compose.yaml`, on the same image):
 
     docker compose -f tests/compose.yaml up -d --wait
-    ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test tests/Neemle.Orm.Lite.Tests -c Release \
+    ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test tests/Tests -c Release \
       --logger "trx;LogFileName=tests.trx" --results-directory TestResults -- xUnit.MaxParallelThreads=1
     dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx tests/skip-allowlist.txt \
       --require-postgres tests/skip-witness.txt
@@ -694,10 +694,10 @@ UTC runner cannot tell that conversion from none; `scripts/StepShape.cs` fails w
 The same run locally (needs the zone database; without it the zone falls back to UTC and `LocalZoneInForceTests`
 fails):
 
-    TZ=Pacific/Auckland dotnet test tests/Neemle.Orm.Lite.Tests -c Release \
+    TZ=Pacific/Auckland dotnet test tests/Tests -c Release \
       --filter "FullyQualifiedName~DataLiteral&FullyQualifiedName!~Postgres"
 
-The core is also run on a third provider that is not PostgreSQL and not SQLite. `tests/Neemle.Orm.Lite.Ports.Tests`
+The core is also run on a third provider that is not PostgreSQL and not SQLite. `tests/Ports.Tests`
 references the Runtime and Sql projects only (no provider package, no driver) and holds a fake provider built from the
 public ports: a serializer, a capability set and an actor stamp (it supplies no migration planner, so the core's
 lock-free default runs), over an ADO.NET source that returns canned rows. Its tests run the migration runner and a
@@ -705,11 +705,11 @@ query on it. The test job runs the project in a step of
 its own with its own TRX (`TestResults/ports.trx`, a TRX logger overwrites a file of the same name, so each test project
 has its own step), and gates it with `tests/ports-allowlist.txt` (empty) and `tests/ports-witness.txt`. The
 neutrality ratchet, `CoreNeutralityTests` of the main test project, scans the Runtime and Sql sources for provider
-types, ids and SQL text and fails on any that `tests/Neemle.Orm.Lite.Tests/Ports/core-coupling-allowlist.txt` does not
+types, ids and SQL text and fails on any that `tests/Tests/Ports/core-coupling-allowlist.txt` does not
 record; that list is empty and a line is never added to it. The same test freezes the project references. The
 same run locally:
 
-    dotnet test tests/Neemle.Orm.Lite.Ports.Tests -c Release
+    dotnet test tests/Ports.Tests -c Release
 
 CI (`.github/workflows/ci.yml`) then runs `dotnet run scripts/PackCheck.cs -- package artifacts`
 (the entries, versions and dependencies of the three packages and the throwaway-consumer matrix: default reference,

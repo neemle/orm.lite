@@ -1,0 +1,3 @@
+-- refusal
+type: Neemle.OrmLite.CapabilityNotSupportedException
+message: provider 'no-capability' does not support KeyPreservingRowLock, which ForNoKeyUpdate requires (table 'corpus_notes'). no-capability has no key-preserving row lock; a caller that needs to serialise writers of a row WITHOUT blocking a foreign key that references it cannot be served by an unlocked read, and must not be silently handed the stronger lock.

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- The shared runtime types: the ORM attributes, the migration infrastructure
+       (Migration/MigrationBuilder/TableBuilder/MigrationAttribute), the LINQ query runtime and OrmMeta.
+       A single referenced library, so every assembly shares ONE copy and OrmMeta is a single cross-assembly
+       registry. The generators emit only the per-entity code that USES these types. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- The one project whose namespace root is the library root itself, not <root>.Runtime. -->
+    <RootNamespace>$(OrmLiteRoot)</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(OrmLiteRoot).Tests" />
+  </ItemGroup>
+
+  <!-- The runtime is typed onto System.Data.Common (DbDataSource/DbConnection/DbCommand/DbDataReader) and
+       references no concrete ADO.NET provider package. The concrete driver (a pooled Postgres data source) is
+       supplied by the host at composition; the ORM only ever sees the System.Data.Common base types. -->
+
+</Project>

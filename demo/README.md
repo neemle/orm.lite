@@ -1,4 +1,4 @@
-# Neemle.Orm.Lite demo
+# Neemle.OrmLite demo
 
 You have a C# class and you want rows going in and out of a database. You add one package, put attributes on the
 class, and it works: no server to start, no SQL to write, no connection plumbing. This folder is that, end to end,
@@ -9,7 +9,7 @@ configuration.
 
 You need the .NET 10 SDK or a later one. From the repository root:
 
-    dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+    dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
     dotnet run --project demo
 
 The first command builds the three packages into `artifacts/`, a local feed that the root `nuget.config` names. The
@@ -60,7 +60,7 @@ provider; read it beside the chapter's code.
 
 ### What to run
 
-    dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1     # once, from the repository root
+    dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1     # once, from the repository root
     dotnet run --project demo                                         # SQLite: no setup
 
 Read the printed lines against the table below. A chapter that prints its lines and still goes wrong shows up only at the
@@ -141,7 +141,7 @@ comments.
 1. Add the packages. A provider package brings the core with it; this demo references both providers so the block
    above can name either.
 
-       dotnet add package Neemle.Orm.Lite.Sqlite --prerelease
+       dotnet add package Neemle.OrmLite.Sqlite --prerelease
 
    The packages are not on a public feed yet: `dotnet pack` builds them into `artifacts/`.
 
@@ -245,7 +245,7 @@ running again; write a `[Migration]` that creates it.
 **`db.MigrateAsync()` finds the migrations by itself.** The build registers each assembly's generated migrations
 when the assembly starts, so there is no class to name. To migrate an explicit list (a test, or an assembly the program
 has not touched yet), pass it: `db.MigrateAsync(<YourAssemblyName>Migrations.Contributions)`, the generated class
-in the `Neemle.Orm.Lite.Generated` namespace (letters and digits of the assembly name only).
+in the `Neemle.OrmLite.Generated` namespace (letters and digits of the assembly name only).
 
 **`[SoftDelete]` history records changes, not creation.** The triggers fire on update, soft delete and restore, so
 an insert is not in the history. A change made outside `DbActor.EnterUser` is still recorded, with actor kind

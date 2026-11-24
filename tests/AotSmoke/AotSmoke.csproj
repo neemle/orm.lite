@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <!-- ORML-66 (n4): a NativeAOT consumer of the runtime. It is built by the aot-smoke job of .github/workflows/ci.yml
-       with `dotnet publish tests/AotSmoke -c Release -r linux-x64`, and it is NOT part of Neemle.Orm.Lite.slnx, so
+       with `dotnet publish tests/AotSmoke -c Release -r linux-x64`, and it is NOT part of Neemle.OrmLite.slnx, so
        the ordinary build and test jobs never publish it. The job runs once per .NET runtime and passes
        -p:AotSmokeTfm=net10.0 or net11.0; the shipped libraries stay net10.0 and a net11.0 consumer references them as
        they are. A plain publish without the property targets net10.0. -->
@@ -14,12 +14,15 @@
     <PublishAot>true</PublishAot>
     <IsPackable>false</IsPackable>
     <NuGetAudit>false</NuGetAudit>
+    <!-- A consumer, not a library project: CI runs the binary as ./aot-out/AotSmoke. -->
+    <AssemblyName>AotSmoke</AssemblyName>
+    <RootNamespace>AotSmoke</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/Neemle.Orm.Lite.Runtime/Neemle.Orm.Lite.Runtime.csproj" />
-    <ProjectReference Include="../../src/Neemle.Orm.Lite.Sql/Neemle.Orm.Lite.Sql.csproj" />
-    <ProjectReference Include="../../src/Neemle.Orm.Lite.Postgres/Neemle.Orm.Lite.Postgres.csproj" />
+    <ProjectReference Include="../../src/Runtime/Runtime.csproj" />
+    <ProjectReference Include="../../src/Sql/Sql.csproj" />
+    <ProjectReference Include="../../src/Postgres/Postgres.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,3 @@
+-- refusal
+type: Neemle.OrmLite.OrmEnumValueException
+message: corpus_notes.status on row row-1 holds "Bogus", which is not one of: Draft, Active, Archived. The value is reported rather than replaced with a default, because answering with a priority the row does not hold would hide the bad data instead of surfacing it. Repair the row (or add the member) — this is a data fault, not a request fault.

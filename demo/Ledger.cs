@@ -27,8 +27,8 @@
 //   - 4 entries: two transfers, two legs each. The refused overdraft wrote none.
 //   - "overdraft refused: True": the third transfer asks for 1000 from an account that has about 33.63.
 
-using Neemle.Orm.Lite;
-using Neemle.Orm.Lite.Generated;
+using Neemle.OrmLite;
+using Neemle.OrmLite.Generated;
 
 namespace OrmLiteDemo;
 

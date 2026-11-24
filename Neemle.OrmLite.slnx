@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Generator/Generator.csproj" />
+    <Project Path="src/Postgres/Postgres.csproj" />
+    <Project Path="src/Runtime/Runtime.csproj" />
+    <Project Path="src/Sqlite/Sqlite.csproj" />
+    <Project Path="src/Sql/Sql.csproj" />
+    <Project Path="src/Core/Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Ports.Tests/Ports.Tests.csproj" />
+    <Project Path="tests/Tests/Tests.csproj" />
+  </Folder>
+</Solution>

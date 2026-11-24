@@ -1,0 +1,14 @@
+<Project>
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <!-- A library project is named by its folder: Neemle.OrmLite.<folder> is its assembly name, its root namespace and (where it is
+       packed) its package id. A project whose name differs sets the property itself: the core package (PackageId) and
+       the Runtime project (RootNamespace) in src/, the NativeAOT consumer in tests/. -->
+  <PropertyGroup>
+    <AssemblyName>$(OrmLiteRoot).$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <PackageId>$(AssemblyName)</PackageId>
+  </PropertyGroup>
+
+</Project>

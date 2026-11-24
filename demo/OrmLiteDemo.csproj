@@ -10,9 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Neemle.Orm.Lite" Version="0.1.0-pre" />
-    <PackageReference Include="Neemle.Orm.Lite.Sqlite" Version="0.1.0-pre" />
-    <PackageReference Include="Neemle.Orm.Lite.Postgres" Version="0.1.0-pre" />
+    <PackageReference Include="Neemle.OrmLite" Version="0.1.0-pre" />
+    <PackageReference Include="Neemle.OrmLite.Sqlite" Version="0.1.0-pre" />
+    <PackageReference Include="Neemle.OrmLite.Postgres" Version="0.1.0-pre" />
   </ItemGroup>
 
   <ItemGroup>

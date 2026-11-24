@@ -42,8 +42,8 @@ internal static class ComposeCoherence
     private static string Root()
     {
         for (var d = new DirectoryInfo(Directory.GetCurrentDirectory()); d is not null; d = d.Parent)
-            if (File.Exists(Path.Combine(d.FullName, "Neemle.Orm.Lite.slnx"))) return d.FullName;
-        throw new InvalidOperationException("Neemle.Orm.Lite.slnx not found above the current directory");
+            if (File.Exists(Path.Combine(d.FullName, "Neemle.OrmLite.slnx"))) return d.FullName;
+        throw new InvalidOperationException("Neemle.OrmLite.slnx not found above the current directory");
     }
 
     private static int Check()

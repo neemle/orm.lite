@@ -1,8 +1,0 @@
-tests/Neemle.Orm.Lite.Tests/Corpus/Cases/DdlBuilderCases.cs|3
-tests/Neemle.Orm.Lite.Tests/Corpus/Cases/RefusalCases.cs|1
-tests/Neemle.Orm.Lite.Tests/Corpus/GeneratorFixtures/Diagnostics/Declarations.cs|4
-tests/Neemle.Orm.Lite.Tests/Corpus/GeneratorFixtures/Entities/Migrations.cs|1
-tests/Neemle.Orm.Lite.Tests/Nodes/DdlOperationTests.cs|3
-tests/Neemle.Orm.Lite.Tests/Nodes/MigrationReversibilityTests.cs|1
-tests/Neemle.Orm.Lite.Tests/Nodes/PostgresMigrationSetTests.cs|1
-tests/PackConsumer/Probe.cs|2

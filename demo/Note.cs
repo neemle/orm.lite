@@ -19,12 +19,12 @@
 //       Directions are Native on both PostgreSQL and SQLite, so no capability is needed for them.
 //   [Migration] with typed InsertData: a hand-written migration that inserts an OBJECT (a Note) rather than column
 //       names and values, using the generated descriptor and Values projection of the entity.
-//   The generated NoteOrm (namespace Neemle.Orm.Lite.Generated): Table, Descriptor, Map, Values, Column, Query,
+//   The generated NoteOrm (namespace Neemle.OrmLite.Generated): Table, Descriptor, Map, Values, Column, Query,
 //       InsertAsync, UpdateAsync, DeleteAsync and GetAsync, each insert/update/delete/get also with a connection
 //       parameter for use inside a UnitOfWork.
 
-using Neemle.Orm.Lite;
-using Neemle.Orm.Lite.Generated;
+using Neemle.OrmLite;
+using Neemle.OrmLite.Generated;
 
 namespace OrmLiteDemo;
 

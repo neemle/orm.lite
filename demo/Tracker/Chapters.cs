@@ -32,9 +32,9 @@
 
 using System.Data.Common;
 using System.Text.Json;
-using Neemle.Orm.Lite;
-using Neemle.Orm.Lite.Generated;
-using Neemle.Orm.Lite.Nodes;
+using Neemle.OrmLite;
+using Neemle.OrmLite.Generated;
+using Neemle.OrmLite.Nodes;
 
 namespace OrmLiteDemo;
 

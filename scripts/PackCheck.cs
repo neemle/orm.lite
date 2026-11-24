@@ -32,8 +32,8 @@ switch (args[0])
 string FindRoot()
 {
     for (var d = new DirectoryInfo(Directory.GetCurrentDirectory()); d is not null; d = d.Parent)
-        if (File.Exists(Path.Combine(d.FullName, "Neemle.Orm.Lite.slnx"))) return d.FullName;
-    throw new InvalidOperationException("Neemle.Orm.Lite.slnx not found above the current directory");
+        if (File.Exists(Path.Combine(d.FullName, "Neemle.OrmLite.slnx"))) return d.FullName;
+    throw new InvalidOperationException("Neemle.OrmLite.slnx not found above the current directory");
 }
 
 string RootVersion()
@@ -124,11 +124,11 @@ bool DemoGuard(string demo, string version, TextWriter output, TextWriter errors
         }
     }
 
-    var library = packages.Where(p => p.Id.StartsWith("Neemle.Orm.Lite", StringComparison.Ordinal)).ToList();
-    if (!library.Any(p => p.Id == "Neemle.Orm.Lite"))
-        Fail("the demo does not reference the Neemle.Orm.Lite package");
-    if (!library.Any(p => p.Id is "Neemle.Orm.Lite.Postgres" or "Neemle.Orm.Lite.Sqlite"))
-        Fail("the demo references no provider package (Neemle.Orm.Lite.Postgres or Neemle.Orm.Lite.Sqlite)");
+    var library = packages.Where(p => p.Id.StartsWith("Neemle.OrmLite", StringComparison.Ordinal)).ToList();
+    if (!library.Any(p => p.Id == "Neemle.OrmLite"))
+        Fail("the demo does not reference the Neemle.OrmLite package");
+    if (!library.Any(p => p.Id is "Neemle.OrmLite.Postgres" or "Neemle.OrmLite.Sqlite"))
+        Fail("the demo references no provider package (Neemle.OrmLite.Postgres or Neemle.OrmLite.Sqlite)");
     foreach (var (id, referenced) in library.Where(p => p.Version != version))
         Fail("the demo references " + id + " " + (referenced ?? "without a version") + ", not the packed version " + version);
 
@@ -144,8 +144,8 @@ int DemoGuardSelfTest()
     try
     {
         string Csproj(string items) => "<Project Sdk=\"Microsoft.NET.Sdk\"><ItemGroup>" + items + "</ItemGroup></Project>";
-        const string Core = "<PackageReference Include=\"Neemle.Orm.Lite\" Version=\"" + Version + "\" />";
-        const string Sqlite = "<PackageReference Include=\"Neemle.Orm.Lite.Sqlite\" Version=\"" + Version + "\" />";
+        const string Core = "<PackageReference Include=\"Neemle.OrmLite\" Version=\"" + Version + "\" />";
+        const string Sqlite = "<PackageReference Include=\"Neemle.OrmLite.Sqlite\" Version=\"" + Version + "\" />";
 
         void Case(string name, bool expected, string csproj, string? extraName = null, string? extra = null)
         {
@@ -159,7 +159,7 @@ int DemoGuardSelfTest()
         }
 
         Case("packages-only", true, Csproj(Core + Sqlite));
-        Case("project-reference", false, Csproj(Core + Sqlite + "<ProjectReference Include=\"../src/Neemle.Orm.Lite.Runtime/Neemle.Orm.Lite.Runtime.csproj\" />"));
+        Case("project-reference", false, Csproj(Core + Sqlite + "<ProjectReference Include=\"../src/Runtime/Runtime.csproj\" />"));
         Case("project-reference-lowercase", false, Csproj(Core + Sqlite + "<projectreference Include=\"../src/X/X.csproj\" />"));
         Case("project-reference-in-targets", false, Csproj(Core + Sqlite), "Directory.Build.targets",
             "<Project><ItemGroup><ProjectReference Include=\"../src/X/X.csproj\" /></ItemGroup></Project>");
@@ -170,8 +170,8 @@ int DemoGuardSelfTest()
         Case("import-beside-the-file", true, Csproj(Core + Sqlite), "Directory.Build.props", "<Project><Import Project=\"$(MSBuildThisFileDirectory)x.props\" /></Project>");
         Case("no-core", false, Csproj(Sqlite));
         Case("no-provider", false, Csproj(Core));
-        Case("other-version", false, Csproj(Core + "<PackageReference Include=\"Neemle.Orm.Lite.Sqlite\" Version=\"0.0.1\" />"));
-        Case("no-version", false, Csproj(Core + "<PackageReference Include=\"Neemle.Orm.Lite.Sqlite\" />"));
+        Case("other-version", false, Csproj(Core + "<PackageReference Include=\"Neemle.OrmLite.Sqlite\" Version=\"0.0.1\" />"));
+        Case("no-version", false, Csproj(Core + "<PackageReference Include=\"Neemle.OrmLite.Sqlite\" />"));
         Case("not-xml", false, "this is not a project");
         Case("nuget-config-in-demo", false, Csproj(Core + Sqlite), "nuget.config", "<configuration />");
         Case("nuget-config-other-case", false, Csproj(Core + Sqlite), "NuGet.Config", "<configuration />");
@@ -197,7 +197,7 @@ int PackageChecks(string location)
 
     var folder = Directory.Exists(location) ? location : Path.GetDirectoryName(location)!;
     var packages = new Dictionary<string, string>(StringComparer.Ordinal);
-    foreach (var id in new[] { "Neemle.Orm.Lite", "Neemle.Orm.Lite.Postgres", "Neemle.Orm.Lite.Sqlite" })
+    foreach (var id in new[] { "Neemle.OrmLite", "Neemle.OrmLite.Postgres", "Neemle.OrmLite.Sqlite" })
     {
         var found = Directory.GetFiles(folder, id + ".*.nupkg")
             .Where(f => Path.GetFileName(f).Length > id.Length + 1 && char.IsDigit(Path.GetFileName(f)[id.Length + 1]))
@@ -211,7 +211,7 @@ int PackageChecks(string location)
 
     var specs = packages.ToDictionary(p => p.Key, p => XDocument.Parse(ReadNuspec(p.Value)), StringComparer.Ordinal);
     string Meta(string id, string name) => specs[id].Descendants().FirstOrDefault(e => e.Name.LocalName == name && e.Parent?.Name.LocalName == "metadata")?.Value.Trim() ?? "";
-    var version = Meta("Neemle.Orm.Lite", "version");
+    var version = Meta("Neemle.OrmLite", "version");
     var rootVersion = RootVersion();
     if (version != rootVersion) Fail("the core package is version " + version + " but Directory.Build.props says " + rootVersion);
     foreach (var id in packages.Keys)
@@ -241,32 +241,32 @@ int PackageChecks(string location)
 
     var required = new Dictionary<string, string[]>
     {
-        ["Neemle.Orm.Lite"] =
+        ["Neemle.OrmLite"] =
         [
-            "analyzers/dotnet/cs/Neemle.Orm.Lite.Generator.dll",
-            "lib/net10.0/Neemle.Orm.Lite.Runtime.dll", "lib/net10.0/Neemle.Orm.Lite.Sql.dll",
-            "buildTransitive/Neemle.Orm.Lite.props", "buildTransitive/Neemle.Orm.Lite.targets", "README.md", "LICENSE",
-            "icon.png", "lib/net10.0/Neemle.Orm.Lite.Runtime.xml", "lib/net10.0/Neemle.Orm.Lite.Sql.xml",
+            "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+            "lib/net10.0/Neemle.OrmLite.Runtime.dll", "lib/net10.0/Neemle.OrmLite.Sql.dll",
+            "buildTransitive/Neemle.OrmLite.props", "buildTransitive/Neemle.OrmLite.targets", "README.md", "LICENSE",
+            "icon.png", "lib/net10.0/Neemle.OrmLite.Runtime.xml", "lib/net10.0/Neemle.OrmLite.Sql.xml",
         ],
-        ["Neemle.Orm.Lite.Postgres"] =
+        ["Neemle.OrmLite.Postgres"] =
         [
-            "lib/net10.0/Neemle.Orm.Lite.Postgres.dll", "buildTransitive/Neemle.Orm.Lite.Postgres.props",
+            "lib/net10.0/Neemle.OrmLite.Postgres.dll", "buildTransitive/Neemle.OrmLite.Postgres.props",
             "buildTransitive/ormlite.capabilities.postgres.txt", "README.md", "LICENSE",
-            "icon.png", "lib/net10.0/Neemle.Orm.Lite.Postgres.xml",
+            "icon.png", "lib/net10.0/Neemle.OrmLite.Postgres.xml",
         ],
-        ["Neemle.Orm.Lite.Sqlite"] =
+        ["Neemle.OrmLite.Sqlite"] =
         [
-            "lib/net10.0/Neemle.Orm.Lite.Sqlite.dll", "buildTransitive/Neemle.Orm.Lite.Sqlite.props",
+            "lib/net10.0/Neemle.OrmLite.Sqlite.dll", "buildTransitive/Neemle.OrmLite.Sqlite.props",
             "buildTransitive/ormlite.capabilities.sqlite.txt", "README.md", "LICENSE",
-            "icon.png", "lib/net10.0/Neemle.Orm.Lite.Sqlite.xml",
+            "icon.png", "lib/net10.0/Neemle.OrmLite.Sqlite.xml",
         ],
     };
     foreach (var (id, names) in required)
         foreach (var name in names)
             if (!entries[id].Contains(name, StringComparer.Ordinal)) Fail(id + " lacks " + name);
-    foreach (var id in new[] { "Neemle.Orm.Lite.Postgres", "Neemle.Orm.Lite.Sqlite" })
-        foreach (var name in entries[id].Where(n => n.Contains("Neemle.Orm.Lite.Runtime", StringComparison.Ordinal)
-            || n.Contains("Neemle.Orm.Lite.Sql.dll", StringComparison.Ordinal) || n.StartsWith("analyzers/", StringComparison.Ordinal)))
+    foreach (var id in new[] { "Neemle.OrmLite.Postgres", "Neemle.OrmLite.Sqlite" })
+        foreach (var name in entries[id].Where(n => n.Contains("Neemle.OrmLite.Runtime", StringComparison.Ordinal)
+            || n.Contains("Neemle.OrmLite.Sql.dll", StringComparison.Ordinal) || n.StartsWith("analyzers/", StringComparison.Ordinal)))
             Fail(id + " carries " + name + ", which belongs to the core package only");
     if (failed) return 1;
 
@@ -279,62 +279,63 @@ int PackageChecks(string location)
     if (failed) return 1;
 
     Console.WriteLine("==> the provider packages depend on the core package at exactly its version");
-    foreach (var id in new[] { "Neemle.Orm.Lite.Postgres", "Neemle.Orm.Lite.Sqlite" })
+    foreach (var id in new[] { "Neemle.OrmLite.Postgres", "Neemle.OrmLite.Sqlite" })
     {
         var dependencies = specs[id].Descendants().Where(e => e.Name.LocalName == "dependency").ToList();
-        var core = dependencies.Where(d => d.Attribute("id")?.Value == "Neemle.Orm.Lite").ToList();
+        var core = dependencies.Where(d => d.Attribute("id")?.Value == "Neemle.OrmLite").ToList();
         if (core.Count != 1)
-            Fail(id + " must declare exactly one dependency on Neemle.Orm.Lite, found " + core.Count);
+            Fail(id + " must declare exactly one dependency on Neemle.OrmLite, found " + core.Count);
         else
         {
             if (core[0].Attribute("version")?.Value != "[" + version + "]")
-                Fail(id + " depends on Neemle.Orm.Lite " + core[0].Attribute("version")?.Value + ", not exactly [" + version + "]");
+                Fail(id + " depends on Neemle.OrmLite " + core[0].Attribute("version")?.Value + ", not exactly [" + version + "]");
             if (core[0].Attribute("exclude") is not null)
-                Fail(id + " excludes assets of its Neemle.Orm.Lite dependency (" + core[0].Attribute("exclude")!.Value + "), so the generator and the build assets would not flow");
+                Fail(id + " excludes assets of its Neemle.OrmLite dependency (" + core[0].Attribute("exclude")!.Value + "), so the generator and the build assets would not flow");
         }
         var driver = id.EndsWith(".Postgres", StringComparison.Ordinal) ? "Npgsql" : "Microsoft.Data.Sqlite";
         if (!dependencies.Any(d => d.Attribute("id")?.Value == driver)) Fail(id + " does not depend on " + driver);
     }
     Console.WriteLine("==> the core package takes Neemle.CSharpComposer as a package dependency and bundles no copy of it");
     var composerVersion = ComposerVersion();
-    var coreDependencies = specs["Neemle.Orm.Lite"].Descendants().Where(e => e.Name.LocalName == "dependency").ToList();
+    var coreDependencies = specs["Neemle.OrmLite"].Descendants().Where(e => e.Name.LocalName == "dependency").ToList();
     var composer = coreDependencies.Where(d => d.Attribute("id")?.Value == "Neemle.CSharpComposer").ToList();
     if (composer.Count != 1)
-        Fail("the Neemle.Orm.Lite nuspec must declare exactly one dependency on Neemle.CSharpComposer, found " + composer.Count);
+        Fail("the Neemle.OrmLite nuspec must declare exactly one dependency on Neemle.CSharpComposer, found " + composer.Count);
     else
     {
         if (composer[0].Attribute("version")?.Value != composerVersion)
-            Fail("the Neemle.Orm.Lite nuspec depends on Neemle.CSharpComposer " + composer[0].Attribute("version")?.Value + ", but the generator project builds against " + composerVersion);
+            Fail("the Neemle.OrmLite nuspec depends on Neemle.CSharpComposer " + composer[0].Attribute("version")?.Value + ", but the generator project builds against " + composerVersion);
         var excluded = (composer[0].Attribute("exclude")?.Value ?? "").Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
         foreach (var asset in new[] { "Build", "Analyzers" })
             if (!excluded.Contains(asset, StringComparer.OrdinalIgnoreCase))
                 Fail("the Neemle.CSharpComposer dependency does not exclude the " + asset + " assets, so they would flow to every consumer");
     }
     foreach (var other in coreDependencies.Where(d => d.Attribute("id")?.Value != "Neemle.CSharpComposer"))
-        Fail("the Neemle.Orm.Lite nuspec declares an unexpected dependency on " + other.Attribute("id")?.Value);
-    var coreAssemblies = entries["Neemle.Orm.Lite"].Where(n => n.EndsWith(".dll", StringComparison.OrdinalIgnoreCase)).ToArray();
-    var expectedAssemblies = new[] { "analyzers/dotnet/cs/Neemle.Orm.Lite.Generator.dll", "lib/net10.0/Neemle.Orm.Lite.Runtime.dll", "lib/net10.0/Neemle.Orm.Lite.Sql.dll" };
+        Fail("the Neemle.OrmLite nuspec declares an unexpected dependency on " + other.Attribute("id")?.Value);
+    var coreAssemblies = entries["Neemle.OrmLite"].Where(n => n.EndsWith(".dll", StringComparison.OrdinalIgnoreCase)).ToArray();
+    var expectedAssemblies = new[] { "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll", "lib/net10.0/Neemle.OrmLite.Runtime.dll", "lib/net10.0/Neemle.OrmLite.Sql.dll" };
     foreach (var stray in coreAssemblies.Except(expectedAssemblies, StringComparer.Ordinal))
-        Fail("Neemle.Orm.Lite carries the assembly " + stray + ", which is not one of its own; dependencies are resolved by NuGet, not bundled");
+        Fail("Neemle.OrmLite carries the assembly " + stray + ", which is not one of its own; dependencies are resolved by NuGet, not bundled");
     foreach (var (id, names) in entries)
         foreach (var name in names.Where(n => n.Contains("CSharpComposer", StringComparison.OrdinalIgnoreCase)))
             Fail(id + " carries " + name + "; Neemle.CSharpComposer is a dependency resolved by NuGet, not a bundled file");
-    foreach (var id in new[] { "Neemle.Orm.Lite.Postgres", "Neemle.Orm.Lite.Sqlite" })
+    foreach (var id in new[] { "Neemle.OrmLite.Postgres", "Neemle.OrmLite.Sqlite" })
         if (specs[id].Descendants().Any(e => e.Name.LocalName == "dependency" && e.Attribute("id")?.Value == "Neemle.CSharpComposer"))
             Fail(id + " declares Neemle.CSharpComposer itself; it reaches the provider package through the core package");
 
     Console.WriteLine("==> each provider package ships its capability manifest and declares its provider to the build");
     foreach (var (id, provider, factory) in new[]
     {
-        ("Neemle.Orm.Lite.Postgres", "postgres", "global::Neemle.Orm.Lite.Postgres.PostgresProviderFactory"),
-        ("Neemle.Orm.Lite.Sqlite", "sqlite", "global::Neemle.Orm.Lite.Sqlite.SqliteProviderFactory"),
+        ("Neemle.OrmLite.Postgres", "postgres", "global::Neemle.OrmLite.Postgres.PostgresProviderFactory"),
+        ("Neemle.OrmLite.Sqlite", "sqlite", "global::Neemle.OrmLite.Sqlite.SqliteProviderFactory"),
     })
     {
         var manifest = "ormlite.capabilities." + provider + ".txt";
-        var source = File.ReadAllText(Path.Combine(root, "src", id, "assets", manifest));
+        var projectFolder = provider == "postgres" ? "Postgres" : "Sqlite";
+        var source = File.ReadAllText(Path.Combine(root, "src", projectFolder, "assets", manifest));
         var packed = ReadEntry(packages[id], "buildTransitive/" + manifest);
         if (!string.Equals(source, packed, StringComparison.Ordinal))
-            Fail(id + ": the packed " + manifest + " differs from src/" + id + "/assets/" + manifest);
+            Fail(id + ": the packed " + manifest + " differs from src/" + projectFolder + "/assets/" + manifest);
         var props = XDocument.Parse(ReadEntry(packages[id], "buildTransitive/" + id + ".props"));
         var declared = props.Descendants().Where(e => e.Name.LocalName == "OrmLiteProviderPackage").ToList();
         if (declared.Count != 1
@@ -446,7 +447,7 @@ int PackageChecks(string location)
         Console.WriteLine("==> consumer G: a project that only references consumer A gets the runtime and the initializer but no generator");
         var g = NewDownstream("g", "a", "ClassLib", "Library");
         File.WriteAllText(Path.Combine(g, "Downstream.cs"),
-            "public static class Downstream { public static System.Type Runtime => typeof(Neemle.Orm.Lite.OrmLiteSettings); }\n");
+            "public static class Downstream { public static System.Type Runtime => typeof(Neemle.OrmLite.OrmLiteSettings); }\n");
         if (!Build(g, "g", "-p:OrmLiteActorSetting=probe.actor"))
         {
             Fail("G: the downstream consumer did not build");
@@ -475,8 +476,8 @@ int PackageChecks(string location)
         void RunProviderConsumers()
         {
             string[] probe = ["Providers/Entities.cs", "Providers/ProviderProbe.cs", "Providers/Program.cs"];
-            var sqliteOnly = new[] { Provider("Neemle.Orm.Lite.Sqlite") };
-            var postgresOnly = new[] { Provider("Neemle.Orm.Lite.Postgres") };
+            var sqliteOnly = new[] { Provider("Neemle.OrmLite.Sqlite") };
+            var postgresOnly = new[] { Provider("Neemle.OrmLite.Postgres") };
 
             Console.WriteLine("==> consumer H: referencing only the Sqlite package is enough: generator, registration, default provider list, a working sqlite");
             var h = NewConsumer("h", sqliteOnly, "Exe", probe);
@@ -493,7 +494,7 @@ int PackageChecks(string location)
                 var report = ReadReport(h, "H");
                 Expect(report, "H", "installed", "sqlite");
                 ExpectStarts(report, "H", "sqlite", "ok rows=1 provider=sqlite global=1");
-                ExpectNotInstalled(report, "H", "postgres", "Neemle.Orm.Lite.Postgres", "sqlite");
+                ExpectNotInstalled(report, "H", "postgres", "Neemle.OrmLite.Postgres", "sqlite");
                 ExpectUnset(report, "H", "sqlite");
             }
 
@@ -511,7 +512,7 @@ int PackageChecks(string location)
                 ExpectProviderList(i, "I", ["postgres"]);
                 var report = ReadReport(i, "I");
                 Expect(report, "I", "installed", "postgres");
-                ExpectNotInstalled(report, "I", "sqlite", "Neemle.Orm.Lite.Sqlite", "postgres");
+                ExpectNotInstalled(report, "I", "sqlite", "Neemle.OrmLite.Sqlite", "postgres");
                 ExpectStarts(report, "I", "postgres", "NpgsqlException");
                 ExpectUnset(report, "I", "postgres");
             }
@@ -549,8 +550,8 @@ int PackageChecks(string location)
                 ExpectProviderList(k, "K", []);
                 var report = ReadReport(k, "K");
                 Expect(report, "K", "installed", "");
-                ExpectNotInstalled(report, "K", "sqlite", "Neemle.Orm.Lite.Sqlite", "none");
-                ExpectNotInstalled(report, "K", "postgres", "Neemle.Orm.Lite.Postgres", "none");
+                ExpectNotInstalled(report, "K", "sqlite", "Neemle.OrmLite.Sqlite", "none");
+                ExpectNotInstalled(report, "K", "postgres", "Neemle.OrmLite.Postgres", "none");
                 ExpectUnset(report, "K", "none");
             }
 
@@ -582,7 +583,7 @@ int PackageChecks(string location)
                     Fail("M: a registration was emitted although OrmLiteRegisterProviders is false");
                 var report = ReadReport(m, "M");
                 Expect(report, "M", "installed", "");
-                ExpectNotInstalled(report, "M", "sqlite", "Neemle.Orm.Lite.Sqlite", "none");
+                ExpectNotInstalled(report, "M", "sqlite", "Neemle.OrmLite.Sqlite", "none");
             }
 
             Console.WriteLine("==> consumer N: an application that only references a data library gets the registration and no generator");
@@ -637,7 +638,7 @@ int PackageChecks(string location)
                 "<Project Sdk=\"Microsoft.NET.Sdk\">\n  <PropertyGroup>\n"
                 + "    <TargetFramework>net10.0</TargetFramework>\n    <OutputType>Library</OutputType>\n"
                 + "    <NuGetAudit>false</NuGetAudit>\n  </PropertyGroup>\n"
-                + "  <ItemGroup>\n    " + Provider("Neemle.Orm.Lite.Sqlite") + "\n  </ItemGroup>\n</Project>\n");
+                + "  <ItemGroup>\n    " + Provider("Neemle.OrmLite.Sqlite") + "\n  </ItemGroup>\n</Project>\n");
             File.WriteAllText(Path.Combine(dir, "Probe.vb"), "Public Module Probe\nEnd Module\n");
             File.WriteAllText(Path.Combine(dir, "nuget.config"), NuGetConfig());
             if (!Build(dir, "v", "-p:OrmLiteActorSetting=probe.actor", "-v:n"))
@@ -656,10 +657,10 @@ int PackageChecks(string location)
         void RunPackagingShapeConsumers()
         {
             Console.WriteLine("==> consumer O: central package management, the reference carries no version");
-            var o = NewConsumer("o", ["<PackageReference Include=\"Neemle.Orm.Lite\" />"], "Library", "Probe.cs");
+            var o = NewConsumer("o", ["<PackageReference Include=\"Neemle.OrmLite\" />"], "Library", "Probe.cs");
             File.WriteAllText(Path.Combine(o, "Directory.Packages.props"),
                 "<Project><PropertyGroup><ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>"
-                + "</PropertyGroup><ItemGroup><PackageVersion Include=\"Neemle.Orm.Lite\" Version=\"" + version
+                + "</PropertyGroup><ItemGroup><PackageVersion Include=\"Neemle.OrmLite\" Version=\"" + version
                 + "\" /></ItemGroup></Project>\n");
             ExpectBuilt(o, "o", "O", "central package management");
 
@@ -721,7 +722,7 @@ int PackageChecks(string location)
             if (!text.Contains("[global::System.Runtime.CompilerServices.ModuleInitializer]", StringComparison.Ordinal))
                 Fail(who + ": the emitted registration is not a module initializer");
             foreach (var name in present)
-                if (!text.Contains("global::Neemle.Orm.Lite." + FactoryNamespace(name) + "." + name + ".Register();", StringComparison.Ordinal))
+                if (!text.Contains("global::Neemle.OrmLite." + FactoryNamespace(name) + "." + name + ".Register();", StringComparison.Ordinal))
                     Fail(who + ": the emitted registration does not call " + name);
             foreach (var name in absent)
                 if (text.Contains(name, StringComparison.Ordinal))
@@ -786,7 +787,7 @@ int PackageChecks(string location)
             if (code != 0 || got != expected) Fail("E: " + who + " printed '" + got + "', expected " + expected);
         }
 
-        string Core(string assets) => "<PackageReference Include=\"Neemle.Orm.Lite\" Version=\"" + version + "\" " + assets + " />";
+        string Core(string assets) => "<PackageReference Include=\"Neemle.OrmLite\" Version=\"" + version + "\" " + assets + " />";
 
         string Provider(string id) => "<PackageReference Include=\"" + id + "\" Version=\"" + version + "\" />";
 
@@ -794,7 +795,7 @@ int PackageChecks(string location)
             "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<configuration>\n  <packageSources>\n    <clear />\n    <add key=\"fresh\" value=\"" + feed + "\" />\n"
             + (ambient is null ? "" : "    <add key=\"ambient\" value=\"" + ambient + "\" />\n")
             + "  </packageSources>\n"
-            + (ambient is null ? "" : "  <packageSourceMapping>\n    <packageSource key=\"fresh\">\n      <package pattern=\"Neemle.Orm.Lite*\" />\n    </packageSource>\n    <packageSource key=\"ambient\">\n      <package pattern=\"*\" />\n    </packageSource>\n  </packageSourceMapping>\n")
+            + (ambient is null ? "" : "  <packageSourceMapping>\n    <packageSource key=\"fresh\">\n      <package pattern=\"Neemle.OrmLite*\" />\n    </packageSource>\n    <packageSource key=\"ambient\">\n      <package pattern=\"*\" />\n    </packageSource>\n  </packageSourceMapping>\n")
             + "</configuration>\n";
 
         string NewConsumer(string name, string[] references, string outputType, params string[] sources)

@@ -1,8 +1,0 @@
-<Project>
-
-  <ItemGroup>
-    <OrmLiteProviderPackage Include="Neemle.Orm.Lite.Sqlite" Provider="sqlite" Factory="global::Neemle.Orm.Lite.Sqlite.SqliteProviderFactory" />
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory)ormlite.capabilities.sqlite.txt" />
-  </ItemGroup>
-
-</Project>

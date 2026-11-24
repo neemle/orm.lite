@@ -64,7 +64,7 @@ jobs:
       - name: Check that the run selection of the retention script keeps the newest runs and refuses a low limit
         run: dotnet run scripts/RunRetention.cs -- self-test
       - name: Build the solution in Release with every warning an error
-        run: dotnet build Neemle.Orm.Lite.slnx -c Release -warnaserror
+        run: dotnet build Neemle.OrmLite.slnx -c Release -warnaserror
 
   # The tests run once per .NET runtime, each leg on its own runner with its own throwaway PostgreSQL. The test
   # project targets net10.0, so the .NET 11 leg builds it with the SDK 11 and lets the test host roll forward to the
@@ -94,7 +94,7 @@ jobs:
           dotnet-version: ${{ matrix.dotnet }}
       - name: Print the SDK and the runtimes this leg runs on
         run: dotnet --info
-      - run: dotnet build Neemle.Orm.Lite.slnx -c Release
+      - run: dotnet build Neemle.OrmLite.slnx -c Release
       - name: Start the throwaway PostgreSQL of tests/compose.yaml and wait until it is healthy
         run: docker compose -f tests/compose.yaml up -d --wait --wait-timeout 120
       - name: Log the image the moving PostgreSQL major tag resolved to, so a failing run names its image
@@ -110,7 +110,7 @@ jobs:
         env:
           ORMLITE_TEST_POSTGRES: Host=127.0.0.1;Port=55433;Username=postgres
         run: >-
-          dotnet test tests/Neemle.Orm.Lite.Tests/Neemle.Orm.Lite.Tests.csproj -c Release --no-build
+          dotnet test tests/Tests/Tests.csproj -c Release --no-build
           --logger "trx;LogFileName=tests.trx" --logger "console;verbosity=detailed"
           --results-directory TestResults
           --blame-crash --blame-crash-dump-type mini
@@ -124,7 +124,7 @@ jobs:
         env:
           TZ: Pacific/Auckland
         run: >-
-          dotnet test tests/Neemle.Orm.Lite.Tests/Neemle.Orm.Lite.Tests.csproj -c Release --no-build
+          dotnet test tests/Tests/Tests.csproj -c Release --no-build
           --filter "FullyQualifiedName~DataLiteral&FullyQualifiedName!~Postgres"
           --logger "trx;LogFileName=zone.trx" --results-directory TestResults
           --blame-crash --blame-crash-dump-type mini
@@ -138,7 +138,7 @@ jobs:
       - name: Run the tests of the ports project, which sees no provider and no driver
         timeout-minutes: 10
         run: >-
-          dotnet test tests/Neemle.Orm.Lite.Ports.Tests/Neemle.Orm.Lite.Ports.Tests.csproj -c Release --no-build
+          dotnet test tests/Ports.Tests/Ports.Tests.csproj -c Release --no-build
           --logger "trx;LogFileName=ports.trx" --logger "console;verbosity=detailed"
           --results-directory TestResults
           --blame-crash --blame-crash-dump-type mini
@@ -168,7 +168,7 @@ jobs:
         with:
           dotnet-version: 10.0.x
       - name: Pack the three packages into the local feed (nothing is published)
-        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+        run: dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
       - name: Check that the README guard refuses what it is meant to refuse
         run: dotnet run scripts/ReadmeCheck.cs -- self-test
       - name: Check the README wiring, the public files and that PackCheck still runs the README guard
@@ -226,7 +226,7 @@ jobs:
         with:
           dotnet-version: 10.0.x
       - name: Pack the three packages into the local feed (nothing is published)
-        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+        run: dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
       - name: Run the demo on SQLite with no service and no setting
         shell: bash
         run: |
@@ -252,7 +252,7 @@ jobs:
       - name: Start the throwaway PostgreSQL of demo/compose.yaml and wait until it is healthy
         run: docker compose -f demo/compose.yaml up -d --wait --wait-timeout 120
       - name: Pack the three packages into the local feed (nothing is published)
-        run: dotnet pack Neemle.Orm.Lite.slnx -c Release -o artifacts -m:1
+        run: dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
       - name: Run the demo, soft delete and history included, on a fresh PostgreSQL database, changing only the provider block
         shell: bash
         run: |

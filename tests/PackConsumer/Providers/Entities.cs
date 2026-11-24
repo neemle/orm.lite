@@ -1,4 +1,4 @@
-using Neemle.Orm.Lite;
+using Neemle.OrmLite;
 
 namespace PackConsumer
 {

@@ -1,0 +1,3 @@
+-- refusal
+type: Neemle.OrmLite.CapabilityNotSupportedException
+message: provider 'no-capability' does not support NullSafeEquality, which Db.NullSafeEquals requires (table 'corpus_notes'). no-capability has no null-safe equality; rewriting it as = would silently stop matching NULL scopes.

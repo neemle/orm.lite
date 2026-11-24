@@ -1,0 +1,3 @@
+-- refusal
+type: Neemle.OrmLite.CapabilityNotSupportedException
+message: provider 'no-capability' does not support JsonDocument, which increment a member of a JSON document requires (table 'corpus_notes'). no-capability has no JSON document type, so it cannot increment a member of a JSON document; a statement emitted anyway would carry PostgreSQL syntax to a server that cannot parse it.

@@ -1,4 +1,0 @@
-#1 BEGIN conn=1 source=primary
--- outcome
-threw System.ObjectDisposedException: Cannot access a disposed object.
-Object name: 'Neemle.Orm.Lite.UnitOfWork'.

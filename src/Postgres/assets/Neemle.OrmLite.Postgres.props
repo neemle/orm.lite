@@ -1,0 +1,8 @@
+<Project>
+
+  <ItemGroup>
+    <OrmLiteProviderPackage Include="Neemle.OrmLite.Postgres" Provider="postgres" Factory="global::Neemle.OrmLite.Postgres.PostgresProviderFactory" />
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)ormlite.capabilities.postgres.txt" />
+  </ItemGroup>
+
+</Project>

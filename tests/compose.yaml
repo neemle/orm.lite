@@ -3,7 +3,7 @@
 # server a plain `dotnet test` stays green and skips every PostgreSQL test. See README.md ("Build, test, pack, demo").
 #
 #   docker compose -f tests/compose.yaml up -d --wait     # start it and wait until it accepts connections
-#   ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test Neemle.Orm.Lite.slnx -c Release \
+#   ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test Neemle.OrmLite.slnx -c Release \
 #     --logger "trx;LogFileName=tests.trx" --results-directory TestResults -- xUnit.MaxParallelThreads=1
 #   dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx tests/skip-allowlist.txt \
 #     --require-postgres tests/skip-witness.txt

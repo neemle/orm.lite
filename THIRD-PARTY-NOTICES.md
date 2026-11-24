@@ -1,11 +1,11 @@
 # Third-party notices
 
-Neemle.Orm.Lite is licensed under the MIT license (see `LICENSE`). The components below are used by the packages;
+Neemle.OrmLite is licensed under the MIT license (see `LICENSE`). The components below are used by the packages;
 their licenses are those declared in their own NuGet packages at the versions this repository restores.
 
-## Declared dependency of the Neemle.Orm.Lite package
+## Declared dependency of the Neemle.OrmLite package
 
-- Neemle.CSharpComposer 0.5.0, declared as a NuGet dependency of Neemle.Orm.Lite and resolved by NuGet; not redistributed inside the package.
+- Neemle.CSharpComposer 0.5.0, declared as a NuGet dependency of Neemle.OrmLite and resolved by NuGet; not redistributed inside the package.
   License MIT, `Copyright (c) 2026 Neemle`. Project: https://github.com/neemle/cs-composer. The full license text it ships in its package is:
 
 ```
@@ -34,12 +34,12 @@ SOFTWARE.
 
 ## NuGet dependencies declared by the provider packages
 
-These are referenced, not copied into the Neemle.Orm.Lite packages; a consumer restores them from NuGet.
+These are referenced, not copied into the Neemle.OrmLite packages; a consumer restores them from NuGet.
 
 | Declared by | Package | Version | License (nuspec) | Copyright (nuspec) |
 | --- | --- | --- | --- | --- |
-| Neemle.Orm.Lite.Postgres | Npgsql | 10.0.3 | PostgreSQL | Copyright 2025 © The Npgsql Development Team |
-| Neemle.Orm.Lite.Sqlite | Microsoft.Data.Sqlite | 10.0.13 | MIT | © Microsoft Corporation. All rights reserved. |
+| Neemle.OrmLite.Postgres | Npgsql | 10.0.3 | PostgreSQL | Copyright 2025 © The Npgsql Development Team |
+| Neemle.OrmLite.Sqlite | Microsoft.Data.Sqlite | 10.0.13 | MIT | © Microsoft Corporation. All rights reserved. |
 
 Microsoft.Data.Sqlite brings, transitively, the following packages:
 

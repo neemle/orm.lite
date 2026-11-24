@@ -1,7 +1,7 @@
 // What this file shows
 //   The four entities of the "tracker" domain, as plain classes. Each class describes a table through attributes; the
 //   source generator reads them at build time and writes, per entity, a repository class named <Entity>Orm
-//   (TeamOrm, ProjectOrm, WorkItemOrm, CommentOrm) in the Neemle.Orm.Lite.Generated namespace. Nothing in this file
+//   (TeamOrm, ProjectOrm, WorkItemOrm, CommentOrm) in the Neemle.OrmLite.Generated namespace. Nothing in this file
 //   runs on its own; Migrations.cs creates the tables, Chapters.cs uses the repositories.
 //
 // Library features exercised here
@@ -41,7 +41,7 @@
 //   Project has no property for the column that was called legacy_code, renamed to code (0230) and dropped (0260):
 //   the entity never maps a column that no longer exists.
 
-using Neemle.Orm.Lite;
+using Neemle.OrmLite;
 
 namespace OrmLiteDemo;
 

@@ -1,9 +1,0 @@
-#1 ExecuteReader conn=1 source=primary tx=false
-    sql:
-        INSERT INTO "corpus_tasks" ("id", "tenant_id", "name") VALUES (@p0, @p1, @p2) ON CONFLICT ("id") DO UPDATE SET "name" = @p3 WHERE "corpus_tasks"."deleted_at" IS NULL RETURNING "id"
-    @p0 = Guid a0000000-0000-0000-0000-00000000000a
-    @p1 = Guid 10000000-0000-0000-0000-000000000001
-    @p2 = String "n"
-    @p3 = String "n"
--- outcome
-threw Neemle.Orm.Lite.SoftDeletedConflictException: the upsert into "corpus_tasks" conflicts with a soft-deleted row, and an upsert never revives or overwrites one; restore it explicitly, or purge it, and retry.

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the three packages (`Neemle.Orm.Lite`, `Neemle.Orm.Lite.Sqlite`, `Neemle.Orm.Lite.Postgres`)
+All notable changes to the three packages (`Neemle.OrmLite`, `Neemle.OrmLite.Sqlite`, `Neemle.OrmLite.Postgres`)
 are listed here. The three packages always carry one version.
 
 ## 0.1.0-pre
@@ -16,7 +16,16 @@ The first pre-release: the API, the emitted code shape, the runtime type names a
 
 ### Breaking changes
 
-The core (`Neemle.Orm.Lite`) no longer carries any PostgreSQL text, type, id or hash input: every provider speaks
+Rename. The root namespace, the package ids and the assembly names are now `Neemle.OrmLite`: the packages are
+`Neemle.OrmLite`, `Neemle.OrmLite.Sqlite` and `Neemle.OrmLite.Postgres`, the assemblies are `Neemle.OrmLite.Runtime`,
+`Neemle.OrmLite.Sql` and the provider assemblies, the namespaces are `Neemle.OrmLite`, `Neemle.OrmLite.Sql`,
+`Neemle.OrmLite.Sqlite`, `Neemle.OrmLite.Postgres` and `Neemle.OrmLite.Nodes`, and the generated code lives in
+`Neemle.OrmLite.Generated`. Migration: replace the prefix `Neemle.Orm.Lite` by `Neemle.OrmLite` in package references,
+`using` directives, `InternalsVisibleTo` names and any text that names a type of the library. Nothing else changes: type
+and member names, the `OrmLite*` settings and MSBuild properties, the capability manifest names and every generated
+statement are the same. There is no shim and no package under the old ids, because 0.1.0-pre has not been published.
+
+The core (`Neemle.OrmLite`) no longer carries any PostgreSQL text, type, id or hash input: every provider speaks
 through `ISqlProvider`, and the legacy PostgreSQL dialect path that ran beside it is gone. These changes are made
 without `Obsolete` shims, because 0.1.0-pre has not been published.
 

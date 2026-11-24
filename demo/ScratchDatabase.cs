@@ -15,7 +15,7 @@
 //   ok = scratch.Remove() && ok;                                       // the demo fails if the folder is still there
 //   The `using` also disposes it (which calls Remove) if the demo stops early with an exception.
 
-using Neemle.Orm.Lite;
+using Neemle.OrmLite;
 
 namespace OrmLiteDemo;
 

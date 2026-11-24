@@ -1,8 +1,8 @@
 #:property EnableAotAnalyzer=false
 #:property EnableTrimAnalyzer=false
 #:property PublishAot=false
-#:project ../tests/Neemle.Orm.Lite.Tests/Neemle.Orm.Lite.Tests.csproj
-using Neemle.Orm.Lite.Tests.Corpus;
+#:project ../tests/Tests/Tests.csproj
+using Neemle.OrmLite.Tests.Corpus;
 
 if (args.Length < 1)
 {
@@ -28,8 +28,8 @@ switch (args[0])
 string FindRoot()
 {
     for (var d = new DirectoryInfo(Directory.GetCurrentDirectory()); d is not null; d = d.Parent)
-        if (File.Exists(Path.Combine(d.FullName, "Neemle.Orm.Lite.slnx"))) return d.FullName;
-    throw new InvalidOperationException("Neemle.Orm.Lite.slnx not found above the current directory");
+        if (File.Exists(Path.Combine(d.FullName, "Neemle.OrmLite.slnx"))) return d.FullName;
+    throw new InvalidOperationException("Neemle.OrmLite.slnx not found above the current directory");
 }
 
 int Capture(string sourceRoot, string targetRoot)

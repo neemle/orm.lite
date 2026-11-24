@@ -23,8 +23,8 @@ return 2;
 string Root()
 {
     for (var d = new DirectoryInfo(Directory.GetCurrentDirectory()); d is not null; d = d.Parent)
-        if (File.Exists(Path.Combine(d.FullName, "Neemle.Orm.Lite.slnx"))) return d.FullName;
-    throw new InvalidOperationException("Neemle.Orm.Lite.slnx not found above the current directory");
+        if (File.Exists(Path.Combine(d.FullName, "Neemle.OrmLite.slnx"))) return d.FullName;
+    throw new InvalidOperationException("Neemle.OrmLite.slnx not found above the current directory");
 }
 
 int Check(string[] given)
@@ -332,13 +332,13 @@ string FxTest() => """
       - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{ matrix.dotnet }}
-      - run: dotnet build Neemle.Orm.Lite.slnx -c Release
+      - run: dotnet build Neemle.OrmLite.slnx -c Release
       - run: docker compose -f tests/compose.yaml up -d --wait
       - name: Test
         env:
           ORMLITE_TEST_POSTGRES: Host=127.0.0.1;Port=55433;Username=postgres
         run: >-
-          dotnet test Neemle.Orm.Lite.slnx -c Release --no-build --logger "trx;LogFileName=tests.trx"
+          dotnet test Neemle.OrmLite.slnx -c Release --no-build --logger "trx;LogFileName=tests.trx"
           --results-directory TestResults --blame-crash --blame-hang-timeout 10m
       - run: dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx tests/skip-allowlist.txt --require-postgres w
 """ + "\n";

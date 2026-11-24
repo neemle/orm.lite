@@ -1,6 +1,6 @@
-# Classes of tests/Neemle.Orm.Lite.Ports.Tests that must have a Passed result in the ports step of the CI test job,
+# Classes of tests/Ports.Tests that must have a Passed result in the ports step of the CI test job,
 # one per line: <class> TAB <reason>. The flag name of the gate says "postgres"; for this list it names the classes
 # that must have run. Written by hand from the test source, never captured from a run; compared byte for byte.
-Neemle.Orm.Lite.Ports.Tests.FakeProviderMigrationTests	the runner drives a third provider with no planner supplied (the default planner)
-Neemle.Orm.Lite.Ports.Tests.FakeProviderQueryTests	a query is rendered, bound and read through the third provider
-Neemle.Orm.Lite.Ports.Tests.FakeProviderRegistryTests	the core finds a third provider and no shipped provider is loaded
+Neemle.OrmLite.Ports.Tests.FakeProviderMigrationTests	the runner drives a third provider with no planner supplied (the default planner)
+Neemle.OrmLite.Ports.Tests.FakeProviderQueryTests	a query is rendered, bound and read through the third provider
+Neemle.OrmLite.Ports.Tests.FakeProviderRegistryTests	the core finds a third provider and no shipped provider is loaded

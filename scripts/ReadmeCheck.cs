@@ -31,7 +31,7 @@ internal static class ReadmeCheck
     private const string Mcp = "M" + "CP";
     private const string Spec = "specifi" + "cation";
 
-    private static readonly string[] Ids = ["Neemle.Orm.Lite", "Neemle.Orm.Lite.Postgres", "Neemle.Orm.Lite.Sqlite"];
+    private static readonly string[] Ids = ["Neemle.OrmLite", "Neemle.OrmLite.Postgres", "Neemle.OrmLite.Sqlite"];
     private static readonly string[] Headings = ["Status", "Install", "Quickstart", "Providers", "Documentation"];
     private static readonly string[] GitScope =
     [
@@ -92,8 +92,8 @@ internal static class ReadmeCheck
     private static string FindRoot()
     {
         for (var d = new DirectoryInfo(Directory.GetCurrentDirectory()); d is not null; d = d.Parent)
-            if (File.Exists(Path.Combine(d.FullName, "Neemle.Orm.Lite.slnx"))) return d.FullName;
-        throw new InvalidOperationException("Neemle.Orm.Lite.slnx not found above the current directory");
+            if (File.Exists(Path.Combine(d.FullName, "Neemle.OrmLite.slnx"))) return d.FullName;
+        throw new InvalidOperationException("Neemle.OrmLite.slnx not found above the current directory");
     }
 
     private static int Report(string what, List<string> problems)
@@ -339,7 +339,7 @@ internal static class ReadmeCheck
     // ---- self-test ----
 
     private const string Good = """
-        # Neemle.Orm.Lite
+        # Neemle.OrmLite
 
         ## Status
 
@@ -347,9 +347,9 @@ internal static class ReadmeCheck
 
         ## Install
 
-        `Neemle.Orm.Lite`, `Neemle.Orm.Lite.Postgres` and `Neemle.Orm.Lite.Sqlite`.
+        `Neemle.OrmLite`, `Neemle.OrmLite.Postgres` and `Neemle.OrmLite.Sqlite`.
 
-            dotnet add package Neemle.Orm.Lite.Sqlite --prerelease
+            dotnet add package Neemle.OrmLite.Sqlite --prerelease
 
         ## Quickstart
 
@@ -471,7 +471,7 @@ internal static class ReadmeCheck
             ("foreign-host", Add("[docs](https://example.com/docs)"), true, false),
             ("plain-http", Add("[repo](http://github.com/neemle/orm.lite)"), true, false),
             ("lookalike-repository", Add("https://github.com/neemle/orm.lite.evil/x"), true, false),
-            ("local-feed-pack", Add("dotnet pack Neemle.Orm.Lite.slnx -c Release"), true, false),
+            ("local-feed-pack", Add("dotnet pack Neemle.OrmLite.slnx -c Release"), true, false),
             ("local-feed-source", Add("dotnet nuget add source /a/artifacts"), true, false),
             ("unpublished-claim", Add("The packages are not on a public feed yet."), true, false),
             ("section-reference", Add("See the " + Spec + " section \"Examples\"."), true, false),
@@ -481,7 +481,7 @@ internal static class ReadmeCheck
             ("contributor-heading", Add("## Repository layout"), true, false),
             ("repository-path", Add("see src/Packaging.props"), true, false),
             ("no-install-section", Good.Replace("## Install", "## Setup"), true, false),
-            ("no-package-name", Good.Replace("`Neemle.Orm.Lite.Postgres`", "Postgres"), true, false),
+            ("no-package-name", Good.Replace("`Neemle.OrmLite.Postgres`", "Postgres"), true, false),
             ("long-line", Add(new string('x', 121)), true, false),
             ("public-section-reference", Add("the " + Spec + " section \"Examples\""), false, false),
             ("public-history-document", Add("the " + Spec + " a trigger was built from"), false, true),

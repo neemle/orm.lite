@@ -1,0 +1,24 @@
+using Neemle.OrmLite.Postgres;
+
+namespace Neemle.OrmLite.Tests.Corpus.Cases;
+
+internal static class BackslashLiteralCases
+{
+    public static void Register(CorpusRun run)
+    {
+        run.Rec.Statements("ddl-builder", "insert-data-backslash-and-quote-text", () => new MigrationBuilder(PostgresProvider.Instance)
+            .InsertData(
+                "samples",
+                ["a", "b", "c"],
+                [@"a\b", @"x\'); DROP TABLE t; --", '\\'],
+                ["plain", @"\", @"{""k"":""a\""b""}"])
+            .Render(PostgresProvider.Instance));
+        run.Rec.Statements("ddl-builder", "delete-data-backslash-text", () => new MigrationBuilder(PostgresProvider.Instance)
+            .DeleteData("samples", "k", @"a\b", "plain", @"end\")
+            .Render(PostgresProvider.Instance));
+        run.Rec.Refusal("refusals", "ddl-literal-string-with-nul",
+            () => new MigrationBuilder(PostgresProvider.Instance).InsertData("t", ["c"], ["a\0b"]));
+        run.Rec.Refusal("refusals", "ddl-literal-string-with-a-lone-surrogate",
+            () => new MigrationBuilder(PostgresProvider.Instance).InsertData("t", ["c"], ["a\uD83Db"]));
+    }
+}

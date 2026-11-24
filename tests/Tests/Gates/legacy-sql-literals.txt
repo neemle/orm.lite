@@ -1,0 +1,8 @@
+src/Runtime/ConflictGuard.cs|1
+src/Runtime/ForeignKeyActionDdl.cs|1
+src/Runtime/LikePattern.cs|1
+src/Runtime/PredicateTranslator.cs|1
+src/Runtime/Query.cs|5
+src/Runtime/RowResolver.cs|1
+src/Runtime/SoftDeleteSql.cs|1
+src/Runtime/WriteStatements.cs|1

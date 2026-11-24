@@ -5,13 +5,13 @@
 # also runs without a server (PostgresRulesTests, for one) must not be listed, no gate can see that mistake.
 # Both skip mechanisms are covered: the fixture (RequireAvailable) and the PostgresFact attribute.
 # Written by hand from the test source, never captured from a run. Class names are compared byte for byte.
-Neemle.Orm.Lite.Tests.Behaviour.PostgresBehaviourTests	server only, skipped by the fixture
-Neemle.Orm.Lite.Tests.Behaviour.PostgresMigrationTests	server only, skipped by the fixture
-Neemle.Orm.Lite.Tests.Behaviour.PostgresHistoryTests	server only, skipped by the fixture
-Neemle.Orm.Lite.Tests.Nodes.PostgresMigrationSetTests	server only, skipped by the PostgresFact attribute
-Neemle.Orm.Lite.Tests.GeneratedRepositoryPostgresTests	server only, skipped by the PostgresFact attribute
-Neemle.Orm.Lite.Tests.Behaviour.PostgresJsonAgreementTests	server only, skipped by the fixture
-Neemle.Orm.Lite.Tests.Behaviour.PostgresRunValidationTests	server only, skipped by the fixture
-Neemle.Orm.Lite.Tests.Behaviour.PostgresMigrationLockTests	server only, skipped by the fixture
-Neemle.Orm.Lite.Tests.Behaviour.PostgresConcurrentRunnerTests	server only, skipped by the fixture
-Neemle.Orm.Lite.Tests.Behaviour.PostgresClosureUnaryTests	server only: closure unary executed suite, skipped by the fixture without a server
+Neemle.OrmLite.Tests.Behaviour.PostgresBehaviourTests	server only, skipped by the fixture
+Neemle.OrmLite.Tests.Behaviour.PostgresMigrationTests	server only, skipped by the fixture
+Neemle.OrmLite.Tests.Behaviour.PostgresHistoryTests	server only, skipped by the fixture
+Neemle.OrmLite.Tests.Nodes.PostgresMigrationSetTests	server only, skipped by the PostgresFact attribute
+Neemle.OrmLite.Tests.GeneratedRepositoryPostgresTests	server only, skipped by the PostgresFact attribute
+Neemle.OrmLite.Tests.Behaviour.PostgresJsonAgreementTests	server only, skipped by the fixture
+Neemle.OrmLite.Tests.Behaviour.PostgresRunValidationTests	server only, skipped by the fixture
+Neemle.OrmLite.Tests.Behaviour.PostgresMigrationLockTests	server only, skipped by the fixture
+Neemle.OrmLite.Tests.Behaviour.PostgresConcurrentRunnerTests	server only, skipped by the fixture
+Neemle.OrmLite.Tests.Behaviour.PostgresClosureUnaryTests	server only: closure unary executed suite, skipped by the fixture without a server

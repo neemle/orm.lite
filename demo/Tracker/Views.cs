@@ -24,7 +24,7 @@
 //   A view stores its query, so each value in the Where (here "done") is written into the definition as a literal.
 
 using System.Linq.Expressions;
-using Neemle.Orm.Lite;
+using Neemle.OrmLite;
 
 namespace OrmLiteDemo;
 

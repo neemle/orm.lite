@@ -1,0 +1,14 @@
+# The coupling of the provider-neutral sources (src/Runtime and src/Sql) to one
+# provider, as the ratchet in CoreNeutralityTests measures it: <file>|<marker>|<tokens>. The list can only shrink.
+# A count that goes down must be lowered here in the same change, an entry whose coupling is gone is deleted, and a
+# line is never added or raised: the change that would add one removes the coupling instead. The goal is an empty list.
+# The markers are defined in CouplingMarkers.cs; a comment is not a token, so prose naming a provider is not counted.
+#   pg-type             a PostgreSQL class of the neutral assembly (the legacy dialect classes)
+#   legacy-dialect      the legacy dialect interfaces, which run a second rendering path beside the provider
+#   postgres-id         the id of one provider named in the neutral sources (a constant or a literal)
+#   pg-sql-text         PostgreSQL SQL text written in the neutral sources
+#   jsonb-type-name     the PostgreSQL document type name as a neutral constant
+#   actor-stamp-sql     the statement that stamps the acting user, in PostgreSQL spelling
+#   actor-stamp-api     the neutral entry points that run that statement
+#   migration-lock-key  the advisory lock key and its lock statements, owned by the neutral migration runner
+#   no-planner-path     the runner path that only a provider without a planner takes (lock and history bootstrap)
