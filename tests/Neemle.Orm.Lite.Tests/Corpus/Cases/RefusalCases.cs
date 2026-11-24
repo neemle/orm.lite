@@ -1,5 +1,6 @@
 using System.Data;
 using System.Linq.Expressions;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests.Corpus.Cases;
 
@@ -143,9 +144,6 @@ internal static class RefusalCases
         run.Rec.Refusal(G, "capability-json-member-increment", () => run.QNoCap<CorpusNote>().SetJsonMemberIncrement(n => n.Meta, key, 1));
         run.Rec.Refusal(G, "capability-json-upsert-binds-document", () => run.QNoCap<CorpusNote>().RenderUpsert(new Row<CorpusNote>().With(n => n.Id, a).With(n => n.Payload, document), [n => n.Id], OnConflict.DoNothing));
 
-        run.Rec.Refusal(G, "dialect-json-value-order-without-a-sql-type", () => new PgDialect().JsonKeyComparableExpression("\"c\"", "@p0", (JsonValueOrder)9));
-        run.Rec.Refusal(G, "dialect-rank-without-options", () => new PgDialect().JsonKeyRankExpression("\"c\"", "@p0", []));
-
         run.Rec.Refusal(G, "enum-read-of-an-unknown-stored-value", () => ReadEnum("Bogus"));
         run.Rec.Refusal(G, "enum-read-of-a-blank-stored-value", () => ReadEnum("  "));
         run.Rec.Text(G, "enum-try-parse-exact-table", () =>
@@ -156,18 +154,18 @@ internal static class RefusalCases
             return CorpusFormat.Lines(lines);
         });
 
-        run.Rec.Refusal(G, "migration-without-a-down-override", () => new NoDownMigration().Down(new MigrationBuilder()));
-        run.Rec.Refusal(G, "migration-builder-delete-data-without-values", () => new MigrationBuilder().DeleteData("t", "c"));
+        run.Rec.Refusal(G, "migration-without-a-down-override", () => new NoDownMigration().Down(new MigrationBuilder(PostgresProvider.Instance)));
+        run.Rec.Refusal(G, "migration-builder-delete-data-without-values", () => new MigrationBuilder(PostgresProvider.Instance).DeleteData("t", "c"));
         run.Rec.Refusal(G, "migration-builder-insert-data-without-rows",
-            () => new MigrationBuilder().InsertData("t", ["c"]));
+            () => new MigrationBuilder(PostgresProvider.Instance).InsertData("t", ["c"]));
         run.Rec.Refusal(G, "migration-builder-insert-data-without-columns",
-            () => new MigrationBuilder().InsertData("t", Array.Empty<string>(), new object?[0]));
+            () => new MigrationBuilder(PostgresProvider.Instance).InsertData("t", Array.Empty<string>(), new object?[0]));
         run.Rec.Refusal(G, "migration-builder-delete-data-with-a-null-value",
-            () => new MigrationBuilder().DeleteData("t", "c", "x", null));
+            () => new MigrationBuilder(PostgresProvider.Instance).DeleteData("t", "c", "x", null));
         run.Rec.Refusal(G, "ddl-literal-non-finite-number",
-            () => new MigrationBuilder().InsertData("t", ["c"], [double.NaN]));
+            () => new MigrationBuilder(PostgresProvider.Instance).InsertData("t", ["c"], [double.NaN]));
         run.Rec.Refusal(G, "ddl-literal-unsupported-type",
-            () => new MigrationBuilder().InsertData("t", ["c"], [TimeSpan.FromSeconds(1)]));
+            () => new MigrationBuilder(PostgresProvider.Instance).InsertData("t", ["c"], [TimeSpan.FromSeconds(1)]));
         var huge = long.MaxValue;
         run.Rec.Refusal(G, "where-closure-checked-overflow",
             () => run.Q<CorpusNote>().Where(n => n.Rank == checked((int)huge)));

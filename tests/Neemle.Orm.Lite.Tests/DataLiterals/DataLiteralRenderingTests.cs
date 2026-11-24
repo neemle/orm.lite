@@ -9,11 +9,7 @@ public sealed class DataLiteralRenderingTests
 {
     private const string Moment = "yyyy-MM-dd'T'HH:mm:ss.fffffff'Z'";
 
-    private static readonly Func<MigrationBuilder>[] Builders =
-    [
-        () => new MigrationBuilder(PostgresProvider.Instance),
-        () => new MigrationBuilder(SqliteProvider.Instance),
-    ];
+    private static readonly ISqlProvider[] Providers = [PostgresProvider.Instance, SqliteProvider.Instance];
 
     private enum Mood
     {
@@ -26,16 +22,16 @@ public sealed class DataLiteralRenderingTests
     private static void Renders(string postgres, string sqlite, object? value)
     {
         string[] literals = [postgres, sqlite];
-        for (var i = 0; i < Builders.Length; i++)
+        for (var i = 0; i < Providers.Length; i++)
         {
-            var make = Builders[i];
+            var provider = Providers[i];
             Assert.Equal(
                 $"INSERT INTO \"t\" (\"c\") VALUES ({literals[i]})",
-                Assert.Single(make().InsertData("t", ["c"], [value]).Operations));
+                Assert.Single(new MigrationBuilder(provider).InsertData("t", ["c"], [value]).Render(provider)));
             if (value is null) continue;
             Assert.Equal(
                 $"DELETE FROM \"t\" WHERE \"c\" IN ({literals[i]})",
-                Assert.Single(make().DeleteData("t", "c", value).Operations));
+                Assert.Single(new MigrationBuilder(provider).DeleteData("t", "c", value).Render(provider)));
         }
     }
 

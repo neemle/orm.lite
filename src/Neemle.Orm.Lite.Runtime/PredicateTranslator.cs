@@ -155,9 +155,9 @@ namespace Neemle.Orm.Lite;
 
         private Node TranslateAnyOf(MethodCallExpression mc)
         {
-            if (!_state.Allows(Capability.ArrayParameter, d => d.SupportsArrayParameter))
+            if (!_state.Allows(Capability.ArrayParameter))
                 throw _state.Refusal(Capability.ArrayParameter, "Db.AnyOf",
-                    $"{_state.DialectName} has no array parameter; express this as Contains, "
+                    $"{_state.ProviderName} has no array parameter; express this as Contains, "
                     + "which expands to one placeholder per element.");
             if (!IsColumn(mc.Arguments[0]))
                 throw new NotSupportedException(
@@ -174,9 +174,9 @@ namespace Neemle.Orm.Lite;
 
         private Node TranslateNullSafeEquals(MethodCallExpression mc)
         {
-            if (!_state.Allows(Capability.NullSafeEquality, d => d.SupportsNullSafeEquality))
+            if (!_state.Allows(Capability.NullSafeEquality))
                 throw _state.Refusal(Capability.NullSafeEquality, "Db.NullSafeEquals",
-                    $"{_state.DialectName} has no null-safe equality; rewriting it as = would silently stop "
+                    $"{_state.ProviderName} has no null-safe equality; rewriting it as = would silently stop "
                     + "matching NULL scopes.");
             if (!IsColumn(mc.Arguments[0]))
                 throw new NotSupportedException(
@@ -199,7 +199,7 @@ namespace Neemle.Orm.Lite;
 
         private Node TranslateJsonKeyEquals(MethodCallExpression mc)
         {
-            _state.RequireJsonDocumentDialect("filter on a key inside a JSON document");
+            _state.RequireJsonDocument("filter on a key inside a JSON document");
             if (!IsColumn(mc.Arguments[0]))
                 throw new NotSupportedException(
                     "Db.JsonKeyEquals's first argument must be a column of the entity being queried.");
@@ -230,7 +230,7 @@ namespace Neemle.Orm.Lite;
 
         private Node MovedFieldResolved(MethodCallExpression mc)
         {
-            _state.RequireJsonDocumentDialect("resolve a moved field against a JSON document");
+            _state.RequireJsonDocument("resolve a moved field against a JSON document");
             if (!IsColumn(mc.Arguments[0]))
                 throw new NotSupportedException(
                     "Db." + mc.Method.Name + "'s document argument must be the JSON document column of the "
@@ -270,7 +270,7 @@ namespace Neemle.Orm.Lite;
 
         private Node TranslateJsonHasKey(MethodCallExpression mc)
         {
-            _state.RequireJsonDocumentDialect("test for a key inside a JSON document");
+            _state.RequireJsonDocument("test for a key inside a JSON document");
             if (!IsColumn(mc.Arguments[0]))
                 throw new NotSupportedException(
                     "Db.JsonHasKey's first argument must be a column of the entity being queried.");
@@ -282,7 +282,7 @@ namespace Neemle.Orm.Lite;
 
         private Node TranslateJsonArrayContainsString(MethodCallExpression mc)
         {
-            _state.RequireJsonDocumentDialect("test array membership inside a JSON document");
+            _state.RequireJsonDocument("test array membership inside a JSON document");
             if (!IsColumn(mc.Arguments[0]))
                 throw new NotSupportedException(
                     "Db.JsonArrayContainsString's first argument must be a column of the entity being queried.");
@@ -292,8 +292,8 @@ namespace Neemle.Orm.Lite;
                 ?? throw new ArgumentNullException(
                     "value",
                     "Db.JsonArrayContainsString tests for exact-string array membership, and a null value "
-                    + "would bind SQL NULL -- jsonb_exists against a NULL argument matches no row at all "
-                    + "rather than refusing.");
+                    + "would bind SQL NULL -- a JSON array-membership test against a NULL argument matches no "
+                    + "row at all rather than refusing.");
             var document = Col((MemberExpression)Unwrap(mc.Arguments[0]));
             var keyParameter = _state.Bind(key);
             var valueParameter = _state.Bind(value);
@@ -302,7 +302,7 @@ namespace Neemle.Orm.Lite;
 
         private Node TranslateJsonArrayContainsAny(MethodCallExpression mc)
         {
-            _state.RequireJsonDocumentDialect("test array membership inside a JSON document");
+            _state.RequireJsonDocument("test array membership inside a JSON document");
             if (!IsColumn(mc.Arguments[0]))
                 throw new NotSupportedException(
                     "Db.JsonArrayContainsAny's first argument must be a column of the entity being queried.");

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -10,9 +11,9 @@ public sealed class JsonArrayContainsAnyTests
     static JsonArrayContainsAnyTests() =>
         OrmMeta.Register<FixtureDocument>("fixture_documents", Col, ["id", "payload", "label"]);
 
-    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), PostgresProvider.Instance);
 
-    private static OrmContext Sqlite() => TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
+    private static OrmContext Sqlite() => TestContext.Of(new NeverUsedDataSource(), FixtureProvider.Instance);
 
     private static Query<FixtureDocument> On(OrmContext ctx) =>
         new(ctx, _ => throw new NotSupportedException("no rows are read here"));
@@ -52,21 +53,14 @@ public sealed class JsonArrayContainsAnyTests
         Assert.Equal(2, triple.Split(" OR ").Length - 1);
     }
 
-    [Fact(DisplayName = "a dialect with no JSON document type refuses the predicate by name, and the dialect member itself refuses rather than falling back")]
+    [Fact(DisplayName = "a dialect with no JSON document type refuses the predicate by name")]
     public void A_dialect_without_json_refuses_by_name()
     {
         IReadOnlyList<string> values = ["urgent"];
 
-        var refusal = Assert.Throws<NotSupportedException>(
+        var refusal = Assert.ThrowsAny<NotSupportedException>(
             () => On(Sqlite()).Where(d => Db.JsonArrayContainsAny(d.Payload, "tags", values)));
-        Assert.Contains("SqliteDialect", refusal.Message, StringComparison.Ordinal);
-
-        ISqlDialect sqlite = new SqliteDialect();
-        Assert.Contains(
-            "jsonb array-membership",
-            Assert.Throws<NotSupportedException>(
-                () => sqlite.JsonArrayContainsAnyExpression("\"payload\"", "@p0", ["@p1"])).Message,
-            StringComparison.Ordinal);
+        Assert.Contains("provider 'fixture'", refusal.Message, StringComparison.Ordinal);
     }
 
     [Fact(DisplayName = "the predicate refuses a first argument that is not a column, a null key, and a missing, empty or null-bearing value list")]

@@ -30,7 +30,7 @@ public sealed class BindOrderTests : IAsyncLifetime
         await SeedAsync(Bravo, "bravo", 20);
 
         OrmMeta.Register<FixtureWidget>("fixture_widgets", Col, new[] { "id", "name", "rank" });
-        _ctx = TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
+        _ctx = TestContext.Of(new NeverUsedDataSource(), FixtureProvider.Instance);
     }
 
     public async Task DisposeAsync() => await _connection.DisposeAsync();

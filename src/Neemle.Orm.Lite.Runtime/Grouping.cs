@@ -109,9 +109,10 @@ namespace Neemle.Orm.Lite;
         [RequiresCapability(Capability.AggregateFilter)]
         public AggregateRef<long> CountWhere(Expression<Func<T, bool>> filter)
         {
-            if (!_host.State.Allows(Capability.AggregateFilter, d => d.SupportsAggregateFilter))
+            if (!_host.State.Allows(Capability.AggregateFilter))
                 throw _host.State.Refusal(Capability.AggregateFilter, "CountWhere",
-                    $"{_host.State.DialectName} has no FILTER aggregate; a second statement would read a different snapshot.");
+                    $"{_host.State.ProviderName} has no FILTER aggregate; "
+                    + "a second statement would read a different snapshot.");
             return Add<long>(new CountFiltered(
                 new Group(_host.Translator.Predicate(filter.Parameters[0], filter.Body))));
         }

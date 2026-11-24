@@ -34,7 +34,7 @@ public sealed class WriteTreeTests
     private static Query<T> Of<T>(CapturingProvider capture) where T : class
     {
         CorpusWorld.Ensure();
-        return new Query<T>(new OrmContext(new UnreachableDataSource(), capture, new PgDialect()), _ => throw new NotSupportedException("no rows are read here"));
+        return new Query<T>(new OrmContext(new UnreachableDataSource(), capture), _ => throw new NotSupportedException("no rows are read here"));
     }
 
     private static ColumnRef Col(string name, Node? owner = null) => new(name, owner);

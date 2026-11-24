@@ -31,22 +31,22 @@ internal static class RowHistoryCases
             RowHistoryDdl.DeleteTrigger,
             OrmLiteSettings.DefaultActorSetting,
             OrmLiteSettings.ActorSetting,
-            OrmLiteSettings.StampStatement,
-            DbActor.StampStatement,
+            Neemle.Orm.Lite.Postgres.PostgresActorStamp.Statement,
+            Neemle.Orm.Lite.Postgres.PostgresActorStamp.Statement,
         ]));
-        rec.Statements(G, "ddl-preamble-under-the-default-actor-setting", () => RowHistoryDdl.PreambleFor(DefaultActor));
-        rec.Text(G, "ddl-capture-function-under-the-default-actor-setting", () => RowHistoryDdl.FunctionSqlFor(DefaultActor) + "\n");
-        rec.Text(G, "ddl-capture-function-under-a-custom-actor-setting", () => RowHistoryDdl.FunctionSqlFor("app.actor") + "\n");
-        rec.Statements(G, "ddl-reconcile-without-tables", () => RowHistoryDdl.ReconcileFor(DefaultActor, []));
-        rec.Statements(G, "ddl-reconcile-tenant-table", () => RowHistoryDdl.ReconcileFor(DefaultActor, [tenantTable]).Skip(RowHistoryDdl.PreambleFor(DefaultActor).Length));
-        rec.Statements(G, "ddl-reconcile-platform-table", () => RowHistoryDdl.ReconcileFor(DefaultActor, [platformTable]).Skip(RowHistoryDdl.PreambleFor(DefaultActor).Length));
-        rec.Statements(G, "ddl-reconcile-tenant-is-key-table-with-unversioned-columns", () => RowHistoryDdl.ReconcileFor(DefaultActor, [plainTable]).Skip(RowHistoryDdl.PreambleFor(DefaultActor).Length));
-        rec.Statements(G, "ddl-reconcile-several-tables-keep-their-order", () => RowHistoryDdl.ReconcileFor(DefaultActor, [platformTable, tenantTable, plainTable]).Skip(RowHistoryDdl.PreambleFor(DefaultActor).Length));
-        rec.Statements(G, "ddl-reconcile-public-entry-point", () => RowHistoryDdl.Reconcile([tenantTable]).Skip(RowHistoryDdl.PreambleFor(DefaultActor).Length));
-        rec.Refusal(G, "ddl-reconcile-table-not-an-identifier", () => RowHistoryDdl.Reconcile([new RowHistoryTable("Bad Table", "id", "deleted_at", "", [])]));
-        rec.Refusal(G, "ddl-reconcile-tenant-not-an-identifier", () => RowHistoryDdl.Reconcile([new RowHistoryTable("t", "id", "deleted_at", "Tenant", [])]));
-        rec.Refusal(G, "ddl-reconcile-unversioned-not-an-identifier", () => RowHistoryDdl.Reconcile([new RowHistoryTable("t", "id", "deleted_at", "", ["x y"])]));
-        rec.Refusal(G, "ddl-function-with-an-invalid-actor-setting", () => RowHistoryDdl.FunctionSqlFor("Bad"));
+        rec.Statements(G, "ddl-preamble-under-the-default-actor-setting", () => RowHistoryDdl.PreambleFor(Pg, DefaultActor));
+        rec.Text(G, "ddl-capture-function-under-the-default-actor-setting", () => RowHistoryDdl.FunctionSqlFor(Pg, DefaultActor) + "\n");
+        rec.Text(G, "ddl-capture-function-under-a-custom-actor-setting", () => RowHistoryDdl.FunctionSqlFor(Pg, "app.actor") + "\n");
+        rec.Statements(G, "ddl-reconcile-without-tables", () => RowHistoryDdl.ReconcileFor(Pg, DefaultActor, []));
+        rec.Statements(G, "ddl-reconcile-tenant-table", () => RowHistoryDdl.ReconcileFor(Pg, DefaultActor, [tenantTable]).Skip(RowHistoryDdl.PreambleFor(Pg, DefaultActor).Length));
+        rec.Statements(G, "ddl-reconcile-platform-table", () => RowHistoryDdl.ReconcileFor(Pg, DefaultActor, [platformTable]).Skip(RowHistoryDdl.PreambleFor(Pg, DefaultActor).Length));
+        rec.Statements(G, "ddl-reconcile-tenant-is-key-table-with-unversioned-columns", () => RowHistoryDdl.ReconcileFor(Pg, DefaultActor, [plainTable]).Skip(RowHistoryDdl.PreambleFor(Pg, DefaultActor).Length));
+        rec.Statements(G, "ddl-reconcile-several-tables-keep-their-order", () => RowHistoryDdl.ReconcileFor(Pg, DefaultActor, [platformTable, tenantTable, plainTable]).Skip(RowHistoryDdl.PreambleFor(Pg, DefaultActor).Length));
+        rec.Statements(G, "ddl-reconcile-public-entry-point", () => RowHistoryDdl.Reconcile(Pg, [tenantTable]).Skip(RowHistoryDdl.PreambleFor(Pg, DefaultActor).Length));
+        rec.Refusal(G, "ddl-reconcile-table-not-an-identifier", () => RowHistoryDdl.Reconcile(Pg, [new RowHistoryTable("Bad Table", "id", "deleted_at", "", [])]));
+        rec.Refusal(G, "ddl-reconcile-tenant-not-an-identifier", () => RowHistoryDdl.Reconcile(Pg, [new RowHistoryTable("t", "id", "deleted_at", "Tenant", [])]));
+        rec.Refusal(G, "ddl-reconcile-unversioned-not-an-identifier", () => RowHistoryDdl.Reconcile(Pg, [new RowHistoryTable("t", "id", "deleted_at", "", ["x y"])]));
+        rec.Refusal(G, "ddl-function-with-an-invalid-actor-setting", () => RowHistoryDdl.FunctionSqlFor(Pg, "Bad"));
 
         rec.Text(G, "read-state-sql-without-tenant", () => RowHistoryRead.RenderStateSql(Pg, "corpus_platform_items", "id", []) + "\n");
         rec.Text(G, "read-state-sql-with-tenant-and-unversioned", () => RowHistoryRead.RenderStateSql(Pg, "corpus_tasks", "id", ["updated_at", "doc"], "tenant_id") + "\n");
@@ -119,7 +119,7 @@ internal static class RowHistoryCases
         ]));
         rec.Text(H, "set-hash-equals-statements-hash-of-reconcile", () =>
         {
-            var statements = RowHistoryDdl.Reconcile([tenantTable]);
+            var statements = RowHistoryDdl.Reconcile(Pg, [tenantTable]);
             return CorpusFormat.Lines([RowHistoryDdl.SetHash([tenantTable]) + " == " + RowHistoryDdl.StatementsHash(statements) + " : " + (RowHistoryDdl.SetHash([tenantTable]) == RowHistoryDdl.StatementsHash(statements))]);
         });
     }

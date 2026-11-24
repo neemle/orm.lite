@@ -1,4 +1,5 @@
 using Neemle.Orm.Lite;
+using Neemle.Orm.Lite.Postgres;
 using Xunit;
 
 namespace Neemle.Orm.Lite.Tests.Settings;
@@ -22,8 +23,7 @@ public sealed class OrmLiteSettingsTests
         OrmLiteSettings.UseActorSetting("probe.actor");
 
         Assert.Equal("probe.actor", OrmLiteSettings.ActorSetting);
-        Assert.Equal("SELECT set_config('probe.actor', @v, false)", OrmLiteSettings.StampStatement);
-        Assert.Equal(OrmLiteSettings.StampStatement, DbActor.StampStatement);
+        Assert.Equal("SELECT set_config('probe.actor', @v, false)", PostgresActorStamp.Statement);
     }
 
     [Fact(DisplayName = "OrmLiteSettings accepts the same name registered twice")]

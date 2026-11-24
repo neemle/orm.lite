@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests.SoftDelete.Render;
 
@@ -115,7 +116,7 @@ public sealed class SoftDeleteRootRenderTests
         Assert.Empty(method.GetParameters());
     }
 
-    private static OrmContext Context() => TestContext.Of(new NeverUsedDataSource(), new PgDialect());
+    private static OrmContext Context() => TestContext.Of(new NeverUsedDataSource(), PostgresProvider.Instance);
 
     private static Query<SoftRow> Soft() => new(Context(), _ => throw new NotSupportedException());
 

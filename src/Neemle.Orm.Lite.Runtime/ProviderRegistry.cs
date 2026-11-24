@@ -16,8 +16,6 @@ public interface IProviderFactory
 
 public static class ProviderRegistry
 {
-    public const string PostgresId = "postgres";
-
     private static readonly ConcurrentDictionary<string, ISqlProvider> Providers =
         new(StringComparer.OrdinalIgnoreCase);
 

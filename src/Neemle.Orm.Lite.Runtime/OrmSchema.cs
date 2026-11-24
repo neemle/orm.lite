@@ -52,9 +52,11 @@ public sealed class OrmSchema
 
     public Node Reconcile() => new ReconcileIndexes(NodeList.Of(Entities.SelectMany(EntityStatements.ReconcileIndexes)));
 
-    public string IndexSetHash => IndexSetHashWith(ProviderRegistry.Find(ProviderRegistry.PostgresId));
-
-    internal string IndexSetHashWith(ISqlProvider? legacy) => StableHash(IdentityOfIndexes(legacy));
+    // The identity of the declared index set: a hash of the declarations themselves (table, name, uniqueness, live
+    // column, columns and shape), never of rendered text. It names the reconcile version, so it is the same whichever
+    // providers are loaded; a database that carries the name built from rendered text runs the renamed reconcile once,
+    // which is idempotent, and records the new version beside the old one.
+    public string IndexSetHash => StableHash(IdentityOfIndexes());
 
     public MigrationContribution[] Contributions(params MigrationContribution[] migrations)
     {
@@ -82,12 +84,17 @@ public sealed class OrmSchema
         return all.ToArray();
     }
 
-    private IEnumerable<string> IdentityOfIndexes(ISqlProvider? legacy)
-    {
-        if (legacy is not null)
-            return DdlCompiler.Render(Indexes(), legacy);
-        return Entities.Where(e => e.Managed).SelectMany(e => e.Indexes.Select(i => string.Join("|", e.Table, i.Name, i.Unique ? "unique" : "plain", i.LiveOnly && e.Soft is not null ? e.Soft.Column : "", string.Join(",", i.Columns)) + i.Shape));
-    }
+    private IEnumerable<string> IdentityOfIndexes() =>
+        Entities.Where(e => e.Managed).SelectMany(e => e.Indexes.Select(i => IdentityOf(e, i)));
+
+    private static string IdentityOf(EntityDescriptor entity, IndexDescriptor index) =>
+        string.Join(
+            "|",
+            entity.Table,
+            index.Name,
+            index.Unique ? "unique" : "plain",
+            index.LiveOnly && entity.Soft is not null ? entity.Soft.Column : "",
+            string.Join(",", index.Columns)) + index.Shape;
 
     public static string StableHash(IEnumerable<string> statements)
     {

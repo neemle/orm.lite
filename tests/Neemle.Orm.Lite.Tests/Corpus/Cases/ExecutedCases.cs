@@ -21,7 +21,10 @@ internal static class ExecutedCases
             var rules = new RecordingScript();
             script?.Invoke(rules);
             var source = new RecordingDataSource(log, "primary", rules);
-            var ctx = new OrmContext(source, PostgresProvider.Instance, new RecordingDialect(run.Rec.Touch, maxBind));
+            ISqlProvider provider = maxBind is { } limit
+                ? new BindLimitProvider(PostgresProvider.Instance, limit)
+                : PostgresProvider.Instance;
+            var ctx = new OrmContext(source, provider);
             string outcome;
             try
             {
@@ -233,9 +236,9 @@ internal static class ExecutedCases
             async e =>
             {
                 await using var connection = await e.Source.OpenConnectionAsync();
-                await DbActor.StampAsync(connection, DbActorValue.User(a));
-                await DbActor.StampAsync(connection, DbActorValue.System);
-                return DbActor.StampStatement;
+                await PostgresProvider.Instance.StampActorAsync(connection, DbActorValue.User(a), CancellationToken.None);
+                await PostgresProvider.Instance.StampActorAsync(connection, DbActorValue.System, CancellationToken.None);
+                return PostgresActorStamp.Statement;
             });
         Exec(run, "gated-data-source-lanes-and-actor-stamp", null, async e =>
         {

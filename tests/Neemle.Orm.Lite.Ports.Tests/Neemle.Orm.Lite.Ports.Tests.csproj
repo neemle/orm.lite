@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- The rails of the ports and adapters layout. This project sees the Runtime and Sql assemblies and nothing else:
+       no provider package, no driver. The provider under test (tests/Neemle.Orm.Lite.Ports.Tests/Fake) is built from
+       the public ports alone, so a test that passes here proves that the core runs a third provider without
+       PostgreSQL or SQLite being installed. A reference to any other project or package is a violation, and
+       tests/Neemle.Orm.Lite.Tests/Ports/CoreNeutralityTests.cs fails on it. The project is a test project: it is
+       not packed. The sources are written for a project without nullable annotations, because the ADO.NET base
+       classes of a fake driver are overridden with their own annotations. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsAotCompatible>false</IsAotCompatible>
+    <RootNamespace>Neemle.Orm.Lite.Ports.Tests</RootNamespace>
+    <AssemblyName>Neemle.Orm.Lite.Ports.Tests</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Neemle.Orm.Lite.Runtime/Neemle.Orm.Lite.Runtime.csproj" />
+    <ProjectReference Include="../../src/Neemle.Orm.Lite.Sql/Neemle.Orm.Lite.Sql.csproj" />
+  </ItemGroup>
+
+</Project>

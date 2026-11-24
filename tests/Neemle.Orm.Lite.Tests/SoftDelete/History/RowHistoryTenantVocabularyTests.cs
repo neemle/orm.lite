@@ -1,3 +1,4 @@
+using Neemle.Orm.Lite.Postgres;
 using Xunit;
 
 namespace Neemle.Orm.Lite.Tests.SoftDelete.History;
@@ -10,7 +11,7 @@ public sealed class RowHistoryTenantVocabularyTests
     [Fact(DisplayName = "the row_history table, its index and its trigger name the tenant column tenant_id")]
     public void The_history_schema_uses_the_tenant_vocabulary()
     {
-        var ddl = string.Join('\n', RowHistoryDdl.Preamble);
+        var ddl = string.Join('\n', RowHistoryDdl.Preamble(PostgresProvider.Instance));
 
         Assert.Contains("tenant_id uuid NULL", ddl, StringComparison.Ordinal);
         Assert.Contains("ix_row_history_tenant_xact", ddl, StringComparison.Ordinal);

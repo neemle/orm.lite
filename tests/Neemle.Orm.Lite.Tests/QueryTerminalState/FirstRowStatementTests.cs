@@ -14,7 +14,7 @@ public sealed class FirstRowStatementTests
     private static ISqlProvider Provider(string id) => id switch
     {
         "postgres" => PostgresProvider.Instance,
-        "sqlite" => TestContext.ProviderFor(new SqliteDialect()),
+        "sqlite" => FixtureProvider.Instance,
         "sqlite-real" => SqliteProvider.Instance,
         _ => throw new ArgumentOutOfRangeException(nameof(id), id, "unknown provider"),
     };

@@ -18,8 +18,6 @@ public static class OrmLiteSettings
 
     public static string ActorSetting => Frozen().Name;
 
-    public static string StampStatement => Frozen().Stamp;
-
     public static void UseActorSetting(string name)
     {
         Validate(name);
@@ -89,7 +87,5 @@ public static class OrmLiteSettings
     private sealed class State(string name)
     {
         public string Name { get; } = name;
-
-        public string Stamp { get; } = "SELECT set_config('" + name + "', @v, false)";
     }
 }

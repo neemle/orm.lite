@@ -13,8 +13,11 @@ public sealed class DownProviderTests
     {
         public override void Up(MigrationBuilder b)
         {
-            b.CreateTable("t", t => t.Column("id", ColumnType.Uuid, false, true));
-            Replayed.Add(b.Operations[0]);
+            b.CreateTable("t", t =>
+            {
+                t.Column("id", ColumnType.Uuid, false, true);
+                Replayed.Add(t.Render());
+            });
         }
     }
 

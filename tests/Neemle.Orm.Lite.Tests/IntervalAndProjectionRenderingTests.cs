@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -23,10 +24,10 @@ public class IntervalAndProjectionRenderingTests
     private static string Col(string property) => property.ToLowerInvariant();
 
     private static Query<Lease> Leases() =>
-        new(TestContext.Of(new NeverUsedDataSource(), new PgDialect()), _ => throw new NotSupportedException());
+        new(TestContext.Of(new NeverUsedDataSource(), PostgresProvider.Instance), _ => throw new NotSupportedException());
 
     private static Query<Lease> SqliteLeases() =>
-        new(TestContext.Of(new NeverUsedDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
+        new(TestContext.Of(new NeverUsedDataSource(), FixtureProvider.Instance), _ => throw new NotSupportedException());
 
     [Fact(DisplayName = "SetNowPlusMinutes offsets the DATABASE clock by a BOUND minute count, so a lease expiry is minted by the same server that later compares it against now()")]
     public void SetNowPlusMinutes_offsets_the_database_clock()
@@ -49,10 +50,10 @@ public class IntervalAndProjectionRenderingTests
     [Fact(DisplayName = "a dialect without interval arithmetic refuses SetNowPlusMinutes BY NAME rather than emitting PostgreSQL text at a server that cannot parse it")]
     public void A_dialect_without_interval_arithmetic_refuses_by_name()
     {
-        var ex = Assert.Throws<NotSupportedException>(
+        var ex = Assert.ThrowsAny<NotSupportedException>(
             () => SqliteLeases().SetNowPlusMinutes(l => l.ExpiresAt, 30));
 
-        Assert.Contains("SqliteDialect", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("provider 'fixture'", ex.Message, StringComparison.Ordinal);
         Assert.Contains("interval arithmetic", ex.Message, StringComparison.Ordinal);
     }
 
@@ -147,7 +148,7 @@ public class IntervalAndProjectionRenderingTests
     public void Rendering_opens_no_connection()
     {
         var source = new NeverUsedDataSource();
-        var ctx = TestContext.Of(source, new PgDialect());
+        var ctx = TestContext.Of(source, PostgresProvider.Instance);
 
         var update = "";
         var projection = "";

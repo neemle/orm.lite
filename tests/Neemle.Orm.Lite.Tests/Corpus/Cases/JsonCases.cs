@@ -63,7 +63,5 @@ internal static class JsonCases
             var q = run.Q<CorpusNote>().SetJsonMerge(n => n.Meta, Jsonb.Parse("{\"a\":1}")).Where(n => n.Id == a);
             return CorpusRun.Read(q, q.CompileUpdateReturning([n => n.Meta]), q.RenderUpdateReturning([n => n.Meta]));
         });
-
-        run.Rec.Text(G, "jsonb-default-document-and-column-type", () => CorpusFormat.Lines([Jsonb.ColumnType, Jsonb.EmptyDocumentDefaultSql]));
     }
 }

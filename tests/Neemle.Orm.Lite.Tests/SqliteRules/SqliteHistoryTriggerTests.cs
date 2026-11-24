@@ -340,18 +340,21 @@ public sealed class SqliteHistoryTriggerTests
 
 public sealed class SqliteHistoryIdentityTests
 {
-    [Fact(DisplayName = "without the PostgreSQL provider the identity of a history set is a structural hash of its tables, stable for equal sets and different when a table, its key or its unversioned columns differ")]
-    public void The_identity_is_structural_without_postgres()
+    [Fact(DisplayName = "the identity of a history set is a structural hash of its tables, stable for equal sets and different when a table, its key or its unversioned columns differ, whichever providers are loaded")]
+    public void The_identity_is_structural()
     {
-        var plain = RowHistoryDdl.SetHashWith(null, HistoryWorld.Tables);
-        var other = RowHistoryDdl.SetHashWith(null, HistoryWorld.Tables.Select(t => t with { Unversioned = [.. t.Unversioned, "x"] }).ToList());
-        var renamed = RowHistoryDdl.SetHashWith(null, HistoryWorld.Tables.Select(t => t with { Table = t.Table + "_2" }).ToList());
+        var plain = RowHistoryDdl.SetHash(HistoryWorld.Tables);
+        var other = RowHistoryDdl.SetHash(HistoryWorld.Tables.Select(t => t with { Unversioned = [.. t.Unversioned, "x"] }).ToList());
+        var renamed = RowHistoryDdl.SetHash(HistoryWorld.Tables.Select(t => t with { Table = t.Table + "_2" }).ToList());
+        var structural = RowHistoryDdl.StatementsHash(HistoryWorld.Tables.Select(t => t.Table + "|" + RowHistoryDdl.ArgumentsHash(t)));
+        var rendered = RowHistoryDdl.StatementsHash(RowHistoryDdl.Reconcile(Postgres.PostgresProvider.Instance, HistoryWorld.Tables));
 
-        Assert.Equal(plain, RowHistoryDdl.SetHashWith(null, [.. HistoryWorld.Tables]));
+        Assert.Equal(plain, RowHistoryDdl.SetHash([.. HistoryWorld.Tables]));
         Assert.Equal(16, plain.Length);
+        Assert.Equal(structural, plain);
         Assert.NotEqual(plain, other);
         Assert.NotEqual(plain, renamed);
-        Assert.NotEqual(plain, RowHistoryDdl.SetHashWith(Postgres.PostgresProvider.Instance, HistoryWorld.Tables));
+        Assert.NotEqual(plain, rendered);
     }
 
     [Fact(DisplayName = "the history contribution of a schema carries its nodes, so a planned provider runs it through the planner and a statement provider renders it as before")]

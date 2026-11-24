@@ -1,8 +1,6 @@
 #nullable enable
 using System;
-using System.Data.Common;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Neemle.Orm.Lite;
 
@@ -19,8 +17,6 @@ public sealed record DbActorValue
 
 public static class DbActor
 {
-    public static string StampStatement => OrmLiteSettings.StampStatement;
-
     private static readonly AsyncLocal<DbActorScope?> s_scope = new();
 
     internal static DbActorValue? Current
@@ -36,14 +32,6 @@ public static class DbActor
     public static IDisposable EnterUser(Guid userId) => Enter(DbActorValue.User(userId));
 
     public static IDisposable EnterSystem() => Enter(DbActorValue.System);
-
-    public static async Task StampAsync(DbConnection connection, DbActorValue value, CancellationToken ct = default)
-    {
-        await using var command = connection.CreateCommand();
-        command.CommandText = StampStatement;
-        command.AddParam("v", value.Stamp);
-        await command.ExecuteNonQueryAsync(ct);
-    }
 
     private static DbActorScope Enter(DbActorValue value)
     {

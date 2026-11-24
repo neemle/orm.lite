@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Neemle.Orm.Lite;
 using Microsoft.Data.Sqlite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -31,7 +32,7 @@ public sealed class EqualsIgnoreCaseTests : IAsyncLifetime
         await SeedAsync(Wildcard, "ab@example.test", 3);
 
         OrmMeta.Register<FixtureWidget>("fixture_widgets", Col, new[] { "id", "name", "rank" });
-        _ctx = TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
+        _ctx = TestContext.Of(new NeverUsedDataSource(), FixtureProvider.Instance);
     }
 
     public async Task DisposeAsync() => await _connection.DisposeAsync();
@@ -42,8 +43,8 @@ public sealed class EqualsIgnoreCaseTests : IAsyncLifetime
         var value = "A@Example.test";
         const string expected = "DELETE FROM \"fixture_widgets\" WHERE lower(\"name\") = lower(@p0)";
 
-        Assert.Equal(expected, Detached(new PgDialect()).Where(w => Db.EqualsIgnoreCase(w.Name, value)).RenderDelete());
-        Assert.Equal(expected, Detached(new SqliteDialect()).Where(w => Db.EqualsIgnoreCase(w.Name, value)).RenderDelete());
+        Assert.Equal(expected, Detached(PostgresProvider.Instance).Where(w => Db.EqualsIgnoreCase(w.Name, value)).RenderDelete());
+        Assert.Equal(expected, Detached(FixtureProvider.Instance).Where(w => Db.EqualsIgnoreCase(w.Name, value)).RenderDelete());
     }
 
     [Fact(DisplayName = "SANITIZATION PROBE — Db.EqualsIgnoreCase binds its value: a SQL fragment appears nowhere in the statement")]
@@ -51,7 +52,7 @@ public sealed class EqualsIgnoreCaseTests : IAsyncLifetime
     {
         var hostile = "x\") OR 1=1 --";
 
-        var sql = Detached(new PgDialect()).Where(w => Db.EqualsIgnoreCase(w.Name, hostile)).RenderDelete();
+        var sql = Detached(PostgresProvider.Instance).Where(w => Db.EqualsIgnoreCase(w.Name, hostile)).RenderDelete();
 
         Assert.Equal("DELETE FROM \"fixture_widgets\" WHERE lower(\"name\") = lower(@p0)", sql);
         Assert.DoesNotContain("OR 1=1", sql, StringComparison.Ordinal);
@@ -63,7 +64,7 @@ public sealed class EqualsIgnoreCaseTests : IAsyncLifetime
         var literal = "a@example.test";
 
         var refusal = Assert.Throws<NotSupportedException>(() =>
-            Detached(new PgDialect()).Where(w => Db.EqualsIgnoreCase(literal, w.Name)).RenderDelete());
+            Detached(PostgresProvider.Instance).Where(w => Db.EqualsIgnoreCase(literal, w.Name)).RenderDelete());
 
         Assert.Contains("Db.EqualsIgnoreCase", refusal.Message, StringComparison.Ordinal);
     }
@@ -94,8 +95,8 @@ public sealed class EqualsIgnoreCaseTests : IAsyncLifetime
         Assert.Empty(await Query().Where(w => Db.EqualsIgnoreCase(w.Name, none)).ToListAsync());
     }
 
-    private static Query<FixtureWidget> Detached(ISqlDialect dialect) =>
-        new(TestContext.Of(new NeverUsedDataSource(), dialect), _ => throw new NotSupportedException());
+    private static Query<FixtureWidget> Detached(ISqlProvider provider) =>
+        new(TestContext.Of(new NeverUsedDataSource(), provider), _ => throw new NotSupportedException());
 
     private Query<FixtureWidget> Query() => new Query<FixtureWidget>(_ctx, Map).On(_connection);
 

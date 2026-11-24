@@ -46,10 +46,12 @@ public sealed class ActorSettingTextTests
     {
         using var scope = ActorSettingScope.Fresh();
 
-        Assert.Equal(StampDefault, DbActor.StampStatement);
+        Assert.Equal(StampDefault, PostgresActorStamp.Statement);
         Assert.Equal(RefusalDefault, Refusal());
-        Assert.Contains(TriggerLineDefault, RowHistoryDdl.FunctionSqlFor(Default).Split('\n'));
-        Assert.Equal(RowHistoryDdl.ReconcileFor(Default, [Docs]), RowHistoryDdl.Reconcile([Docs]));
+        Assert.Contains(TriggerLineDefault, RowHistoryDdl.FunctionSqlFor(PostgresProvider.Instance, Default).Split('\n'));
+        Assert.Equal(
+            RowHistoryDdl.ReconcileFor(PostgresProvider.Instance, Default, [Docs]),
+            RowHistoryDdl.Reconcile(PostgresProvider.Instance, [Docs]));
     }
 
     [Fact(DisplayName = "under a registered name the stamp statement and the gate refusal change only at the setting name")]
@@ -58,17 +60,17 @@ public sealed class ActorSettingTextTests
         using var scope = ActorSettingScope.Fresh();
         OrmLiteSettings.UseActorSetting(Probe);
 
-        Assert.Equal(StampDefault.Replace(Default, Probe), DbActor.StampStatement);
+        Assert.Equal(StampDefault.Replace(Default, Probe), PostgresActorStamp.Statement);
         Assert.Equal(RefusalDefault.Replace(Default, Probe), Refusal());
     }
 
     [Fact(DisplayName = "the trigger function text carries the setting name exactly once and the reconcile outputs differ only there")]
     public void The_function_text_carries_the_name_once_and_the_outputs_differ_only_there()
     {
-        var baseline = RowHistoryDdl.ReconcileFor(Default, [Docs]);
-        var probe = RowHistoryDdl.ReconcileFor(Probe, [Docs]);
+        var baseline = RowHistoryDdl.ReconcileFor(PostgresProvider.Instance, Default, [Docs]);
+        var probe = RowHistoryDdl.ReconcileFor(PostgresProvider.Instance, Probe, [Docs]);
 
-        var function = RowHistoryDdl.FunctionSqlFor(Probe);
+        var function = RowHistoryDdl.FunctionSqlFor(PostgresProvider.Instance, Probe);
         Assert.Equal(1, function.Split(Probe).Length - 1);
         Assert.DoesNotContain(Default, function, StringComparison.Ordinal);
         Assert.Equal(baseline.Length, probe.Length);
@@ -82,7 +84,7 @@ public sealed class ActorSettingTextTests
     [Fact(DisplayName = "the trigger function text refuses a setting name that is not a lowercase dotted identifier")]
     public void The_function_text_refuses_an_invalid_name()
     {
-        Assert.Throws<ArgumentException>(() => RowHistoryDdl.FunctionSqlFor("x'); DROP TABLE t; --"));
-        Assert.Throws<ArgumentException>(() => RowHistoryDdl.ReconcileFor("NoDot", []));
+        Assert.Throws<ArgumentException>(() => RowHistoryDdl.FunctionSqlFor(PostgresProvider.Instance, "x'); DROP TABLE t; --"));
+        Assert.Throws<ArgumentException>(() => RowHistoryDdl.ReconcileFor(PostgresProvider.Instance, "NoDot", []));
     }
 }

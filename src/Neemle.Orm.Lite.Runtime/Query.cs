@@ -39,7 +39,7 @@ namespace Neemle.Orm.Lite;
             var meta = OrmMeta.Get(typeof(T));
             _db = db; _table = meta.Table; _map = map; _col = meta.Col;
             _live = OrmMeta.TryGetSoftDelete(typeof(T), out _softDelete);
-            _state = new RenderState(db.Dialect, db.Provider, _table, _col, _params);
+            _state = new RenderState(db.Provider, _table, _col, _params);
             _exec = new StatementExecutor(db.DataSource, _state);
             _select = new SelectClauses(_table);
             _translator = new PredicateTranslator(_state);

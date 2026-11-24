@@ -57,15 +57,4 @@ public sealed class LiveOnlyUpsertTargetTests
     [Fact(DisplayName = "AC8 a soft-delete registration with no LiveOnly index matches no target")]
     public void No_live_only_index_matches_nothing() =>
         Assert.False(new SoftDeleteMeta("DeletedAt").IsLiveOnlyTarget(["scope", "name"]));
-
-    [Fact(DisplayName = "AC8 PgDialect renders the target predicate between the conflict columns and the action, and only when given one")]
-    public void The_dialect_renders_the_predicate_in_the_conflict_target()
-    {
-        var pg = new PgDialect();
-
-        Assert.Equal(" ON CONFLICT (\"scope\", \"name\") WHERE \"deleted_at\" IS NULL DO NOTHING",
-            pg.ConflictClause(["scope", "name"], OnConflict.DoNothing, [], "docs", "\"deleted_at\" IS NULL"));
-        Assert.Equal(" ON CONFLICT (\"scope\", \"name\") DO NOTHING",
-            pg.ConflictClause(["scope", "name"], OnConflict.DoNothing, [], "docs"));
-    }
 }

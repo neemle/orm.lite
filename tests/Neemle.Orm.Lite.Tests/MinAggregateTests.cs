@@ -1,6 +1,7 @@
 using System;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -11,13 +12,13 @@ public class MinAggregateTests
         OrmMeta.Register<FixtureWidget>("fixture_widgets", property => property.ToLowerInvariant(), ["id", "name", "rank"]);
     }
 
-    private static Query<FixtureWidget> Widgets(ISqlDialect dialect) =>
-        new(TestContext.Of(new UnreachableDataSource(), dialect), _ => throw new NotSupportedException());
+    private static Query<FixtureWidget> Widgets(ISqlProvider provider) =>
+        new(TestContext.Of(new UnreachableDataSource(), provider), _ => throw new NotSupportedException());
 
     [Fact(DisplayName = "AggregateMin adds a min() term to the SAME single aggregate statement, after the terms already added, so a text value rides the same scan as the counts")]
     public void AggregateMin_joins_the_one_aggregate_statement()
     {
-        var sql = Widgets(new PgDialect()).Where(w => w.Rank == 1)
+        var sql = Widgets(PostgresProvider.Instance).Where(w => w.Rank == 1)
             .AggregateCount().AggregateCountDistinct(w => w.Name).AggregateMin(w => w.Name)
             .RenderAggregates();
 
@@ -31,5 +32,5 @@ public class MinAggregateTests
     public void The_sqlite_dialect_renders_min() =>
         Assert.Equal(
             "SELECT min(\"name\") FROM \"fixture_widgets\"",
-            Widgets(new SqliteDialect()).AggregateMin(w => w.Name).RenderAggregates());
+            Widgets(FixtureProvider.Instance).AggregateMin(w => w.Name).RenderAggregates());
 }

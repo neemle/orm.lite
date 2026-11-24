@@ -1,16 +1,17 @@
 using Neemle.Orm.Lite.Tests.Behaviour;
 using Neemle.Orm.Lite.Tests.Corpus;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests.QueryTerminalState;
 
 public sealed class FirstRowWireTests
 {
-    private static (Query<BehaveNote> Query, RecordingLog Log) Notes(ISqlDialect dialect)
+    private static (Query<BehaveNote> Query, RecordingLog Log) Notes(ISqlProvider provider)
     {
         BehaveWorld.Register();
         var log = new RecordingLog();
-        var context = TestContext.Of(new RecordingDataSource(log, "wire"), dialect);
+        var context = TestContext.Of(new RecordingDataSource(log, "wire"), provider);
         return (new Query<BehaveNote>(context, BehaveNote.Map), log);
     }
 
@@ -26,7 +27,7 @@ public sealed class FirstRowWireTests
         "FirstOrDefaultAsync and LIMIT 5 FOR UPDATE for ToListAsync, with the same columns and the same filter")]
     public async Task First_and_list_share_the_columns_and_differ_in_the_limit()
     {
-        var (query, log) = Notes(new PgDialect());
+        var (query, log) = Notes(PostgresProvider.Instance);
         query.Where(n => n.Stars > 0).Take(5).Redact(n => n.Doc).ForUpdate();
 
         Assert.Null(await query.FirstOrDefaultAsync());
@@ -45,7 +46,7 @@ public sealed class FirstRowWireTests
         "form")]
     public async Task The_key_preserving_lock_is_kept()
     {
-        var (query, log) = Notes(new PgDialect());
+        var (query, log) = Notes(PostgresProvider.Instance);
         query.Where(n => n.Stars > 0).ForNoKeyUpdate();
 
         await query.FirstOrDefaultAsync();
@@ -57,7 +58,7 @@ public sealed class FirstRowWireTests
         "same query is not limited")]
     public async Task First_twice_sends_one_statement_and_the_list_after_it_is_unlimited()
     {
-        var (query, log) = Notes(new SqliteDialect());
+        var (query, log) = Notes(FixtureProvider.Instance);
         query.Where(n => n.Stars > 0).OrderBy(n => n.Title);
 
         await query.FirstOrDefaultAsync();
@@ -74,7 +75,7 @@ public sealed class FirstRowWireTests
         "LIMIT 0")]
     public async Task Take_zero_is_kept_by_the_query()
     {
-        var (query, log) = Notes(new SqliteDialect());
+        var (query, log) = Notes(FixtureProvider.Instance);
         query.Where(n => n.Stars > 0).Take(0);
 
         await query.FirstOrDefaultAsync();
@@ -87,7 +88,7 @@ public sealed class FirstRowWireTests
         "soft-delete scope")]
     public async Task A_rendered_purge_does_not_widen_a_later_first_row_read()
     {
-        var (query, log) = Notes(new PgDialect());
+        var (query, log) = Notes(PostgresProvider.Instance);
         query.Where(n => n.Stars > 0);
 
         var purge = query.RenderPurge();

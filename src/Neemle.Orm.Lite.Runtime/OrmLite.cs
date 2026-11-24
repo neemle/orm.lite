@@ -17,7 +17,7 @@ public static class OrmLite
             var ops = Lane(factory, options, DbLaneKind.Ops, created);
             await factory.InitializeAsync(options, background, ct);
             var gated = new GatedDataSource(provider, request, background, ops, diagnostics);
-            return new OrmContext(gated, provider, null, created.Cast<IAsyncDisposable>().ToList());
+            return new OrmContext(gated, provider, created.Cast<IAsyncDisposable>().ToList());
         }
         catch
         {

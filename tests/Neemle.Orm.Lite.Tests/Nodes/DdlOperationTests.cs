@@ -14,7 +14,7 @@ public sealed class DdlOperationTests
 
     private static Node Only(MigrationBuilder builder) => Assert.Single(builder.Nodes);
 
-    private static string Text(MigrationBuilder builder) => Assert.Single(builder.Operations);
+    private static string Text(MigrationBuilder builder) => Assert.Single(builder.Render(PostgresProvider.Instance));
 
     [Fact(DisplayName = "every builder operation records exactly one node of its own type, and the node is data: two builders given the same calls hold equal trees")]
     public void Each_operation_records_one_node()
@@ -63,7 +63,7 @@ public sealed class DdlOperationTests
         Assert.Equal(new Node[] { new DropTable("a"), new DropTable("b"), new DropTable("c") }, builder.Nodes);
         Assert.Equal(
             new[] { "DROP TABLE IF EXISTS \"a\"", "DROP TABLE IF EXISTS \"b\"", "DROP TABLE IF EXISTS \"c\"" },
-            builder.Operations);
+            builder.Render(PostgresProvider.Instance));
     }
 
     [Fact(DisplayName = "typed columns render the PostgreSQL spelling of each column type and each default, with no SQL text supplied by the caller")]
@@ -150,14 +150,9 @@ public sealed class DdlOperationTests
         Assert.Empty(builder.Nodes);
     }
 
-    [Fact(DisplayName = "the legacy constructors render through the registered PostgreSQL provider, and name the missing package when none is registered")]
-    public void Legacy_constructors_resolve_the_registered_provider()
+    [Fact(DisplayName = "a provider that is not registered is refused with the name of the package that supplies it")]
+    public void A_missing_provider_names_its_package()
     {
-        var viaDialect = new MigrationBuilder(new PgDdlDialect()).DropTable("t");
-        var viaDefault = new MigrationBuilder().DropTable("t");
-
-        Assert.Equal(viaDialect.Operations, viaDefault.Operations);
-        Assert.Equal(viaDialect.Operations, viaDialect.Render(PostgresProvider.Instance));
         var error = Assert.Throws<InvalidOperationException>(() => ProviderRegistry.Require("oracle"));
         Assert.Equal("provider 'oracle' is not installed; add Neemle.Orm.Lite.Oracle and register its provider.", error.Message);
     }
@@ -165,7 +160,7 @@ public sealed class DdlOperationTests
     [Fact(DisplayName = "a table builder renders its columns as the comma-joined list the CREATE TABLE node wraps")]
     public void A_table_builder_renders_its_column_list()
     {
-        var table = new TableBuilder().Column("id", ColumnType.Uuid, false, true).Column("n", ColumnType.Int32, defaultValue: Defaults.Number(1));
+        var table = new TableBuilder(PostgresProvider.Instance).Column("id", ColumnType.Uuid, false, true).Column("n", ColumnType.Int32, defaultValue: Defaults.Number(1));
 
         Assert.Equal("\"id\" uuid NOT NULL PRIMARY KEY, \"n\" integer DEFAULT 1", table.Render());
         Assert.Equal(2, table.Columns.Count);
@@ -176,7 +171,7 @@ public sealed class DdlOperationTests
     {
         var scoped = Builder().Raw("sqlite", "PRAGMA x");
 
-        var error = Assert.Throws<InvalidOperationException>(() => scoped.Operations);
+        var error = Assert.Throws<InvalidOperationException>(() => scoped.Render(PostgresProvider.Instance));
 
         Assert.Equal("raw SQL is scoped to provider 'sqlite' and cannot run on provider 'postgres'.", error.Message);
         Assert.Equal("  SELECT 1 ", Text(Builder().Add(new RawSql(null, "  SELECT 1 "))));

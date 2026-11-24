@@ -25,7 +25,7 @@ namespace Neemle.Orm.Lite;
             if (slots > state.MaxBindParameters)
                 throw new NotSupportedException(
                     $"Contains over {list.Count} values needs {slots} bind parameters in this statement and "
-                    + $"{state.DialectName} binds at most {state.MaxBindParameters} in one. Nothing was executed. "
+                    + $"{state.ProviderName} binds at most {state.MaxBindParameters} in one. Nothing was executed. "
                     + "Split the list into smaller batches and run one statement for each.");
             return list;
         }

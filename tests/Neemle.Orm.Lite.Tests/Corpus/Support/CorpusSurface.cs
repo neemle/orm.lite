@@ -15,8 +15,6 @@ public static class CorpusSurface
         (typeof(UpsertSet), false),
         (typeof(Db), false),
         (typeof(LikePattern), false),
-        (typeof(PgDialect), false),
-        (typeof(PgDdlDialect), false),
         (typeof(MigrationBuilder), false),
         (typeof(TableBuilder), false),
         (typeof(Migration), false),
@@ -73,12 +71,25 @@ public static class CorpusSurface
         ["ConflictGuard.RequireDefined/1"] = "internal guard reached through Query.RenderUpsert; the message is pinned by refusals/upsert-with-an-undefined-conflict-action",
         ["ConflictGuard.RequireTarget/2"] = "internal guard reached through Query.RenderUpsert; the message is pinned by refusals/upsert-update-without-a-target",
         ["MigrationBuilder.Add/1"] = "appends an already built operation node; the nodes it receives are the ones the typed methods build, pinned by Nodes/DdlOperationTests",
-        ["MigrationBuilder.Render/1"] = "renders the recorded nodes for an explicit provider; the same compile path as Operations, pinned by Nodes/DdlOperationTests",
         ["MigrationBuilder.AddDecimalColumn/6"] = "typed decimal column; the corpus predates typed columns, text pinned by Nodes/DdlOperationTests",
         ["MigrationBuilder.DropForeignKey/2"] = "typed inverse of AddForeignKey added with the reversibility classifier, pinned by Nodes/MigrationReversibilityTests",
         ["TableBuilder.DecimalColumn/6"] = "typed decimal column; the corpus predates typed columns, text pinned by Nodes/DdlOperationTests",
-        ["RowHistoryDdl.get_Preamble/0"] = "property that replaced a static readonly field so no provider is needed at type initialisation; its text is pinned by row-history/ddl-preamble-under-the-default-actor-setting",
-        ["RowHistoryDdl.SetHashWith/2"] = "the legacy-or-structural identity beneath SetHash; the legacy form is pinned by hash/set-hash-vectors and the structural form by SqliteRules/SqliteHistoryIdentityTests",
+        ["LikePattern.EscapeLiteral/1"] =
+            "escape helper beneath every Contains, StartsWith and EndsWith predicate; its text is pinned by LikePatternTests",
+        ["LikePattern.Contains/1"] = "wraps EscapeLiteral in the percent signs of a LIKE pattern, pinned by LikePatternTests",
+        ["LikePattern.StartsWith/1"] = "appends the percent sign to EscapeLiteral, pinned by LikePatternTests",
+        ["LikePattern.EndsWith/1"] = "prepends the percent sign to EscapeLiteral, pinned by LikePatternTests",
+        ["DbExtensions.AddParam/3"] =
+            "converts a value to the ADO.NET parameter it binds and emits no statement; "
+            + "pinned by DbExtensionsAddParamTests",
+        ["UpsertSet.ToParam/2"] =
+            "data constructor of an upsert term; the term renders no text, "
+            + "the upsert text is pinned by the query-upsert entries",
+        ["UpsertSet.ToJsonDocumentParam/2"] =
+            "data constructor of an upsert term for a JSON document; the term renders no text, "
+            + "the upsert text is pinned by the query-upsert entries",
+        ["RowHistoryDdl.Preamble/1"] = "public form of PreambleFor under the library default actor setting, for the provider it is given; its text is pinned by row-history/ddl-preamble-under-the-default-actor-setting",
+        ["RowHistoryDdl.SetHash/2"] = "the form of SetHash that names the actor setting; under the library default it equals SetHash, which the hash/set-hash-vectors entry pins, and a custom setting is pinned by Ports.Tests/MigrationIdentityTests",
         ["RowHistoryDdl.Install/1"] ="node factory beneath Reconcile; the statements it lowers to are pinned by the row-history/ddl-reconcile-* entries",
     };
 
@@ -90,7 +101,6 @@ public static class CorpusSurface
     {
         var members = new List<SurfaceMember>();
         const BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
-        var dialectNames = typeof(ISqlDialect).GetMembers().Select(m => m.Name).ToHashSet(StringComparer.Ordinal);
         foreach (var (type, includeInternal) in Types)
         {
             var seen = new HashSet<string>(StringComparer.Ordinal);
@@ -103,7 +113,6 @@ public static class CorpusSurface
                 if (method.GetCustomAttribute<CompilerGeneratedAttribute>() is not null) continue;
                 if (method.IsSpecialName && !method.IsConstructor && !IsWantedAccessor(type, method)) continue;
                 if (method.Name is "Equals" or "GetHashCode" or "ToString" or "Deconstruct" or "PrintMembers" or "<Clone>$") continue;
-                if (type == typeof(PgDialect) && dialectNames.Contains(method.Name)) continue;
                 if (method.IsStatic && method.IsConstructor) continue;
                 if (method.IsConstructor && !method.IsPublic) continue;
                 var key = IlReferences.KeyOf(method);
@@ -122,11 +131,4 @@ public static class CorpusSurface
 
     public static string TypeName(Type type) =>
         type.Name.Contains('`') ? type.Name[..type.Name.IndexOf('`')] : type.Name;
-
-    public static IReadOnlyList<string> DialectMembers() =>
-        typeof(ISqlDialect).GetMembers()
-            .Select(m => m is MethodInfo { IsSpecialName: true } ? m.Name["get_".Length..] : m.Name)
-            .Distinct(StringComparer.Ordinal)
-            .OrderBy(n => n, StringComparer.Ordinal)
-            .ToList();
 }

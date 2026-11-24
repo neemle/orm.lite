@@ -19,7 +19,7 @@ public sealed class LiveOnlyGuardIndexGeneratorTests
         """CREATE UNIQUE INDEX IF NOT EXISTS "ix_live_only_scoped_scope_code" ON "live_only_scoped" ("scope", "code")""",
     ];
 
-    private const string IndexSetHashValue = "00366bb721fcbbe7";
+    private const string IndexSetHashValue = "0da43cf5d633a091";
 
     private const string LiveReconcileElement = """DO $reconcile$ BEGIN IF to_regclass('"live_only_scoped"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"live_only_scoped"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['scope', 'name', 'deleted_at'])) = 3 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_live_only_scoped_scope_name_live" ON "live_only_scoped" ("scope", "name") WHERE "deleted_at" IS NULL'; END IF; END $reconcile$""";
 

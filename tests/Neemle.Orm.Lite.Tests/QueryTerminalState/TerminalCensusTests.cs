@@ -1,6 +1,7 @@
 using Neemle.Orm.Lite.Tests.Behaviour;
 using Neemle.Orm.Lite.Tests.Corpus;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests.QueryTerminalState;
 
@@ -21,7 +22,7 @@ public sealed class TerminalCensusTests(SqliteFixture fixture) : IClassFixture<S
     [MemberData(nameof(TerminalCensus.PostgresRows), MemberType = typeof(TerminalCensus))]
     public async Task Postgres_terminals_leave_the_query_as_they_found_it(string name, bool paged)
     {
-        var context = TestContext.Of(new RecordingDataSource(new RecordingLog(), "census"), new PgDialect());
+        var context = TestContext.Of(new RecordingDataSource(new RecordingLog(), "census"), PostgresProvider.Instance);
 
         await AssertUnchangedAsync(context, name, paged);
     }
@@ -31,7 +32,7 @@ public sealed class TerminalCensusTests(SqliteFixture fixture) : IClassFixture<S
     [MemberData(nameof(TerminalCensus.LockedRows), MemberType = typeof(TerminalCensus))]
     public async Task A_row_lock_survives_the_row_reading_terminals(string name)
     {
-        var context = TestContext.Of(new RecordingDataSource(new RecordingLog(), "census-lock"), new PgDialect());
+        var context = TestContext.Of(new RecordingDataSource(new RecordingLog(), "census-lock"), PostgresProvider.Instance);
         var query = TerminalCensus.NewQuery(context, paged: true).ForUpdate();
         var before = TerminalCensus.Snapshot(query, paged: true);
 

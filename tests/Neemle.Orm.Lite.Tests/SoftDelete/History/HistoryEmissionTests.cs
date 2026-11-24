@@ -86,7 +86,7 @@ public sealed class HistoryEmissionTests
         Assert.Equal(Reversibility.Irreversible, history.Reversibility);
         Assert.Null(history.Down);
         Assert.Equal(HistoryPrefix + output.AssemblyName + "_" + RowHistoryDdl.SetHash(tables), history.Version);
-        Assert.Equal(RowHistoryDdl.Reconcile(tables), history.Render(PostgresProvider.Instance));
+        Assert.Equal(RowHistoryDdl.Reconcile(PostgresProvider.Instance, tables), history.Render(PostgresProvider.Instance));
     }
 
     [Fact(DisplayName = "TD3: a soft entity registers its key column, and a non-soft entity registers none")]

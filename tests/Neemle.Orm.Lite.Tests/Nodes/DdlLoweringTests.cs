@@ -187,7 +187,7 @@ public sealed class DdlLoweringTests
         Assert.Equal("SELECT pg_try_advisory_lock(@key)", lease.Text);
         Assert.Equal(new StatementParameter(0, "key", 727274L), Assert.Single(lease.Parameters));
         Assert.Equal("SELECT pg_advisory_unlock(@key)", StatementCompiler.Compile(AdvisorySessionLocks.Unlock(1), PostgresProvider.Instance, StatementKind.Read).Text);
-        Assert.Equal("SELECT pg_advisory_lock(727274)", StatementCompiler.Compile(MigrationRunner.LockMigrations(), PostgresProvider.Instance, StatementKind.Read).Text);
+        Assert.Equal("SELECT pg_advisory_lock(727274)", Assert.Single(new PostgresMigrationPlanner(PostgresProvider.Instance).PlanRun(PostgresProvider.Instance).Acquire).Text);
     }
 
     [Fact(DisplayName = "the named-constants class of the DDL text holds nothing but constants, and the history names it repeats equal the core names")]

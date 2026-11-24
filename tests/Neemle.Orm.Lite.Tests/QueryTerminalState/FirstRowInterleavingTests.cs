@@ -26,8 +26,7 @@ public sealed class FirstRowInterleavingTests(SqliteFixture fixture) : IClassFix
         var reached = new TaskCompletionSource();
         var gated = new OrmContext(
             new GatedReadDataSource(fixture.Context.DataSource, gate.Task, reached),
-            fixture.Context.Provider,
-            fixture.Context.Dialect);
+            fixture.Context.Provider);
         var query = new Query<BehaveNote>(gated, BehaveNote.Map)
             .Where(n => n.TenantId == tenant)
             .OrderBy(n => n.Stars);

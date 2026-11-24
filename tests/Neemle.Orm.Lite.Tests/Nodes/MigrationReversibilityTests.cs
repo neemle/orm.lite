@@ -48,7 +48,7 @@ public sealed class MigrationReversibilityTests
     {
         var b = new MigrationBuilder(PostgresProvider.Instance);
         m.Down(b);
-        return b.Operations;
+        return b.Render(PostgresProvider.Instance);
     }
 
     [Fact(DisplayName = "each operation node has one class: creates, additions, renames and conversions are Reversible, drops and deletes are Lossy, and raw SQL, inserts, history and locks are Unknown")]

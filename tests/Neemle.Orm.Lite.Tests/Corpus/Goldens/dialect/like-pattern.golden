@@ -1,9 +1,0 @@
-[0] Escape = ~
-[1] EscapeChar = ~
-[2] EscapeClause =  ESCAPE '~'
-[3] EscapeLiteral(empty) = ""
-[4] EscapeLiteral(plain) = "plain"
-[5] EscapeLiteral(special) = "a~%b~_c~~d"
-[6] Contains = "%a~%b%"
-[7] StartsWith = "a~_b%"
-[8] EndsWith = "%a~~b"

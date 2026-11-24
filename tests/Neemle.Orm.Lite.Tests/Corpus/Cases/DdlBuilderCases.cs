@@ -1,4 +1,5 @@
 using Neemle.Orm.Lite.Nodes;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests.Corpus.Cases;
 
@@ -35,9 +36,9 @@ internal static class DdlBuilderCases
 
     private static IReadOnlyList<string> Ops(Action<MigrationBuilder> build)
     {
-        var builder = new MigrationBuilder();
+        var builder = new MigrationBuilder(PostgresProvider.Instance);
         build(builder);
-        return builder.Operations;
+        return builder.Render(PostgresProvider.Instance);
     }
 
     private static void RegisterTables(CorpusRecorder rec)
@@ -163,13 +164,13 @@ internal static class DdlBuilderCases
     {
         rec.Statements(G, "views-in-dependency-order", () =>
         {
-            var builder = new MigrationBuilder();
+            var builder = new MigrationBuilder(PostgresProvider.Instance);
             var narrow = builder.From<CorpusNote>().AsView<CorpusNarrowView>(c => c.Column(v => v.Id, n => n.Id));
             var wide = builder.From<CorpusNarrowView>().AsView<CorpusView>(c => c
                 .Column(v => v.Id, n => n.Id).Column(v => v.Title, n => n.Id).Column(v => v.Rank, n => n.Id));
             builder.CreateViews(wide, narrow);
             builder.DropViews(wide, narrow);
-            return builder.Operations;
+            return builder.Render(PostgresProvider.Instance);
         });
     }
 
@@ -177,25 +178,27 @@ internal static class DdlBuilderCases
     {
         rec.Statements(G, "explicit-ddl-dialect-constructor", () =>
         {
-            var builder = new MigrationBuilder(new PgDdlDialect());
+            var builder = new MigrationBuilder(PostgresProvider.Instance);
             builder.CreateTable("t", _ => { }).DropTable("t");
-            return builder.Operations;
+            return builder.Render(PostgresProvider.Instance);
         });
         rec.Text(G, "table-builder-standalone-render", () =>
         {
-            var table = new TableBuilder().Column("id", ColumnType.Uuid, false, true)
+            var table = new TableBuilder(PostgresProvider.Instance).Column("id", ColumnType.Uuid, false, true)
                 .Column("x", ColumnType.Int32, true, false, Defaults.Number(1)).JsonbColumn("j", false);
-            var viaDialect = new TableBuilder(new PgDdlDialect()).Column("y", ColumnType.Text);
-            return CorpusFormat.Lines([table.Render(), viaDialect.Render(), new TableBuilder().Render()]);
+            var viaProvider = new TableBuilder(PostgresProvider.Instance).Column("y", ColumnType.Text);
+            return CorpusFormat.Lines(
+                [table.Render(), viaProvider.Render(), new TableBuilder(PostgresProvider.Instance).Render()]);
         });
         rec.Statements(G, "migration-up-and-down-bodies", () =>
         {
             Migration migration = new SampleMigration();
-            var up = new MigrationBuilder();
+            var up = new MigrationBuilder(PostgresProvider.Instance);
             migration.Up(up);
-            var down = new MigrationBuilder();
+            var down = new MigrationBuilder(PostgresProvider.Instance);
             migration.Down(down);
-            return up.Operations.Select(o => "up: " + o).Concat(down.Operations.Select(o => "down: " + o));
+            return up.Render(PostgresProvider.Instance).Select(o => "up: " + o)
+                .Concat(down.Render(PostgresProvider.Instance).Select(o => "down: " + o));
         });
     }
 }

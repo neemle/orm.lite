@@ -1,10 +1,7 @@
 src/Neemle.Orm.Lite.Runtime/ConflictGuard.cs|1
 src/Neemle.Orm.Lite.Runtime/ForeignKeyActionDdl.cs|1
-src/Neemle.Orm.Lite.Runtime/Jsonb.cs|1
 src/Neemle.Orm.Lite.Runtime/LikePattern.cs|1
-src/Neemle.Orm.Lite.Runtime/OrmLiteSettings.cs|1
-src/Neemle.Orm.Lite.Runtime/PgDialect.cs|48
-src/Neemle.Orm.Lite.Runtime/PredicateTranslator.cs|2
+src/Neemle.Orm.Lite.Runtime/PredicateTranslator.cs|1
 src/Neemle.Orm.Lite.Runtime/Query.cs|5
 src/Neemle.Orm.Lite.Runtime/RowResolver.cs|1
 src/Neemle.Orm.Lite.Runtime/SoftDeleteSql.cs|1

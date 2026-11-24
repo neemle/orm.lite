@@ -4,7 +4,8 @@ using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite.Postgres;
 
-public sealed class PostgresCatalog(DbConnection connection, DbTransaction? transaction = null) : ISchemaCatalog
+public sealed class PostgresCatalog(ISqlProvider provider, DbConnection connection, DbTransaction? transaction = null)
+    : ISchemaCatalog
 {
     public static string ForeignKeyCode(ReferentialAction action) => PostgresLowering.ForeignKeyCode(action);
 
@@ -27,7 +28,7 @@ public sealed class PostgresCatalog(DbConnection connection, DbTransaction? tran
 
     private async Task<List<object?[]>> RowsAsync(Node query, CancellationToken ct)
     {
-        var statement = StatementCompiler.Compile(query, PostgresProvider.Instance, StatementKind.Read);
+        var statement = StatementCompiler.Compile(query, provider, StatementKind.Read);
         await using var command = connection.CreateCommand();
         command.Transaction = transaction;
         command.CommandText = statement.Text;

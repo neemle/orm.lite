@@ -22,7 +22,7 @@ namespace Neemle.Orm.Lite;
         internal Node MovedFieldNumberOrEpochMillisOrderTerm(
             LambdaExpression document, MovedFieldKey key, LambdaExpression timestamp)
         {
-            _state.RequireJsonDocumentDialect("order by a moved numeric field with an epoch-milliseconds fallback");
+            _state.RequireJsonDocument("order by a moved numeric field with an epoch-milliseconds fallback");
             var documentColumn = _translator.PlainColumnOf(document.Body);
             var timestampColumn = _translator.PlainColumnOf(timestamp.Body);
             var keyParameter = _state.Bind(RenderState.RequireKey(key.Name));
@@ -31,7 +31,7 @@ namespace Neemle.Orm.Lite;
 
         internal Node KeyTerm(LambdaExpression column, JsonKey key, bool descending, bool nullsFirst)
         {
-            _state.RequireJsonDocumentDialect("order by a key inside a JSON document");
+            _state.RequireJsonDocument("order by a key inside a JSON document");
             var documentColumn = _translator.PlainColumnOf(column.Body);
             var keyParameter = _state.Bind(key.Name);
             return new OrderTerm(
@@ -46,7 +46,7 @@ namespace Neemle.Orm.Lite;
             if (ordering is null) throw new ArgumentNullException(nameof(ordering));
             var arrangement = ordering.Arrangement;
             var order = ordering.Order;
-            _state.RequireJsonDocumentDialect("order by a key inside a JSON document in another table");
+            _state.RequireJsonDocument("order by a key inside a JSON document in another table");
             var outer = correlation.Parameters[0];
             var inner = correlation.Parameters[1];
             var meta = OrmMeta.Get(other);
@@ -91,7 +91,7 @@ namespace Neemle.Orm.Lite;
         {
             if (document is null) throw new ArgumentNullException(nameof(document));
             if (patch is null) throw new ArgumentNullException(nameof(patch));
-            _state.RequireJsonDocumentDialect("merge members into a JSON document");
+            _state.RequireJsonDocument("merge members into a JSON document");
             var target = MergeTarget(document);
             var merged = new JsonConcat(
                 new JsonDocumentOrEmpty(new ColumnRef(target)), new Cast(_state.Bind(patch), CastType.Json));
@@ -105,7 +105,7 @@ namespace Neemle.Orm.Lite;
             Jsonb patch)
         {
             RequireRemoveThenMergeArguments(document, clearedKeys, setKeys, patch);
-            _state.RequireJsonDocumentDialect("remove and merge members in a JSON document");
+            _state.RequireJsonDocument("remove and merge members in a JSON document");
             var target = MergeTarget(document);
             Node remaining = new JsonDocumentOrEmpty(new ColumnRef(target));
             foreach (var key in clearedKeys)
@@ -145,7 +145,7 @@ namespace Neemle.Orm.Lite;
         internal void MemberIncrement(LambdaExpression document, MovedFieldKey key, int amount)
         {
             if (document is null) throw new ArgumentNullException(nameof(document));
-            _state.RequireJsonDocumentDialect("increment a member of a JSON document");
+            _state.RequireJsonDocument("increment a member of a JSON document");
             var target = MergeTarget(document);
             var keyParameter = _state.Bind(key.Name);
             var amountParameter = _state.Bind(amount);

@@ -8,11 +8,7 @@ namespace Neemle.Orm.Lite.Tests.DataLiterals;
 
 public sealed class DataLiteralRefusalTests
 {
-    private static readonly Func<MigrationBuilder>[] Builders =
-    [
-        () => new MigrationBuilder(PostgresProvider.Instance),
-        () => new MigrationBuilder(SqliteProvider.Instance),
-    ];
+    private static readonly ISqlProvider[] Providers = [PostgresProvider.Instance, SqliteProvider.Instance];
 
     public static IEnumerable<object[]> NonFinite() =>
     [
@@ -37,18 +33,18 @@ public sealed class DataLiteralRefusalTests
         [(nint)5],
     ];
 
-    private static MigrationBuilder Busy(Func<MigrationBuilder> make) => make().DropTable("earlier");
+    private static MigrationBuilder Busy(ISqlProvider provider) => new MigrationBuilder(provider).DropTable("earlier");
 
     [Theory(DisplayName = "NaN and both infinities, as a double or a float, are refused naming the value, and "
         + "nothing is recorded")]
     [MemberData(nameof(NonFinite))]
     public void A_non_finite_number_is_refused_by_name(object value, string token)
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var insert = Busy(make);
+            var insert = Busy(provider);
             var inserted = Assert.Throws<ArgumentException>(() => insert.InsertData("t", ["c"], [value]));
-            var delete = Busy(make);
+            var delete = Busy(provider);
             var deleted = Assert.Throws<ArgumentException>(() => delete.DeleteData("t", "c", value));
 
             Assert.Contains(token, inserted.Message, StringComparison.Ordinal);
@@ -63,11 +59,11 @@ public sealed class DataLiteralRefusalTests
     public void An_unsupported_type_is_refused_by_its_type_name(object value)
     {
         var name = value.GetType().FullName!;
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var insert = Busy(make);
+            var insert = Busy(provider);
             var inserted = Assert.Throws<NotSupportedException>(() => insert.InsertData("t", ["c"], [value]));
-            var delete = Busy(make);
+            var delete = Busy(provider);
             var deleted = Assert.Throws<NotSupportedException>(() => delete.DeleteData("t", "c", value));
 
             Assert.Contains(name, inserted.Message, StringComparison.Ordinal);
@@ -81,9 +77,9 @@ public sealed class DataLiteralRefusalTests
         + "records nothing, not even the rows before it")]
     public void A_refusal_records_no_partial_operation()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var builder = Busy(make);
+            var builder = Busy(provider);
 
             Assert.Throws<NotSupportedException>(
                 () => builder.InsertData("t", ["a", "b"], [TimeSpan.Zero, 1], ["x", 2]));
@@ -103,12 +99,12 @@ public sealed class DataLiteralRefusalTests
     {
         var table = EntityDescriptor.Of("Probe", "probes", true)
             .Property("Label", "label", ColumnType.Text, true, false);
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
             Assert.Equal(
                 "INSERT INTO \"probes\" (\"label\") VALUES ('x'), ('''')",
-                Assert.Single(make().InsertData<object>(table, v => [v], 'x', '\'').Operations));
-            var builder = Busy(make);
+                Assert.Single(new MigrationBuilder(provider).InsertData<object>(table, v => [v], 'x', '\'').Render(provider)));
+            var builder = Busy(provider);
 
             Assert.Throws<NotSupportedException>(
                 () => builder.InsertData<object>(table, v => [v], "ok", TimeSpan.Zero));

@@ -25,25 +25,34 @@ public static class RowHistoryDdl
 
     private static readonly Regex Identifier = new(@"\A[a-z][a-z0-9_]*\z", RegexOptions.CultureInvariant);
 
-    public static string[] Preamble => PreambleFor(OrmLiteSettings.ActorSetting);
+    public static string[] Preamble(ISqlProvider provider) => PreambleFor(provider, OrmLiteSettings.ActorSetting);
 
     public static Node Install(IReadOnlyList<RowHistoryTable> tables) => InstallFor(OrmLiteSettings.ActorSetting, tables);
 
-    internal static string[] PreambleFor(string actorSetting) => ReconcileFor(actorSetting, []);
+    internal static string[] PreambleFor(ISqlProvider provider, string actorSetting) =>
+        ReconcileFor(provider, actorSetting, []);
 
-    public static string[] Reconcile(IReadOnlyList<RowHistoryTable> tables) =>
-        ReconcileFor(OrmLiteSettings.ActorSetting, tables);
+    public static string[] Reconcile(ISqlProvider provider, IReadOnlyList<RowHistoryTable> tables) =>
+        ReconcileFor(provider, OrmLiteSettings.ActorSetting, tables);
 
-    internal static string[] ReconcileFor(string actorSetting, IReadOnlyList<RowHistoryTable> tables) =>
-        Render(InstallFor(actorSetting, tables));
+    internal static string[] ReconcileFor(
+        ISqlProvider provider, string actorSetting, IReadOnlyList<RowHistoryTable> tables) =>
+        Render(provider, InstallFor(actorSetting, tables));
 
+    // The identity of a history set: the table names and the hash of each table's arguments, never rendered text, so
+    // the version name of an install is the same whichever providers are loaded. The capture function names the
+    // actor setting, so a setting other than the library default is part of the identity and a changed setting
+    // installs the function again; under the default setting the identity is the tables alone.
     public static string SetHash(IReadOnlyList<RowHistoryTable> tables) =>
-        SetHashWith(ProviderRegistry.Find(ProviderRegistry.PostgresId), tables);
+        SetHash(OrmLiteSettings.ActorSetting, tables);
 
-    internal static string SetHashWith(ISqlProvider? legacy, IReadOnlyList<RowHistoryTable> tables) =>
-        legacy is null
-            ? StatementsHash(tables.Select(t => t.Table + "|" + ArgumentsHash(t)))
-            : StatementsHash(DdlCompiler.Render([InstallFor(OrmLiteSettings.ActorSetting, tables)], legacy));
+    public static string SetHash(string actorSetting, IReadOnlyList<RowHistoryTable> tables)
+    {
+        OrmLiteSettings.Validate(actorSetting);
+        var identity = tables.Select(t => t.Table + "|" + ArgumentsHash(t));
+        return StatementsHash(
+            actorSetting == OrmLiteSettings.DefaultActorSetting ? identity : identity.Prepend("actor=" + actorSetting));
+    }
 
     public static string StatementsHash(IEnumerable<string> statements) =>
         Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join('\0', statements))))[..16];
@@ -51,10 +60,10 @@ public static class RowHistoryDdl
     public static string ArgumentsHash(RowHistoryTable table) =>
         StatementsHash([table.KeyColumn, table.SoftColumn, table.TenantColumn, .. table.Unversioned]);
 
-    internal static string FunctionSqlFor(string actorSetting)
+    internal static string FunctionSqlFor(ISqlProvider provider, string actorSetting)
     {
         OrmLiteSettings.Validate(actorSetting);
-        return Render(new RowHistoryFunction(actorSetting))[0];
+        return Render(provider, new RowHistoryFunction(actorSetting))[0];
     }
 
     private static Node InstallFor(string actorSetting, IReadOnlyList<RowHistoryTable> tables)
@@ -63,8 +72,11 @@ public static class RowHistoryDdl
         return new RowHistoryInstall(actorSetting, NodeList.Of(tables.Select(Attach)));
     }
 
-    private static string[] Render(Node op) =>
-        DdlCompiler.Compile(op, ProviderRegistry.Require(ProviderRegistry.PostgresId)).Select(s => s.Text).ToArray();
+    private static string[] Render(ISqlProvider provider, Node op)
+    {
+        ArgumentNullException.ThrowIfNull(provider);
+        return DdlCompiler.Compile(op, provider).Select(s => s.Text).ToArray();
+    }
 
     private static Node Attach(RowHistoryTable t)
     {

@@ -462,6 +462,18 @@ deployment already authorises; none of them records the state it replaced):
   table data is touched and rows already captured are kept. Recovery: migrate again, or drop the triggers and the
   function and migrate again.
 
+The two version names of `9900_` carry a hash of what the assembly declares: the index reconcile the set of declared
+indexes (table, index name, uniqueness, live column, columns), the row history the tables it covers and their key,
+soft, tenant and unversioned columns, plus the actor setting name when it is not the default `ormlite.actor` (the
+capture function names it, so a changed setting installs the function again). The hash is computed by the core from
+those declarations alone, so the names are
+the same whichever providers the process loads. An earlier build hashed the statements the PostgreSQL provider rendered whenever
+that provider was loaded, so a PostgreSQL database created by that build carries the other names;
+`MigrateAsync` there finds both versions unrecorded, runs them once and records the new names beside the old rows, and
+the next run does nothing. Both installs are written to be run again (`CREATE TABLE IF NOT EXISTS`, `CREATE OR REPLACE`
+for the function and the triggers, and an index is only dropped when its stored definition drifted from the
+declaration), so the one repeated run changes nothing that is already right. SQLite already used the declaration hash.
+
 JSON documents (`Jsonb`, the `Db.Json*` and `Db.MovedField*` markers, `OrderByJsonKey*`, `SetJson*`) are declared
 `Emulated` on SQLite (`JsonDocument=Emulated` in its capability manifest) and behave as on PostgreSQL's `jsonb`, which
 one shared behavioural suite checks on both providers. A JSON column is `text` guarded by `CHECK (json_valid(column))`
@@ -652,7 +664,7 @@ header lists the other variables for the image's own port, role and data path; t
 `demo/compose.yaml`, on the same image):
 
     docker compose -f tests/compose.yaml up -d --wait
-    ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test Neemle.Orm.Lite.slnx -c Release \
+    ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test tests/Neemle.Orm.Lite.Tests -c Release \
       --logger "trx;LogFileName=tests.trx" --results-directory TestResults -- xUnit.MaxParallelThreads=1
     dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx tests/skip-allowlist.txt \
       --require-postgres tests/skip-witness.txt
@@ -666,8 +678,22 @@ UTC runner cannot tell that conversion from none; `scripts/StepShape.cs` fails w
 The same run locally (needs the zone database; without it the zone falls back to UTC and `LocalZoneInForceTests`
 fails):
 
-    TZ=Pacific/Auckland dotnet test Neemle.Orm.Lite.slnx -c Release \
+    TZ=Pacific/Auckland dotnet test tests/Neemle.Orm.Lite.Tests -c Release \
       --filter "FullyQualifiedName~DataLiteral&FullyQualifiedName!~Postgres"
+
+The core is also run on a third provider that is not PostgreSQL and not SQLite. `tests/Neemle.Orm.Lite.Ports.Tests`
+references the Runtime and Sql projects only (no provider package, no driver) and holds a fake provider built from the
+public ports: a serializer, a capability set and an actor stamp (it supplies no migration planner, so the core's
+lock-free default runs), over an ADO.NET source that returns canned rows. Its tests run the migration runner and a
+query on it. The test job runs the project in a step of
+its own with its own TRX (`TestResults/ports.trx`, a TRX logger overwrites a file of the same name, so each test project
+has its own step), and gates it with `tests/ports-allowlist.txt` (empty) and `tests/ports-witness.txt`. The
+neutrality ratchet, `CoreNeutralityTests` of the main test project, scans the Runtime and Sql sources for provider
+types, ids and SQL text and fails on any that `tests/Neemle.Orm.Lite.Tests/Ports/core-coupling-allowlist.txt` does not
+record; that list is empty and a line is never added to it. The same test freezes the project references. The
+same run locally:
+
+    dotnet test tests/Neemle.Orm.Lite.Ports.Tests -c Release
 
 CI (`.github/workflows/ci.yml`) then runs `dotnet run scripts/PackCheck.cs -- package artifacts`
 (the entries, versions and dependencies of the three packages and the throwaway-consumer matrix: default reference,

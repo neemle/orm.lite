@@ -171,6 +171,8 @@ public sealed class MigrationRunnerTests
 
         public CapabilitySet Capabilities { get; } = CapabilitySet.Everything().With(Capability.SessionLock, Support.None);
 
+        public IMigrationPlanner Planner => new PostgresMigrationPlanner(this);
+
         public ISerializer CreateSerializer() => new PostgresSerializer();
     }
 }

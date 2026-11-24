@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -11,9 +12,9 @@ public sealed class JsonbRenderingTests
     static JsonbRenderingTests() =>
         OrmMeta.Register<FixtureDocument>("fixture_documents", Col, ["id", "payload", "label"]);
 
-    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), PostgresProvider.Instance);
 
-    private static OrmContext Sqlite() => TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
+    private static OrmContext Sqlite() => TestContext.Of(new NeverUsedDataSource(), FixtureProvider.Instance);
 
     private static Query<FixtureDocument> On(OrmContext ctx) =>
         new(ctx, _ => throw new NotSupportedException("no rows are read here"));
@@ -269,7 +270,7 @@ public sealed class JsonbRenderingTests
 
     private static void AssertRefusedByTheBuildersGuard(NotSupportedException refusal)
     {
-        Assert.Contains("SqliteDialect", refusal.Message);
+        Assert.Contains("provider 'fixture'", refusal.Message);
         Assert.Contains("a statement emitted anyway", refusal.Message);
         Assert.DoesNotContain("swap-readiness", refusal.Message);
     }
@@ -277,7 +278,7 @@ public sealed class JsonbRenderingTests
     [Fact]
     public void A_dialect_with_no_JSON_document_type_refuses_the_bind_BY_NAME()
     {
-        var refusal = Assert.Throws<NotSupportedException>(
+        var refusal = Assert.ThrowsAny<NotSupportedException>(
             () => On(Sqlite()).Set(d => d.Payload, Document()));
 
         Assert.Contains("JSON document", refusal.Message);
@@ -298,7 +299,7 @@ public sealed class JsonbRenderingTests
     [Fact]
     public void InsertMany_is_the_write_shape_that_REACHES_the_JSON_guard_on_a_dialect_without_documents()
     {
-        AssertRefusedByTheBuildersGuard(Assert.Throws<NotSupportedException>(
+        AssertRefusedByTheBuildersGuard(Assert.ThrowsAny<NotSupportedException>(
             () => On(Sqlite()).RenderInsertMany(new[] { RowCarryingADocument() })));
     }
 
@@ -309,9 +310,9 @@ public sealed class JsonbRenderingTests
 
         foreach (var refusal in new[]
         {
-            Assert.Throws<NotSupportedException>(
+            Assert.ThrowsAny<NotSupportedException>(
                 () => On(Sqlite()).RenderUpsert(values, [d => d.Id], OnConflict.DoNothing)),
-            Assert.Throws<NotSupportedException>(
+            Assert.ThrowsAny<NotSupportedException>(
                 () => On(Sqlite()).RenderUpsert(
                     values, [d => d.Id], OnConflict.DoUpdate,
                     sets: [UpsertSet<FixtureDocument>.Inserted(d => d.Payload)])),
@@ -327,19 +328,19 @@ public sealed class JsonbRenderingTests
     {
         var document = Document();
 
-        AssertRefusedByTheBuildersGuard(Assert.Throws<NotSupportedException>(
+        AssertRefusedByTheBuildersGuard(Assert.ThrowsAny<NotSupportedException>(
             () => On(Sqlite()).Where(d => Db.JsonKeyEquals(d.Payload, "tier", "gold", JsonValueOrder.Text))));
 
-        AssertRefusedByTheBuildersGuard(Assert.Throws<NotSupportedException>(
+        AssertRefusedByTheBuildersGuard(Assert.ThrowsAny<NotSupportedException>(
             () => On(Sqlite()).Where(d => Db.JsonHasKey(d.Payload, "tier"))));
 
-        AssertRefusedByTheBuildersGuard(Assert.Throws<NotSupportedException>(
+        AssertRefusedByTheBuildersGuard(Assert.ThrowsAny<NotSupportedException>(
             () => On(Sqlite()).OrderByJsonKey(d => d.Payload, new JsonKey("tier"), descending: false, nullsFirst: false)));
 
-        AssertRefusedByTheBuildersGuard(Assert.Throws<NotSupportedException>(
+        AssertRefusedByTheBuildersGuard(Assert.ThrowsAny<NotSupportedException>(
             () => On(Sqlite()).ThenByJsonKey(d => d.Payload, new JsonKey("tier"), descending: false, nullsFirst: false)));
 
-        AssertRefusedByTheBuildersGuard(Assert.Throws<NotSupportedException>(
+        AssertRefusedByTheBuildersGuard(Assert.ThrowsAny<NotSupportedException>(
             () => On(Sqlite()).Where(d => d.Payload == document)));
     }
 

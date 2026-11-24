@@ -36,9 +36,9 @@ namespace Neemle.Orm.Lite;
 
         internal void NowPlusMinutes(Expression column, int minutes)
         {
-            if (!_state.Allows(Capability.IntervalArithmetic, d => d.SupportsIntervalArithmetic))
+            if (!_state.Allows(Capability.IntervalArithmetic))
                 throw _state.Refusal(Capability.IntervalArithmetic, "SetNowPlusMinutes",
-                    $"{_state.DialectName} has no interval arithmetic; computing the timestamp in the caller "
+                    $"{_state.ProviderName} has no interval arithmetic; computing the timestamp in the caller "
                     + "would move the lease clock off the server that compares it.");
             _sets.Add(_translator.ColumnNameOf(column), new ClockPlusMinutes(_state.Bind(minutes)));
         }

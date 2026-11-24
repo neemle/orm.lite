@@ -24,7 +24,7 @@
 #9 ExecuteNonQuery conn=1 source=primary tx=true
     sql:
         INSERT INTO "schema_migrations" ("version") VALUES (@v)
-    @v = String "9900_orm_index_reconcile_OrmLiteGoldenFixtures_eb6e32bc81a12870"
+    @v = String "9900_orm_index_reconcile_OrmLiteGoldenFixtures_cf6209a70c2a593c"
 #10 COMMIT conn=1 source=primary
 #11 ExecuteNonQuery conn=1 source=primary tx=false
     sql:

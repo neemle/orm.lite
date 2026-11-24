@@ -1,6 +1,7 @@
 using System.Data.Common;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -101,7 +102,7 @@ public class WhereInCallbackIdentityTests
 
     private static Query<CallbackRow> Rows() =>
         new(
-            TestContext.Of(new NeverUsedDataSource(), new PgDialect()),
+            TestContext.Of(new NeverUsedDataSource(), PostgresProvider.Instance),
             _ => throw new NotSupportedException());
 
     private static string Col(string property) => property.ToLowerInvariant();

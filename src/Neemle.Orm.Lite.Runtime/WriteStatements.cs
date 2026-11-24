@@ -54,9 +54,9 @@ namespace Neemle.Orm.Lite;
             IReadOnlyList<string> returning)
         {
             ConflictGuard.RequireDefined(action);
-            if (!_state.Allows(Capability.Upsert, d => d.SupportsUpsert))
+            if (!_state.Allows(Capability.Upsert))
                 throw _state.Refusal(Capability.Upsert, "upsert",
-                    $"{_state.DialectName} has no upsert; express this as an explicit read-modify-write "
+                    $"{_state.ProviderName} has no upsert; express this as an explicit read-modify-write "
                     + "inside a transaction.");
             ConflictGuard.RequireTarget(conflictColumns, action);
             UpsertSetGuard.RequireSets(action, sets.Count);
@@ -118,9 +118,9 @@ namespace Neemle.Orm.Lite;
         internal Returning? ReturningOf(IReadOnlyList<string> returning)
         {
             if (returning.Count == 0) return null;
-            if (!_state.Allows(Capability.Returning, d => d.SupportsReturning))
+            if (!_state.Allows(Capability.Returning))
                 throw _state.Refusal(Capability.Returning, "a write that returns columns",
-                    $"{_state.DialectName} cannot return columns from a write; re-read the row instead.");
+                    $"{_state.ProviderName} cannot return columns from a write; re-read the row instead.");
             return new Returning(ColumnList(returning));
         }
 

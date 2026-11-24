@@ -7,10 +7,6 @@ namespace Neemle.Orm.Lite;
 
     public sealed class Jsonb : IEquatable<Jsonb>
     {
-        public const string ColumnType = "jsonb";
-
-        public const string EmptyDocumentDefaultSql = "'{}'::jsonb";
-
         private readonly string _json;
 
         private Jsonb(string json) => _json = json;

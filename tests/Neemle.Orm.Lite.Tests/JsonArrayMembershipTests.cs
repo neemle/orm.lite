@@ -1,6 +1,7 @@
 using System;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -12,9 +13,9 @@ public sealed class JsonArrayMembershipTests
         OrmMeta.Register<FixtureOwner>("fixture_owners", OwnerCol, ["id", "name"]);
     }
 
-    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), PostgresProvider.Instance);
 
-    private static OrmContext Sqlite() => TestContext.Of(new NeverUsedDataSource(), new SqliteDialect());
+    private static OrmContext Sqlite() => TestContext.Of(new NeverUsedDataSource(), FixtureProvider.Instance);
 
     private static Query<FixtureDocument> On(OrmContext ctx) =>
         new(ctx, _ => throw new NotSupportedException("no rows are read here"));
@@ -73,24 +74,12 @@ public sealed class JsonArrayMembershipTests
     [Fact(DisplayName = "a dialect with no JSON document type refuses the predicate BY NAME rather than emitting PostgreSQL operators at a server that would not parse them, the same guard the key predicates use")]
     public void A_dialect_without_json_refuses_by_name()
     {
-        var refusal = Assert.Throws<NotSupportedException>(
+        var refusal = Assert.ThrowsAny<NotSupportedException>(
             () => On(Sqlite()).Where(d => Db.JsonArrayContainsString(d.Payload, "tags", "urgent")));
 
-        Assert.Contains("SqliteDialect", refusal.Message, StringComparison.Ordinal);
+        Assert.Contains("provider 'fixture'", refusal.Message, StringComparison.Ordinal);
         Assert.Contains("JSON document", refusal.Message, StringComparison.Ordinal);
         Assert.Contains("test array membership inside a JSON document", refusal.Message, StringComparison.Ordinal);
-    }
-
-    [Fact(DisplayName = "the dialect's own member, when reached directly, ALSO refuses by name and never falls back to a silent false or a whole-text comparison -- the AC's explicit ban on a quiet fallback")]
-    public void The_dialect_member_itself_refuses_rather_than_falls_back()
-    {
-        ISqlDialect sqlite = new SqliteDialect();
-
-        var refusal = Assert.Throws<NotSupportedException>(
-            () => sqlite.JsonArrayContainsStringExpression("\"payload\"", "@p0", "@p1"));
-
-        Assert.Contains("SqliteDialect", refusal.Message, StringComparison.Ordinal);
-        Assert.Contains("jsonb array-membership", refusal.Message, StringComparison.Ordinal);
     }
 
     [Fact(DisplayName = "the predicate refuses a first argument that is not a column of the entity, the same refusal shape JsonKeyEquals and JsonHasKey use")]
@@ -113,7 +102,7 @@ public sealed class JsonArrayMembershipTests
             () => Query().Where(d => Db.JsonArrayContainsString(d.Payload, absent!, "urgent")));
     }
 
-    [Fact(DisplayName = "a null value is refused rather than bound as SQL NULL, because jsonb_exists against a NULL argument matches no row at all rather than refusing")]
+    [Fact(DisplayName = "a null value is refused rather than bound as SQL NULL, because a JSON array-membership test against a NULL argument matches no row at all rather than refusing")]
     public void A_null_value_is_refused()
     {
         string? absent = null;
@@ -121,7 +110,7 @@ public sealed class JsonArrayMembershipTests
         var refusal = Assert.Throws<ArgumentNullException>(
             () => Query().Where(d => Db.JsonArrayContainsString(d.Payload, "tags", absent!)));
 
-        Assert.Contains("jsonb_exists", refusal.Message, StringComparison.Ordinal);
+        Assert.Contains("JSON array-membership test", refusal.Message, StringComparison.Ordinal);
     }
 
     [Fact(DisplayName = "the predicate composes inside a correlated EXISTS subquery using the subquery's OWN alias for the extracted column, never the outer table's -- proving the term is alias-aware rather than hardcoded to the top-level table")]

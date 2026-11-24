@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -19,7 +20,7 @@ public class ReturningConflictAndClockRenderingTests
 
     private static string Col(string property) => property.ToLowerInvariant();
 
-    private static OrmContext Pg() => TestContext.Of(new UnreachableDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new UnreachableDataSource(), PostgresProvider.Instance);
 
     private static Query<FixtureWidget> Widgets() =>
         new(Pg(), _ => throw new NotSupportedException());
@@ -139,7 +140,7 @@ public class ReturningConflictAndClockRenderingTests
     {
         var source = new UnreachableDataSource();
         var q = new Query<FixtureWidget>(
-            TestContext.Of(source, new PgDialect()), _ => throw new NotSupportedException());
+            TestContext.Of(source, PostgresProvider.Instance), _ => throw new NotSupportedException());
 
         q.Where(w => w.Rank == 1).RenderDeleteReturning([w => w.Id]);
         Assert.Equal(0, source.Touches);
@@ -153,8 +154,8 @@ public class ReturningConflictAndClockRenderingTests
     public void A_dialect_without_returning_refuses_delete_returning()
     {
         var q = new Query<FixtureWidget>(
-            TestContext.Of(new UnreachableDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
+            TestContext.Of(new UnreachableDataSource(), FixtureProvider.Instance), _ => throw new NotSupportedException());
 
-        Assert.Throws<NotSupportedException>(() => q.Where(w => w.Rank == 1).RenderDeleteReturning([w => w.Id]));
+        Assert.ThrowsAny<NotSupportedException>(() => q.Where(w => w.Rank == 1).RenderDeleteReturning([w => w.Id]));
     }
 }

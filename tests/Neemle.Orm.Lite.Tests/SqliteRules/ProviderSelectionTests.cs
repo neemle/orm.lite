@@ -165,7 +165,6 @@ public sealed class ProviderSelectionTests
 
         Assert.True(await temp.Context.PingAsync());
         Assert.Equal("sqlite", temp.Context.Provider.Id);
-        Assert.Null(temp.Context.Dialect);
         await temp.Context.DisposeAsync();
     }
 

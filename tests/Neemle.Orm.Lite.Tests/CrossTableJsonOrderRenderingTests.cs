@@ -1,6 +1,7 @@
 using System;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -23,16 +24,16 @@ public sealed class CrossTableJsonOrderRenderingTests
         _ => throw new ArgumentOutOfRangeException(nameof(member), member, "Unknown FixtureDocument member."),
     };
 
-    private static Query<FixtureOwner> Owners(ISqlDialect dialect)
+    private static Query<FixtureOwner> Owners(ISqlProvider provider)
     {
         OrmMeta.Register<FixtureDocument>("fixture_documents", DocumentCol, ["id", "payload", "label"]);
         OrmMeta.Register<FixtureOwner>("fixture_owners", OwnerCol, ["id", "name"]);
         return new Query<FixtureOwner>(
-            TestContext.Of(new NeverUsedDataSource(), dialect),
+            TestContext.Of(new NeverUsedDataSource(), provider),
             _ => throw new NotSupportedException("no rows are read here"));
     }
 
-    private static Query<FixtureOwner> Owners() => Owners(new PgDialect());
+    private static Query<FixtureOwner> Owners() => Owners(PostgresProvider.Instance);
 
     [Fact(DisplayName = "the cross-table order term is a correlated SCALAR SUBQUERY over the other table's document, correlated by the lambda, with the key BOUND and never spliced")]
     public void The_order_term_is_a_correlated_scalar_subquery()
@@ -105,25 +106,12 @@ public sealed class CrossTableJsonOrderRenderingTests
     [Fact(DisplayName = "a dialect with no JSON document type REFUSES this ordering BY NAME rather than emitting PostgreSQL operators at a server that would not parse them")]
     public void A_dialect_without_json_refuses_by_name()
     {
-        var refusal = Assert.Throws<NotSupportedException>(() => Owners(new SqliteDialect())
+        var refusal = Assert.ThrowsAny<NotSupportedException>(() => Owners(FixtureProvider.Instance)
             .OrderByJsonKeyOf<FixtureDocument>(
                 (o, d) => d.Id == o.Id, d => d.Payload, new JsonKeyOrdering(new JsonKey("tier"), descending: false, nullsFirst: false, JsonValueOrder.Text, [])));
 
-        Assert.Contains("SqliteDialect", refusal.Message, StringComparison.Ordinal);
+        Assert.Contains("provider 'fixture'", refusal.Message, StringComparison.Ordinal);
         Assert.Contains("order by a key inside a JSON document in another table",
             refusal.Message, StringComparison.Ordinal);
-    }
-
-    [Fact(DisplayName = "the direction clause is the DIALECT's, and its own member takes no string at all — two booleans in, one clause out, so there is no text-shaped door into it")]
-    public void The_direction_clause_belongs_to_the_dialect_and_takes_no_string()
-    {
-        ISqlDialect pg = new PgDialect();
-
-        Assert.Equal(" ASC NULLS LAST", pg.OrderDirectionClause(descending: false, nullsFirst: false));
-        Assert.Equal(" DESC NULLS FIRST", pg.OrderDirectionClause(descending: true, nullsFirst: true));
-
-        Assert.Equal(
-            pg.JsonKeyTextExpression("\"payload\"", "@p0") + pg.OrderDirectionClause(true, false),
-            pg.JsonKeyOrderTerm("\"payload\"", "@p0", descending: true, nullsFirst: false));
     }
 }

@@ -114,7 +114,7 @@
 #25 ExecuteNonQuery conn=1 source=primary tx=true
     sql:
         INSERT INTO "schema_migrations" ("version") VALUES (@v)
-    @v = String "9900_orm_history_reconcile_OrmLiteDemo_e9dbcb569c4fbc15"
+    @v = String "9900_orm_history_reconcile_OrmLiteDemo_6df7f955b08f5c73"
 #26 COMMIT conn=1 source=primary
 #27 BEGIN conn=1 source=primary
 #28 ExecuteNonQuery conn=1 source=primary tx=true
@@ -132,7 +132,7 @@
 #32 ExecuteNonQuery conn=1 source=primary tx=true
     sql:
         INSERT INTO "schema_migrations" ("version") VALUES (@v)
-    @v = String "9900_orm_index_reconcile_OrmLiteDemo_d27e299df0226960"
+    @v = String "9900_orm_index_reconcile_OrmLiteDemo_a7104bccd4193080"
 #33 COMMIT conn=1 source=primary
 #34 ExecuteNonQuery conn=1 source=primary tx=false
     sql:

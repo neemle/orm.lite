@@ -28,10 +28,10 @@ public sealed class BackslashLiteralTests
     ];
 
     private static string Insert(ISqlProvider provider, object? value) =>
-        Assert.Single(new MigrationBuilder(provider).InsertData("t", ["c"], [value]).Operations);
+        Assert.Single(new MigrationBuilder(provider).InsertData("t", ["c"], [value]).Render(provider));
 
     private static string Delete(ISqlProvider provider, object value) =>
-        Assert.Single(new MigrationBuilder(provider).DeleteData("t", "c", value).Operations);
+        Assert.Single(new MigrationBuilder(provider).DeleteData("t", "c", value).Render(provider));
 
     private static void Renders(object value, string postgres, string sqlite)
     {
@@ -62,7 +62,7 @@ public sealed class BackslashLiteralTests
     public void A_string_without_a_backslash_is_unchanged(string value, string literal) =>
         Renders(value, literal, literal);
 
-    [Fact(DisplayName = "[SEC] the entity overload, PgDdlDialect.Literal and a view parameter reach the same "
+    [Fact(DisplayName = "[SEC] the entity overload, the DDL literal and a view parameter reach the same "
         + "escape string on PostgreSQL and the plain string on SQLite")]
     public void Every_writer_of_a_literal_reaches_the_same_text()
     {
@@ -72,12 +72,12 @@ public sealed class BackslashLiteralTests
         Assert.Equal(
             @"INSERT INTO ""probes"" (""label"") VALUES (E'a\\b')",
             Assert.Single(new MigrationBuilder(PostgresProvider.Instance)
-                .InsertData<object>(table, v => [v], @"a\b").Operations));
+                .InsertData<object>(table, v => [v], @"a\b").Render(PostgresProvider.Instance)));
         Assert.Equal(
             @"INSERT INTO ""probes"" (""label"") VALUES ('a\b')",
             Assert.Single(new MigrationBuilder(SqliteProvider.Instance)
-                .InsertData<object>(table, v => [v], @"a\b").Operations));
-        Assert.Equal(@"E'a\\b'", new PgDdlDialect().Literal(@"a\b"));
+                .InsertData<object>(table, v => [v], @"a\b").Render(SqliteProvider.Instance)));
+        Assert.Equal(@"E'a\\b'", PostgresLiteral.Of(@"a\b"));
         Assert.Equal(@"E'a\\b'", PostgresProvider.Instance.CreateSerializer().Fragment(ParamLiterals.Of(@"a\b")));
         Assert.Equal(@"'a\b'", SqliteProvider.Instance.CreateSerializer().Fragment(ParamLiterals.Of(@"a\b")));
     }
@@ -87,7 +87,7 @@ public sealed class BackslashLiteralTests
     public void Only_the_value_that_needs_it_is_an_escape_string()
     {
         var operation = Assert.Single(new MigrationBuilder(PostgresProvider.Instance)
-            .InsertData("t", ["a", "b", "c"], ["x", @"y\z", "w"]).Operations);
+            .InsertData("t", ["a", "b", "c"], ["x", @"y\z", "w"]).Render(PostgresProvider.Instance));
 
         Assert.Equal(@"INSERT INTO ""t"" (""a"", ""b"", ""c"") VALUES ('x', E'y\\z', 'w')", operation);
     }

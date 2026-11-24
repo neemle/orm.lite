@@ -8,7 +8,7 @@ namespace Neemle.Orm.Lite.Tests.Nodes;
 public sealed class QueryTreeTests
 {
     private static OrmContext Context(ISqlProvider? provider = null) =>
-        new(new UnreachableDataSource(), provider ?? PostgresProvider.Instance, new PgDialect());
+        new(new UnreachableDataSource(), provider ?? PostgresProvider.Instance);
 
     private static Query<T> Of<T>(ISqlProvider? provider = null) where T : class
     {
@@ -257,14 +257,16 @@ public sealed class QueryTreeTests
             Assert.Single(arranged.Terms));
     }
 
-    [Fact(DisplayName = "the provider capability check runs at compile: a dialect that allows a marker still gets a named refusal from a provider that lacks the capability, and no statement reaches the data source")]
-    public async Task The_provider_capability_is_checked_at_compile()
+    [Fact(DisplayName = "a provider that lacks the capability of a marker refuses it by name when the marker is translated, and no statement reaches the data source")]
+    public async Task The_provider_capability_refuses_the_marker()
     {
         var ids = new List<Guid>();
-        var query = Of<CorpusNote>(new StubProvider(CapabilitySet.Nothing())).Where(n => Db.AnyOf(n.Id, ids));
+        Query<CorpusNote> Build() =>
+            Of<CorpusNote>(new StubProvider(CapabilitySet.Nothing())).Where(n => Db.AnyOf(n.Id, ids));
 
-        var refusal = Assert.Throws<CapabilityNotSupportedException>(() => query.CompileSelect());
-        var asyncRefusal = await Assert.ThrowsAsync<CapabilityNotSupportedException>(() => query.ToListAsync());
+        var refusal = Assert.Throws<CapabilityNotSupportedException>(() => Build().CompileSelect());
+        var asyncRefusal = await Assert.ThrowsAsync<CapabilityNotSupportedException>(
+            async () => await Build().ToListAsync());
 
         Assert.Equal(Capability.ArrayParameter, refusal.Capability);
         Assert.Equal("corpus_notes", refusal.Table);

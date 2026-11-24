@@ -26,10 +26,10 @@ public sealed class MigrationDownGenerationTests
 
     private static IReadOnlyList<string> Statements(Action<MigrationBuilder>? action)
     {
-        var b = new MigrationBuilder(new PgDdlDialect());
+        var b = new MigrationBuilder(PostgresProvider.Instance);
         Assert.NotNull(action);
         action!(b);
-        return b.Operations;
+        return b.Render(PostgresProvider.Instance);
     }
 
     [Fact(DisplayName = "a class that overrides Down reaches its Contribution with a Down that runs the Down body, not the Up body")]

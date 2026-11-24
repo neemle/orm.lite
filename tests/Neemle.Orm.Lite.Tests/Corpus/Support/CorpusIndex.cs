@@ -6,7 +6,7 @@ public static class CorpusIndex
 {
     public static IReadOnlyList<string> Unaccounted { get; private set; } = [];
 
-    public static string Build(IReadOnlyList<CorpusEntry> entries, CorpusRecorder recorder)
+    public static string Build(IReadOnlyList<CorpusEntry> entries)
     {
         var referenced = IlReferences.Scan(typeof(CorpusIndex).Assembly, "Neemle.Orm.Lite.Tests.Corpus.Cases", "Neemle.Orm.Lite.Tests.Corpus.CorpusRun");
         var surface = CorpusSurface.Members();
@@ -43,8 +43,7 @@ public static class CorpusIndex
         sb.Append("## What the groups hold\n\n");
         sb.Append("- `query-read`, `query-write`, `query-upsert`, `query-insert-many`, `soft-delete`, `json`, `locks-intervals`: the SQL text and the ordered parameter list that each `Query<T>.Render*` method returns, ");
         sb.Append("for the lambda DSL and the `Db.*` markers, including soft-delete live terms, conflict targets, RETURNING, FILTER, row locks, intervals, array parameters and every JSON clause.\n");
-        sb.Append("- `refusals`: the exception type and message of every guard reachable from the render path, the capability refusals of a dialect that supports nothing, and the value-type guards.\n");
-        sb.Append("- `dialect`: each `ISqlDialect` member called directly, the LIKE escape helper, the DDL dialect and the parameter conversions of `AddParam`.\n");
+        sb.Append("- `refusals`: the exception type and message of every guard reachable from the render path, the capability refusals of a provider that supports nothing, and the value-type guards.\n");
         sb.Append("- `ddl-builder`, `ddl-helpers`: every `MigrationBuilder` and `TableBuilder` operation, and the DO-block helpers (`ForeignKeyActionDdl`, `LiveOnlyConversionDdl`, `SoftDeleteColumnDdl`) with their refusals.\n");
         sb.Append("- `row-history`, `hash`: the history DDL (preamble, capture function, per-table triggers), the history read, revert and trash statements, and the hash formulas that name migration versions and trigger markers.\n");
         sb.Append("- `executed`: transcripts of the statements that library code builds inside async methods and runs, recorded through a scripted ADO.NET provider (statement text, parameter names and values, connection, transaction brackets). No database is involved.\n");
@@ -74,20 +73,6 @@ public static class CorpusIndex
                 sb.Append("| `").Append(pair.Key).Append("` | ").Append(pair.Value).Append(" |\n");
             sb.Append('\n');
         }
-
-        var dialect = CorpusSurface.DialectMembers();
-        var touched = recorder.DialectTouches;
-        var viaPaths = dialect.Where(m => touched.TryGetValue(m, out var groups) && groups.Any(g => g != "dialect")).ToList();
-        var directOnly = dialect.Where(m => touched.TryGetValue(m, out var groups) && groups.All(g => g == "dialect")).ToList();
-        var never = dialect.Where(m => !touched.ContainsKey(m)).ToList();
-        sb.Append("### `ISqlDialect` members, observed through a forwarding dialect\n\n");
-        sb.Append("Every case runs against a dialect that forwards to `PgDialect` and records which member was called and by which group. ");
-        sb.Append("Capability flags that the query code reads only to refuse appear in the `refusals` group.\n\n");
-        sb.Append("- members of the interface: ").Append(dialect.Count).Append('\n');
-        sb.Append("- reached from query, DDL or executed paths: ").Append(viaPaths.Count).Append('\n');
-        sb.Append("- reached only by the direct calls of the `dialect` group: ").Append(directOnly.Count).Append(directOnly.Count == 0 ? "" : " (" + string.Join(", ", directOnly.Select(m => "`" + m + "`")) + ")").Append('\n');
-        sb.Append("- never reached: ").Append(never.Count).Append(never.Count == 0 ? "" : " (" + string.Join(", ", never.Select(m => "`" + m + "`")) + ")").Append("\n\n");
-        if (never.Count > 0) Unaccounted = Unaccounted.Concat(never.Select(m => "ISqlDialect member never reached " + m)).ToList();
 
         var constants = entries.FirstOrDefault(e => e.Group == "constants" && e.Name == "runtime-string-constants");
         sb.Append("### Constants\n\n- string constants and static read-only strings captured: ").Append(constants is null ? 0 : constants.Text.Split('\n', StringSplitOptions.RemoveEmptyEntries).Length).Append("\n\n");
@@ -597,7 +582,10 @@ public static class CorpusIndex
             + "no driver writes it faithfully; it is refused by name before a node is recorded. A well-formed "
             + "pair is unchanged."),
         .. CorpusLoweringDeviations.All,
+        .. CorpusLegacyDialectDeviations.All,
         .. CorpusTenantEnumDeviations.All,
+        .. CorpusIdentityDeviations.All,
+        .. CorpusNeutralMessageDeviations.All,
         .. BaselineDeviations,
     ];
 

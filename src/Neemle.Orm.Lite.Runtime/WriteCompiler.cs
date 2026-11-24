@@ -35,9 +35,9 @@ namespace Neemle.Orm.Lite;
 
         internal void RequireReturning(string affected)
         {
-            if (!_state.Allows(Capability.Returning, d => d.SupportsReturning))
+            if (!_state.Allows(Capability.Returning))
                 throw _state.Refusal(Capability.Returning, "a write that returns columns",
-                    $"{_state.DialectName} cannot return columns from a write; select the affected {affected} first, "
+                    $"{_state.ProviderName} cannot return columns from a write; select the affected {affected} first, "
                     + "inside the same transaction.");
         }
 

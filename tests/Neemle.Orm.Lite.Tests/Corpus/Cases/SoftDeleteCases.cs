@@ -70,7 +70,7 @@ internal static class SoftDeleteCases
         });
         run.Rec.Text(G, "soft-delete-fragments", () =>
         {
-            var pg = new PgDialect();
+            var pg = PostgresProvider.Instance;
             return CorpusFormat.Lines(
             [
                 SoftDeleteSql.SetClause(pg, "deleted_at"),

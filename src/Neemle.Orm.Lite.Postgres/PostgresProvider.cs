@@ -20,7 +20,7 @@ public sealed class PostgresProvider : ISqlProvider
     public ISerializer CreateSerializer() => new PostgresSerializer();
 
     public Task StampActorAsync(DbConnection connection, DbActorValue actor, CancellationToken ct) =>
-        DbActor.StampAsync(connection, actor, ct);
+        PostgresActorStamp.StampAsync(connection, actor, ct);
 
     public void ValidateDataSource(string name, DbDataSource source)
     {
@@ -63,5 +63,9 @@ public sealed class PostgresProvider : ISqlProvider
     public Node Lower(Node tree) => PostgresLowering.Lower(tree);
 
     public ISchemaCatalog CreateCatalog(DbConnection connection, DbTransaction? transaction = null) =>
-        new PostgresCatalog(connection, transaction);
+        new PostgresCatalog(this, connection, transaction);
+
+    private IMigrationPlanner? _planner;
+
+    public IMigrationPlanner Planner => _planner ??= new PostgresMigrationPlanner(this);
 }

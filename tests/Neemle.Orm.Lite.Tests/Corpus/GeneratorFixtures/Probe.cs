@@ -44,9 +44,9 @@ public static class Probe
             Lines(sb, "  up", c.Render(PostgresProvider.Instance));
             if (c.Down is not null)
             {
-                var down = new MigrationBuilder();
+                var down = new MigrationBuilder(PostgresProvider.Instance);
                 c.Down(down);
-                Lines(sb, "  down", down.Operations);
+                Lines(sb, "  down", down.Render(PostgresProvider.Instance));
             }
         }
 

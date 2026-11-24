@@ -10,17 +10,13 @@ namespace Neemle.Orm.Lite;
     {
         private int _aliasCount;
 
-        internal RenderState(
-            ISqlDialect? dialect, ISqlProvider provider, string table, Func<string, string> col, List<object?> parameters)
+        internal RenderState(ISqlProvider provider, string table, Func<string, string> col, List<object?> parameters)
         {
-            Dialect = dialect;
             Provider = provider;
             Table = table;
             Col = col;
             Params = parameters;
         }
-
-        internal ISqlDialect? Dialect { get; }
 
         internal ISqlProvider Provider { get; }
 
@@ -73,18 +69,16 @@ namespace Neemle.Orm.Lite;
             Params.RemoveRange(mark.Parameters, Params.Count - mark.Parameters);
         }
 
-        internal string DialectName => Dialect?.GetType().Name ?? Provider.Id;
+        internal string ProviderName => Provider.Id;
 
-        internal bool Allows(Capability capability, Func<ISqlDialect, bool> legacy) =>
-            Dialect is null ? Provider.Capabilities.Of(capability) != Support.None : legacy(Dialect);
+        internal bool Allows(Capability capability) => Provider.Capabilities.Of(capability) != Support.None;
 
-        internal int MaxBindParameters => Dialect?.MaxBindParameters ?? Provider.MaxBindParameters;
+        internal int MaxBindParameters => Provider.MaxBindParameters;
 
-        internal string Quote(string identifier) =>
-            Dialect?.Quote(identifier) ?? Provider.CreateSerializer().Fragment(new ColumnRef(identifier));
+        internal string Quote(string identifier) => Provider.CreateSerializer().Fragment(new ColumnRef(identifier));
 
         internal string Slot(int index) =>
-            Dialect?.Param(ParamBase + index) ?? Provider.CreateSerializer().Fragment(new Param(ParamBase + index, null));
+            Provider.CreateSerializer().Fragment(new Param(ParamBase + index, null));
 
         internal Param Bind(object? value)
         {
@@ -92,19 +86,17 @@ namespace Neemle.Orm.Lite;
             return new Param(ParamBase + Params.Count - 1, value);
         }
 
-        internal Exception Refusal(Capability capability, string operation, string legacy) =>
-            Dialect is null
-                ? new CapabilityNotSupportedException(Provider.Id, operation, capability, Table, legacy)
-                : new NotSupportedException(legacy);
+        internal Exception Refusal(Capability capability, string operation, string hint) =>
+            new CapabilityNotSupportedException(Provider.Id, operation, capability, Table, hint);
 
         internal string Text(Node node) => Provider.CreateSerializer().Fragment(node);
 
-        internal void RequireJsonDocumentDialect(string what)
+        internal void RequireJsonDocument(string what)
         {
-            if (!Allows(Capability.JsonDocument, d => d.SupportsJsonDocument))
+            if (!Allows(Capability.JsonDocument))
                 throw Refusal(
                     Capability.JsonDocument, what,
-                    $"{DialectName} has no JSON document type, so it cannot {what}; a statement "
+                    $"{ProviderName} has no JSON document type, so it cannot {what}; a statement "
                     + "emitted anyway would carry PostgreSQL syntax to a server that cannot parse it.");
         }
 
@@ -117,13 +109,13 @@ namespace Neemle.Orm.Lite;
         internal Node ValueOf(object? value, Param parameter)
         {
             if (value is not Jsonb) return parameter;
-            RequireJsonDocumentDialect("bind a JSON document");
+            RequireJsonDocument("bind a JSON document");
             return new Cast(parameter, CastType.Json);
         }
 
         internal Node BindValue(object? value)
         {
-            if (value is Jsonb) RequireJsonDocumentDialect("bind a JSON document");
+            if (value is Jsonb) RequireJsonDocument("bind a JSON document");
             return ValueOf(value, Bind(value));
         }
 

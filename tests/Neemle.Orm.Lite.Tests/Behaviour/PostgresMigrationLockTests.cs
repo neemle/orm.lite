@@ -7,6 +7,8 @@ namespace Neemle.Orm.Lite.Tests.Behaviour;
 
 public sealed class PostgresMigrationLockTests(PostgresFixture fixture) : IClassFixture<PostgresFixture>
 {
+    private const long LockKey = global::Neemle.Orm.Lite.Postgres.PostgresMigrationPlanner.LockKey;
+
     private const string History = "SELECT to_regclass('schema_migrations')::text";
 
     private OrmContext Ctx => fixture.Context;
@@ -35,7 +37,7 @@ public sealed class PostgresMigrationLockTests(PostgresFixture fixture) : IClass
     private async Task WaitForWaiterAsync()
     {
         var waiting = "SELECT count(*) FROM pg_locks WHERE locktype = 'advisory' AND NOT granted "
-            + $"AND objid = {MigrationRunner.LockKey} "
+            + $"AND objid = {LockKey} "
             + "AND database = (SELECT oid FROM pg_database WHERE datname = current_database())";
         for (var attempt = 0; attempt < 200; attempt++)
         {
@@ -51,7 +53,7 @@ public sealed class PostgresMigrationLockTests(PostgresFixture fixture) : IClass
     {
         fixture.RequireAvailable();
         await using var holder = await Ctx.DataSource.OpenConnectionAsync();
-        await ExecAsync(holder, $"SELECT pg_advisory_lock({MigrationRunner.LockKey})");
+        await ExecAsync(holder, $"SELECT pg_advisory_lock({LockKey})");
         var run = Task.Run(() => MigrationRunner.RunAsync(Ctx.DataSource, Ctx.Provider, Contributions()));
         try
         {
@@ -61,7 +63,7 @@ public sealed class PostgresMigrationLockTests(PostgresFixture fixture) : IClass
         }
         finally
         {
-            await ExecAsync(holder, $"SELECT pg_advisory_unlock({MigrationRunner.LockKey})");
+            await ExecAsync(holder, $"SELECT pg_advisory_unlock({LockKey})");
         }
 
         await run;

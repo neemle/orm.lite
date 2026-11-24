@@ -16,18 +16,18 @@ namespace Neemle.Orm.Lite;
 
         internal void ForUpdate()
         {
-            if (!_state.Allows(Capability.RowLock, d => d.SupportsRowLock))
+            if (!_state.Allows(Capability.RowLock))
                 throw _state.Refusal(Capability.RowLock, "ForUpdate",
-                    $"{_state.DialectName} has no row lock; a caller that needs one cannot be served by an "
+                    $"{_state.ProviderName} has no row lock; a caller that needs one cannot be served by an "
                     + "unlocked read.");
             _select.LockRows();
         }
 
         internal void ForNoKeyUpdate()
         {
-            if (!_state.Allows(Capability.KeyPreservingRowLock, d => d.SupportsKeyPreservingRowLock))
+            if (!_state.Allows(Capability.KeyPreservingRowLock))
                 throw _state.Refusal(Capability.KeyPreservingRowLock, "ForNoKeyUpdate",
-                    $"{_state.DialectName} has no key-preserving row lock; a caller that needs to serialise writers "
+                    $"{_state.ProviderName} has no key-preserving row lock; a caller that needs to serialise writers "
                     + "of a row WITHOUT blocking a foreign key that references it cannot be served by an unlocked "
                     + "read, and must not be silently handed the stronger lock.");
             _select.LockRowsKeyPreserving();

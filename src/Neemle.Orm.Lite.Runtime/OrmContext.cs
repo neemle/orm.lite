@@ -13,21 +13,18 @@ namespace Neemle.Orm.Lite;
         private readonly IReadOnlyList<IAsyncDisposable> _owned;
 
         public DbDataSource DataSource { get; }
-        public ISqlDialect? Dialect { get; }
         public ISqlProvider Provider { get; }
-        internal static OrmContext Detached(ISqlProvider provider) => new(null!, provider, null, []);
+        internal static OrmContext Detached(ISqlProvider provider) => new(null!, provider, []);
 
-        public OrmContext(DbDataSource dataSource, ISqlProvider provider, ISqlDialect? dialect = null)
-            : this(dataSource, provider, dialect, [])
+        public OrmContext(DbDataSource dataSource, ISqlProvider provider)
+            : this(dataSource, provider, [])
         {
         }
 
-        internal OrmContext(
-            DbDataSource dataSource, ISqlProvider provider, ISqlDialect? dialect, IReadOnlyList<IAsyncDisposable> owned)
+        internal OrmContext(DbDataSource dataSource, ISqlProvider provider, IReadOnlyList<IAsyncDisposable> owned)
         {
             DataSource = dataSource;
             Provider = provider ?? throw new ArgumentNullException(nameof(provider));
-            Dialect = dialect;
             _owned = owned;
         }
 
@@ -60,8 +57,7 @@ namespace Neemle.Orm.Lite;
         }
 
         private string PingText() =>
-            Dialect?.PingStatement
-            ?? StatementCompiler.Compile(new Select([new IntLit(1)]), Provider, StatementKind.Read).Text;
+            StatementCompiler.Compile(new Select([new IntLit(1)]), Provider, StatementKind.Read).Text;
 
         private async Task<bool> PingWithinTheDriversOwnDeadline()
         {

@@ -44,20 +44,19 @@ public sealed class LiteralBlastRadiusTests
         Assert.StartsWith("a view definition is stored in the database", collection.Message, StringComparison.Ordinal);
     }
 
-    [Fact(DisplayName = "the public dialect literal quotes a Guid and a moment and refuses a TimeSpan and a "
+    [Fact(DisplayName = "the DDL literal quotes a Guid and a moment and refuses a TimeSpan and a "
         + "non-finite number")]
-    public void The_dialect_literal_follows_the_same_rules()
+    public void The_ddl_literal_follows_the_same_rules()
     {
-        var dialect = new PgDdlDialect();
         var id = Guid.Parse("a0000000-0000-0000-0000-00000000000a");
         var moment = new DateTime(2024, 1, 2, 10, 0, 0, DateTimeKind.Utc);
 
-        Assert.Equal("'a0000000-0000-0000-0000-00000000000a'", dialect.Literal(id));
-        Assert.Equal("'2024-01-02T10:00:00.0000000Z'", dialect.Literal(moment));
-        Assert.Equal("'it''s'", dialect.Literal("it's"));
-        Assert.Equal("1.5", dialect.Literal(1.5));
-        Assert.Throws<NotSupportedException>(() => dialect.Literal(TimeSpan.FromSeconds(1)));
-        Assert.Throws<ArgumentException>(() => dialect.Literal(double.NaN));
+        Assert.Equal("'a0000000-0000-0000-0000-00000000000a'", PostgresLiteral.Of(id));
+        Assert.Equal("'2024-01-02T10:00:00.0000000Z'", PostgresLiteral.Of(moment));
+        Assert.Equal("'it''s'", PostgresLiteral.Of("it's"));
+        Assert.Equal("1.5", PostgresLiteral.Of(1.5));
+        Assert.Throws<NotSupportedException>(() => PostgresLiteral.Of(TimeSpan.FromSeconds(1)));
+        Assert.Throws<ArgumentException>(() => PostgresLiteral.Of(double.NaN));
     }
 
     [Fact(DisplayName = "a deviation item of the corpus index escapes a pipe and a line break in a text, "

@@ -7,23 +7,19 @@ namespace Neemle.Orm.Lite.Tests.DataLiterals;
 
 public sealed class MigrationBuilderGuardTests
 {
-    private static readonly Func<MigrationBuilder>[] Builders =
-    [
-        () => new MigrationBuilder(PostgresProvider.Instance),
-        () => new MigrationBuilder(SqliteProvider.Instance),
-    ];
+    private static readonly ISqlProvider[] Providers = [PostgresProvider.Instance, SqliteProvider.Instance];
 
     private static readonly EntityDescriptor Probe =
         EntityDescriptor.Of("Probe", "probes", true).Property("Label", "label", ColumnType.Text, true, false);
 
-    private static MigrationBuilder Busy(Func<MigrationBuilder> make) => make().DropTable("earlier");
+    private static MigrationBuilder Busy(ISqlProvider provider) => new MigrationBuilder(provider).DropTable("earlier");
 
     [Fact(DisplayName = "an InsertData without a row is refused naming the rows, before any operation is recorded")]
     public void An_insert_without_rows_is_refused()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var builder = Busy(make);
+            var builder = Busy(provider);
 
             var error = Assert.Throws<ArgumentException>(() => builder.InsertData("t", ["g"]));
 
@@ -36,9 +32,9 @@ public sealed class MigrationBuilderGuardTests
         + "is recorded")]
     public void An_insert_without_columns_is_refused()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var builder = Busy(make);
+            var builder = Busy(provider);
 
             var error = Assert.Throws<ArgumentException>(
                 () => builder.InsertData("t", Array.Empty<string>(), new object?[0]));
@@ -52,9 +48,9 @@ public sealed class MigrationBuilderGuardTests
         + "the list never matches NULL, before any operation is recorded")]
     public void A_delete_with_a_null_value_is_refused()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var builder = Busy(make);
+            var builder = Busy(provider);
 
             var alone = Assert.Throws<ArgumentException>(() => builder.DeleteData("t", "c", (object?)null));
             var among = Assert.Throws<ArgumentException>(
@@ -72,9 +68,9 @@ public sealed class MigrationBuilderGuardTests
         + "the null rule")]
     public void A_delete_without_values_keeps_its_refusal()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var error = Assert.Throws<ArgumentException>(() => make().DeleteData("t", "c"));
+            var error = Assert.Throws<ArgumentException>(() => new MigrationBuilder(provider).DeleteData("t", "c"));
 
             Assert.Equal("DeleteData needs at least one value to match. (Parameter 'values')", error.Message);
         }
@@ -84,9 +80,9 @@ public sealed class MigrationBuilderGuardTests
         + "recording what it recorded before for a row")]
     public void The_entity_overload_refuses_no_rows()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var builder = Busy(make);
+            var builder = Busy(provider);
 
             var error = Assert.Throws<ArgumentException>(() => builder.InsertData<object>(Probe, v => [v]));
 
@@ -94,16 +90,16 @@ public sealed class MigrationBuilderGuardTests
             Assert.Single(builder.Nodes);
             Assert.Equal(
                 "INSERT INTO \"probes\" (\"label\") VALUES ('a')",
-                Assert.Single(make().InsertData<object>(Probe, v => [v], "a").Operations));
+                Assert.Single(new MigrationBuilder(provider).InsertData<object>(Probe, v => [v], "a").Render(provider)));
         }
     }
 
     [Fact(DisplayName = "a valid InsertData and DeleteData still record exactly one operation each")]
     public void A_valid_call_still_records_one_operation()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var builder = make().InsertData("t", ["g"], ["a"]).DeleteData("t", "g", "a");
+            var builder = new MigrationBuilder(provider).InsertData("t", ["g"], ["a"]).DeleteData("t", "g", "a");
 
             Assert.Equal(2, builder.Nodes.Count);
         }

@@ -9,8 +9,8 @@ public sealed class CorpusRun
     {
         Rec = recorder;
         Root = root;
-        Pg = new OrmContext(new NeverUsedDataSource(), PostgresProvider.Instance, new RecordingDialect(recorder.Touch));
-        NoCap = new OrmContext(new NeverUsedDataSource(), PostgresProvider.Instance, new NoCapabilityDialect(recorder.Touch));
+        Pg = new OrmContext(new NeverUsedDataSource(), PostgresProvider.Instance);
+        NoCap = new OrmContext(new NeverUsedDataSource(), new NoCapabilityProvider());
     }
 
     public CorpusRecorder Rec { get; }

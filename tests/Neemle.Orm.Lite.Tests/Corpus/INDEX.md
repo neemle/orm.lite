@@ -684,6 +684,65 @@ A golden that was changed, removed or added because the library output was wrong
   (ORML-30): to_regclass also resolves a view, a materialized view, a foreign table, a sequence and an index, so the
   existing-tables lookup took them for tables; it now accepts only an ordinary or a partitioned table, which also drops
   foreign tables and materialized views from the answer. Parameters are unchanged.
+- `dialect/identifiers-parameters-and-paging`, Removed. Old text: `Quote, Param, Page, MaxBindParameters and
+  PingStatement of PgDialect`. New text: (removed). Reason: ORML-21 slice 4: the legacy dialect path is removed from the
+  never-published 0.1.0-pre without a shim; this case pinned only that API. The same text is rendered by the provider's
+  serializer, which the Nodes and provider rules tests pin.
+- `dialect/capability-flags`, Removed. Old text: `the nine Supports flags of PgDialect`. New text: (removed). Reason:
+  ORML-21 slice 4: the legacy dialect path is removed from the never-published 0.1.0-pre without a shim; this case
+  pinned only that API. The same text is rendered by the provider's serializer, which the Nodes and provider rules tests
+  pin.
+- `dialect/fixed-fragments`, Removed. Old text: `NowExpression, the row lock clauses, CountAllExpression and
+  JsonNullValueExpression`. New text: (removed). Reason: ORML-21 slice 4: the legacy dialect path is removed from the
+  never-published 0.1.0-pre without a shim; this case pinned only that API. The same text is rendered by the provider's
+  serializer, which the Nodes and provider rules tests pin.
+- `dialect/clauses-and-aggregates`, Removed. Old text: `the returning, coalesce, any-of, null-safe, count, sum, min,
+  interval, increment and order members`. New text: (removed). Reason: ORML-21 slice 4: the legacy dialect path is
+  removed from the never-published 0.1.0-pre without a shim; this case pinned only that API. The same text is rendered
+  by the provider's serializer, which the Nodes and provider rules tests pin.
+- `dialect/conflict-clause`, Removed. Old text: `ConflictClause of PgDialect for every upsert term form`. New text:
+  (removed). Reason: ORML-21 slice 4: the legacy dialect path is removed from the never-published 0.1.0-pre without a
+  shim; this case pinned only that API. The same text is rendered by the provider's serializer, which the Nodes and
+  provider rules tests pin.
+- `dialect/json-fragments`, Removed. Old text: `the JSON members of PgDialect`. New text: (removed). Reason: ORML-21
+  slice 4: the legacy dialect path is removed from the never-published 0.1.0-pre without a shim; this case pinned only
+  that API. The same text is rendered by the provider's serializer, which the Nodes and provider rules tests pin.
+- `dialect/ddl-dialect`, Removed. Old text: `Quote and Literal of PgDdlDialect`. New text: (removed). Reason: ORML-21
+  slice 4: the legacy dialect path is removed from the never-published 0.1.0-pre without a shim; this case pinned only
+  that API. The same text is rendered by the provider's serializer, which the Nodes and provider rules tests pin.
+- `dialect/like-pattern`, Removed. Old text: `Escape, EscapeChar, EscapeClause, EscapeLiteral, Contains, StartsWith and
+  EndsWith of LikePattern`. New text: (removed). Reason: ORML-21 slice 4: the case pinned a helper that is not part of
+  the dialect path; its assertions moved to a plain test with the same expected text, and the helper's members are
+  listed as excluded in the coverage table.
+- `dialect/db-extensions-add-param-conversions`, Removed. Old text: `the parameter conversions of AddParam`. New text:
+  (removed). Reason: ORML-21 slice 4: the case pinned a helper that is not part of the dialect path; its assertions
+  moved to a plain test with the same expected text, and the helper's members are listed as excluded in the coverage
+  table.
+- `refusals/dialect-json-value-order-without-a-sql-type`, Removed. Old text: `PgDialect refuses a JsonValueOrder it has
+  no SQL type for`. New text: (removed). Reason: ORML-21 slice 4: the legacy dialect path is removed from the
+  never-published 0.1.0-pre without a shim; this case pinned only that API. The same text is rendered by the provider's
+  serializer, which the Nodes and provider rules tests pin.
+- `refusals/dialect-rank-without-options`, Removed. Old text: `PgDialect refuses a rank over no options`. New text:
+  (removed). Reason: ORML-21 slice 4: the legacy dialect path is removed from the never-published 0.1.0-pre without a
+  shim; this case pinned only that API. The same text is rendered by the provider's serializer, which the Nodes and
+  provider rules tests pin.
+- `json/jsonb-default-document-and-column-type`, Removed. Old text: `[0] jsonb and [1] '{}'::jsonb, the values of
+  Jsonb.ColumnType and Jsonb.EmptyDocumentDefaultSql`. New text: (removed). Reason: ORML-21 slice 4: the two Jsonb
+  constants were read only by the removed PostgreSQL dialect, so they are removed; the jsonb type and the empty-document
+  default are rendered by the provider's serializer and pinned by the ddl-builder entries.
+- `constants/runtime-string-constants`, Changed. Old text: `[6] Jsonb.ColumnType = "jsonb" and [7]
+  Jsonb.EmptyDocumentDefaultSql = "'{}'::jsonb"`. New text: `(both lines are gone and every later line moves up two
+  places)`. Reason: ORML-21 slice 4: the two Jsonb constants were read only by the removed PostgreSQL dialect, so they
+  are removed; the jsonb type and the empty-document default are rendered by the provider's serializer and pinned by the
+  ddl-builder entries.
+- `refusals/capability-* (23 entries) and refusals/group-by-count-where-without-the-filter-capability`, Changed. Old
+  text: `type: System.NotSupportedException; message: NoCapabilityDialect has no row lock; ..., the sentence after the
+  dialect name differing per capability`. New text: `type: Neemle.Orm.Lite.CapabilityNotSupportedException; message:
+  provider 'no-capability' does not support RowLock, which ForUpdate requires (table 'corpus_notes'). no-capability has
+  no row lock; ..., the same sentence as before`. Reason: ORML-21 slice 4: the refusal cases ran against a dialect that
+  supported nothing, which threw a plain NotSupportedException worded by the dialect. They now run against a provider
+  that supports nothing, so the refusal is the CapabilityNotSupportedException the provider path always threw, naming
+  the provider, the capability, the operation and the table, followed by the same guidance sentence as before.
 - `executed/soft-restore-plan-* (6 goldens: of-a-batched-delete, of-a-single-update-history,
   of-an-unregistered-batch-member, root-already-live, root-deleted-but-not-locked, root-missing; the latest-version
   statement)`, Changed. Old text: `SELECT op, xact_id, changed_at FROM row_history WHERE source_table = @t AND row_id =
@@ -739,6 +798,119 @@ A golden that was changed, removed or added because the library output was wrong
   Reason: A change of the corpus case, not of the library output: the case captured the double 2.7, and (decimal)2.7 is
   runtime dependent (.NET 10 gives 2.7, .NET 11 gives the 28-digit expansion of the binary value), so it now captures
   the exactly representable 2.5. The statement text "price" = @p0 is unchanged.
+- `hash/set-hash-vectors`, Changed. Old text: `no tables = 55b686441ec82b88; tenant table = e4071fdc5c0927f5; platform
+  table = 28d441b68fac0005; tenant then platform = 3525748bf40af974; platform then tenant = 7806d68ad12060f7; version
+  name formula = 9900_orm_history_reconcile_Assembly_e4071fdc5c0927f5`. New text: `no tables = e3b0c44298fc1c14; tenant
+  table = 991e2994cc4b646b; platform table = 30a6a6da8c76b2a8; tenant then platform = f8c47a43002b5b36; platform then
+  tenant = b6f6731be62a61a9; version name formula = 9900_orm_history_reconcile_Assembly_991e2994cc4b646b`. Reason:
+  ORML-21 S5 (owner decision D1): the index-set hash was the hash of the PostgreSQL-rendered create statements and the
+  history set hash the hash of the PostgreSQL-rendered install, whenever the PostgreSQL provider was loaded, and a
+  structural hash otherwise, so the 9900_ version names depended on what was loaded. Both are now the structural hash
+  only, in the core: the index set over table, index name, uniqueness, live column, columns and shape, the history set
+  over the table names and their argument hashes and, when it is not the library default, the actor setting name (the
+  corpus runs under the default). A database that carries the old names runs the renamed reconcile and history installs
+  once (idempotent) and records one new schema_migrations row for each. Nothing else on the line moves.
+- `hash/set-hash-equals-statements-hash-of-reconcile`, Changed. Old text: `e4071fdc5c0927f5 == e4071fdc5c0927f5 : True`.
+  New text: `991e2994cc4b646b == e4071fdc5c0927f5 : False`. Reason: ORML-21 S5 (owner decision D1): the index-set hash
+  was the hash of the PostgreSQL-rendered create statements and the history set hash the hash of the PostgreSQL-rendered
+  install, whenever the PostgreSQL provider was loaded, and a structural hash otherwise, so the 9900_ version names
+  depended on what was loaded. Both are now the structural hash only, in the core: the index set over table, index name,
+  uniqueness, live column, columns and shape, the history set over the table names and their argument hashes and, when
+  it is not the library default, the actor setting name (the corpus runs under the default). A database that carries the
+  old names runs the renamed reconcile and history installs once (idempotent) and records one new schema_migrations row
+  for each. Nothing else on the line moves. The hash of the rendered reconcile statements, StatementsHash, is unchanged;
+  the set hash no longer equals it, which is the point of the change.
+- `generator-demo/migration-runner-fresh-database, migration-runner-partially-applied and
+  executed-schema-contributions-and-registry (the 9900_ version names and the set hashes)`, Changed. Old text:
+  `9900_orm_index_reconcile_OrmLiteDemo_d27e299df0226960; IndexSetHash: d27e299df0226960;
+  9900_orm_history_reconcile_OrmLiteDemo_e9dbcb569c4fbc15; HistorySetHash: e9dbcb569c4fbc15`. New text:
+  `9900_orm_index_reconcile_OrmLiteDemo_a7104bccd4193080; IndexSetHash: a7104bccd4193080;
+  9900_orm_history_reconcile_OrmLiteDemo_6df7f955b08f5c73; HistorySetHash: 6df7f955b08f5c73`. Reason: ORML-21 S5 (owner
+  decision D1): the index-set hash was the hash of the PostgreSQL-rendered create statements and the history set hash
+  the hash of the PostgreSQL-rendered install, whenever the PostgreSQL provider was loaded, and a structural hash
+  otherwise, so the 9900_ version names depended on what was loaded. Both are now the structural hash only, in the core:
+  the index set over table, index name, uniqueness, live column, columns and shape, the history set over the table names
+  and their argument hashes and, when it is not the library default, the actor setting name (the corpus runs under the
+  default). A database that carries the old names runs the renamed reconcile and history installs once (idempotent) and
+  records one new schema_migrations row for each. Nothing else on the line moves.
+- `generator-corpus-entities/migration-runner-fresh-database, migration-runner-partially-applied and
+  executed-schema-contributions-and-registry (the 9900_ version names and the set hashes)`, Changed. Old text:
+  `9900_orm_index_reconcile_CorpusEntities_e3aab199192c293c; IndexSetHash: e3aab199192c293c;
+  9900_orm_history_reconcile_CorpusEntities_75a913ef24f4eca1; HistorySetHash: 75a913ef24f4eca1`. New text:
+  `9900_orm_index_reconcile_CorpusEntities_e5ff1a2ec4afdb56; IndexSetHash: e5ff1a2ec4afdb56;
+  9900_orm_history_reconcile_CorpusEntities_e61f568d5478fd36; HistorySetHash: e61f568d5478fd36`. Reason: ORML-21 S5
+  (owner decision D1): the index-set hash was the hash of the PostgreSQL-rendered create statements and the history set
+  hash the hash of the PostgreSQL-rendered install, whenever the PostgreSQL provider was loaded, and a structural hash
+  otherwise, so the 9900_ version names depended on what was loaded. Both are now the structural hash only, in the core:
+  the index set over table, index name, uniqueness, live column, columns and shape, the history set over the table names
+  and their argument hashes and, when it is not the library default, the actor setting name (the corpus runs under the
+  default). A database that carries the old names runs the renamed reconcile and history installs once (idempotent) and
+  records one new schema_migrations row for each. Nothing else on the line moves.
+- `generator-golden-fixtures/migration-runner-fresh-database, migration-runner-partially-applied and
+  executed-schema-contributions-and-registry (the 9900_ version names and the set hashes)`, Changed. Old text:
+  `9900_orm_index_reconcile_OrmLiteGoldenFixtures_eb6e32bc81a12870; IndexSetHash: eb6e32bc81a12870`. New text:
+  `9900_orm_index_reconcile_OrmLiteGoldenFixtures_cf6209a70c2a593c; IndexSetHash: cf6209a70c2a593c`. Reason: ORML-21 S5
+  (owner decision D1): the index-set hash was the hash of the PostgreSQL-rendered create statements and the history set
+  hash the hash of the PostgreSQL-rendered install, whenever the PostgreSQL provider was loaded, and a structural hash
+  otherwise, so the 9900_ version names depended on what was loaded. Both are now the structural hash only, in the core:
+  the index set over table, index name, uniqueness, live column, columns and shape, the history set over the table names
+  and their argument hashes and, when it is not the library default, the actor setting name (the corpus runs under the
+  default). A database that carries the old names runs the renamed reconcile and history installs once (idempotent) and
+  records one new schema_migrations row for each. Nothing else on the line moves.
+- `generator-global-namespace/migration-runner-fresh-database, migration-runner-partially-applied and
+  executed-schema-contributions-and-registry (the 9900_ version names and the set hashes)`, Changed. Old text:
+  `9900_orm_index_reconcile_CorpusGlobalNamespace_cdf8e7986621fc5e; IndexSetHash: cdf8e7986621fc5e;
+  9900_orm_history_reconcile_CorpusGlobalNamespace_0aa8a0d2f203193f; HistorySetHash: 0aa8a0d2f203193f`. New text:
+  `9900_orm_index_reconcile_CorpusGlobalNamespace_ae551789d8c9818c; IndexSetHash: ae551789d8c9818c;
+  9900_orm_history_reconcile_CorpusGlobalNamespace_1a3c33d971c4c2ce; HistorySetHash: 1a3c33d971c4c2ce`. Reason: ORML-21
+  S5 (owner decision D1): the index-set hash was the hash of the PostgreSQL-rendered create statements and the history
+  set hash the hash of the PostgreSQL-rendered install, whenever the PostgreSQL provider was loaded, and a structural
+  hash otherwise, so the 9900_ version names depended on what was loaded. Both are now the structural hash only, in the
+  core: the index set over table, index name, uniqueness, live column, columns and shape, the history set over the table
+  names and their argument hashes and, when it is not the library default, the actor setting name (the corpus runs under
+  the default). A database that carries the old names runs the renamed reconcile and history installs once (idempotent)
+  and records one new schema_migrations row for each. Nothing else on the line moves.
+- `generator-tenant-option-default/executed-schema-contributions-and-registry (the 9900_ version names and the set
+  hashes)`, Changed. Old text: `9900_orm_history_reconcile_TenantOptionDefault_58a560a7fa6d2d7f; HistorySetHash:
+  58a560a7fa6d2d7f`. New text: `9900_orm_history_reconcile_TenantOptionDefault_99ac1720f8990e2b; HistorySetHash:
+  99ac1720f8990e2b`. Reason: ORML-21 S5 (owner decision D1): the index-set hash was the hash of the PostgreSQL-rendered
+  create statements and the history set hash the hash of the PostgreSQL-rendered install, whenever the PostgreSQL
+  provider was loaded, and a structural hash otherwise, so the 9900_ version names depended on what was loaded. Both are
+  now the structural hash only, in the core: the index set over table, index name, uniqueness, live column, columns and
+  shape, the history set over the table names and their argument hashes and, when it is not the library default, the
+  actor setting name (the corpus runs under the default). A database that carries the old names runs the renamed
+  reconcile and history installs once (idempotent) and records one new schema_migrations row for each. Nothing else on
+  the line moves.
+- `generator-tenant-option-invalid/executed-schema-contributions-and-registry (the 9900_ version names and the set
+  hashes)`, Changed. Old text: `9900_orm_history_reconcile_TenantOptionInvalid_58a560a7fa6d2d7f; HistorySetHash:
+  58a560a7fa6d2d7f`. New text: `9900_orm_history_reconcile_TenantOptionInvalid_99ac1720f8990e2b; HistorySetHash:
+  99ac1720f8990e2b`. Reason: ORML-21 S5 (owner decision D1): the index-set hash was the hash of the PostgreSQL-rendered
+  create statements and the history set hash the hash of the PostgreSQL-rendered install, whenever the PostgreSQL
+  provider was loaded, and a structural hash otherwise, so the 9900_ version names depended on what was loaded. Both are
+  now the structural hash only, in the core: the index set over table, index name, uniqueness, live column, columns and
+  shape, the history set over the table names and their argument hashes and, when it is not the library default, the
+  actor setting name (the corpus runs under the default). A database that carries the old names runs the renamed
+  reconcile and history installs once (idempotent) and records one new schema_migrations row for each. Nothing else on
+  the line moves.
+- `generator-tenant-option-scope-id/executed-schema-contributions-and-registry (the 9900_ version names and the set
+  hashes)`, Changed. Old text: `9900_orm_history_reconcile_TenantOptionScope_4ebf33eaebd07b21; HistorySetHash:
+  4ebf33eaebd07b21`. New text: `9900_orm_history_reconcile_TenantOptionScope_b26c64fa058bdef5; HistorySetHash:
+  b26c64fa058bdef5`. Reason: ORML-21 S5 (owner decision D1): the index-set hash was the hash of the PostgreSQL-rendered
+  create statements and the history set hash the hash of the PostgreSQL-rendered install, whenever the PostgreSQL
+  provider was loaded, and a structural hash otherwise, so the 9900_ version names depended on what was loaded. Both are
+  now the structural hash only, in the core: the index set over table, index name, uniqueness, live column, columns and
+  shape, the history set over the table names and their argument hashes and, when it is not the library default, the
+  actor setting name (the corpus runs under the default). A database that carries the old names runs the renamed
+  reconcile and history installs once (idempotent) and records one new schema_migrations row for each. Nothing else on
+  the line moves.
+- `refusals/predicate-json-array-contains-string-null-value`, Changed. Old text: `message: Db.JsonArrayContainsString
+  tests for exact-string array membership, and a null value would bind SQL NULL -- jsonb_exists against a NULL argument
+  matches no row at all rather than refusing. (Parameter 'value')`. New text: `message: Db.JsonArrayContainsString tests
+  for exact-string array membership, and a null value would bind SQL NULL -- a JSON array-membership test against a NULL
+  argument matches no row at all rather than refusing. (Parameter 'value')`. Reason: ORML-21 S6: the message is written
+  in the provider-neutral runtime and named the PostgreSQL function jsonb_exists, which is provider SQL text in the
+  core; it now names the JSON array-membership test. The exception type, the parameter name and the rest of the sentence
+  are unchanged.
 - `generator-demo/executed-schema-contributions-and-registry`, Changed. Old text: `version 0000_baseline_OrmLiteDemo
   reversibility=Reversible down=none`. New text: `version 0000_baseline_OrmLiteDemo reversibility=Irreversible
   down=none`. Reason: ORML-54: the generated baseline entry was declared Reversible, so its derived Down dropped every
@@ -787,7 +959,6 @@ A golden that was changed, removed or added because the library output was wrong
 | `constants` | 1 |
 | `ddl-builder` | 36 |
 | `ddl-helpers` | 36 |
-| `dialect` | 9 |
 | `executed` | 96 |
 | `generator-corpus-entities` | 8 |
 | `generator-demo` | 8 |
@@ -798,22 +969,21 @@ A golden that was changed, removed or added because the library output was wrong
 | `generator-tenant-option-invalid` | 6 |
 | `generator-tenant-option-scope-id` | 6 |
 | `hash` | 4 |
-| `json` | 40 |
+| `json` | 39 |
 | `locks-intervals` | 20 |
 | `query-insert-many` | 7 |
 | `query-read` | 127 |
 | `query-upsert` | 21 |
 | `query-write` | 30 |
-| `refusals` | 144 |
+| `refusals` | 142 |
 | `row-history` | 44 |
 | `soft-delete` | 12 |
-| total | 681 |
+| total | 669 |
 
 ## What the groups hold
 
 - `query-read`, `query-write`, `query-upsert`, `query-insert-many`, `soft-delete`, `json`, `locks-intervals`: the SQL text and the ordered parameter list that each `Query<T>.Render*` method returns, for the lambda DSL and the `Db.*` markers, including soft-delete live terms, conflict targets, RETURNING, FILTER, row locks, intervals, array parameters and every JSON clause.
-- `refusals`: the exception type and message of every guard reachable from the render path, the capability refusals of a dialect that supports nothing, and the value-type guards.
-- `dialect`: each `ISqlDialect` member called directly, the LIKE escape helper, the DDL dialect and the parameter conversions of `AddParam`.
+- `refusals`: the exception type and message of every guard reachable from the render path, the capability refusals of a provider that supports nothing, and the value-type guards.
 - `ddl-builder`, `ddl-helpers`: every `MigrationBuilder` and `TableBuilder` operation, and the DO-block helpers (`ForeignKeyActionDdl`, `LiveOnlyConversionDdl`, `SoftDeleteColumnDdl`) with their refusals.
 - `row-history`, `hash`: the history DDL (preamble, capture function, per-table triggers), the history read, revert and trash statements, and the hash formulas that name migration versions and trigger markers.
 - `executed`: transcripts of the statements that library code builds inside async methods and runs, recorded through a scripted ADO.NET provider (statement text, parameter names and values, connection, transaction brackets). No database is involved.
@@ -830,21 +1000,19 @@ Method: the surface is every public method (and, for the types marked internal b
 | `ConflictGuard` | 2 | 0 | 2 |
 | `ConstraintColumns` | 2 | 1 | 1 |
 | `Db` | 12 | 12 | 0 |
-| `DbActor` | 4 | 4 | 0 |
-| `DbExtensions` | 1 | 1 | 0 |
+| `DbActor` | 2 | 2 | 0 |
+| `DbExtensions` | 1 | 0 | 1 |
 | `DbLane` | 2 | 2 | 0 |
 | `ForeignKeyActionDdl` | 3 | 3 | 0 |
 | `GatedDataSource` | 1 | 1 | 0 |
 | `InsertManyChunks` | 2 | 1 | 1 |
-| `LikePattern` | 4 | 4 | 0 |
+| `LikePattern` | 4 | 0 | 4 |
 | `LiveOnlyConversionDdl` | 2 | 2 | 0 |
 | `Migration` | 2 | 2 | 0 |
-| `MigrationBuilder` | 25 | 21 | 4 |
+| `MigrationBuilder` | 24 | 21 | 3 |
 | `OrmContext` | 5 | 2 | 3 |
 | `OrmEnum` | 2 | 2 | 0 |
-| `OrmLiteSettings` | 3 | 3 | 0 |
-| `PgDdlDialect` | 3 | 3 | 0 |
-| `PgDialect` | 2 | 2 | 0 |
+| `OrmLiteSettings` | 2 | 2 | 0 |
 | `Query` | 108 | 95 | 13 |
 | `Row` | 3 | 3 | 0 |
 | `RowHistoryDdl` | 10 | 7 | 3 |
@@ -854,10 +1022,10 @@ Method: the surface is every public method (and, for the types marked internal b
 | `SoftDeleteSql` | 3 | 3 | 0 |
 | `SoftRestore` | 3 | 3 | 0 |
 | `SoftTrashRead` | 5 | 5 | 0 |
-| `TableBuilder` | 6 | 5 | 1 |
+| `TableBuilder` | 5 | 4 | 1 |
 | `UnitOfWork` | 5 | 5 | 0 |
-| `UpsertSet` | 7 | 7 | 0 |
-| total | 244 | 216 | 28 |
+| `UpsertSet` | 7 | 5 | 2 |
+| total | 234 | 200 | 34 |
 
 Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `ConflictGuard`.
 
@@ -868,11 +1036,15 @@ Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `Conflict
 | `ConflictGuard.RequireDefined/1` | internal guard reached through Query.RenderUpsert; the message is pinned by refusals/upsert-with-an-undefined-conflict-action |
 | `ConflictGuard.RequireTarget/2` | internal guard reached through Query.RenderUpsert; the message is pinned by refusals/upsert-update-without-a-target |
 | `ConstraintColumns..ctor/2` | record constructor of the result type; the type emits no text, ConstraintColumns.ForAsync is pinned by the executed/constraint-columns-* transcripts |
+| `DbExtensions.AddParam/3` | converts a value to the ADO.NET parameter it binds and emits no statement; pinned by DbExtensionsAddParamTests |
 | `InsertManyChunks.RunAsync/5` | internal runner reached only through Query.InsertManyAsync; its transcripts are the executed/insert-many-* entries |
+| `LikePattern.Contains/1` | wraps EscapeLiteral in the percent signs of a LIKE pattern, pinned by LikePatternTests |
+| `LikePattern.EndsWith/1` | prepends the percent sign to EscapeLiteral, pinned by LikePatternTests |
+| `LikePattern.EscapeLiteral/1` | escape helper beneath every Contains, StartsWith and EndsWith predicate; its text is pinned by LikePatternTests |
+| `LikePattern.StartsWith/1` | appends the percent sign to EscapeLiteral, pinned by LikePatternTests |
 | `MigrationBuilder.Add/1` | appends an already built operation node; the nodes it receives are the ones the typed methods build, pinned by Nodes/DdlOperationTests |
 | `MigrationBuilder.AddDecimalColumn/6` | typed decimal column; the corpus predates typed columns, text pinned by Nodes/DdlOperationTests |
 | `MigrationBuilder.DropForeignKey/2` | typed inverse of AddForeignKey added with the reversibility classifier, pinned by Nodes/MigrationReversibilityTests |
-| `MigrationBuilder.Render/1` | renders the recorded nodes for an explicit provider; the same compile path as Operations, pinned by Nodes/DdlOperationTests |
 | `OrmContext.DisposeAsync/0` | releases the data sources an options-built context owns; it emits no text |
 | `OrmContext.MigrateAsync/1` | applies the contributions the generated assemblies registered through MigrationRunner.RunAsync, whose transcripts are the generator-*/migration-runner-* entries; MigrateAsyncTests apply them |
 | `OrmContext.MigrateAsync/2` | forwards explicit contributions to MigrationRunner.RunAsync, whose transcripts are the generator-*/migration-runner-* entries; MigrateAsyncTests apply them |
@@ -890,22 +1062,15 @@ Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `Conflict
 | `Query.get_Translator/0` | internal accessor read only by ViewColumns; the predicates it translates are pinned by ddl-builder/view-over-a-join-and-an-aggregate |
 | `Query.get_WhereTerms/0` | node-tree accessor beside WhereClauses; the terms it exposes are the ones WhereClauses renders, pinned by query-read/select-render-is-repeatable-and-exposes-the-where-terms |
 | `RowHistoryDdl.Install/1` | node factory beneath Reconcile; the statements it lowers to are pinned by the row-history/ddl-reconcile-* entries |
-| `RowHistoryDdl.SetHashWith/2` | the legacy-or-structural identity beneath SetHash; the legacy form is pinned by hash/set-hash-vectors and the structural form by SqliteRules/SqliteHistoryIdentityTests |
-| `RowHistoryDdl.get_Preamble/0` | property that replaced a static readonly field so no provider is needed at type initialisation; its text is pinned by row-history/ddl-preamble-under-the-default-actor-setting |
+| `RowHistoryDdl.Preamble/1` | public form of PreambleFor under the library default actor setting, for the provider it is given; its text is pinned by row-history/ddl-preamble-under-the-default-actor-setting |
+| `RowHistoryDdl.SetHash/2` | the form of SetHash that names the actor setting; under the library default it equals SetHash, which the hash/set-hash-vectors entry pins, and a custom setting is pinned by Ports.Tests/MigrationIdentityTests |
 | `TableBuilder.DecimalColumn/6` | typed decimal column; the corpus predates typed columns, text pinned by Nodes/DdlOperationTests |
-
-### `ISqlDialect` members, observed through a forwarding dialect
-
-Every case runs against a dialect that forwards to `PgDialect` and records which member was called and by which group. Capability flags that the query code reads only to refuse appear in the `refusals` group.
-
-- members of the interface: 49
-- reached from query, DDL or executed paths: 13
-- reached only by the direct calls of the `dialect` group: 36 (`AnyOfExpression`, `CoalesceAssignment`, `ComparableParameter`, `ConflictClause`, `CountAllExpression`, `CountDistinctExpression`, `CountFilterExpression`, `IncrementAssignment`, `JsonArrayContainsAnyExpression`, `JsonArrayContainsStringExpression`, `JsonDocumentMergeAssignment`, `JsonDocumentParameter`, `JsonDocumentRemoveThenMergeAssignment`, `JsonKeyComparableExpression`, `JsonKeyExistsExpression`, `JsonKeyIndexTextExpression`, `JsonKeyIndexValueExpression`, `JsonKeyOrderTerm`, `JsonKeyRankExpression`, `JsonKeyTextExpression`, `JsonMemberIncrementExpression`, `JsonNullValueExpression`, `JsonObjectAssignment`, `KeyPreservingRowLockClause`, `MinExpression`, `MovedFieldNumberOrEpochMillisOrderTerm`, `MovedFieldResolvedTextExpression`, `NowExpression`, `NowPlusMinutesExpression`, `NullSafeEqualsExpression`, `OrderDirectionClause`, `Page`, `ReturningClause`, `RowLockClause`, `SumCoalescedExpression`, `TextValueExpression`)
-- never reached: 0
+| `UpsertSet.ToJsonDocumentParam/2` | data constructor of an upsert term for a JSON document; the term renders no text, the upsert text is pinned by the query-upsert entries |
+| `UpsertSet.ToParam/2` | data constructor of an upsert term; the term renders no text, the upsert text is pinned by the query-upsert entries |
 
 ### Constants
 
-- string constants and static read-only strings captured: 20
+- string constants and static read-only strings captured: 18
 
 ### Generator
 

@@ -16,8 +16,10 @@ public sealed class FixtureProvider : ISqlProvider
 
 public sealed class FixtureSerializer : StandardSerializer
 {
+    public const string RefusalWordingOnlyThisFixturesOwnBodiesUse = "swap-readiness fixture serializer";
+
     private NotSupportedException Refused(string what) =>
-        new($"the swap-readiness fixture serializer has no spelling for {what}.");
+        new($"the {RefusalWordingOnlyThisFixturesOwnBodiesUse} has no spelling for {what}.");
 
     public override void Visit(ILike node) => throw Refused(nameof(ILike));
 

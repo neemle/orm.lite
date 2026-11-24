@@ -8,20 +8,10 @@ public sealed class CorpusRecorder
 
     private readonly List<CorpusEntry> _entries = [];
     private readonly HashSet<string> _keys = new(StringComparer.Ordinal);
-    private readonly Dictionary<string, SortedSet<string>> _dialectTouches = new(StringComparer.Ordinal);
 
     public string CurrentGroup { get; private set; } = "";
 
     public IReadOnlyList<CorpusEntry> Entries => _entries;
-
-    public IReadOnlyDictionary<string, SortedSet<string>> DialectTouches => _dialectTouches;
-
-    public void Touch(string dialectMember)
-    {
-        if (!_dialectTouches.TryGetValue(dialectMember, out var groups))
-            _dialectTouches[dialectMember] = groups = new SortedSet<string>(StringComparer.Ordinal);
-        groups.Add(CurrentGroup);
-    }
 
     public void Text(string group, string name, Func<string> body) => Add(group, name, body);
 

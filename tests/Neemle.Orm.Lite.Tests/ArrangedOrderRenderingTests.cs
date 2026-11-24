@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -24,16 +25,16 @@ public sealed class ArrangedOrderRenderingTests
         _ => throw new ArgumentOutOfRangeException(nameof(member), member, "Unknown FixtureDocument member."),
     };
 
-    private static Query<FixtureOwner> Owners(ISqlDialect dialect)
+    private static Query<FixtureOwner> Owners(ISqlProvider provider)
     {
         OrmMeta.Register<FixtureDocument>("fixture_documents", DocumentCol, ["id", "payload", "label"]);
         OrmMeta.Register<FixtureOwner>("fixture_owners", OwnerCol, ["id", "name"]);
         return new Query<FixtureOwner>(
-            TestContext.Of(new NeverUsedDataSource(), dialect),
+            TestContext.Of(new NeverUsedDataSource(), provider),
             _ => throw new NotSupportedException("no rows are read here"));
     }
 
-    private static Query<FixtureOwner> Owners() => Owners(new PgDialect());
+    private static Query<FixtureOwner> Owners() => Owners(PostgresProvider.Instance);
 
     private static string Ordered(params string[] arrangement) => Owners()
         .OrderByJsonKeyOf<FixtureDocument>(
@@ -130,12 +131,12 @@ public sealed class ArrangedOrderRenderingTests
     [Fact(DisplayName = "a dialect with no JSON document type REFUSES the ranked ordering BY NAME, before any arrangement is bound, rather than emitting PostgreSQL text at a server that would not parse it")]
     public void A_dialect_without_json_refuses_by_name()
     {
-        var refusal = Assert.Throws<NotSupportedException>(() => Owners(new SqliteDialect())
+        var refusal = Assert.ThrowsAny<NotSupportedException>(() => Owners(FixtureProvider.Instance)
             .OrderByJsonKeyOf<FixtureDocument>(
                 (o, d) => d.Id == o.Id, d => d.Payload, new JsonKeyOrdering(new JsonKey("severity"),
                 descending: false, nullsFirst: false, JsonValueOrder.Text, ["urgent", "normal"])));
 
-        Assert.Contains("SqliteDialect", refusal.Message, StringComparison.Ordinal);
+        Assert.Contains("provider 'fixture'", refusal.Message, StringComparison.Ordinal);
         Assert.Contains("order by a key inside a JSON document in another table",
             refusal.Message, StringComparison.Ordinal);
     }

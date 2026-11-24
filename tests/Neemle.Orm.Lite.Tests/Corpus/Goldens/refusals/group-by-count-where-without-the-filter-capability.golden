@@ -1,3 +1,3 @@
 -- refusal
-type: System.NotSupportedException
-message: NoCapabilityDialect has no FILTER aggregate; a second statement would read a different snapshot.
+type: Neemle.Orm.Lite.CapabilityNotSupportedException
+message: provider 'no-capability' does not support AggregateFilter, which CountWhere requires (table 'corpus_notes'). no-capability has no FILTER aggregate; a second statement would read a different snapshot.

@@ -50,9 +50,9 @@ namespace Neemle.Orm.Lite;
 
         internal void AddCountWhere(LambdaExpression filter)
         {
-            if (!_state.Allows(Capability.AggregateFilter, d => d.SupportsAggregateFilter))
+            if (!_state.Allows(Capability.AggregateFilter))
                 throw _state.Refusal(Capability.AggregateFilter, "AggregateCountWhere",
-                    $"{_state.DialectName} has no FILTER aggregate; "
+                    $"{_state.ProviderName} has no FILTER aggregate; "
                     + "a second statement would read a different snapshot.");
             _terms.Add(new CountFiltered(new Group(_translator.Predicate(filter.Parameters[0], filter.Body))));
         }

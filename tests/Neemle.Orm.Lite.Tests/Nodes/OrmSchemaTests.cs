@@ -75,19 +75,18 @@ public sealed class OrmSchemaTests
         Assert.Equal(DdlCompiler.Render(schema.Baseline(), PostgresProvider.Instance), schema.Contributions()[0].Render(PostgresProvider.Instance));
     }
 
-    [Fact(DisplayName = "the index-set identity is the legacy hash of the rendered create statements when the PostgreSQL provider is there, and a structural hash of the same declarations when it is not")]
-    public void The_index_set_hash_has_a_legacy_and_a_structural_form()
+    [Fact(DisplayName = "the index-set identity is a hash of the declarations alone, the same whichever providers are loaded, and not the hash of the statements the PostgreSQL provider renders")]
+    public void The_index_set_hash_is_structural()
     {
         var schema = OrmSchema.Of("Tok", Doc());
-        var legacy = OrmSchema.StableHash(DdlCompiler.Render(schema.Indexes(), PostgresProvider.Instance));
+        var rendered = OrmSchema.StableHash(DdlCompiler.Render(schema.Indexes(), PostgresProvider.Instance));
 
-        Assert.Equal(legacy, schema.IndexSetHashWith(PostgresProvider.Instance));
-        Assert.Equal(legacy, schema.IndexSetHash);
-        var structural = schema.IndexSetHashWith(null);
-        Assert.Equal(16, structural.Length);
-        Assert.NotEqual(legacy, structural);
-        Assert.NotEqual(structural, OrmSchema.Of("Tok", Doc().Index("ix_more", false, false, "name")).IndexSetHashWith(null));
-        Assert.Equal(structural, OrmSchema.Of("Other", Doc()).IndexSetHashWith(null));
+        Assert.Equal(OrmSchema.StableHash(["docs|ix_docs_name|unique|deleted_at|name"]), schema.IndexSetHash);
+        Assert.Equal("b590ddf4256c5bca", schema.IndexSetHash);
+        Assert.Equal(16, schema.IndexSetHash.Length);
+        Assert.NotEqual(rendered, schema.IndexSetHash);
+        Assert.NotEqual(schema.IndexSetHash, OrmSchema.Of("Tok", Doc().Index("ix_more", false, false, "name")).IndexSetHash);
+        Assert.Equal(schema.IndexSetHash, OrmSchema.Of("Other", Doc()).IndexSetHash);
     }
 
     [Fact(DisplayName = "the stable hash is the legacy FNV over the ordinally sorted statements, so a reorder of the input changes nothing")]
@@ -111,7 +110,7 @@ public sealed class OrmSchemaTests
         Assert.Equal(new[] { "DROP TABLE IF EXISTS \"seeds\"" }, reversible.Render(PostgresProvider.Instance));
         var down = new MigrationBuilder(PostgresProvider.Instance);
         reversible.Down!(down);
-        Assert.Equal(new[] { "DROP TABLE IF EXISTS \"seeds_down\"" }, down.Operations);
+        Assert.Equal(new[] { "DROP TABLE IF EXISTS \"seeds_down\"" }, down.Render(PostgresProvider.Instance));
         Assert.Null(irreversible.Down);
         Assert.Null(plain.Down);
         Assert.Equal(new[] { "DROP TABLE IF EXISTS \"t\"" }, plan.Render(PostgresProvider.Instance));

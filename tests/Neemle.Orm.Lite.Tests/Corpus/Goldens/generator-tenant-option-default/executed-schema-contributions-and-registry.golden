@@ -7,7 +7,7 @@ IndexSetHash: cbf29ce484222325
 HistoryTables:
   to_named key=id soft=deleted_at tenant=tenant_id unversioned=[] arguments-hash=777ee2e5851368bb
   to_notes key=id soft=deleted_at tenant=tenant_id unversioned=[] arguments-hash=777ee2e5851368bb
-HistorySetHash: 58a560a7fa6d2d7f
+HistorySetHash: 99ac1720f8990e2b
 -- contributions
 version 0000_baseline_TenantOptionDefault reversibility=Irreversible down=none
   up:
@@ -18,7 +18,7 @@ version 0001_orm_indexes_TenantOptionDefault reversibility=Reversible down=none
 version 9900_orm_index_reconcile_TenantOptionDefault_cbf29ce484222325 reversibility=Irreversible down=none
   up:
     SET LOCAL lock_timeout = '5s'
-version 9900_orm_history_reconcile_TenantOptionDefault_58a560a7fa6d2d7f reversibility=Irreversible down=none
+version 9900_orm_history_reconcile_TenantOptionDefault_99ac1720f8990e2b reversibility=Irreversible down=none
   up:
     SET LOCAL lock_timeout = '5s'
     CREATE TABLE IF NOT EXISTS row_history ( id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY, tenant_id uuid NULL, source_table text NOT NULL, row_id uuid NOT NULL, op text NOT NULL CHECK (op IN ('update', 'soft_delete', 'restore')), old_values jsonb NOT NULL, actor_user_id uuid NULL, actor_kind text NOT NULL CHECK (actor_kind IN ('user', 'system', 'unknown')), xact_id bigint NOT NULL, changed_at timestamptz NOT NULL DEFAULT now())

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Neemle.Orm.Lite;
 using Microsoft.Data.Sqlite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -44,7 +45,7 @@ public sealed class InsertManyChunkingTests : IDisposable
     private CountingSqliteDataSource Source() => new(_path, _recorder);
 
     private static OrmContext Ctx(DbDataSource source, int capacity = Capacity) =>
-        TestContext.Of(source, new SqliteDialect { MaxBindParameters = capacity });
+        TestContext.Of(source, new BindLimitProvider(FixtureProvider.Instance, capacity));
 
     private static Query<FixtureWidget> Widgets(OrmContext ctx) => new(ctx, Map);
 
@@ -209,9 +210,9 @@ public sealed class InsertManyChunkingTests : IDisposable
         Assert.Equal(Enumerable.Range(0, 10).Select(i => (long)i), StoredRanks());
     }
 
-    [Fact(DisplayName = "PgDialect reports the protocol's 65535 bind parameters per statement")]
-    public void Pg_dialect_capacity_is_the_protocol_limit()
+    [Fact(DisplayName = "the PostgreSQL provider reports the protocol's 65535 bind parameters per statement")]
+    public void Postgres_provider_capacity_is_the_protocol_limit()
     {
-        Assert.Equal(65535, new PgDialect().MaxBindParameters);
+        Assert.Equal(65535, PostgresProvider.Instance.MaxBindParameters);
     }
 }

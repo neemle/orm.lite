@@ -1,0 +1,2 @@
+# Tests of the ports project that are skipped ON PURPOSE, one per line: <class>.<test method> TAB <reason>.
+# Empty: none of them may skip. They run on no server, so a skip is a fault in the rails, not a choice.

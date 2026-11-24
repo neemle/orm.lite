@@ -1,5 +1,0 @@
-[0] NowExpression = now()
-[1] RowLockClause = " FOR UPDATE"
-[2] KeyPreservingRowLockClause = " FOR NO KEY UPDATE"
-[3] CountAllExpression = count(*)
-[4] JsonNullValueExpression = NULL::text

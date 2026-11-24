@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -29,7 +30,7 @@ public sealed class TypedParityTests
     };
 
     private static Query<TypedRow> Q() =>
-        new(TestContext.Of(new NeverUsedDataSource(), new PgDialect()),
+        new(TestContext.Of(new NeverUsedDataSource(), PostgresProvider.Instance),
             _ => throw new NotSupportedException("no rows are read here"));
 
     private static Expression<Func<TypedRow, object?>> NotAColumn() => r => r.Name.Length;

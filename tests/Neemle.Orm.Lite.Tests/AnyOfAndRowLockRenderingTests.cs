@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
+using Neemle.Orm.Lite.Nodes;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -20,13 +22,13 @@ public class AnyOfAndRowLockRenderingTests
 
     private static readonly Guid Probe = Guid.Parse("66666666-6666-6666-6666-666666666666");
 
-    private static OrmContext Pg() => TestContext.Of(new UnreachableDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new UnreachableDataSource(), PostgresProvider.Instance);
 
     private static Query<FixtureWidget> Widgets() =>
         new(Pg(), _ => throw new NotSupportedException());
 
     private static Query<FixtureWidget> Sqlite() =>
-        new(TestContext.Of(new UnreachableDataSource(), new SqliteDialect()), _ => throw new NotSupportedException());
+        new(TestContext.Of(new UnreachableDataSource(), FixtureProvider.Instance), _ => throw new NotSupportedException());
 
     [Fact(DisplayName = "Db.AnyOf binds the WHOLE collection as ONE array parameter, where the existing Contains translation expands it into one placeholder per element — an unbounded id set otherwise runs at the driver's parameter limit")]
     public void AnyOf_binds_one_array_parameter_where_Contains_binds_one_per_element()
@@ -125,7 +127,7 @@ public class AnyOfAndRowLockRenderingTests
 
     [Fact(DisplayName = "a dialect without row locking REFUSES ForUpdate by name rather than emitting an unlocked read the caller would still treat as serialised")]
     public void A_dialect_without_row_locking_refuses_for_update() =>
-        Assert.Throws<NotSupportedException>(() => Sqlite().Where(w => w.Rank == 1).ForUpdate());
+        Assert.ThrowsAny<NotSupportedException>(() => Sqlite().Where(w => w.Rank == 1).ForUpdate());
 
     [Fact(DisplayName = "a dialect without an array parameter refuses Db.AnyOf, and one without null-safe equality refuses Db.NullSafeEquals — rewriting the latter as = is the silent narrowing the vault lookup exists to avoid")]
     public void A_dialect_without_the_capability_refuses_it()
@@ -133,9 +135,10 @@ public class AnyOfAndRowLockRenderingTests
         var ids = new List<int> { 1 };
         string? none = null;
 
-        Assert.Throws<NotSupportedException>(() => Sqlite().Where(w => Db.AnyOf(w.Rank, ids)).RenderDelete());
-        Assert.Throws<NotSupportedException>(() => Sqlite().Where(w => Db.NullSafeEquals(w.Name, none)).RenderDelete());
-        Assert.Throws<NotSupportedException>(() => Sqlite().AggregateCountWhere(w => w.Rank == 1));
+        Assert.ThrowsAny<NotSupportedException>(() => Sqlite().Where(w => Db.AnyOf(w.Rank, ids)).RenderDelete());
+        Assert.ThrowsAny<NotSupportedException>(
+            () => Sqlite().Where(w => Db.NullSafeEquals(w.Name, none)).RenderDelete());
+        Assert.ThrowsAny<NotSupportedException>(() => Sqlite().AggregateCountWhere(w => w.Rank == 1));
     }
 
     [Fact(DisplayName = "OrderByPredicate orders by a translated boolean and ThenByPredicate appends, so an ordering over a computed scope needs no computed column in the SELECT list")]
@@ -237,11 +240,12 @@ public class AnyOfAndRowLockRenderingTests
         Assert.Equal(3, ps.Count);
     }
 
-    [Fact(DisplayName = "the ping statement is a DIALECT property rather than a SELECT 1 each caller writes, which is what made a liveness probe expressible through the ORM at all")]
-    public void The_ping_statement_is_a_dialect_property()
+    [Fact(DisplayName = "the ping statement is the provider's own spelling of SELECT 1 rather than a text each caller writes, which is what made a liveness probe expressible through the ORM at all")]
+    public void The_ping_statement_is_the_providers_select_one()
     {
-        Assert.Equal("SELECT 1", new PgDialect().PingStatement);
-        Assert.NotEqual(new PgDialect().PingStatement, new SqliteDialect().PingStatement);
+        Assert.Equal(
+            "SELECT 1",
+            StatementCompiler.Compile(new Select([new IntLit(1)]), PostgresProvider.Instance, StatementKind.Read).Text);
     }
 
     [Fact(DisplayName = "every renderer added this ticket opens NO connection, so the pins above are statements rather than round trips")]
@@ -249,7 +253,7 @@ public class AnyOfAndRowLockRenderingTests
     {
         var source = new UnreachableDataSource();
         Query<FixtureWidget> Fresh() => new(
-            TestContext.Of(source, new PgDialect()), _ => throw new NotSupportedException());
+            TestContext.Of(source, PostgresProvider.Instance), _ => throw new NotSupportedException());
         var q = Fresh();
 
         q.Where(w => w.Rank == 1).ForUpdate().RenderSelect();

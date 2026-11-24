@@ -9,11 +9,7 @@ public sealed class NulLiteralRefusalTests
 {
     private const string Secret = "secret-text";
 
-    private static readonly Func<MigrationBuilder>[] Builders =
-    [
-        () => new MigrationBuilder(PostgresProvider.Instance),
-        () => new MigrationBuilder(SqliteProvider.Instance),
-    ];
+    private static readonly ISqlProvider[] Providers = [PostgresProvider.Instance, SqliteProvider.Instance];
 
     public static IEnumerable<object[]> Carriers() =>
     [
@@ -34,18 +30,18 @@ public sealed class NulLiteralRefusalTests
         ['\uDE00'],
     ];
 
-    private static MigrationBuilder Busy(Func<MigrationBuilder> make) => make().DropTable("earlier");
+    private static MigrationBuilder Busy(ISqlProvider provider) => new MigrationBuilder(provider).DropTable("earlier");
 
     [Theory(DisplayName = "[SEC] a string, a char or a document holding U+0000 is refused by InsertData and "
         + "DeleteData on both providers, naming U+0000, and nothing is recorded")]
     [MemberData(nameof(Carriers))]
     public void A_nul_is_refused_by_name(object value)
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var insert = Busy(make);
+            var insert = Busy(provider);
             var inserted = Assert.Throws<ArgumentException>(() => insert.InsertData("t", ["c"], [value]));
-            var delete = Busy(make);
+            var delete = Busy(provider);
             var deleted = Assert.Throws<ArgumentException>(() => delete.DeleteData("t", "c", value));
 
             Assert.Contains("U+0000", inserted.Message, StringComparison.Ordinal);
@@ -61,11 +57,11 @@ public sealed class NulLiteralRefusalTests
     [MemberData(nameof(LoneSurrogates))]
     public void A_lone_surrogate_is_refused_by_name(object value)
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var insert = Busy(make);
+            var insert = Busy(provider);
             var inserted = Assert.Throws<ArgumentException>(() => insert.InsertData("t", ["c"], [value]));
-            var delete = Busy(make);
+            var delete = Busy(provider);
             var deleted = Assert.Throws<ArgumentException>(() => delete.DeleteData("t", "c", value));
 
             Assert.Contains("lone surrogate", inserted.Message, StringComparison.Ordinal);
@@ -80,18 +76,18 @@ public sealed class NulLiteralRefusalTests
         + "written verbatim")]
     public void A_surrogate_pair_is_still_written()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
             Assert.Equal(
                 "INSERT INTO \"t\" (\"c\") VALUES ('a\U0001F600b'), ('\U0001F600')",
-                Assert.Single(make().InsertData("t", ["c"], ["a\U0001F600b"], ["\U0001F600"]).Operations));
+                Assert.Single(new MigrationBuilder(provider).InsertData("t", ["c"], ["a\U0001F600b"], ["\U0001F600"]).Render(provider)));
         }
     }
 
-    [Fact(DisplayName = "[SEC] PgDdlDialect.Literal and a view parameter refuse U+0000 the same way")]
+    [Fact(DisplayName = "[SEC] the DDL literal and a view parameter refuse U+0000 the same way")]
     public void The_other_writers_refuse_it_too()
     {
-        var literal = Assert.Throws<ArgumentException>(() => new PgDdlDialect().Literal("a\0b"));
+        var literal = Assert.Throws<ArgumentException>(() => PostgresLiteral.Of("a\0b"));
         var inlined = Assert.Throws<ArgumentException>(() => ParamLiterals.Of("a\0b"));
 
         Assert.Contains("U+0000", literal.Message, StringComparison.Ordinal);
@@ -102,9 +98,9 @@ public sealed class NulLiteralRefusalTests
         + "and the message never carries the text of another value")]
     public void A_nul_leaves_no_partial_operation_and_no_echo()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var builder = Busy(make);
+            var builder = Busy(provider);
 
             var inserted = Assert.Throws<ArgumentException>(
                 () => builder.InsertData("t", ["a", "b"], [Secret, 1], [Secret, "x\0y"]));
@@ -122,9 +118,9 @@ public sealed class NulLiteralRefusalTests
     {
         var table = EntityDescriptor.Of("Probe", "probes", true)
             .Property("Label", "label", ColumnType.Text, true, false);
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var builder = Busy(make);
+            var builder = Busy(provider);
 
             Assert.Throws<ArgumentException>(() => builder.InsertData<object>(table, v => [v], "ok", "a\0b"));
             Assert.Single(builder.Nodes);
@@ -134,11 +130,11 @@ public sealed class NulLiteralRefusalTests
     [Fact(DisplayName = "[regression pin] a string without U+0000 is still written, and so is an empty one")]
     public void A_clean_string_is_still_written()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
             Assert.Equal(
                 "INSERT INTO \"t\" (\"c\") VALUES ('abc'), ('')",
-                Assert.Single(make().InsertData("t", ["c"], ["abc"], [""]).Operations));
+                Assert.Single(new MigrationBuilder(provider).InsertData("t", ["c"], ["abc"], [""]).Render(provider)));
         }
     }
 }

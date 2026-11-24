@@ -8,11 +8,7 @@ namespace Neemle.Orm.Lite.Tests.DataLiterals;
 // generic value, the one timestamp format, and an ArgumentNullException for a null array.
 public sealed class LiteralResidualTests
 {
-    private static readonly Func<MigrationBuilder>[] Builders =
-    [
-        () => new MigrationBuilder(PostgresProvider.Instance),
-        () => new MigrationBuilder(SqliteProvider.Instance),
-    ];
+    private static readonly ISqlProvider[] Providers = [PostgresProvider.Instance, SqliteProvider.Instance];
 
     public static IEnumerable<object[]> NegativeZeros() => [[-0.0], [-0.0f]];
 
@@ -20,14 +16,14 @@ public sealed class LiteralResidualTests
     [MemberData(nameof(NegativeZeros))]
     public void Negative_zero_renders_as_zero(object value)
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
             Assert.Equal(
                 "INSERT INTO \"t\" (\"c\") VALUES (0)",
-                Assert.Single(make().InsertData("t", ["c"], [value]).Operations));
+                Assert.Single(new MigrationBuilder(provider).InsertData("t", ["c"], [value]).Render(provider)));
             Assert.Equal(
                 "DELETE FROM \"t\" WHERE \"c\" IN (0)",
-                Assert.Single(make().DeleteData("t", "c", value).Operations));
+                Assert.Single(new MigrationBuilder(provider).DeleteData("t", "c", value).Render(provider)));
         }
     }
 
@@ -35,10 +31,10 @@ public sealed class LiteralResidualTests
     public void A_generic_type_is_named_without_its_assembly()
     {
         object nested = new Dictionary<string, List<int>>();
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var list = Assert.Throws<NotSupportedException>(() => make().InsertData("t", ["c"], [new List<int>()]));
-            var map = Assert.Throws<NotSupportedException>(() => make().DeleteData("t", "c", nested));
+            var list = Assert.Throws<NotSupportedException>(() => new MigrationBuilder(provider).InsertData("t", ["c"], [new List<int>()]));
+            var map = Assert.Throws<NotSupportedException>(() => new MigrationBuilder(provider).DeleteData("t", "c", nested));
 
             Assert.StartsWith("System.Collections.Generic.List<System.Int32> has no literal form", list.Message);
             Assert.StartsWith(
@@ -63,9 +59,9 @@ public sealed class LiteralResidualTests
         + "and nothing is recorded")]
     public void A_null_array_is_an_argument_null_exception()
     {
-        foreach (var make in Builders)
+        foreach (var provider in Providers)
         {
-            var builder = make().DropTable("earlier");
+            var builder = new MigrationBuilder(provider).DropTable("earlier");
 
             var columns = Assert.Throws<ArgumentNullException>(() => builder.InsertData("t", null!, [1]));
             var rows = Assert.Throws<ArgumentNullException>(() => builder.InsertData("t", ["c"], null!));

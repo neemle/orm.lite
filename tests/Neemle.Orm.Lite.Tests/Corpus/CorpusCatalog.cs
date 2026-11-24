@@ -26,7 +26,6 @@ public static class CorpusCatalog
         JsonCases.Register(run);
         GroupingCases.Register(run);
         LocksIntervalsCases.Register(run);
-        DialectCases.Register(run);
         DdlBuilderCases.Register(run);
         BackslashLiteralCases.Register(run);
         DdlHelperCases.Register(run);
@@ -38,7 +37,7 @@ public static class CorpusCatalog
         ConstantsCases.Register(run);
         GeneratorCases.Register(run);
         var entries = recorder.Entries.OrderBy(e => e.Group, StringComparer.Ordinal).ThenBy(e => e.Name, StringComparer.Ordinal).ToList();
-        return new CorpusResult(entries, CorpusIndex.Build(entries, recorder));
+        return new CorpusResult(entries, CorpusIndex.Build(entries));
     }
 
     public static string PathOf(string root, CorpusEntry entry) =>

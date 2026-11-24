@@ -24,10 +24,10 @@ public sealed class DecimalLiteralRenderingTests
     ];
 
     private static string Insert(ISqlProvider provider, object value) =>
-        Assert.Single(new MigrationBuilder(provider).InsertData("t", ["c"], [value]).Operations);
+        Assert.Single(new MigrationBuilder(provider).InsertData("t", ["c"], [value]).Render(provider));
 
     private static string Delete(ISqlProvider provider, object value) =>
-        Assert.Single(new MigrationBuilder(provider).DeleteData("t", "c", value).Operations);
+        Assert.Single(new MigrationBuilder(provider).DeleteData("t", "c", value).Render(provider));
 
     private static string View(ISqlProvider provider, object value)
     {
@@ -75,12 +75,12 @@ public sealed class DecimalLiteralRenderingTests
         Assert.Equal(
             "INSERT INTO \"probes\" (\"amount\") VALUES ('1.10')",
             Assert.Single(new MigrationBuilder(SqliteProvider.Instance)
-                .InsertData<object>(table, v => [v], 1.10m).Operations));
+                .InsertData<object>(table, v => [v], 1.10m).Render(SqliteProvider.Instance)));
         Assert.Equal(
             "INSERT INTO \"probes\" (\"amount\") VALUES (1.10)",
             Assert.Single(new MigrationBuilder(PostgresProvider.Instance)
-                .InsertData<object>(table, v => [v], 1.10m).Operations));
-        Assert.Equal("1.10", new PgDdlDialect().Literal(1.10m));
+                .InsertData<object>(table, v => [v], 1.10m).Render(PostgresProvider.Instance)));
+        Assert.Equal("1.10", PostgresLiteral.Of(1.10m));
         Assert.Equal("'1.10'", SqliteProvider.Instance.CreateSerializer().Fragment(ParamLiterals.Of(1.10m)));
         Assert.Equal("1.10", PostgresProvider.Instance.CreateSerializer().Fragment(ParamLiterals.Of(1.10m)));
     }

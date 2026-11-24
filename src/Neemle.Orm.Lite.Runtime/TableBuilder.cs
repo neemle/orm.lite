@@ -10,10 +10,13 @@ namespace Neemle.Orm.Lite;
     {
         private readonly List<Node> _cols = new List<Node>();
         private readonly List<Node> _constraints = new List<Node>();
-        private readonly IDdlDialect _dialect;
+        private readonly ISqlProvider _provider;
 
-        public TableBuilder() : this(new PgDdlDialect()) { }
-        public TableBuilder(IDdlDialect dialect) { _dialect = dialect; }
+        public TableBuilder(ISqlProvider provider)
+        {
+            ArgumentNullException.ThrowIfNull(provider);
+            _provider = provider;
+        }
 
         public IReadOnlyList<Node> Columns => _cols;
 
@@ -36,8 +39,7 @@ namespace Neemle.Orm.Lite;
 
         public string Render()
         {
-            var provider = _dialect.Provider;
-            return string.Join(", ", _cols.Select(c => provider.CreateSerializer().Fragment(c)));
+            return string.Join(", ", _cols.Select(c => _provider.CreateSerializer().Fragment(c)));
         }
 
         private TableBuilder Add(string name, Node type, bool nullable, bool primaryKey, Node? defaultValue)

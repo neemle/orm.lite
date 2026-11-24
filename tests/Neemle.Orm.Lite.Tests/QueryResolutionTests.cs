@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Neemle.Orm.Lite;
 using Xunit;
+using Neemle.Orm.Lite.Postgres;
 
 namespace Neemle.Orm.Lite.Tests;
 
@@ -39,7 +40,7 @@ public sealed class QueryResolutionTests
         _ => throw new ArgumentOutOfRangeException(nameof(member), member, "Unknown FixtureDocument member."),
     };
 
-    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), new PgDialect());
+    private static OrmContext Pg() => TestContext.Of(new NeverUsedDataSource(), PostgresProvider.Instance);
 
     private static Func<DbDataReader, TRow> NoRows<TRow>() =>
         _ => throw new NotSupportedException("no rows are read here");

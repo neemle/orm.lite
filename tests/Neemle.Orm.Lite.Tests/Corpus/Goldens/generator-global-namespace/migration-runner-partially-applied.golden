@@ -96,7 +96,7 @@
 #17 ExecuteNonQuery conn=1 source=primary tx=true
     sql:
         INSERT INTO "schema_migrations" ("version") VALUES (@v)
-    @v = String "9900_orm_history_reconcile_CorpusGlobalNamespace_0aa8a0d2f203193f"
+    @v = String "9900_orm_history_reconcile_CorpusGlobalNamespace_1a3c33d971c4c2ce"
 #18 COMMIT conn=1 source=primary
 #19 BEGIN conn=1 source=primary
 #20 ExecuteNonQuery conn=1 source=primary tx=true
@@ -120,7 +120,7 @@
 #26 ExecuteNonQuery conn=1 source=primary tx=true
     sql:
         INSERT INTO "schema_migrations" ("version") VALUES (@v)
-    @v = String "9900_orm_index_reconcile_CorpusGlobalNamespace_cdf8e7986621fc5e"
+    @v = String "9900_orm_index_reconcile_CorpusGlobalNamespace_ae551789d8c9818c"
 #27 COMMIT conn=1 source=primary
 #28 ExecuteNonQuery conn=1 source=primary tx=false
     sql:

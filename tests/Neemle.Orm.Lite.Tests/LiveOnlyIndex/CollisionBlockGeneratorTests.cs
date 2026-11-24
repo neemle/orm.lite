@@ -63,16 +63,20 @@ public sealed class CollisionBlockGeneratorTests
         Assert.DoesNotContain(reconcile, s => s.Contains(CollisionMarker, StringComparison.Ordinal));
     }
 
-    [Fact(DisplayName = "AC5: the collision block is not part of the hashed index set, which is the hash of the create statements alone")]
+    [Fact(DisplayName = "AC5: the collision block is not part of the hashed index set, which is the hash of the declared indexes alone")]
     public void The_index_set_hash_ignores_the_collision_block()
     {
         var (diagnostics, _, output) = Run(Entity("[Index(\"Scope\", \"Name\", Unique = true, LiveOnly = true)] [Index(\"Scope\", \"Code\", Unique = true)]"));
         Assert.Empty(diagnostics);
         var model = GeneratedModel.Of(output);
 
-        var creates = GeneratedModel.Render(model.Schema.Indexes());
+        var declared = new[]
+        {
+            "live_only_scoped|ix_live_only_scoped_scope_name_live|unique|deleted_at|scope,name",
+            "live_only_scoped|ix_live_only_scoped_scope_code|unique||scope,code",
+        };
 
         Assert.Contains(GeneratedModel.Render([model.Schema.Reconcile()]), s => s.Contains(CollisionMarker, StringComparison.Ordinal));
-        Assert.Equal(Fnv1a64(creates), model.Schema.IndexSetHash);
+        Assert.Equal(Fnv1a64(declared), model.Schema.IndexSetHash);
     }
 }

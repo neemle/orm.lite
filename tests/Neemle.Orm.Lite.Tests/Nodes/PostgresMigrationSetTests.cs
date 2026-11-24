@@ -63,7 +63,7 @@ public sealed class PostgresMigrationSetTests
     {
         var builder = new MigrationBuilder(PostgresProvider.Instance);
         migration.Up(builder);
-        return builder.Operations;
+        return builder.Render(PostgresProvider.Instance);
     }
 
     private static MigrationContribution Of(string version, params Node[] ops) =>
@@ -76,7 +76,7 @@ public sealed class PostgresMigrationSetTests
         Of(LiveVersion, LiveOnlyConversionDdl.Up("tasks", ["title"], "deleted_at", "uq_tasks_title", "ix_tasks_title_live", false, LiveVersion)),
         Of("0400_fk_cascade", ForeignKeyActionDdl.Up("tasks", "fk_tasks_owner", ["owner_id"], "owners", ["id"], ForeignKeyActionDdl.Cascade, ForeignKeyActionDdl.NoAction)),
         Of("0500_seed", new Seed()),
-        new(RowHistoryDdl.VersionPrefix + "S4", Reversibility.Irreversible, _ => RowHistoryDdl.Reconcile(History), null),
+        new(RowHistoryDdl.VersionPrefix + "S4", Reversibility.Irreversible, p => RowHistoryDdl.Reconcile(p, History), null),
     ];
 
     private sealed class TempDatabase : IAsyncDisposable
@@ -240,7 +240,7 @@ public sealed class PostgresMigrationSetTests
 
         var down = new MigrationBuilder(PostgresProvider.Instance);
         new Baseline().Down(down);
-        foreach (var sql in down.Operations) await Run(db.Source, sql);
+        foreach (var sql in down.Render(PostgresProvider.Instance)) await Run(db.Source, sql);
         Assert.Null(await Scalar(db.Source, "SELECT to_regclass('tasks')::text"));
         Assert.Null(await Scalar(db.Source, "SELECT to_regclass('owners')::text"));
     }

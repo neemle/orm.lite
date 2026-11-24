@@ -9,27 +9,17 @@ namespace Neemle.Orm.Lite;
     public sealed class MigrationBuilder
     {
         private readonly List<Node> _ops = new List<Node>();
-        private readonly Func<ISqlProvider> _provider;
+        private readonly ISqlProvider _provider;
 
-        public MigrationBuilder() : this(new PgDdlDialect()) { }
-        public MigrationBuilder(IDdlDialect dialect)
-        {
-            ArgumentNullException.ThrowIfNull(dialect);
-            _provider = () => dialect.Provider;
-        }
         public MigrationBuilder(ISqlProvider provider)
         {
             ArgumentNullException.ThrowIfNull(provider);
-            _provider = () => provider;
+            _provider = provider;
         }
-
-        private MigrationBuilder(Func<ISqlProvider> provider) => _provider = provider;
 
         internal MigrationBuilder Scratch() => new(_provider);
 
         public IReadOnlyList<Node> Nodes => _ops;
-
-        public IReadOnlyList<string> Operations => DdlCompiler.Render(_ops, _provider());
 
         public IReadOnlyList<string> Render(ISqlProvider provider) => DdlCompiler.Render(_ops, provider);
 
@@ -50,7 +40,7 @@ namespace Neemle.Orm.Lite;
 
         public MigrationBuilder CreateTable(string name, Action<TableBuilder> build)
         {
-            var t = new TableBuilder();
+            var t = new TableBuilder(_provider);
             build(t);
             return Add(new CreateTable(name, NodeList.Of(t.Columns), t.Constraints.Count == 0 ? null : NodeList.Of(t.Constraints)));
         }
@@ -120,7 +110,7 @@ namespace Neemle.Orm.Lite;
             return Add(new DeleteData(table, column, NodeList.Of(values.Select(DdlLiterals.Of))));
         }
 
-        public Query<T> From<T>() => ViewDefinitions.Source<T>(_provider());
+        public Query<T> From<T>() => ViewDefinitions.Source<T>(_provider);
 
         public MigrationBuilder CreateView(ViewDefinition view) => Add(new CreateView(view.View, view.Query));
 
