@@ -609,13 +609,13 @@ assets and so the actor setting, and the generators do not run in it.
   `ComposeCoherence.cs` (the PostgreSQL image major and the two host ports are written in the compose files and
   must be the same in `ci.yml` and the READMEs), `StageShape.cs` (fails when a CI job loses its stage, its `needs` or a
   gate step of its stage), `RetentionShape.cs` (fails when the retention workflow widens its triggers, its permissions
-  or its steps) and `RunRetention.cs` (the retention script itself)
+  or its steps, or gets a gate on its deletion) and `RunRetention.cs` (the retention script itself)
 - `.github/workflows/ci.yml`: four ordered stages. Stage 1 runs the guards and a strict build; stage 2 builds and tests
   against the PostgreSQL of `tests/compose.yaml`, with the skip gate, once on .NET 10 and once on .NET 11; stage 3 packs
   with the consumer matrix and the guards that need the packages, and runs the NativeAOT smoke consumer on both
   runtimes; stage 4 runs the demo on SQLite (no service) and on PostgreSQL (the server of `demo/compose.yaml`)
-- `.github/workflows/retention.yml`: keeps the newest 20 workflow runs and deletes the older ones with their artifacts
-  (see "Build, test, pack, demo")
+- `.github/workflows/retention.yml`: after every finished `ci` run, it keeps the newest 20 workflow runs and
+  deletes the older ones with their artifacts, with no manual step (see "Build, test, pack, demo")
 - there is no documentation folder: the user documentation is this README and the commented `demo/` (see
   "Documentation" below)
 - `demo/`: the demo, a consumer of the packages, with an `appsettings.json` block that names the provider and a
@@ -734,15 +734,24 @@ of stage 1 (one extra build in the run, and no artifact hand-off). `scripts/Stag
 stage name, its `needs` or a gate step of its stage, when a job-level `if:` or a `continue-on-error` could skip a stage,
 or when an uploaded artifact has no `retention-days`; the test results are kept for 7 days.
 
-`.github/workflows/retention.yml` runs daily and on request, and keeps the newest 20 workflow runs of the repository
-(the `keep` input, never fewer than 5). It deletes every older completed run, which deletes its logs and artifacts, and
-never the run it is executing in nor a run that is queued, in progress or waiting. Its token has `actions: write` and
-`contents: read` only, and `scripts/RunRetention.cs` calls the GitHub API for the list of runs and for the deletion of
-one run, nothing else, so no branch, tag, release or file is touched. A manual run has a `dry_run` input that is true
-by default and only lists what it would delete; a scheduled run lists only, until the repository variable
-`RETENTION_APPLY` is `true`. `scripts/RunRetention.cs -- self-test` checks the selection (fewer runs than the limit,
-exactly the limit, more, unsorted input, the current run, runs that are not completed, a limit below 5 and ties in the
-creation time) and `scripts/RetentionShape.cs` pins the workflow; both run in stage 1.
+`.github/workflows/retention.yml` cleans the history of workflow runs by itself, with no switch to turn on and no step
+for a person. It runs after every finished `ci` run (on any branch or pull request), once a day as a backstop, and on
+request, and on each of them it deletes: it keeps the newest 20 workflow runs of the repository, counted over all
+workflows together (the `keep` input of a manual run, never fewer than 5), and deletes every older completed run, which
+deletes its logs and artifacts. The runs of the retention workflow itself, one for each finished `ci` run, are left out
+of that count so that they cannot push a `ci` run out of the 20, and are trimmed on their own to the newest 5. It never
+deletes the run it is executing in nor a run that is queued, in progress or waiting, and a run that is already gone
+counts as deleted. The only workflow that uploads artifacts is `ci` (the test results, kept for 7 days), so deleting
+the runs leaves no artifact behind. A manual run has a `dry_run` input, false by default, to only list what would be
+deleted. GitHub starts a workflow that listens to another workflow only from the default branch, so the automatic runs
+start once the file is on `main`. Its token has `actions: write` and `contents: read` only, overlapping runs queue one
+after the other, and `scripts/RunRetention.cs` calls the GitHub API for the list of runs and for the deletion of one
+run, nothing else, so no branch, tag, release or file is touched. `scripts/RunRetention.cs -- self-test` checks the
+selection (fewer runs than the limit, exactly the limit, more, unsorted input, the current run, runs that are not
+completed, a limit below 5, ties in the creation time, the one count over all workflows, and the retention runs left
+out of it and trimmed to 5) and the dry-run setting, and `scripts/RetentionShape.cs` pins the workflow: its three
+triggers, the `false` default of `dry_run`, that nothing gates the deletion, and the count that leaves the retention
+runs out; both run in stage 1.
 
 `dotnet run scripts/PackCheck.cs -- package artifacts` also runs `dotnet run scripts/ReadmeCheck.cs -- all artifacts`:
 each of the three packages must carry `src/PackageReadme/README.md` as its `README.md`, that file must have the

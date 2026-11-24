@@ -1,20 +1,34 @@
 name: retention
 
-# Keeps the newest workflow runs of this repository (20 by default, never fewer than 5) and deletes the older completed
-# ones; deleting a run deletes its logs and artifacts. It touches no branch, tag, release or file of the repository:
-# scripts/RunRetention.cs calls the GitHub API for the list of runs and for the deletion of one run only, and
-# scripts/RetentionShape.cs pins this file (its triggers, its permissions, its steps).
-# A manual run lists what it would delete when `dry_run` is true (the default) and deletes nothing. A scheduled run has
-# no input: it only lists, until the repository variable RETENTION_APPLY is set to `true`.
+# Keeps the newest 20 workflow runs of this repository (never fewer than 5) and deletes the older completed ones;
+# deleting a run deletes its logs and artifacts. Nobody has to start it or switch it on: it deletes by default on every
+# trigger, after every finished ci run, once a day as a backstop, and on request. It touches no branch, tag, release or
+# file of the repository: scripts/RunRetention.cs calls the GitHub API for the list of runs and for the deletion of one
+# run only, and scripts/RetentionShape.cs pins this file (its triggers, its permissions, its steps).
+# - workflow_run: a run of the `ci` workflow that finished, on any branch or pull request, starts a retention run, so
+#   the history is trimmed after each ci run. GitHub starts a workflow_run workflow only from the file on the default
+#   branch, so this trigger is live once this file is on main, and a change to this file on another branch is not
+#   exercised until it is merged. The run uses the default branch (the checkout takes no ref) and reads no field of the
+#   event, so the branch or the pull request that started the ci run reaches nothing here.
+# - schedule: the same trim once a day, which also covers a ci run that ended without starting this workflow.
+# - workflow_dispatch: a run on request. `keep` is how many of the newest runs to keep (at least 5), and `dry_run`
+#   is an explicit opt-in that only lists what would be deleted. The other two triggers have no input, so they use the
+#   defaults (keep 20, delete).
+# The newest `keep` are counted over the runs of all workflows together (ci and any other), except the runs of this
+# workflow: it starts once for each finished ci run, so counting its runs would leave about ten ci runs in the newest
+# twenty. Its own runs are trimmed on their own to the newest 5, and the running one is never deleted.
 on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
   schedule:
     - cron: "17 3 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
-        description: List the runs that would be deleted and delete nothing
+        description: Only list the runs that would be deleted, and delete nothing
         type: boolean
-        default: true
+        default: false
       keep:
         description: How many of the newest runs to keep (at least 5)
         type: number
@@ -24,6 +38,7 @@ permissions:
   actions: write
   contents: read
 
+# Overlapping runs queue one after the other instead of racing for the same deletions; none is cancelled.
 concurrency:
   group: retention
   cancel-in-progress: false
@@ -42,10 +57,9 @@ jobs:
           dotnet-version: 10.0.x
       - name: Check that the retention script refuses what it is meant to refuse
         run: dotnet run scripts/RunRetention.cs -- self-test
-      - name: List the runs beyond the newest ones, and delete them unless this is a dry run
+      - name: Delete the runs beyond the newest ones, or only list them in a dry run
         env:
           GH_TOKEN: ${{ github.token }}
           RETENTION_KEEP: ${{ inputs.keep }}
           RETENTION_DRY_RUN: ${{ inputs.dry_run }}
-          RETENTION_APPLY: ${{ vars.RETENTION_APPLY }}
         run: dotnet run scripts/RunRetention.cs -- run

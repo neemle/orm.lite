@@ -3,16 +3,22 @@
 #:property PublishAot=false
 // Shape guard for .github/workflows/retention.yml and the script it runs, scripts/RunRetention.cs. The workflow
 // deletes workflow runs and their artifacts, which is irreversible, so its reach is pinned to the narrowest one. Facts
-// a green build must not lose: the triggers are exactly `schedule` (one daily cron) and `workflow_dispatch` with the
-// inputs `dry_run` (boolean, default true) and `keep` (number, default 20), so no pull request, no push and no other
-// workflow can start it; the permissions are exactly one block holding `actions: write` and `contents: read` (no job
+// a green build must not lose: the triggers are exactly `workflow_run` (of the `ci` workflow, type `completed`, no
+// branch filter), `schedule` (one daily cron) and `workflow_dispatch` with the inputs `dry_run` (boolean, default
+// false: deletion is the default and a dry run an explicit opt-in) and `keep` (number, default 20), so no pull
+// request, no push and no other workflow can start it; nothing gates the deletion (no repository variable, no
+// RETENTION_APPLY); the permissions are exactly one block holding `actions: write` and `contents: read` (no job
 // block widens it); a concurrency group with cancel-in-progress false keeps two runs from overlapping; one job on
 // ubuntu-latest with a timeout and no job-level `if:`; first-party actions pinned by major version; the checkout takes
-// no `ref`, no `repository` and no token and keeps no credentials; the job runs the self-test of the script before
-// the run of the script and nothing else (so no git command, no release call and no other `gh` call can be added);
-// the step that runs the retention gets GH_TOKEN from github.token and the two inputs, and has no `if:`; no secret and
-// no continue-on-error. The script keeps the default of 20, the minimum of 5, the filter that deletes completed runs
-// only and never the current one, the allow-list of API calls, and starts one process, `gh`.
+// no `ref`, no `repository` and no token and keeps no credentials, and no field of the triggering event is read (a
+// workflow_run workflow runs with a write token, so nothing of the run that started it may reach it); the job runs
+// the self-test of the script before the run of the script and nothing else (so no git command, no release call and
+// no other `gh` call can be added); the step that runs the retention gets GH_TOKEN from github.token and the two
+// inputs, and has no `if:`; no secret and no continue-on-error. The script keeps the default of 20, the minimum of 5,
+// the one count over the runs of every workflow but the retention workflow, and the separate keep of 5 for the runs of
+// the retention workflow (so they neither push a ci run out of the newest 20 nor grow), the filter that deletes
+// completed runs only and never the current one, the allow-list of API calls, no mention of the old gate, and starts
+// one process, `gh`.
 //   dotnet run scripts/RetentionShape.cs -- check [<retention.yml> [<RunRetention.cs>]]   exit 0 pass, 1 shape failure
 //   dotnet run scripts/RetentionShape.cs -- self-test    no files needed; every assertion has a negative case
 // The reader knows the indentation of the workflow (job at 2, keys at 4, steps at 6, step keys at 8).
@@ -43,9 +49,9 @@ string RunCommand() => "dotnet run scripts/RunRetention.cs -- run";
 
 string[] Forbidden() =>
 [
-    "secrets.", "continue-on-error", "pull_request", "workflow_run", "github.event.", "github.head_ref", "github.ref",
-    "ref:", "repository:", "token:", "git push", "git tag", "git branch", "gh api", "gh release", "gh run", "gh repo",
-    "contents: write", "write-all", "id-token",
+    "secrets.", "vars.", "RETENTION_APPLY", "continue-on-error", "pull_request", "github.event.", "github.head_ref",
+    "github.ref", "ref:", "repository:", "token:", "git push", "git tag", "git branch", "gh api", "gh release",
+    "gh run", "gh repo", "contents: write", "write-all", "id-token",
 ];
 
 List<string> Judge(string text, string script)
@@ -54,8 +60,9 @@ List<string> Judge(string text, string script)
     var lines = Lines(text);
     var on = Below(lines, "on:");
     var triggers = on.Where(l => Indent(l) == 2).Select(l => l.Trim()).Order(StringComparer.Ordinal).ToList();
-    if (!triggers.SequenceEqual(new[] { "schedule:", "workflow_dispatch:" }))
-        f.Add("the triggers must be exactly schedule and workflow_dispatch, they are " + Join(triggers));
+    if (!triggers.SequenceEqual(new[] { "schedule:", "workflow_dispatch:", "workflow_run:" }))
+        f.Add("the triggers must be exactly workflow_run, schedule and workflow_dispatch, they are " + Join(triggers));
+    Finished(Below(on, "  workflow_run:"), f);
     Schedule(Below(on, "  schedule:"), f);
     Inputs(Below(Below(on, "  workflow_dispatch:"), "    inputs:"), f);
     Permissions(lines, f);
@@ -118,6 +125,14 @@ int Find(List<List<string>> steps, string command) => steps.FindIndex(s => Comma
 
 // ---- assertions on the triggers, the permissions and the concurrency ----
 
+void Finished(List<string> body, List<string> f)
+{
+    var keys = body.Select(l => l.Trim()).Order(StringComparer.Ordinal).ToList();
+    if (!keys.SequenceEqual(new[] { "types: [completed]", "workflows: [ci]" }))
+        f.Add("the workflow_run trigger must be exactly `workflows: [ci]` and `types: [completed]`, it is "
+            + Join(keys));
+}
+
 void Schedule(List<string> body, List<string> f)
 {
     var crons = body.Select(l => l.Trim()).Where(l => l.StartsWith("- cron:", StringComparison.Ordinal)).ToList();
@@ -130,7 +145,7 @@ void Inputs(List<string> inputs, List<string> f)
     var names = inputs.Where(l => Indent(l) == 6).Select(l => l.Trim()).Order(StringComparer.Ordinal).ToList();
     if (!names.SequenceEqual(new[] { "dry_run:", "keep:" }))
         f.Add("the inputs must be exactly dry_run and keep, they are " + Join(names));
-    Input(Below(inputs, "      dry_run:"), "dry_run", ("boolean", "true"), f);
+    Input(Below(inputs, "      dry_run:"), "dry_run", ("boolean", "false"), f);
     Input(Below(inputs, "      keep:"), "keep", ("number", "20"), f);
 }
 
@@ -218,10 +233,14 @@ void RunStep(List<string> step, List<string> f)
 void Script(string source, List<string> f)
 {
     var needed = new[] { "private const int DefaultKeep = 20;", "private const int MinimumKeep = 5;",
-        ".Where(r => r.Status == \"completed\" && r.Id != current)", "if (!Allowed(method, path))",
+        ".Where(r => r.Status == \"completed\" && r.Id != current)", "private const int OwnKeep = 5;",
+        "Beyond(all.Where(r => r.Workflow != own), current, keep)",
+        "Beyond(all.Where(r => r.Workflow == own), current, OwnKeep)", "if (!Allowed(method, path))",
         "new ProcessStartInfo(\"gh\")" };
     foreach (var token in needed.Where(t => !source.Contains(t, StringComparison.Ordinal)))
         f.Add("scripts/RunRetention.cs lacks `" + token + "`");
+    if (source.Contains("RETENTION_APPLY", StringComparison.Ordinal))
+        f.Add("scripts/RunRetention.cs must not mention RETENTION_APPLY: nothing gates the deletion");
     foreach (var token in new[] { "ProcessStartInfo(", "Process.Start(" })
         if (Regex.Matches(source, Regex.Escape(token)).Count != 1)
             f.Add("scripts/RunRetention.cs must start exactly one process, but uses `" + token + "` other than once");
@@ -232,14 +251,17 @@ void Script(string source, List<string> f)
 string Good() => """
 name: retention
 on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
   schedule:
     - cron: "17 3 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
-        description: List the runs that would be deleted and delete nothing
+        description: Only list the runs that would be deleted, and delete nothing
         type: boolean
-        default: true
+        default: false
       keep:
         description: How many of the newest runs to keep (at least 5)
         type: number
@@ -268,14 +290,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           RETENTION_KEEP: ${{ inputs.keep }}
           RETENTION_DRY_RUN: ${{ inputs.dry_run }}
-          RETENTION_APPLY: ${{ vars.RETENTION_APPLY }}
         run: dotnet run scripts/RunRetention.cs -- run
 """ + "\n";
 
 string GoodScript() => """
 private const int DefaultKeep = 20;
 private const int MinimumKeep = 5;
-var doomed = runs.Where(r => r.Status == "completed" && r.Id != current).ToList();
+private const int OwnKeep = 5;
+Beyond(all.Where(r => r.Workflow != own), current, keep)
+    .Concat(Beyond(all.Where(r => r.Workflow == own), current, OwnKeep));
+var doomed = runs.Where(r => r.Status == "completed" && r.Id != current);
 if (!Allowed(method, path)) throw new InvalidOperationException();
 var start = new ProcessStartInfo("gh");
 using var process = Process.Start(start);
@@ -339,13 +363,21 @@ string TriggerCases() => """
     a push trigger~sub~  schedule:~  push:\n  schedule:~triggers must be exactly
     a pull_request trigger~sub~  schedule:~  pull_request:\n  schedule:~triggers must be exactly
     a pull_request_target trigger~sub~  schedule:~  pull_request_target:\n  schedule:~must not contain `pull_request`
-    a workflow_run trigger~sub~  schedule:~  workflow_run:\n  schedule:~must not contain `workflow_run`
     no schedule~sub~  schedule:~  other:~triggers must be exactly
     no manual trigger~sub~  workflow_dispatch:~  other:~triggers must be exactly
+    no workflow_run trigger~sub~  workflow_run:~  other:~triggers must be exactly
+    the workflow_run of another workflow~sub~workflows: [ci]~workflows: [other]~workflow_run trigger must be exactly
+    the workflow_run of two workflows~sub~workflows: [ci]~workflows: [ci, other]~workflow_run trigger must be exactly
+    the workflow_run of every workflow~drop~workflows: [ci]~~workflow_run trigger must be exactly
+    a workflow_run type requested~sub~types: [completed]~types: [requested]~workflow_run trigger must be exactly
+    a workflow_run type added~sub~types: [completed]~types: [completed, requested]~workflow_run trigger must be exactly
+    no workflow_run type~drop~types: [completed]~~workflow_run trigger must be exactly
+    a workflow_run branch filter~ins~types: [completed]~    branches: [main]~workflow_run trigger must be exactly
     an hourly cron~sub~"17 3 * * *"~"17 * * * *"~one daily entry
     a weekly cron~sub~"17 3 * * *"~"17 3 * * 1"~one daily entry
     two crons~ins~- cron:~    - cron: "5 4 * * *"~one daily entry
-    dry_run defaults to false~sub~default: true~default: false~input dry_run must be
+    dry_run defaults to true~sub~default: false~default: true~input dry_run must be
+    dry_run has no default~drop~default: false~~input dry_run must be
     dry_run is no boolean~sub~type: boolean~type: string~input dry_run must be
     keep defaults to 50~sub~default: 20~default: 50~input keep must be
     keep is a string~sub~type: number~type: string~input keep must be
@@ -367,6 +399,11 @@ string ShapeCases() => """
     no timeout~drop~timeout-minutes~~numeric `timeout-minutes:`
     a job-level if~ins~    timeout-minutes: 15~    if: always()~job-level `if:`
     a secret~sub~github.token~secrets.PAT~must not contain `secrets.`
+    a repository variable~sub~github.token~vars.PAT~must not contain `vars.`
+    the apply gate in the workflow~ins~RETENTION_DRY_RUN:~          RETENTION_APPLY: yes~not contain `RETENTION_APPLY`
+    the apply gate from a variable~ins~RETENTION_DRY_RUN:~          X: ${{ vars.X }}~not contain `vars.`
+    a field of the triggering event~sub~inputs.keep~github.event.workflow_run.head_branch~not contain `github.event.`
+    the head branch of the ci run~sub~inputs.keep~github.head_ref~not contain `github.head_ref`
     """;
 
 string StepCases() => """
@@ -396,6 +433,12 @@ string ScriptCases() => """
     the allow-list bypassed~sub@script~if (!Allowed(method, path))~if (false)~lacks `if (!Allowed(method, path))`
     another program~sub@script~new ProcessStartInfo("gh")~new ProcessStartInfo("git")~lacks `new ProcessStartInfo("gh")`
     a second program~ins@script~Process.Start(~var other = new ProcessStartInfo("git");~must start exactly one process
+    the apply gate in the script~ins@script~DefaultKeep~// RETENTION_APPLY~must not mention RETENTION_APPLY
+    the retention runs counted with the others~sub@script~r.Workflow != own~true~lacks `Beyond(all.Where(r => r.Workfl
+    the retention runs not trimmed~sub@script~r.Workflow == own~false~lacks `Beyond(all.Where(r => r.Workflow == own)
+    the retention runs kept as many as keep~sub@script~current, OwnKeep~current, keep~lacks `Beyond(all.Where(r => r
+    a larger retention keep~sub@script~OwnKeep = 5~OwnKeep = 20~lacks `private const int OwnKeep = 5;`
+    no retention keep~drop@script~OwnKeep = 5~~lacks `private const int OwnKeep = 5;`
     a low minimum~sub@script~MinimumKeep = 5~MinimumKeep = 1~lacks `private const int MinimumKeep = 5;`
     another default~sub@script~DefaultKeep = 20~DefaultKeep = 50~lacks `private const int DefaultKeep = 20;`
     no completed filter~sub@script~r.Status == "completed"~true~lacks `.Where(

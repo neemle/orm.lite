@@ -4,24 +4,32 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using Run = (long Id, string Status, System.DateTimeOffset Created);
+using Run = (long Id, string Status, System.DateTimeOffset Created, long Workflow);
 
 // RunRetention keeps the newest workflow runs of this repository and deletes the older ones with their logs and
-// artifacts (deleting a run deletes its artifacts). It is what .github/workflows/retention.yml runs.
-//   run         list the runs through `gh api`, keep the newest ones, and delete every other COMPLETED run, or
-//               only list them in a dry run. Settings come from the environment: RETENTION_KEEP (default 20, at
-//               least 5), RETENTION_DRY_RUN (`true` or `false`; anything else is a dry run; empty on a scheduled run,
-//               which deletes only when RETENTION_APPLY is `true`), GH_TOKEN, GITHUB_REPOSITORY and GITHUB_RUN_ID
+// artifacts (deleting a run deletes its artifacts). It is what .github/workflows/retention.yml runs, after every
+// finished ci run, daily, and on request; it deletes by default and has no gate.
+//   run         list the runs through `gh api`, keep the newest ones, and delete every other COMPLETED run, or only
+//               list them in a dry run. Settings come from the environment: RETENTION_KEEP (default 20, at least 5;
+//               empty on a run that is not a manual one), RETENTION_DRY_RUN (`true` lists only; empty or `false`
+//               deletes, and empty is what a run that is not a manual one has; any other text is refused), GH_TOKEN,
+//               GITHUB_REPOSITORY and GITHUB_RUN_ID
 //   self-test   the selection and the setting rules, each refused case and each accepted case; no network, no gh
+// The newest `keep` are counted over ALL workflow runs of the repository together (ci and every other workflow), except
+// the runs of the retention workflow itself, which is the workflow of the run this script executes in. Those are left
+// out of that count, so the one run per finished ci run can never push a ci run out of the newest 20, and they are
+// trimmed on their own to the newest OwnKeep (5), so their history does not grow.
 // What it never does: delete one of the newest runs, the run it executes in, or a run that is not completed (queued,
 // in progress, waiting); and it calls the GitHub API for the list of runs and the deletion of one run only, nothing
 // else (every call goes through Allowed, which refuses any other path or method), so a branch, a tag, a release, a
-// ref and the contents of the repository are out of its reach by construction.
+// ref and the contents of the repository are out of its reach by construction. A run that is already gone (HTTP 404)
+// counts as deleted. When the run it executes in is not in the listing it refuses, as it cannot tell its own runs.
 internal static class RunRetention
 {
     private const int DefaultKeep = 20;
     private const int MinimumKeep = 5;
-    private const string Jq = ".workflow_runs[] | [.id, .status, .created_at] | @tsv";
+    private const int OwnKeep = 5;
+    private const string Jq = ".workflow_runs[] | [.id, .status, .created_at, .workflow_id] | @tsv";
     private const string Runs = @"repos/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/actions/runs";
 
     private static readonly Regex Slug = new(@"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+\z", RegexOptions.CultureInvariant);
@@ -38,14 +46,30 @@ internal static class RunRetention
 
     // ---- the rules, pure ----
 
-    // The ids to delete, newest first: sort by creation time (a tie by id, the higher id is the newer run), drop a run
-    // listed twice, skip the newest `keep`, and of the rest take the completed ones except the current run.
-    private static List<long> Doomed(IEnumerable<Run> runs, long current, int keep)
+    // The ids to delete: drop a run listed twice, keep the newest `keep` of the runs of every workflow but the
+    // retention workflow `own` (together, not per workflow), keep the newest OwnKeep of the retention workflow, and
+    // delete what is beyond them.
+    private static List<long> Doomed(IEnumerable<Run> runs, long own, long current, int keep)
     {
         CheckKeep(keep);
-        return runs.DistinctBy(r => r.Id).OrderByDescending(r => r.Created).ThenByDescending(r => r.Id).Skip(keep)
-            .Where(r => r.Status == "completed" && r.Id != current).Select(r => r.Id).ToList();
+        var all = runs.DistinctBy(r => r.Id).ToList();
+        return Beyond(all.Where(r => r.Workflow != own), current, keep)
+            .Concat(Beyond(all.Where(r => r.Workflow == own), current, OwnKeep)).ToList();
     }
+
+    // The workflow of the run this script executes in, the retention workflow; no answer when that run is not listed.
+    private static long OwnWorkflow(IEnumerable<Run> runs, long current)
+    {
+        var mine = runs.Where(r => r.Id == current).ToList();
+        if (mine.Count == 0) throw new InvalidOperationException("run " + current + " is not in the listing of runs");
+        return mine[0].Workflow;
+    }
+
+    // The ids of some runs, newest first: sort by creation time (a tie by id, the higher id is the newer run), skip the
+    // newest `keep`, and of the rest take the completed ones except the current run.
+    private static IEnumerable<long> Beyond(IEnumerable<Run> runs, long current, int keep) =>
+        runs.OrderByDescending(r => r.Created).ThenByDescending(r => r.Id).Skip(keep)
+            .Where(r => r.Status == "completed" && r.Id != current).Select(r => r.Id);
 
     private static int CheckKeep(int keep)
     {
@@ -64,10 +88,14 @@ internal static class RunRetention
         return CheckKeep((int)number);
     }
 
-    // An explicit input decides, and only the exact text `false` deletes. A scheduled run has no input: it deletes
-    // only when the repository variable RETENTION_APPLY is the exact text `true`.
-    private static bool ResolveDryRun(string input, string apply) =>
-        input.Length == 0 ? apply != "true" : input != "false";
+    // Only the exact text `true` is a dry run. An empty text (a run that is not a manual one has no input) and the
+    // text `false` delete; any other text is refused, so a typo is neither a deletion nor a silent dry run.
+    private static bool ParseDryRun(string text) => text switch
+    {
+        "" or "false" => false,
+        "true" => true,
+        _ => throw new ArgumentException("dry_run `" + text + "` is neither true nor false"),
+    };
 
     private static bool Allowed(string method, string path) =>
         (method == "GET" && ListPath.IsMatch(path)) || (method == "DELETE" && DeletePath.IsMatch(path));
@@ -79,14 +107,17 @@ internal static class RunRetention
         {
             var line = raw.TrimEnd('\r');
             var part = line.Split('\t');
-            if (part.Length != 3 || !long.TryParse(part[0], NumberStyles.None, CultureInfo.InvariantCulture, out var id)
+            if (part.Length != 4 || !Number(part[0], out var id) || !Number(part[3], out var workflow)
                 || !DateTimeOffset.TryParse(part[2], CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal,
                     out var created))
                 throw new FormatException("cannot read the run line: " + line);
-            runs.Add((id, part[1], created));
+            runs.Add((id, part[1], created, workflow));
         }
         return runs;
     }
+
+    private static bool Number(string text, out long number) =>
+        long.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out number);
 
     // ---- the run: gh api and the report ----
 
@@ -96,7 +127,7 @@ internal static class RunRetention
     {
         var repository = Env("GITHUB_REPOSITORY");
         var runId = Env("GITHUB_RUN_ID");
-        var known = long.TryParse(runId, NumberStyles.None, CultureInfo.InvariantCulture, out var current);
+        var known = Number(runId, out var current);
         if (!Slug.IsMatch(repository) || !known)
         {
             Console.Error.WriteLine("FAIL: GITHUB_REPOSITORY (owner/name) and GITHUB_RUN_ID (a number) must be set");
@@ -116,15 +147,16 @@ internal static class RunRetention
     private static int Apply(string repository, long current)
     {
         var keep = ParseKeep(Env("RETENTION_KEEP"));
-        var dry = ResolveDryRun(Env("RETENTION_DRY_RUN"), Env("RETENTION_APPLY"));
+        var dry = ParseDryRun(Env("RETENTION_DRY_RUN"));
         var listed = Api("GET", "repos/" + repository + "/actions/runs?per_page=100", true);
         if (listed.Code != 0) throw new InvalidOperationException("gh api cannot list the runs: " + listed.Err.Trim());
         var runs = ParseRuns(listed.Out).DistinctBy(r => r.Id).ToList();
-        var doomed = Doomed(runs, current, keep);
+        var doomed = Doomed(runs, OwnWorkflow(runs, current), current, keep);
         Console.WriteLine($"runs: {runs.Count}, keep: {keep}, this run: {current}, dry run: {dry}");
         var byId = runs.ToDictionary(r => r.Id);
         foreach (var id in doomed)
-            Console.WriteLine($"{(dry ? "would delete" : "delete")} {id} {byId[id].Status} {byId[id].Created:o}");
+            Console.WriteLine($"{(dry ? "would delete" : "delete")} {id} {byId[id].Status} {byId[id].Created:o} "
+                + $"workflow {byId[id].Workflow}");
         Console.WriteLine((dry ? "would delete " : "deleting ") + doomed.Count + " of " + runs.Count + " runs");
         if (dry) return 0;
         var failed = doomed.Count(id => !Delete(repository, id));
@@ -161,17 +193,21 @@ internal static class RunRetention
 
     // ---- self-test ----
 
+    private const long Own = 9;
+
     private static readonly DateTimeOffset Epoch = new(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
-    private static Run Make(long id, string status = "completed") => (id, status, Epoch.AddMinutes(id));
+    private static Run Make(long id, string status = "completed", long workflow = 1) =>
+        (id, status, Epoch.AddMinutes(id), workflow);
 
     private static List<Run> Series(int count) => Enumerable.Range(1, count).Select(i => Make(i)).ToList();
 
     private static List<Run> With(List<Run> runs, long id, string status) =>
-        runs.Select(r => r.Id == id ? Make(id, status) : r).ToList();
+        runs.Select(r => r.Id == id ? Make(id, status, r.Workflow) : r).ToList();
 
     private static List<Run> Tied(List<Run> runs, long id, long like) =>
-        runs.Select(r => r.Id == id ? (r.Id, r.Status, runs.First(x => x.Id == like).Created) : r).ToList();
+        runs.Select(r => r.Id == id ? (r.Id, r.Status, runs.First(x => x.Id == like).Created, r.Workflow) : r)
+            .ToList();
 
     private static List<(string Name, List<Run> Runs, long Current, int Keep, long[] Expect)> SelectCases()
     {
@@ -199,17 +235,44 @@ internal static class RunRetention
         ];
     }
 
+    // ids 1 to `ci` of the ci workflow (1), then ids 21 to 20 + `own` of the retention workflow (9), newer than them
+    private static List<Run> Mixed(int ci, int own) => Enumerable.Range(1, ci).Select(i => Make(i))
+        .Concat(Enumerable.Range(21, own).Select(i => Make(i, workflow: Own))).ToList();
+
+    private static long[] Plus(long[] own, params long[] ci) => ci.Concat(own).ToArray();
+
+    private static List<(string Name, List<Run> Runs, long Current, int Keep, long[] Expect)> WorkflowCases()
+    {
+        var alternate = Enumerable.Range(1, 12).Select(i => Make(i, workflow: i % 2 + 1)).ToList();
+        var own = new long[] { 25, 24, 23, 22, 21 };
+        return
+        [
+            ("every workflow counts in one newest list", alternate, 99, 5, new long[] { 7, 6, 5, 4, 3, 2, 1 }),
+            ("the retention runs are left out of the count", Mixed(8, 10), 99, 5, Plus(own, 3, 2, 1)),
+            ("ci runs fewer than keep, retention runs many", Mixed(5, 10), 99, 5, own),
+            ("the retention runs keep five whatever keep is", Mixed(8, 10), 99, 7, Plus(own, 1)),
+            ("fewer than five retention runs", Mixed(8, 4), 99, 5, new long[] { 3, 2, 1 }),
+            ("the running retention run", Mixed(8, 10), 24, 5, new long[] { 3, 2, 1, 25, 23, 22, 21 }),
+            ("a retention run that is not completed", With(Mixed(8, 10), 22, "queued"), 99, 5,
+                new long[] { 3, 2, 1, 25, 24, 23, 21 }),
+            ("a ci run that is not completed", With(Mixed(8, 10), 2, "in_progress"), 99, 5,
+                new long[] { 3, 1, 25, 24, 23, 22, 21 }),
+        ];
+    }
+
     private static List<string> SelectFailures()
     {
         var f = new List<string>();
-        foreach (var c in SelectCases())
+        foreach (var c in SelectCases().Concat(WorkflowCases()))
         {
-            var got = Doomed(c.Runs, c.Current, c.Keep);
+            var got = Doomed(c.Runs, Own, c.Current, c.Keep);
             if (!got.SequenceEqual(c.Expect))
                 f.Add($"{c.Name}: expected [{string.Join(",", c.Expect)}], got [{string.Join(",", got)}]");
         }
+        if (OwnWorkflow(Mixed(3, 3), 22) != Own || !Throws<InvalidOperationException>(() => OwnWorkflow(Series(3), 99)))
+            f.Add("the retention workflow was not read from the current run, or an unlisted run was not refused");
         foreach (var keep in new[] { int.MinValue, -1, 0, 1, 4 })
-            if (!Throws<ArgumentOutOfRangeException>(() => Doomed(Series(8), 99, keep)))
+            if (!Throws<ArgumentOutOfRangeException>(() => Doomed(Series(8), Own, 99, keep)))
                 f.Add("keep " + keep + " is below the minimum and was not refused");
         return f;
     }
@@ -227,16 +290,21 @@ internal static class RunRetention
         }
     }
 
+    // Only `true` is a dry run; an empty text and `false` delete; anything else is refused.
+    private static List<string> DryRunFailures()
+    {
+        var f = new List<string>();
+        var accepted = new (string Text, bool Dry)[] { ("", false), ("false", false), ("true", true) };
+        foreach (var a in accepted.Where(a => ParseDryRun(a.Text) != a.Dry))
+            f.Add($"dry run for `{a.Text}` is not {a.Dry}");
+        foreach (var text in new[] { "TRUE", "False", "maybe", "1", "0", "yes", "no", " ", "true ", "null" })
+            if (!Throws<ArgumentException>(() => ParseDryRun(text))) f.Add("dry run `" + text + "` was not refused");
+        return f;
+    }
+
     private static List<string> SettingFailures()
     {
         var f = new List<string>();
-        var dryRuns = new (string Input, string Apply, bool Dry)[]
-        {
-            ("", "", true), ("", "true", false), ("", "false", true), ("", "TRUE", true), ("true", "true", true),
-            ("true", "", true), ("false", "", false), ("false", "true", false), ("maybe", "true", true),
-        };
-        foreach (var d in dryRuns.Where(d => ResolveDryRun(d.Input, d.Apply) != d.Dry))
-            f.Add($"dry run for input `{d.Input}` and apply `{d.Apply}` is not {d.Dry}");
         var keeps = new (string Text, int Keep)[] { ("", 20), ("20", 20), ("20.0", 20), ("5", 5), ("100", 100) };
         foreach (var k in keeps.Where(k => ParseKeep(k.Text) != k.Keep))
             f.Add("keep `" + k.Text + "` is not " + k.Keep);
@@ -248,17 +316,24 @@ internal static class RunRetention
     private static List<string> InputFailures()
     {
         var f = new List<string>();
-        var listing = "12\tcompleted\t2026-11-24T15:47:15Z\n7\tin_progress\t2026-11-24T10:00:00Z\r\n"
-            + "8\t\t2026-01-01T00:00:00Z\n";
+        var listing = "12\tcompleted\t2026-11-24T15:47:15Z\t5\n7\tin_progress\t2026-11-24T10:00:00Z\t6\r\n"
+            + "8\t\t2026-01-01T00:00:00Z\t6\n";
         var runs = ParseRuns(listing);
         if (runs.Count != 3 || runs[0].Id != 12 || runs[1].Status != "in_progress" || runs[2].Status != "")
             f.Add("the runs of a gh listing were not read");
         if (runs[0].Created != new DateTimeOffset(2026, 11, 24, 15, 47, 15, TimeSpan.Zero))
             f.Add("a created_at was misread");
-        foreach (var bad in new[] { "x\tcompleted\t2026-01-01T00:00:00Z", "1\tcompleted", "1\tcompleted\tyesterday" })
+        if (runs[0].Workflow != 5 || runs[1].Workflow != 6) f.Add("a workflow_id was misread");
+        foreach (var bad in BadLines())
             if (!Throws<FormatException>(() => ParseRuns(bad))) f.Add("the line `" + bad + "` was not refused");
         return f;
     }
+
+    private static string[] BadLines() =>
+    [
+        "x\tcompleted\t2026-01-01T00:00:00Z\t5", "1\tcompleted\t2026-01-01T00:00:00Z", "1\tcompleted",
+        "1\tcompleted\tyesterday\t5", "1\tcompleted\t2026-01-01T00:00:00Z\tw", "1\tcompleted\t2026-01-01T00:00:00Z\t-3",
+    ];
 
     private static List<string> PathFailures()
     {
@@ -288,10 +363,10 @@ internal static class RunRetention
 
     private static int SelfTest()
     {
-        var failures = SelectFailures().Concat(SettingFailures()).Concat(InputFailures()).Concat(PathFailures())
-            .ToList();
+        var failures = SelectFailures().Concat(DryRunFailures()).Concat(SettingFailures()).Concat(InputFailures())
+            .Concat(PathFailures()).ToList();
         foreach (var message in failures) Console.Error.WriteLine("SELF-TEST FAIL: " + message);
-        var count = SelectCases().Count;
+        var count = SelectCases().Count + WorkflowCases().Count;
         Console.WriteLine($"self-test: {count} selection cases and the other rules, {failures.Count} failed");
         return failures.Count == 0 ? 0 : 1;
     }
