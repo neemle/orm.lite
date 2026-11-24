@@ -5,6 +5,8 @@ the table mappings, the entity methods and the schema migrations at build time. 
 calls ships in the same package, with soft delete, a row history that records who changed what, and typed queries
 written as lambdas.
 
+Inspired by TypeORM, with an attribute-driven .NET API and build-time code generation.
+
 ## Status
 
 Pre-release, API unstable. The emitted code shape, the runtime type names and the namespaces may change in any 0.x

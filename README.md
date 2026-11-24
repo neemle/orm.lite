@@ -1,9 +1,18 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="src/PackageAssets/logo-dark.svg">
+    <img src="src/PackageAssets/logo.svg" alt="orm.lite" width="480" height="120">
+  </picture>
+</p>
+
 # Neemle.Orm.Lite
 
 A small, attribute-driven ORM for .NET on PostgreSQL or SQLite. You decorate plain classes; a source generator writes the
 table mappings, the entity methods and the schema migrations at build time. The runtime that the generated code
 calls ships in the same package, with soft delete, a row history that records who changed what, and typed queries
 written as lambdas.
+
+Inspired by [TypeORM](https://typeorm.io/), with an attribute-driven .NET API and build-time code generation.
 
 Status: pre-release, API unstable. The emitted code shape, the runtime type names and the namespaces may change in
 any 0.x release.
@@ -578,7 +587,9 @@ assets and so the actor setting, and the generators do not run in it.
   manifest and the props file that declares it to the build
 - `src/Neemle.Orm.Lite`: the core packer: analyzer in `analyzers/dotnet/cs`, runtime and Sql kit in `lib/net10.0`, build
   assets in `buildTransitive`
-- `src/Packaging.props`: the metadata the three packages share; `src/PackageAssets/icon.png` is their icon
+- `src/Packaging.props`: the metadata the three packages share
+- `src/PackageAssets`: the SVG logo and icon originals, plus the 128 x 128 `icon.png` used by all three packages;
+  [the asset guide](src/PackageAssets/README.md) covers the light and dark variants and how to regenerate the PNG
 - `CHANGELOG.md`: what changed in each version of the packages
 - `src/PackageReadme/README.md`: the short consumer README that is packed into all three packages, in place of this
   file; it links only to public URLs of this repository
