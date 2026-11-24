@@ -186,7 +186,7 @@ void TestRules(List<string> lines, List<string> job, List<string> f)
     Once(env, expects, "ORMLITE_EXPECT_DOTNET", "${{ matrix.dotnet }}", f);
     foreach (var l in job.Where(l => l.Contains("GITHUB_ENV") || l.Contains("--roll-forward")))
         f.Add("job test must not change its roll-forward policy or its environment: " + l.Trim());
-    var kept = StepsOf(job).Any(s => s.Contains("uses: actions/upload-artifact@v4") && s.Contains("if: always()")
+    var kept = StepsOf(job).Any(s => s.Contains("uses: actions/upload-artifact@v7") && s.Contains("if: always()")
         && s.Contains("path: TestResults") && s.Contains("name: test-results-${{ matrix.dotnet }}")
         && s.Contains("retention-days: 7"));
     if (!kept)
@@ -239,8 +239,8 @@ jobs:
       DOTNET_ROLL_FORWARD: ${{ matrix.roll-forward }}
       ORMLITE_EXPECT_DOTNET: ${{ matrix.dotnet }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - name: Print
@@ -249,7 +249,7 @@ jobs:
       - run: dotnet test X
       - name: Keep
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-results-${{ matrix.dotnet }}
           path: TestResults
@@ -258,7 +258,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.x
   aot-smoke:
@@ -274,8 +274,8 @@ jobs:
           - dotnet: 11.0.x
             tfm: net11.0
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - run: dotnet --info
@@ -366,11 +366,12 @@ string RuleCases() => """
     runner by expression~sub~runs-on: ubuntu-latest\n    timeout~runs-on: x\n    timeout~lacks `runs-on: ubuntu-latest`
     a fixed version~sub~dotnet-version: ${{ matrix.dotnet }}~dotnet-version: 10.0.x~must install exactly
     a second version~ins~dotnet-version: ${{ matrix.dotnet }}~          dotnet-version: 9.0.x~must install exactly
-    no setup-dotnet~sub~uses: actions/setup-dotnet@v4~uses: actions/cache@v4~exactly one actions/setup-dotnet step
+    no setup-dotnet~sub~uses: actions/setup-dotnet@v6~uses: actions/cache@v6~exactly one actions/setup-dotnet step
     no info step~sub~run: dotnet --info~run: dotnet --version~has no step `run: dotnet --info`
     info after the build~before~run: dotnet build X~name: Print~step must come before the build
     an upload without the leg~sub~name: test-results-${{ matrix.dotnet }}~name: test-results~must name its artifact
-    no upload~sub~uses: actions/upload-artifact@v4~uses: actions/cache@v4~must keep an always() upload
+    no upload~sub~uses: actions/upload-artifact@v7~uses: actions/cache@v6~must keep an always() upload
+    a stale upload major~sub~actions/upload-artifact@v7~actions/upload-artifact@v4~must keep an always() upload
     no retention days~drop~retention-days: 7~~must keep an always() upload
     a longer retention~sub~retention-days: 7~retention-days: 90~must keep an always() upload
     an upload that is not always~sub~if: always()~if: success()~must keep an always() upload

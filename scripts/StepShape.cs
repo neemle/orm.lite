@@ -173,8 +173,8 @@ jobs:
     env:
       DOTNET_ROLL_FORWARD: ${{ matrix.roll-forward }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - run: dotnet build X
@@ -197,7 +197,7 @@ jobs:
           --require-postgres tests/zone-witness.txt
       - name: Keep
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-results-${{ matrix.dotnet }}
           path: TestResults

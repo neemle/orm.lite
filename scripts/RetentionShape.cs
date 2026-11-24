@@ -256,10 +256,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.x
       - run: dotnet run scripts/RunRetention.cs -- self-test
@@ -374,8 +374,8 @@ string StepCases() => """
     a checkout of another repository~ins~persist-credentials: false~          repository: a/b~`repository:`
     a token for the checkout~ins~persist-credentials: false~          token: x~`token:`
     credentials persisted~sub~persist-credentials: false~persist-credentials: true~must set `persist-credentials: false`
-    a third-party action~sub~actions/setup-dotnet@v4~other/setup-dotnet@v4~pinned as @v<digits>
-    an action on a branch~sub~actions/checkout@v4~actions/checkout@main~pinned as @v<digits>
+    a third-party action~sub~actions/setup-dotnet@v6~other/setup-dotnet@v4~pinned as @v<digits>
+    an action on a branch~sub~actions/checkout@v7~actions/checkout@main~pinned as @v<digits>
     no self-test step~drop~RunRetention.cs -- self-test~~no step running `dotnet run scripts/RunRetention.cs -- self
     self-test after the run~after~RunRetention.cs -- self-test~~must come before
     no run step~sub~RunRetention.cs -- run~RunRetention.cs -- go~no step running `dotnet run scripts/RunRet

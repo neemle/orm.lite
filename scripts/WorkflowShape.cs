@@ -328,8 +328,8 @@ string FxTest() => """
     env:
       DOTNET_ROLL_FORWARD: ${{ matrix.roll-forward }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - run: dotnet build Neemle.Orm.Lite.slnx -c Release
@@ -355,7 +355,7 @@ string FxAot() => """
           - dotnet: 10.0.x
             tfm: net10.0
     steps:
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - run: dotnet publish tests/AotSmoke -p:AotSmokeTfm=${{ matrix.tfm }}
@@ -541,8 +541,8 @@ List<Case> PostureCases() => Cases("""
     pull_request_target~sub~  pull_request:~  pull_request_target:~`pull_request_target` is not allowed
     workflow_run~ins~  push:~  workflow_run:~`workflow_run` is not allowed
     no triggers~cut~on:~permissions:~no `on:` trigger block
-    a third-party action~sub~actions/checkout@v4~other/checkout@v4~is not a first-party action
-    an action on a branch~sub~actions/checkout@v4~actions/checkout@main~is not a first-party action
+    a third-party action~sub~actions/checkout@v7~other/checkout@v4~is not a first-party action
+    an action on a branch~sub~actions/checkout@v7~actions/checkout@main~is not a first-party action
     """);
 
 List<Case> ReaderCases() => Cases("""

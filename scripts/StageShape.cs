@@ -188,7 +188,7 @@ jobs:
     name: 1 static
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: dotnet run scripts/SkipGate.cs -- self-test
       - run: dotnet run scripts/WorkflowShape.cs -- self-test
       - run: dotnet run scripts/WorkflowShape.cs -- check
@@ -217,7 +217,7 @@ jobs:
       - run: dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx
       - name: Keep
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-results-${{ matrix.dotnet }}
           path: TestResults
