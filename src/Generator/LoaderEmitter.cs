@@ -4,15 +4,15 @@ using Neemle.CSharpComposer;
 using Neemle.CSharpComposer.Builders;
 using Neemle.CSharpComposer.Model;
 using Neemle.CSharpComposer.Rendering;
-using ChildGuard = Neemle.OrmLite.OrmGenerator.ChildGuard;
-using Collection = Neemle.OrmLite.OrmGenerator.Collection;
-using EmitScope = Neemle.OrmLite.OrmGenerator.EmitScope;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using ManyToMany = Neemle.OrmLite.OrmGenerator.ManyToMany;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
-using Relation = Neemle.OrmLite.OrmGenerator.Relation;
+using ChildGuard = Neemle.OrmLite.Generator.OrmGenerator.ChildGuard;
+using Collection = Neemle.OrmLite.Generator.OrmGenerator.Collection;
+using EmitScope = Neemle.OrmLite.Generator.OrmGenerator.EmitScope;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using ManyToMany = Neemle.OrmLite.Generator.OrmGenerator.ManyToMany;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
+using Relation = Neemle.OrmLite.Generator.OrmGenerator.Relation;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Emits the loaders of an entity: one for each navigation to a parent, each collection of children and each

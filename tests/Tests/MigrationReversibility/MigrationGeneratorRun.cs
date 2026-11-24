@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using System.Runtime.Loader;
 using System.Text.RegularExpressions;
+using Neemle.OrmLite.Generator;
 using Neemle.OrmLite;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;

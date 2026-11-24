@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Immutable;
 using System.Linq;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Puts the entities in an order that does not depend on how the compiler lists the syntax trees: tables before

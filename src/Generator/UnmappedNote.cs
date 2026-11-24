@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// The extra sentences of an ORMLITE001 report that tell what else the unmapped property costs the entity.

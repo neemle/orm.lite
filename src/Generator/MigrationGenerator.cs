@@ -7,7 +7,7 @@ using Neemle.CSharpComposer;
 using Neemle.CSharpComposer.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 [Generator]
 public sealed class MigrationGenerator : IIncrementalGenerator

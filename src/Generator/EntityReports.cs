@@ -1,9 +1,9 @@
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Reports every diagnostic about the entities of the compilation, in a fixed order: the type issues of all the

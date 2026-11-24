@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Operations;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public sealed class CapabilityAnalyzer : DiagnosticAnalyzer

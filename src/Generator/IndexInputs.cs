@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Reads the inputs of an [Index] declaration that the attribute lets through but that must not make the generator

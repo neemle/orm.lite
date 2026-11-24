@@ -1,0 +1,5 @@
+# The public diagnostics types (IOrmDiagnosticsSink, StatementEvent, TransactionEvent, OrmLogLevel, TransactionPhase,
+# LoggedParameter, OrmLiteDiagnosticsOptions) are part of the public API and stay in the root namespace Neemle.OrmLite,
+# next to OrmLiteOptions, which exposes them. Moving them would change the namespace a consumer imports.
+[*.cs]
+dotnet_diagnostic.IDE0130.severity = none

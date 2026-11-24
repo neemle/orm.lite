@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Reflection;
+using Neemle.OrmLite.Generator;
 using Neemle.OrmLite;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;

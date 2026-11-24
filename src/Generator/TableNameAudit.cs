@@ -2,9 +2,9 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Two [Table] entities that map one table name and are both Managed would both get a CREATE TABLE in the generated

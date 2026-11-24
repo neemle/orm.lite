@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Neemle.OrmLite.Generator;
 using Xunit;
 
 namespace Neemle.OrmLite.Tests.OrmLiteGolden;

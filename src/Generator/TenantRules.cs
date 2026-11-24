@@ -1,6 +1,6 @@
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>What makes a property unusable as the tenant of a [SoftDelete] entity (ORMLITE007).</summary>
 internal static class TenantRules

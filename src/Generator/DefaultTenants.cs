@@ -1,8 +1,8 @@
 using System.Collections.Immutable;
 using System.Linq;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Gives each [SoftDelete] entity that did not name its tenant the default tenant of the project: the value of the

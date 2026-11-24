@@ -1,0 +1,5 @@
+# A namespace is the project's root namespace plus its folder path; see src/.editorconfig. A folder that must keep
+# another namespace says why in its own .editorconfig.
+[*.cs]
+dotnet_style_namespace_match_folder = true
+dotnet_diagnostic.IDE0130.severity = error

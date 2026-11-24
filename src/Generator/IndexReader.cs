@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using IndexDef = Neemle.OrmLite.OrmGenerator.IndexDef;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
-using TermDef = Neemle.OrmLite.OrmGenerator.TermDef;
-using static Neemle.OrmLite.SymbolFacts;
+using IndexDef = Neemle.OrmLite.Generator.OrmGenerator.IndexDef;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
+using TermDef = Neemle.OrmLite.Generator.OrmGenerator.TermDef;
+using static Neemle.OrmLite.Generator.SymbolFacts;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Reads the [Index] declarations of an entity, on its properties and on the class, into index definitions. A

@@ -1,0 +1,6 @@
+# A namespace is the project's root namespace plus its folder path. IDE0130 reads the RootNamespace that
+# src/Directory.Build.props derives from the project folder, and EnforceCodeStyleInBuild runs it in the build.
+# A folder that must keep another namespace says why in its own .editorconfig.
+[*.cs]
+dotnet_style_namespace_match_folder = true
+dotnet_diagnostic.IDE0130.severity = error

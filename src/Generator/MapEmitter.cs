@@ -3,10 +3,10 @@ using System.Linq;
 using Neemle.CSharpComposer;
 using Neemle.CSharpComposer.Model;
 using Neemle.CSharpComposer.Rendering;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Emits the Map method of an entity, which turns a data reader row into an instance: the ordinal of each column,

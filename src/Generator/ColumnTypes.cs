@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>The column shape (how it is read, its column type and its C# type) of a property type.</summary>
 internal static class ColumnTypes

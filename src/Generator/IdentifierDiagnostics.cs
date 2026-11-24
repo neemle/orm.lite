@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.CodeAnalysis;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>The diagnostic about a name of an entity that is longer than the identifier limit of a provider.</summary>
 internal static class IdentifierDiagnostics

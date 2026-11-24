@@ -1,5 +1,6 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Neemle.OrmLite.Generator;
 using Xunit;
 using static Neemle.OrmLite.Tests.EntityShapes.EntityShapeRun;
 using static Neemle.OrmLite.Tests.MigrationReversibility.MigrationGeneratorRun;

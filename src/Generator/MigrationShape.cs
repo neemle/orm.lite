@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Mig = Neemle.OrmLite.MigrationGenerator.Mig;
+using Mig = Neemle.OrmLite.Generator.MigrationGenerator.Mig;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// The generated migration list builds each [Migration] class with MigrationContribution.For of the class, which

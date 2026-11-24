@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using MemberIssue = Neemle.OrmLite.OrmGenerator.MemberIssue;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
-using Unmapped = Neemle.OrmLite.OrmGenerator.Unmapped;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using MemberIssue = Neemle.OrmLite.Generator.OrmGenerator.MemberIssue;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
+using Unmapped = Neemle.OrmLite.Generator.OrmGenerator.Unmapped;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Whether the generated Map can build an instance of an entity type: the constructor it calls, the required members

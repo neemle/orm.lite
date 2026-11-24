@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Whether the generated code can reach a property and its accessors, and the sentence that says why not. The

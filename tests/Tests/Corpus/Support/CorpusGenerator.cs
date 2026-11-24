@@ -2,6 +2,7 @@ using System.Reflection;
 using System.Runtime.Loader;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Neemle.OrmLite.Generator;
 
 namespace Neemle.OrmLite.Tests.Corpus;
 

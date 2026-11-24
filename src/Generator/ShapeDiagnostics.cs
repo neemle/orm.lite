@@ -1,10 +1,10 @@
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// The diagnostics about the shape of an entity type: a property with no column type, a member the generated code

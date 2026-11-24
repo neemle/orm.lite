@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using IndexDef = Neemle.OrmLite.OrmGenerator.IndexDef;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using IndexDef = Neemle.OrmLite.Generator.OrmGenerator.IndexDef;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>The diagnostics about the [Index] declarations of an entity.</summary>
 internal static class IndexDiagnostics

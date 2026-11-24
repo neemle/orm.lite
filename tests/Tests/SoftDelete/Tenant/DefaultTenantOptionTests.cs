@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using Neemle.OrmLite.Generator;
 using Neemle.OrmLite;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;

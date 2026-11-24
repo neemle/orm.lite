@@ -4,13 +4,13 @@ using System.Text;
 using Neemle.CSharpComposer;
 using Neemle.CSharpComposer.Model;
 using Neemle.CSharpComposer.Rendering;
-using CondDef = Neemle.OrmLite.OrmGenerator.CondDef;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using IndexDef = Neemle.OrmLite.OrmGenerator.IndexDef;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
-using SoftDeclaration = Neemle.OrmLite.OrmGenerator.SoftDeclaration;
+using CondDef = Neemle.OrmLite.Generator.OrmGenerator.CondDef;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using IndexDef = Neemle.OrmLite.Generator.OrmGenerator.IndexDef;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
+using SoftDeclaration = Neemle.OrmLite.Generator.OrmGenerator.SoftDeclaration;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Emits the expression that builds the EntityDescriptor of an entity: its table, columns, indexes, links and the

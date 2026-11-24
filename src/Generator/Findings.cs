@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Microsoft.CodeAnalysis;
-using MemberIssue = Neemle.OrmLite.OrmGenerator.MemberIssue;
+using MemberIssue = Neemle.OrmLite.Generator.OrmGenerator.MemberIssue;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// What the reading of one entity found out about its members: the members the generated code cannot handle with the

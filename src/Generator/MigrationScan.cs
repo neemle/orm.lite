@@ -5,7 +5,7 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 internal sealed record MigrationScan(
     EquatableArray<string> Lossy,

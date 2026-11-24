@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using static Neemle.OrmLite.SymbolFacts;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using static Neemle.OrmLite.Generator.SymbolFacts;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// How the generated code names an entity type: whether it can name it at all, the access it gets, and the class name

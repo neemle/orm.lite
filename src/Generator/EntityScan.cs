@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using ManyToMany = Neemle.OrmLite.OrmGenerator.ManyToMany;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
-using Unmapped = Neemle.OrmLite.OrmGenerator.Unmapped;
-using static Neemle.OrmLite.SymbolFacts;
+using ManyToMany = Neemle.OrmLite.Generator.OrmGenerator.ManyToMany;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
+using Unmapped = Neemle.OrmLite.Generator.OrmGenerator.Unmapped;
+using static Neemle.OrmLite.Generator.SymbolFacts;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// The collection pass of the entity reading: it looks at each property of an entity once and sorts it into a column,

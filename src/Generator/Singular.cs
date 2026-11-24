@@ -1,6 +1,6 @@
 using System;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// The singular form that names the Add and Remove methods of a many-to-many list (AddTagAsync for Tags). It strips

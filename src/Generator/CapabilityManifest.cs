@@ -7,7 +7,7 @@ using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 internal sealed record ProviderManifest(string Provider, ImmutableDictionary<string, string> Levels)
 {

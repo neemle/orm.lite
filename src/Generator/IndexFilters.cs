@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text.RegularExpressions;
-using CondDef = Neemle.OrmLite.OrmGenerator.CondDef;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
+using CondDef = Neemle.OrmLite.Generator.OrmGenerator.CondDef;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Reads the Where text of an [Index]: conditions joined by and, each a column compared with a text, a whole number

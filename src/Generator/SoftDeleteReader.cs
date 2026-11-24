@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
-using SoftDeclaration = Neemle.OrmLite.OrmGenerator.SoftDeclaration;
-using SoftDeleteIssue = Neemle.OrmLite.OrmGenerator.SoftDeleteIssue;
-using static Neemle.OrmLite.SymbolFacts;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
+using SoftDeclaration = Neemle.OrmLite.Generator.OrmGenerator.SoftDeclaration;
+using SoftDeleteIssue = Neemle.OrmLite.Generator.OrmGenerator.SoftDeleteIssue;
+using static Neemle.OrmLite.Generator.SymbolFacts;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>Reads the [SoftDelete] declaration of an entity: its column, its problems and its column lists.</summary>
 internal static class SoftDeleteReader

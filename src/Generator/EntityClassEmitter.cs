@@ -4,11 +4,11 @@ using Neemle.CSharpComposer;
 using Neemle.CSharpComposer.Builders;
 using Neemle.CSharpComposer.Model;
 using Neemle.CSharpComposer.Rendering;
-using EmitScope = Neemle.OrmLite.OrmGenerator.EmitScope;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
+using EmitScope = Neemle.OrmLite.Generator.OrmGenerator.EmitScope;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Emits the static Orm class of one entity: the table name, the descriptor, the row mapping, the query entry point

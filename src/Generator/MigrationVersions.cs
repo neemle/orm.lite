@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Mig = Neemle.OrmLite.MigrationGenerator.Mig;
+using Mig = Neemle.OrmLite.Generator.MigrationGenerator.Mig;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Checks the versions of the [Migration] classes of one compilation. A version names a migration in

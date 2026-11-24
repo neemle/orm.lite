@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// A property marked [Key] that the generator skips without a column: it is get-only, set-only, not public, or has an

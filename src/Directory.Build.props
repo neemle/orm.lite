@@ -2,10 +2,13 @@
 
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 
-  <!-- A library project is named by its folder: Neemle.OrmLite.<folder> is its assembly name, its root namespace and (where it is
-       packed) its package id. A project whose name differs sets the property itself: the core package (PackageId) and
+  <!-- A library project is named by its folder: Neemle.OrmLite.<folder> is its assembly name, its root namespace and
+       (where it is packed) its package id. A project whose name differs sets the property itself: the core package (PackageId) and
        the Runtime project (RootNamespace) in src/, the NativeAOT consumer in tests/. -->
+  <!-- A namespace follows its folder: IDE0130 is an error under .editorconfig (dotnet_style_namespace_match_folder), and
+       the code style rules run in the build for that. The exceptions are listed in the .editorconfig of their folder. -->
   <PropertyGroup>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AssemblyName>$(OrmLiteRoot).$(MSBuildProjectName)</AssemblyName>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <PackageId>$(AssemblyName)</PackageId>

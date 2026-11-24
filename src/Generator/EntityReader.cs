@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Collection = Neemle.OrmLite.OrmGenerator.Collection;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
-using Relation = Neemle.OrmLite.OrmGenerator.Relation;
-using static Neemle.OrmLite.SymbolFacts;
+using Collection = Neemle.OrmLite.Generator.OrmGenerator.Collection;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
+using Relation = Neemle.OrmLite.Generator.OrmGenerator.Relation;
+using static Neemle.OrmLite.Generator.SymbolFacts;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Reads one table or view type into an entity model. The reading has three passes: the EntityScan sorts each

@@ -1,0 +1,5 @@
+# The full name of CorpusUnregistered (Neemle.OrmLite.Tests.Corpus.CorpusUnregistered) is embedded in a corpus golden
+# (refusals/query-for-an-unregistered-type), and the goldens are never edited by hand, so this folder keeps the
+# Neemle.OrmLite.Tests.Corpus namespace.
+[*.cs]
+dotnet_diagnostic.IDE0130.severity = none

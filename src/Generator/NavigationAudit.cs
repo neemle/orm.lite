@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using Relation = Neemle.OrmLite.OrmGenerator.Relation;
-using Collection = Neemle.OrmLite.OrmGenerator.Collection;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using Relation = Neemle.OrmLite.Generator.OrmGenerator.Relation;
+using Collection = Neemle.OrmLite.Generator.OrmGenerator.Collection;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Checks every relation, collection and many-to-many navigation against the entity it points at, because a loader

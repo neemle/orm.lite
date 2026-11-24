@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
-using SoftDeclaration = Neemle.OrmLite.OrmGenerator.SoftDeclaration;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
+using SoftDeclaration = Neemle.OrmLite.Generator.OrmGenerator.SoftDeclaration;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>The diagnostics about the [SoftDelete] declaration of an entity and the default tenant property.</summary>
 internal static class SoftDeleteDiagnostics

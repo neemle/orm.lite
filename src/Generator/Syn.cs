@@ -3,7 +3,7 @@ using System.Linq;
 using Neemle.CSharpComposer;
 using Neemle.CSharpComposer.Model;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 internal static class Syn
 {

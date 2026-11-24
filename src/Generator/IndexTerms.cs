@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Prop = Neemle.OrmLite.OrmGenerator.Prop;
-using TermDef = Neemle.OrmLite.OrmGenerator.TermDef;
+using Prop = Neemle.OrmLite.Generator.OrmGenerator.Prop;
+using TermDef = Neemle.OrmLite.Generator.OrmGenerator.TermDef;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Reads one term of an [Index]: a column or lower of a column, then optionally asc or desc, nulls first or nulls

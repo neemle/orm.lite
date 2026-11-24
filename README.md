@@ -588,6 +588,13 @@ assets and so the actor setting, and the generators do not run in it.
 - `src/Core`: the core packer: analyzer in `analyzers/dotnet/cs`, runtime and Sql kit in `lib/net10.0`, build
   assets in `buildTransitive`
 - `src/Packaging.props`: the metadata the three packages share
+- `src/Directory.Build.props`, `tests/Directory.Build.props`: a project is named by its folder, so `src/Postgres` builds
+  the assembly, root namespace and package id `Neemle.OrmLite.Postgres`; the prefix is written once, as `OrmLiteRoot` in
+  the root `Directory.Build.props`. A file's namespace is the root namespace plus its folder path, and the build fails
+  (IDE0130 as an error, set in the `.editorconfig` files under `src/` and `tests/`) when one is not. The exceptions are
+  folders with their own `.editorconfig` that gives the reason: the public diagnostics types of
+  `src/Runtime/Diagnostics` stay in `Neemle.OrmLite`, and `tests/Tests/Corpus/Support` keeps
+  `Neemle.OrmLite.Tests.Corpus` because a golden embeds it
 - `src/PackageAssets`: the SVG logo and icon originals, plus the 128 x 128 `icon.png` used by all three packages;
   [the asset guide](src/PackageAssets/README.md) covers the light and dark variants and how to regenerate the PNG
 - `CHANGELOG.md`: what changed in each version of the packages

@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Neemle.OrmLite.Generator;
 
 namespace Neemle.OrmLite.Tests.EntityShapes;
 

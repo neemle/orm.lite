@@ -6,11 +6,11 @@ using Neemle.CSharpComposer;
 using Neemle.CSharpComposer.Builders;
 using Neemle.CSharpComposer.Model;
 using Neemle.CSharpComposer.Rendering;
-using ChildGuard = Neemle.OrmLite.OrmGenerator.ChildGuard;
-using EmitScope = Neemle.OrmLite.OrmGenerator.EmitScope;
-using Entity = Neemle.OrmLite.OrmGenerator.Entity;
+using ChildGuard = Neemle.OrmLite.Generator.OrmGenerator.ChildGuard;
+using EmitScope = Neemle.OrmLite.Generator.OrmGenerator.EmitScope;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
 
-namespace Neemle.OrmLite;
+namespace Neemle.OrmLite.Generator;
 
 /// <summary>
 /// Emits the one generated file of the entities: reports what is wrong, then writes the static Orm class of each
