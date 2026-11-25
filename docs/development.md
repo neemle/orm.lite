@@ -255,3 +255,17 @@ configuration; CI runs it first, then `-- source` as a step of its own, which ca
   deletes the older ones with their artifacts, with no manual step (see "Build, test, pack, demo")
 - `demo/`: the demo, a consumer of the packages, with an `appsettings.json` block that names the provider and a
   `compose.yaml` for a throwaway PostgreSQL
+
+## Publishing a release
+
+Push a SemVer tag on a commit in `main`. For example, `git push origin v0.1.0` starts CI for that tag. After CI passes, **Publish release** verifies the tagged commit, packages the three NuGet packages, publishes them to nuget.org, and creates the GitHub release. A tag such as `v0.2.0-rc.1` produces a prerelease.
+
+### One-time setup on nuget.org
+
+1. In [Trusted Publishing](https://www.nuget.org/account/trustedpublishing), create a policy for owner `neemle`, repository `orm.lite`, and workflow file `release.yml`. Leave **Environment** empty.
+2. Give the policy the **Push new packages and package versions** scope for `Neemle.OrmLite*` while bootstrapping the first release.
+3. Set the GitHub Actions repository variable `NUGET_USER` to the nuget.org **profile name** of the person who created the policy. GitHub Actions uses the policy to obtain a short-lived publishing credential.
+
+### Retry an existing tag
+
+Run **Publish release** from `main` in the Actions tab and enter the existing tag, or run `gh workflow run release.yml --ref main -f tag=v0.1.0`. The workflow requires a successful push CI run for the same tag and commit. It skips NuGet versions already uploaded, so a partially completed publish can be retried.
