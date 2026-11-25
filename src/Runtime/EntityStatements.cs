@@ -46,7 +46,9 @@ public static class EntityStatements
     public static Node Get(EntityDescriptor d, object? key)
     {
         var column = RequireKey(d);
-        return new Select([new Star()], new TableRef(d.Table), new Where(NodeList.Of(KeyTerms(d, column, new Param(0, key, KeyAlias)))));
+        var terms = KeyTerms(d, column, new Param(0, key, KeyAlias));
+        return new Select(NodeList.Of(EntityProjection.Selected(d)), new TableRef(d.Table),
+            new Where(NodeList.Of(terms)));
     }
 
     public static Node Update(EntityDescriptor d, IReadOnlyList<object?> values)
@@ -74,7 +76,11 @@ public static class EntityStatements
             : new Update(new TableRef(d.Table), [new Assignment(new ColumnRef(d.Soft.Column), new ClockNow())], where);
     }
 
-    public static Node LoadLinked(EntityDescriptor d, ManyToManyDescriptor link, object? thisKey)
+    public static Node LoadLinked(EntityDescriptor d, ManyToManyDescriptor link, object? thisKey) =>
+        LoadLinked(d, link, thisKey, null);
+
+    public static Node LoadLinked(EntityDescriptor d, ManyToManyDescriptor link, object? thisKey,
+        EntityDescriptor? target)
     {
         var terms = new List<Node> { new Compare(CompareOp.Equal, Of(JoinTableAlias, link.ThisKey), new Param(0, thisKey, KeyAlias)) };
         if (link.OtherSoftColumn is { } soft) terms.Add(new IsNull(Of(OtherTableAlias, soft)));
@@ -82,7 +88,7 @@ public static class EntityStatements
             new TableRef(link.JoinTable, JoinTableAlias),
             new Compare(CompareOp.Equal, Of(JoinTableAlias, link.OtherKey), Of(OtherTableAlias, link.OtherKeyColumn)));
         return new Select(
-            [new Star(OtherTableAlias)],
+            NodeList.Of(EntityProjection.Selected(target, OtherTableAlias)),
             new TableRef(link.OtherTable, OtherTableAlias),
             new Where(NodeList.Of(terms)),
             Joins: [join]);

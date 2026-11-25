@@ -90,7 +90,8 @@ public static class OrmExec
     {
         var link = LinkOf(d, navigation);
         var list = new List<T>();
-        await using var cmd = Command(conn, Compile(db, EntityStatements.LoadLinked(d, link, thisKey), StatementKind.Read, link.OtherTable));
+        var tree = EntityStatements.LoadLinked(d, link, thisKey, OrmMeta.ReadDescriptor(typeof(T)));
+        await using var cmd = Command(conn, Compile(db, tree, StatementKind.Read, link.OtherTable));
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
         while (await r.ReadAsync()) list.Add(map(r));
         return list;

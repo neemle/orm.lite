@@ -23,10 +23,17 @@ namespace Neemle.OrmLite;
             state.Redactions[raw] = new CaseWhen(cond, new NullLit(), new ColumnRef(raw));
         }
 
-        internal static IEnumerable<Node> Selected(RenderState state, Type entity) =>
-            state.Redactions.Count == 0
+        internal static IEnumerable<Node> Selected(RenderState state, Type entity)
+        {
+            var descriptor = OrmMeta.ReadDescriptor(entity);
+            if (descriptor is { Calculated.Count: > 0 })
+                return state.Redactions.Count == 0
+                    ? EntityProjection.Selected(descriptor)
+                    : EntityProjection.Redacted(descriptor, state.Redactions);
+            return state.Redactions.Count == 0
                 ? [new Star()]
                 : OrmMeta.Get(entity).Columns.Select(c => Masked(state, c)).ToList();
+        }
 
         private static Node Masked(RenderState state, string column) =>
             state.Redactions.TryGetValue(column, out var expr) ? new Aliased(expr, column) : new ColumnRef(column);

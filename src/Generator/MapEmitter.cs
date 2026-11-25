@@ -30,17 +30,22 @@ internal static class MapEmitter
     {
         if (Buildability.IsUnbuildable(e)) return UnbuildableBody(e);
         var keyColumn = key?.Column ?? "";
-        var initialised = e.Props.Any(p => p.InInit);
+        var properties = ReadProperties(e);
+        var initialised = properties.Any(p => p.InInit);
         var body = new List<CsNode>();
         if (!initialised) body.Add(Syn.SymVar("e", Syn.SymNew(entity)));
-        for (var i = 0; i < e.Props.Length; i++)
-            body.Add(Syn.SymVar("o" + i, Syn.SymCall(Syn.Sym("r"), "GetOrdinal", Syn.SymValue(e.Props[i].Column))));
+        for (var i = 0; i < properties.Length; i++)
+            body.Add(Syn.SymVar("o" + i,
+                Syn.SymCall(Syn.Sym("r"), "GetOrdinal", Syn.SymValue(properties[i].Column))));
         if (initialised)
             body.Add(Syn.SymVar("e", ConstructedWith(entity, AssignmentsOf(e, keyColumn, true))));
         body.AddRange(AssignmentsOf(e, keyColumn, false));
         body.Add(Syn.SymReturn(Syn.Sym("e")));
         return Cs.Tree(body.ToArray());
     }
+
+    private static Prop[] ReadProperties(Entity e) =>
+        e.Props.Concat(e.Calculated.Select(c => c.Property)).ToArray();
 
     private static CsTree UnbuildableBody(Entity e) =>
         Cs.Tree(Syn.SymThrow(Syn.SymNew(Syn.Sys("NotSupportedException"), Syn.SymValue(Buildability.ThrowText(e)))));
@@ -56,9 +61,10 @@ internal static class MapEmitter
 
     private static IEnumerable<CsNode> AssignmentsOf(Entity e, string keyColumn, bool init)
     {
-        for (var i = 0; i < e.Props.Length; i++)
+        var properties = ReadProperties(e);
+        for (var i = 0; i < properties.Length; i++)
         {
-            var p = e.Props[i];
+            var p = properties[i];
             if (p.InInit != init) continue;
             var ordinal = Syn.Sym("o" + i);
             var read = ReadOf(p, ordinal, e.Table, keyColumn);
