@@ -140,9 +140,9 @@ comments.
 1. Add the packages. A provider package brings the core with it; this demo references both providers so the block
    above can name either.
 
-       dotnet add package Neemle.OrmLite.Sqlite --prerelease
+       dotnet add package Neemle.OrmLite.Sqlite --version 0.1.0
 
-   The packages are not on a public feed yet: `dotnet pack` builds them into `artifacts/`.
+   The command installs the public release. This repository’s demo uses packages packed into `artifacts/`.
 
 2. Describe the table by decorating a class (`Note.cs`).
 

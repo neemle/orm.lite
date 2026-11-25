@@ -15,24 +15,24 @@ provider reference brings the core, the generator and the build assets with it.
 | Package | What it is | Install |
 | --- | --- | --- |
 | `Neemle.OrmLite` | the provider-neutral runtime, the standard SQL grammar kit and the source generator | pulled in by either provider |
-| `Neemle.OrmLite.Sqlite` | the SQLite provider (Microsoft.Data.Sqlite) | `dotnet add package Neemle.OrmLite.Sqlite --prerelease` |
-| `Neemle.OrmLite.Postgres` | the PostgreSQL provider (Npgsql) | `dotnet add package Neemle.OrmLite.Postgres --prerelease` |
+| `Neemle.OrmLite.Sqlite` | the SQLite provider (Microsoft.Data.Sqlite) | `dotnet add package Neemle.OrmLite.Sqlite --version 0.1.0` |
+| `Neemle.OrmLite.Postgres` | the PostgreSQL provider (Npgsql) | `dotnet add package Neemle.OrmLite.Postgres --version 0.1.0` |
 
 Referencing a provider package is enough: the build emits the provider's registration into your project, so
 `OrmLiteOptions { Provider = "sqlite" }` (or `"postgres"`) resolves with no further code. There is no default provider; a
 provider that is not referenced is a start-up error that names the package to add.
 
-## Build and configure the local feed
+## Build from source
 
-The packages are not on a public feed yet. From the repository root, build them into the local feed folder
-`artifacts/` before adding them to an app:
+To test unreleased changes, pack from the repository root into a local feed:
 
 ```bash
 dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
 ```
 
 Add that folder as a source in your app’s NuGet configuration. Keep nuget.org enabled for dependencies.
-The [quickstart](quickstart.md) shows the commands for a new app.
+Use the [Git-derived version](development.md#build-and-release-versions) printed by `dotnet pack` when installing
+from the local feed.
 
 ## Compatibility details
 

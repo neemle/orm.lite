@@ -13,18 +13,12 @@ a book, and a tag, then loads the book’s author, the author’s books, and the
 
 ## 1. Create the sample project
 
-From the repository root, build the packages and configure a temporary console project. See
-[Installation](installation.md) for SDK and provider requirements.
+From any directory, create a .NET 10 console app and add the SQLite provider.
 
 ```bash
-dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
-ormlite_feed="$PWD/artifacts"
-ormlite_sample="$(mktemp -d)"
-dotnet new console -n RelationsSample -o "$ormlite_sample" -f net10.0
-cd "$ormlite_sample"
-dotnet new nugetconfig
-dotnet nuget add source "$ormlite_feed" --name orm-lite-local --configfile nuget.config
-dotnet add package Neemle.OrmLite.Sqlite --prerelease
+dotnet new console -n RelationsSample -f net10.0
+cd RelationsSample
+dotnet add package Neemle.OrmLite.Sqlite --version 0.1.0
 ```
 
 ## 2. Declare the relations
@@ -155,6 +149,6 @@ creates a database and runs the same code.
 
 ```bash
 createdb -h localhost -U "$(id -un)" ormlite_relations
-dotnet add package Neemle.OrmLite.Postgres --prerelease
+dotnet add package Neemle.OrmLite.Postgres --version 0.1.0
 ORMLITE_RELATIONS_POSTGRES="Host=localhost;Database=ormlite_relations;Username=$(id -un)" dotnet run
 ```

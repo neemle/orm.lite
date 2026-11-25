@@ -50,7 +50,7 @@ Add the PostgreSQL package from the [local feed](installation.md). Then set the 
 `appsettings.json`. The same application code opens the new provider when it calls `OrmLiteOptions.Load()`:
 
 ```bash
-dotnet add package Neemle.OrmLite.Postgres --prerelease
+dotnet add package Neemle.OrmLite.Postgres --version 0.1.0
 ```
 
 Set the PostgreSQL connection in `appsettings.json`:

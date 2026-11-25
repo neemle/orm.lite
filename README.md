@@ -7,19 +7,31 @@
 
 # Neemle.OrmLite
 
-Neemle.OrmLite is an attribute-driven ORM for .NET, inspired by [TypeORM](https://typeorm.io/).
-It supports PostgreSQL and SQLite. Define your tables as C# classes and use strongly typed
-queries to read and write rows.
+**A source-generated ORM for .NET 10, PostgreSQL, and SQLite.** Inspired by [TypeORM](https://typeorm.io/).
 
-Use it when you want to keep data access close to your C# model and have the build generate
-entity mappings, data access methods, and the initial database schema. The runtime also provides
-typed migrations, transactions, soft delete, and row history.
+Model your tables with C# attributes. ORM.lite generates typed repositories and an initial schema at build time.
+Use LINQ expressions to filter rows, define migrations in C#, and use soft delete with row history when you need it.
 
-**Status:** Pre-release. The API may change in 0.x releases. The packages are currently built
-from source into a local NuGet feed.
+## Get started
 
-- [Install](docs/installation.md) with the .NET 10 SDK.
-- [Quickstart](docs/quickstart.md) to create a SQLite database and run your first query.
-- [Documentation](docs/README.md) for configuration, feature guides, examples, and reference.
+Choose the provider for your database. Each provider brings in the matching core package.
 
-[Changelog](CHANGELOG.md) · [MIT License](LICENSE) · [Third-party notices](THIRD-PARTY-NOTICES.md)
+| Database | NuGet package |
+| --- | --- |
+| SQLite | [Neemle.OrmLite.Sqlite](https://www.nuget.org/packages/Neemle.OrmLite.Sqlite/0.1.0) |
+| PostgreSQL 16+ | [Neemle.OrmLite.Postgres](https://www.nuget.org/packages/Neemle.OrmLite.Postgres/0.1.0) |
+
+```bash
+dotnet add package Neemle.OrmLite.Sqlite --version 0.1.0
+```
+
+Follow the [SQLite quickstart](docs/quickstart.md) to create a table and run your first query.
+
+- [Relations](docs/relations.md) covers navigation properties, join tables, and foreign keys.
+- [Migrations](docs/migrations.md) shows how to change a schema and roll back a migration.
+- [Provider capabilities](docs/providers.md) compares PostgreSQL and SQLite behavior.
+- [Full documentation](docs/README.md) includes configuration, queries, diagnostics, and examples.
+
+Version **0.1.0** is the first public release. The API may change during the 0.x series.
+
+[Changelog](CHANGELOG.md#010) · [MIT License](LICENSE) · [Third-party notices](THIRD-PARTY-NOTICES.md)
