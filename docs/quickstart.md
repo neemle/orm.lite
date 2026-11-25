@@ -2,22 +2,16 @@
 
 [Documentation](README.md)
 
-Create a console app that stores notes in SQLite. Run the packing command from
-[Installation](installation.md) first. Then run these commands from the ORM.lite repository root.
+Create a console app that stores notes in SQLite. You only need the .NET 10 SDK.
 
 ## 1. Install the SQLite package
 
-Until the packages are on a public feed, point NuGet at the folder that
-`dotnet pack` filled (see [Installation](installation.md)):
+From any directory, create a .NET 10 console app and add the SQLite provider.
 
 ```bash
-ormlite_feed="$PWD/artifacts"
-ormlite_sample="$(mktemp -d)"
-dotnet new console -n Notes -o "$ormlite_sample" -f net10.0
-cd "$ormlite_sample"
-dotnet new nugetconfig
-dotnet nuget add source "$ormlite_feed" --name orm-lite-local --configfile nuget.config
-dotnet add package Neemle.OrmLite.Sqlite --prerelease
+dotnet new console -n Notes -f net10.0
+cd Notes
+dotnet add package Neemle.OrmLite.Sqlite --version 0.1.0
 ```
 
 ## 2. Define an entity

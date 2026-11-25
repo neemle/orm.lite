@@ -3,9 +3,9 @@
 All notable changes to the three packages (`Neemle.OrmLite`, `Neemle.OrmLite.Sqlite`, `Neemle.OrmLite.Postgres`)
 are listed here. The three packages always carry one version.
 
-## 0.1.0-pre
+## 0.1.0
 
-The first pre-release: the API, the emitted code shape, the runtime type names and the namespaces may change in any
+The first public release. The API, the emitted code shape, the runtime type names and the namespaces may change in any
 0.x release.
 
 - Attribute-driven mapping with a source generator for entities, repositories and schema migrations.
@@ -23,11 +23,11 @@ Rename. The root namespace, the package ids and the assembly names are now `Neem
 `Neemle.OrmLite.Generated`. Migration: replace the prefix `Neemle.Orm.Lite` by `Neemle.OrmLite` in package references,
 `using` directives, `InternalsVisibleTo` names and any text that names a type of the library. Nothing else changes: type
 and member names, the `OrmLite*` settings and MSBuild properties, the capability manifest names and every generated
-statement are the same. There is no shim and no package under the old ids, because 0.1.0-pre has not been published.
+statement are the same. There is no shim and no package under the old ids, because the earlier development packages were never published.
 
 The core (`Neemle.OrmLite`) no longer carries any PostgreSQL text, type, id or hash input: every provider speaks
 through `ISqlProvider`, and the legacy PostgreSQL dialect path that ran beside it is gone. These changes are made
-without `Obsolete` shims, because 0.1.0-pre has not been published.
+without `Obsolete` shims, because the earlier development packages were never published.
 
 Removed or changed public API:
 

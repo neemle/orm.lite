@@ -1,17 +1,14 @@
 # Neemle.OrmLite
 
-A small, attribute-driven ORM for .NET on PostgreSQL or SQLite. You decorate plain classes; a source generator writes
-the table mappings, the entity methods and the schema migrations at build time. The runtime that the generated code
-calls ships in the same package, with soft delete, a row history that records who changed what, and typed queries
-written as lambdas.
+**A source-generated ORM for .NET 10, PostgreSQL, and SQLite.** Inspired by TypeORM.
 
-Inspired by TypeORM, with an attribute-driven .NET API and build-time code generation.
+Define tables with C# attributes. ORM.lite generates typed repositories and an initial schema at build time.
+Query with LINQ expressions, write migrations in C#, and enable soft delete and row history where needed.
 
 ## Status
 
-Pre-release, API unstable. The emitted code shape, the runtime type names and the namespaces may change in any 0.x
-release. The packages target .NET 10 and are built and used there in CI; the CI tests and the NativeAOT smoke consumer
-run on both .NET 10 and .NET 11, and a later .NET version is expected to work.
+Version **0.1.0** is the first public release. The API may change in 0.x versions.
+SQLite needs no database server. PostgreSQL requires version 16 or later.
 
 Native AOT: the runtime and the provider libraries are built with the AOT and trim analyzers on, so a warning fails
 their build. CI publishes one small NativeAOT consumer and runs it on .NET 10 and .NET 11; beyond that, AOT
@@ -28,9 +25,16 @@ so a provider reference brings the core, the generator and the build assets with
 | `Neemle.OrmLite.Postgres` | the PostgreSQL provider (Npgsql) |
 | `Neemle.OrmLite` | the runtime, the standard SQL grammar kit and the source generator; pulled in by either provider |
 
+For SQLite:
+
+```bash
+dotnet add package Neemle.OrmLite.Sqlite --version 0.1.0
 ```
-dotnet add package Neemle.OrmLite.Sqlite --prerelease
-dotnet add package Neemle.OrmLite.Postgres --prerelease
+
+For PostgreSQL:
+
+```bash
+dotnet add package Neemle.OrmLite.Postgres --version 0.1.0
 ```
 
 Referencing a provider package is enough: the build emits the provider's registration into your project, so
@@ -39,10 +43,15 @@ provider; a provider that is not referenced is a start-up error that names the p
 
 ## Quickstart
 
-You have a class and you want rows in and out of a database, with no server to run and no SQL to write. This is the
-whole program, on SQLite.
+Create a .NET 10 console app with SQLite:
 
-Describe a table by decorating a class (`Note.cs`):
+```bash
+dotnet new console -n Notes -f net10.0
+cd Notes
+dotnet add package Neemle.OrmLite.Sqlite --version 0.1.0
+```
+
+Create `Note.cs`.
 
 ```csharp
 using Neemle.OrmLite;
@@ -58,7 +67,7 @@ public sealed class Note
 }
 ```
 
-Open the database, create the schema, use it (`Program.cs`):
+Replace `Program.cs`.
 
 ```csharp
 using Neemle.OrmLite;
@@ -70,10 +79,11 @@ await db.MigrateAsync();
 
 await NoteOrm.InsertAsync(db, new Note { Id = Guid.NewGuid(), Title = "hello", Stars = 5 });
 var best = await NoteOrm.Query(db).Where(n => n.Stars >= 3).ToListAsync();
+foreach (var note in best) Console.WriteLine(note.Title);
 ```
 
-Running it creates `notes.db`, creates the table, inserts the row and reads it back. The repository `NoteOrm` is
-generated from the class, and `db.MigrateAsync()` applies the generated baseline and your own `[Migration]` classes.
+Run `dotnet run`. The program creates `notes.db`, inserts a note, and prints `hello`.
+`NoteOrm` is generated from `Note`. `MigrateAsync()` applies the generated baseline and any registered migrations.
 
 ## Providers
 
