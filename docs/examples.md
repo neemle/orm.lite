@@ -7,6 +7,8 @@
 Follow [the demo setup](../demo/README.md#run-it) to run on SQLite or PostgreSQL. The final line is `demo ok`.
 The demo README lists each chapter and its source file.
 
+## Find an example by task
+
 | Task | Example |
 | --- | --- |
 | Create a database and query your first entity | [SQLite quickstart](quickstart.md) |

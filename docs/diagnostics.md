@@ -2,15 +2,27 @@
 
 [Documentation](README.md)
 
+## Report slow statements
+
+Assign a diagnostics sink before opening the connection. This example sets a 200 ms threshold.
+
+```csharp
+options.Diagnostics.Sink = mySink;
+options.Diagnostics.SlowThreshold = TimeSpan.FromMilliseconds(200);
+```
+
+See [diagnostics in the demo](../demo/README.md) and its [sink source](../demo/SlowQueryReport.cs) for a complete example.
+
+## What the sink receives
+
 `OrmLiteOptions.Diagnostics` routes the SQL the provider serialised, its elapsed time, rows affected, connection and
 transaction ids, and the transaction begin, commit and rollback events to a sink you assign: every statement, only
-those over a threshold, or a sample. Parameter values are off by default and redacted when on: text that looks
-like a secret, or that names one (a `password`, `token`, `api_key`, `api key`, `pin` or `Authorization` label in a JSON
-document, a header line, a query string or an `a=b` pair, also when written with JSON escapes), is replaced whole,
-whether it arrives as a string or as another value converted to text. A short unlabelled secret cannot be seen. Off by
-default, and with no sink nothing is timed or allocated.
+those over a threshold, or a sample.
 
-    options.Diagnostics.Sink = mySink;
-    options.Diagnostics.SlowThreshold = TimeSpan.FromMilliseconds(200);
+## Parameter values and redaction
 
-See [diagnostics in the demo](../demo/README.md) for a complete sink implementation.
+- **Default:** Parameter values are excluded. With no sink, diagnostics does not time statements or allocate events.
+- **With values enabled:** Secret-looking text is replaced in full, including non-string values converted to text.
+  The redactor recognises labels such as `password`, `token`, `api_key`, `api key`, `pin`, and `Authorization`
+  in JSON, headers, query strings, and `a=b` pairs. It also recognises escaped JSON labels.
+- **Limit:** Short, unlabelled secrets may escape detection.

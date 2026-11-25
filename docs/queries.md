@@ -4,6 +4,8 @@
 
 Start with the `Note` entity and open database from the [quickstart](quickstart.md).
 
+## Build and run a query
+
 A query is a builder: `Where`, `Take`, `Skip`, `OrderBy`, `ForUpdate`, `IncludingDeleted` and the other builder methods
 change the query and return it, while terminals (`ToListAsync`, `FirstOrDefaultAsync`, `CountAsync`, `UpdateAsync` and
 the other `Compile*`, `Render*` and `*Async` calls) never change it, so one query can feed several terminals; a query is
@@ -28,12 +30,16 @@ rows a query reads. What a terminal does with them depends on what it is:
 - `GroupBy(...)` refuses a `Take`, `Skip` or order already set on the query, and a clause added to the query after
   `GroupBy` is refused when the grouping is compiled or run. Put them on the grouping, whose own `Take`, `Skip`,
   `OrderBy` and `OrderByKey` work.
+## Lock rows in a unit of work
+
 - A row lock (`ForUpdate`, `ForNoKeyUpdate`) is taken by the reads that return rows (`ToListAsync`, `ProjectAsync`,
   `ProjectionAsync`, `FirstOrDefaultAsync`). Every other terminal refuses a query that carries one, with an
   `InvalidOperationException` that names the operation and the lock: `CountAsync`, `AnyAsync`, `SumAsync`,
   `AggregatesAsync` and its `Compile`/`Render` forms, `ScalarAsync` and its `Compile`/`Render` forms, `GroupBy(...)`,
   and the writes. They return no row to lock or lock the rows they change by themselves, so the lock was dropped
   without a word before. Read the rows with the lock in a unit of work, then count, sum or write by their keys.
+## Ordering and NULL values
+
 - Every plain order term (`OrderBy`, `OrderByDescending`, `ThenBy`, `ThenByDescending`, `OrderByPredicate`,
   `ThenByPredicate`) says `NULLS LAST`, ascending and descending, on both providers, so `OrderBy(x => x.Due).Take(n)`
   reads the same rows on SQLite and on PostgreSQL. Before, SQLite put NULLs first in both directions and PostgreSQL
@@ -42,21 +48,29 @@ rows a query reads. What a terminal does with them depends on what it is:
   (`Nulls = NullsPlacement.Last` on the `[Index]`; a descending term is `DESC NULLS LAST`), a capability SQLite
   refuses by name (`IndexNullsOrdering`).
 
+## Update or delete a limited set
+
 To delete or update the first N rows, select their keys first and write by those keys:
 
-    var ids = await NoteOrm.Query(db).Where(n => n.Stars < 3).OrderBy(n => n.Title).Take(100)
-        .ProjectAsync([n => n.Id], r => r.GetGuid(0));
-    await NoteOrm.Query(db).Where(n => ids.Contains(n.Id)).DeleteAsync();
+```csharp
+var ids = await NoteOrm.Query(db).Where(n => n.Stars < 3).OrderBy(n => n.Title).Take(100)
+    .ProjectAsync([n => n.Id], r => r.GetGuid(0));
+await NoteOrm.Query(db).Where(n => ids.Contains(n.Id)).DeleteAsync();
+```
 
 or filter the write with `WhereIn` over a subquery that carries the order and the `Take`, which deletes exactly the
 first N rows of that order:
 
-    await NoteOrm.Query(db)
-        .WhereIn<Note>(n => n.Id, sub => sub.Where(n => n.Stars < 3).OrderBy(n => n.Title).Take(100), n => n.Id)
-        .DeleteAsync();
+```csharp
+await NoteOrm.Query(db)
+    .WhereIn<Note>(n => n.Id, sub => sub.Where(n => n.Stars < 3).OrderBy(n => n.Title).Take(100), n => n.Id)
+    .DeleteAsync();
+```
 
 A negative `Take` or `Skip` is an `ArgumentOutOfRangeException` at the call, on the query and on a grouping alike:
 PostgreSQL rejects `LIMIT -1` and SQLite reads it as no limit, so the same query would mean two things. Zero is allowed.
+
+## Read a single value
 
 `ScalarAsync<TCol>` converts the value it reads the way the row mapper does, so the same call gives the same answer on
 SQLite and on PostgreSQL. It reads int, long, short, byte and the other integral types (an integer that does not fit is
