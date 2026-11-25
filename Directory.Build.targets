@@ -1,0 +1,33 @@
+<Project>
+
+  <PropertyGroup>
+    <OrmLiteRequireReleaseTag Condition="'$(OrmLiteRequireReleaseTag)' == ''">false</OrmLiteRequireReleaseTag>
+  </PropertyGroup>
+
+  <UsingTask TaskName="ResolveGitVersion" TaskFactory="RoslynCodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)/Microsoft.Build.Tasks.Core.dll">
+    <Task>
+      <Code Type="Class" Language="cs" Source="$(MSBuildThisFileDirectory)build/ResolveGitVersion.cs" />
+    </Task>
+  </UsingTask>
+
+  <!-- Apply versions before assembly generation, package metadata collection, and NuGet restore graph creation. -->
+  <Target Name="ResolveOrmLiteVersion"
+          BeforeTargets="GetAssemblyVersion;_LoadPackInputItems;_GetProjectVersion;_GenerateRestoreProjectSpec;CollectPackageReferences">
+    <ResolveGitVersion Root="$(MSBuildThisFileDirectory)" RequireReleaseTag="$(OrmLiteRequireReleaseTag)"
+                       ExpectedTag="$(OrmLiteExpectedTag)">
+      <Output TaskParameter="ResolvedVersion" PropertyName="OrmLiteVersion" />
+    </ResolveGitVersion>
+    <PropertyGroup>
+      <Version>$(OrmLiteVersion)</Version>
+      <PackageVersion>$(OrmLiteVersion)</PackageVersion>
+      <InformationalVersion>$(OrmLiteVersion)</InformationalVersion>
+      <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(OrmLiteUsesPackedPackages)' == 'true'">
+      <PackageReference Update="Neemle.OrmLite;Neemle.OrmLite.Sqlite;Neemle.OrmLite.Postgres"
+                        Version="[$(OrmLiteVersion)]" />
+    </ItemGroup>
+  </Target>
+
+</Project>

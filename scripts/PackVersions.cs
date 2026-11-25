@@ -7,7 +7,7 @@ using System.Reflection;
 using Shipped = (string Entry, string Assembly, string File, string Info);
 
 // PackVersions guards the version stamped into every assembly the three packages ship (ORML-39). The version is set
-// once, in Directory.Build.props (OrmLiteVersion); a project that does not take it keeps the SDK default 1.0.0, and a
+// once, by the Git version target; a project that does not take it keeps the SDK default 1.0.0, and a
 // provider/runtime mismatch could not be told from the assembly identity of a bug report.
 //   check <folder> <version>   every .dll inside every Neemle.OrmLite*.nupkg of the folder has the package version as
 //                              AssemblyVersion (numeric part, four parts), FileVersion (the same) and
@@ -67,7 +67,7 @@ internal static class PackVersions
         Directory.CreateDirectory(work);
         try
         {
-            var packages = Directory.GetFiles(folder, "Neemle.OrmLite*.nupkg");
+            var packages = Directory.GetFiles(folder, "Neemle.OrmLite*." + version + ".nupkg");
             var shipped = packages.SelectMany(package => Read(package, work).ToList()).ToList();
             var problems = shipped.SelectMany(s => Problems(s, version)).ToList();
             if (shipped.Count < ExpectedAssemblies)

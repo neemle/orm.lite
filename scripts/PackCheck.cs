@@ -21,7 +21,7 @@ switch (args[0])
     case "package" when args.Length == 2:
         return PackageChecks(Path.GetFullPath(args[1]));
     case "demo-guard":
-        return DemoGuard(Path.Combine(root, "demo"), RootVersion(), Console.Out, Console.Error) ? 0 : 1;
+        return DemoGuard(Path.Combine(root, "demo"), "[$(OrmLiteVersion)]", Console.Out, Console.Error) ? 0 : 1;
     case "demo-guard-self-test":
         return DemoGuardSelfTest();
     default:
@@ -38,8 +38,20 @@ string FindRoot()
 
 string RootVersion()
 {
-    var props = XDocument.Load(Path.Combine(root, "Directory.Build.props"));
-    return props.Descendants().First(e => e.Name.LocalName == "OrmLiteVersion").Value.Trim();
+    var start = new ProcessStartInfo("dotnet")
+    {
+        WorkingDirectory = root,
+        UseShellExecute = false,
+        RedirectStandardOutput = true,
+    };
+    foreach (var argument in new[] { "msbuild", "src/Core/Core.csproj", "-nologo", "-t:ResolveOrmLiteVersion", "-getProperty:OrmLiteVersion" })
+        start.ArgumentList.Add(argument);
+    using var process = Process.Start(start)!;
+    var version = process.StandardOutput.ReadToEnd().Trim();
+    process.WaitForExit();
+    if (process.ExitCode != 0 || version.Length == 0)
+        throw new InvalidOperationException("Could not resolve the project version: " + version);
+    return version;
 }
 
 bool LeavesTheDemo(string project) =>
@@ -55,10 +67,10 @@ string ComposerVersion()
 }
 
 // The README rules live in scripts/ReadmeCheck.cs (a file-based app is one file); its output is this process's own.
-int RunReadmeGuard(string artifacts)
+int RunReadmeGuard(string artifacts, string version)
 {
     var start = new ProcessStartInfo("dotnet") { WorkingDirectory = root, UseShellExecute = false };
-    foreach (var argument in new[] { "run", Path.Combine("scripts", "ReadmeCheck.cs"), "--", "all", artifacts })
+    foreach (var argument in new[] { "run", Path.Combine("scripts", "ReadmeCheck.cs"), "--", "all", artifacts, version })
         start.ArgumentList.Add(argument);
     using var guard = Process.Start(start)!;
     guard.WaitForExit();
@@ -117,7 +129,9 @@ bool DemoGuard(string demo, string version, TextWriter output, TextWriter errors
             else if (string.Equals(local, "Reference", StringComparison.OrdinalIgnoreCase) || string.Equals(local, "HintPath", StringComparison.OrdinalIgnoreCase))
                 Fail("the demo must reference packages, not an assembly: " + name + " has a " + local);
             else if (string.Equals(local, "Import", StringComparison.OrdinalIgnoreCase)
-                && LeavesTheDemo(element.Attribute("Project")?.Value ?? ""))
+                && LeavesTheDemo(element.Attribute("Project")?.Value ?? "")
+                && !(name == "Directory.Build.targets"
+                    && element.Attribute("Project")?.Value == "$(MSBuildThisFileDirectory)../Directory.Build.targets"))
                 Fail("the demo must not import build files from outside the demo: " + name);
             else if (string.Equals(local, "PackageReference", StringComparison.OrdinalIgnoreCase))
                 packages.Add((element.Attribute("Include")?.Value ?? element.Attribute("Update")?.Value ?? "", element.Attribute("Version")?.Value));
@@ -196,24 +210,22 @@ int PackageChecks(string location)
     }
 
     var folder = Directory.Exists(location) ? location : Path.GetDirectoryName(location)!;
+    var rootVersion = RootVersion();
     var packages = new Dictionary<string, string>(StringComparer.Ordinal);
     foreach (var id in new[] { "Neemle.OrmLite", "Neemle.OrmLite.Postgres", "Neemle.OrmLite.Sqlite" })
     {
-        var found = Directory.GetFiles(folder, id + ".*.nupkg")
-            .Where(f => Path.GetFileName(f).Length > id.Length + 1 && char.IsDigit(Path.GetFileName(f)[id.Length + 1]))
-            .ToArray();
-        if (found.Length != 1)
-            Fail("expected exactly one " + id + " package in " + folder + ", found " + found.Length);
+        var expected = Path.Combine(folder, id + "." + rootVersion + ".nupkg");
+        if (!File.Exists(expected))
+            Fail("expected package " + expected);
         else
-            packages[id] = found[0];
+            packages[id] = expected;
     }
     if (failed) return 1;
 
     var specs = packages.ToDictionary(p => p.Key, p => XDocument.Parse(ReadNuspec(p.Value)), StringComparer.Ordinal);
     string Meta(string id, string name) => specs[id].Descendants().FirstOrDefault(e => e.Name.LocalName == name && e.Parent?.Name.LocalName == "metadata")?.Value.Trim() ?? "";
     var version = Meta("Neemle.OrmLite", "version");
-    var rootVersion = RootVersion();
-    if (version != rootVersion) Fail("the core package is version " + version + " but Directory.Build.props says " + rootVersion);
+    if (version != rootVersion) Fail("the core package is version " + version + " but Git resolves " + rootVersion);
     foreach (var id in packages.Keys)
     {
         if (Meta(id, "id") != id) Fail(id + ": the nuspec id is " + Meta(id, "id"));
@@ -271,7 +283,7 @@ int PackageChecks(string location)
     if (failed) return 1;
 
     Console.WriteLine("==> the packed README is the consumer README: public links only, no private documentation");
-    if (RunReadmeGuard(folder) != 0) Fail("scripts/ReadmeCheck.cs refused the packed README or a repository source");
+    if (RunReadmeGuard(folder, version) != 0) Fail("scripts/ReadmeCheck.cs refused the packed README or a repository source");
     if (failed) return 1;
 
     Console.WriteLine("==> every packed assembly carries the package version in all three version stamps");

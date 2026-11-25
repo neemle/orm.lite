@@ -80,11 +80,11 @@ internal static class ReadmeCheck
                 return Report(command, SourceProblems(FindRoot()));
             case "package" when args.Length == 2:
                 return Report(command, PackageProblems(FindRoot(), Path.GetFullPath(args[1])));
-            case "all" when args.Length == 2:
+            case "all" when args.Length is 2 or 3:
                 var root = FindRoot();
-                return Report(command, [.. SourceProblems(root), .. PackageProblems(root, Path.GetFullPath(args[1]))]);
+                return Report(command, [.. SourceProblems(root), .. PackageProblems(root, Path.GetFullPath(args[1]), args.Length == 3 ? args[2] : null)]);
             default:
-                Console.Error.WriteLine("usage: ReadmeCheck.cs source | package <folder> | all <folder> | self-test");
+                Console.Error.WriteLine("usage: ReadmeCheck.cs source | package <folder> | all <folder> [version] | self-test");
                 return 2;
         }
     }
@@ -290,14 +290,16 @@ internal static class ReadmeCheck
 
     // ---- the packages ----
 
-    private static List<string> PackageProblems(string root, string folder)
+    private static List<string> PackageProblems(string root, string folder, string? version = null)
     {
         var problems = new List<string>();
         var source = File.ReadAllText(Path.Combine(root, SourceReadme));
         foreach (var id in Ids)
         {
-            var found = Directory.GetFiles(folder, id + ".*.nupkg")
-                .Where(f => char.IsDigit(Path.GetFileName(f)[id.Length + 1])).ToArray();
+            var found = version is null
+                ? Directory.GetFiles(folder, id + ".*.nupkg")
+                    .Where(f => char.IsDigit(Path.GetFileName(f)[id.Length + 1])).ToArray()
+                : Directory.GetFiles(folder, id + "." + version + ".nupkg");
             if (found.Length != 1)
                 problems.Add("expected exactly one " + id + " package in " + folder + ", found " + found.Length);
             else
