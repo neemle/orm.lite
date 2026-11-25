@@ -7,12 +7,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>OrmLiteDemo</AssemblyName>
     <RootNamespace>OrmLiteDemo</RootNamespace>
+    <OrmLiteUsesPackedPackages>true</OrmLiteUsesPackedPackages>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Neemle.OrmLite" Version="0.1.0-pre" />
-    <PackageReference Include="Neemle.OrmLite.Sqlite" Version="0.1.0-pre" />
-    <PackageReference Include="Neemle.OrmLite.Postgres" Version="0.1.0-pre" />
+    <PackageReference Include="Neemle.OrmLite" Version="[$(OrmLiteVersion)]" />
+    <PackageReference Include="Neemle.OrmLite.Sqlite" Version="[$(OrmLiteVersion)]" />
+    <PackageReference Include="Neemle.OrmLite.Postgres" Version="[$(OrmLiteVersion)]" />
   </ItemGroup>
 
   <ItemGroup>

@@ -13,6 +13,36 @@ dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1   # the three packa
 dotnet run --project demo                          # the demo on SQLite, a consumer of the packages in ./artifacts
 ```
 
+## Build and release versions
+
+Project and package versions come from Git. The build configuration controls optimisation and does not select
+a release version.
+
+| Checkout | Version |
+| --- | --- |
+| `HEAD` is tagged `v1.2.3` | `1.2.3` |
+| `HEAD` is tagged `v1.2.3-rc.1` | `1.2.3-rc.1` |
+| Untagged `abc1234` with reachable tag `v1.2.3` | `1.2.3-dev.gabc1234` |
+| Untagged `abc1234` before the first release | `0.1.0-dev.gabc1234` |
+| Source archive without Git metadata | `0.1.0-dev.unknown` |
+
+Use a full Git checkout to get the highest reachable version core. Release tags can have a leading `v`.
+Use three numeric components below 65535, with an optional SemVer prerelease suffix. Leave out build metadata
+(`+...`), since NuGet does not use it as part of package identity. If multiple tags on `HEAD` yield different
+versions, the build fails. Assembly and file versions use the numeric core. Informational versions, package
+versions, and exact package dependencies use the full resolved version.
+
+### Pack for nuget.org
+
+Only packages built from a SemVer tag may be published. Use this command to require a tag before packing:
+
+```bash
+dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1 -p:OrmLiteRequireReleaseTag=true
+```
+
+CI verifies tag builds and keeps its packages in the local feed. When publishing, use only the three artifacts
+matching the tag version.
+
 ## Run the demo on PostgreSQL
 
 The demo needs no database server. To run it on PostgreSQL, start the throwaway one and override the provider block

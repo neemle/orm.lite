@@ -4,7 +4,7 @@
     <Authors>Neemle</Authors>
     <Copyright>Copyright (c) 2026 Neemle</Copyright>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageReleaseNotes>First pre-release (0.1.0-pre); the API is unstable. See CHANGELOG.md.</PackageReleaseNotes>
+    <PackageReleaseNotes>See CHANGELOG.md for release notes.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/neemle/orm.lite</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(MSBuildThisFileDirectory)../artifacts/</PackageOutputPath>

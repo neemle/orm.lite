@@ -9,12 +9,6 @@
          (Runtime, Sql, Postgres, ...) and src/Directory.Build.props and tests/Directory.Build.props derive the
          assembly name, the root namespace and the package id from it as <root>.<folder>. -->
     <OrmLiteRoot>Neemle.OrmLite</OrmLiteRoot>
-    <OrmLiteVersion>0.1.0-pre</OrmLiteVersion>
-    <!-- Every project of the repository, shipped or not, carries the one version: the Runtime, Sql and Generator
-         assemblies are packed into the core package and must not keep the SDK default 1.0.0. AssemblyVersion and
-         FileVersion are derived from it (0.1.0-pre gives 0.1.0.0); scripts/PackVersions.cs asserts all three
-         version stamps of every packed assembly. -->
-    <Version>$(OrmLiteVersion)</Version>
     <!-- The one place the version of the code generation library is written: the generator project and the core
          package project both take it, scripts/PackCheck.cs compares the packed dependency with it. -->
     <OrmLiteComposerVersion>0.5.0</OrmLiteComposerVersion>
@@ -23,7 +17,6 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
     <WarningsAsErrors>$(WarningsAsErrors);CS8785;IL2026;IL3050</WarningsAsErrors>
-    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <Deterministic>true</Deterministic>
     <!-- Rewrites source paths to /_/ in the debug information. That is for the build that is published, so it is on
          in CI only: a local build keeps the real paths, which a contributor needs to step through the code. -->
