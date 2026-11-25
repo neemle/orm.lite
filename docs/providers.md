@@ -12,11 +12,15 @@ refused by name before any statement runs, and at build time when the project's 
 `src/Sqlite/assets/ormlite.capabilities.sqlite.txt`), which a test compares with the providers'
 declarations; at run time `db.Provider.Capabilities.Manifest()` prints the active provider's.
 
+### Identifier length
+
 A manifest also states `MaxIdentifierBytes` when the provider keeps only so many bytes of a name. PostgreSQL keeps 63
 and cuts a longer name without a word, so two long names could become one and `CREATE INDEX IF NOT EXISTS` would skip
 the second. A migration that creates a table, column, constraint, index or view with a longer name (counted in UTF-8
 bytes) is refused by name with `IdentifierTooLongException`, and the generator reports an entity's table, view, column,
 index or join table name over the limit as `ORMLITE034`. SQLite states no limit.
+
+### Capability matrix
 
 | Capability | What it covers | PostgreSQL | SQLite |
 | --- | --- | --- | --- |
@@ -40,6 +44,8 @@ index or join table name over the limit as `ORMLITE034`. SQLite states no limit.
 | `RowHistoryTriggers` | the change history of a `[SoftDelete]` table | Native | Emulated |
 | `ExactDecimal` | exact `decimal` columns (`[Numeric(p, s)]`): compare, order, index, sum | Native | Emulated |
 
+### Grouped query behavior
+
 Grouping (`Query<T>.GroupBy`, `Having`, `AggregateMax`, `AggregateAvg`) needs no capability beyond `AggregateFilter` for
 `CountWhere`: both databases run `GROUP BY`, `HAVING` and the aggregate functions natively. The result types are what
 differ. An average of a number column is cast to a `double` on both (`numeric` on PostgreSQL, `REAL` on SQLite); over a
@@ -52,6 +58,8 @@ and values its columns allocate, so defining a view twice from one query gives t
 
 ## Limitations, stated plainly
 
+### Decimals and row history
+
 - A `decimal` is exact on both providers: `numeric(p, s)` on PostgreSQL, and on SQLite decimal text under an exact
   collation with a fit check (`ExactDecimal` is `Emulated`). A decimal wider than 28 digits is refused by name on
   SQLite, and a decimal read back keeps the scale it was written with on SQLite, where PostgreSQL returns the
@@ -59,6 +67,8 @@ and values its columns allocate, so defining a view twice from one query gives t
 - The row history of `[SoftDelete]` tables and JSON documents are `Emulated` on SQLite (see [Row history](row-history.md#row-history-on-sqlite) and [JSON on SQLite](#json-on-sqlite)) and differ from
   PostgreSQL in the ways listed there: a writer that is not the library cannot update a tracked table, and the state of
   a version is built from stored values.
+### SQLite concurrency
+
 - SQLite is one writer at a time. Writes and units of work take a gate keyed by the database file; a second writer
   waits for it and fails
   with an error once the busy timeout passes (30 seconds unless `BusyTimeoutSeconds` says otherwise), instead of
@@ -71,6 +81,8 @@ and values its columns allocate, so defining a view twice from one query gives t
   normalisation variants that reach one file by two names are not recognised. The minimum engine
   version is checked when a connection opens.
 - Several processes may write one SQLite file only through that busy timeout.
+### Enums and null comparisons
+
 - An enum column is stored as its member name, so a database ranks two of them alphabetically and not by value. A
   `Where` that compares an enum column with `<`, `<=`, `>` or `>=` (also through an `(int)` cast), and an `OrderBy`,
   `OrderByDescending`, `ThenBy` or `ThenByDescending` over an enum column, are refused with a `NotSupportedException`
@@ -89,6 +101,8 @@ and values its columns allocate, so defining a view twice from one query gives t
   holds null, or a null literal) is refused with a `NotSupportedException` that names the column: SQL never makes it
   true, so it used to render a predicate that selected no row. `== null` and `!= null` are `IS NULL` and `IS NOT NULL`
   as before; test with those, or pass a value that is not null.
+### Filtering and parameter limits
+
 - `Contains` over a column binds one parameter per value, so a list that would take a statement past the bind limit of
   the provider (32766 on SQLite, 65535 on PostgreSQL, counting the values already bound by earlier terms) is refused
   with a `NotSupportedException` that names the count and the limit; split the list into
@@ -97,6 +111,8 @@ and values its columns allocate, so defining a view twice from one query gives t
   `StartsWith`, `EndsWith` and `Contains` over a column with a null value throw `ArgumentNullException`, as the C# call
   does, instead of matching every row; the `(value, ignoreCase, culture)` overloads ignore case when `ignoreCase` is
   true.
+### Cancellation, masking, and writes
+
 - No `Query<T>`, `Grouping` or `OrmExec` method takes a `CancellationToken` yet; a running statement is cut short by the
   command timeout or by closing the connection. Adding the parameter to every terminal is one change of the public
   surface and is not done piecemeal.
@@ -119,6 +135,8 @@ and values its columns allocate, so defining a view twice from one query gives t
 
 ## JSON on SQLite
 
+### Storage and functions
+
 JSON documents (`Jsonb`, the `Db.Json*` and `Db.MovedField*` markers, `OrderByJsonKey*`, `SetJson*`) are declared
 `Emulated` on SQLite (`JsonDocument=Emulated` in its capability manifest) and behave as on PostgreSQL's `jsonb`, which
 one shared behavioural suite checks on both providers. A JSON column is `text` guarded by `CHECK (json_valid(column))`
@@ -134,12 +152,19 @@ order puts `10` first) and a key starting with `$` is read as a path and raises 
 to null and merges nested objects where `||` keeps the null and replaces the nested object; an integer past int64
 read through `json_extract` or `->>` becomes a REAL. A key is always a member name, never a path. A number comparison
 uses the same input grammar as PostgreSQL's `numeric` (and `double precision` for the moved-number order), checked
-against a server over thousands of seeded strings. What stays different, each pinned by a test: a number comparison is
-an IEEE double, so integers differing past 2^53 compare equal; a hexadecimal float spelling and NaN read as no number;
-text order is SQLite's byte order (PostgreSQL's under a `C` collation, not under others); a document written outside
-the library is stored as written (the check still refuses malformed text) though every read treats it as canonical;
-`orm_json_object` takes its JSON type from the SQLite storage class, so a boolean it is given becomes a number; a double
+against a server over thousands of seeded strings.
+
+### Differences from PostgreSQL
+
+The shared tests cover the differences below.
+
+- **Numbers:** Comparisons use IEEE double, so integers differing past 2^53 compare equal. Hexadecimal floats and NaN read as no number.
+- **Text:** Text order is SQLite's byte order (PostgreSQL's under a `C` collation, not under others).
+- **External writes:** A document written outside
+the library is stored as written (the check still refuses malformed text) though every read treats it as canonical.
+- **Storage types:** `orm_json_object` takes its JSON type from the SQLite storage class, so a boolean it is given becomes a number; a double
 parameter compared to a text member keeps SQLite's spelling (`1.0`, not `1`), while booleans and decimals are bound as
-PostgreSQL prints them; a statement that uses the functions cannot run on a bare connection to the same file, which
+PostgreSQL prints them.
+- **Connection requirements:** A statement that uses the functions cannot run on a bare connection to the same file, which
 has none of them; and the refusals of malformed input are SQLite errors where PostgreSQL's are server errors, both
 `DbException`s.

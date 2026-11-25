@@ -6,20 +6,28 @@
 
 Plain dotnet commands, from a fresh clone, with the .NET 10 SDK or a later one:
 
-    dotnet build Neemle.OrmLite.slnx -c Release       # the library and its tests
-    dotnet test Neemle.OrmLite.slnx -c Release        # the tests; no database needed
-    dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1   # the three packages
-    dotnet run --project demo                          # the demo on SQLite, a consumer of the packages in ./artifacts
+```bash
+dotnet build Neemle.OrmLite.slnx -c Release       # the library and its tests
+dotnet test Neemle.OrmLite.slnx -c Release        # the tests; no database needed
+dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1   # the three packages
+dotnet run --project demo                          # the demo on SQLite, a consumer of the packages in ./artifacts
+```
+
+## Run the demo on PostgreSQL
 
 The demo needs no database server. To run it on PostgreSQL, start the throwaway one and override the provider block
 (see the [demo guide](../demo/README.md#the-same-demo-on-postgresql)), the settings being the `OrmLite` section:
 
-    docker compose -f demo/compose.yaml up -d --wait   # a throwaway PostgreSQL on 127.0.0.1:55432
-    docker compose -f demo/compose.yaml down -v        # stop and remove it, and any volume it created, when done
+```bash
+docker compose -f demo/compose.yaml up -d --wait   # a throwaway PostgreSQL on 127.0.0.1:55432
+docker compose -f demo/compose.yaml down -v        # stop and remove it, and any volume it created, when done
+```
 
 The demo restores the packages from `./artifacts` into `artifacts/.demo-packages`; the demo's build notices that the
 packed files changed and drops its restored copy of the three packages before restoring, so packing the same version
 again and running the demo always uses the new build.
+
+## Database coverage and test memory
 
 The behavioural suites (queries, migrations, JSON documents, row history, trash, restore and revert) run on SQLite always
 and on PostgreSQL when `ORMLITE_TEST_POSTGRES` holds the connection string of a server that may create databases (for
@@ -35,6 +43,8 @@ exit code 137; it was not confirmed for those runs), so give the test container 
 size is not proven. The strongest suspect is that seven generator test helpers rebuilt about 150 metadata references and
 a compilation on every call; they now share one list (`GeneratorReferences`). The consolidated run measures the peak
 memory (`docker stats` of the test container, and the TRX) with that change; until then it is a suspect, not a finding.
+
+## Run the CI test matrix
 
 A plain local `dotnet test` stays green with the PostgreSQL classes skipped; only the skip gate turns a skip into a
 failure. The CI test job runs twice, once per .NET runtime (`10.0.x` and `11.0.x`, each leg on its own runner and its
@@ -60,12 +70,16 @@ or `demo/compose.yaml` (the image tag, the exec-form health check, the loopback 
 default 55433; the file's header lists the other variables for the image's own port, role and data path; the demo's
 own throwaway server is `demo/compose.yaml`, on the same image):
 
-    docker compose -f tests/compose.yaml up -d --wait
-    ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test tests/Tests -c Release \
-      --logger "trx;LogFileName=tests.trx" --results-directory TestResults -- xUnit.MaxParallelThreads=1
-    dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx tests/skip-allowlist.txt \
-      --require-postgres tests/skip-witness.txt
-    docker compose -f tests/compose.yaml down
+```bash
+docker compose -f tests/compose.yaml up -d --wait
+ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test tests/Tests -c Release \
+  --logger "trx;LogFileName=tests.trx" --results-directory TestResults -- xUnit.MaxParallelThreads=1
+dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx tests/skip-allowlist.txt \
+  --require-postgres tests/skip-witness.txt
+docker compose -f tests/compose.yaml down
+```
+
+## Run the non-UTC tests
 
 The test job then runs the data-literal tests once more under a non-UTC time zone (`TZ=Pacific/Auckland`, the
 filter `FullyQualifiedName~DataLiteral&FullyQualifiedName!~Postgres`, its own TRX `TestResults/zone.trx`) and gates that
@@ -75,8 +89,12 @@ UTC runner cannot tell that conversion from none; `scripts/StepShape.cs` fails w
 The same run locally (needs the zone database; without it the zone falls back to UTC and `LocalZoneInForceTests`
 fails):
 
-    TZ=Pacific/Auckland dotnet test tests/Tests -c Release \
-      --filter "FullyQualifiedName~DataLiteral&FullyQualifiedName!~Postgres"
+```bash
+TZ=Pacific/Auckland dotnet test tests/Tests -c Release \
+  --filter "FullyQualifiedName~DataLiteral&FullyQualifiedName!~Postgres"
+```
+
+## Test the provider ports
 
 The core is also run on a third provider that is not PostgreSQL and not SQLite. `tests/Ports.Tests`
 references the Runtime and Sql projects only (no provider package, no driver) and holds a fake provider built from the
@@ -90,7 +108,11 @@ types, ids and SQL text and fails on any that `tests/Tests/Ports/core-coupling-a
 record; that list is empty and a line is never added to it. The same test freezes the project references. The
 same run locally:
 
-    dotnet test tests/Ports.Tests -c Release
+```bash
+dotnet test tests/Ports.Tests -c Release
+```
+
+## Verify the packages
 
 CI (`.github/workflows/ci.yml`) then runs `dotnet run scripts/PackCheck.cs -- package artifacts`
 (the entries, versions and dependencies of the three packages and the throwaway-consumer matrix: default reference,
@@ -106,6 +128,8 @@ demo on SQLite (no service) and against a PostgreSQL started from `demo/compose.
 requiring the `demo ok` line from each, the soft delete, restore and history chapter included (see demo/README.md).
 CI packs into the workspace only; nothing is published.
 
+## CI stages
+
 The CI jobs run in four ordered stages, each a set of jobs that `needs` the one before: `1 static` (every guard and
 self-test that needs no server, then `dotnet build -c Release -warnaserror`), `2 test` (one leg per .NET runtime),
 `3 package` and `3 aot-smoke` (the packages with the consumer matrix, and the NativeAOT smoke on both runtimes), and
@@ -114,6 +138,8 @@ stops the run early, and the jobs of one stage run in parallel; the test legs bu
 of stage 1 (one extra build in the run, and no artifact hand-off). `scripts/StageShape.cs` fails when a job loses its
 stage name, its `needs` or a gate step of its stage, when a job-level `if:` or a `continue-on-error` could skip a stage,
 or when an uploaded artifact has no `retention-days`; the test results are kept for 7 days.
+
+## Workflow retention
 
 `.github/workflows/retention.yml` cleans the history of workflow runs by itself, with no switch to turn on and no step
 for a person. It runs after every finished `ci` run (on any branch or pull request), once a day as a backstop, and on
@@ -133,6 +159,8 @@ completed, a limit below 5, ties in the creation time, the one count over all wo
 out of it and trimmed to 5) and the dry-run setting, and `scripts/RetentionShape.cs` pins the workflow: its three
 triggers, the `false` default of `dry_run`, that nothing gates the deletion, and the count that leaves the retention
 runs out; both run in stage 1.
+
+## Packed README checks
 
 `dotnet run scripts/PackCheck.cs -- package artifacts` also runs `dotnet run scripts/ReadmeCheck.cs -- all artifacts`:
 each of the three packages must carry `src/PackageReadme/README.md` as its `README.md`, that file must have the

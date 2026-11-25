@@ -7,17 +7,21 @@
 The generator writes a baseline migration for your entities and one for their indexes; your own changes are classes
 marked `[Migration]` that write only typed operations, so the same migration runs on either provider:
 
-    using Neemle.OrmLite;
+```csharp
+using Neemle.OrmLite;
 
-    [Migration("0100_welcome_note", Reversibility.Reversible)]
-    public sealed class WelcomeNote : Migration
-    {
-        private static readonly Guid Id = new("31e91bb8-5c08-45c4-8f80-59f8359429d0");
+[Migration("0100_welcome_note", Reversibility.Reversible)]
+public sealed class WelcomeNote : Migration
+{
+    private static readonly Guid Id = new("31e91bb8-5c08-45c4-8f80-59f8359429d0");
 
-        public override void Up(MigrationBuilder b) =>
-            b.InsertData("notes", ["id", "title", "stars"], [Id, "welcome", 0]);
-        public override void Down(MigrationBuilder b) => b.DeleteData("notes", "id", Id);
-    }
+    public override void Up(MigrationBuilder b) =>
+        b.InsertData("notes", ["id", "title", "stars"], [Id, "welcome", 0]);
+    public override void Down(MigrationBuilder b) => b.DeleteData("notes", "id", Id);
+}
+```
+
+## Seed data and value limits
 
 A row can also be given as an object, `b.InsertData(NoteOrm.Descriptor, NoteOrm.Values, new Note { ... })`; the object has the shape of the entity today, so
 such a migration must come after the ones that add its columns.
@@ -36,6 +40,8 @@ A null array given to `InsertData` or `DeleteData` is an `ArgumentNullException`
 Two limits of the targets are accepted, not worked around: SQLite stores an integer in 64 bits, so a `ulong` above
 `long.MaxValue` is read back as a REAL (store it as text or a decimal); PostgreSQL keeps a moment to the microsecond,
 so ticks beyond the sixth fractional digit are rounded when the row is stored.
+
+## Apply pending migrations
 
 `db.MigrateAsync()` applies every version not yet recorded in `schema_migrations`, in ordinal order, one
 transaction each, for every assembly of the process that holds `[Table]` or `[Migration]` classes and references the
@@ -68,6 +74,8 @@ with `ColumnType` and `Defaults`, never as text, and none of the builders' conve
 other than `Raw`. The node-level door is `Add(Node)`: it accepts a `RawSql` node, and a `RawSql` with no provider is
 text that no provider owns, so write one only on purpose.
 
+## Provider behavior during schema changes
+
 On SQLite the runner has no advisory lock to take: each version runs in one IMMEDIATE transaction behind the
 single-writer gate, checks the history again inside it, and is validated before any of its statements runs, so an
 operation the provider cannot run (a decimal wider than 28 digits, a session lock) is refused by
@@ -84,6 +92,8 @@ name. On PostgreSQL an index is looked up through its own table, and an index na
 schema already holds is refused by name, because index names are schema-global there; table, index and column names with
 quotes, percent signs, whitespace or dollar tags are quoted and escaped in every generated block, and a table lookup
 accepts only an ordinary or partitioned table.
+## Revert and audit migrations
+
 `MigrationRunner.RevertAsync` runs a migration's declared or derived `Down` and forgets
 its version on either provider; a migration declared `Irreversible` is refused by name before anything runs, and the
 generated baseline (it would drop every managed table with its rows) and the generated index reconciliation are
@@ -92,6 +102,8 @@ declared `Irreversible`. A declaration that is not a named member of `Reversibil
 `MigrationOps.Audit(contribution, provider)` compares a hand-built entry's declaration with its operations (a
 `Reversible` entry that holds an operation with no inverse and no `Down`, an `Irreversible` entry whose every operation
 can be inverted); the runner does not refuse on a finding, so call it from a startup check or a test of your own.
+
+## Recover generated migrations
 
 Recovery plan of the three generated `Irreversible` entries (the migrations are applied by `MigrateAsync`, which a
 deployment already authorises; none of them records the state it replaced):
@@ -106,6 +118,8 @@ deployment already authorises; none of them records the state it replaced):
 - **Row history (`9900_orm_history_reconcile_...`)** installs `row_history`, the capture function and its triggers; no
   table data is touched and rows already captured are kept. Recovery: migrate again, or drop the triggers and the
   function and migrate again.
+
+## How reconciliation versions are assigned
 
 The two version names of `9900_` carry a hash of what the assembly declares: the index reconcile the set of declared
 indexes (table, index name, uniqueness, live column, columns), the row history the tables it covers and their key,

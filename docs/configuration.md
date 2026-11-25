@@ -21,9 +21,15 @@ The provider and its credentials are configuration, not code, and reading them n
 folder, and optional) and then lets `OrmLite__*` environment variables override it setting by setting (the demo does
 exactly that):
 
-    { "OrmLite": { "Provider": "sqlite", "Path": "notes.db" } }
+```json
+{ "OrmLite": { "Provider": "sqlite", "Path": "notes.db" } }
+```
 
-    await using var db = await OrmLite.OpenAsync(OrmLiteOptions.Load());
+Open the database in C#:
+
+```csharp
+await using var db = await OrmLite.OpenAsync(OrmLiteOptions.Load());
+```
 
 The same settings come from other places through dependency-free members of `OrmLiteOptions`:
 `FromEnvironment()` (only the environment), `FromJsonFile(path, section, optional)` (a settings file other than
@@ -31,7 +37,9 @@ The same settings come from other places through dependency-free members of `Orm
 binder the others use, which takes any sequence of `key, value` pairs whose keys read `OrmLite:Host` or `OrmLite__Host`.
 An application that already has an `IConfiguration` passes it as is, and the core package gains no dependency:
 
-    var options = OrmLiteOptions.FromSettings(configuration.AsEnumerable());
+```csharp
+var options = OrmLiteOptions.FromSettings(configuration.AsEnumerable());
+```
 
 A key of the block that is not a setting, a port that is not a number and a missing provider are start-up errors that
 name what is wrong; nothing is ignored silently.
@@ -41,9 +49,15 @@ name what is wrong; nothing is ignored silently.
 Add the PostgreSQL package from the [local feed](installation.md). Then set the provider and connection options in
 `appsettings.json`. The same application code opens the new provider when it calls `OrmLiteOptions.Load()`:
 
-    dotnet add package Neemle.OrmLite.Postgres --prerelease
+```bash
+dotnet add package Neemle.OrmLite.Postgres --prerelease
+```
 
-    { "OrmLite": { "Provider": "postgres", "Host": "localhost", "Port": 5432, "Username": "postgres", "Database": "mydb" } }
+Set the PostgreSQL connection in `appsettings.json`:
+
+```json
+{ "OrmLite": { "Provider": "postgres", "Host": "localhost", "Port": 5432, "Username": "postgres", "Database": "mydb" } }
+```
 
 `Provider` names the database and has no default: leaving it out is a start-up error that lists the installed
 providers, and naming one whose package is not referenced is a start-up error that names the package to add.

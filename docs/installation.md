@@ -2,6 +2,13 @@
 
 [Documentation](README.md)
 
+## Requirements
+
+- **SDK and target framework:** .NET 10 or later. Packages target `net10.0`.
+- **PostgreSQL:** version 16 or later. SQLite needs no separate server.
+
+## Choose a provider package
+
 Three packages, one version. The provider packages depend on the core package at exactly the same version, so a
 provider reference brings the core, the generator and the build assets with it.
 
@@ -15,13 +22,19 @@ Referencing a provider package is enough: the build emits the provider's registr
 `OrmLiteOptions { Provider = "sqlite" }` (or `"postgres"`) resolves with no further code. There is no default provider; a
 provider that is not referenced is a start-up error that names the package to add.
 
+## Build and configure the local feed
+
 The packages are not on a public feed yet. From the repository root, build them into the local feed folder
 `artifacts/` before adding them to an app:
 
-    dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
+```bash
+dotnet pack Neemle.OrmLite.slnx -c Release -o artifacts -m:1
+```
 
 Add that folder as a source in your app’s NuGet configuration. Keep nuget.org enabled for dependencies.
 The [quickstart](quickstart.md) shows the commands for a new app.
+
+## Compatibility details
 
 The packages target net10.0, and every consumer CI builds is net10.0 (a plain reference, central package management, a
 lock file, `PrivateAssets=all`); a later .NET version is expected to work, and CI runs the tests and the NativeAOT smoke
