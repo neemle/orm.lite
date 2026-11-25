@@ -11,6 +11,7 @@
 ## Use ORM.lite
 
 - [Entities and mapping](entities.md) — declare tables and understand the generated API.
+- [Relations](relations.md) — load related entities, manage join rows, and add foreign keys.
 - [Queries](queries.md) — filter, project, page, aggregate, and lock rows.
 - [Migrations](migrations.md) — apply and revert schema changes and seed data.
 - [Soft delete and row history](row-history.md) — read history, restore rows, and scope by tenant.

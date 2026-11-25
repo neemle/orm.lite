@@ -41,4 +41,6 @@ and rollback.
 - Set [`OrmLiteProviders`](build-properties.md#provider-capability-checks) to validate declarations and calls
   against the providers you target.
 
+For a complete example of navigation properties and foreign keys, see [Relations](relations.md).
+
 For more models, see the [demo entities](../demo/Tracker/) and [generator diagnostics](generator-diagnostics.md).
