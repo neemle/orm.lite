@@ -1,21 +1,30 @@
 # Explicit one-to-one database demo
 
 One generated-model application runs the same cases with JIT or NativeAOT on PostgreSQL and SQLite.
-It uses private packages built from this checkout.
+It uses local packages built from this checkout.
 
 ## Prepare and run
 
-From the repository root with .NET 10 SDK:
+From the repository root with .NET 10 SDK, first build the local packages using
+[prepare-packages.sh](prepare-packages.sh). The public [project](OneToOneDemo.csproj) consumes those packages:
 
 ```sh
 sh examples/one-to-one/prepare-packages.sh
+```
+
+### Run with JIT
+
+```sh
 export ONE_TO_ONE_POSTGRES='Host=localhost;Username=postgres;Database=postgres'
 dotnet run --project examples/one-to-one/OneToOneDemo.csproj -c Release -- sqlite
 dotnet run --project examples/one-to-one/OneToOneDemo.csproj -c Release -- postgres
 ```
 
-PostgreSQL needs permission to create/drop a database. Each run creates its own `one_to_one_<GUID>` database
-and removes it in cleanup; the supplied database holds no demo tables. SQLite uses a temporary directory.
+### Choose the provider
+
+Pass `sqlite` or `postgres` as the single application argument. PostgreSQL reads `ONE_TO_ONE_POSTGRES`;
+use a disposable server. PostgreSQL needs permission to create/drop a database. Each run creates its own
+`one_to_one_<GUID>` database and removes it in cleanup; the supplied database holds no demo tables. SQLite uses a temporary directory.
 The legacy and provider-failure cases deliberately change tables only inside that owned fixture.
 
 ## NativeAOT
@@ -30,8 +39,18 @@ artifacts/one-to-one/native10/OneToOneDemo sqlite
 artifacts/one-to-one/native10/OneToOneDemo postgres
 ```
 
-For .NET 11 add `-p:DemoTfm=net11.0` to run/publish and use a separate output directory. JIT and native
-binaries execute the same cases and must print `ONE-TO-ONE-DEMO v1` followed by successful case results.
+For .NET 11 use its SDK and a separate native output directory:
+
+```sh
+dotnet run --project examples/one-to-one/OneToOneDemo.csproj -c Release -p:DemoTfm=net11.0 -- sqlite
+dotnet run --project examples/one-to-one/OneToOneDemo.csproj -c Release -p:DemoTfm=net11.0 -- postgres
+dotnet publish examples/one-to-one/OneToOneDemo.csproj -c Release -r linux-arm64 \
+  -p:DemoTfm=net11.0 -p:DemoNative=true -o artifacts/one-to-one/native11
+artifacts/one-to-one/native11/OneToOneDemo sqlite
+artifacts/one-to-one/native11/OneToOneDemo postgres
+```
+
+JIT and native binaries execute the same cases and print `ONE-TO-ONE-DEMO v1` followed by successful case results.
 SQLite has an additional enabled-PRAGMA assertion; its assertion total is one higher than PostgreSQL.
 This is an actual connection-enforcement check, not a PostgreSQL option or a substitute for DML.
 
@@ -72,7 +91,7 @@ An inverse into a soft-delete/filtered dependent is explicitly unsupported and r
 read boundary. Exact registered generated full-row maps carry weak provenance. Any active mask, including
 conditional masks, refuses traversal. New objects, custom/raw mapper calls and projections remain unknown.
 The public read-only `OneToOneReadGuard.Require` checks/refuses; it never grants trust. Guards run before
-null-FK handling, SQL or navigation changes. A masked null FK cannot bypass the guard.
+cancellation handling, null-FK handling, SQL or navigation changes. A masked null FK cannot bypass the guard.
 
 [LegacyCases.cs](LegacyCases.cs) deliberately removes the fixture's unique index and introduces a duplicate.
 The inverse demand reads at most two rows, throws `OneToOneCardinalityException` and retains the old navigation.
@@ -98,3 +117,10 @@ no rebuild, index repair or history rewrite. Unsupported mappings include ambigu
 composite/alternate keys, unmanaged/view/cross-baseline endpoints and self/cyclic FK dependencies.
 Masked/unknown traversal and filtered inverse targets remain explicit refusals. No hidden transaction,
 retry, graph/eager/lazy traversal, cascade saving or orphan removal is promised.
+
+## Feature guides
+
+See the [one-to-one relation guide](../../docs/relations.md#6-declare-and-load-one-to-one-relations) for
+declaration, query cost and refusal boundaries, and the
+[migration guide](../../docs/migrations.md#one-to-one-integrity-in-fresh-and-existing-databases) for baseline ownership
+and the explicit existing-database route.
