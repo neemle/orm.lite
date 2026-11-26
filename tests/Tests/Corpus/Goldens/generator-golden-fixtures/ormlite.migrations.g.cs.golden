@@ -6,5 +6,6 @@ namespace Neemle.OrmLite.Generated;
 
 public static class OrmLiteGoldenFixturesMigrations
 {
-    public static readonly global::Neemle.OrmLite.MigrationContribution[] Contributions = OrmLiteGoldenFixturesSchema.Instance.Contributions();
+    public static readonly global::Neemle.OrmLite.MigrationContribution[] Contributions = OrmLiteGoldenFixturesSchema.
+        Instance.Contributions();
 }

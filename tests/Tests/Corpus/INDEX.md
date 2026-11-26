@@ -959,14 +959,14 @@ A golden that was changed, removed or added because the library output was wrong
 | `ddl-builder` | 36 |
 | `ddl-helpers` | 36 |
 | `executed` | 96 |
-| `generator-corpus-entities` | 8 |
-| `generator-demo` | 8 |
-| `generator-diagnostics` | 4 |
-| `generator-global-namespace` | 8 |
-| `generator-golden-fixtures` | 8 |
-| `generator-tenant-option-default` | 6 |
-| `generator-tenant-option-invalid` | 6 |
-| `generator-tenant-option-scope-id` | 6 |
+| `generator-corpus-entities` | 22 |
+| `generator-demo` | 11 |
+| `generator-diagnostics` | 33 |
+| `generator-global-namespace` | 12 |
+| `generator-golden-fixtures` | 13 |
+| `generator-tenant-option-default` | 11 |
+| `generator-tenant-option-invalid` | 11 |
+| `generator-tenant-option-scope-id` | 11 |
 | `hash` | 4 |
 | `json` | 39 |
 | `locks-intervals` | 20 |
@@ -977,7 +977,8 @@ A golden that was changed, removed or added because the library output was wrong
 | `refusals` | 142 |
 | `row-history` | 44 |
 | `soft-delete` | 12 |
-| total | 669 |
+| `streaming` | 4 |
+| total | 743 |
 
 ## What the groups hold
 
@@ -991,7 +992,7 @@ A golden that was changed, removed or added because the library output was wrong
 
 ## Coverage of the statement-producing surface (derived by `CorpusIndex`)
 
-Method: the surface is every public method (and, for the types marked internal below, every internal method) of the surveyed Runtime types, plus the getters of `Query<T>` and public static getters. A member counts as referenced when the IL of the code under `Cases/` calls it, constructs it or takes its token (the `Db.*` markers appear as tokens inside expression trees). A member that no case references and no exclusion explains makes the capture fail, so the table cannot silently shrink.
+Method: the surface is every public method (and, for the types marked internal below, every internal method) of the surveyed Runtime types, plus the getters of `Query<T>` and public static getters. A member counts as referenced when the IL of the code under `Cases/` or the registered `Streaming/CiIntegration/StreamCorpusCases` calls it, constructs it or takes its token (the `Db.*` markers appear as tokens inside expression trees). A member that no case references and no exclusion explains makes the capture fail, so the table cannot silently shrink.
 
 | type | members | referenced | excluded |
 | --- | --- | --- | --- |
@@ -1009,10 +1010,10 @@ Method: the surface is every public method (and, for the types marked internal b
 | `LiveOnlyConversionDdl` | 2 | 2 | 0 |
 | `Migration` | 2 | 2 | 0 |
 | `MigrationBuilder` | 24 | 21 | 3 |
-| `OrmContext` | 5 | 2 | 3 |
+| `OrmContext` | 5 | 3 | 2 |
 | `OrmEnum` | 2 | 2 | 0 |
 | `OrmLiteSettings` | 2 | 2 | 0 |
-| `Query` | 108 | 95 | 13 |
+| `Query` | 116 | 103 | 13 |
 | `Row` | 3 | 3 | 0 |
 | `RowHistoryDdl` | 10 | 7 | 3 |
 | `RowHistoryRead` | 6 | 6 | 0 |
@@ -1024,7 +1025,7 @@ Method: the surface is every public method (and, for the types marked internal b
 | `TableBuilder` | 5 | 4 | 1 |
 | `UnitOfWork` | 5 | 5 | 0 |
 | `UpsertSet` | 7 | 5 | 2 |
-| total | 234 | 200 | 34 |
+| total | 242 | 209 | 33 |
 
 Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `ConflictGuard`.
 
@@ -1044,7 +1045,6 @@ Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `Conflict
 | `MigrationBuilder.Add/1` | appends an already built operation node; the nodes it receives are the ones the typed methods build, pinned by Nodes/DdlOperationTests |
 | `MigrationBuilder.AddDecimalColumn/6` | typed decimal column; the corpus predates typed columns, text pinned by Nodes/DdlOperationTests |
 | `MigrationBuilder.DropForeignKey/2` | typed inverse of AddForeignKey added with the reversibility classifier, pinned by Nodes/MigrationReversibilityTests |
-| `OrmContext.DisposeAsync/0` | releases the data sources an options-built context owns; it emits no text |
 | `OrmContext.MigrateAsync/1` | applies the contributions the generated assemblies registered through MigrationRunner.RunAsync, whose transcripts are the generator-*/migration-runner-* entries; MigrateAsyncTests apply them |
 | `OrmContext.MigrateAsync/2` | forwards explicit contributions to MigrationRunner.RunAsync, whose transcripts are the generator-*/migration-runner-* entries; MigrateAsyncTests apply them |
 | `Query.BuildAggregates/0` | internal tree builder beneath CompileAggregates; the corpus pins the text it compiles to and QueryTreeTests pin the tree |
@@ -1075,14 +1075,14 @@ Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `Conflict
 
 | set | generated files | diagnostics | executed |
 | --- | --- | --- | --- |
-| `generator-corpus-entities` | 3 | 1 | yes |
-| `generator-demo` | 3 | 0 | yes |
-| `generator-diagnostics` | 3 | 28 | no |
-| `generator-global-namespace` | 3 | 0 | yes |
-| `generator-golden-fixtures` | 3 | 0 | yes |
-| `generator-tenant-option-default` | 3 | 0 | yes |
-| `generator-tenant-option-invalid` | 3 | 1 | yes |
-| `generator-tenant-option-scope-id` | 3 | 0 | yes |
+| `generator-corpus-entities` | 17 | 1 | yes |
+| `generator-demo` | 6 | 0 | yes |
+| `generator-diagnostics` | 32 | 28 | no |
+| `generator-global-namespace` | 7 | 0 | yes |
+| `generator-golden-fixtures` | 8 | 0 | yes |
+| `generator-tenant-option-default` | 8 | 0 | yes |
+| `generator-tenant-option-invalid` | 8 | 1 | yes |
+| `generator-tenant-option-scope-id` | 8 | 0 | yes |
 
 ## Not covered, by design
 

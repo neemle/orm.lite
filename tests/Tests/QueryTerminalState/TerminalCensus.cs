@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using Neemle.OrmLite.Tests.Streaming;
 using Neemle.OrmLite.Tests.Behaviour;
 
 namespace Neemle.OrmLite.Tests.QueryTerminalState;
@@ -34,6 +35,14 @@ public static class TerminalCensus
             [nameof(Query<BehaveNote>.ToListAsync)],
             false, true,
             q => q.ToListAsync()),
+        new("StreamAsync", [nameof(Query<BehaveNote>.StreamAsync)], false, true,
+            q => StreamingProviderChecks.CollectAsync(q.StreamAsync())),
+        new("StreamProjectAsync", [nameof(Query<BehaveNote>.StreamProjectAsync)], false, true,
+            q => StreamingProviderChecks.CollectAsync(q.StreamProjectAsync(Id, r => r.GetGuid(0)))),
+        new("StreamProjectionAsync", [nameof(Query<BehaveNote>.StreamProjectionAsync)], false, true,
+            q => StreamingProviderChecks.CollectAsync(q.StreamProjectionAsync(r => r.GetGuid(0)))),
+        new("StreamColumnAsync", [nameof(Query<BehaveNote>.StreamColumnAsync)], false, true,
+            q => StreamingProviderChecks.CollectAsync(q.StreamColumnAsync<Guid>(n => n.Id))),
         new("CompileSelect and RenderSelect",
             [
                 nameof(Query<BehaveNote>.CompileSelect),
@@ -245,10 +254,10 @@ public static class TerminalCensus
         return string.Join("\n", lines);
     }
 
-    // ORML-76: the terminals that read rows under a row lock. A lock is a PostgreSQL feature (SQLite refuses
-    // ForUpdate), so the locked census runs over the recorded PostgreSQL text only.
+    // Record native PostgreSQL row locks; streaming entries additionally borrow an actual transaction.
     internal static readonly string[] LockedNames =
-        ["ToListAsync", "CompileSelect and RenderSelect", "ProjectAsync", "FirstOrDefaultAsync"];
+        ["ToListAsync", "CompileSelect and RenderSelect", "ProjectAsync", "FirstOrDefaultAsync",
+            "StreamAsync", "StreamProjectAsync", "StreamProjectionAsync", "StreamColumnAsync"];
 
     public static IEnumerable<object[]> LockedRows() => LockedNames.Select(name => new object[] { name });
 

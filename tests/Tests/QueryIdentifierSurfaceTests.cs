@@ -21,6 +21,7 @@ public sealed class QueryIdentifierSurfaceTests
             [
                 "Action<ViewColumns<T, TView>>",
                 "Boolean",
+                "CancellationToken",
                 "DbCommand",
                 "DbConnection",
                 "DbTransaction",

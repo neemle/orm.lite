@@ -1,0 +1,6 @@
+#1 ExecuteReader conn=1 source=streaming tx=false
+    sql:
+        SELECT * FROM "corpus_notes" WHERE "rank" > @p0 ORDER BY "rank" ASC NULLS LAST
+    @p0 = Int32 1
+-- rows
+a0000000-0000-0000-0000-00000000000a:3,b0000000-0000-0000-0000-00000000000b:7
