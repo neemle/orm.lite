@@ -1,0 +1,269 @@
+{
+  "generated": "2026-11-26T13:02:19.602025+00:00",
+  "executionCommit": "2f14178742d386a430dcadc4676a7d700602714a",
+  "sourceTree": "5ac963aa6b60d175ade27276ae0107fb3203aa88",
+  "testTree": "470a28bf1b507925dce5a30be6478e6293497e64",
+  "affectedCounters": {
+    "total": "158",
+    "executed": "158",
+    "passed": "158",
+    "failed": "0",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "oldAnalyzer": {
+    "source": "39a20f28/currentdemo0c765b98",
+    "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/nuget/neemle.ormlite/0.1.0-dev.g39a20f2/analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+    "sha256": "a452d40af0fed84c30bc0b8e5b0441d8fd87b5e27855bac1d27b39682494ea5d"
+  },
+  "currentAnalyzer": {
+    "captureInputTestsBuildFile": "artifacts/foreign-keys/current-main-integration/build/bin/Generator/release/Neemle.OrmLite.Generator.dll",
+    "captureInputSha256": "a2bca56bea0102350a87961b05260d52db090e862e75e97db3de91a6f83a2836",
+    "actualPackedFile": "artifacts/foreign-keys/current-main-integration/packages/neemle.ormlite/0.1.0-dev.g2f14178/analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+    "actualPackedSha256": "82754ba4e93046048b7da8439a28a2d1d958eee37d958f7532922b64771108ee",
+    "separateBuildBinariesByteEqual": false,
+    "semanticBridge": "Actual packed-analyzer MSBuild generated files are exact text-equal to capture output for all14 units; output token equality is established transitively, no unsupported separate-build binary identity assumption."
+  },
+  "semanticComparison": {
+    "types": [
+      "CascadeChildOrm",
+      "ForeignKeysDemoMigrations",
+      "ForeignKeysDemoSchema",
+      "LoaderChildOrm",
+      "NoActionChildOrm",
+      "OrmMetaInit",
+      "OrmMigrationsInit",
+      "ParentOrm",
+      "RestrictChildOrm",
+      "SetNullChildOrm",
+      "SoftChildOrm",
+      "SoftParentOrm",
+      "SoftParentPurge",
+      "TagOrm"
+    ],
+    "all14TokenArraysEqual": true,
+    "tokens": "Roslyn RawKind + literal token.Text, trivia/hint partition excluded; every body/identifier/literal/order retained",
+    "bothGeneratedConsumerCompilationsErrors": 0,
+    "actualCurrentMsbuildSourcesEqualCapture": [
+      {
+        "hint": "OrmLite.Entities.0000.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+        "sha256": "636b3a4bb12bf6fca96bb17efaffaaadfeceaec44336c15becd021873da3ce75",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0001.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+        "sha256": "09a51693cd71c7099b10a5f422759fa0390bd12d2ff1c8dfa6da64899a5e0dec",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0002.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+        "sha256": "096fdec6f5d2614a47025d4193b119fad01e2ce89684caa0eec0a2f952258944",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0003.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+        "sha256": "2ff1829c1d6ef3d1c39f98bec0f1d430d69601e25d18cf112d7bed779a6d31d2",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0004.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+        "sha256": "a79fed14475650f127ede8ee301d462d3bca46228ea3e25863447cc7712b3cc5",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0005.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+        "sha256": "d9bdb7e678047105b833f810d2f2d99132e86cf214f029fcb68f11c9c7c2e337",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0006.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0006.g.cs",
+        "sha256": "de0683e51f4439bc4a6fae47944d583009e1729fd0f1eede3e2eadc1ca7af15e",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0007.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0007.g.cs",
+        "sha256": "4dec16fe88c9a2b8168bc7c69702e9d746d3604cfafa853ba94ef45bab7480ec",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0008.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0008.g.cs",
+        "sha256": "86f998e03793d4f43e6672017c027105e64d5b76e02b4d9eca340d3871cd3794",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0009.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0009.g.cs",
+        "sha256": "e0f251e42e7bf4930932c58c4caa8ffe7b26ad16f03fb69e0b4faf0859d3df2e",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0010.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0010.g.cs",
+        "sha256": "e9f423df4b7ff934229554aad5bda1962be09da74c275b272ae37a762c8ac501",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Entities.0011.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0011.g.cs",
+        "sha256": "3ab45b529d3751c642847944663cfdf87965caf8b50d575273fb309026e1f682",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.MigrationRegistry.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+        "sha256": "1c43b84d59851bb60843f19b2d869912c187c4170d1b4a642d99910f5d866368",
+        "captureTextEqualActualMsbuild": true
+      },
+      {
+        "hint": "OrmLite.Migrations.g.cs",
+        "actual": "generated-current/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+        "sha256": "b9c4443e7067ef329a64c95f0077b697d214e5f8d1149523893a6e9a5db191b2",
+        "captureTextEqualActualMsbuild": true
+      }
+    ]
+  },
+  "packages": [
+    {
+      "id": "Neemle.OrmLite",
+      "version": "0.1.0-dev.g2f14178",
+      "file": "feed/Neemle.OrmLite.0.1.0-dev.g2f14178.nupkg",
+      "sha256": "ea4b5586062f42af35d8cb94351be5e57e90ea5660d7005c394d54cb0fee9bba",
+      "entries": [
+        {
+          "name": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "sha256": "82754ba4e93046048b7da8439a28a2d1d958eee37d958f7532922b64771108ee",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "name": "buildTransitive/Neemle.OrmLite.props",
+          "sha256": "bb7836a65d67958406268d885836e0b0c0fbbc44e63250ae899da9a5c5bfe6fa",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "name": "buildTransitive/Neemle.OrmLite.targets",
+          "sha256": "d64d23127dfc3d46d8abcbfabff05fd8b212155cb70cb0ca9addf2038de428b6",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "name": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+          "sha256": "0dfe2bbabce08500a716dd713c736d037b44062f2ef42147a4b7f81d1ec9bfdb",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "name": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+          "sha256": "4e13309322c7bf365e1f0d9ff283cde2f950a3cd38c59c38cb7f395c4b59b8ef",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "id": "Neemle.OrmLite.Postgres",
+      "version": "0.1.0-dev.g2f14178",
+      "file": "feed/Neemle.OrmLite.Postgres.0.1.0-dev.g2f14178.nupkg",
+      "sha256": "52647511179923295eadd0a528d7f2ddee6a61d506d5fc3e932eefbf338239c8",
+      "entries": [
+        {
+          "name": "buildTransitive/Neemle.OrmLite.Postgres.props",
+          "sha256": "10cfa9a1976f1ca12ba6b11dfcf4528fe16b9d02cd8f4c345e467b45f1d3d3bf",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "name": "buildTransitive/ormlite.capabilities.postgres.txt",
+          "sha256": "b3d3919dd0c276083178e0c843093d8bfa2dc579253a8e758744a22ea9fd4cfb",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "name": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+          "sha256": "92516ab58d7c6063c14e06f525c50727403800be9eab84caedb5366321ca44c8",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "id": "Neemle.OrmLite.Sqlite",
+      "version": "0.1.0-dev.g2f14178",
+      "file": "feed/Neemle.OrmLite.Sqlite.0.1.0-dev.g2f14178.nupkg",
+      "sha256": "35d7cb4a7d0c7911e7c663c50acef71329e3b4e8712af0626f4758ece54ee3d4",
+      "entries": [
+        {
+          "name": "buildTransitive/Neemle.OrmLite.Sqlite.props",
+          "sha256": "2e54f6f6eae3e04ba6efdbd869f97d3bfb19c6fde07077e6c4f62356376250dd",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "name": "buildTransitive/ormlite.capabilities.sqlite.txt",
+          "sha256": "c734bfb412300a946145935f1f8f2dd19b7d0693a976865ca9ccf50b8aa34a70",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "name": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+          "sha256": "71c8609ea3cb023fcf23c92b06dc0f26a8cf2da8dbeeaa223e5c911091735211",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    }
+  ],
+  "actualAssets": {
+    "file": "demo-build/obj/ForeignKeysDemo/project.assets.json",
+    "sha256": "078f644a0b70e2cabbc9a0625b000895411d4ffc49a3c6e393f1471cb2007969",
+    "selectedPrivateVersions": [
+      "Neemle.OrmLite.Postgres/0.1.0-dev.g2f14178",
+      "Neemle.OrmLite.Sqlite/0.1.0-dev.g2f14178",
+      "Neemle.OrmLite/0.1.0-dev.g2f14178"
+    ]
+  },
+  "jitLibraryBytesEqualPackages": true,
+  "currentDemoLegs": [
+    {
+      "gate": "current-jit10-sqlite",
+      "commonResult": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "originalByteEqual": true,
+      "fullLog": "current-jit10-sqlite.log",
+      "runtime": "10.0.15"
+    },
+    {
+      "gate": "current-jit10-postgres",
+      "commonResult": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "originalByteEqual": true,
+      "fullLog": "current-jit10-postgres.log",
+      "runtime": "10.0.15"
+    }
+  ],
+  "unchangedExecutedFkUnits": [
+    "src/Runtime/ForeignKeyBaseline.cs",
+    "src/Runtime/ForeignKeyValidation.cs",
+    "src/Runtime/ForeignKeyOrder.cs",
+    "src/Runtime/EntityDescriptor.cs",
+    "src/Runtime/EntityStatements.cs",
+    "src/Runtime/OrmExec.cs",
+    "src/Generator/ForeignKeyAnalysis.cs",
+    "src/Generator/ForeignKeyEmitter.cs",
+    "src/Generator/ForeignKeyReader.cs"
+  ],
+  "originalNativeReuse": {
+    "carrier": "21dfe551-86a6-4012-b19b-d2c582d1ae76",
+    "acceptance": "fbb1ea6a-453f-462e-b782-65068803962e",
+    "source": "39a20f28b9d93625d07647ff00ba271f4234cd3f",
+    "reason": "Same publiccase inputs and14generated type token sequences; currentactualMSBuild outputs matchcapture; unchanged executed FK runtime/codegen units and ordinary open/query semantics, new metadata/stream paths unused;158currentaffectedcases and47currentbothproviderobservations corroborate. No new reflection or generated API/AOT risk found. Original8executionSHA retained, not relabelled current."
+  },
+  "limits": "Finite affected integration acceptance only; finalhosted fullCI/security/TL/merge ROOT-owned. No rawcoverage program, no wholeitem PASS, no test/golden/source edits."
+}
