@@ -1,0 +1,26 @@
+{
+  "generated": "2026-11-26T15:33:30.775316+00:00",
+  "auditSourceHead": "08f91c96592531278a85ce9dfd4687a2024545fd",
+  "srcTree": "f1f92d50105366c2a6f02097b785a9cda2d4d5dd",
+  "commandStart": "2026-11-26T15:25:27.996921+00:00",
+  "commandFinish": "2026-11-26T15:26:37.713623+00:00",
+  "rawExit": 1,
+  "files": {
+    "command.json": {
+      "sha256": "d88be604693a127bf690557511105719d33b71b5b6f1fe904e056193c47f73e9",
+      "bytes": 1575
+    },
+    "semgrep.json": {
+      "sha256": "d4fc302d71b7ab5a5e5175dc5df55390de7ac1aae1c4e317740b3860c47ea5bd",
+      "bytes": 1358211
+    },
+    "semgrep.log": {
+      "sha256": "6efc8b2240746d1df9e213fb7e10666ff67737645a73694fbcb6fd1719799743",
+      "bytes": 190409
+    },
+    "triage.json": {
+      "sha256": "8577d2d79f6bfb8696c23cbec5e891225eafe0c0a8e9cb9fbfe5af7c5ef9283f",
+      "bytes": 7759
+    }
+  }
+}
