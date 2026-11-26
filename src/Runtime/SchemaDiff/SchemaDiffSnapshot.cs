@@ -4,7 +4,8 @@ namespace Neemle.OrmLite;
 
 internal sealed class SchemaDiffSnapshot
 {
-    private SchemaDiffSnapshot(SchemaDiffTarget target, IReadOnlyList<string> tables, IReadOnlyList<Node> baseline)
+    private SchemaDiffSnapshot(SchemaDiffTarget target, IReadOnlyList<string> tables,
+        IReadOnlyList<Node> baseline, IReadOnlyList<SchemaDesiredTable> desired)
     {
         ModelVersion = SchemaDiffNames.Required(target.ModelVersion);
         SchemaToken = SchemaDiffNames.Required(target.Schema.Token);
@@ -12,6 +13,7 @@ internal sealed class SchemaDiffSnapshot
             SchemaDiffNames.Required(target.Scope.Namespace), tables);
         Limits = target.Limits with { };
         Baseline = baseline;
+        Desired = desired;
     }
 
     internal string ModelVersion { get; }
@@ -19,6 +21,7 @@ internal sealed class SchemaDiffSnapshot
     internal SchemaDiffScope Scope { get; }
     internal SchemaDiffLimits Limits { get; }
     internal IReadOnlyList<Node> Baseline { get; }
+    internal IReadOnlyList<SchemaDesiredTable> Desired { get; }
 
     internal static SchemaDiffSnapshot Capture(SchemaDiffTarget target)
     {
@@ -36,6 +39,9 @@ internal sealed class SchemaDiffSnapshot
         if (!managed.SequenceEqual(tables.Order(StringComparer.Ordinal)))
             throw new SchemaDiffException(SchemaDiffError.Ownership);
         var baseline = Array.AsReadOnly(target.Schema.Baseline().ToArray());
-        return new SchemaDiffSnapshot(target, tables, baseline);
+        var desired = Array.AsReadOnly(entities.Select(e => new SchemaDesiredTable(e.Table,
+            Array.AsReadOnly(e.Columns.Select(c => c with { }).ToArray()), e.IsView,
+            e.Indexes.Count > 0 || e.Soft is not null || e.ManyToMany.Count > 0)).ToArray());
+        return new SchemaDiffSnapshot(target, tables, baseline, desired);
     }
 }
