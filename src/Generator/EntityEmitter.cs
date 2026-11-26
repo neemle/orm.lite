@@ -36,7 +36,9 @@ internal static class EntityEmitter
         var named = EntityNaming.Disambiguated(foreignKeys.Resolve());
         var dropped = new HashSet<string>(named.Where(OrmGenerator.Dropped).Select(e => e.Type));
         var emitted = named.Where(e => !OrmGenerator.Dropped(e));
-        spc.AddSource(EntitiesHint, EntitiesSource([.. emitted], asmToken, dropped, blocked, foreignKeys.Valid));
+        var source = EntitiesSource([.. emitted], asmToken, dropped, blocked, foreignKeys.Valid);
+        if (all.Any(e => !e.ForeignKeyIntents.IsEmpty)) ForeignKeySourceLayout.Emit(spc, source);
+        else spc.AddSource(EntitiesHint, source);
     }
 
     internal static FileBuilder NewFile() =>
