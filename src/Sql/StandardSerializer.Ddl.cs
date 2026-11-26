@@ -140,10 +140,12 @@ public abstract partial class StandardSerializer
     public virtual void Visit(ForeignKeyDef node) =>
         WriteForeignKeyClause(node.Constraint, node.Columns, node.ReferencedTable, node.ReferencedColumns, node.OnDelete, node.OnUpdate);
 
-    public virtual void Visit(CreateTable node)
+    public virtual void Visit(CreateTable node) => WriteCreateTable(node, strict: false);
+
+    protected void WriteCreateTable(CreateTable node, bool strict)
     {
         W.Ddl(DdlKw.Create).Ddl(DdlKw.Table);
-        WriteIfNotExists();
+        if (!strict) WriteIfNotExists();
         W.Ident(node.Table);
         W.Open();
         WriteSeparated(node.Columns);

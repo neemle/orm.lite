@@ -3,7 +3,7 @@ using Neemle.OrmLite.Sql;
 
 namespace Neemle.OrmLite.Postgres;
 
-public sealed partial class PostgresSerializer : StandardSerializer
+public sealed partial class PostgresSerializer : StandardSerializer, ISchemaDiffDdlSerializer
 {
     public override void Visit(ClockNow node) => W.Func("now").Close();
 

@@ -1,0 +1,2 @@
+POSTGRES_METADATA_PROOF_PASS profile=postgres:schema-diff-v1
+FOUNDATION_PROOF_PASS runtime=10.0.15

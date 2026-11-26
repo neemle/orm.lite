@@ -1,0 +1,3 @@
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/literal-layout/WidthLayout.cs(22,29): error CS0037: Cannot convert null to 'TextLine' because it is a non-nullable value type [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/literal-layout/LiteralLayout.csproj]
+
+The build failed. Fix the build errors and run again.

@@ -1,0 +1,202 @@
+{
+  "raw": "bridge-pinned-metrics.log",
+  "files": 166,
+  "newAndGeneratedFiles": 159,
+  "methodsInNewAndGeneratedFiles": 771,
+  "violations": [],
+  "legacyFiles": [
+    {
+      "file": "src/Postgres/PostgresProvider.cs",
+      "widths": [],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Postgres/PostgresSerializer.cs",
+      "widths": [],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Runtime/GatedDataSource.cs",
+      "widths": [
+        {
+          "Line": 12,
+          "Width": 138
+        },
+        {
+          "Line": 22,
+          "Width": 144
+        },
+        {
+          "Line": 73,
+          "Width": 121
+        },
+        {
+          "Line": 135,
+          "Width": 132
+        },
+        {
+          "Line": 138,
+          "Width": 121
+        },
+        {
+          "Line": 166,
+          "Width": 144
+        },
+        {
+          "Line": 228,
+          "Width": 139
+        },
+        {
+          "Line": 234,
+          "Width": 140
+        }
+      ],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Sql/StandardSerializer.Ddl.cs",
+      "widths": [
+        {
+          "Line": 32,
+          "Width": 122
+        },
+        {
+          "Line": 46,
+          "Width": 137
+        },
+        {
+          "Line": 50,
+          "Width": 154
+        },
+        {
+          "Line": 141,
+          "Width": 137
+        },
+        {
+          "Line": 287,
+          "Width": 144
+        }
+      ],
+      "overLimitMethods": [
+        {
+          "Name": "WriteForeignKeyClause",
+          "Line": 49,
+          "End": 66,
+          "CodeLines": 18,
+          "Parameters": 6,
+          "Nesting": {
+            "Line": 57,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 56,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 61,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Visit",
+          "Line": 68,
+          "End": 99,
+          "CodeLines": 32,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 69,
+            "Depth": 0
+          },
+          "Cyclomatic": 8,
+          "Decisions": [
+            {
+              "Line": 72,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 75,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 78,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 81,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 84,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 87,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 93,
+              "Kind": "CaseSwitchLabel"
+            }
+          ]
+        }
+      ],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Sqlite/SqliteConnectionParts.cs",
+      "widths": [
+        {
+          "Line": 172,
+          "Width": 123
+        },
+        {
+          "Line": 173,
+          "Width": 122
+        },
+        {
+          "Line": 178,
+          "Width": 135
+        }
+      ],
+      "overLimitMethods": [],
+      "boundTypeCount": 5
+    },
+    {
+      "file": "src/Sqlite/SqliteProvider.cs",
+      "widths": [
+        {
+          "Line": 7,
+          "Width": 144
+        }
+      ],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Sqlite/SqliteSerializer.cs",
+      "widths": [
+        {
+          "Line": 96,
+          "Width": 163
+        },
+        {
+          "Line": 103,
+          "Width": 156
+        },
+        {
+          "Line": 104,
+          "Width": 145
+        }
+      ],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    }
+  ],
+  "legacyDisposition": "OPEN; source helper additions are bounded, no blanket whole-file301 acceptance"
+}

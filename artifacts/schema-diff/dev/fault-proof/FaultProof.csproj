@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Neemle.OrmLite.Tests</AssemblyName><IsAotCompatible>false</IsAotCompatible>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../../../src/Runtime/Runtime.csproj" />
+    <ProjectReference Include="../../../../src/Sql/Sql.csproj" />
+    <ProjectReference Include="../../../../src/Postgres/Postgres.csproj" />
+  </ItemGroup>
+</Project>

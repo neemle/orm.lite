@@ -1,0 +1,19 @@
+{
+  "cmd": "docker run --rm --ulimit core=0 --name orml117-parity-jit11-sqlite --network orml117-parity-20261126 --label orml117.owner=independent-sdet --memory=400m --cpus=1 -v \"$PWD:/repo\" -w /repo sha256:617441f9e33eea21c352a4343ee42a50ecd9003fe5fbbe6f0cf035f2e9ff62c6 dotnet tests/SchemaDiffAot/bin/Release/net11.0/Neemle.OrmLite.SchemaDiffAot.dll sqlite /repo/artifacts/schema-diff/sdet/jit11-final.sqlite",
+  "started": {
+    "current_time": "2026-11-26 09:34:10 UTC"
+  },
+  "result": {
+    "chunk_id": "4e73d1",
+    "wall_time_seconds": 0.000012333,
+    "exit_code": 0,
+    "original_token_count": 122,
+    "output": "PARITY version=0050_parity_dea6dae6f78e85ecfd8df96a0f89f604eecd4d18387fd28bb04ae22bc1a26da1\nPARITY schema=items(id,original,added);new_items(id,value)\nPARITY data=old:original-value;added:NULL;new_rows:0\nPARITY history=0000_baseline_parity117|0001_orm_indexes_parity117|0050_parity_dea6dae6f78e85ecfd8df96a0f89f604eecd4d18387fd28bb04ae22bc1a26da1|9900_orm_index_reconcile_parity117_cbf29ce484222325\nPARITY outcomes=Changes,Applied,NoOp,AlreadyApplied,Reverted,Applied,NoOp\nPARITY PASS\n"
+  },
+  "output": "PARITY version=0050_parity_dea6dae6f78e85ecfd8df96a0f89f604eecd4d18387fd28bb04ae22bc1a26da1\nPARITY schema=items(id,original,added);new_items(id,value)\nPARITY data=old:original-value;added:NULL;new_rows:0\nPARITY history=0000_baseline_parity117|0001_orm_indexes_parity117|0050_parity_dea6dae6f78e85ecfd8df96a0f89f604eecd4d18387fd28bb04ae22bc1a26da1|9900_orm_index_reconcile_parity117_cbf29ce484222325\nPARITY outcomes=Changes,Applied,NoOp,AlreadyApplied,Reverted,Applied,NoOp\nPARITY PASS\n",
+  "recordedAt": {
+    "current_time": "2026-11-26 09:34:10 UTC"
+  },
+  "executionHead": "815d700afbcb1de618318b37b893cc9fb50e3cb6 + exact new source bytes subsequently committed as 2997ae857db3bdbf7b178fab2b3fbd5e804b48aa",
+  "fullCommand": "docker run --rm --ulimit core=0 --name orml117-parity-jit11-sqlite --network orml117-parity-20261126 --label orml117.owner=independent-sdet --memory=400m --cpus=1 -v \"/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff:/repo\" -w /repo sha256:617441f9e33eea21c352a4343ee42a50ecd9003fe5fbbe6f0cf035f2e9ff62c6 dotnet tests/SchemaDiffAot/bin/Release/net11.0/Neemle.OrmLite.SchemaDiffAot.dll sqlite /repo/artifacts/schema-diff/sdet/jit11-final.sqlite"
+}

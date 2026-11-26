@@ -1,0 +1,3556 @@
+{
+  "raw": "complete-native-fault-metrics.log",
+  "files": 187,
+  "newAndGeneratedFiles": 180,
+  "methodsInNewAndGeneratedFiles": 1100,
+  "violations": [],
+  "legacyFiles": [
+    {
+      "file": "src/Postgres/PostgresProvider.cs",
+      "widths": [],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Postgres/PostgresSerializer.cs",
+      "widths": [],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Runtime/GatedDataSource.cs",
+      "widths": [
+        {
+          "Line": 12,
+          "Width": 138
+        },
+        {
+          "Line": 22,
+          "Width": 144
+        },
+        {
+          "Line": 73,
+          "Width": 121
+        },
+        {
+          "Line": 135,
+          "Width": 132
+        },
+        {
+          "Line": 138,
+          "Width": 121
+        },
+        {
+          "Line": 166,
+          "Width": 144
+        },
+        {
+          "Line": 228,
+          "Width": 139
+        },
+        {
+          "Line": 234,
+          "Width": 140
+        }
+      ],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Sql/StandardSerializer.Ddl.cs",
+      "widths": [
+        {
+          "Line": 32,
+          "Width": 122
+        },
+        {
+          "Line": 46,
+          "Width": 137
+        },
+        {
+          "Line": 50,
+          "Width": 154
+        },
+        {
+          "Line": 141,
+          "Width": 137
+        },
+        {
+          "Line": 287,
+          "Width": 144
+        }
+      ],
+      "overLimitMethods": [
+        {
+          "Name": "WriteForeignKeyClause",
+          "Line": 49,
+          "End": 66,
+          "CodeLines": 18,
+          "Parameters": 6,
+          "Nesting": {
+            "Line": 57,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 56,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 61,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Visit",
+          "Line": 68,
+          "End": 99,
+          "CodeLines": 32,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 69,
+            "Depth": 0
+          },
+          "Cyclomatic": 8,
+          "Decisions": [
+            {
+              "Line": 72,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 75,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 78,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 81,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 84,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 87,
+              "Kind": "CaseSwitchLabel"
+            },
+            {
+              "Line": 93,
+              "Kind": "CaseSwitchLabel"
+            }
+          ]
+        }
+      ],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Sqlite/SqliteConnectionParts.cs",
+      "widths": [
+        {
+          "Line": 172,
+          "Width": 123
+        },
+        {
+          "Line": 173,
+          "Width": 122
+        },
+        {
+          "Line": 178,
+          "Width": 135
+        }
+      ],
+      "overLimitMethods": [],
+      "boundTypeCount": 5
+    },
+    {
+      "file": "src/Sqlite/SqliteProvider.cs",
+      "widths": [
+        {
+          "Line": 7,
+          "Width": 144
+        }
+      ],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    },
+    {
+      "file": "src/Sqlite/SqliteSerializer.cs",
+      "widths": [
+        {
+          "Line": 96,
+          "Width": 163
+        },
+        {
+          "Line": 103,
+          "Width": 156
+        },
+        {
+          "Line": 104,
+          "Width": 145
+        }
+      ],
+      "overLimitMethods": [],
+      "boundTypeCount": 1
+    }
+  ],
+  "legacyDisposition": "OPEN; source helper additions are bounded, no blanket whole-file301 acceptance",
+  "nativeGeneratedFiles": [
+    {
+      "File": "artifacts/schema-diff/dev/bridge-generated/NativeSmoke.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "NativeSmoke",
+          "Kind": "ClassDeclaration",
+          "Line": 10,
+          "End": 103,
+          "CodeLines": 89,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "RunAsync",
+          "Line": 12,
+          "End": 39,
+          "CodeLines": 28,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 18,
+            "Depth": 1
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 14,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 17,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 19,
+              "Kind": "CoalesceExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Factory",
+          "Line": 41,
+          "End": 48,
+          "CodeLines": 8,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 43,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 44,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 45,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 46,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        },
+        {
+          "Name": "VerifyAsync",
+          "Line": 50,
+          "End": 76,
+          "CodeLines": 27,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 52,
+            "Depth": 0
+          },
+          "Cyclomatic": 7,
+          "Decisions": [
+            {
+              "Line": 58,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 61,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 64,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 68,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 69,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 73,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Schema",
+          "Line": 78,
+          "End": 86,
+          "CodeLines": 9,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 79,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 80,
+              "Kind": "ConditionalExpression"
+            },
+            {
+              "Line": 85,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "RefuseCoveredDownAsync",
+          "Line": 88,
+          "End": 97,
+          "CodeLines": 10,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 91,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 95,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "Require",
+          "Line": 99,
+          "End": 102,
+          "CodeLines": 4,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 100,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 101,
+              "Kind": "IfStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/bridge-generated/PostgresAddBridgeFactory.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresAddBridgeFactory",
+          "Kind": "ClassDeclaration",
+          "Line": 11,
+          "End": 209,
+          "CodeLines": 138,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Create",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value0",
+          "Line": 15,
+          "End": 16,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value1",
+          "Line": 18,
+          "End": 19,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value2",
+          "Line": 21,
+          "End": 22,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value3",
+          "Line": 24,
+          "End": 27,
+          "CodeLines": 4,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value4",
+          "Line": 29,
+          "End": 30,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value5",
+          "Line": 32,
+          "End": 33,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value6",
+          "Line": 35,
+          "End": 36,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value7",
+          "Line": 38,
+          "End": 39,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value8",
+          "Line": 41,
+          "End": 42,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value9",
+          "Line": 44,
+          "End": 45,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value10",
+          "Line": 47,
+          "End": 48,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value11",
+          "Line": 50,
+          "End": 51,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value12",
+          "Line": 53,
+          "End": 55,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value13",
+          "Line": 57,
+          "End": 58,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value14",
+          "Line": 60,
+          "End": 62,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value15",
+          "Line": 64,
+          "End": 65,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value16",
+          "Line": 67,
+          "End": 68,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value17",
+          "Line": 70,
+          "End": 71,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value18",
+          "Line": 73,
+          "End": 74,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value19",
+          "Line": 76,
+          "End": 77,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value20",
+          "Line": 79,
+          "End": 80,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value21",
+          "Line": 82,
+          "End": 83,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value22",
+          "Line": 85,
+          "End": 86,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value23",
+          "Line": 88,
+          "End": 89,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value24",
+          "Line": 91,
+          "End": 92,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value25",
+          "Line": 94,
+          "End": 96,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value26",
+          "Line": 98,
+          "End": 99,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value27",
+          "Line": 101,
+          "End": 102,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value28",
+          "Line": 104,
+          "End": 106,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value29",
+          "Line": 108,
+          "End": 110,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value30",
+          "Line": 112,
+          "End": 113,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value31",
+          "Line": 115,
+          "End": 116,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value32",
+          "Line": 118,
+          "End": 119,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value33",
+          "Line": 121,
+          "End": 122,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value34",
+          "Line": 124,
+          "End": 126,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value35",
+          "Line": 128,
+          "End": 130,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value36",
+          "Line": 132,
+          "End": 134,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value37",
+          "Line": 136,
+          "End": 138,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value38",
+          "Line": 140,
+          "End": 142,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value39",
+          "Line": 144,
+          "End": 145,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value40",
+          "Line": 147,
+          "End": 148,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value41",
+          "Line": 150,
+          "End": 151,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value42",
+          "Line": 153,
+          "End": 154,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value43",
+          "Line": 156,
+          "End": 157,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value44",
+          "Line": 159,
+          "End": 160,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value45",
+          "Line": 162,
+          "End": 163,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value46",
+          "Line": 165,
+          "End": 166,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value47",
+          "Line": 168,
+          "End": 169,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value48",
+          "Line": 171,
+          "End": 172,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value49",
+          "Line": 174,
+          "End": 175,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value50",
+          "Line": 177,
+          "End": 178,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value51",
+          "Line": 180,
+          "End": 181,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value52",
+          "Line": 183,
+          "End": 184,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value53",
+          "Line": 186,
+          "End": 187,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value54",
+          "Line": 189,
+          "End": 190,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value55",
+          "Line": 192,
+          "End": 193,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value56",
+          "Line": 195,
+          "End": 196,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value57",
+          "Line": 198,
+          "End": 199,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value58",
+          "Line": 201,
+          "End": 202,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value59",
+          "Line": 204,
+          "End": 205,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value60",
+          "Line": 207,
+          "End": 208,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/bridge-generated/PostgresCreateBridgeFactory.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresCreateBridgeFactory",
+          "Kind": "ClassDeclaration",
+          "Line": 11,
+          "End": 232,
+          "CodeLines": 155,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Create",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value0",
+          "Line": 15,
+          "End": 16,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value1",
+          "Line": 18,
+          "End": 19,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value2",
+          "Line": 21,
+          "End": 22,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value3",
+          "Line": 24,
+          "End": 27,
+          "CodeLines": 4,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value4",
+          "Line": 29,
+          "End": 30,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value5",
+          "Line": 32,
+          "End": 33,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value6",
+          "Line": 35,
+          "End": 36,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value7",
+          "Line": 38,
+          "End": 39,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value8",
+          "Line": 41,
+          "End": 42,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value9",
+          "Line": 44,
+          "End": 45,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value10",
+          "Line": 47,
+          "End": 48,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value11",
+          "Line": 50,
+          "End": 51,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value12",
+          "Line": 53,
+          "End": 54,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value13",
+          "Line": 56,
+          "End": 57,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value14",
+          "Line": 59,
+          "End": 60,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value15",
+          "Line": 62,
+          "End": 63,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value16",
+          "Line": 65,
+          "End": 67,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value17",
+          "Line": 69,
+          "End": 70,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value18",
+          "Line": 72,
+          "End": 74,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value19",
+          "Line": 76,
+          "End": 80,
+          "CodeLines": 5,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value20",
+          "Line": 82,
+          "End": 83,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value21",
+          "Line": 85,
+          "End": 86,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value22",
+          "Line": 88,
+          "End": 89,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value23",
+          "Line": 91,
+          "End": 92,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value24",
+          "Line": 94,
+          "End": 95,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value25",
+          "Line": 97,
+          "End": 98,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value26",
+          "Line": 100,
+          "End": 101,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value27",
+          "Line": 103,
+          "End": 104,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value28",
+          "Line": 106,
+          "End": 107,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value29",
+          "Line": 109,
+          "End": 110,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value30",
+          "Line": 112,
+          "End": 113,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value31",
+          "Line": 115,
+          "End": 116,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value32",
+          "Line": 118,
+          "End": 119,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value33",
+          "Line": 121,
+          "End": 122,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value34",
+          "Line": 124,
+          "End": 125,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value35",
+          "Line": 127,
+          "End": 128,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value36",
+          "Line": 130,
+          "End": 131,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value37",
+          "Line": 133,
+          "End": 134,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value38",
+          "Line": 136,
+          "End": 138,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value39",
+          "Line": 140,
+          "End": 141,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value40",
+          "Line": 143,
+          "End": 144,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value41",
+          "Line": 146,
+          "End": 148,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value42",
+          "Line": 150,
+          "End": 152,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value43",
+          "Line": 154,
+          "End": 155,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value44",
+          "Line": 157,
+          "End": 158,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value45",
+          "Line": 160,
+          "End": 163,
+          "CodeLines": 4,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value46",
+          "Line": 165,
+          "End": 168,
+          "CodeLines": 4,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value47",
+          "Line": 170,
+          "End": 172,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value48",
+          "Line": 174,
+          "End": 176,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value49",
+          "Line": 178,
+          "End": 180,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value50",
+          "Line": 182,
+          "End": 183,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value51",
+          "Line": 185,
+          "End": 186,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value52",
+          "Line": 188,
+          "End": 189,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value53",
+          "Line": 191,
+          "End": 192,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value54",
+          "Line": 194,
+          "End": 195,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value55",
+          "Line": 197,
+          "End": 198,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value56",
+          "Line": 200,
+          "End": 201,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value57",
+          "Line": 203,
+          "End": 204,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value58",
+          "Line": 206,
+          "End": 207,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value59",
+          "Line": 209,
+          "End": 210,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value60",
+          "Line": 212,
+          "End": 213,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value61",
+          "Line": 215,
+          "End": 216,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value62",
+          "Line": 218,
+          "End": 219,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value63",
+          "Line": 221,
+          "End": 222,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value64",
+          "Line": 224,
+          "End": 225,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value65",
+          "Line": 227,
+          "End": 228,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value66",
+          "Line": 230,
+          "End": 231,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/bridge-generated/Program.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/bridge-generated/SqliteAddBridgeFactory.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteAddBridgeFactory",
+          "Kind": "ClassDeclaration",
+          "Line": 11,
+          "End": 172,
+          "CodeLines": 111,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Create",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value0",
+          "Line": 15,
+          "End": 16,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value1",
+          "Line": 18,
+          "End": 19,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value2",
+          "Line": 21,
+          "End": 22,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value3",
+          "Line": 24,
+          "End": 27,
+          "CodeLines": 4,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value4",
+          "Line": 29,
+          "End": 30,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value5",
+          "Line": 32,
+          "End": 33,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value6",
+          "Line": 35,
+          "End": 36,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value7",
+          "Line": 38,
+          "End": 39,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value8",
+          "Line": 41,
+          "End": 42,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value9",
+          "Line": 44,
+          "End": 45,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value10",
+          "Line": 47,
+          "End": 48,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value11",
+          "Line": 50,
+          "End": 51,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value12",
+          "Line": 53,
+          "End": 55,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value13",
+          "Line": 57,
+          "End": 58,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value14",
+          "Line": 60,
+          "End": 62,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value15",
+          "Line": 64,
+          "End": 65,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value16",
+          "Line": 67,
+          "End": 68,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value17",
+          "Line": 70,
+          "End": 71,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value18",
+          "Line": 73,
+          "End": 74,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value19",
+          "Line": 76,
+          "End": 77,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value20",
+          "Line": 79,
+          "End": 80,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value21",
+          "Line": 82,
+          "End": 83,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value22",
+          "Line": 85,
+          "End": 86,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value23",
+          "Line": 88,
+          "End": 89,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value24",
+          "Line": 91,
+          "End": 92,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value25",
+          "Line": 94,
+          "End": 96,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value26",
+          "Line": 98,
+          "End": 99,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value27",
+          "Line": 101,
+          "End": 102,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value28",
+          "Line": 104,
+          "End": 105,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value29",
+          "Line": 107,
+          "End": 108,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value30",
+          "Line": 110,
+          "End": 111,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value31",
+          "Line": 113,
+          "End": 114,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value32",
+          "Line": 116,
+          "End": 117,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value33",
+          "Line": 119,
+          "End": 120,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value34",
+          "Line": 122,
+          "End": 123,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value35",
+          "Line": 125,
+          "End": 126,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value36",
+          "Line": 128,
+          "End": 129,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value37",
+          "Line": 131,
+          "End": 132,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value38",
+          "Line": 134,
+          "End": 135,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value39",
+          "Line": 137,
+          "End": 138,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value40",
+          "Line": 140,
+          "End": 141,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value41",
+          "Line": 143,
+          "End": 144,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value42",
+          "Line": 146,
+          "End": 147,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value43",
+          "Line": 149,
+          "End": 150,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value44",
+          "Line": 152,
+          "End": 153,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value45",
+          "Line": 155,
+          "End": 156,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value46",
+          "Line": 158,
+          "End": 159,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value47",
+          "Line": 161,
+          "End": 162,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value48",
+          "Line": 164,
+          "End": 165,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value49",
+          "Line": 167,
+          "End": 168,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value50",
+          "Line": 170,
+          "End": 171,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/bridge-generated/SqliteCreateBridgeFactory.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteCreateBridgeFactory",
+          "Kind": "ClassDeclaration",
+          "Line": 11,
+          "End": 187,
+          "CodeLines": 121,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Create",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value0",
+          "Line": 15,
+          "End": 16,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value1",
+          "Line": 18,
+          "End": 19,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value2",
+          "Line": 21,
+          "End": 22,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value3",
+          "Line": 24,
+          "End": 27,
+          "CodeLines": 4,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value4",
+          "Line": 29,
+          "End": 30,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value5",
+          "Line": 32,
+          "End": 33,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value6",
+          "Line": 35,
+          "End": 36,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value7",
+          "Line": 38,
+          "End": 39,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value8",
+          "Line": 41,
+          "End": 42,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value9",
+          "Line": 44,
+          "End": 45,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value10",
+          "Line": 47,
+          "End": 48,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value11",
+          "Line": 50,
+          "End": 51,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value12",
+          "Line": 53,
+          "End": 54,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value13",
+          "Line": 56,
+          "End": 57,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value14",
+          "Line": 59,
+          "End": 60,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value15",
+          "Line": 62,
+          "End": 63,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value16",
+          "Line": 65,
+          "End": 67,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value17",
+          "Line": 69,
+          "End": 70,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value18",
+          "Line": 72,
+          "End": 74,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value19",
+          "Line": 76,
+          "End": 77,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value20",
+          "Line": 79,
+          "End": 80,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value21",
+          "Line": 82,
+          "End": 83,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value22",
+          "Line": 85,
+          "End": 86,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value23",
+          "Line": 88,
+          "End": 89,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value24",
+          "Line": 91,
+          "End": 92,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value25",
+          "Line": 94,
+          "End": 95,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value26",
+          "Line": 97,
+          "End": 98,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value27",
+          "Line": 100,
+          "End": 101,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value28",
+          "Line": 103,
+          "End": 104,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value29",
+          "Line": 106,
+          "End": 107,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value30",
+          "Line": 109,
+          "End": 110,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value31",
+          "Line": 112,
+          "End": 113,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value32",
+          "Line": 115,
+          "End": 116,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value33",
+          "Line": 118,
+          "End": 119,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value34",
+          "Line": 121,
+          "End": 122,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value35",
+          "Line": 124,
+          "End": 125,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value36",
+          "Line": 127,
+          "End": 128,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value37",
+          "Line": 130,
+          "End": 132,
+          "CodeLines": 3,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value38",
+          "Line": 134,
+          "End": 135,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value39",
+          "Line": 137,
+          "End": 138,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value40",
+          "Line": 140,
+          "End": 141,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value41",
+          "Line": 143,
+          "End": 144,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value42",
+          "Line": 146,
+          "End": 147,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value43",
+          "Line": 149,
+          "End": 150,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value44",
+          "Line": 152,
+          "End": 153,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value45",
+          "Line": 155,
+          "End": 156,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value46",
+          "Line": 158,
+          "End": 159,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value47",
+          "Line": 161,
+          "End": 162,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value48",
+          "Line": 164,
+          "End": 165,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value49",
+          "Line": 167,
+          "End": 168,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value50",
+          "Line": 170,
+          "End": 171,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value51",
+          "Line": 173,
+          "End": 174,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value52",
+          "Line": 176,
+          "End": 177,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value53",
+          "Line": 179,
+          "End": 180,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value54",
+          "Line": 182,
+          "End": 183,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Value55",
+          "Line": 185,
+          "End": 186,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    }
+  ],
+  "inventory": "Complete native-fault-files.txt includes every changed shipped C# file and every flat C# file in owned foundation-proof/generated/bridge-generated/fault-proof/metrics/literal-layout trees. Includes2typed fixture records missed by earlier185file scan."
+}
