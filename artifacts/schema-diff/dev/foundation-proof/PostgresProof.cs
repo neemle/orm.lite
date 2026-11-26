@@ -20,6 +20,7 @@ internal static class PostgresProof
         var request = Request();
         await ExistingAsync(connection, request);
         await MissingAndAddAsync(source, connection, request);
+        await HistoryPolicyAsync(connection, request);
         Console.WriteLine("POSTGRES_METADATA_COMPARE_PROOF_PASS");
     }
 
@@ -55,6 +56,18 @@ internal static class PostgresProof
         var again = await PostgresSchemaInspect.InspectAsync(connection, next, default);
         Check.That(observed.Digest == again.Digest && observed.HistoryDigest == again.HistoryDigest,
             "compare performs zero physical/history mutations");
+    }
+
+    private static async Task HistoryPolicyAsync(NpgsqlConnection connection, SchemaDiffInspection request)
+    {
+        await ExecuteAsync(connection, "ALTER TABLE schema_migrations ENABLE ROW LEVEL SECURITY");
+        var observed = await PostgresSchemaInspect.InspectAsync(connection, request, default);
+        Check.That(observed.History.HistoryTableExists.GetKnown(), "policy history exists");
+        Check.That(observed.History.AppliedVersions.Knowledge == SchemaKnowledge.Unknown,
+            "policy-filtered version coverage is unknown");
+        Check.That(SchemaDiff.Compare(request.Target, observed).Status == SchemaDiffStatus.Incomplete,
+            "policy history cannot certify no-op");
+        await ExecuteAsync(connection, "ALTER TABLE schema_migrations DISABLE ROW LEVEL SECURITY");
     }
 
     private static SchemaDiffInspection Request()

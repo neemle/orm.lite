@@ -25,6 +25,7 @@ internal static class SqliteProof
         var again = await SqliteSchemaInspect.InspectAsync(connection, next, default);
         Check.That(observed.Digest == again.Digest && observed.HistoryDigest == again.HistoryDigest,
             "SQLite compare performs zero physical/history mutations");
+        await HistoryAliasAsync(connection, next);
         Console.WriteLine("SQLITE_METADATA_COMPARE_PROOF_PASS runtime=" + connection.ServerVersion);
     }
 
@@ -54,6 +55,15 @@ internal static class SqliteProof
             "SQLite incoming effect blocks whole artifact");
         Check.That(missing.Tables.Single().Facts.DependentObjects.GetKnown().Count == 1,
             "SQLite incoming reference to nonexistent target is not known empty");
+    }
+
+    private static async Task HistoryAliasAsync(DbConnection connection, SchemaDiffInspection request)
+    {
+        await ExecuteAsync(connection, "ALTER TABLE main.schema_migrations RENAME TO history_temporary");
+        await ExecuteAsync(connection, "ALTER TABLE main.history_temporary RENAME TO Schema_Migrations");
+        try { await SqliteSchemaInspect.InspectAsync(connection, request, default); }
+        catch (SchemaDiffException error) when (error.Error == SchemaDiffError.Ownership) { return; }
+        throw new IOException("case-alias history must not be reported absent");
     }
 
     private static SchemaDiffInspection Request()

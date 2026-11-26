@@ -43,9 +43,12 @@ internal static class SqliteSchemaInspect
     private static async Task<SchemaObservationHistory> HistoryAsync(SqliteSchemaRead read,
         IReadOnlyList<object?[]> schema, CancellationToken ct)
     {
-        var history = schema.SingleOrDefault(r => (string)r[1]! == "schema_migrations");
+        var history = schema.SingleOrDefault(r => string.Equals(
+            (string)r[1]!, "schema_migrations", StringComparison.OrdinalIgnoreCase));
         if (history is null) return new(SchemaFact<bool>.Known(false), SchemaFact<IReadOnlyList<string>>.Known([]));
-        if ((string)history[0]! != "table") return new(SchemaFact<bool>.Unsupported("history-kind"),
+        if ((string)history[1]! != "schema_migrations") throw new SchemaDiffException(SchemaDiffError.Ownership);
+        if ((string)history[0]! != "table" || SqliteSchemaDefinition.IsVirtual((string?)history[3]))
+            return new(SchemaFact<bool>.Unsupported("history-kind"),
             SchemaFact<IReadOnlyList<string>>.Unknown("history-kind"));
         var versions = await read.RowsAsync("SELECT version FROM main.schema_migrations", [],
             read.Request.Target.Limits.MaxCatalogObjects, ct);

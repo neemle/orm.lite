@@ -1,0 +1,9 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/src/Runtime/Runtime.csproj (in 343 ms).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/comparer-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:06.88
