@@ -47,6 +47,10 @@ public static class CorpusSurface
         ["Query.GraphSnapshot/0"] =
             "internal graph-state capture beneath ToGraphListAsync; emits no SQL; "
             + "paging, masks and ownership pinned by GraphReadTests, metadata validation by GraphBindingTests",
+        ["Query.GraphFirstSnapshot/0"] =
+            "internal first-root state capture beneath ordinary and policy FirstOrDefaultAsync; emits no SQL; "
+            + "Take(0), order/offset and bindings witnessed by main54 narrow-sqlite (39 checks); "
+            + "policy reads and visibility retained in ReadCases and BindingCases",
         ["Query.BuildProject/1"] = "internal tree builder beneath CompileProject; the corpus pins the text it compiles to and QueryTreeTests pin the tree",
         ["Query.BuildProjection/0"] = "internal tree builder beneath CompileProjection; the corpus pins the text it compiles to and QueryTreeTests pin the tree",
         ["Query.BuildAggregates/0"] = "internal tree builder beneath CompileAggregates; the corpus pins the text it compiles to and QueryTreeTests pin the tree",

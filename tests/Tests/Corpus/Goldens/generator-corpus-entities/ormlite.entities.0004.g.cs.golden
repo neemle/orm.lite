@@ -133,4 +133,33 @@ public static class WorkItemOrm
             e.Parent = await WorkItemOrm.GetAsync(db, conn, e.ParentId.Value);
         }
     }
+
+public static global::System.Threading.Tasks.Task<global::CorpusEntities.WorkItem?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading
+    .CancellationToken ct = default) => global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).
+    Where(e => e.Id == key), options, ct);
+
+public static global::System.Threading.Tasks.Task<global::CorpusEntities.WorkItem?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.
+    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) => global::Neemle.OrmLite.
+    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
+
+public static async global::System.Threading.Tasks.Task LoadProjectAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Data.Common.DbConnection conn, global::CorpusEntities.WorkItem e, global::Neemle.OrmLite.RelationReadOptions
+    options, global::System.Threading.CancellationToken ct = default)
+{
+    ct.ThrowIfCancellationRequested();
+    e.Project = await ProjectOrm.GetAsync(db, conn, e.ProjectId, options, ct);
+}
+
+public static async global::System.Threading.Tasks.Task LoadParentAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Data.Common.DbConnection conn, global::CorpusEntities.WorkItem e, global::Neemle.OrmLite.RelationReadOptions
+    options, global::System.Threading.CancellationToken ct = default)
+{
+    ct.ThrowIfCancellationRequested();
+    if (e.ParentId is null)
+        e.Parent = null;
+    else
+        e.Parent = await WorkItemOrm.GetAsync(db, conn, e.ParentId.Value, options, ct);
+}
 }

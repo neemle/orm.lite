@@ -18,21 +18,48 @@ public sealed class CompositeKeyNoRefusalTests
         DisplayName = "AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on "
         + "Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next "
         + "to one key")]
-    [InlineData(KeyOnId, "Doc")]
-    [InlineData(KeyElsewhere, "Register")]
-    [InlineData(IdByNameOnly, "Thing")]
-    [InlineData(ShadowKey, "Shadowed")]
-    public void A_single_key_keeps_the_keyed_members(string source, string entity)
+    [InlineData(KeyOnId, "Doc", typeof(Guid))]
+    [InlineData(KeyElsewhere, "Register", typeof(string))]
+    [InlineData(IdByNameOnly, "Thing", typeof(Guid))]
+    [InlineData(ShadowKey, "Shadowed", typeof(Guid))]
+    public void A_single_key_keeps_the_keyed_members(string source, string entity, Type keyType)
     {
         var (diagnostics, _, output) = Run(source);
 
         Assert.Empty(diagnostics);
         Assert.Equal(
             [
-                "Column", "DeleteAsync", "DeleteAsync", "GetAsync", "GetAsync", "InsertAsync", "InsertAsync", "Map",
+                "Column", "DeleteAsync", "DeleteAsync", "GetAsync", "GetAsync", "GetAsync", "GetAsync",
+                "InsertAsync", "InsertAsync", "Map",
                 "Query", "UpdateAsync", "UpdateAsync", "Values",
             ],
             Members(output, entity));
+        KeyedSignatures(output, entity, keyType);
+    }
+
+    private static void KeyedSignatures(Microsoft.CodeAnalysis.Compilation output, string entity, Type keyType)
+    {
+        var methods = GeneratedModel.Of(output).Class(entity + "Orm")
+            .GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly)
+            .Where(m => m.Name == "GetAsync").ToArray();
+        Assert.All(methods, method =>
+        {
+            Assert.False(method.IsGenericMethod);
+            Assert.Equal(typeof(Task<>), method.ReturnType.GetGenericTypeDefinition());
+            Assert.Equal("Fixture." + entity, method.ReturnType.GenericTypeArguments.Single().FullName);
+            Assert.True(method.GetParameters()[^1].IsOptional);
+            Assert.True(method.GetParameters()[^1].HasDefaultValue);
+            Assert.All(method.GetParameters()[..^1], parameter => Assert.False(parameter.IsOptional));
+        });
+        var context = typeof(OrmContext).FullName + ",";
+        var connection = typeof(System.Data.Common.DbConnection).FullName + ",";
+        var key = keyType.FullName + ",";
+        var options = typeof(RelationReadOptions).FullName + ",";
+        var ct = typeof(CancellationToken).FullName;
+        Assert.Equal(new[] { context + key + ct, context + connection + key + ct,
+                context + key + options + ct, context + connection + key + options + ct }.Order(StringComparer.Ordinal),
+            methods.Select(m => string.Join(",", m.GetParameters().Select(p => p.ParameterType.FullName)))
+                .Order(StringComparer.Ordinal));
     }
 
     [Fact(DisplayName = "AC3 an entity with no key is not refused and still emits no member that takes a key")]

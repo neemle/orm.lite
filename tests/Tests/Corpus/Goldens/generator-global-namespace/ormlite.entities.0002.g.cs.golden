@@ -105,4 +105,22 @@ public static class TreeOrm
     {
         e.Orchard = await OrchardOrm.GetAsync(db, conn, e.OrchardId);
     }
+
+public static global::System.Threading.Tasks.Task<global::Tree?> GetAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct
+    = default) => global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key),
+    options, ct);
+
+public static global::System.Threading.Tasks.Task<global::Tree?> GetAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options,
+    global::System.Threading.CancellationToken ct = default) => global::Neemle.OrmLite.RelationQueryExtensions.
+    FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
+
+public static async global::System.Threading.Tasks.Task LoadOrchardAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Data.Common.DbConnection conn, global::Tree e, global::Neemle.OrmLite.RelationReadOptions options, global::
+    System.Threading.CancellationToken ct = default)
+{
+    ct.ThrowIfCancellationRequested();
+    e.Orchard = await OrchardOrm.GetAsync(db, conn, e.OrchardId, options, ct);
+}
 }
