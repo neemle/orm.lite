@@ -1,0 +1,27 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/artifacts/worktrees/orml-107-calculated/examples/calculated/CalculatedDemo.csproj (in 1.55 min).
+  CalculatedDemo -> /Users/para/work/tskr/libs/orm.lite/artifacts/worktrees/orml-107-calculated/artifacts/calculated/demo/native11-build/bin/CalculatedDemo/release_linux-arm64/CalculatedDemo.dll
+  Generating native code
+  CalculatedDemo -> /Users/para/work/tskr/libs/orm.lite/artifacts/worktrees/orml-107-calculated/artifacts/calculated/demo/native11-out/
+provider=sqlite runtime=11.0.0
+CALCULATED-DEMO v1
+empty-relations=0|0
+keyed=mixed
+list=mixed|<null>|<empty>
+physical-query=MiXeD
+refusals=filter|order|projection|mask|conditional-mask:zero-SQL
+relations=mixed|child|tag
+schema=id|label
+write=changed
+assertions=18 PASS
+provider=postgres runtime=11.0.0
+CALCULATED-DEMO v1
+empty-relations=0|0
+keyed=mixed
+list=mixed|<null>|<empty>
+physical-query=MiXeD
+refusals=filter|order|projection|mask|conditional-mask:zero-SQL
+relations=mixed|child|tag
+schema=id|label
+write=changed
+assertions=18 PASS
