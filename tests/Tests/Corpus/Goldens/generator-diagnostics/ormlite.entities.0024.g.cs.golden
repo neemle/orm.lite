@@ -36,6 +36,17 @@ public static class SoftLabelNotTextOrm
         return new global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftLabelNotText>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusDiagnostics.SoftLabelNotText>(new global::Neemle.OrmLite.GraphEntityBinding<
+            global::CorpusDiagnostics.SoftLabelNotText>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<
+            global::CorpusDiagnostics.SoftLabelNotText, global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusDiagnostics.SoftLabelNotText e)
     {

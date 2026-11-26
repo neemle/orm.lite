@@ -1,0 +1,279 @@
+{
+  "schema": "ORML108-current-generated-contract-integration-v1",
+  "generated": "2026-11-26T13:19:54.652826+00:00",
+  "run": "4048f4c6-6bbc-4b71-9f31-ef1a07ed2db2",
+  "claim": "d80e6810-f4a1-4909-a0f3-c95d0e1f2cac",
+  "frozenProduct": "24b6832bfbc88a92b41a08a2c1f84c8a16361225",
+  "sourceTree": "9d11b58e77bac0bd3cb5758f3abb54bd96b52800",
+  "accountingCommit": "1acf45057d1f9429ce2384c9fead38a3e7721473",
+  "expectedContractCommit": "3739c194a634f5b90acb3c912f59a6219d690736",
+  "testTree": "9781a131c9a3e27b17c49d478da9688a41273eff",
+  "before": {
+    "total": "102",
+    "executed": "102",
+    "passed": "99",
+    "failed": "3",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "after": {
+    "total": "102",
+    "executed": "102",
+    "passed": "102",
+    "failed": "0",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "gates": {
+    "controlled-capture": {
+      "carrier": "controlled-capture.json",
+      "log": "controlled-capture.log",
+      "exitCode": 0,
+      "commit": "1acf45057d1f9429ce2384c9fead38a3e7721473",
+      "started": "2026-11-26T13:16:57.139172+00:00",
+      "finished": "2026-11-26T13:17:10.721790+00:00"
+    },
+    "compile-before": {
+      "carrier": "compile-before.json",
+      "log": "compile-before.log",
+      "exitCode": 0,
+      "commit": "24b6832bfbc88a92b41a08a2c1f84c8a16361225",
+      "started": "2026-11-26T13:10:18.308402+00:00",
+      "finished": "2026-11-26T13:11:20.909993+00:00"
+    },
+    "affected-after": {
+      "carrier": "affected-after.json",
+      "log": "affected-after.log",
+      "exitCode": 0,
+      "commit": "3739c194a634f5b90acb3c912f59a6219d690736",
+      "started": "2026-11-26T13:18:34.428411+00:00",
+      "finished": "2026-11-26T13:19:03.315148+00:00"
+    },
+    "compile-accounting-resumed": {
+      "carrier": "compile-accounting-resumed.json",
+      "log": "compile-accounting-resumed.log",
+      "exitCode": 0,
+      "commit": "1acf45057d1f9429ce2384c9fead38a3e7721473",
+      "started": "2026-11-26T13:15:52.440956+00:00",
+      "finished": "2026-11-26T13:15:57.491581+00:00"
+    },
+    "review-captured-additions": {
+      "carrier": "review-captured-additions.json",
+      "log": "review-captured-additions.log",
+      "exitCode": 0,
+      "commit": "1acf45057d1f9429ce2384c9fead38a3e7721473",
+      "started": "2026-11-26T13:17:49.214851+00:00",
+      "finished": "2026-11-26T13:17:53.926667+00:00"
+    },
+    "affected-before": {
+      "carrier": "affected-before.json",
+      "log": "affected-before.log",
+      "exitCode": 1,
+      "commit": "24b6832bfbc88a92b41a08a2c1f84c8a16361225",
+      "started": "2026-11-26T13:12:02.453877+00:00",
+      "finished": "2026-11-26T13:12:33.303906+00:00"
+    }
+  },
+  "controlledCapture": "743corpus entries;47changedgeneratedgoldens+702unchanged;allnon-generatorSQL/behaviorbytesunchanged; no entryset change",
+  "review": "generated-review.json +review-disposition.json:38Mapfulltexts/legacytokens preserved,38graphbindings+Paths,9exactInitextractions",
+  "snapshotAccounting": "OnlyactualQuery.GraphSnapshot/0; precise nonterminalexclusion citespassingGraphRead/Binding; GraphFirstSnapshotabsent, no staleexclusion; survey/ref209unchanged",
+  "testBinaryProvenance": "Compiled C# accounting at1acf450; aftertestat3739c19 readsupdatedgoldens/INDEX; onlydatachangesbetweencommits, compiledC#identical, no unnecessary rebuild",
+  "interruption": "compile-capture-accounting.interrupted.json UNKNOWN original exit/userturn interruption preserved; onlyincomplete incrementalcompile resumed4.09sec/exit0; no successfulbeforegate rerun",
+  "cleanup": "cleanup.json;exactownPG/network labels verified thenremoved; foreignuntouched",
+  "retainedDemo": "85de623e actual2ad all8SAMEchapterPASS retained/no replay; current24b onlyexactmain117 integration, graphsource/demo unchanged",
+  "remaining": "ROOT steering afteractual110merge ba2975b5a4b02f06138307a440dc612d67fee690: LOCALcommit/return NO PUSH. SeparateDEV normal108adoption of approvedFKmain, thennarrowchangedseamacceptance/singlecurrentpush. Preserve47review/102after/original8demo withoutHEAD-onlyreplay. Current source readonly.",
+  "evidence": [
+    {
+      "file": "affected-after.json",
+      "bytes": 3378,
+      "sha256": "c6cde04f6b97d0f92807eb97add50dcd0a16b3bb4b556b9ec76cd58a9bb25256"
+    },
+    {
+      "file": "affected-after.log",
+      "bytes": 546,
+      "sha256": "9047ab22ece28d7c34485b299bf7f1ebe5123a014dd4dcc4ea72816bb3f1eb95"
+    },
+    {
+      "file": "affected-before.json",
+      "bytes": 3380,
+      "sha256": "9d5fdf933fef878ac9490c897d65c8808c9f67a15dc0736f6a1487b4577259b4"
+    },
+    {
+      "file": "affected-before.log",
+      "bytes": 15149,
+      "sha256": "ef643c765f940c20a9d592857ec5d63575c3932d566aafebe16f2b0abed44bac"
+    },
+    {
+      "file": "capture/Capture.csproj",
+      "bytes": 1513,
+      "sha256": "7bad3dd069c0f9aae8d1ad71130e98295b03f8db63bca4cad98b613ea868ed04"
+    },
+    {
+      "file": "capture/Program.cs",
+      "bytes": 1246,
+      "sha256": "dfeadd3c3e5d536fd8ad699320ac6a80695d9124c49a04243824d80a69b286bd"
+    },
+    {
+      "file": "capture-inventory.json",
+      "bytes": 659,
+      "sha256": "0cbeb51f2feac317c4cf98c84c1b00c2646168f80164c6273ebafdeacfd20e6a"
+    },
+    {
+      "file": "captured/capture-facts.json",
+      "bytes": 70,
+      "sha256": "00b926a1e25e2537145d5cf27071217e5181771647b89554afccd0150caf9869"
+    },
+    {
+      "file": "changed-generated-files.json",
+      "bytes": 12032,
+      "sha256": "a5ca4539eb881252b9d0ed8f3d1dea114f914681a1e15caca9a779456f8053bd"
+    },
+    {
+      "file": "cleanup.json",
+      "bytes": 13728,
+      "sha256": "9cbb913161c451abd8c2a355c9d5e01e2b0fcef7cca794db277d1c30bc25590f"
+    },
+    {
+      "file": "cleanup.py",
+      "bytes": 1742,
+      "sha256": "6f7d378ec42559f71b53a3a3988c6bf178ae5b437d1220a6d8b5a257cec09111"
+    },
+    {
+      "file": "compile-accounting-resumed.json",
+      "bytes": 2880,
+      "sha256": "7142c8c4c4fafca23bcf4350635345a838bef1a22ca42f075957fe81e2e0df81"
+    },
+    {
+      "file": "compile-accounting-resumed.log",
+      "bytes": 1423,
+      "sha256": "d31a01e6317746030bc83b24d41e4942345c68dc34942fdc602dc5eafcecf19c"
+    },
+    {
+      "file": "compile-before.json",
+      "bytes": 2868,
+      "sha256": "645809c0d252c7b70b59b5decc7d1d868530fb2e3de6ebafb06e627062001619"
+    },
+    {
+      "file": "compile-before.log",
+      "bytes": 2236,
+      "sha256": "be0f04f738feb347823734d3d191310e1728851fd05d2ed3f1431593e9d8611c"
+    },
+    {
+      "file": "compile-capture-accounting.interrupted.json",
+      "bytes": 337,
+      "sha256": "8fad7dc7582646d7f13b9faca8e9410873719d6eeb8701d52606136e2ebb1f6c"
+    },
+    {
+      "file": "compile-capture-accounting.interrupted.log",
+      "bytes": 1974,
+      "sha256": "94ebfc95b6736024087e8d7cab4da0c0fed7b1359fc073e07f25ca9d9825a4c2"
+    },
+    {
+      "file": "compile-capture-accounting.log",
+      "bytes": 1974,
+      "sha256": "94ebfc95b6736024087e8d7cab4da0c0fed7b1359fc073e07f25ca9d9825a4c2"
+    },
+    {
+      "file": "controlled-capture.json",
+      "bytes": 3143,
+      "sha256": "e08501a3d5e25adc34c53cd4206696fbe12b32bf2a4d6ef0d56dec83c21b3e48"
+    },
+    {
+      "file": "controlled-capture.log",
+      "bytes": 72,
+      "sha256": "d54df44f2fd13169348dbbc5307cfae0b78cc3cbe5c1f69cf1412eb8e22d5299"
+    },
+    {
+      "file": "docker-base.json",
+      "bytes": 1667,
+      "sha256": "f53c94ec1b3a2f67b7b3e8d600b4f015f3778b24364b9ae62af871f30461aca5"
+    },
+    {
+      "file": "fixture.json",
+      "bytes": 12066,
+      "sha256": "791a1aba403d52c86ddf3af6a0212678796b85e54705277f5476c9007589fa7c"
+    },
+    {
+      "file": "fixture.py",
+      "bytes": 1513,
+      "sha256": "e8b1435edde753a9c72ae821880b26dc2224b1b82e50f42e5811d2bbfc84a9d2"
+    },
+    {
+      "file": "generated-review.json",
+      "bytes": 19636,
+      "sha256": "1ded19be96244f0b1dbd2ae766b476a956656c242d12de6a0af73026688a071f"
+    },
+    {
+      "file": "nuget.config",
+      "bytes": 186,
+      "sha256": "c4bd0a157f1f5f2fa6ca0d6ad21533703d6d11a5ad5946b8ca22dbc9bd73b4ec"
+    },
+    {
+      "file": "results/affected-after.trx",
+      "bytes": 142416,
+      "sha256": "dab608298e6ea4f516ebd974fdf7c1b4407f8a0738b5528b8add9151fee9224f"
+    },
+    {
+      "file": "results/affected-before.trx",
+      "bytes": 173527,
+      "sha256": "84608b3ce016f25ccd36244c5b5b4c1a0bd1ce42907743afae6a6b635cac15b5"
+    },
+    {
+      "file": "review/Program.cs",
+      "bytes": 3903,
+      "sha256": "fb3dfc5415d837204c6a61738835533464a646ea07cbefd4cf2b0b2f55486380"
+    },
+    {
+      "file": "review/Review.csproj",
+      "bytes": 778,
+      "sha256": "59f4848e3f4e1e705db4901d53a96b20e054afd268b69caa55df8de0f30ed967"
+    },
+    {
+      "file": "review-captured-additions.json",
+      "bytes": 3314,
+      "sha256": "d757bbc8c97433946d3b397f91d56b206fbe86cc4a94d445119ddd2a6b24a011"
+    },
+    {
+      "file": "review-captured-additions.log",
+      "bytes": 74,
+      "sha256": "ddb40ae022a4d3f9afef2d5e579347bb353f26ae153024a8dd0a6a48c8f55434"
+    },
+    {
+      "file": "review-disposition.json",
+      "bytes": 1442,
+      "sha256": "96b091be53fcb8e4bcf49b208a247a109e167f7849763ca811eec6e1a3ae3022"
+    },
+    {
+      "file": "run.py",
+      "bytes": 1052,
+      "sha256": "b6013c8de20252547eb03f853c2ecb80a6808a14956b4ea6ddb32796951cc081"
+    },
+    {
+      "file": "test.py",
+      "bytes": 942,
+      "sha256": "8c2c2d242fedb8df02da6458e13fa2d6f8ff7de17cb3158946d251fabc2ece68"
+    }
+  ],
+  "canonicalCarrier": "b006fa57-5c2c-4f86-b830-9df1a88e6463",
+  "canonicalReadback": "full17952chars uncapped"
+}

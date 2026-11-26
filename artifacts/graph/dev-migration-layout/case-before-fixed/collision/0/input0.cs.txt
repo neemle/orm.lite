@@ -1,0 +1,1 @@
+[Table("lower")] public class row { [Key] public int Id { get; set; } }

@@ -1,0 +1,7 @@
+{
+  "head": "d28c4c1df8d4c869b10f1bb3c338fedf6619a381",
+  "sourceTree": "6cf27dc215438f8eb346f9f3a8334f0570908054",
+  "demoSourceCarrier": "artifacts/graph/demo/pack-build-final.json",
+  "nativeSourceCarrier": "artifacts/graph/dev-generated-repair/init-native.json",
+  "currentSourceTreeEqualsPriorNative": true
+}

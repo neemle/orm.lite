@@ -1,0 +1,43 @@
+1. connected to 'postgres' and applied the migrations
+2. the explicit migration seeded 'welcome'
+3. inserted, updated and queried with a lambda: 1 note(s) with 3 or more stars
+4. deleted: 0 note(s) left
+5. soft delete: 0 live draft(s), 1 including the trash
+6. restore: 1 live draft(s)
+7. history, who changed what:
+   restore by user f32f0148-c255-493d-b5b8-28fffbde3461
+   soft_delete by user f32f0148-c255-493d-b5b8-28fffbde3461
+   update by user f32f0148-c255-493d-b5b8-28fffbde3461
+8. entity changes by migration: teams(id, name, region) projects(id, team_id, title, settings)
+   the first row kept its data: team 'platform' has region 'eu' from the column default, project 'core' was renamed-column safe
+9. unit of work: moved 2 points and committed (True), refused moving 100 and rolled back (True), moved them back (True)
+   after the failure partway through a unit of work: comment stored = False, status = 'open'
+10. composite index with a descending column, as each provider serialises it:
+   CREATE INDEX IF NOT EXISTS "ix_demo_sorted" ON "work_items" ("project_id", "points" DESC)
+   CREATE INDEX IF NOT EXISTS "ix_demo_sorted" ON "work_items" ("project_id", "points" DESC)
+   declared with [Index] on Note, stored with the direction: ix_notes_stars, ix_notes_stars_title
+   the unique (team_id, title) index refused a duplicate project: True; highest-point item first: 'refund flow'
+11. one statement over billing: count 2, sum 16, min 3, distinct statuses 2, open 1, blocked 1
+12. comments of work items of projects of teams in 'us', one statement with 3 nested EXISTS: csv first, waiting for legal
+13. json: owner=bob billing; wip=2 billing; has labels billing; label finance billing
+   merged and incremented in place: core owner 'ann' wip 6; ordered by owner: core, billing
+14. views: open_work joins work_items, projects and teams and holds 3 items: invoice export (growth/billing, 3), public api (platform/core, 8), refund flow (growth/billing, 13)
+   open_work_totals reads open_work: 3 items, 24 points; after the definition was replaced by an open-only one: 2 items, totals 2/11
+   the stored marker is the hash of the new definition: True; a delete through the view is refused: True
+15. deleting the team cascades through three foreign keys: comment before True, after False, items left 0
+16. per status, one statement with GROUP BY and HAVING sum(points) > 5, largest sum first:
+   blocked: 1 item(s), 13 points, largest 13, average 13.0
+   open: 2 item(s), 11 points, largest 8, average 5.5
+   per project with at least two items: billing has 1 open of 2 items, 16 points; core has 1 open of 2 items, 13 points
+   per status for the teams in region 'us' (two nested subqueries): blocked 1, open 1
+16a. requested graph: ordinary root page True, exact books and tags True
+     ordinary query left navigations empty True
+     shared editor/tag identity True, nullable editor True, unrequested Author untouched True
+     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8
+     row overflow returned no list True, rows cleaned True
+17. ledger: savings 66.6667, current 33.6333, total 100.3000 -> 100.3000, 4 entries, overdraft refused: True
+18. statement report: 201 statement(s) reached the sink, 11 over the slow threshold; the slowest:
+      30.71 ms Write UPDATE "drafts" SET "deleted_at" = NULL WHERE "id" = ANY(@p0) AND "delet...
+      30.52 ms Read  SELECT * FROM "demo_graph_authors" WHERE "name" <> @p0 ORDER BY "name" A...
+      26.42 ms Ddl   CREATE TABLE IF NOT EXISTS "schema_migrations" ("version" text NOT NULL ...
+demo ok

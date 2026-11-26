@@ -1013,7 +1013,7 @@ Method: the surface is every public method (and, for the types marked internal b
 | `OrmContext` | 5 | 3 | 2 |
 | `OrmEnum` | 2 | 2 | 0 |
 | `OrmLiteSettings` | 2 | 2 | 0 |
-| `Query` | 116 | 103 | 13 |
+| `Query` | 117 | 103 | 14 |
 | `Row` | 3 | 3 | 0 |
 | `RowHistoryDdl` | 10 | 7 | 3 |
 | `RowHistoryRead` | 6 | 6 | 0 |
@@ -1025,7 +1025,7 @@ Method: the surface is every public method (and, for the types marked internal b
 | `TableBuilder` | 5 | 4 | 1 |
 | `UnitOfWork` | 5 | 5 | 0 |
 | `UpsertSet` | 7 | 5 | 2 |
-| total | 242 | 209 | 33 |
+| total | 243 | 209 | 34 |
 
 Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `ConflictGuard`.
 
@@ -1055,6 +1055,7 @@ Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `Conflict
 | `Query.BuildView/2` | internal tree builder beneath AsView; the corpus pins the CREATE VIEW text it compiles to in ddl-builder/create-view-* and view-over-a-join-and-an-aggregate |
 | `Query.CompileScalar/1` | the statement ScalarAsync runs; the clause-free text is pinned by the executed query-scalar-soft and query-scalar-null-answer-is-the-default entries, which run through it, and the order and offset text on both providers by ScalarRenderingTests |
 | `Query.Definition/1` | internal factory of the provider-bound query that MigrationBuilder.From returns; its use is pinned by every ddl-builder view entry |
+| `Query.GraphSnapshot/0` | internal graph-state capture beneath ToGraphListAsync; emits no SQL; paging, masks and ownership pinned by GraphReadTests, metadata validation by GraphBindingTests |
 | `Query.RenderScalar/1` | text of CompileScalar; pinned by the same executed entries and by ScalarRenderingTests on both providers |
 | `Query.get_SourceTable/0` | internal accessor read only by ViewColumns; the table it names is pinned by ddl-builder/create-view-over-a-filtered-query |
 | `Query.get_State/0` | internal accessor read only by ViewColumns; the scope it carries is pinned by ddl-builder/view-over-a-join-and-an-aggregate |

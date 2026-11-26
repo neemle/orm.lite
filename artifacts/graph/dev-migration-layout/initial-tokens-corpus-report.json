@@ -1,0 +1,909 @@
+{
+  "beforeRoot": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-capture/proposed",
+  "afterRoot": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed",
+  "sameKeys": true,
+  "typeCount": 100,
+  "rows": [
+    {
+      "Key": "tests/Tests/OrmLiteGolden/Expected|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0005.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": true,
+      "Valid": false,
+      "OriginalCalls": 2,
+      "CurrentCalls": 8
+    },
+    {
+      "Key": "tests/Tests/OrmLiteGolden/Expected|Neemle.OrmLite.Generated|FixtureNoteOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/OrmLiteGolden/Expected|Neemle.OrmLite.Generated|GoldenTagOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/OrmLiteGolden/Expected|Neemle.OrmLite.Generated|GoldenAuthorOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/OrmLiteGolden/Expected|Neemle.OrmLite.Generated|OrmLiteGoldenFixturesSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0004.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/OrmLiteGolden/Expected|Neemle.OrmLite.Generated|GoldenBookOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-default|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0005.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": true,
+      "Valid": false,
+      "OriginalCalls": 2,
+      "CurrentCalls": 4
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-default|Neemle.OrmLite.Generated|NoteOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-default|Neemle.OrmLite.Generated|NamedPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0003.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-default|Neemle.OrmLite.Generated|NotePurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0001.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-default|Neemle.OrmLite.Generated|TenantOptionDefaultSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0004.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-default|Neemle.OrmLite.Generated|OrmMigrationsInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.migrationregistry.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-default|Neemle.OrmLite.Generated|TenantOptionDefaultMigrations",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-default|Neemle.OrmLite.Generated|NamedOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0005.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": true,
+      "Valid": false,
+      "OriginalCalls": 2,
+      "CurrentCalls": 4
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid|Neemle.OrmLite.Generated|NoteOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid|Neemle.OrmLite.Generated|NamedPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0003.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid|Neemle.OrmLite.Generated|NotePurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0001.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid|Neemle.OrmLite.Generated|TenantOptionInvalidSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0004.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid|Neemle.OrmLite.Generated|OrmMigrationsInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.migrationregistry.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid|Neemle.OrmLite.Generated|TenantOptionInvalidMigrations",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid|Neemle.OrmLite.Generated|NamedOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-golden-fixtures|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0005.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": true,
+      "Valid": false,
+      "OriginalCalls": 2,
+      "CurrentCalls": 8
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-golden-fixtures|Neemle.OrmLite.Generated|FixtureNoteOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-golden-fixtures|Neemle.OrmLite.Generated|GoldenTagOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-golden-fixtures|Neemle.OrmLite.Generated|GoldenAuthorOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-golden-fixtures|Neemle.OrmLite.Generated|OrmLiteGoldenFixturesSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0004.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-golden-fixtures|Neemle.OrmLite.Generated|OrmMigrationsInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.migrationregistry.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-golden-fixtures|Neemle.OrmLite.Generated|OrmLiteGoldenFixturesMigrations",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-golden-fixtures|Neemle.OrmLite.Generated|GoldenBookOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-global-namespace|Neemle.OrmLite.Generated|OrchardOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-global-namespace|Neemle.OrmLite.Generated|CorpusGlobalNamespaceSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0003.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-global-namespace|Neemle.OrmLite.Generated|OrchardPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0001.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-global-namespace|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0004.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": true,
+      "Valid": false,
+      "OriginalCalls": 2,
+      "CurrentCalls": 4
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-global-namespace|Neemle.OrmLite.Generated|OrmMigrationsInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.migrationregistry.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-global-namespace|Neemle.OrmLite.Generated|CorpusGlobalNamespaceMigrations",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.migrations.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-global-namespace|Neemle.OrmLite.Generated|TreeOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-demo|Neemle.OrmLite.Generated|NoteOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-demo|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0003.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": true,
+      "Valid": false,
+      "OriginalCalls": 2,
+      "CurrentCalls": 2
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-demo|Neemle.OrmLite.Generated|NotePurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0001.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-demo|Neemle.OrmLite.Generated|OrmMigrationsInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-demo/ormlite.migrationregistry.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-demo|Neemle.OrmLite.Generated|OrmLiteDemoMigrations",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-demo/ormlite.migrations.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-demo|Neemle.OrmLite.Generated|OrmLiteDemoSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0002.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0005.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": true,
+      "Valid": false,
+      "OriginalCalls": 2,
+      "CurrentCalls": 4
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id|Neemle.OrmLite.Generated|NoteOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id|Neemle.OrmLite.Generated|NamedPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0003.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id|Neemle.OrmLite.Generated|NotePurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0001.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id|Neemle.OrmLite.Generated|TenantOptionScopeSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0004.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id|Neemle.OrmLite.Generated|OrmMigrationsInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.migrationregistry.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id|Neemle.OrmLite.Generated|TenantOptionScopeMigrations",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id|Neemle.OrmLite.Generated|NamedOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|EverythingOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|WorkItemPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0005.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|AccountOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|ProjectMemberOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0009.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|ProjectPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0003.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|LabelOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|CorpusEntitiesSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0013.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0014.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": true,
+      "Valid": false,
+      "OriginalCalls": 2,
+      "CurrentCalls": 16
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|MemberPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0008.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|AccountPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0001.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|WorkItemOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|KeylessOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0011.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|InternalEntityOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|MemberOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|OrmMigrationsInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.migrationregistry.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|CorpusEntitiesMigrations",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|ProjectOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftUnknownNamesOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftTenantWrongTypeOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|LiveOnlyNotUniqueOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftKeyNotGuidPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0019.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|UnmappedTypeOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftWithoutTenantPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0009.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftStatusPinnedPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0027.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftWithoutKeyPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0015.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftWithTwoKeysOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0016.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftLabelNotTextOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftColumnNotMappedOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|LiveOnlyNotUniquePurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0006.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|CorpusDiagnosticsSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0028.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftNamedTenantMissingPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0013.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftNullableKeyPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0021.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftWithoutKeyOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0014.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftWithoutTenantOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftStatusPinnedOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftColumnMissingOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftKeyNotGuidOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|LiveOnlyOnPlainEntityOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftTenantWrongTypePurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0011.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftUnknownNamesPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0023.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftNullableKeyOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0020.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftNamedTenantMissingOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|DuplicateIndexNameOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0029.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": true,
+      "Valid": false,
+      "OriginalCalls": 2,
+      "CurrentCalls": 31
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|OrmMigrationsInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.migrationregistry.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|CorpusDiagnosticsMigrations",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.migrations.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftColumnWrongTypeOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftLabelNotTextPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0025.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "tests/Tests/Corpus/Goldens/generator-diagnostics|Neemle.OrmLite.Generated|SoftWithTwoKeysPurge",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0017.g.cs.golden",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    }
+  ],
+  "preGraphMapRows": []
+}

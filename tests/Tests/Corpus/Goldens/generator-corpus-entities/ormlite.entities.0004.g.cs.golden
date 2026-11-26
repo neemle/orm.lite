@@ -45,6 +45,28 @@ public static class WorkItemOrm
         return new global::Neemle.OrmLite.Query<global::CorpusEntities.WorkItem>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusEntities.WorkItem>(new global::Neemle.OrmLite.GraphEntityBinding<global::
+            CorpusEntities.WorkItem>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::CorpusEntities.
+            WorkItem, global::System.Guid>("id", (e) => e.Id), new global::Neemle.OrmLite.GraphReferenceBinding<global::
+            CorpusEntities.WorkItem, global::CorpusEntities.Project, global::System.Guid>("Project", "project_id", (e)
+            => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(true, e.ProjectId), (e, @value) => e.Project =
+            @value), new global::Neemle.OrmLite.GraphReferenceBinding<global::CorpusEntities.WorkItem, global::
+            CorpusEntities.WorkItem, global::System.Guid>("Parent", "parent_id", (e) => new global::Neemle.OrmLite.
+            GraphKey<global::System.Guid>(e.ParentId != null, e.ParentId.GetValueOrDefault()), (e, @value) => e.Parent
+            = @value)));
+    }
+
+    public static class Paths
+    {
+        public static global::Neemle.OrmLite.GraphPath<global::CorpusEntities.WorkItem, global::CorpusEntities.Project>
+            Project => GraphPaths.Edge<global::CorpusEntities.WorkItem, global::CorpusEntities.Project>("Project");
+
+        public static global::Neemle.OrmLite.GraphPath<global::CorpusEntities.WorkItem, global::CorpusEntities.WorkItem
+            > Parent => GraphPaths.Edge<global::CorpusEntities.WorkItem, global::CorpusEntities.WorkItem>("Parent");
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusEntities.WorkItem e)
     {

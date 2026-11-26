@@ -1,0 +1,4 @@
+import json,pathlib,subprocess,sys
+P=pathlib.Path('artifacts/graph/current-contract-integration').resolve();base=json.loads((P/'docker-base.json').read_text());f=json.loads((P/'fixture.json').read_text())
+a=base+['--network',f['networkId'],'-e','ORMLITE_TEST_POSTGRES=Host=graph-pg;Username=postgres;Database=postgres','sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27','dotnet','test','tests/Tests/Tests.csproj','-c','Release','--no-build','--artifacts-path',str(P/'build'),'--filter','FullyQualifiedName~.Graph.|FullyQualifiedName~GeneratorQualityTests|FullyQualifiedName~GeneratorInputRobustnessTests|FullyQualifiedName~GlobalNamespaceEntityTests|FullyQualifiedName~OrmLiteGoldenTests|FullyQualifiedName~CorpusGoldenTests','--logger','trx;LogFileName='+sys.argv[1]+'.trx','--results-directory',str(P/'results'),'--','xUnit.MaxParallelThreads=1']
+sys.exit(subprocess.call(['python3',str(P/'run.py'),sys.argv[1],*a]))

@@ -39,6 +39,17 @@ public static class AccountOrm
         return new global::Neemle.OrmLite.Query<global::CorpusEntities.Account>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusEntities.Account>(new global::Neemle.OrmLite.GraphEntityBinding<global::
+            CorpusEntities.Account>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::CorpusEntities.
+            Account, global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusEntities.Account e)
     {

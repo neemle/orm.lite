@@ -33,6 +33,17 @@ public static class SoftUnknownNamesOrm
         return new global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftUnknownNames>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusDiagnostics.SoftUnknownNames>(new global::Neemle.OrmLite.GraphEntityBinding<
+            global::CorpusDiagnostics.SoftUnknownNames>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<
+            global::CorpusDiagnostics.SoftUnknownNames, global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusDiagnostics.SoftUnknownNames e)
     {

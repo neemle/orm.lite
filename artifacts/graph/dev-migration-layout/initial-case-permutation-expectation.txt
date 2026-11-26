@@ -1,0 +1,1 @@
+Initial whole-hint-byte comparison failed: row/Row swap their ordinal emission positions under reversed input. This is preserved existing emitter case-tie sequence, not a generator diagnostic or changed registration order. The exact two permutation inputs and outputs are retained. No source sort change was made.

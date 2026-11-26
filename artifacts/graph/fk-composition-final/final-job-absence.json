@@ -1,0 +1,16 @@
+{
+  "generated": "2026-11-26T13:52:48.677777+00:00",
+  "argv": [
+    "docker",
+    "ps",
+    "-aq",
+    "--filter",
+    "label=orml.task=ORML-108",
+    "--filter",
+    "label=orml.actor=graph-fk-c453"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "",
+  "ownActorRosterEmpty": true
+}

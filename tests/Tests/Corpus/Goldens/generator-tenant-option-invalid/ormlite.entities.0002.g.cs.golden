@@ -38,6 +38,17 @@ public static class NamedOrm
         return new global::Neemle.OrmLite.Query<global::TenantOption.Named>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::TenantOption.Named>(new global::Neemle.OrmLite.GraphEntityBinding<global::
+            TenantOption.Named>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::TenantOption.Named,
+            global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         TenantOption.Named e)
     {

@@ -1,0 +1,91 @@
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/current-contract-integration/build/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:02.24]     Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte [FAIL]
+  Failed Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte [1 s]
+  Error Message:
+   the generated source of the non-soft fixture entities no longer matches tests/Tests/OrmLiteGolden/Expected:
+  OrmLite.Entities.0000.g.cs: line 38 differs
+      golden:        public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
+      generated:     internal static void RegisterGraph()
+  OrmLite.Entities.0001.g.cs: line 38 differs
+      golden:        public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
+      generated:     internal static void RegisterGraph()
+  OrmLite.Entities.0002.g.cs: line 65 differs
+      golden:        public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
+      generated:     internal static void RegisterGraph()
+  OrmLite.Entities.0003.g.cs: line 35 differs
+      golden:        public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
+      generated:     internal static void RegisterGraph()
+  OrmLite.Entities.0005.g.cs: line 12 differs
+      golden:            OrmMeta.Register<global::GoldenFixtures.FixtureNote>(FixtureNoteOrm.Descriptor);
+      generated:         RegisterEntities();
+If the generator change is intended, regenerate with `ORMLITE_GOLDEN_REGENERATE=1 dotnet test --filter FullyQualifiedName~OrmLiteGolden`, review the diff of tests/Tests/OrmLiteGolden/Expected and commit it with the generator change.
+  Stack Trace:
+     at Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/tests/Tests/OrmLiteGolden/OrmLiteGoldenTests.cs:line 63
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:23.93]     every statement-producing member of the surveyed surface is referenced by a case or excluded with a reason [FAIL]
+  Failed every statement-producing member of the surveyed surface is referenced by a case or excluded with a reason [3 s]
+  Error Message:
+   unaccounted: Query.GraphSnapshot/0
+  Stack Trace:
+     at Neemle.OrmLite.Tests.Corpus.CorpusGoldenTests.Every_surface_member_is_accounted_for() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/tests/Tests/Corpus/CorpusGoldenTests.cs:line 31
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:27.95]     the live PostgreSQL output of the library equals every golden of the corpus, and no golden is orphaned [FAIL]
+  Failed the live PostgreSQL output of the library equals every golden of the corpus, and no golden is orphaned [4 s]
+  Error Message:
+   43 corpus difference(s):
+  generator-corpus-entities/ormlite.entities.0000.g.cs.golden: line 42 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-corpus-entities/ormlite.entities.0002.g.cs.golden: line 52 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-corpus-entities/ormlite.entities.0004.g.cs.golden: line 48 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-corpus-entities/ormlite.entities.0006.g.cs.golden: line 34 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-corpus-entities/ormlite.entities.0007.g.cs.golden: line 38 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-corpus-entities/ormlite.entities.0010.g.cs.golden: line 89 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-corpus-entities/ormlite.entities.0012.g.cs.golden: line 35 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-corpus-entities/ormlite.entities.0014.g.cs.golden: line 12 differs; golden:         OrmMeta.Register<global::CorpusEntities.Account>(AccountOrm.Descriptor); | captured:         RegisterEntities();
+  generator-demo/ormlite.entities.0000.g.cs.golden: line 47 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-demo/ormlite.entities.0003.g.cs.golden: line 12 differs; golden:         OrmMeta.Register<global::OrmLiteDemo.Note>(NoteOrm.Descriptor); | captured:         RegisterEntities();
+  generator-diagnostics/ormlite.entities.0000.g.cs.golden: line 32 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0001.g.cs.golden: line 35 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0002.g.cs.golden: line 39 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0003.g.cs.golden: line 35 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0004.g.cs.golden: line 36 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0005.g.cs.golden: line 40 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0007.g.cs.golden: line 38 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0008.g.cs.golden: line 36 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0010.g.cs.golden: line 40 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0012.g.cs.golden: line 37 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0018.g.cs.golden: line 36 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0022.g.cs.golden: line 36 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0024.g.cs.golden: line 39 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0026.g.cs.golden: line 40 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-diagnostics/ormlite.entities.0029.g.cs.golden: line 12 differs; golden:         OrmMeta.Register<global::CorpusDiagnostics.UnmappedType>(UnmappedTypeOrm.Descriptor); | captured:         RegisterEntities();
+  generator-global-namespace/ormlite.entities.0000.g.cs.golden: line 40 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-global-namespace/ormlite.entities.0002.g.cs.golden: line 40 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-global-namespace/ormlite.entities.0004.g.cs.golden: line 12 differs; golden:         OrmMeta.Register<global::Orchard>(OrchardOrm.Descriptor); | captured:         RegisterEntities();
+  generator-golden-fixtures/ormlite.entities.0000.g.cs.golden: line 38 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-golden-fixtures/ormlite.entities.0001.g.cs.golden: line 38 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-golden-fixtures/ormlite.entities.0002.g.cs.golden: line 65 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-golden-fixtures/ormlite.entities.0003.g.cs.golden: line 35 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-golden-fixtures/ormlite.entities.0005.g.cs.golden: line 12 differs; golden:         OrmMeta.Register<global::GoldenFixtures.FixtureNote>(FixtureNoteOrm.Descriptor); | captured:         RegisterEntities();
+  generator-tenant-option-default/ormlite.entities.0000.g.cs.golden: line 44 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-tenant-option-default/ormlite.entities.0002.g.cs.golden: line 41 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-tenant-option-default/ormlite.entities.0005.g.cs.golden: line 12 differs; golden:         OrmMeta.Register<global::TenantOption.Note>(NoteOrm.Descriptor); | captured:         RegisterEntities();
+  generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden: line 44 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden: line 41 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  generator-tenant-option-invalid/ormlite.entities.0005.g.cs.golden: line 12 differs; golden:         OrmMeta.Register<global::TenantOption.Note>(NoteOrm.Descriptor); | captured:         RegisterEntities();
+  generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden: line 44 differs; golden:     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global:: | captured:     internal static void RegisterGraph()
+  ...
+If the change is an approved deviation, refresh with `dotnet run scripts/CorpusCapture.cs -- capture`, review the diff and commit it with the change.
+  Stack Trace:
+     at Neemle.OrmLite.Tests.Corpus.CorpusGoldenTests.The_live_output_equals_the_goldens() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/tests/Tests/Corpus/CorpusGoldenTests.cs:line 19
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/current-contract-integration/results/affected-before.trx
+
+Failed!  - Failed:     3, Passed:    99, Skipped:     0, Total:   102, Duration: 26 s - Neemle.OrmLite.Tests.dll (net10.0)

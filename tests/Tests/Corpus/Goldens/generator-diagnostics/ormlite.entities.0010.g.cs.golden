@@ -37,6 +37,17 @@ public static class SoftTenantWrongTypeOrm
         return new global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftTenantWrongType>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusDiagnostics.SoftTenantWrongType>(new global::Neemle.OrmLite.GraphEntityBinding
+            <global::CorpusDiagnostics.SoftTenantWrongType>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<
+            global::CorpusDiagnostics.SoftTenantWrongType, global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusDiagnostics.SoftTenantWrongType e)
     {

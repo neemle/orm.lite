@@ -1,0 +1,42 @@
+{
+  "sourceIdentities": [
+    "0.cs=lowercase row",
+    "1.cs=uppercase Row"
+  ],
+  "permutation": "reverse enumeration only; paths and texts fixed",
+  "rows": [
+    {
+      "hint": "OrmLite.Entities.0000.g.cs",
+      "sameBytes": true,
+      "sha256": "de920570b68ca82104b595dffb489bea86eb6e47aeb81070a055550fd89ce10c"
+    },
+    {
+      "hint": "OrmLite.Entities.0001.g.cs",
+      "sameBytes": true,
+      "sha256": "f235a771d171492f3466389b3b08464634087603014e73e5fbe85fd75853565d"
+    },
+    {
+      "hint": "OrmLite.Entities.0002.g.cs",
+      "sameBytes": true,
+      "sha256": "b1a818969ec81642464aa52744fd091a543b1a5d4fa289b1c1ea965e6e4c05ae"
+    },
+    {
+      "hint": "OrmLite.Entities.0003.g.cs",
+      "sameBytes": true,
+      "sha256": "6d9daa9cbaddf580ee6c45e7141d06148075b87ba9fd540e5d6d454558b598c4"
+    },
+    {
+      "hint": "OrmLite.MigrationRegistry.g.cs",
+      "sameBytes": true,
+      "sha256": "7610a883e5b9bb267ab0cd76f134614b89f81b0a5f42f699a38411fda8f8dd96"
+    },
+    {
+      "hint": "OrmLite.Migrations.g.cs",
+      "sameBytes": true,
+      "sha256": "328c47b59ced810d97374bf3a3e5035f15c6452465414667bac51d2c46858cc5"
+    }
+  ],
+  "beforeGeneratorSha256": "10a87c0da2a40b7e55867fed23ebc844896e14d2f278c2ac00fd03cb7fb3e930",
+  "beforeGeneratorCarrier": "artifacts/graph/demo/pack-build-final.json (0478 source tree6cf27dc equals d28 baseline)",
+  "history": "Original case-permutation-proof.json and initial-case-permutation-expectation.txt are INVALID HARNESS HISTORY: changed path/text association, no product-order finding. Superseded by this fixed-identity proof."
+}

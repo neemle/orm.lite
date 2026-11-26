@@ -32,6 +32,17 @@ public static class GoldenTagOrm
         return new global::Neemle.OrmLite.Query<global::GoldenFixtures.GoldenTag>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::GoldenFixtures.GoldenTag>(new global::Neemle.OrmLite.GraphEntityBinding<global::
+            GoldenFixtures.GoldenTag>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::GoldenFixtures
+            .GoldenTag, global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         GoldenFixtures.GoldenTag e)
     {

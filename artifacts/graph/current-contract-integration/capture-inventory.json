@@ -1,0 +1,25 @@
+{
+  "captureOnly": true,
+  "oraclePass": false,
+  "changedSourceGoldens": 47,
+  "unchangedExpectedFiles": 702,
+  "entrySetsUnchanged": true,
+  "allNonGeneratorSqlBehaviorTranscriptsByteUnchanged": true,
+  "candidateFacts": {
+    "CaptureOnly": true,
+    "OraclePass": false,
+    "Entries": 743,
+    "Unaccounted": []
+  },
+  "groups": {
+    "generator-tenant-option-default": 3,
+    "generator-tenant-option-invalid": 3,
+    "generator-golden-fixtures": 5,
+    "generator-global-namespace": 3,
+    "generator-demo": 2,
+    "generator-tenant-option-scope-id": 3,
+    "generator-corpus-entities": 8,
+    "generator-diagnostics": 15,
+    "OrmLiteGolden": 5
+  }
+}

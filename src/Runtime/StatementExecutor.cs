@@ -19,6 +19,9 @@ namespace Neemle.OrmLite;
             _state = state;
         }
 
+        internal DbConnection? GraphConnection => _conn;
+        internal DbTransaction? GraphTransaction => _tx;
+
         internal void On(DbConnection connection, DbTransaction? transaction)
         {
             _conn = connection ?? throw new ArgumentNullException(nameof(connection));

@@ -35,6 +35,17 @@ public static class FixtureNoteOrm
         return new global::Neemle.OrmLite.Query<global::GoldenFixtures.FixtureNote>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::GoldenFixtures.FixtureNote>(new global::Neemle.OrmLite.GraphEntityBinding<global::
+            GoldenFixtures.FixtureNote>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::
+            GoldenFixtures.FixtureNote, global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         GoldenFixtures.FixtureNote e)
     {

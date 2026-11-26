@@ -9,6 +9,12 @@ internal static class OrmMetaInit
     [global::System.Runtime.CompilerServices.ModuleInitializer]
     internal static void Init()
     {
+        RegisterEntities();
+        RegisterGraphs();
+    }
+
+    private static void RegisterEntities()
+    {
         OrmMeta.Register<global::CorpusEntities.Account>(AccountOrm.Descriptor);
         OrmMeta.Register<global::CorpusEntities.Project>(ProjectOrm.Descriptor);
         OrmMeta.Register<global::CorpusEntities.WorkItem>(WorkItemOrm.Descriptor);
@@ -18,5 +24,16 @@ internal static class OrmMetaInit
         OrmMeta.Register<global::CorpusEntities.Everything>(EverythingOrm.Descriptor);
         OrmMeta.Register<global::CorpusEntities.Keyless>(KeylessOrm.Descriptor);
         OrmMeta.Register<global::CorpusEntities.InternalEntity>(InternalEntityOrm.Descriptor);
+    }
+
+    private static void RegisterGraphs()
+    {
+        AccountOrm.RegisterGraph();
+        ProjectOrm.RegisterGraph();
+        WorkItemOrm.RegisterGraph();
+        LabelOrm.RegisterGraph();
+        MemberOrm.RegisterGraph();
+        EverythingOrm.RegisterGraph();
+        InternalEntityOrm.RegisterGraph();
     }
 }

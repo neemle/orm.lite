@@ -1,0 +1,55 @@
+{
+  "beforeBothOrdersFail": "before-capture/collision/{0,1}/diagnostics.json",
+  "afterBothOrdersCompile": "after-capture/collision/{0,1}/diagnostics.json",
+  "rows": [
+    {
+      "type": "CaseFixtureSchema",
+      "order0Hint": "OrmLite.Entities.0002.g.cs",
+      "order1Hint": "OrmLite.Entities.0002.g.cs",
+      "sameClassBytes": false,
+      "order0Sha256": "b1a818969ec81642464aa52744fd091a543b1a5d4fa289b1c1ea965e6e4c05ae",
+      "order1Sha256": "b6d1391db1bed44b0faf0024701afe772fdc87a9ac3e11d668b92e016838cf67"
+    },
+    {
+      "type": "CaseFixtureMigrations",
+      "order0Hint": "OrmLite.Migrations.g.cs",
+      "order1Hint": "OrmLite.Migrations.g.cs",
+      "sameClassBytes": true,
+      "order0Sha256": "328c47b59ced810d97374bf3a3e5035f15c6452465414667bac51d2c46858cc5",
+      "order1Sha256": "328c47b59ced810d97374bf3a3e5035f15c6452465414667bac51d2c46858cc5"
+    },
+    {
+      "type": "OrmMetaInit",
+      "order0Hint": "OrmLite.Entities.0003.g.cs",
+      "order1Hint": "OrmLite.Entities.0003.g.cs",
+      "sameClassBytes": false,
+      "order0Sha256": "6d9daa9cbaddf580ee6c45e7141d06148075b87ba9fd540e5d6d454558b598c4",
+      "order1Sha256": "c853911192e39d2edee8a19f48b4158ededac2283cf7287c0ce7939126eee4e6"
+    },
+    {
+      "type": "rowOrm",
+      "order0Hint": "OrmLite.Entities.0000.g.cs",
+      "order1Hint": "OrmLite.Entities.0001.g.cs",
+      "sameClassBytes": true,
+      "order0Sha256": "de920570b68ca82104b595dffb489bea86eb6e47aeb81070a055550fd89ce10c",
+      "order1Sha256": "de920570b68ca82104b595dffb489bea86eb6e47aeb81070a055550fd89ce10c"
+    },
+    {
+      "type": "RowOrm",
+      "order0Hint": "OrmLite.Entities.0001.g.cs",
+      "order1Hint": "OrmLite.Entities.0000.g.cs",
+      "sameClassBytes": true,
+      "order0Sha256": "f235a771d171492f3466389b3b08464634087603014e73e5fbe85fd75853565d",
+      "order1Sha256": "f235a771d171492f3466389b3b08464634087603014e73e5fbe85fd75853565d"
+    },
+    {
+      "type": "OrmMigrationsInit",
+      "order0Hint": "OrmLite.MigrationRegistry.g.cs",
+      "order1Hint": "OrmLite.MigrationRegistry.g.cs",
+      "sameClassBytes": true,
+      "order0Sha256": "7610a883e5b9bb267ab0cd76f134614b89f81b0a5f42f699a38411fda8f8dd96",
+      "order1Sha256": "7610a883e5b9bb267ab0cd76f134614b89f81b0a5f42f699a38411fda8f8dd96"
+    }
+  ],
+  "disposition": "Ordinal hints preserve existing source emission sequence. Existing case-insensitive tie ordering means reversal interchanges row/Row positions and registration/schema traversal order. Class names, namespace, APIs and per-entity text remain identical; complete byte invariance under reversing a case-tie is NOT claimed."
+}

@@ -32,6 +32,17 @@ public static class SoftColumnMissingOrm
         return new global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftColumnMissing>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusDiagnostics.SoftColumnMissing>(new global::Neemle.OrmLite.GraphEntityBinding<
+            global::CorpusDiagnostics.SoftColumnMissing>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<
+            global::CorpusDiagnostics.SoftColumnMissing, global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusDiagnostics.SoftColumnMissing e)
     {

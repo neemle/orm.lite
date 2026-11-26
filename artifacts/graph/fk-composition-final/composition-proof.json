@@ -1,0 +1,169 @@
+{
+  "generated": "2026-11-26T13:49:30.065679+00:00",
+  "frozenProduct": "691c634f69996f14b19e2e29854505c051954be0",
+  "sourceTree": "1945c1c0407fce8a978a75834c87fc582598e4ee",
+  "executionCommit": "60e8d9112acd30aba2c13d1e8fa1df247dba3621",
+  "compositionCases": {
+    "total": "10",
+    "executed": "10",
+    "passed": "10",
+    "failed": "0",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "currentDefaultDemo": [
+    {
+      "provider": "sqlite",
+      "gate": "default-jit10-sqlite",
+      "exitCode": 0,
+      "runtime": "10.0.15",
+      "graphAndFkBlock": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\n16a. generated foreign key: catalog True, enforcement True, nullable updates True\n     orphan insert refused True, orphan update refused True\n     physical parent delete kept the child with NULL True, rows cleaned True\n",
+      "wholeDefaultDemoOk": true
+    },
+    {
+      "provider": "postgres",
+      "gate": "default-jit10-postgres",
+      "exitCode": 0,
+      "runtime": "10.0.15",
+      "graphAndFkBlock": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\n16a. generated foreign key: catalog True, enforcement True, nullable updates True\n     orphan insert refused True, orphan update refused True\n     physical parent delete kept the child with NULL True, rows cleaned True\n",
+      "wholeDefaultDemoOk": true
+    }
+  ],
+  "comparisonScope": "Eight Graph+FK result lines equal acrossproviders; five Graph lines exactoriginal8mode sample. Intrinsic otherdefaultchapters provider/actor/timing outputs are retained, not normalized into a whole-output parity claim. Fulldefaultprogram returns0/demo ok.",
+  "graphGeneratedBridge": [
+    {
+      "Type": "GraphAuthorOrm",
+      "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "Current": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/fk-composition-final/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "TokensEqual": true,
+      "MapTextEqual": true,
+      "OldSha256": "d8bf4e64f82dd69149b1a7929bf77a8dd142d24fa1ebc7046343ad1c6b79c2c7",
+      "CurrentSha256": "d8bf4e64f82dd69149b1a7929bf77a8dd142d24fa1ebc7046343ad1c6b79c2c7"
+    },
+    {
+      "Type": "GraphBookOrm",
+      "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "Current": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/fk-composition-final/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "TokensEqual": true,
+      "MapTextEqual": true,
+      "OldSha256": "595fadbe143397bba59455983574b51ac287d974fc081075495ad0f0b9013a5a",
+      "CurrentSha256": "595fadbe143397bba59455983574b51ac287d974fc081075495ad0f0b9013a5a"
+    },
+    {
+      "Type": "GraphTagOrm",
+      "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "Current": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/fk-composition-final/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+      "TokensEqual": true,
+      "MapTextEqual": true,
+      "OldSha256": "d10f9badbf9b56a0e3ca12c5af1024a145ce74be6d32cd838a10a133f60ff492",
+      "CurrentSha256": "d10f9badbf9b56a0e3ca12c5af1024a145ce74be6d32cd838a10a133f60ff492"
+    }
+  ],
+  "packages": [
+    {
+      "id": "Neemle.OrmLite",
+      "version": "0.1.0-dev.g60e8d91",
+      "file": "feed/Neemle.OrmLite.0.1.0-dev.g60e8d91.nupkg",
+      "sha256": "9ea1f0a5e16f825c4d91b23f11451992ac6836d59fc9d91a23626f7c76526793",
+      "entries": [
+        {
+          "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "sha256": "2c2c41fde20721810752985af412cb6c53441e3a64bad3bc8f1a7adb48642aa2",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.props",
+          "sha256": "bb7836a65d67958406268d885836e0b0c0fbbc44e63250ae899da9a5c5bfe6fa",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.targets",
+          "sha256": "d64d23127dfc3d46d8abcbfabff05fd8b212155cb70cb0ca9addf2038de428b6",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+          "sha256": "3c3ef3fb508bc349b942062ec4abf795f248a08ccd4ffae7c1f6b9aa76ee218c",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+          "sha256": "4a29bdfb97de750bdd0b48de681c2cde12e5b65ddef4359270f5867e282a466c",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "id": "Neemle.OrmLite.Postgres",
+      "version": "0.1.0-dev.g60e8d91",
+      "file": "feed/Neemle.OrmLite.Postgres.0.1.0-dev.g60e8d91.nupkg",
+      "sha256": "12b35c22c1b27e1034de66a3a81958830aa3d65dd5a89293d95938ebf49a7d5a",
+      "entries": [
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.Postgres.props",
+          "sha256": "10cfa9a1976f1ca12ba6b11dfcf4528fe16b9d02cd8f4c345e467b45f1d3d3bf",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "buildTransitive/ormlite.capabilities.postgres.txt",
+          "sha256": "b3d3919dd0c276083178e0c843093d8bfa2dc579253a8e758744a22ea9fd4cfb",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+          "sha256": "9b64697d20d6bf832f5e4545a2abe6d049fc9325fb8d132bc7f7ff8f6f0f9c01",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "id": "Neemle.OrmLite.Sqlite",
+      "version": "0.1.0-dev.g60e8d91",
+      "file": "feed/Neemle.OrmLite.Sqlite.0.1.0-dev.g60e8d91.nupkg",
+      "sha256": "36998ba8fa35114507906f6e8ea959c8a7bc302c726c99918e8504a557ba7d0b",
+      "entries": [
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.Sqlite.props",
+          "sha256": "2e54f6f6eae3e04ba6efdbd869f97d3bfb19c6fde07077e6c4f62356376250dd",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "buildTransitive/ormlite.capabilities.sqlite.txt",
+          "sha256": "c734bfb412300a946145935f1f8f2dd19b7d0693a976865ca9ccf50b8aa34a70",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+          "sha256": "ff4bf8663a0a036bb5ffbc3d8129302fc2c13061c0d815cde117ae19c65a246e",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    }
+  ],
+  "actualAssets": {
+    "file": "demo-build/obj/OrmLiteDemo/project.assets.json",
+    "sha256": "055c4e2c01da1fce2589c81adf9214f5231b7d8be72d9fb4d8582ad60b8487db",
+    "privatePackages": [
+      "Neemle.OrmLite.Postgres/0.1.0-dev.g60e8d91",
+      "Neemle.OrmLite.Sqlite/0.1.0-dev.g60e8d91",
+      "Neemle.OrmLite/0.1.0-dev.g60e8d91"
+    ]
+  },
+  "jitOutputLibraryBytesEqualPackages": true,
+  "originalEvidence": {
+    "Graph8": "85de623e actual2ad9d966, unchanged threeGraphclasssemantic tokens/Map andoriginalchapteroracles, reused noNative replay",
+    "FK8": "21dfe551 actual39a20f28+0c765b98/47assertions each, originalattribution retained; currentnew typedGraph FKmetadata/registration tested bythree independentcases/defaultdemo, no newNative-specific mechanism",
+    "contracts102": "b006fa57 at24b+3739c19, no blanketrerun/expectedrefresh"
+  },
+  "limits": "Finite Graph+FKcomposition acceptance; currentCI/TL/802/merge ROOT next. No newNative8/fullunit/coverage/census, no wholeitemPASS."
+}

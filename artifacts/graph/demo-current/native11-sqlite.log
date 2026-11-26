@@ -1,0 +1,7 @@
+graph chapter runtime=11.0.0
+16a. requested graph: ordinary root page True, exact books and tags True
+     ordinary query left navigations empty True
+     shared editor/tag identity True, nullable editor True, unrequested Author untouched True
+     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8
+     row overflow returned no list True, rows cleaned True
+graph chapter ok; scratch removed

@@ -86,6 +86,17 @@ public static class EverythingOrm
         return new global::Neemle.OrmLite.Query<global::CorpusEntities.Everything>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusEntities.Everything>(new global::Neemle.OrmLite.GraphEntityBinding<global::
+            CorpusEntities.Everything>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::
+            CorpusEntities.Everything, global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusEntities.Everything e)
     {

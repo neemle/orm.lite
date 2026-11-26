@@ -1,0 +1,27 @@
+{
+  "scope": "Actual47generated expectedfiles plusderivedINDEX andoneprecisenonterminalaccounting",
+  "oldIntent": "Byte-exact complete generated source, deterministic capture, complete surface accounting; all old SQL/behavior transcripts pinned.",
+  "newProperty": "Same exact assertions against supported additive typed Paths/RegisterGraph/key+navigation bindings and Init extraction; old method/literal/type/order tokens preserved after only identified Graph additions are removed.",
+  "reviewed": 47,
+  "mapMethodsUnchanged": 38,
+  "graphRegistrationMethods": 38,
+  "typedPathsClasses": 38,
+  "initExtractions": 9,
+  "all702OtherExpectationsByteUnchanged": true,
+  "allEntrySetsUnchanged": true,
+  "surfaceChange": {
+    "Query": "116->117; referenced103 unchanged; excluded13->14",
+    "total": "242->243; referenced209 unchanged; excluded33->34",
+    "helper": "GraphSnapshot only; pureGraphPlanner statecapture; existingGraphRead page/masks/callerownership andGraphBinding validation plusunchanged8modepublicchapter proof",
+    "GraphFirstSnapshot": "ABSENT in current108; no staleexclusion"
+  },
+  "assertionsNotChanged": [
+    "GeneratorQuality exactnumericorder",
+    "GeneratedTextHygiene perfileheader/namespace/no comments",
+    "Corpus nonempty/completeness/staleexclusion",
+    "OrmGolden exactbytes",
+    "GraphRead/Binding/security/timeout/source tests"
+  ],
+  "noBlindRegeneration": true,
+  "captureIsNotOraclePass": true
+}

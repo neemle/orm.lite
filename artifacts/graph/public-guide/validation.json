@@ -1,0 +1,92 @@
+{
+  "scope": "ORML-108 MARKETING public typed graph guide only",
+  "observed_utc": "2026-11-26T05:03:55.504662+00:00",
+  "starting_commit": "d216add215824bd8f145d2e1c83c51db8a345c53",
+  "source_tree": "6cf27dc215438f8eb346f9f3a8334f0570908054",
+  "tests_tree": "21c166b86ebc3b4b3eeb7405a396cee31ff50f36",
+  "audience_and_offer": "Application developers loading bounded explicit relation graphs; technical API guidance, no campaign or launch.",
+  "authority": {
+    "claim": "2244d3fb-902b-434d-929a-d6153e4b5dee",
+    "adr": "51b795f3-1724-4087-a0b6-1f3bdbbfe8d6 v4 / b4a7b5c3-09fb-4c90-a305-7d3b7c1553d3",
+    "speck": "41e46496-8bbd-463a-a4f3-b6197ec688f9 v4 / e95ce4cd-9736-49f7-ba28-7c86354936c7",
+    "requirements": "Examples 1763a7f0-b0a7-4465-add0-dd295748ff4c UC-002 and all 17 NFR rows"
+  },
+  "static_validation": {
+    "local_links": [
+      {
+        "target": "README.md",
+        "result": "file exists"
+      },
+      {
+        "target": "#5-load-an-explicit-graph",
+        "result": "file and anchor exist"
+      },
+      {
+        "target": "../demo/Tracker/Migrations.cs",
+        "result": "file exists"
+      },
+      {
+        "target": "migrations.md",
+        "result": "file exists"
+      },
+      {
+        "target": "../demo/README.md#what-each-chapter-proves",
+        "result": "file and anchor exist"
+      },
+      {
+        "target": "../tests/AotSmoke/AotGraphAuthor.cs",
+        "result": "file exists"
+      },
+      {
+        "target": "../tests/AotSmoke/AotGraphBook.cs",
+        "result": "file exists"
+      },
+      {
+        "target": "../tests/AotSmoke/AotGraphTag.cs",
+        "result": "file exists"
+      },
+      {
+        "target": "../tests/AotSmoke/AotGraphTagKey.cs",
+        "result": "file exists"
+      },
+      {
+        "target": "../tests/AotSmoke/GraphProbe.cs",
+        "result": "file exists"
+      },
+      {
+        "target": "diagnostics.md#parameter-values-and-redaction",
+        "result": "file and anchor exist"
+      }
+    ],
+    "signatures": {
+      "extension": "src/Runtime/GraphQueryExtensions.cs",
+      "groups": "src/Runtime/GraphLimits.cs",
+      "request": "src/Runtime/GraphRequest.cs",
+      "path": "src/Runtime/GraphTypedPath.cs"
+    },
+    "excerpt_reuse": [
+      {
+        "source": "tests/AotSmoke/AotGraphAuthor.cs:5-12",
+        "comparison": "exact declaration suffix",
+        "sha256": "d3bdb753513e75af898a7e8ab0a25a9a46e605f69bf74bcaed9246755b4790a3"
+      },
+      {
+        "source": "tests/AotSmoke/GraphProbe.cs:20-23",
+        "comparison": "exact request/call lines after removal of method indentation",
+        "sha256": "3476c55d638415e96ef835e9e249460c5b0b2df658f4b41743a4f53ffa70c1a0"
+      }
+    ],
+    "unchanged_prior_fenced_blocks": 6,
+    "documentation_sha256": "fd1ec9a566c4dab091fc849bec88e59580c8cccf3481b70c41874145f7c312b7",
+    "whitespace": "git diff --check passed"
+  },
+  "limits": [
+    "No new executable test, build, provider, NativeAOT or coverage run; those gates NOT RUN in this prose-only task.",
+    "Excerpts reused from the previously compiled Graph/AotSmoke consumer; the Markdown is not a newly compiled application.",
+    "Existing tutorial blocks and package version commands are unchanged; no release or version availability claim.",
+    "Runnable application demonstration remains separate DEV work.",
+    "Source/test/other documentation/spec/ADR remain readonly; no ORML-110 or other unmerged producer output consumed.",
+    "Root audit/raw coverage/full matrix/reviews/snapshot approval/security applicability/decomposition/integration obligations are not closed by this guide; no whole GO_TO_MARKET/item/QA PASS.",
+    "No subscription SaaS GUIDED pathway, launch, telemetry integration, new task, release or PR metadata action."
+  ]
+}

@@ -32,6 +32,12 @@ if (!CalculatedProbe.Run())
     return 1;
 }
 
+if (!await GraphProbe.RunAsync())
+{
+    Console.Error.WriteLine("generated graph smoke failed");
+    return 1;
+}
+
 // The runtime this binary was compiled for; the CI leg compares it with the .NET version it was started for.
 Console.WriteLine("aot runtime: " + Environment.Version);
 Console.WriteLine("aot smoke ok");

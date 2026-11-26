@@ -38,7 +38,8 @@ to add, and there is no default provider.
 
 ## How to read the demo
 
-The demo prints chapters 1 to 18, with the foreign-key chapter 16a between 16 and 17, and then `demo ok`.
+The demo prints chapters 1 to 18, with the graph and foreign-key chapters (both labelled 16a) between 16 and 17,
+and then `demo ok`.
 Each number is a chapter. Source comments explain the library features and steps that are not obvious.
 This section gives a reading order for someone who has not seen the library.
 
@@ -51,9 +52,11 @@ This section gives a reading order for someone who has not seen the library.
 5. **`Tracker/Migrations.cs`**: how the schema changed, version by version, and why the versions run in that order.
 6. **`Tracker/Chapters.cs`**: chapters 8 to 16, each with a heading comment (purpose, what to notice, what it prints,
    what differs between SQLite and PostgreSQL). **`Tracker/Views.cs`** goes with chapter 14.
-7. **[ForeignKeys/ForeignKeyChapter.cs](ForeignKeys/ForeignKeyChapter.cs)**: chapter 16a uses an opted-in foreign key;
+7. **[Graph/GraphChapter.cs](Graph/GraphChapter.cs)**: chapter 16a loads an explicit graph; its three models and
+   [fixture](Graph/GraphFixture.cs) show the declarations, seed data and cleanup.
+8. **[ForeignKeys/ForeignKeyChapter.cs](ForeignKeys/ForeignKeyChapter.cs)**: chapter 16a uses an opted-in foreign key;
    its [parent](ForeignKeys/ForeignKeyParent.cs) and [child](ForeignKeys/ForeignKeyChild.cs) show the declarations.
-8. **`Ledger.cs`** (chapter 17: exact decimals and a transfer in a unit of work) and **`SlowQueryReport.cs`** (chapter 18:
+9. **`Ledger.cs`** (chapter 17: exact decimals and a transfer in a unit of work) and **`SlowQueryReport.cs`** (chapter 18:
    seeing the SQL the library ran). **`ScratchDatabase.cs`** is housekeeping: it makes and removes the temporary
    SQLite file.
 
@@ -101,6 +104,9 @@ and the compose file makes a new database each time you bring it up.
   cascading foreign keys.
 - **Chapter 16** (`Tracker/Chapters.cs`): `GROUP BY`, `HAVING` and ordering by an aggregate, with typed results,
   including over a filter that is two nested subqueries.
+- **Chapter 16a** ([Graph/GraphChapter.cs](Graph/GraphChapter.cs)): requested Books, Tags and nested Editor for two
+  paged authors, with exact membership, shared identity and an explicit row-budget refusal. See
+  [Requested graphs](#requested-graphs-chapter-16a) below.
 - **Chapter 16a** ([ForeignKeys/ForeignKeyChapter.cs](ForeignKeys/ForeignKeyChapter.cs)): a named generated FK,
   nullable updates, orphan insert/update refusal and physical parent deletion with `SetNull`. See
   [Generated foreign keys](#generated-foreign-keys-chapter-16a) below.
@@ -190,6 +196,7 @@ comments.
 | 14 | views: a `[View]` entity defined by a typed query, created by a migration, read like a table, replaced and dropped (`Tracker/Views.cs`) |
 | 15 | `ON DELETE CASCADE` through three foreign keys |
 | 16 | a report in database-side groups: per status with `HAVING` and ordering by the sum, per project, and per status for the teams of a region through two nested subqueries |
+| 16a | a finite typed graph over two paged authors: Books, Tags and Books → Editor, plus overflow without a partial returned list ([Graph/GraphChapter.cs](Graph/GraphChapter.cs)) |
 | 16a | a fresh generated FK: exact catalog name/endpoints/action, nullable writes, orphan refusal and physical `SetNull` ([ForeignKeys/ForeignKeyChapter.cs](ForeignKeys/ForeignKeyChapter.cs)) |
 | 17 | a ledger of decimal accounts: a transfer in one unit of work, an overdraft refused (`Ledger.cs`) |
 | 18 | the diagnostics sink (`SlowQueryReport.cs`) prints how many statements reached it and the slowest three |
@@ -205,6 +212,68 @@ The tracker chapters (8 to 16) and the migration history behind them are in `Tra
 versions and `Chapters.cs` the chapters. The library does not do materialized views or a type change yet.
 `WelcomeNote` inserts its row as an object with `InsertData<T>(NoteOrm.Descriptor, NoteOrm.Values, note)`; the tracker
 seed does the same.
+
+## Requested graphs (chapter 16a)
+
+### Run this chapter with JIT or NativeAOT
+
+Use the same project and [GraphChapter](Graph/GraphChapter.cs) checks directly after packing the current packages
+as shown in [Run it](#run-it):
+
+```sh
+dotnet run --project demo/OrmLiteDemo.csproj -c Release -- graph sqlite
+export ORMLITE_GRAPH_POSTGRES='Host=localhost;Username=postgres;Database=postgres'
+dotnet run --project demo/OrmLiteDemo.csproj -c Release -- graph postgres
+```
+
+The graph route creates and removes its own scratch SQLite folder or uniquely named `graph_chapter_*` PostgreSQL
+database. Use only a disposable PostgreSQL server where the account may create and drop databases. Credentials are
+never printed. The default invocation without `graph` runs the full numbered demo.
+
+With the NativeAOT prerequisites installed, publish the same project for the machine that will run the binary:
+
+```sh
+dotnet publish demo/OrmLiteDemo.csproj -c Release -r linux-arm64 -p:PublishAot=true -o artifacts/graph-native
+artifacts/graph-native/OrmLiteDemo graph sqlite
+artifacts/graph-native/OrmLiteDemo graph postgres
+```
+
+For .NET 11 use its SDK and `-p:DemoTfm=net11.0`, with a separate output directory. The chapter prints the actual
+runtime, its existing membership/page/identity/overflow checks and `graph chapter ok; scratch removed` on success.
+JIT and native executions use the same chapter, models and assertions described below.
+
+[GraphAuthor](Graph/GraphAuthor.cs), [GraphBook](Graph/GraphBook.cs) and [GraphTag](Graph/GraphTag.cs) declare
+collection, reference and many-to-many navigations. The [fixture](Graph/GraphFixture.cs) seeds four authors,
+three books and two tags, then removes its rows and links when the chapter finishes.
+
+[GraphChapter](Graph/GraphChapter.cs) compares an ordinary `ToListAsync()` with
+`Page(db).ToGraphListAsync(Request(20))`. Both use the same `Where`, `OrderBy`, `Skip(1)` and `Take(2)`:
+the page contains Alba and Bruno, and related rows do not multiply or consume its two roots.
+The generated paths are `GraphAuthorOrm.Paths.Books`, `GraphAuthorOrm.Paths.Tags` and
+`GraphAuthorOrm.Paths.Books.Then(GraphBookOrm.Paths.Editor)`.
+
+The chapter checks each author's exact books and tags. Bruno is the same object as the requested Editor references,
+and both authors share one tag instance. A nullable Editor stays null; the unrequested `GraphBook.Author` stays untouched.
+The ordinary query leaves both navigation collections empty.
+
+Every request supplies `GraphLimits(GraphTraversalLimits, GraphWorkLimits)` with six positive bounds:
+
+| Group | Bound | Value in this fixture |
+| --- | --- | --- |
+| Traversal | `MaxDepth` | 2 |
+| Traversal | `MaxPaths` | 3 |
+| Traversal | `MaxNodes` | 3 |
+| Work | `MaxRoots` | 2 |
+| Work | `MaxRelatedRows` | 20 |
+| Work | `MaxStatements` | 8 |
+
+Choose all six for your application's fan-out and work. A second call uses `Request(1)` to lower only the
+related-row bound. It catches `GraphLimitExceededException` for `GraphBudget.RelatedRows` and verifies that no list
+was returned. A completed graph is returned only after every requested path succeeds.
+
+Graph reads use sequential statements and add no implicit transaction, snapshot guarantee or automatic retry.
+With `On(unitOfWork)` or `On(connection, transaction)`, the caller retains commit, rollback and disposal ownership.
+See the [graph guide](../docs/relations.md#5-load-an-explicit-graph) for bound accounting, visibility and failure types.
 
 ## Generated foreign keys (chapter 16a)
 
