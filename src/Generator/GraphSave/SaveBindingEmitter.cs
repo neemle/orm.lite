@@ -18,7 +18,8 @@ internal static class SaveBindingEmitter
         && !soft.TenantDeclared && soft.LabelName is null && soft.OwnerColumns.IsEmpty
         && soft.PinnedColumns.IsEmpty && soft.StatusColumns.IsEmpty && soft.UnversionedColumns.IsEmpty;
 
-    internal static IEnumerable<string> Members(Entity e, ImmutableArray<Entity> entities)
+    internal static IEnumerable<string> Members(Entity e, ImmutableArray<Entity> entities,
+        IEnumerable<string> reservedNames)
     {
         var relations = SaveNavigationEmitter.All(e, entities).ToArray();
         var key = OrmGenerator.FirstKey(e)!;
@@ -28,10 +29,7 @@ internal static class SaveBindingEmitter
             + string.Join(", ", relations.Select(r => r.Binding)) + " })";
         yield return "internal static void RegisterSave() { " + Runtime
             + "GraphSaveModel.Register(" + binding + "); }";
-        var tokens = relations.Select(r => "public static " + Runtime + "SaveRelation<" + e.Full + ", " + r.Target
-            + "> @" + r.Name + " => " + Runtime + "SaveRelations.Edge<" + e.Full + ", " + r.Target + ">(" + Text(r.Name)
-            + ");");
-        yield return "public static class SaveRelations { " + string.Join(" ", tokens) + " }";
+        foreach (var member in SaveTokenEmitter.Members(e, relations, reservedNames)) yield return member;
     }
 
     internal static string Text(string value) => SymbolDisplay.FormatLiteral(value, true);

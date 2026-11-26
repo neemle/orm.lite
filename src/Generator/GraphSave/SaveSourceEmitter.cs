@@ -17,7 +17,9 @@ internal static class SaveSourceEmitter
         var types = root.DescendantNodes().OfType<ClassDeclarationSyntax>()
             .Where(c => supported.Any(e => c.Identifier.ValueText == e.Type + "Orm")).ToArray();
         root = root.ReplaceNodes(types, (type, _) => type.AddMembers(SaveBindingEmitter.Members(
-            supported.Single(e => type.Identifier.ValueText == e.Type + "Orm"), entities).Select(Parse).ToArray()));
+            supported.Single(e => type.Identifier.ValueText == e.Type + "Orm"), entities,
+            type.DescendantTokens().Where(t => t.IsKind(SyntaxKind.IdentifierToken))
+                .Select(t => t.ValueText)).Select(Parse).ToArray()));
         return Initialize(root, supported).ToFullString();
     }
 
