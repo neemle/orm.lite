@@ -1,0 +1,19 @@
+{
+  "authorization": "6ae90e39-b462-4dab-a5cc-9337dae0dea5",
+  "hostHead": "1bf0d5787c19ca5388dabcfc27c2c555787d8a9c",
+  "containerGitHead": "fffc5b9fa19bf250d76d21d71a86b6607ea6b81f",
+  "hostSourceTrees": {
+    "src": "7d481f0250ab9351deb479de519049e2b7213a41",
+    "src/Runtime": "3971e838e7d7e990b9e8d7303aaf9ca9f2410726",
+    "demo": "59b7ef29f66da9ce268774f5d976e7b69448a859",
+    "tests": "38148cb2901afa390b036d5207fd65db4504a8eb"
+  },
+  "frozenSourceTrees": {
+    "src": "7d481f0250ab9351deb479de519049e2b7213a41",
+    "src/Runtime": "3971e838e7d7e990b9e8d7303aaf9ca9f2410726",
+    "demo": "59b7ef29f66da9ce268774f5d976e7b69448a859"
+  },
+  "overlaySource": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/public-matrix/recovery-1/frozen-public-head",
+  "overlayTarget": "/Users/para/work/tskr/libs/orm.lite/.git/worktrees/orml-112-graph-save/HEAD",
+  "scope": "READONLY Docker GitHEAD overlay for existing same-source package version; no host SCM/source/tag/index writes"
+}
