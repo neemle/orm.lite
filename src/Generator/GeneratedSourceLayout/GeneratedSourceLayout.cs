@@ -15,9 +15,8 @@ internal static class GeneratedSourceLayout
         var ns = root.Members.OfType<FileScopedNamespaceDeclarationSyntax>().Single();
         foreach (var type in ns.Members.OfType<TypeDeclarationSyntax>())
         {
-            var declaration = GeneratedInitializer.Split(type);
             var unit = root.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(
-                ns.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(declaration))));
+                ns.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(type))));
             yield return ($"OrmLite.Entities.{type.Identifier.ValueText}.g.cs", Wrap(unit.ToFullString()));
         }
     }
