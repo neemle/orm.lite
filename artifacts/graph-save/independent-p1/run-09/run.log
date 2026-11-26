@@ -1,0 +1,20 @@
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Tests -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:01.46]     [UC-006][AC-112-02][SEC] an ordinary legal navigation name cannot make existing CRUD consumers uncompilable [FAIL]
+  Failed [UC-006][AC-112-02][SEC] an ordinary legal navigation name cannot make existing CRUD consumers uncompilable [1 s]
+  Error Message:
+   Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs(172,9): error CS0542: 'SaveRelations': member names cannot be the same as their enclosing type
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveIdentifierCompatibilityTests.Existing_crud_consumer_with_save_relations_navigation_still_compiles() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveIdentifierCompatibilityTests.cs:line 21
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-09/results/identifier-compatibility.trx
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 1 s - Neemle.OrmLite.Tests.dll (net10.0)

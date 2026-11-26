@@ -1,0 +1,104 @@
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Tests -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.36]     [UC-006][SEC-112-01/02] projected references tagged before save registration cannot be laundered by later registration [FAIL]
+[xUnit.net 00:00:00.38]     [UC-006][SEC-112-01/02] complete public reads remain explicit full-value inputs and stream masking is frozen at capture(frozenStream: True) [FAIL]
+[xUnit.net 00:00:00.39]     [UC-006][SEC-112-01/02] complete public reads remain explicit full-value inputs and stream masking is frozen at capture(frozenStream: False) [FAIL]
+[xUnit.net 00:00:00.40]     [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "buffered-mask") [FAIL]
+[xUnit.net 00:00:00.40]     [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "stream-projection") [FAIL]
+[xUnit.net 00:00:00.41]     [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "projection") [FAIL]
+[xUnit.net 00:00:00.42]     [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "project") [FAIL]
+[xUnit.net 00:00:00.43]     [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "stream-project") [FAIL]
+[xUnit.net 00:00:00.44]     [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "stream-mask") [FAIL]
+  Failed [UC-006][SEC-112-01/02] projected references tagged before save registration cannot be laundered by later registration [47 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveLateProjectionTests.Projection_before_registration_is_still_partial_after_registration() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveLateProjectionTests.cs:line 17
+   at Neemle.OrmLite.Tests.GraphSave.SaveLateProjectionTests.Projection_before_registration_is_still_partial_after_registration() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveLateProjectionTests.cs:line 30
+--- End of stack trace from previous location ---
+  Failed [UC-006][SEC-112-01/02] complete public reads remain explicit full-value inputs and stream masking is frozen at capture(frozenStream: True) [15 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerAssertions.StreamOne(IAsyncEnumerable`1 stream) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerAssertions.cs:line 22
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Full_read_and_pre_mask_stream_snapshot_can_be_saved(Boolean frozenStream) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 47
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Full_read_and_pre_mask_stream_snapshot_can_be_saved(Boolean frozenStream) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 56
+--- End of stack trace from previous location ---
+  Failed [UC-006][SEC-112-01/02] complete public reads remain explicit full-value inputs and stream masking is frozen at capture(frozenStream: False) [9 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Full_read_and_pre_mask_stream_snapshot_can_be_saved(Boolean frozenStream) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 49
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Full_read_and_pre_mask_stream_snapshot_can_be_saved(Boolean frozenStream) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 56
+--- End of stack trace from previous location ---
+  Failed [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "buffered-mask") [9 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 19
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 32
+--- End of stack trace from previous location ---
+  Failed [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "stream-projection") [8 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerAssertions.StreamOne(IAsyncEnumerable`1 stream) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerAssertions.cs:line 22
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 27
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 32
+--- End of stack trace from previous location ---
+  Failed [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "projection") [8 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 22
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 32
+--- End of stack trace from previous location ---
+  Failed [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "project") [7 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 20
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 32
+--- End of stack trace from previous location ---
+  Failed [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "stream-project") [7 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerAssertions.StreamOne(IAsyncEnumerable`1 stream) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerAssertions.cs:line 22
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 25
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 32
+--- End of stack trace from previous location ---
+  Failed [UC-006][SEC-112-01/02] real public buffered and streamed partial outputs refuse a save before any write or transaction(mode: "stream-mask") [8 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerAssertions.StreamOne(IAsyncEnumerable`1 stream) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerAssertions.cs:line 22
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 24
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Public_partial_paths_cannot_be_saved(String mode) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 32
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:00.46]     [UC-006][SEC-112-01/02] real read-graph root and related canonical masked objects retain partial provenance(related: False) [FAIL]
+[xUnit.net 00:00:00.47]     [UC-006][SEC-112-01/02] real read-graph root and related canonical masked objects retain partial provenance(related: True) [FAIL]
+  Failed [UC-006][SEC-112-01/02] real read-graph root and related canonical masked objects retain partial provenance(related: False) [19 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Graph_root_and_related_materializers_are_fenced(Boolean related) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 70
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Graph_root_and_related_materializers_are_fenced(Boolean related) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 75
+--- End of stack trace from previous location ---
+  Failed [UC-006][SEC-112-01/02] real read-graph root and related canonical masked objects retain partial provenance(related: True) [9 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Graph_root_and_related_materializers_are_fenced(Boolean related) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 70
+   at Neemle.OrmLite.Tests.GraphSave.SaveMaterializerTests.Graph_root_and_related_materializers_are_fenced(Boolean related) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/SaveMaterializerTests.cs:line 75
+--- End of stack trace from previous location ---
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-07/results/materializers.trx
+
+Failed!  - Failed:    11, Passed:     1, Skipped:     0, Total:    12, Duration: 167 ms - Neemle.OrmLite.Tests.dll (net10.0)
