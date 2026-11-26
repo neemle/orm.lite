@@ -1,6 +1,6 @@
 # A throwaway PostgreSQL for the PostgreSQL half of the test suite. The CI test job starts exactly this file with
 # `docker compose up --wait` and sets ORMLITE_TEST_POSTGRES for the test step; locally it is the same. Without a
-# server a plain `dotnet test` stays green and skips every PostgreSQL test. See README.md ("Build, test, pack, demo").
+# server a plain `dotnet test` stays green and skips every PostgreSQL test. See docs/development.md.
 #
 #   docker compose -f tests/compose.yaml up -d --wait     # start it and wait until it accepts connections
 #   ORMLITE_TEST_POSTGRES='Host=127.0.0.1;Port=55433;Username=postgres' dotnet test Neemle.OrmLite.slnx -c Release \

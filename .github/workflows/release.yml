@@ -1,0 +1,171 @@
+name: Publish release
+
+on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing SemVer tag with a successful CI run
+        required: true
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: nuget-release-${{ inputs.tag || github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  pack:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.conclusion == 'success'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+      version: ${{ steps.tag.outputs.version }}
+    steps:
+      - name: Identify the release tag
+        id: tag
+        shell: bash
+        env:
+          TAG: ${{ inputs.tag || github.event.workflow_run.head_branch }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          number='(0|[1-9][0-9]*)'
+          identifier="($number|[0-9]*[a-zA-Z-][a-zA-Z0-9-]*)"
+          semver="^v?$number\.$number\.$number(-$identifier(\.$identifier)*)?$"
+          if [[ "$TAG" =~ $semver ]]; then
+            printf 'tag=%s\nversion=%s\n' "$TAG" "${TAG#v}" >> "$GITHUB_OUTPUT"
+          elif [[ "$EVENT" == workflow_dispatch ]]; then
+            echo "::error::Enter a supported SemVer tag, such as v0.1.0."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v7
+        if: steps.tag.outputs.tag != ''
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Require successful CI for the tagged commit on main
+        if: steps.tag.outputs.tag != ''
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+          TRIGGER_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          sha=$(git rev-parse --verify "refs/tags/$TAG^{commit}")
+          git merge-base --is-ancestor "$sha" HEAD
+          if [[ -n "$TRIGGER_SHA" && "$sha" != "$TRIGGER_SHA" ]]; then
+            echo "::error::The release tag no longer points to the commit tested by CI."
+            exit 1
+          fi
+          run_id=$(gh api --method GET "repos/$GITHUB_REPOSITORY/actions/workflows/ci.yml/runs" \
+            -f branch="$TAG" -f head_sha="$sha" -f event=push -f status=success \
+            --jq '.workflow_runs[0].id // empty')
+          if [[ -z "$run_id" ]]; then
+            echo "::error::No successful push CI run for $TAG at $sha."
+            exit 1
+          fi
+          echo "Verified CI run $run_id for $TAG at $sha."
+          git switch --detach "$sha"
+
+      - uses: actions/setup-dotnet@v6
+        if: steps.tag.outputs.tag != ''
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Pack and verify release packages
+        if: steps.tag.outputs.tag != ''
+        shell: bash
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+          VERSION: ${{ steps.tag.outputs.version }}
+        run: |
+          dotnet pack Neemle.OrmLite.slnx -c Release -m:1 -o release-packages \
+            -p:OrmLiteRequireReleaseTag=true -p:OrmLiteExpectedTag="$TAG"
+          for package in Neemle.OrmLite Neemle.OrmLite.Sqlite Neemle.OrmLite.Postgres; do
+            test -f "release-packages/$package.$VERSION.nupkg"
+          done
+          dotnet run scripts/PackCheck.cs -- package release-packages
+
+      - uses: actions/upload-artifact@v7
+        if: steps.tag.outputs.tag != ''
+        with:
+          name: nuget-release
+          path: release-packages/*.nupkg
+          if-no-files-found: error
+          retention-days: 7
+          overwrite: true
+
+  nuget:
+    needs: pack
+    if: needs.pack.outputs.tag != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: nuget-release
+          path: release-packages
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+      - name: Require the NuGet profile name
+        env:
+          NUGET_USER: ${{ vars.NUGET_USER }}
+        run: |
+          if [[ -z "$NUGET_USER" ]]; then
+            echo "::error::Set the repository variable NUGET_USER to the NuGet.org profile name that created the Trusted Publishing policy."
+            exit 1
+          fi
+      - name: Get a short-lived NuGet API key
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ vars.NUGET_USER }}
+      - name: Publish packages to nuget.org
+        shell: bash
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+          VERSION: ${{ needs.pack.outputs.version }}
+        run: |
+          for package in Neemle.OrmLite Neemle.OrmLite.Sqlite Neemle.OrmLite.Postgres; do
+            dotnet nuget push "release-packages/$package.$VERSION.nupkg" \
+              --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          done
+
+  github-release:
+    needs: [pack, nuget]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Publish the GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.pack.outputs.tag }}
+          VERSION: ${{ needs.pack.outputs.version }}
+        run: |
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            exit 0
+          fi
+          args=(--verify-tag --generate-notes --title "ORM.lite $VERSION")
+          if [[ "$VERSION" == *-* ]]; then
+            args+=(--prerelease)
+          fi
+          gh release create "$TAG" --repo "$GITHUB_REPOSITORY" "${args[@]}"

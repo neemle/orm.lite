@@ -1,5 +1,7 @@
 <Project>
 
+  <Import Project="$(MSBuildThisFileDirectory)../Directory.Build.targets" />
+
   <Target Name="FreshenOrmLitePackages" BeforeTargets="Restore">
     <ItemGroup>
       <_PackedPackage Include="$(MSBuildThisFileDirectory)../artifacts/Neemle.OrmLite*.nupkg" />

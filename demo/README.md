@@ -76,11 +76,11 @@ and the compose file makes a new database each time you bring it up.
 ### What each chapter proves
 
 - **Chapter 1** (`Program.cs`): one call opens the provider named in the settings and creates or upgrades the schema.
-  See the root README, "Migrations".
+  See [Migrations](../docs/migrations.md).
 - **Chapter 2** (`Note.cs`, `Program.cs`): an explicit migration runs between the generated ones, and inserts an object,
   not SQL.
 - **Chapter 3, 4** (`Program.cs`): generated insert, update, get and delete, and a lambda query run by the database. See
-  the root README quickstart.
+  the [SQLite quickstart](../docs/quickstart.md).
 - **Chapter 5 to 7** (`Trash.cs`): a deleted row is kept and hidden, restore brings it back, and the history says who
   changed it. See "Soft delete, restore and history" below.
 - **Chapter 8** (`Tracker/Migrations.cs`, `Tracker/Chapters.cs`): a schema changed by hand-written migrations on tables
@@ -114,7 +114,7 @@ and the compose file makes a new database each time you bring it up.
 - **Node tree**: how the library holds a statement before a provider writes it as SQL. Nothing in the demo is SQL text.
 - **Capability**: whether a provider does something natively (`Native`), with the same meaning by other means
   (`Emulated`) or not at all (`None`, which is refused by name). The comments name the capability where a chapter
-  differs between SQLite and PostgreSQL; the root README has the table.
+  differs between SQLite and PostgreSQL; see the [provider capability table](../docs/providers.md).
 - **Unit of work** (`UnitOfWork`): one connection and one transaction; `CommitAsync()` keeps it, leaving without it
   undoes it.
 
@@ -131,8 +131,7 @@ and the compose file makes a new database each time you bring it up.
 
 There is no `Path`, so on SQLite `ScratchDatabase.cs` makes a temporary file. The other settings the block accepts are
 `ConnectionString`, `Host`, `Port`, `Database`, `Username`, `Password`, `Path`, `Pooling` and `BusyTimeoutSeconds`; the
-`Diagnostics` block takes further settings (the root README, "Logging every statement, or only the slow ones", names
-the main ones). The sink itself is code, not a setting, which is why `Program.cs` assigns `options.Diagnostics.Sink`
+`Diagnostics` block takes further settings (see [SQL diagnostics](../docs/diagnostics.md)). The sink itself is code, not a setting, which is why `Program.cs` assigns `options.Diagnostics.Sink`
 before opening the database: asking for reports with no sink is a start-up error. `compose.yaml` carries its own
 comments.
 
@@ -141,9 +140,9 @@ comments.
 1. Add the packages. A provider package brings the core with it; this demo references both providers so the block
    above can name either.
 
-       dotnet add package Neemle.OrmLite.Sqlite --prerelease
+       dotnet add package Neemle.OrmLite.Sqlite --version 0.1.0
 
-   The packages are not on a public feed yet: `dotnet pack` builds them into `artifacts/`.
+   The command installs the public release. This repository’s demo uses packages packed into `artifacts/`.
 
 2. Describe the table by decorating a class (`Note.cs`).
 
@@ -206,8 +205,7 @@ seed does the same.
 `Draft` (`Trash.cs`) is a `[SoftDelete]` entity: deleting it moves the row to the trash, `IncludingDeleted()` still
 sees it, `RestoreAsync` brings it back, and with `using (DbActor.EnterUser(userId))` around the work every update,
 soft delete and restore is recorded in `row_history` with that user. `[SoftDelete]` needs the `RowHistoryTriggers`
-capability, which PostgreSQL has natively and SQLite emulates (see the capability table and "Row history on SQLite" in
-the root README), so the chapter runs on either provider and prints the same lines. On SQLite the history is captured by
+capability, which PostgreSQL has natively and SQLite emulates (see [Row history on SQLite](../docs/row-history.md#row-history-on-sqlite)), so the chapter runs on either provider and prints the same lines. On SQLite the history is captured by
 triggers that call functions the library registers on its own connections; a tool that updates the database file
 through another connection cannot update the `drafts` table.
 
