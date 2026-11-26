@@ -1,0 +1,14 @@
+runtime 10.0.15
+Unhandled exception. PolicySmoke.CleanupSentinelException: dispose
+   at PolicySmoke.CleanupFaultConnection.DisposeAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/CleanupFaultConnection.cs:line 39
+   at Neemle.OrmLite.LoadingScope.CloseCoreAsync(RelationScopeError error) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/RelationLoading/LoadingScope.cs:line 107
+   at Neemle.OrmLite.PolicyReader`1.ReadAsync(GraphQueryState`1 state, RelationReadOptions options, CancellationToken ct) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/RelationLoading/PolicyReader.cs:line 32
+   at Neemle.OrmLite.Query`1.ToListAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Query.cs:line 262
+   at PolicySmoke.Check.ThrowsAsync[T](Func`1 operation) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/Check.cs:line 16
+   at PolicySmoke.CleanupCases.MapperPrimaryAsync(Fixture f) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/CleanupCases.cs:line 26
+   at PolicySmoke.CleanupCases.MapperPrimaryAsync(Fixture f) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/CleanupCases.cs:line 31
+   at PolicySmoke.CleanupCases.MapperPrimaryAsync(Fixture f) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/CleanupCases.cs:line 31
+   at PolicySmoke.CleanupCases.VerifyAsync(Fixture f) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/CleanupCases.cs:line 15
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/Program.cs:line 11
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/Program.cs:line 43
+   at Program.<Main>(String[] args)
