@@ -1,0 +1,539 @@
+{
+  "convention": "McCabe: 1 \u002B if/loops/catch/nondefault cases/conditional expressions and each \u0026\u0026, ||, ?? operand boundary; lambda points belong to containing method",
+  "records": [
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "EntityEmitter",
+          "line": 21,
+          "end": 118,
+          "codeLines": 87
+        }
+      ],
+      "methods": [
+        {
+          "name": "EmitEntities",
+          "start": 31,
+          "end": 41,
+          "codeLines": 11,
+          "parameters": 4,
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "NewFile",
+          "start": 43,
+          "end": 44,
+          "codeLines": 2,
+          "parameters": 0,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Access",
+          "start": 46,
+          "end": 47,
+          "codeLines": 2,
+          "parameters": 2,
+          "nesting": null,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 47
+            }
+          ]
+        },
+        {
+          "name": "EntitiesSource",
+          "start": 49,
+          "end": 66,
+          "codeLines": 18,
+          "parameters": 4,
+          "nesting": {
+            "line": 59,
+            "depth": 1
+          },
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 58
+            },
+            {
+              "kind": "IfStatement",
+              "line": 61
+            }
+          ]
+        },
+        {
+          "name": "ExcludedPairs",
+          "start": 68,
+          "end": 76,
+          "codeLines": 9,
+          "parameters": 1,
+          "nesting": {
+            "line": 69,
+            "depth": 0
+          },
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 71
+            },
+            {
+              "kind": "IfStatement",
+              "line": 72
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 73
+            }
+          ]
+        },
+        {
+          "name": "PurgeClass",
+          "start": 78,
+          "end": 96,
+          "codeLines": 19,
+          "parameters": 2,
+          "nesting": {
+            "line": 79,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "SchemaClass",
+          "start": 98,
+          "end": 103,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InitializerClass",
+          "start": 105,
+          "end": 117,
+          "codeLines": 13,
+          "parameters": 2,
+          "nesting": {
+            "line": 106,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/MigrationGenerator.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "MigrationGenerator",
+          "line": 13,
+          "end": 176,
+          "codeLines": 144
+        }
+      ],
+      "methods": [
+        {
+          "name": "Initialize",
+          "start": 16,
+          "end": 44,
+          "codeLines": 27,
+          "parameters": 1,
+          "nesting": {
+            "line": 23,
+            "depth": 1
+          },
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 25
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 26
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 29
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 30
+            }
+          ]
+        },
+        {
+          "name": "Emit",
+          "start": 46,
+          "end": 67,
+          "codeLines": 18,
+          "parameters": 3,
+          "nesting": {
+            "line": 47,
+            "depth": 0
+          },
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 48
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 52
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 52
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 55
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 60
+            }
+          ]
+        },
+        {
+          "name": "MigrationsSource",
+          "start": 77,
+          "end": 88,
+          "codeLines": 12,
+          "parameters": 2,
+          "nesting": {
+            "line": 78,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "RegistrationSource",
+          "start": 90,
+          "end": 101,
+          "codeLines": 12,
+          "parameters": 1,
+          "nesting": {
+            "line": 91,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "ReportAudit",
+          "start": 111,
+          "end": 128,
+          "codeLines": 18,
+          "parameters": 2,
+          "nesting": {
+            "line": 112,
+            "depth": 0
+          },
+          "complexity": 9,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 114
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 115
+            },
+            {
+              "kind": "IfStatement",
+              "line": 116
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 116
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 116
+            },
+            {
+              "kind": "IfStatement",
+              "line": 123
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 123
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 123
+            }
+          ]
+        },
+        {
+          "name": "OverridesDown",
+          "start": 152,
+          "end": 160,
+          "codeLines": 9,
+          "parameters": 1,
+          "nesting": {
+            "line": 153,
+            "depth": 0
+          },
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "ForStatement",
+              "line": 154
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 154
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 155
+            },
+            {
+              "kind": "IfStatement",
+              "line": 156
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 156
+            }
+          ]
+        },
+        {
+          "name": "ReadReversibility",
+          "start": 162,
+          "end": 171,
+          "codeLines": 10,
+          "parameters": 1,
+          "nesting": {
+            "line": 163,
+            "depth": 0
+          },
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 164
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 167
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 168
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 169
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/GeneratedSourceLayout/GeneratedInitializer.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "GeneratedInitializer",
+          "line": 9,
+          "end": 38,
+          "codeLines": 28
+        }
+      ],
+      "methods": [
+        {
+          "name": "Split",
+          "start": 13,
+          "end": 30,
+          "codeLines": 18,
+          "parameters": 1,
+          "nesting": {
+            "line": 24,
+            "depth": 1
+          },
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 16
+            },
+            {
+              "kind": "IfStatement",
+              "line": 17
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 17
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "name": "Format",
+          "start": 32,
+          "end": 37,
+          "codeLines": 6,
+          "parameters": 1,
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/GeneratedSourceLayout/GeneratedLineWrap.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "GeneratedLineWrap",
+          "line": 12,
+          "end": 57,
+          "codeLines": 43
+        }
+      ],
+      "methods": [
+        {
+          "name": "Wrap",
+          "start": 16,
+          "end": 33,
+          "codeLines": 18,
+          "parameters": 1,
+          "nesting": {
+            "line": 25,
+            "depth": 1
+          },
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 24
+            },
+            {
+              "kind": "IfStatement",
+              "line": 27
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 27
+            }
+          ]
+        },
+        {
+          "name": "AppendLine",
+          "start": 35,
+          "end": 49,
+          "codeLines": 15,
+          "parameters": 3,
+          "nesting": {
+            "line": 41,
+            "depth": 1
+          },
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "WhileStatement",
+              "line": 40
+            },
+            {
+              "kind": "IfStatement",
+              "line": 43
+            }
+          ]
+        },
+        {
+          "name": "Cut",
+          "start": 51,
+          "end": 56,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 52,
+            "depth": 0
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 55
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/GeneratedSourceLayout/GeneratedSourceLayout.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "GeneratedSourceLayout",
+          "line": 10,
+          "end": 26,
+          "codeLines": 16
+        }
+      ],
+      "methods": [
+        {
+          "name": "Entities",
+          "start": 12,
+          "end": 23,
+          "codeLines": 12,
+          "parameters": 1,
+          "nesting": {
+            "line": 17,
+            "depth": 1
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 16
+            }
+          ]
+        },
+        {
+          "name": "Wrap",
+          "start": 25,
+          "end": 25,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    }
+  ]
+}

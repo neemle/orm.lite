@@ -1,0 +1,11 @@
+{
+  "captureOnly": true,
+  "oraclePass": false,
+  "changedExactly": [
+    "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+    "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+    "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden"
+  ],
+  "otherExpectedBytesAndEntrySetsUnchanged": true,
+  "corpusIndexUnchanged": true
+}

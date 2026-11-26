@@ -1,0 +1,111 @@
+2026-11-26T10:08:02.7228617Z [xUnit.net 00:00:04.40]     the parameter types over every public constructor and method are exactly the frozen allowlist(type: typeof(Neemle.OrmLite.Query<>)) [FAIL]
+2026-11-26T10:08:02.7253850Z [xUnit.net 00:00:04.40]       Assert.Equal() Failure: Collections differ
+2026-11-26T10:08:02.7254810Z [xUnit.net 00:00:04.40]                                                              ↓ (pos 2)
+2026-11-26T10:08:02.7255648Z [xUnit.net 00:00:04.40]       Expected: ["Action<ViewColumns<T, TView>>", "Boolean", "DbCommand", "DbConnection", "DbTransaction", ···]
+2026-11-26T10:08:02.7256579Z [xUnit.net 00:00:04.40]       Actual:   ["Action<ViewColumns<T, TView>>", "Boolean", "CancellationToken", "DbCommand", "DbConnection", ···]
+2026-11-26T10:08:02.7257305Z [xUnit.net 00:00:04.40]                                                              ↑ (pos 2)
+2026-11-26T10:08:02.7257723Z [xUnit.net 00:00:04.40]       Stack Trace:
+2026-11-26T10:08:02.7258668Z [xUnit.net 00:00:04.40]         /_/tests/Tests/QueryIdentifierSurfaceTests.cs(109,0): at Neemle.OrmLite.Tests.QueryIdentifierSurfaceTests.The_parameter_types_are_the_frozen_allowlist(Type type)
+2026-11-26T10:08:02.7259810Z [xUnit.net 00:00:04.40]            at InvokeStub_QueryIdentifierSurfaceTests.The_parameter_types_are_the_frozen_allowlist(Object, Span`1)
+2026-11-26T10:08:02.7260999Z [xUnit.net 00:00:04.40]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+2026-11-26T10:08:02.7262177Z   Passed Neemle.OrmLite.Tests.JsonbMappingTests.An_unmapped_property_is_NOT_emitted_as_a_text_column_which_is_the_fallback_being_closed [29 ms]
+2026-11-26T10:08:02.7263409Z   Passed Neemle.OrmLite.Tests.JsonbMappingTests.A_Jsonb_property_emits_a_jsonb_column_and_not_a_text_one [33 ms]
+2026-11-26T10:08:40.3237055Z [xUnit.net 00:00:42.00]     the emitted entity and migration text carries no comment line beyond the auto-generated header and no tracker cite [FAIL]
+2026-11-26T10:08:40.3237859Z [xUnit.net 00:00:42.00]       Assert.Equal() Failure: Values differ
+2026-11-26T10:08:40.3238205Z [xUnit.net 00:00:42.00]       Expected: 3
+2026-11-26T10:08:40.3238505Z [xUnit.net 00:00:42.00]       Actual:   6
+2026-11-26T10:08:40.3238890Z [xUnit.net 00:00:42.01]       Stack Trace:
+2026-11-26T10:08:40.3239785Z [xUnit.net 00:00:42.01]         /_/tests/Tests/GeneratedTextHygieneTests.cs(28,0): at Neemle.OrmLite.Tests.GeneratedTextHygieneTests.The_generated_text_has_no_comment_lines_and_no_tracker_cites()
+2026-11-26T10:08:40.3240867Z [xUnit.net 00:00:42.01]            at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+2026-11-26T10:08:40.3241867Z [xUnit.net 00:00:42.01]            at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+2026-11-26T10:08:40.3243042Z [xUnit.net 00:00:42.01]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+2026-11-26T10:08:40.3243723Z [xUnit.net 00:00:42.01]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2026-11-26T10:08:40.3678944Z   Passed a null placement in an index is created on PostgreSQL and refused by capability on SQLite, whose index grammar has no such clause, with nothing created [2 ms]
+2026-11-26T10:08:40.3680432Z   Passed a collation or lower() on a decimal column is refused with the column named and nothing created, from a declaration and from a hand-written index [2 ms]
+2026-11-26T10:08:41.9119184Z [xUnit.net 00:00:43.59]     AC7: every public instance method of Query<T> that does not return a builder is in the census or in a named exclusion, so a new terminal that is not covered fails [FAIL]
+2026-11-26T10:08:41.9120256Z [xUnit.net 00:00:43.59]       Query<T> has terminals the no-write census does not run; add them to TerminalCensus.Entries or justify the exclusion:
+2026-11-26T10:08:41.9127103Z [xUnit.net 00:00:43.59]       StreamAsync
+2026-11-26T10:08:41.9128744Z [xUnit.net 00:00:43.59]       StreamColumnAsync
+2026-11-26T10:08:41.9129837Z [xUnit.net 00:00:43.59]       StreamProjectAsync
+2026-11-26T10:08:41.9130788Z [xUnit.net 00:00:43.59]       StreamProjectionAsync
+2026-11-26T10:08:41.9131157Z [xUnit.net 00:00:43.59]       Stack Trace:
+2026-11-26T10:08:41.9132135Z [xUnit.net 00:00:43.59]         /_/tests/Tests/QueryTerminalState/TerminalCensusDriftGuardTests.cs(46,0): at Neemle.OrmLite.Tests.QueryTerminalState.TerminalCensusDriftGuardTests.Every_terminal_is_covered_or_justified()
+2026-11-26T10:08:41.9133772Z [xUnit.net 00:00:43.59]            at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+2026-11-26T10:08:41.9135165Z [xUnit.net 00:00:43.59]            at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+2026-11-26T10:08:41.9136358Z [xUnit.net 00:00:43.59]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+2026-11-26T10:08:41.9137353Z [xUnit.net 00:00:43.59]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2026-11-26T10:09:14.6428508Z [xUnit.net 00:01:16.32]     Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte [FAIL]
+2026-11-26T10:09:14.6430459Z [xUnit.net 00:01:16.32]       the generated source of the non-soft fixture entities no longer matches tests/Tests/OrmLiteGolden/Expected:
+2026-11-26T10:09:14.6431447Z [xUnit.net 00:01:16.32]         OrmLite.Entities.0000.g.cs: generated but has no golden file
+2026-11-26T10:09:14.6432186Z [xUnit.net 00:01:16.32]         OrmLite.Entities.0001.g.cs: generated but has no golden file
+2026-11-26T10:09:14.6433161Z [xUnit.net 00:01:16.32]         OrmLite.Entities.0002.g.cs: generated but has no golden file
+2026-11-26T10:09:14.6433862Z [xUnit.net 00:01:16.32]         OrmLite.Entities.0003.g.cs: generated but has no golden file
+2026-11-26T10:09:14.6434549Z [xUnit.net 00:01:16.32]         OrmLite.Entities.0004.g.cs: generated but has no golden file
+2026-11-26T10:09:14.6435235Z [xUnit.net 00:01:16.32]         OrmLite.Entities.0005.g.cs: generated but has no golden file
+2026-11-26T10:09:14.6435916Z [xUnit.net 00:01:16.32]         OrmLite.Entities.g.cs: pinned but no longer generated
+2026-11-26T10:09:14.6437301Z [xUnit.net 00:01:16.32]       If the generator change is intended, regenerate with `ORMLITE_GOLDEN_REGENERATE=1 dotnet test --filter FullyQualifiedName~OrmLiteGolden`, review the diff of tests/Tests/OrmLiteGolden/Expected and commit it with the generator change.
+2026-11-26T10:09:14.6438659Z [xUnit.net 00:01:16.32]       Stack Trace:
+2026-11-26T10:09:14.6439895Z [xUnit.net 00:01:16.32]         /_/tests/Tests/OrmLiteGolden/OrmLiteGoldenTests.cs(63,0): at Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte()
+2026-11-26T10:09:17.2665885Z [xUnit.net 00:01:18.95]     ORML-22 the generated entity list does not depend on the order of the syntax trees [FAIL]
+2026-11-26T10:09:17.2667461Z [xUnit.net 00:01:18.95]       System.InvalidOperationException : Sequence contains no matching element
+2026-11-26T10:09:17.2668090Z [xUnit.net 00:01:18.95]       Stack Trace:
+2026-11-26T10:09:17.2670205Z [xUnit.net 00:01:18.95]            at System.Linq.ThrowHelper.ThrowNoMatchException()
+2026-11-26T10:09:17.2671232Z [xUnit.net 00:01:18.95]            at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+2026-11-26T10:09:17.2672246Z [xUnit.net 00:01:18.95]         /_/tests/Tests/GeneratorQualityTests.cs(49,0): at Neemle.OrmLite.Tests.GeneratorQualityTests.EntitiesText(ValueTuple`2[] files)
+2026-11-26T10:09:17.2674547Z [xUnit.net 00:01:18.95]         /_/tests/Tests/GeneratorQualityTests.cs(91,0): at Neemle.OrmLite.Tests.GeneratorQualityTests.The_entity_order_ignores_the_tree_order()
+2026-11-26T10:09:17.2676770Z [xUnit.net 00:01:18.95]            at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+2026-11-26T10:09:17.2678086Z [xUnit.net 00:01:18.95]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2026-11-26T10:09:17.3215390Z   Passed ORML-22 an edit of the entity file itself does regenerate (the check above is not empty) [80 ms]
+2026-11-26T10:09:17.3216004Z   Passed ORML-22 a nullable Guid tenant gets ORMLITE007 [7 ms]
+2026-11-26T10:09:17.3216551Z   Passed ORML-22 a many-to-many list names its Add and Remove methods with a sensible singular [106 ms]
+2026-11-26T10:09:18.1038719Z [xUnit.net 00:01:19.79]     AC1: the census names every public read path of Query<T>, so a new one cannot be added unexecuted [FAIL]
+2026-11-26T10:09:18.1040414Z [xUnit.net 00:01:19.79]       Assert.Equal() Failure: Collections differ
+2026-11-26T10:09:18.1041483Z [xUnit.net 00:01:19.79]                                                      ↓ (pos 12)
+2026-11-26T10:09:18.1042304Z [xUnit.net 00:01:19.79]       Expected: [···, "RenderSelect", "ScalarAsync", "StreamAsync", "StreamColumnAsync", "StreamProjectAsync", ···]
+2026-11-26T10:09:18.1043529Z [xUnit.net 00:01:19.79]       Actual:   [···, "RenderScalar", "RenderSelect", "ScalarAsync", "SumAsync", "ToListAsync"]
+2026-11-26T10:09:18.1044154Z [xUnit.net 00:01:19.79]                                                                      ↑ (pos 12)
+2026-11-26T10:09:18.1044485Z [xUnit.net 00:01:19.79]       Stack Trace:
+2026-11-26T10:09:18.1046844Z [xUnit.net 00:01:19.79]         /_/tests/Tests/SoftDelete/Reads/SoftDeleteRootReadCensusTests.cs(51,0): at Neemle.OrmLite.Tests.SoftDelete.Reads.SoftDeleteRootReadCensusTests.The_census_names_every_public_read_path()
+2026-11-26T10:09:18.1048164Z [xUnit.net 00:01:19.79]            at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+2026-11-26T10:09:18.1049273Z [xUnit.net 00:01:19.79]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2026-11-26T10:09:18.1064358Z   Passed AC2: IncludingDeleted makes a root read path return the soft-deleted row too(path: "CountAsync") [< 1 ms]
+2026-11-26T10:09:18.1069727Z   Passed AC2: IncludingDeleted makes a root read path return the soft-deleted row too(path: "ProjectionAsync") [1 ms]
+2026-11-26T10:09:33.5368699Z [xUnit.net 00:01:35.22]     every statement-producing member of the surveyed surface is referenced by a case or excluded with a reason [FAIL]
+2026-11-26T10:09:33.5371138Z [xUnit.net 00:01:35.22]       unaccounted: Query.StreamAsync/1, Query.StreamProjectAsync/3, Query.StreamProjectionAsync/2, Query.StreamColumnAsync/2, Query.get_StreamMap/0, Query.get_StreamBinding/0, Query.get_StreamBorrowed/0, Query.get_StreamRowLock/0
+2026-11-26T10:09:33.5371862Z [xUnit.net 00:01:35.22]       Stack Trace:
+2026-11-26T10:09:33.5372777Z [xUnit.net 00:01:35.22]         /_/tests/Tests/Corpus/CorpusGoldenTests.cs(31,0): at Neemle.OrmLite.Tests.Corpus.CorpusGoldenTests.Every_surface_member_is_accounted_for()
+2026-11-26T10:09:33.5373916Z [xUnit.net 00:01:35.22]            at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+2026-11-26T10:09:33.5374903Z [xUnit.net 00:01:35.22]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+2026-11-26T10:09:33.5379539Z   Failed every statement-producing member of the surveyed surface is referenced by a case or excluded with a reason [3 s]
+2026-11-26T10:09:33.5379953Z   Error Message:
+2026-11-26T10:09:33.5381610Z    unaccounted: Query.StreamAsync/1, Query.StreamProjectAsync/3, Query.StreamProjectionAsync/2, Query.StreamColumnAsync/2, Query.get_StreamMap/0, Query.get_StreamBinding/0, Query.get_StreamBorrowed/0, Query.get_StreamRowLock/0
+2026-11-26T10:09:33.5382308Z   Stack Trace:
+2026-11-26T10:09:33.5383066Z      at Neemle.OrmLite.Tests.Corpus.CorpusGoldenTests.Every_surface_member_is_accounted_for() in /_/tests/Tests/Corpus/CorpusGoldenTests.cs:line 31
+2026-11-26T10:09:33.5383898Z    at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+2026-11-26T10:09:37.1995400Z [xUnit.net 00:01:38.88]     the live PostgreSQL output of the library equals every golden of the corpus, and no golden is orphaned [FAIL]
+2026-11-26T10:09:37.2006657Z [xUnit.net 00:01:38.88]       95 corpus difference(s):
+2026-11-26T10:09:37.2007556Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0000.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.2008297Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0001.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.2009374Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0002.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.2010013Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0003.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.2010580Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0004.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.2011172Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0005.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.2011703Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0006.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.2012231Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0007.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.2012982Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0008.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.2013522Z [xUnit.net 00:01:38.88]         generator-corpus-entities/ormlite.entities.0009.g.cs.golden: captured but has no golden
+2026-11-26T10:09:37.9191880Z Total tests: 3767
+2026-11-26T10:09:37.9192100Z      Passed: 3757
+2026-11-26T10:09:37.9192285Z      Failed: 8
+2026-11-26T10:09:37.9192670Z     Skipped: 2
+2026-11-26T10:09:37.9192863Z  Total time: 1.6672 Minutes
+2026-11-26T10:09:37.9480768Z ##[error]Process completed with exit code 1.
+2026-11-26T10:09:37.9566279Z ##[group]Run actions/upload-artifact@v7
+2026-11-26T10:09:37.9566501Z with:
+2026-11-26T10:09:37.9566660Z   name: test-results-11.0.x
+2026-11-26T10:09:37.9566844Z   path: TestResults
+2026-11-26T10:09:37.9567007Z   if-no-files-found: ignore
+2026-11-26T10:09:37.9567185Z   retention-days: 7
+2026-11-26T10:09:37.9567347Z   compression-level: 6
+2026-11-26T10:09:37.9567515Z   overwrite: false
+2026-11-26T10:09:37.9567682Z   include-hidden-files: false

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="66356ec4-3890-40b1-b66d-35f30b7c9bc9" name="@3c52f8933b67 2026-11-26 04:24:09" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-26T04:24:09.4181433+00:00" queuing="2026-11-26T04:24:09.4181433+00:00" start="2026-11-26T04:24:07.9616498+00:00" finish="2026-11-26T04:24:09.4221887+00:00" />
+  <TestSettings name="default" id="b6446d29-3cbd-4604-9423-cf544642d2c9">
+    <Deployment runDeploymentRoot="_3c52f8933b67_2026-11-26_04_24_09" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="94c5497f-1417-4fcb-8ba3-81cdfd4cd428" testId="4b8266f7-9681-e807-f679-0e20ea2a24be" testName="[UC-010][SEC] independent primary survives every acquired cleanup fault(phase: &quot;map&quot;)" computerName="3c52f8933b67" duration="00:00:00.0445725" startTime="2026-11-26T04:24:09.2410905+00:00" endTime="2026-11-26T04:24:09.2410906+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="94c5497f-1417-4fcb-8ba3-81cdfd4cd428" />
+    <UnitTestResult executionId="23073c9d-6064-4527-a972-21d2c6419910" testId="93add439-3a85-dcc9-ac7a-7a3bab2c267c" testName="[UC-010][SEC] independent primary survives every acquired cleanup fault(phase: &quot;execute&quot;)" computerName="3c52f8933b67" duration="00:00:00.0000922" startTime="2026-11-26T04:24:09.2411332+00:00" endTime="2026-11-26T04:24:09.2411332+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23073c9d-6064-4527-a972-21d2c6419910" />
+    <UnitTestResult executionId="3361add9-9da9-4437-a571-53d4ce9cf330" testId="e1d45edc-0028-53f4-a4cd-b375ef137854" testName="[UC-010] EOF command/connection faults cannot masquerade as clean completion" computerName="3c52f8933b67" duration="00:00:00.1039185" startTime="2026-11-26T04:24:09.1956784+00:00" endTime="2026-11-26T04:24:09.1956785+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3361add9-9da9-4437-a571-53d4ce9cf330" />
+    <UnitTestResult executionId="c74d2604-309b-4653-bd2b-81944fb492f1" testId="746c8300-183f-63c4-d8ab-db05e8bd4c89" testName="[UC-010] advancing invalidates previous Current before awaited reader settles" computerName="3c52f8933b67" duration="00:00:00.0227866" startTime="2026-11-26T04:24:09.2837397+00:00" endTime="2026-11-26T04:24:09.2837398+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c74d2604-309b-4653-bd2b-81944fb492f1" />
+    <UnitTestResult executionId="28301900-668f-4795-bd31-3af375eba43a" testId="1623bfbd-71c7-3314-8a38-cebdc0b06ba7" testName="[UC-010] user cancellation with an ignoring driver waits for settlement and preserves cleanup" computerName="3c52f8933b67" duration="00:00:00.1533033" startTime="2026-11-26T04:24:09.2492572+00:00" endTime="2026-11-26T04:24:09.2492573+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="28301900-668f-4795-bd31-3af375eba43a" />
+    <UnitTestResult executionId="065de900-cc9f-46c1-ae2b-d49c9b50ac62" testId="df9b02b2-4239-03f4-3fdc-bb7f0e8f074f" testName="[UC-010][SEC] independent primary survives every acquired cleanup fault(phase: &quot;read&quot;)" computerName="3c52f8933b67" duration="00:00:00.0002478" startTime="2026-11-26T04:24:09.2411189+00:00" endTime="2026-11-26T04:24:09.2411190+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="065de900-cc9f-46c1-ae2b-d49c9b50ac62" />
+    <UnitTestResult executionId="70a0bb28-5a79-4136-a95e-af1b3f953c83" testId="0378e50b-3ff7-2b96-b08a-5a85b2f3fe2b" testName="[UC-010] row-lock capture requires an actual borrowed transaction" computerName="3c52f8933b67" duration="00:00:00.0156968" startTime="2026-11-26T04:24:09.1931890+00:00" endTime="2026-11-26T04:24:09.1931890+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70a0bb28-5a79-4136-a95e-af1b3f953c83" />
+    <UnitTestResult executionId="2ea3420e-e7c5-4e0c-a0dd-604641ef582a" testId="cfc145a1-4356-361d-824c-c7c849e829fe" testName="[UC-010] command cleanup uncertainty retires borrowed streaming independently of reader success" computerName="3c52f8933b67" duration="00:00:00.0776572" startTime="2026-11-26T04:24:09.1722389+00:00" endTime="2026-11-26T04:24:09.1722986+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2ea3420e-e7c5-4e0c-a0dd-604641ef582a" />
+    <UnitTestResult executionId="50e6d4c2-152c-4329-8a7d-c33f8dabca92" testId="28d8c90d-370b-b492-48fa-b9aa126cf3ae" testName="[UC-010] borrowed mismatched transaction refuses before command acquisition" computerName="3c52f8933b67" duration="00:00:00.0090180" startTime="2026-11-26T04:24:09.2311342+00:00" endTime="2026-11-26T04:24:09.2311343+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50e6d4c2-152c-4329-8a7d-c33f8dabca92" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="[UC-010] borrowed mismatched transaction refuses before command acquisition" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/tests/release/neemle.ormlite.tests.dll" id="28d8c90d-370b-b492-48fa-b9aa126cf3ae">
+      <Execution id="50e6d4c2-152c-4329-8a7d-c33f8dabca92" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Streaming.Sdet.SdetBorrowedBoundaryTests" name="Different_transaction_connection_never_executes_or_disposes_caller_handles" />
+    </UnitTest>
+    <UnitTest name="[UC-010] user cancellation with an ignoring driver waits for settlement and preserves cleanup" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/tests/release/neemle.ormlite.tests.dll" id="1623bfbd-71c7-3314-8a38-cebdc0b06ba7">
+      <Execution id="28301900-668f-4795-bd31-3af375eba43a" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Streaming.Sdet.SdetSettlementTests" name="Cancellation_cannot_publish_completion_while_driver_still_owns_reader" />
+    </UnitTest>
+    <UnitTest name="[UC-010] advancing invalidates previous Current before awaited reader settles" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/tests/release/neemle.ormlite.tests.dll" id="746c8300-183f-63c4-d8ab-db05e8bd4c89">
+      <Execution id="c74d2604-309b-4653-bd2b-81944fb492f1" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Streaming.Sdet.SdetSettlementTests" name="Pending_advance_has_no_stale_current_or_background_map" />
+    </UnitTest>
+    <UnitTest name="[UC-010][SEC] independent primary survives every acquired cleanup fault(phase: &quot;read&quot;)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/tests/release/neemle.ormlite.tests.dll" id="df9b02b2-4239-03f4-3fdc-bb7f0e8f074f">
+      <Execution id="065de900-cc9f-46c1-ae2b-d49c9b50ac62" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Streaming.Sdet.SdetPrimaryCleanupTests" name="Primary_and_all_cleanup_failures_remain_inspectable" />
+    </UnitTest>
+    <UnitTest name="[UC-010] command cleanup uncertainty retires borrowed streaming independently of reader success" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/tests/release/neemle.ormlite.tests.dll" id="cfc145a1-4356-361d-824c-c7c849e829fe">
+      <Execution id="2ea3420e-e7c5-4e0c-a0dd-604641ef582a" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Streaming.Sdet.SdetBorrowedBoundaryTests" name="Command_failure_poison_is_local_to_exact_borrowed_identity" />
+    </UnitTest>
+    <UnitTest name="[UC-010] EOF command/connection faults cannot masquerade as clean completion" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/tests/release/neemle.ormlite.tests.dll" id="e1d45edc-0028-53f4-a4cd-b375ef137854">
+      <Execution id="3361add9-9da9-4437-a571-53d4ce9cf330" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Streaming.Sdet.SdetPrimaryCleanupTests" name="Empty_eof_attempts_both_failing_cleanup_stages" />
+    </UnitTest>
+    <UnitTest name="[UC-010][SEC] independent primary survives every acquired cleanup fault(phase: &quot;map&quot;)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/tests/release/neemle.ormlite.tests.dll" id="4b8266f7-9681-e807-f679-0e20ea2a24be">
+      <Execution id="94c5497f-1417-4fcb-8ba3-81cdfd4cd428" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Streaming.Sdet.SdetPrimaryCleanupTests" name="Primary_and_all_cleanup_failures_remain_inspectable" />
+    </UnitTest>
+    <UnitTest name="[UC-010] row-lock capture requires an actual borrowed transaction" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/tests/release/neemle.ormlite.tests.dll" id="0378e50b-3ff7-2b96-b08a-5a85b2f3fe2b">
+      <Execution id="70a0bb28-5a79-4136-a95e-af1b3f953c83" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Streaming.Sdet.SdetBorrowedBoundaryTests" name="Explicit_lock_without_transaction_is_cold_failure" />
+    </UnitTest>
+    <UnitTest name="[UC-010][SEC] independent primary survives every acquired cleanup fault(phase: &quot;execute&quot;)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/tests/release/neemle.ormlite.tests.dll" id="93add439-3a85-dcc9-ac7a-7a3bab2c267c">
+      <Execution id="23073c9d-6064-4527-a972-21d2c6419910" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Streaming.Sdet.SdetPrimaryCleanupTests" name="Primary_and_all_cleanup_failures_remain_inspectable" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="4b8266f7-9681-e807-f679-0e20ea2a24be" executionId="94c5497f-1417-4fcb-8ba3-81cdfd4cd428" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="93add439-3a85-dcc9-ac7a-7a3bab2c267c" executionId="23073c9d-6064-4527-a972-21d2c6419910" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e1d45edc-0028-53f4-a4cd-b375ef137854" executionId="3361add9-9da9-4437-a571-53d4ce9cf330" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="746c8300-183f-63c4-d8ab-db05e8bd4c89" executionId="c74d2604-309b-4653-bd2b-81944fb492f1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1623bfbd-71c7-3314-8a38-cebdc0b06ba7" executionId="28301900-668f-4795-bd31-3af375eba43a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="df9b02b2-4239-03f4-3fdc-bb7f0e8f074f" executionId="065de900-cc9f-46c1-ae2b-d49c9b50ac62" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0378e50b-3ff7-2b96-b08a-5a85b2f3fe2b" executionId="70a0bb28-5a79-4136-a95e-af1b3f953c83" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cfc145a1-4356-361d-824c-c7c849e829fe" executionId="2ea3420e-e7c5-4e0c-a0dd-604641ef582a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="28d8c90d-370b-b492-48fa-b9aa126cf3ae" executionId="50e6d4c2-152c-4329-8a7d-c33f8dabca92" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="9" executed="9" passed="9" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.21]   Discovering: Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.63]   Discovered:  Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.63]   Starting:    Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.86]   Finished:    Neemle.OrmLite.Tests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

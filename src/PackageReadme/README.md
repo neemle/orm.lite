@@ -116,6 +116,8 @@ The documentation is kept in the public repository, which is the single home of 
 
 - [Documentation](https://github.com/neemle/orm.lite/tree/HEAD/docs): installation, configuration, guides,
   and reference.
+- [Streaming reads](https://github.com/neemle/orm.lite/blob/HEAD/docs/streaming.md): cold row consumption,
+  cancellation, resource ownership, and explicit early cleanup completion.
 - [Demo](https://github.com/neemle/orm.lite/tree/HEAD/demo): a runnable program that walks the library chapter by
   chapter on SQLite and on PostgreSQL, with comments in every file.
 

@@ -1,0 +1,11 @@
+{
+  "generated": "2026-11-26T11:20:13.768161+00:00",
+  "ownedContainerId": "9f81bf2c5b0224ad651af8f3be506102c906db4b5109162586b5a428e678529d",
+  "remainingOwnedContainers": [],
+  "remainingOwnedPackConsumerScratch": [],
+  "containerAutoRemoved": true,
+  "packConsumerFinallyRemovedOwnScratch": true,
+  "ownedDatabaseOrNetworkCreated": false,
+  "foreignResourcesUntouched": true,
+  "retainedCache": "orml-107-nuget readonly, not owned or removed"
+}

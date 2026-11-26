@@ -399,9 +399,9 @@ int PackageChecks(string location)
         }
         else
         {
-            foreach (var hint in new[] { "OrmLite.Entities.g.cs", "OrmLite.Migrations.g.cs" })
-                if (Find(Path.Combine(a, "gen"), hint).Count == 0)
-                    Fail("A: the default reference did not emit " + hint + " (analyzer unreachable)");
+            ExpectGenerated(a, "A", "ProbeNoteOrm");
+            if (Find(Path.Combine(a, "gen"), "OrmLite.Migrations.g.cs").Count == 0)
+                Fail("A: the default reference did not emit OrmLite.Migrations.g.cs (analyzer unreachable)");
             ExpectComposerAnalyzer(a, "A", true);
         }
 
@@ -432,9 +432,12 @@ int PackageChecks(string location)
         {
             Fail("D: the entity with the pinned tenant property did not build");
         }
-        else if (!Find(Path.Combine(d, "gen"), "OrmLite.Entities.g.cs").Any(f => File.ReadAllText(f).Contains("\"owner_id\"", StringComparison.Ordinal)))
+        else
         {
-            Fail("D: the pinned tenant column owner_id is absent from the emitted entities");
+            ExpectGenerated(d, "D", "ProbeNoteOrm", "ProbeOwnedOrm");
+            if (!EntitySources(d, "ProbeOwnedOrm").Any(f =>
+                File.ReadAllText(f).Contains("\"owner_id\"", StringComparison.Ordinal)))
+                Fail("D: the pinned tenant column owner_id is absent from the emitted ProbeOwnedOrm");
         }
         var d2 = NewConsumer("d2", [Core("")], "Library", "Probe.cs", "TenantProbe.cs");
         if (Build(d2, "d2"))
@@ -499,7 +502,7 @@ int PackageChecks(string location)
             }
             else
             {
-                ExpectGenerated(h, "H");
+                ExpectGenerated(h, "H", "ProbeGlobalDocOrm");
                 ExpectComposerAnalyzer(h, "H", true);
                 ExpectRegistration(h, "H", ["SqliteProviderFactory"], ["PostgresProviderFactory"]);
                 ExpectProviderList(h, "H", ["sqlite"]);
@@ -518,7 +521,7 @@ int PackageChecks(string location)
             }
             else
             {
-                ExpectGenerated(i, "I");
+                ExpectGenerated(i, "I", "ProbeGlobalDocOrm");
                 ExpectComposerAnalyzer(i, "I", true);
                 ExpectRegistration(i, "I", ["PostgresProviderFactory"], ["SqliteProviderFactory"]);
                 ExpectProviderList(i, "I", ["postgres"]);
@@ -537,7 +540,7 @@ int PackageChecks(string location)
             }
             else
             {
-                ExpectGenerated(j, "J");
+                ExpectGenerated(j, "J", "ProbeGlobalDocOrm");
                 ExpectComposerAnalyzer(j, "J", true);
                 ExpectRegistration(j, "J", ["SqliteProviderFactory", "PostgresProviderFactory"], []);
                 ExpectProviderList(j, "J", ["postgres", "sqlite"]);
@@ -556,7 +559,7 @@ int PackageChecks(string location)
             }
             else
             {
-                ExpectGenerated(k, "K");
+                ExpectGenerated(k, "K", "ProbeGlobalDocOrm");
                 if (Find(Path.Combine(k, "obj"), "OrmLiteProviderRegistration.g.cs").Count != 0)
                     Fail("K: a registration was emitted although no provider package is referenced");
                 ExpectProviderList(k, "K", []);
@@ -695,7 +698,7 @@ int PackageChecks(string location)
                 Fail(who + ": the consumer with " + what + " did not build");
                 return;
             }
-            ExpectGenerated(dir, who);
+            ExpectGenerated(dir, who, "ProbeNoteOrm");
             ExpectComposerAnalyzer(dir, who, true);
         }
 
@@ -716,10 +719,17 @@ int PackageChecks(string location)
             if (!found && expected) Fail(who + ": Neemle.CSharpComposer does not reach the compiler as an analyzer, so the generator cannot load it: " + string.Join(';', analyzers));
         }
 
-        void ExpectGenerated(string dir, string who)
+        List<string> EntitySources(string dir, string type) =>
+            Find(Path.Combine(dir, "gen"), "OrmLite.Entities.*.g.cs")
+                .Where(f => Regex.IsMatch(Path.GetFileName(f), @"\AOrmLite\.Entities\.[0-9]{4,}\.g\.cs\z"))
+                .Where(f => Regex.IsMatch(File.ReadAllText(f), @"\bclass\s+@?" + Regex.Escape(type) + @"\b"))
+                .ToList();
+
+        void ExpectGenerated(string dir, string who, params string[] alsoExpected)
         {
-            if (Find(Path.Combine(dir, "gen"), "OrmLite.Entities.g.cs").Count == 0)
-                Fail(who + ": the generator did not run although the provider package depends on the core package");
+            foreach (var type in new[] { "ProbeDocOrm" }.Concat(alsoExpected))
+                if (EntitySources(dir, type).Count == 0)
+                    Fail(who + ": numeric entity sources do not declare " + type + " (analyzer unreachable)");
         }
 
         void ExpectRegistration(string dir, string who, string[] present, string[] absent)

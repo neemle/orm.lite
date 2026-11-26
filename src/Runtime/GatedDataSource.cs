@@ -122,6 +122,37 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         connection.StateChange += lease.OnStateChange;
     }
 
+    internal async ValueTask<DbConnection> OpenStreamConnectionAsync(CancellationToken ct)
+    {
+        var connection = LaneSource(DbLane.Current).CreateConnection();
+        try { return await StreamLeaseAsync(connection, ct); }
+        catch (Exception primary)
+        {
+            var cleanup = new StreamCleanup();
+            await cleanup.Attempt(() => new ValueTask(connection.CloseAsync()));
+            var disposed = await cleanup.Attempt(connection.DisposeAsync);
+            if (disposed) LeaseOf(connection)?.ReleaseStream();
+            throw new StreamOpenFailure(primary, cleanup.Errors);
+        }
+    }
+
+    private async ValueTask<DbConnection> StreamLeaseAsync(DbConnection inner, CancellationToken ct)
+    {
+        if (s_leases.TryGetValue(inner, out var prior))
+        {
+            inner.StateChange -= prior.OnStateChange;
+            s_leases.Remove(inner);
+        }
+        await inner.OpenAsync(ct);
+        var lease = new Lease(DbLane.CurrentScope, _diagnostics);
+        lease.Acquire();
+        s_leases.Add(inner, lease);
+        inner.StateChange += lease.OnStateChange;
+        await (DbActor.Current is { } actor
+            ? _provider.StampActorAsync(inner, actor, ct) : _provider.ClearActorAsync(inner, ct));
+        return inner;
+    }
+
     protected override DbCommand CreateDbCommand(string? commandText = null) =>
         new GatedCommand(this, LaneSource(DbLane.Current).CreateConnection(), commandText);
 
@@ -151,6 +182,11 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         internal TransactionTrace? Transaction { get; set; }
 
         public void Acquire() => scope?.Acquire();
+
+        internal void ReleaseStream()
+        {
+            if (Interlocked.Exchange(ref _released, 1) == 0) scope?.Release();
+        }
 
         public void OnStateChange(object sender, StateChangeEventArgs e)
         {

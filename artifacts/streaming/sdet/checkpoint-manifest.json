@@ -1,0 +1,347 @@
+{
+  "objectiveDisposition": "NON-SUCCESS independent executable unit; required contract witness FAIL; stable finite test/native/evidence checkpoint only",
+  "created": "2026-11-26T04:37:54.313134+00:00",
+  "revision": {
+    "head": "a298dc6951af148f7a5491376e0d4ad0624b1f14",
+    "sourceTree": "a0e928bb2fff240558d8c56334aa53a10b4e1270",
+    "testsTree": "3c0eae027bee12a914364e20657ebb8ca513aa57",
+    "sdetTestTree": "fe9e1c82819683bf9d614bfac989ef0f52ca2c75",
+    "nativeInputTree": "51d33b80b577f2248e0e39d91e768adc5f97513e"
+  },
+  "frozenProductCommit": "27c38cfa836e695748836618e167843e478b2319",
+  "mainBase": "b510d801b48881bde5501c8771a4294b15997c34",
+  "newInputs": [
+    {
+      "path": "tests/StreamingAot/Program.cs",
+      "sha256": "3348a54ea50c4f4feb7944084f2df158f966b19dae316151ba20f9f14dce414f",
+      "bytes": 913
+    },
+    {
+      "path": "tests/StreamingAot/StreamEntry.cs",
+      "sha256": "8bf70d7e311eca93517ef1d93f46734b89a8635c786d51b5b0b3bda2aa00368f",
+      "bytes": 348
+    },
+    {
+      "path": "tests/StreamingAot/StreamNativeChecks.cs",
+      "sha256": "e4075a26cd722d67565802179a82537b2aab5c5cf8ae208593a92d11ec6e2d11",
+      "bytes": 3614
+    },
+    {
+      "path": "tests/StreamingAot/StreamingAot.csproj",
+      "sha256": "a8a0fb250c420293bfadb9f5cdbf946355cb8d4394eaa567f1a6c28fefd1ac04",
+      "bytes": 1287
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetBorrowedBoundaryTests.cs",
+      "sha256": "0b2c4c17142f805c1a11b9167cccfde128729ccd42f5217b44292504d67fbcac",
+      "bytes": 3475
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetPostgresTests.cs",
+      "sha256": "fbdef3763e740f3368b6b5cfebb629d473e66e21e72832f5636c97751de796fb",
+      "bytes": 197
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetPrimaryCleanupTests.cs",
+      "sha256": "bf65c8ee38b6b6d88381059ca7a3e163218b907519d63a0d16687bc3347c3e75",
+      "bytes": 3086
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetProviderTests.cs",
+      "sha256": "0ab1baed8400d63b18ea300553fcdac5a2cf8bf29ad53f76f9fb0cf203c8b73b",
+      "bytes": 6655
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetSettlementTests.cs",
+      "sha256": "5a4f18d3d21671da711ca85880e81d85c8378c4cb30468cc4b0ddee8c1a93e06",
+      "bytes": 2992
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetSoftReadCensusTests.cs",
+      "sha256": "9e0a57aef6d6f1b19371eb6d9f92c88e547335cbd70d66a439427a7c2a89fd62",
+      "bytes": 1567
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetSqliteTests.cs",
+      "sha256": "6febdc9313489e9853fdedd5cb503eb94bea0cb5f415948d134ee9586b7da26c",
+      "bytes": 191
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetStatementSink.cs",
+      "sha256": "5b54c2b097472f177a07a548bbc1751f8d547cd26613a01bcbce97f21449d2fb",
+      "bytes": 416
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetStreamView.cs",
+      "sha256": "cf5a039362444c5eca47f561db1d2978518c1aa6aaee18c37337d1c21dd18c49",
+      "bytes": 96
+    }
+  ],
+  "retainedEvidence": [
+    {
+      "path": "artifacts/streaming/sdet/cleanup.json",
+      "sha256": "d001f8c9b5f6eed5cade4665af000feefc63482893149ce069a1281067aafbad",
+      "bytes": 10360
+    },
+    {
+      "path": "artifacts/streaming/sdet/control-proposal/control-proposal.patch",
+      "sha256": "5456e2e8b1e1425c9d3fe7147dbb362a2b0745b241934cc675cc644ae0c3ed88",
+      "bytes": 10023
+    },
+    {
+      "path": "artifacts/streaming/sdet/control-proposal/manifest.json",
+      "sha256": "c64b8dae0194ebc5e19b41a813c66537667de4d9051f839b61086d0c2581596b",
+      "bytes": 2652
+    },
+    {
+      "path": "artifacts/streaming/sdet/control-proposal/tests/Tests/Corpus/INDEX.md",
+      "sha256": "1efd68f28648dda30f33d2c5a3878bdfcc36ab7d63b9a5d8fc43fbbd30b4c527",
+      "bytes": 115592
+    },
+    {
+      "path": "artifacts/streaming/sdet/control-proposal/tests/Tests/Corpus/Support/CorpusSurface.cs",
+      "sha256": "df809f86d4bcdc7535e5672475f97c0d336b3c5d368c63215c9317339b7fd33b",
+      "bytes": 11315
+    },
+    {
+      "path": "artifacts/streaming/sdet/control-proposal/tests/Tests/QueryIdentifierSurfaceTests.cs",
+      "sha256": "e3be0c339690bdf0c4029222516644dc4e6450d6309eb61bed91b7269e83d4f5",
+      "bytes": 5925
+    },
+    {
+      "path": "artifacts/streaming/sdet/control-proposal/tests/Tests/QueryTerminalState/TerminalCensus.cs",
+      "sha256": "93dd7d9f94078b082dd800412492dc89ed582bd0715ffdd9cbb37d1b4a9791f6",
+      "bytes": 11120
+    },
+    {
+      "path": "artifacts/streaming/sdet/control-proposal/tests/Tests/SoftDelete/Reads/RootReadPath.cs",
+      "sha256": "ed944a9fa098219583962525e005977a28a4e8141ebef523b13b98cefef000e2",
+      "bytes": 4608
+    },
+    {
+      "path": "artifacts/streaming/sdet/criterion-matrix.json",
+      "sha256": "81eedefbac23ac0b9538f21100aaeec7ae3ca8554691fc0ac2328ca5f9a5a217",
+      "bytes": 3419
+    },
+    {
+      "path": "artifacts/streaming/sdet/execute_gate.py",
+      "sha256": "a3b1101811512fc4a59c25de6ffb8194c9a8bc0161389495e96760a6862badd8",
+      "bytes": 2037
+    },
+    {
+      "path": "artifacts/streaming/sdet/freeze_checkpoint.py",
+      "sha256": "945d8ca95ac29cdc61816fab008d864a6c729fbe249c1ff8e200d7e57d8bd66c",
+      "bytes": 8483
+    },
+    {
+      "path": "artifacts/streaming/sdet/lock-contract-finding.json",
+      "sha256": "ab57722695e14b7284364f632de6c07b1159e0489deb8c948240ad16fe7ee6c4",
+      "bytes": 3366
+    },
+    {
+      "path": "artifacts/streaming/sdet/native10-publish-a0326fc.json",
+      "sha256": "f68618715fb9adf9d5d06845accb4d1d922e534ca66501af6bc31acd5c696e73",
+      "bytes": 1630
+    },
+    {
+      "path": "artifacts/streaming/sdet/native10-publish-a0326fc.log",
+      "sha256": "aace206b390ba98e888702e6063f85d51d82c7254a97894e9dd8bd9a85c70463",
+      "bytes": 2500
+    },
+    {
+      "path": "artifacts/streaming/sdet/native10-publish-verified.json",
+      "sha256": "858bc5cfded95ab74c19d10f87850b171e9c8d1f40d4bd9b0f0eb12819ecca82",
+      "bytes": 1886
+    },
+    {
+      "path": "artifacts/streaming/sdet/native10-publish-verified.log",
+      "sha256": "7b4b42d5c09c1c6d2c8f28fc8ed6d18a3214c9b60b8d671ac2f43a2d7741d890",
+      "bytes": 2449
+    },
+    {
+      "path": "artifacts/streaming/sdet/native10-run.json",
+      "sha256": "bd742c084a84309a49a57dbb8c72a158fb6f1381920b2774060e88c9d73d1622",
+      "bytes": 1617
+    },
+    {
+      "path": "artifacts/streaming/sdet/native10-run.log",
+      "sha256": "674b14c42d1dedf01ae45683399fe1c251c96fb0b271e8f510d433a71a7e9f35",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/streaming/sdet/native11-publish-verified.json",
+      "sha256": "4609e4155163686686a5ce6c20b512e2633ab0b9db63123f700db8fd062ccbec",
+      "bytes": 1892
+    },
+    {
+      "path": "artifacts/streaming/sdet/native11-publish-verified.log",
+      "sha256": "85fcf3057cb342eea747074e917f8ca07f5ee0802c9c486f81ed5300d23b0b8d",
+      "bytes": 2449
+    },
+    {
+      "path": "artifacts/streaming/sdet/native11-run.json",
+      "sha256": "76d042d6c179a98c123d1b1f40df9c0aa133de8d105895a7d133b74bb93aeeb1",
+      "bytes": 1623
+    },
+    {
+      "path": "artifacts/streaming/sdet/native11-run.log",
+      "sha256": "c694e176c1eaa3a4949cfdf9b72b810d21121b4662d3c07bd394d4fbbf5d4efa",
+      "bytes": 63
+    },
+    {
+      "path": "artifacts/streaming/sdet/new-input-hashes.json",
+      "sha256": "033fc1afb12890062577152f818be94cbef12a4275bb8840de809b8a178991fc",
+      "bytes": 2200
+    },
+    {
+      "path": "artifacts/streaming/sdet/owned-fixture.json",
+      "sha256": "50164191c85bd78d9c18d8189287c6501b37e12841051ea881d6cb40e26d2c63",
+      "bytes": 8389
+    },
+    {
+      "path": "artifacts/streaming/sdet/prepare_proposal.py",
+      "sha256": "c48e56f03f114fcadda90b17838ee0522bbd1adadeaea11057659d0ca99db467",
+      "bytes": 6691
+    },
+    {
+      "path": "artifacts/streaming/sdet/retained-generated/native10/OrmLite.Entities.g.cs",
+      "sha256": "7fa06cceb2a8efc33f83d24a26a10dfe6ce07d2bb7e61dd9ef7a78e890c01bcb",
+      "bytes": 5096
+    },
+    {
+      "path": "artifacts/streaming/sdet/retained-generated/native10/OrmLite.MigrationRegistry.g.cs",
+      "sha256": "95b3a1624a16015131480efcd451da989b94cbed1832ad2cb56cbc0f8aec7ce5",
+      "bytes": 357
+    },
+    {
+      "path": "artifacts/streaming/sdet/retained-generated/native10/OrmLite.Migrations.g.cs",
+      "sha256": "d0d84747f67492f6f7666ae4ca8d8c5456a071cba5c94fb0a6fdc64dcaaa5dfe",
+      "bytes": 288
+    },
+    {
+      "path": "artifacts/streaming/sdet/retained-generated/native11/OrmLite.Entities.g.cs",
+      "sha256": "7fa06cceb2a8efc33f83d24a26a10dfe6ce07d2bb7e61dd9ef7a78e890c01bcb",
+      "bytes": 5096
+    },
+    {
+      "path": "artifacts/streaming/sdet/retained-generated/native11/OrmLite.MigrationRegistry.g.cs",
+      "sha256": "95b3a1624a16015131480efcd451da989b94cbed1832ad2cb56cbc0f8aec7ce5",
+      "bytes": 357
+    },
+    {
+      "path": "artifacts/streaming/sdet/retained-generated/native11/OrmLite.Migrations.g.cs",
+      "sha256": "d0d84747f67492f6f7666ae4ca8d8c5456a071cba5c94fb0a6fdc64dcaaa5dfe",
+      "bytes": 288
+    },
+    {
+      "path": "artifacts/streaming/sdet/run_gate.py",
+      "sha256": "0ab54bfa4ae3d92c94be1f9378a61a97a9b870ca4671f4d08785cf8398d0f2b8",
+      "bytes": 1386
+    },
+    {
+      "path": "artifacts/streaming/sdet/scoped10-initial.json",
+      "sha256": "99077de1daf96ad9d4aa635b910964e866805c84d53a2ec570f1eb2f7ac11407",
+      "bytes": 1889
+    },
+    {
+      "path": "artifacts/streaming/sdet/scoped10-initial.log",
+      "sha256": "cae4ef20df11e03a1f995b1fad08ba8381aeb0ca6ee75c00054931ab8e046635",
+      "bytes": 3602
+    },
+    {
+      "path": "artifacts/streaming/sdet/scoped10-results/_a8b3a3443e3e_2026-11-26_04_26_35_net10.0.trx",
+      "sha256": "6b775afe819a56381bf2c1531c042c1024d641b82581cf01305c6d12e6ee72a8",
+      "bytes": 91196
+    },
+    {
+      "path": "artifacts/streaming/sdet/scoped10-verified-results/_7f213b74b4bf_2026-11-26_04_28_34_net10.0.trx",
+      "sha256": "6cc4e4f33c1bc1f2b1b4fdc3324abce29773f8d635bc3e759e0f591a14261ff5",
+      "bytes": 104446
+    },
+    {
+      "path": "artifacts/streaming/sdet/scoped10-verified.json",
+      "sha256": "2b44c598ea80e420a2ffac85c51171b12e7d12eaa858e72a5653834f2d9c0d08",
+      "bytes": 1926
+    },
+    {
+      "path": "artifacts/streaming/sdet/scoped10-verified.log",
+      "sha256": "7400e44096050456e258b4563927885521e68ac0dc57276c0d2a8833264df545",
+      "bytes": 3697
+    },
+    {
+      "path": "artifacts/streaming/sdet/scoped11-verified-results/_7a9b95ef56f8_2026-11-26_04_28_52_net10.0.trx",
+      "sha256": "20b26fe372f8cf9bf98054216d01f8bef4b199486c9d98dd93dede6bbc9823a3",
+      "bytes": 104445
+    },
+    {
+      "path": "artifacts/streaming/sdet/scoped11-verified.json",
+      "sha256": "320d97a9362d4a3acad673ec827d58e986c5dfc4493512724dae70bdcbd95ff0",
+      "bytes": 1932
+    },
+    {
+      "path": "artifacts/streaming/sdet/scoped11-verified.log",
+      "sha256": "75e875682cfcca14f61b9cd827f6d5c87391632e5c437703515ebdfc3dd78efd",
+      "bytes": 3698
+    },
+    {
+      "path": "artifacts/streaming/sdet/trx-summary.json",
+      "sha256": "7961155c033b59f896d93c42c3fac4683d99fc4b265f8b95fc359d85656c4866",
+      "bytes": 4666
+    },
+    {
+      "path": "artifacts/streaming/sdet/unit-80460d3.json",
+      "sha256": "bafa118e4cbc94c1a12fc5638a2723efc1a8a9d3b72cfbbdaff105a6022992a1",
+      "bytes": 1714
+    },
+    {
+      "path": "artifacts/streaming/sdet/unit-80460d3.log",
+      "sha256": "0474278c49cbeef6ec54d6a6e63d3e13153e47c3a4fa152fc953e0661fee9574",
+      "bytes": 2648
+    },
+    {
+      "path": "artifacts/streaming/sdet/unit-results/_3c52f8933b67_2026-11-26_04_24_09_net10.0.trx",
+      "sha256": "3ceea3b0149a36fa4c2177336f7a2f5be30ce522d0c31251da2f3ae676646360",
+      "bytes": 14893
+    },
+    {
+      "path": "artifacts/streaming/sdet/gate-carriers.json",
+      "sha256": "1b1461ab2e0d59c6aaf7c3323f9ad30ff05c7aa81375141d165370532a160113",
+      "bytes": 13555
+    }
+  ],
+  "gates": {
+    "sdet-unit80460d3": "PASS9/9 SDK10 only at80460d3",
+    "scoped10-initial": "historical58/59 at a0326fc, wrong initial builder-stage assertion retained",
+    "native10-publish-a0326fc": "historical generatorORMLITE007 missing tenant; own fixture corrected to Platform",
+    "scoped10-verified": "FAIL66/67 zero skips at a298dc6",
+    "scoped11-verified": "FAIL66/67 zero skips at a298dc6",
+    "native10-publish-verified": "PASS0",
+    "native11-publish-verified": "PASS0",
+    "native10-run": "PASS0 actual10.0.15 SQLite+PG",
+    "native11-run": "PASS0 actual11.0.0 SQLite+PG",
+    "rawCoverage": "NOT RUN after bounded stop; no exclusion/floor waiver",
+    "newSourceAndGenerated301": "NOT RUN complete metrics; raw actual generated source retained; producer source301 remains separately attributed27c38c",
+    "fullMatrixPortsTimezoneSkipgate": "NOT RUN independently; root hosted d6a26d13 retains5obligationFAIL",
+    "controlProposal": "COMPLETE5files precise currenthead/base/proposed hashes; UNAPPLIED/UNAPPROVED; not compiled/applied"
+  },
+  "cleanup": "cleanup.json exact ownedPG/network removed absence verified; no foreign mutation",
+  "debt": "docs/demo/full802/applicability/decomposition and all unrun checks remainOPEN; no item/status/ledger/source changes",
+  "changedPaths": "13 NEW input files under claimed test/native trees; evidence only artifacts/streaming/sdet/",
+  "pendingCustody": "Root \u00a72.7 custody before next writer; no additional gate, assertion or implementation change",
+  "canonicalGateComments": {
+    "STREAM_SDET_SCOPED_RUNTIME": "8929b743-d9d6-4f6e-ac79-d1b233688cb7",
+    "STREAM_SDET_GENERATED_NATIVE_AOT": "1caa44dd-4218-4d0a-8213-977a588be5eb"
+  },
+  "nativeBinaries": [
+    {
+      "path": "artifacts/streaming/sdet/native10-out/Neemle.OrmLite.StreamingAot",
+      "sha256": "151b7c010662af98315fde71e40110845ddeeec3fc5bdc157599211e4f330f19",
+      "bytes": 14183704
+    },
+    {
+      "path": "artifacts/streaming/sdet/native11-out/Neemle.OrmLite.StreamingAot",
+      "sha256": "9285cccc07e68069347c1b78ba301614bd57dc670ff96ceff05867d61d3867db",
+      "bytes": 14252160
+    }
+  ]
+}

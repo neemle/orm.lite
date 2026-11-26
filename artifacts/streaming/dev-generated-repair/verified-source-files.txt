@@ -1,0 +1,4 @@
+src/Generator/EntityEmitter.cs
+src/Generator/MigrationGenerator.cs
+src/Generator/GeneratedSourceLayout/GeneratedLineWrap.cs
+src/Generator/GeneratedSourceLayout/GeneratedSourceLayout.cs

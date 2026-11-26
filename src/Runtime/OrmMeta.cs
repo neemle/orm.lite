@@ -143,8 +143,11 @@ namespace Neemle.OrmLite;
 
         private static readonly ConcurrentDictionary<Type, bool> Views = new();
 
+        private static readonly ConcurrentDictionary<Type, EntityDescriptor> ReadDescriptors = new();
+
         public static void Register<T>(string table, Func<string, string> col, ReadOnlySpan<string> columns, SoftDeleteMeta? softDelete = null) where T : class
         {
+            ReadDescriptors.TryRemove(typeof(T), out _);
             var owned = ImmutableArray.Create(columns);
             if (softDelete is null)
             {
@@ -164,12 +167,16 @@ namespace Neemle.OrmLite;
         {
             ArgumentNullException.ThrowIfNull(descriptor);
             Register<T>(descriptor.Table, descriptor.ColumnOf, descriptor.ColumnNames.ToArray(), descriptor.ToSoftMeta());
+            ReadDescriptors[typeof(T)] = descriptor;
             if (descriptor.IsView) Views[typeof(T)] = true;
             else Views.TryRemove(typeof(T), out _);
         }
 
         public static (string Table, Func<string, string> Col, ImmutableArray<string> Columns) Get(Type t) =>
             Map.TryGetValue(t, out var m) ? m : throw new InvalidOperationException("No ORM metadata registered for " + t.FullName);
+
+        internal static EntityDescriptor? ReadDescriptor(Type type) =>
+            ReadDescriptors.TryGetValue(type, out var descriptor) ? descriptor : null;
 
         public static bool IsView(Type t) => Views.ContainsKey(t);
 

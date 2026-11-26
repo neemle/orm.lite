@@ -1,0 +1,56 @@
+== Neemle.OrmLite
+LICENSE
+README.md
+analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll
+buildTransitive/Neemle.OrmLite.props
+buildTransitive/Neemle.OrmLite.targets
+icon.png
+lib/net10.0/Neemle.OrmLite.Runtime.dll
+lib/net10.0/Neemle.OrmLite.Runtime.xml
+lib/net10.0/Neemle.OrmLite.Sql.dll
+lib/net10.0/Neemle.OrmLite.Sql.xml
+== Neemle.OrmLite.Postgres
+LICENSE
+README.md
+buildTransitive/Neemle.OrmLite.Postgres.props
+buildTransitive/ormlite.capabilities.postgres.txt
+icon.png
+lib/net10.0/Neemle.OrmLite.Postgres.dll
+lib/net10.0/Neemle.OrmLite.Postgres.xml
+== Neemle.OrmLite.Sqlite
+LICENSE
+README.md
+buildTransitive/Neemle.OrmLite.Sqlite.props
+buildTransitive/ormlite.capabilities.sqlite.txt
+icon.png
+lib/net10.0/Neemle.OrmLite.Sqlite.dll
+lib/net10.0/Neemle.OrmLite.Sqlite.xml
+==> the packed README is the consumer README: public links only, no private documentation
+PASS: readme check 'all': the consumer README ships, no private docs named.
+==> every packed assembly carries the package version in all three version stamps
+PASS: 5 shipped assemblies carry the version 0.1.0-dev.gba790a5.
+==> the provider packages depend on the core package at exactly its version
+==> the core package takes Neemle.CSharpComposer as a package dependency and bundles no copy of it
+==> each provider package ships its capability manifest and declares its provider to the build
+PASS: three packages under one version, the providers pinned to the core, each with its manifest and provider declaration.
+==> every consumer restores Neemle.CSharpComposer 0.5.0 from the package cache, because the core package depends on it and does not carry it
+==> consumer A: default reference gets the generators and the runtime
+==> consumer B: ExcludeAssets=analyzers gets the runtime and the actor setting initializer and emits nothing
+==> consumer C: IncludeAssets=analyzers has no runtime and cannot compile
+==> consumer D: OrmLiteDefaultTenant reaches the generator from the package
+==> consumer E: the actor setting initializer travels in buildTransitive and fires without a call
+==> consumer F: an actor setting that breaks the runtime's rule fails the build with ORMLITE032
+==> consumer G: a project that only references consumer A gets the runtime and the initializer but no generator
+==> consumer O: central package management, the reference carries no version
+==> consumer P: PrivateAssets=all on the reference changes nothing for the project
+==> consumer Q: a lock file is written, and a locked-mode restore of it succeeds
+==> provider consumers need the third-party packages the provider packages depend on
+==> consumer H: referencing only the Sqlite package is enough: generator, registration, default provider list, a working sqlite
+==> consumer I: referencing only the Postgres package registers postgres and nothing else
+==> consumer J: both provider packages register both and the sqlite one still works
+==> consumer K: the core package alone installs no provider, and says which package to add
+==> consumer L: the default provider list feeds the generator the manifests of the referenced providers
+==> consumer M: OrmLiteRegisterProviders=false emits no registration, so the provider is not installed
+==> consumer N: an application that only references a data library gets the registration and no generator
+==> consumer V: a Visual Basic project gets no C# file from the package and a warning for its actor setting
+PASS: PackConsumer matrix (Composer from the cache, default, runtime-only, analyzer-only, default tenant, actor setting, bad actor settings, Visual Basic, downstream, central package management, PrivateAssets=all, lock file, sqlite-only, postgres-only, both, core-only, default provider list, opt-out, application over a data library).
