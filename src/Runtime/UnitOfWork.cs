@@ -16,10 +16,13 @@ public sealed class UnitOfWork : IAsyncDisposable
     private readonly ISqlProvider _provider;
     private IAsyncDisposable? _release;
     private readonly TransactionTrace? _trace;
+    internal PolicyLifetime PolicyLifetime { get; } = new();
+
     private bool _committed;
     private bool _disposed;
 
-    private UnitOfWork(DbConnection connection, ProviderTransaction started, ISqlProvider provider, TransactionTrace? trace)
+    private UnitOfWork(DbConnection connection, ProviderTransaction started, ISqlProvider provider, TransactionTrace?
+            trace)
     {
         _trace = trace;
         _connection = connection;
@@ -36,7 +39,9 @@ public sealed class UnitOfWork : IAsyncDisposable
         {
             var started = await context.Provider.BeginTransactionAsync(connection, context.DataSource, ct);
             s_open.AddOrUpdate(connection, started);
-            return new UnitOfWork(connection, started, context.Provider, TransactionTrace.Begin(connection));
+            var unit = new UnitOfWork(connection, started, context.Provider, TransactionTrace.Begin(connection));
+            PolicyOrigins.Record(connection, context, unit);
+            return unit;
         }
         catch
         {
@@ -96,6 +101,7 @@ public sealed class UnitOfWork : IAsyncDisposable
             throw new InvalidOperationException(
                 "this unit of work has already been committed; a second commit would silently succeed "
                 + "against a transaction that no longer exists and hide a double-run of the composition.");
+        await PolicyLifetime.CloseAsync();
         await _transaction.CommitAsync();
         _committed = true;
         _trace?.Commit();
@@ -112,22 +118,14 @@ public sealed class UnitOfWork : IAsyncDisposable
     {
         if (_disposed) return;
         _disposed = true;
-        try
-        {
-            _trace?.Dispose();
-            s_open.Remove(_connection);
-            await _transaction.DisposeAsync();
-        }
-        finally
-        {
-            try
-            {
-                await _connection.DisposeAsync();
-            }
-            finally
-            {
-                await ReleaseAsync();
-            }
-        }
+        var cleanup = new PolicyCleanupSteps();
+        await cleanup.RunAsync(PolicyLifetime.CloseAsync);
+        cleanup.Run(() => _trace?.Dispose());
+        cleanup.Run(() => s_open.Remove(_connection));
+        await cleanup.RunAsync(() => _transaction.DisposeAsync().AsTask());
+        await cleanup.RunAsync(() => _connection.DisposeAsync().AsTask());
+        await cleanup.RunAsync(() => ReleaseAsync().AsTask());
+        cleanup.ThrowIfFailed();
     }
+
 }

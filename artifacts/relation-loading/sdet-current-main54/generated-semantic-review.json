@@ -1,0 +1,708 @@
+[
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+    "Type": "NoteOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Note?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Note?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+    "Type": "NamedOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Named?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Named?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+    "Type": "NoteOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Note?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Note?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+    "Type": "NamedOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Named?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Named?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+    "Type": "FixtureNoteOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.FixtureNote?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.FixtureNote?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+    "Type": "GoldenTagOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenTag?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenTag?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+    "Type": "GoldenAuthorOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenAuthor?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenAuthor?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      },
+      {
+        "Name": "LoadBooksAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadBooksAsync(global::Neemle.OrmLite.OrmContext db, global::\n    GoldenFixtures.GoldenAuthor e, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.\n    CancellationToken ct = default)\n{\n    e.Books = await global::Neemle.OrmLite.RelationQueryExtensions.ToListAsync(GoldenBookOrm.Query(db).Where(c =\u003E c.\n        AuthorId == e.Id), options, ct);\n}\n"
+      },
+      {
+        "Name": "LoadTagsAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadTagsAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenAuthor e, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default)\n{\n    e.Tags = await global::Neemle.OrmLite.OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead\u003Cglobal\n        ::GoldenFixtures.GoldenTag\u003E(Descriptor, \u0022Tags\u0022, e.Id, GoldenTagOrm.Descriptor, GoldenTagOrm.Map), options, ct);\n}\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+    "Type": "GoldenBookOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenBook?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenBook?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      },
+      {
+        "Name": "LoadAuthorAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadAuthorAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default)\n{\n    ct.ThrowIfCancellationRequested();\n    e.Author = await GoldenAuthorOrm.GetAsync(db, conn, e.AuthorId, options, ct);\n}\n"
+      },
+      {
+        "Name": "LoadEditorAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadEditorAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default)\n{\n    ct.ThrowIfCancellationRequested();\n    if (e.EditorId is null)\n        e.Editor = null;\n    else\n        e.Editor = await GoldenAuthorOrm.GetAsync(db, conn, e.EditorId.Value, options, ct);\n}\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+    "Type": "OrchardOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::Orchard?\u003E GetAsync(global::Neemle.OrmLite.OrmContext db,\n    global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.\n    CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::Orchard?\u003E GetAsync(global::Neemle.OrmLite.OrmContext db,\n    global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions\n    options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.\n    FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      },
+      {
+        "Name": "LoadTreesAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadTreesAsync(global::Neemle.OrmLite.OrmContext db, global::\n    Orchard e, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct =\n    default)\n{\n    e.Trees = await global::Neemle.OrmLite.RelationQueryExtensions.ToListAsync(TreeOrm.Query(db).Where(c =\u003E c.OrchardId\n        == e.Id), options, ct);\n}\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+    "Type": "TreeOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::Tree?\u003E GetAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct\n    = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key),\n    options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::Tree?\u003E GetAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options,\n    global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.\n    FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      },
+      {
+        "Name": "LoadOrchardAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadOrchardAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::Tree e, global::Neemle.OrmLite.RelationReadOptions options, global::\n    System.Threading.CancellationToken ct = default)\n{\n    ct.ThrowIfCancellationRequested();\n    e.Orchard = await OrchardOrm.GetAsync(db, conn, e.OrchardId, options, ct);\n}\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+    "Type": "NoteOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::OrmLiteDemo.Note?\u003E GetAsync(global::Neemle.OrmLite.OrmContext\n    db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.\n    CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::OrmLiteDemo.Note?\u003E GetAsync(global::Neemle.OrmLite.OrmContext\n    db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+    "Type": "NoteOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Note?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Note?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+    "Type": "NamedOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Named?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::TenantOption.Named?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+    "Type": "EverythingOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Everything?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Everything?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+    "Type": "AccountOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Account?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Account?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+    "Type": "LabelOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Label?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Label?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+    "Type": "WorkItemOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.WorkItem?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.WorkItem?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      },
+      {
+        "Name": "LoadProjectAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadProjectAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::CorpusEntities.WorkItem e, global::Neemle.OrmLite.RelationReadOptions\n    options, global::System.Threading.CancellationToken ct = default)\n{\n    ct.ThrowIfCancellationRequested();\n    e.Project = await ProjectOrm.GetAsync(db, conn, e.ProjectId, options, ct);\n}\n"
+      },
+      {
+        "Name": "LoadParentAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadParentAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::CorpusEntities.WorkItem e, global::Neemle.OrmLite.RelationReadOptions\n    options, global::System.Threading.CancellationToken ct = default)\n{\n    ct.ThrowIfCancellationRequested();\n    if (e.ParentId is null)\n        e.Parent = null;\n    else\n        e.Parent = await WorkItemOrm.GetAsync(db, conn, e.ParentId.Value, options, ct);\n}\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+    "Type": "InternalEntityOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.InternalEntity?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.\n    Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(\n    Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.InternalEntity?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite\n    .RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+    "Type": "MemberOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Member?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Member?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+    "Type": "ProjectOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Project?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusEntities.Project?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      },
+      {
+        "Name": "LoadTasksAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadTasksAsync(global::Neemle.OrmLite.OrmContext db, global::\n    CorpusEntities.Project e, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.\n    CancellationToken ct = default)\n{\n    e.Tasks = await global::Neemle.OrmLite.RelationQueryExtensions.ToListAsync(WorkItemOrm.Query(db).Where(c =\u003E c.\n        ProjectId == e.Id), options, ct);\n}\n"
+      },
+      {
+        "Name": "LoadLabelsAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadLabelsAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::CorpusEntities.Project e, global::Neemle.OrmLite.RelationReadOptions\n    options, global::System.Threading.CancellationToken ct = default)\n{\n    e.Labels = await global::Neemle.OrmLite.OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead\u003C\n        global::CorpusEntities.Label\u003E(Descriptor, \u0022Labels\u0022, e.Id, LabelOrm.Descriptor, LabelOrm.Map), options, ct);\n}\n"
+      },
+      {
+        "Name": "LoadMembersAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadMembersAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::CorpusEntities.Project e, global::Neemle.OrmLite.RelationReadOptions\n    options, global::System.Threading.CancellationToken ct = default)\n{\n    e.Members = await global::Neemle.OrmLite.OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead\u003C\n        global::CorpusEntities.Member\u003E(Descriptor, \u0022Members\u0022, e.Id, MemberOrm.Descriptor, MemberOrm.Map), options, ct);\n}\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+    "Type": "SoftUnknownNamesOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftUnknownNames?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.\n    Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(\n    Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftUnknownNames?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite\n    .RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+    "Type": "SoftTenantWrongTypeOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftTenantWrongType?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::\n    System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.\n    FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftTenantWrongType?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.\n    OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.\n    OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+    "Type": "LiveOnlyNotUniqueOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.LiveOnlyNotUnique?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.\n    Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(\n    Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.LiveOnlyNotUnique?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite\n    .RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+    "Type": "UnmappedTypeOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.UnmappedType?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.\n    Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(\n    Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.UnmappedType?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite\n    .RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+    "Type": "SoftLabelNotTextOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftLabelNotText?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.\n    Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(\n    Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftLabelNotText?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite\n    .RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+    "Type": "SoftColumnNotMappedOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftColumnNotMapped?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::\n    System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.\n    FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftColumnNotMapped?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.\n    OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.\n    OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+    "Type": "SoftWithoutTenantOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftWithoutTenant?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.\n    Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(\n    Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftWithoutTenant?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite\n    .RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+    "Type": "SoftStatusPinnedOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftStatusPinned?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.\n    Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(\n    Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftStatusPinned?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite\n    .RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+    "Type": "SoftColumnMissingOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftColumnMissing?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.\n    Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(\n    Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftColumnMissing?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite\n    .RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+    "Type": "SoftKeyNotGuidOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftKeyNotGuid?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, int key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.\n    CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftKeyNotGuid?\u003E GetAsync(global::Neemle.\n    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, int key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+    "Type": "LiveOnlyOnPlainEntityOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.LiveOnlyOnPlainEntity?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::\n    System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.\n    FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.LiveOnlyOnPlainEntity?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.\n    OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.\n    OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+    "Type": "SoftNamedTenantMissingOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftNamedTenantMissing?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::\n    System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.\n    FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftNamedTenantMissing?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.\n    OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.\n    OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+    "Type": "DuplicateIndexNameOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.DuplicateIndexName?\u003E GetAsync(global::Neemle\n    .OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.\n    Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(\n    Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.DuplicateIndexName?\u003E GetAsync(global::Neemle\n    .OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.\n    OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.\n    OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+    "Type": "SoftColumnWrongTypeOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftColumnWrongType?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::\n    System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.\n    FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::CorpusDiagnostics.SoftColumnWrongType?\u003E GetAsync(global::\n    Neemle.OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.\n    OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.\n    OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/orm-actual/OrmLite.Entities.0000.g.cs.golden",
+    "Type": "FixtureNoteOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.FixtureNote?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.FixtureNote?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/orm-actual/OrmLite.Entities.0003.g.cs.golden",
+    "Type": "GoldenTagOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenTag?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenTag?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/orm-actual/OrmLite.Entities.0001.g.cs.golden",
+    "Type": "GoldenAuthorOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenAuthor?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenAuthor?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      },
+      {
+        "Name": "LoadBooksAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadBooksAsync(global::Neemle.OrmLite.OrmContext db, global::\n    GoldenFixtures.GoldenAuthor e, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.\n    CancellationToken ct = default)\r\n{\r\n    e.Books = await global::Neemle.OrmLite.RelationQueryExtensions.ToListAsync(GoldenBookOrm.Query(db).Where(c =\u003E c.\n        AuthorId == e.Id), options, ct);\r\n}\n"
+      },
+      {
+        "Name": "LoadTagsAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadTagsAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenAuthor e, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default)\r\n{\r\n    e.Tags = await global::Neemle.OrmLite.OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead\u003Cglobal\n        ::GoldenFixtures.GoldenTag\u003E(Descriptor, \u0022Tags\u0022, e.Id, GoldenTagOrm.Descriptor, GoldenTagOrm.Map), options, ct);\r\n}\n"
+      }
+    ]
+  },
+  {
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden",
+    "Actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/orm-actual/OrmLite.Entities.0002.g.cs.golden",
+    "Type": "GoldenBookOrm",
+    "LegacyTokensExact": true,
+    "MapFullTextExact": true,
+    "Additions": [
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenBook?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading\n    .CancellationToken ct = default) =\u003E global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).\n    Where(e =\u003E e.Id == key), options, ct);\n"
+      },
+      {
+        "Name": "GetAsync",
+        "Source": "\npublic static global::System.Threading.Tasks.Task\u003Cglobal::GoldenFixtures.GoldenBook?\u003E GetAsync(global::Neemle.OrmLite.\n    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) =\u003E global::Neemle.OrmLite.\n    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e =\u003E e.Id == key), conn, options, ct);\n"
+      },
+      {
+        "Name": "LoadAuthorAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadAuthorAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default)\r\n{\r\n    ct.ThrowIfCancellationRequested();\r\n    e.Author = await GoldenAuthorOrm.GetAsync(db, conn, e.AuthorId, options, ct);\r\n}\n"
+      },
+      {
+        "Name": "LoadEditorAsync",
+        "Source": "\npublic static async global::System.Threading.Tasks.Task LoadEditorAsync(global::Neemle.OrmLite.OrmContext db, global::\n    System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e, global::Neemle.OrmLite.\n    RelationReadOptions options, global::System.Threading.CancellationToken ct = default)\r\n{\r\n    ct.ThrowIfCancellationRequested();\r\n    if (e.EditorId is null)\r\n        e.Editor = null;\r\n    else\r\n        e.Editor = await GoldenAuthorOrm.GetAsync(db, conn, e.EditorId.Value, options, ct);\r\n}\n"
+      }
+    ]
+  }
+]

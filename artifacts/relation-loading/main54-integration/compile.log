@@ -1,0 +1,19 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Sqlite/Sqlite.csproj (in 28.75 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Sql/Sql.csproj (in 30 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj (in 27 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Postgres/Postgres.csproj (in 6.41 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/Generator.csproj (in 29.63 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Core/Core.csproj (in 12 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/main54-integration/probe/Probe.csproj (in 96 ms).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/main54-integration/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/main54-integration/build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/RelationLoading/PolicyDiagnostics.cs(11,64): error RS1019: Diagnostic Id 'ORMLITE035' is already used by analyzer 'ForeignKeyAnalysis'. Please use a different diagnostic ID. [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/Generator.csproj]
+
+Build FAILED.
+
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/RelationLoading/PolicyDiagnostics.cs(11,64): error RS1019: Diagnostic Id 'ORMLITE035' is already used by analyzer 'ForeignKeyAnalysis'. Please use a different diagnostic ID. [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/Generator.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:04:56.97

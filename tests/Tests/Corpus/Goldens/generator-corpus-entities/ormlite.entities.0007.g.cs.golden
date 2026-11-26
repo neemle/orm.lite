@@ -93,4 +93,14 @@ public static class MemberOrm
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }
+
+public static global::System.Threading.Tasks.Task<global::CorpusEntities.Member?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading
+    .CancellationToken ct = default) => global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).
+    Where(e => e.Id == key), options, ct);
+
+public static global::System.Threading.Tasks.Task<global::CorpusEntities.Member?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.
+    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) => global::Neemle.OrmLite.
+    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
 }

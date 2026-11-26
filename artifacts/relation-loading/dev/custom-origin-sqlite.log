@@ -1,0 +1,3 @@
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/consumer/ObservedSource.cs(5,23): error CS0534: 'ObservedSource' does not implement inherited abstract member 'DbDataSource.CreateDbConnection()' [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/consumer/PolicySmoke.csproj]
+
+The build failed. Fix the build errors and run again.

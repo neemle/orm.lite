@@ -17,11 +17,14 @@ public sealed class GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey> :
             && !string.IsNullOrWhiteSpace(source.SourceColumn) && !string.IsNullOrWhiteSpace(source.TargetColumn));
     }
 
+    internal override object CaptureSourceKey(TSource source) => _sourceKey(source);
+
     internal override Type Target => typeof(TTarget);
     internal override string Navigation { get; }
     internal override string? SourceColumn => null;
     internal override string? TargetColumn => null;
     internal override Type SourceKeyType => typeof(TSourceKey);
+
     internal override Type TargetKeyType => typeof(TTargetKey);
     internal override GraphLinkSource Link { get; }
 
@@ -37,7 +40,8 @@ public sealed class GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey> :
         GraphPlanNode node, IReadOnlyList<object> parents)
     {
         var sources = parents.Select(GraphFrontier.Typed<TSource>).ToList();
-        var keys = sources.Select(_sourceKey).Distinct().Cast<object>().ToList();
+        var keys = sources.Select(p => context.SourceKey(p, this, () => _sourceKey(p)))
+            .Distinct().Cast<object>().ToList();
         Require(keys.All(k => k is TSourceKey));
         var links = await GraphLinkReader.ReadAsync<TSource, TSourceKey, TTargetKey>(context, node, keys);
         var targetKeys = links.Select(p => p.Target).Distinct().Cast<object>().ToList();
@@ -46,8 +50,12 @@ public sealed class GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey> :
             node.Target.Binding.Key, GraphFrontier.Typed<TTarget>, node.Target.Binding.Comparer);
         var groups = links.ToLookup(p => p.Source, p => p.Target);
         foreach (var source in sources)
-            _assign(source, groups[_sourceKey(source)].Distinct().Where(k => targets.ContainsKey(k))
-                .Select(k => targets[k]).ToList());
+        {
+            var value = groups[context.SourceKey(source, this, () => _sourceKey(source))].Distinct().Where(k => targets.
+            ContainsKey(k))
+                .Select(k => targets[k]).ToList();
+            context.Assign(source, this, value, () => _assign(source, value));
+        }
         return rows.Distinct(ReferenceEqualityComparer.Instance).ToList();
     }
 }

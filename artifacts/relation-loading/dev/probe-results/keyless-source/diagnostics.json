@@ -1,0 +1,24 @@
+{
+  "Name": "keyless-source",
+  "Invalid": true,
+  "pass": true,
+  "registered": false,
+  "diagnostics": [
+    {
+      "Id": "ORMLITE026",
+      "severity": "Error",
+      "message": "Navigation \u0027Author.Books\u0027 cannot be loaded: \u0027Author\u0027 has no key property, so its key cannot be matched with the inverse key \u0027AuthorId\u0027. No LoadBooksAsync is generated for it."
+    },
+    {
+      "Id": "ORMLITE026",
+      "severity": "Error",
+      "message": "Navigation \u0027Book.Author\u0027 cannot be loaded: \u0027Author\u0027 has no key property, so there is no get by key to load it with. No LoadAuthorAsync is generated for it."
+    },
+    {
+      "Id": "ORMLITE035",
+      "severity": "Error",
+      "message": "Relation policy \u0027global::Probe.Author.Books\u0027 is invalid: navigation has no supported graph binding"
+    }
+  ],
+  "compilerErrors": []
+}

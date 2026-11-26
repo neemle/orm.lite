@@ -1,0 +1,192 @@
+[
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+    "kind": "Corpus"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/orm-actual/OrmLite.Entities.0000.g.cs.golden",
+    "kind": "Orm"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/orm-actual/OrmLite.Entities.0003.g.cs.golden",
+    "kind": "Orm"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/orm-actual/OrmLite.Entities.0001.g.cs.golden",
+    "kind": "Orm"
+  },
+  {
+    "old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden",
+    "actual": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/orm-actual/OrmLite.Entities.0002.g.cs.golden",
+    "kind": "Orm"
+  }
+]

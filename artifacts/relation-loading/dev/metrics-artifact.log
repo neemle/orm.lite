@@ -1,0 +1,1458 @@
+{
+  "convention": "McCabe1\u002Bif/loops/catch/nondefault cases/conditional expression and \u0026\u0026/||/?? boundaries",
+  "records": [
+    {
+      "file": "artifacts/relation-loading/dev/abi/AbiRow.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "AbiRow",
+          "start": 1,
+          "end": 1,
+          "codeLines": 1,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/abi/Program.cs",
+      "types": [],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/Author.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "Author",
+          "start": 5,
+          "end": 15,
+          "codeLines": 11,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/AuthorJsonConverter.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "AuthorJsonConverter",
+          "start": 6,
+          "end": 24,
+          "codeLines": 18,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Read",
+          "start": 8,
+          "end": 9,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Write",
+          "start": 11,
+          "end": 23,
+          "codeLines": 13,
+          "parameters": 3,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 17
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 20
+            }
+          ],
+          "nesting": {
+            "line": 12,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/BindingCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "BindingCases",
+          "start": 6,
+          "end": 36,
+          "codeLines": 31,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 35,
+          "codeLines": 28,
+          "parameters": 1,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 16
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 16
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 16
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 21
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 25
+            }
+          ],
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 21,
+          "length": 132
+        },
+        {
+          "line": 25,
+          "length": 130
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/Book.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "Book",
+          "start": 5,
+          "end": 15,
+          "codeLines": 11,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/Check.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "Check",
+          "start": 3,
+          "end": 20,
+          "codeLines": 16,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "That",
+          "start": 8,
+          "end": 12,
+          "codeLines": 5,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 10
+            }
+          ],
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ThrowsAsync",
+          "start": 14,
+          "end": 19,
+          "codeLines": 6,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "CatchClause",
+              "line": 17
+            }
+          ],
+          "nesting": {
+            "line": 16,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/ConcurrencyCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "ConcurrencyCases",
+          "start": 6,
+          "end": 80,
+          "codeLines": 71,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 13,
+          "codeLines": 6,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          }
+        },
+        {
+          "name": "RootAsync",
+          "start": 15,
+          "end": 17,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "JoinedCancellationAsync",
+          "start": 19,
+          "end": 39,
+          "codeLines": 21,
+          "parameters": 1,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 33
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 38
+            }
+          ],
+          "nesting": {
+            "line": 20,
+            "depth": 0
+          }
+        },
+        {
+          "name": "InitiatingCancellationAsync",
+          "start": 41,
+          "end": 63,
+          "codeLines": 23,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 56
+            }
+          ],
+          "nesting": {
+            "line": 42,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DetachAsync",
+          "start": 65,
+          "end": 79,
+          "codeLines": 15,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 77
+            }
+          ],
+          "nesting": {
+            "line": 66,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 28,
+          "length": 124
+        },
+        {
+          "line": 33,
+          "length": 122
+        },
+        {
+          "line": 56,
+          "length": 124
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/CustomOriginCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "CustomOriginCases",
+          "start": 6,
+          "end": 30,
+          "codeLines": 25,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 29,
+          "codeLines": 22,
+          "parameters": 1,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 15
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 20
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 27
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 27
+            }
+          ],
+          "nesting": {
+            "line": 13,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/FaultCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "FaultCases",
+          "start": 6,
+          "end": 27,
+          "codeLines": 22,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 26,
+          "codeLines": 19,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 17
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 21
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 23
+            }
+          ],
+          "nesting": {
+            "line": 15,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 15,
+          "length": 125
+        },
+        {
+          "line": 17,
+          "length": 122
+        },
+        {
+          "line": 20,
+          "length": 122
+        },
+        {
+          "line": 24,
+          "length": 123
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/Fixture.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "Fixture",
+          "start": 5,
+          "end": 61,
+          "codeLines": 54,
+          "primaryParameters": 3
+        }
+      ],
+      "methods": [
+        {
+          "name": "OpenAsync",
+          "start": 12,
+          "end": 28,
+          "codeLines": 17,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 16
+            },
+            {
+              "kind": "IfStatement",
+              "line": 18
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 18
+            }
+          ],
+          "nesting": {
+            "line": 13,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SeedAsync",
+          "start": 30,
+          "end": 53,
+          "codeLines": 24,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 31,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DisposeAsync",
+          "start": 55,
+          "end": 60,
+          "codeLines": 6,
+          "parameters": 0,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 58
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 59
+            }
+          ],
+          "nesting": {
+            "line": 56,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 18,
+          "length": 122
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/GateOriginCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "GateOriginCases",
+          "start": 8,
+          "end": 65,
+          "codeLines": 55,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 10,
+          "end": 29,
+          "codeLines": 20,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 22
+            }
+          ],
+          "nesting": {
+            "line": 15,
+            "depth": 1
+          }
+        },
+        {
+          "name": "WrongProviderAsync",
+          "start": 31,
+          "end": 41,
+          "codeLines": 11,
+          "parameters": 3,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 33
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 39
+            }
+          ],
+          "nesting": {
+            "line": 32,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ReleasedAsync",
+          "start": 43,
+          "end": 53,
+          "codeLines": 11,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 44,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DifferentGateAsync",
+          "start": 55,
+          "end": 64,
+          "codeLines": 10,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 62
+            }
+          ],
+          "nesting": {
+            "line": 56,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/LazyCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "LazyCases",
+          "start": 7,
+          "end": 33,
+          "codeLines": 27,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 9,
+          "end": 32,
+          "codeLines": 24,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 21
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 29
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 30
+            }
+          ],
+          "nesting": {
+            "line": 10,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 26,
+          "length": 121
+        },
+        {
+          "line": 29,
+          "length": 125
+        },
+        {
+          "line": 30,
+          "length": 121
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/LifetimeCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "LifetimeCases",
+          "start": 6,
+          "end": 85,
+          "codeLines": 75,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 13,
+          "codeLines": 6,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          }
+        },
+        {
+          "name": "RootAsync",
+          "start": 15,
+          "end": 17,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "ScopeDisposeAsync",
+          "start": 19,
+          "end": 35,
+          "codeLines": 17,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 33
+            }
+          ],
+          "nesting": {
+            "line": 20,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ExpiryAsync",
+          "start": 37,
+          "end": 47,
+          "codeLines": 11,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 45
+            }
+          ],
+          "nesting": {
+            "line": 38,
+            "depth": 0
+          }
+        },
+        {
+          "name": "UnitDrainAsync",
+          "start": 49,
+          "end": 65,
+          "codeLines": 17,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 64
+            }
+          ],
+          "nesting": {
+            "line": 50,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ContextDrainAsync",
+          "start": 67,
+          "end": 84,
+          "codeLines": 18,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 83
+            }
+          ],
+          "nesting": {
+            "line": 68,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 44,
+          "length": 123
+        },
+        {
+          "line": 45,
+          "length": 125
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/LimitCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "LimitCases",
+          "start": 6,
+          "end": 29,
+          "codeLines": 24,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 28,
+          "codeLines": 21,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 21
+            }
+          ],
+          "nesting": {
+            "line": 22,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 23,
+          "length": 123
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/MapSentinelException.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "MapSentinelException",
+          "start": 3,
+          "end": 6,
+          "codeLines": 4,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 5,
+          "end": 5,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 5,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/ObservedSource.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "ObservedSource",
+          "start": 5,
+          "end": 15,
+          "codeLines": 11,
+          "primaryParameters": 1
+        }
+      ],
+      "methods": [
+        {
+          "name": "CreateDbConnection",
+          "start": 9,
+          "end": 9,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "OpenDbConnectionAsync",
+          "start": 10,
+          "end": 14,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/Plain.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "Plain",
+          "start": 5,
+          "end": 9,
+          "codeLines": 5,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/Program.cs",
+      "types": [],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/QueueCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "QueueCases",
+          "start": 6,
+          "end": 33,
+          "codeLines": 28,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 32,
+          "codeLines": 25,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 27
+            }
+          ],
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 19,
+          "length": 122
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/ReadCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "ReadCases",
+          "start": 6,
+          "end": 31,
+          "codeLines": 26,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 30,
+          "codeLines": 23,
+          "parameters": 1,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 18
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 21
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 27
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 29
+            }
+          ],
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 29,
+          "length": 122
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/ReadPause.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "ReadPause",
+          "start": 3,
+          "end": 17,
+          "codeLines": 13,
+          "primaryParameters": 1
+        }
+      ],
+      "methods": [
+        {
+          "name": "Wait",
+          "start": 9,
+          "end": 13,
+          "codeLines": 5,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 12
+            }
+          ],
+          "nesting": {
+            "line": 10,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Release",
+          "start": 15,
+          "end": 15,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Dispose",
+          "start": 16,
+          "end": 16,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 16,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/SmokeJsonContext.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "SmokeJsonContext",
+          "start": 6,
+          "end": 10,
+          "codeLines": 5,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [],
+      "longLines": [
+        {
+          "line": 9,
+          "length": 161
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/SpySink.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "SpySink",
+          "start": 5,
+          "end": 22,
+          "codeLines": 16,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Clear",
+          "start": 12,
+          "end": 12,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 12,
+            "depth": 0
+          }
+        },
+        {
+          "name": "OnStatement",
+          "start": 14,
+          "end": 19,
+          "codeLines": 6,
+          "parameters": 1,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 17
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 17
+            }
+          ],
+          "nesting": {
+            "line": 15,
+            "depth": 0
+          }
+        },
+        {
+          "name": "OnTransaction",
+          "start": 21,
+          "end": 21,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 21,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/Tag.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "Tag",
+          "start": 5,
+          "end": 16,
+          "codeLines": 12,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/consumer/VisibilityCases.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "VisibilityCases",
+          "start": 6,
+          "end": 31,
+          "codeLines": 26,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 30,
+          "codeLines": 23,
+          "parameters": 1,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 13
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 20
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 24
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 29
+            }
+          ],
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 13,
+          "length": 121
+        },
+        {
+          "line": 15,
+          "length": 124
+        },
+        {
+          "line": 20,
+          "length": 128
+        },
+        {
+          "line": 23,
+          "length": 125
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/format/Program.cs",
+      "types": [],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/generator-probe/ProbeInput.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "ProbeInput",
+          "start": 1,
+          "end": 1,
+          "codeLines": 1,
+          "primaryParameters": 3
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/generator-probe/ProbeInputs.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "ProbeInputs",
+          "start": 1,
+          "end": 41,
+          "codeLines": 40,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "All",
+          "start": 21,
+          "end": 40,
+          "codeLines": 20,
+          "parameters": 0,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 27
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 30
+            }
+          ],
+          "nesting": {
+            "line": 28,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 3,
+          "length": 143
+        },
+        {
+          "line": 25,
+          "length": 146
+        },
+        {
+          "line": 26,
+          "length": 137
+        },
+        {
+          "line": 35,
+          "length": 184
+        },
+        {
+          "line": 36,
+          "length": 146
+        },
+        {
+          "line": 38,
+          "length": 133
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/generator-probe/Program.cs",
+      "types": [],
+      "methods": [],
+      "longLines": [
+        {
+          "line": 17,
+          "length": 123
+        },
+        {
+          "line": 18,
+          "length": 142
+        },
+        {
+          "line": 23,
+          "length": 123
+        },
+        {
+          "line": 24,
+          "length": 137
+        },
+        {
+          "line": 25,
+          "length": 128
+        },
+        {
+          "line": 27,
+          "length": 127
+        },
+        {
+          "line": 30,
+          "length": 154
+        },
+        {
+          "line": 33,
+          "length": 142
+        }
+      ]
+    },
+    {
+      "file": "artifacts/relation-loading/dev/metrics/MetricScan.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "MetricScan",
+          "start": 5,
+          "end": 50,
+          "codeLines": 43,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "FileOf",
+          "start": 7,
+          "end": 23,
+          "codeLines": 17,
+          "parameters": 1,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 17
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 18
+            }
+          ],
+          "nesting": {
+            "line": 8,
+            "depth": 0
+          }
+        },
+        {
+          "name": "MethodOf",
+          "start": 25,
+          "end": 36,
+          "codeLines": 12,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 33
+            }
+          ],
+          "nesting": {
+            "line": 26,
+            "depth": 0
+          }
+        },
+        {
+          "name": "IsDecision",
+          "start": 38,
+          "end": 42,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "LogicalOrExpression",
+              "line": 38
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 41
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 41
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 41
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "Line",
+          "start": 44,
+          "end": 44,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "End",
+          "start": 45,
+          "end": 45,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CodeLines",
+          "start": 46,
+          "end": 49,
+          "codeLines": 4,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/relation-loading/dev/metrics/Program.cs",
+      "types": [],
+      "methods": [],
+      "longLines": [
+        {
+          "line": 4,
+          "length": 216
+        }
+      ]
+    }
+  ]
+}

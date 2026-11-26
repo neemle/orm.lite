@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace Neemle.OrmLite;
 
-public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request, DbDataSource background, DbDataSource ops) : DbDataSource
+public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request, DbDataSource background,
+    DbDataSource ops) : DbDataSource
 {
     private static readonly ConditionalWeakTable<DbConnection, Lease> s_leases = new();
 
@@ -19,7 +20,8 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
     private readonly DbDataSource _background = Checked(provider, background, nameof(background));
     private readonly DbDataSource _ops = Checked(provider, ops, nameof(ops));
 
-    internal GatedDataSource(ISqlProvider provider, DbDataSource request, DbDataSource background, DbDataSource ops, OrmDiagnostics diagnostics)
+    internal GatedDataSource(ISqlProvider provider, DbDataSource request, DbDataSource background, DbDataSource ops,
+            OrmDiagnostics diagnostics)
         : this(provider, request, background, ops) => _diagnostics = diagnostics;
 
     public ISqlProvider Provider => _provider;
@@ -51,7 +53,7 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         }
 
         await inner.OpenAsync(ct);
-        var lease = new Lease(DbLane.CurrentScope, _diagnostics);
+        var lease = new Lease(DbLane.CurrentScope, _diagnostics, this);
         lease.Acquire();
         s_leases.Add(inner, lease);
         inner.StateChange += lease.OnStateChange;
@@ -70,7 +72,8 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         return inner;
     }
 
-    protected override async ValueTask<DbConnection> OpenDbConnectionAsync(CancellationToken cancellationToken = default)
+    protected override async ValueTask<DbConnection> OpenDbConnectionAsync(CancellationToken cancellationToken = default
+            )
     {
         var connection = LaneSource(DbLane.Current).CreateConnection();
         try
@@ -116,7 +119,7 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
 
     private void AttachMetadataLease(DbConnection connection)
     {
-        var lease = new Lease(DbLane.CurrentScope, _diagnostics);
+        var lease = new Lease(DbLane.CurrentScope, _diagnostics, this);
         lease.Acquire();
         s_leases.Add(connection, lease);
         connection.StateChange += lease.OnStateChange;
@@ -144,7 +147,7 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
             s_leases.Remove(inner);
         }
         await inner.OpenAsync(ct);
-        var lease = new Lease(DbLane.CurrentScope, _diagnostics);
+        var lease = new Lease(DbLane.CurrentScope, _diagnostics, this);
         lease.Acquire();
         s_leases.Add(inner, lease);
         inner.StateChange += lease.OnStateChange;
@@ -163,17 +166,28 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         throw Refused("OpenConnection", "OpenConnectionAsync");
 
     protected override DbBatch CreateDbBatch() =>
-        throw Refused("CreateBatch", "CreateCommand and ExecuteNonQueryAsync, or a batch on a connection from OpenConnectionAsync");
+        throw Refused("CreateBatch",
+            "CreateCommand and ExecuteNonQueryAsync, or a batch on a connection from OpenConnectionAsync");
 
     private static NotSupportedException Refused(string member, string instead) =>
-        new($"GatedDataSource refuses {member}: every connection is leased through the gate, so use {instead} instead.");
+        new($"GatedDataSource refuses {member}: every connection is leased through the gate, so use {instead} instead.")
+            ;
 
     internal static Lease? LeaseOf(DbConnection? connection) =>
         connection is not null && s_leases.TryGetValue(connection, out var lease) ? lease : null;
 
-    internal sealed class Lease(DbLaneScope? scope, OrmDiagnostics diagnostics)
+    internal static bool OriginatesFrom(DbConnection connection, GatedDataSource source) =>
+        LeaseOf(connection) is { IsCurrent: true } lease && lease.OriginatesFrom(source);
+
+    internal sealed class Lease(DbLaneScope? scope, OrmDiagnostics diagnostics, GatedDataSource source)
     {
         private int _released;
+        private readonly WeakReference<GatedDataSource> _source = new(source);
+
+        internal bool IsCurrent => Volatile.Read(ref _released) == 0;
+
+        internal bool OriginatesFrom(GatedDataSource source) =>
+            _source.TryGetTarget(out var owner) && ReferenceEquals(owner, source);
 
         internal OrmDiagnostics Diagnostics { get; } = diagnostics;
 
@@ -199,7 +213,9 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
             if (e.CurrentState != ConnectionState.Open || Volatile.Read(ref _released) == 0) return;
             throw new InvalidOperationException(
                 "GatedDataSource refuses to re-open a connection it has already leased and released: "
-                + "use OpenConnectionAsync or CreateCommand on the data source, which lease through LeaseAsync, the only leasing entry point.");
+                +
+            "use OpenConnectionAsync or CreateCommand on the data source, which lease through LeaseAsync, the only leasing entry point."
+            );
         }
     }
 
@@ -261,13 +277,15 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         protected override DbConnection? DbConnection
         {
             get => null;
-            set => throw Refused("setting Connection on a data-source command", "OpenConnectionAsync and that connection's CreateCommand");
+            set => throw Refused("setting Connection on a data-source command",
+            "OpenConnectionAsync and that connection's CreateCommand");
         }
 
         protected override DbTransaction? DbTransaction
         {
             get => null;
-            set => throw Refused("setting Transaction on a data-source command", "OpenConnectionAsync and that connection's CreateCommand");
+            set => throw Refused("setting Transaction on a data-source command",
+            "OpenConnectionAsync and that connection's CreateCommand");
         }
 
         protected override DbParameterCollection DbParameterCollection => _inner.Parameters;

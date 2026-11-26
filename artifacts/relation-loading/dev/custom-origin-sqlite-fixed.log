@@ -1,0 +1,10 @@
+runtime 10.0.15
+Unhandled exception. System.InvalidOperationException: JsonSerializerOptions instance must specify a TypeInfoResolver setting before being marked as read-only.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_JsonSerializerOptionsNoTypeInfoResolverSpecified()
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|174_0()
+   at System.Text.Json.JsonSerializer.Serialize[TValue](TValue value, JsonTypeInfo`1 jsonTypeInfo)
+   at PolicySmoke.LazyCases.VerifyAsync(Fixture f) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/consumer/LazyCases.cs:line 18
+   at PolicySmoke.LazyCases.VerifyAsync(Fixture f) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/consumer/LazyCases.cs:line 30
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/consumer/Program.cs:line 10
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/consumer/Program.cs:line 29
+   at Program.<Main>(String[] args)

@@ -1,0 +1,493 @@
+{
+  "disposition": "Reviewed legitimate additive109contract changes only",
+  "initialCorpusEntries": 743,
+  "initialCorpusDifferences": 35,
+  "changedCorpusCSharp": 34,
+  "unchangedCorpusEntries": 709,
+  "changedOrmCSharp": 4,
+  "unchangedOrmHints": 2,
+  "missingOrphanHints": 0,
+  "sqlBehaviorTranscriptDeltas": 0,
+  "reviewedGenerated": 38,
+  "legacyTokensExact": true,
+  "MapFullTextExact": true,
+  "addedMethods": "76Get options overloads +15navigation overloads (collection/reference/nullable/link), all actual emitted subjects reviewed. No explicitOn/null transaction added; exact keyed types/old bodies preserved.",
+  "justification": "ADRv3/Speckv2 authorize options overloads over existing full-entity keyed/navigation reads; reference/loaders retain exact endpoints and nullable FK shortcut, collections typed existing FK, links existing LinkedRead descriptor/Map, options/ct forwarded. Original126all8 and current39 actualproof retained, no replay.",
+  "controlChanges": "Exact4Get signatures: legacy(db,key) and(db,conn,key) keepNOct; new(db,key,options,ct=default) and(db,conn,key,options,ct=default). Correct Task<FixtureEntity>, keyGuid/string, no generic method, exactoptional/default flags and requiredothers; exact14membermultiset retained. OnlyGraphFirstSnapshot nonterminal exclusion plusauthorizedINDEX2counterrows/oneexplanationrow. ExistingGraphSnapshot/quality/hygiene/allothercontrols retained.",
+  "reviewInputAttribution": "generated-review-ready rawinputChanged=true because CompositeKey/CorpusSurface controls edited whiledata-only review was finishing. Review actually reads only unchanged captured38CSharp+old38goldens/builtassemblies; no product/golden edits untilafterresult. Frozenoldgoldens reconstructable from96c21baa; scopedalloldtokens/Map assertions actualPASS, notclaimwholetrackedtesttreeunchanged. Initialharnessreview134 pickednestedPathsclasses; correctedtop-levelselector, failurehistoryretained.",
+  "initialSuite": "4017total3552pass22fail443skip;7oracle failures+15missingPGfixture faults.441PGdependent skips plus2knownSQLiteonlyskips; no productfinding.",
+  "changedGeneratedFiles": [
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "cc58e241c4822cf9e23985e049ca0a4b81344fa886fe74b6af1d94762bb69137",
+      "afterSha256": "5bbc12e09fb5d4fccd4f9dc210fa45820e906430df27fa203e77a07bb4dcb512",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "d3a903aad269da6e0697b04f88d08ee9030daac236dfb4386235ac47c4156b32",
+      "afterSha256": "52c5a93ee6ea9437ab7462e71dc883636512f5118773e7848e0c00c36b62b6f5",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "cc58e241c4822cf9e23985e049ca0a4b81344fa886fe74b6af1d94762bb69137",
+      "afterSha256": "5bbc12e09fb5d4fccd4f9dc210fa45820e906430df27fa203e77a07bb4dcb512",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "d3a903aad269da6e0697b04f88d08ee9030daac236dfb4386235ac47c4156b32",
+      "afterSha256": "52c5a93ee6ea9437ab7462e71dc883636512f5118773e7848e0c00c36b62b6f5",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "287adcfd13eea6dc3c6932628a51b7a155117e160d4ffbe2db7051e568ecf986",
+      "afterSha256": "20e238a4bab1a69b70ffdf74c7aabe71f2307dfa444d57c98132535c10165424",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "8a51eceecbe75f2dd5e74cf29cc58970483155102938905b2cc6ec2f6a006737",
+      "afterSha256": "bfd88a3df044c6892254d3ffccab70a2e4ea13a4d3b0d30b067eced1884f4449",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "0fa8ebe16ae184f604eec1d62779377bdda19b0d594ec34435b37ded7015cd11",
+      "afterSha256": "5072b44695f3e57b8360e9ca4722857fbfc30a5b1761e6433a6e83a144d7817e",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync",
+        "LoadBooksAsync",
+        "LoadTagsAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "b8832faa2d45d3731b418a85ba004d34346d270d544b7d5bf8fb0971ef492e45",
+      "afterSha256": "8f4b2206d792fd90a519fc8ab76262b567b7db1cfcd4a4c4c47393cc911c4cb3",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync",
+        "LoadAuthorAsync",
+        "LoadEditorAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "e1c8fa26438b90e742ac4d122ab41418697e0987bdf5d1e72650c9603c6d88ff",
+      "afterSha256": "fea09e57960747f6cb60a1d1ec52d6c22ad0ed8dcae888f6f2c8aba04b2aa093",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync",
+        "LoadTreesAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "15fe69efb92f17fc5be62359a3af1c72893ef274e1b48b591c17d15918404bfe",
+      "afterSha256": "e48a8304cd62e7959300ebaf28864199ed8663f6ab96909feda818bd358c26ac",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync",
+        "LoadOrchardAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "4fb5b959a750903c4a5b793a5064eecb01aea4a1884e8b8ed102666b3963d93c",
+      "afterSha256": "be242e76c9d4e49ccfab6ab3b0c48f373b3e06de9ffe9e612abc9689b10fbfc7",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "836426e41474849e76b012144ac9cbd6d5ece0e97e33e0eaaaee83254e80a423",
+      "afterSha256": "bca8c199ea5ddeb47b00183c152d667ede8f5d94578a98f5876f46b55cc77c36",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "d3a903aad269da6e0697b04f88d08ee9030daac236dfb4386235ac47c4156b32",
+      "afterSha256": "52c5a93ee6ea9437ab7462e71dc883636512f5118773e7848e0c00c36b62b6f5",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "4b20d6f05de4a08c770832c6fe335b52aac0f4835f6847661d3791a223ed589a",
+      "afterSha256": "336a7070dc8283c14bb3bbce9c6e7ac427bf0b8d59f3914fd847ab3bf5f6304c",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "b973c70715012f7c04282f17dbe7b6d55c48e0dce29db73bd38e4f462381904b",
+      "afterSha256": "150ac93fb9cce49a3817ed01f59d65ca9b8deddce06df2ab3bb6c16e62b33802",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "5d803a6b226531c6083626782b75c76a6bf723f8f1f078a683f142111cd8aac4",
+      "afterSha256": "d772c4c5817950fbb71a0939b1b2cc49bac6eab91849c5f4aa3cf5d9867d2ab3",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "d419c6b724903b4a7ad6f09625e597a867035dd8ca17200661627beba52fd259",
+      "afterSha256": "e17510f23f6c22c69d042d816f27749ed2ede2445fc85d2cef79b00db77bdc30",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync",
+        "LoadProjectAsync",
+        "LoadParentAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "1b4a3e6c0f20388f0d9330f011b7c593c6da415171cf640025ee63f9f7669173",
+      "afterSha256": "79d4ac7a5319a6e6361d5d820c610dace2e72e40c59179a9f4f158d208e6220c",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "f236732892cb8bfdb627b4bdbb914b53b1aec5be43eed84c78e75aae65bda703",
+      "afterSha256": "7fa8001f6b9f8909fbf1bb04e14530c4142cf2420e5862082ce2d554470a6169",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "9edb1e9f9984de12c3b1fba534ad35cd8d98a392b68b36d81601d97ac3960615",
+      "afterSha256": "0bfec4d267169398d3adecf6686bc5ca1d6b7ac21fa69f42394a3276d6d32f8b",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync",
+        "LoadTasksAsync",
+        "LoadLabelsAsync",
+        "LoadMembersAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "37550e397a8868659522a22255e81b8d18274f9e08d573c42d29e34749bd7832",
+      "afterSha256": "078bf032bb1fbb4fe0d3d50db84814b4a93de8ec5a99e5e5203d8e7c6fdf640e",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "9886f1e19199c674033a374b33713498281112950a9bc53417cf50db21d9304a",
+      "afterSha256": "ffa877227c3874a4994b07d9b05cd249569b8401b61aad6f6eac2c1fc19d1e81",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "a04d890efa24721ab26d4f75890d2e54fb810caa41d205fcbde6fbf3a6de8113",
+      "afterSha256": "e61fc0ffe640380b27e02a6e08adfa40290b08628a6e97ec072f40ab5a776eb6",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "1b1a7d471b16dc95826f491269b74cf6f22c2cc1c1c34e99551934fb84fa3d73",
+      "afterSha256": "deaf68bd116bebae27049fb332ae02ae6d2cc0d2b8ad84a22525fbe4ba9de865",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "7c1518bf39500e431f6cb5ea9fa9a52cf7a6399bac361789c87f489609c01f10",
+      "afterSha256": "9f877deaa16965c00872e8a1f3e43b91e3f754a457b684b5f83c6ed96e08b7ba",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "fa16e9be21b65e8385652e30982263212f1a812349a6f158e53fae7cb0619a4c",
+      "afterSha256": "84366a7363c5acd0c5dc0b5a616f9af61b317cc259d8ce33904861509109e121",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "541d0838ca8805c1d61b6cc04f5c29e138d532f5d8e54e04116d2552e19cd8ec",
+      "afterSha256": "5212a96767b5518ac370c3177ac0cf96ff1a0d970a73b7f92f2b110500819b4e",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "bc747276d646313f606ef52a5c1c29775f0268e848af58fe067525158dd14166",
+      "afterSha256": "a6c12629181afe70e0ef8308ae6cc934e8bd56efc2ace5251834a3acbd11f9b9",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "84f20ab657b2b4cce7bc29090507e9c1e6aedeae8f6ccfdce3503ab40e6fe6ae",
+      "afterSha256": "028917dfbef4bf0e590b004ec95fe4b56cd1d9839158f4707d268f037683ee49",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "8db7f59ff22d5818b081cbc8ed3ae2ce7769195b33e2a9f8c4c9c1bf90c8b898",
+      "afterSha256": "414132f4f696a59b9fad0d6a0b80cc0550cde0b86e1835b0618ca4dfcad39cdd",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "88e3471ce0e86e4b618b3c8a74611049e33336a9ad93d9e7037f402da5908b98",
+      "afterSha256": "ab0759717231910d57536a60f7de2bbc8a12a764ae9cc3d5c9f903253b5e97f6",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "dfe2423831284455e6a931bee50d4f1637f1a1d607c82dc6a8fbffe2100e44fa",
+      "afterSha256": "c0d81a694886ac3b3b972dbbd54c9ccb08a602a028dd262b0c1f113417c378a7",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "2871f8d8fed01b044c0262e8e02ea2cacd882afa55f291de67d8a9676edf6638",
+      "afterSha256": "ef8b7d12771daa66965066f9c2a81228104a7fee4d312b83d20130e02211a9fa",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "e6399d74d3da42d9ece8981958356396ab23648f2965f23d17984f023d9a5b03",
+      "afterSha256": "f53f184e42b6fd82149e4278a430dc4b482a9ce01c2df148ea574ff8e02a300f",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "287adcfd13eea6dc3c6932628a51b7a155117e160d4ffbe2db7051e568ecf986",
+      "afterSha256": "20e238a4bab1a69b70ffdf74c7aabe71f2307dfa444d57c98132535c10165424",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "8a51eceecbe75f2dd5e74cf29cc58970483155102938905b2cc6ec2f6a006737",
+      "afterSha256": "bfd88a3df044c6892254d3ffccab70a2e4ea13a4d3b0d30b067eced1884f4449",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "0fa8ebe16ae184f604eec1d62779377bdda19b0d594ec34435b37ded7015cd11",
+      "afterSha256": "ca9fa19ed77d32d586b82be9456817fcf5e8bdaa5b28239f83eda7d96eb46ca0",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync",
+        "LoadBooksAsync",
+        "LoadTagsAsync"
+      ]
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden",
+      "beforeCommit": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "beforeSha256": "b8832faa2d45d3731b418a85ba004d34346d270d544b7d5bf8fb0971ef492e45",
+      "afterSha256": "5d3753bb30a7f9afbfea167de0b38166f872a0a302d2314a7f0d0e0d070643fa",
+      "legacyTokenReview": true,
+      "MapFullTextReview": true,
+      "additions": [
+        "GetAsync",
+        "GetAsync",
+        "LoadAuthorAsync",
+        "LoadEditorAsync"
+      ]
+    }
+  ],
+  "oracleCorrectionHistory": "28168e2 initially assumedctonall4Get methods; actual4newassertion failures plusold96c21baa golden declarations provelegacy2/3args noCT. Corrected32accd3 to preserve old exactAPI and2authorizednew4/5argoptions forms, then reranonly4affectedrows. Never productfinding or APIremoval."
+}

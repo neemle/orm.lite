@@ -1,0 +1,20 @@
+using PolicySmoke;
+using Neemle.OrmLite.Generated;
+
+await using var fixture = await Fixture.OpenAsync("sqlite");
+await ReadCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await BindingCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await GateOriginCases.VerifyAsync(fixture, "sqlite");
+fixture.Sink.Clear();
+var none = await PlainOrm.Query(fixture.Context).Take(0).FirstOrDefaultAsync();
+Check.That(none is null && fixture.Sink.Count == 1, "plain first preserves Take(0)");
+fixture.Sink.Clear();
+var one = await PlainOrm.Query(fixture.Context).OrderBy(p => p.Id).Skip(1).Take(5).FirstOrDefaultAsync();
+Check.That(one?.Id == 2 && fixture.Sink.Count == 1, "plain first preserves root order/offset");
+fixture.Sink.Clear();
+var ids = new List<int>();
+await foreach (var row in PlainOrm.Query(fixture.Context).OrderBy(p => p.Id).StreamAsync()) ids.Add(row.Id);
+Check.That(ids.SequenceEqual(new[] { 1, 2 }) && fixture.Sink.Count == 1, "unconfigured Stream unchanged");
+Console.WriteLine("main54 narrow composition assertions=" + Check.Count + " PASS");

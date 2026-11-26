@@ -131,4 +131,30 @@ public static class GoldenAuthorOrm
     {
         await OrmExec.RemoveLinkAsync(db, conn, Descriptor, "Tags", thisId, otherId);
     }
+
+public static global::System.Threading.Tasks.Task<global::GoldenFixtures.GoldenAuthor?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading
+    .CancellationToken ct = default) => global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).
+    Where(e => e.Id == key), options, ct);
+
+public static global::System.Threading.Tasks.Task<global::GoldenFixtures.GoldenAuthor?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.
+    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) => global::Neemle.OrmLite.
+    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
+
+public static async global::System.Threading.Tasks.Task LoadBooksAsync(global::Neemle.OrmLite.OrmContext db, global::
+    GoldenFixtures.GoldenAuthor e, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.
+    CancellationToken ct = default)
+{
+    e.Books = await global::Neemle.OrmLite.RelationQueryExtensions.ToListAsync(GoldenBookOrm.Query(db).Where(c => c.
+        AuthorId == e.Id), options, ct);
+}
+
+public static async global::System.Threading.Tasks.Task LoadTagsAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenAuthor e, global::Neemle.OrmLite.
+    RelationReadOptions options, global::System.Threading.CancellationToken ct = default)
+{
+    e.Tags = await global::Neemle.OrmLite.OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<global
+        ::GoldenFixtures.GoldenTag>(Descriptor, "Tags", e.Id, GoldenTagOrm.Descriptor, GoldenTagOrm.Map), options, ct);
+}
 }

@@ -1,0 +1,103 @@
+{
+  "scope": "actual source44435 scan plus manual owner-cleanup correction delta to beaf383f; not future main111 composition",
+  "assessedSource": "beaf383fadb60b43fbd630b7cf3e6686eed84fee",
+  "rawExitCode": 1,
+  "rawCandidates": 7,
+  "partialParserEntries": 35,
+  "candidates": [
+    {
+      "path": "src/Postgres/PostgresActorStamp.cs",
+      "line": 16,
+      "rule": "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+      "wholeFileExactApprovedMain": true,
+      "disposition": "Inherited parameterized statement or transparent CommandText forwarding; inspected actual unchanged command binding context, no untrusted interpolation introduced"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/PostgresSchemaRead.cs",
+      "line": 36,
+      "rule": "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+      "wholeFileExactApprovedMain": true,
+      "disposition": "Inherited parameterized statement or transparent CommandText forwarding; inspected actual unchanged command binding context, no untrusted interpolation introduced"
+    },
+    {
+      "path": "src/Runtime/GatedDataSource.cs",
+      "line": 250,
+      "rule": "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+      "wholeFileExactApprovedMain": false,
+      "disposition": "Inherited parameterized statement or transparent CommandText forwarding; inspected actual unchanged command binding context, no untrusted interpolation introduced"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaBudgetCommand.cs",
+      "line": 9,
+      "rule": "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+      "wholeFileExactApprovedMain": true,
+      "disposition": "Inherited parameterized statement or transparent CommandText forwarding; inspected actual unchanged command binding context, no untrusted interpolation introduced"
+    },
+    {
+      "path": "src/Runtime/UnitOfWork.cs",
+      "line": 91,
+      "rule": "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+      "wholeFileExactApprovedMain": false,
+      "disposition": "Inherited parameterized statement or transparent CommandText forwarding; inspected actual unchanged command binding context, no untrusted interpolation introduced"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaRead.cs",
+      "line": 36,
+      "rule": "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+      "wholeFileExactApprovedMain": true,
+      "disposition": "Inherited parameterized statement or transparent CommandText forwarding; inspected actual unchanged command binding context, no untrusted interpolation introduced"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSessionCommands.cs",
+      "line": 15,
+      "rule": "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+      "wholeFileExactApprovedMain": true,
+      "disposition": "Inherited parameterized statement or transparent CommandText forwarding; inspected actual unchanged command binding context, no untrusted interpolation introduced"
+    }
+  ],
+  "parserLimits": [
+    "/demo/CleanupFaultSource.cs",
+    "/demo/Fixture.cs",
+    "/demo/ObservedSource.cs",
+    "/src/Generator/DefaultTenants.cs",
+    "/src/Generator/DescriptorEmitter.cs",
+    "/src/Generator/EntityNaming.cs",
+    "/src/Generator/ForeignKeyAnalysis.cs",
+    "/src/Postgres/PostgresCatalog.cs",
+    "/src/Postgres/PostgresMigrationPlanner.cs",
+    "/src/Postgres/PostgresNames.cs",
+    "/src/Postgres/SchemaDiff/PostgresSchemaRead.cs",
+    "/src/Postgres/SchemaDiff/PostgresSchemaSession.cs",
+    "/src/Runtime/GatedDataSource.cs",
+    "/src/Runtime/GraphPlanNode.cs",
+    "/src/Runtime/GraphQueryState.cs",
+    "/src/Runtime/MigrationPlanning.cs",
+    "/src/Runtime/OrmLiteOptions.Binding.cs",
+    "/src/Runtime/RelationLoading/PolicyModel.cs",
+    "/src/Runtime/RelationLoading/ScopeAttachments.cs",
+    "/src/Runtime/RelationLoading/ScopeScheduler.cs",
+    "/src/Runtime/SchemaDiff/SchemaBudgetCommand.cs",
+    "/src/Runtime/SchemaDiff/SchemaBudgetConnection.cs",
+    "/src/Runtime/SchemaDiff/SchemaCompareState.cs",
+    "/src/Runtime/SoftRestore.cs",
+    "/src/Runtime/StatementExecutor.cs",
+    "/src/Runtime/Streaming/StreamCursor.cs",
+    "/src/Runtime/Streaming/StreamTokens.cs",
+    "/src/Sqlite/SchemaDiff/SqliteSchemaRead.cs",
+    "/src/Sqlite/SchemaDiff/SqliteSchemaSession.cs",
+    "/src/Sqlite/SqliteCatalog.cs",
+    "/src/Sqlite/SqliteConnectionParts.cs",
+    "/src/Sqlite/SqliteEngineAggregate.cs",
+    "/src/Sqlite/SqliteHistoryPlan.cs",
+    "/src/Sqlite/SqliteMigrationPlanner.cs",
+    "/src/Sqlite/SqliteProvider.cs"
+  ],
+  "manualDelta": "Only UnitOfWork/OrmContext owner cleanup changed after scan; PolicyCleanupSteps attempts drain then every owner stage and preserves first failure. Independent096b2624 three same tests fixedPASS/oldRuntimeFAIL. No SQL/auth/provider/dependency/logging change. Focused TL and actual-main composition next.",
+  "disposition": "No NEW exploitable HIGH/CRITICAL or secret identified within assessed surface; raw candidates/partial-parser limits retained",
+  "proofs": [
+    "873ca24d-44a1-4e8b-b020-dd8e2223b5bb",
+    "e761fea8-acdb-4dbf-a5e1-9c66e55cec22",
+    "096b2624-333b-4489-b4f6-b1cfc36fc9ac"
+  ],
+  "generated": "2026-11-26T16:47:49.830568+00:00"
+}

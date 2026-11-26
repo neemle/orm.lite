@@ -1,0 +1,7 @@
+VSTest version 18.7.1 (arm64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/owner-cleanup-correction/results/fixed.trx
+
+Passed!  - Failed:     0, Passed:     3, Skipped:     0, Total:     3, Duration: 92 ms - Neemle.OrmLite.Tests.dll (net10.0)

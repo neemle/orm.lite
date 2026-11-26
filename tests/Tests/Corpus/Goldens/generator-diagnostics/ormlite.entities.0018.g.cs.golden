@@ -79,4 +79,14 @@ public static class SoftKeyNotGuidOrm
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }
+
+public static global::System.Threading.Tasks.Task<global::CorpusDiagnostics.SoftKeyNotGuid?> GetAsync(global::Neemle.
+    OrmLite.OrmContext db, int key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.
+    CancellationToken ct = default) => global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).
+    Where(e => e.Id == key), options, ct);
+
+public static global::System.Threading.Tasks.Task<global::CorpusDiagnostics.SoftKeyNotGuid?> GetAsync(global::Neemle.
+    OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, int key, global::Neemle.OrmLite.
+    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) => global::Neemle.OrmLite.
+    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
 }

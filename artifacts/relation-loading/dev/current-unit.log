@@ -1,0 +1,105 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Core/Core.csproj (in 2.08 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj (in 2.08 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Sql/Sql.csproj (in 2.08 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Sqlite/Sqlite.csproj (in 2.08 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Postgres/Postgres.csproj (in 2.08 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/Generator.csproj (in 2.08 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/Tests.csproj (in 2.19 sec).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Tests -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-build/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:01.78] Neemle.OrmLite.Tests: Skipping test case with duplicate ID '4e912f230b5a2e1c21953a8b0e5f019c8c74e710' ('[SEC] a string or char holding half of a surrogate pair is refused by InsertData and DeleteData on both providers, and nothing is recorded(value: "a\xd83db")' and '[SEC] a string or char holding half of a surrogate pair is refused by InsertData and DeleteData on both providers, and nothing is recorded(value: "a\xde00b")')
+[xUnit.net 00:00:16.35]     AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"docs\")]\npublic class Doc\n{\n    [Key] "···, entity: "Doc") [FAIL]
+  Failed AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"docs\")]\npublic class Doc\n{\n    [Key] "···, entity: "Doc") [1 s]
+  Error Message:
+   Assert.Equal() Failure: Collections differ
+                                        ↓ (pos 5)
+Expected: [···, "GetAsync", "GetAsync", "InsertAsync", "InsertAsync", "Map", ···]
+Actual:   [···, "GetAsync", "GetAsync", "GetAsync", "GetAsync", "InsertAsync", ···]
+                                        ↑ (pos 5)
+  Stack Trace:
+     at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(String source, String entity) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 30
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:17.21]     AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"things\")]\npublic class Thing\n{\n    pu"···, entity: "Thing") [FAIL]
+  Failed AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"things\")]\npublic class Thing\n{\n    pu"···, entity: "Thing") [882 ms]
+  Error Message:
+   Assert.Equal() Failure: Collections differ
+                                        ↓ (pos 5)
+Expected: [···, "GetAsync", "GetAsync", "InsertAsync", "InsertAsync", "Map", ···]
+Actual:   [···, "GetAsync", "GetAsync", "GetAsync", "GetAsync", "InsertAsync", ···]
+                                        ↑ (pos 5)
+  Stack Trace:
+     at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(String source, String entity) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 30
+   at InvokeStub_CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:17.83]     AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"registers\")]\npublic class Register\n{\n"···, entity: "Register") [FAIL]
+  Failed AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"registers\")]\npublic class Register\n{\n"···, entity: "Register") [619 ms]
+  Error Message:
+   Assert.Equal() Failure: Collections differ
+                                        ↓ (pos 5)
+Expected: [···, "GetAsync", "GetAsync", "InsertAsync", "InsertAsync", "Map", ···]
+Actual:   [···, "GetAsync", "GetAsync", "GetAsync", "GetAsync", "InsertAsync", ···]
+                                        ↑ (pos 5)
+  Stack Trace:
+     at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(String source, String entity) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 30
+   at InvokeStub_CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:18.48]     AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"shadowed\")]\npublic class Shadowed\n{\n "···, entity: "Shadowed") [FAIL]
+  Failed AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"shadowed\")]\npublic class Shadowed\n{\n "···, entity: "Shadowed") [645 ms]
+  Error Message:
+   Assert.Equal() Failure: Collections differ
+                                        ↓ (pos 5)
+Expected: [···, "GetAsync", "GetAsync", "InsertAsync", "InsertAsync", "Map", ···]
+Actual:   [···, "GetAsync", "GetAsync", "GetAsync", "GetAsync", "InsertAsync", ···]
+                                        ↑ (pos 5)
+  Stack Trace:
+     at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(String source, String entity) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 30
+   at InvokeStub_CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:26.67]     the emitted entity and migration text carries no comment line beyond the auto-generated header and no tracker cite [FAIL]
+  Failed the emitted entity and migration text carries no comment line beyond the auto-generated header and no tracker cite [440 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 3
+Actual:   6
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GeneratedTextHygieneTests.The_generated_text_has_no_comment_lines_and_no_tracker_cites() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/GeneratedTextHygieneTests.cs:line 28
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:47.13]     ORML-22 the generated entity list does not depend on the order of the syntax trees [FAIL]
+  Failed ORML-22 the generated entity list does not depend on the order of the syntax trees [856 ms]
+  Error Message:
+   System.InvalidOperationException : Sequence contains no matching element
+  Stack Trace:
+     at System.Linq.ThrowHelper.ThrowNoMatchException()
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   at Neemle.OrmLite.Tests.GeneratorQualityTests.EntitiesText(ValueTuple`2[] files) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/GeneratorQualityTests.cs:line 49
+   at Neemle.OrmLite.Tests.GeneratorQualityTests.The_entity_order_ignores_the_tree_order() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/GeneratorQualityTests.cs:line 91
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:01:18.72]     Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte [FAIL]
+  Failed Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte [13 s]
+  Error Message:
+   the generated source of the non-soft fixture entities no longer matches tests/Tests/OrmLiteGolden/Expected:
+  OrmLite.Entities.0000.g.cs: generated but has no golden file
+  OrmLite.Entities.0001.g.cs: generated but has no golden file
+  OrmLite.Entities.0002.g.cs: generated but has no golden file
+  OrmLite.Entities.0003.g.cs: generated but has no golden file
+  OrmLite.Entities.0004.g.cs: generated but has no golden file
+  OrmLite.Entities.0005.g.cs: generated but has no golden file
+  OrmLite.Entities.g.cs: pinned but no longer generated
+If the generator change is intended, regenerate with `ORMLITE_GOLDEN_REGENERATE=1 dotnet test --filter FullyQualifiedName~OrmLiteGolden`, review the diff of tests/Tests/OrmLiteGolden/Expected and commit it with the generator change.
+  Stack Trace:
+     at Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/OrmLiteGolden/OrmLiteGoldenTests.cs:line 63
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)

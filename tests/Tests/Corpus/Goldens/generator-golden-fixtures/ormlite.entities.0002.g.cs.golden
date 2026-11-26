@@ -152,4 +152,33 @@ public static class GoldenBookOrm
             e.Editor = await GoldenAuthorOrm.GetAsync(db, conn, e.EditorId.Value);
         }
     }
+
+public static global::System.Threading.Tasks.Task<global::GoldenFixtures.GoldenBook?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading
+    .CancellationToken ct = default) => global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).
+    Where(e => e.Id == key), options, ct);
+
+public static global::System.Threading.Tasks.Task<global::GoldenFixtures.GoldenBook?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.
+    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) => global::Neemle.OrmLite.
+    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
+
+public static async global::System.Threading.Tasks.Task LoadAuthorAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e, global::Neemle.OrmLite.
+    RelationReadOptions options, global::System.Threading.CancellationToken ct = default)
+{
+    ct.ThrowIfCancellationRequested();
+    e.Author = await GoldenAuthorOrm.GetAsync(db, conn, e.AuthorId, options, ct);
+}
+
+public static async global::System.Threading.Tasks.Task LoadEditorAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e, global::Neemle.OrmLite.
+    RelationReadOptions options, global::System.Threading.CancellationToken ct = default)
+{
+    ct.ThrowIfCancellationRequested();
+    if (e.EditorId is null)
+        e.Editor = null;
+    else
+        e.Editor = await GoldenAuthorOrm.GetAsync(db, conn, e.EditorId.Value, options, ct);
+}
 }

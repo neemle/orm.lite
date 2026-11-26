@@ -1,0 +1,11 @@
+{
+  "runtimePath": "artifacts/relation-loading/sdet-current-main54/build/bin/Tests/release/Neemle.OrmLite.Runtime.dll",
+  "runtimeSha256": "b3533c370b3577089288cc7669489c8d0ce526fc2f90ba7a8c39f45eb985d11b",
+  "provenanceReceipt": "artifacts/relation-loading/sdet-current-main54/keyed-signatures-final.json",
+  "receiptSha256": "3a9fed1ee208f3e5c5e8011100aa797456ebed3d5875c3e221418d273abede5b",
+  "productCommit": "f5d521ea8ef8f16c377842239e274e384bc49fb8",
+  "sourceTree": "44435d01c20a769b87f3482925a213a1f41eecbc",
+  "workspaceHead": "32accd386b25c1ee0dbfbc5538bdea362f8caa49",
+  "inputChanged": false,
+  "limit": "Retained local build output attributed by original actual command/manifest, not a signed external archive; no old rebuild. Only Runtime is replaced in isolated new test-host."
+}

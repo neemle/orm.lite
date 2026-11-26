@@ -1,0 +1,3 @@
+{
+  "reason": "MSBuild incremental build skipped Csc and emitted no generated files; capture only is incomplete, not a product or functional failure. Recompile public consumer only to capture actual unchanged generated outputs."
+}

@@ -1,0 +1,43 @@
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
+using Microsoft.CodeAnalysis;
+using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
+
+namespace Neemle.OrmLite.Generator;
+
+internal static class PolicyDiagnostics
+{
+    private static readonly DiagnosticDescriptor Invalid = new("ORMLITE037", "Invalid relation loading policy",
+        "Relation policy '{0}.{1}' is invalid: {2}", "OrmLite", DiagnosticSeverity.Error, true);
+
+    internal static void Report(SourceProductionContext context, ImmutableArray<Entity> entities,
+        HashSet<(string Entity, string Nav)> blocked)
+    {
+        foreach (var entity in entities)
+            foreach (var issue in Issues(entity, entities, blocked))
+                context.ReportDiagnostic(Diagnostic.Create(Invalid, issue.Location, entity.Full,
+                    issue.Navigation, issue.Reason));
+    }
+
+    internal static IEnumerable<PolicyIssue> Issues(Entity entity, ImmutableArray<Entity> entities,
+        HashSet<(string Entity, string Nav)> blocked)
+    {
+        if (entity.LoadingPolicy is not { } policy) yield break;
+        foreach (var issue in policy.Issues) yield return issue;
+        foreach (var declaration in policy.Declarations)
+        {
+            var target = Target(entity, declaration.Navigation);
+            if (!GraphEmitter.Supported(entity) || target is null
+                || !entities.Any(e => e.Full == target && GraphEmitter.Supported(e))
+                || blocked.Contains((entity.Full, declaration.Navigation)))
+                yield return new PolicyIssue(declaration.Navigation, "navigation has no supported graph binding",
+                    declaration.Location);
+        }
+    }
+
+    private static string? Target(Entity entity, string navigation) =>
+        entity.Relations.FirstOrDefault(r => r.Nav == navigation)?.TargetFull
+        ?? entity.Collections.FirstOrDefault(c => c.Nav == navigation)?.ChildFull
+        ?? entity.ManyToMany.FirstOrDefault(m => m.Nav == navigation)?.OtherFull;
+}

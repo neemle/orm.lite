@@ -1,0 +1,49 @@
+{
+  "gate": "Changed/new documentation link targets and anchors only",
+  "argv": [
+    "python3",
+    "artifacts/relation-loading/docs-current-main54/check_links.py",
+    "5f4c6b500b41b3ec058025b3fb9403e20e40e31a"
+  ],
+  "workingDirectory": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+  "baseCommit": "5f4c6b500b41b3ec058025b3fb9403e20e40e31a",
+  "pythonVersion": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "startedAt": "2026-11-26T16:12:29.411817+00:00",
+  "finishedAt": "2026-11-26T16:12:29.496877+00:00",
+  "exitCode": 0,
+  "executionCount": 1,
+  "checks": [
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/relation-loading/README.md#supported-reads-and-ordinary-streaming",
+      "addedOccurrences": 1,
+      "valid": true
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "streaming.md#consume-rows-with-await-foreach",
+      "addedOccurrences": 1,
+      "valid": true
+    },
+    {
+      "from": "examples/relation-loading/README.md",
+      "target": "../../docs/relations.md#6-try-model-based-eager-and-asynchronous-lazy-loading",
+      "addedOccurrences": 1,
+      "valid": true
+    },
+    {
+      "from": "examples/relation-loading/README.md",
+      "target": "../../docs/streaming.md#consume-rows-with-await-foreach",
+      "addedOccurrences": 1,
+      "valid": true
+    }
+  ],
+  "checkedOccurrences": 4,
+  "inputSha256": {
+    "docs/relations.md": "5e613d245a82758d487068e949feccddc79febfc9d5c6c841df3114beb1c0d1a",
+    "examples/relation-loading/README.md": "be24a56811958257419b28ead4320cbe1bb1417cc045c015cdb19d88e1eface2"
+  },
+  "sourceTree": "44435d01c20a769b87f3482925a213a1f41eecbc",
+  "testTree": "4ad2df453584096cbc255d33c8c067efca18a056",
+  "limits": "Static changed-link inspection only. Existing links and project behavior were not rechecked."
+}

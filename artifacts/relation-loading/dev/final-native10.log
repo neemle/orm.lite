@@ -1,0 +1,21 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj (in 4.6 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Core/Core.csproj (in 4.6 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/Generator.csproj (in 4.62 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Sql/Sql.csproj (in 4.6 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Sqlite/Sqlite.csproj (in 4.6 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Postgres/Postgres.csproj (in 4.6 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/consumer/PolicySmoke.csproj (in 4.6 sec).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/final-native10-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/final-native10-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/final-native10-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/final-native10-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/final-native10-build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/final-native10-build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  PolicySmoke -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/final-native10-build/bin/PolicySmoke/release_linux-arm64/PolicySmoke.dll
+  Generating native code
+  PolicySmoke -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/final-native10-out/
+runtime 10.0.15
+policy smoke sqlite assertions=109 PASS
+runtime 10.0.15
+policy smoke postgres assertions=109 PASS

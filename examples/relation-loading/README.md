@@ -1,0 +1,108 @@
+# Relation loading demo
+
+Run the same executable scenarios with JIT or NativeAOT, on SQLite or PostgreSQL. The demo uses the
+runtime and generator in this checkout. It exercises generated typed navigation paths, eager reads,
+explicit asynchronous lazy demands and caller-owned transactions without getter I/O.
+
+## Run
+
+Use .NET 10 SDK; NativeAOT also needs the platform's native compiler toolchain. PostgreSQL examples
+need a disposable database: the fixture resets its five `policy_*` tables. SQLite creates and deletes
+its own temporary database. No migrations or application tables are modified.
+
+From the repository root:
+
+```sh
+export ORMLITE_EXPECT_DOTNET=10
+export ORMLITE_TEST_POSTGRES='Host=localhost;Username=postgres;Database=relation_loading_demo'
+
+dotnet run --project examples/relation-loading/RelationLoadingDemo.csproj -c Release -- sqlite
+dotnet run --project examples/relation-loading/RelationLoadingDemo.csproj -c Release -- postgres
+```
+
+Publish the same sources as a native executable. This example targets Linux ARM64; choose the RID
+matching the machine where the executable will run.
+
+```sh
+dotnet publish examples/relation-loading/RelationLoadingDemo.csproj -c Release \
+  -r linux-arm64 -p:PolicySmokeNative=true -o /tmp/relation-loading-demo
+/tmp/relation-loading-demo/PolicySmoke sqlite
+/tmp/relation-loading-demo/PolicySmoke postgres
+```
+
+Each run ends with `policy smoke <provider> assertions=<count> PASS` when the runtime assertion above is
+enabled. Any failed scenario throws and exits unsuccessfully. The provider argument changes only the
+fixture; [Program.cs](Program.cs) invokes the same cases in every mode. The project can target .NET 11
+with `-p:PolicySmokeTfm=net11.0`; set `ORMLITE_EXPECT_DOTNET=11` for that run.
+
+## Supported reads and ordinary streaming
+
+Model eager policies and `RelationReadOptions` apply to supported buffered full-entity `ToListAsync`,
+`FirstOrDefaultAsync`, generated `GetAsync` and navigation reads. A successful buffered read with
+`RelationReadOptions.Scope` is the supported route for attaching entities to that retained scope.
+
+Ordinary `StreamAsync` on a configured model keeps its
+[explicit row-stream behavior](../../docs/streaming.md#consume-rows-with-await-foreach).
+It has no policy-aware options, eager-expansion or loading-scope attachment contract. Use the buffered
+read methods above to choose model policies and scope attachment; the ordinary stream remains a row stream.
+
+## Eager reads and suppression
+
+[ReadCases.cs](ReadCases.cs) loads a root page with eager books and back references, checks shared
+identity through a cycle, and counts batched statements. It compares this with per-call eager
+suppression, scalar reads and an entity without relation policies. `EagerBehavior.Suppress` affects only
+that invocation; a later ordinary read still uses the model, and explicit loading/lazy eligibility remain.
+Model declarations are in [Author.cs](Author.cs) and [Book.cs](Book.cs); all six finite graph bounds are explicit.
+
+## Explicit lazy demand
+
+[LazyCases.cs](LazyCases.cs) reads a suppressed root set into a retained scope, inspects unloaded and
+empty states, calls `scope.LoadAsync(author, AuthorOrm.Paths.Tags)`, and checks successful caching.
+Getter access and an actual statically typed JSON serialization perform no relation I/O. Detaching
+retains loaded values and refuses later demands before SQL.
+
+## Cancellation, faults and bounded work
+
+[ConcurrencyCases.cs](ConcurrencyCases.cs) pauses real reader work to show joined demands, independent
+waiter cancellation, initiating cancellation, explicit retry and detach during I/O.
+[FaultCases.cs](FaultCases.cs) checks mapper failures and cached faults without partial publication.
+[QueueCases.cs](QueueCases.cs), [LimitCases.cs](LimitCases.cs) and [LifetimeCases.cs](LifetimeCases.cs)
+exercise finite queues, all six graph budgets, expiry and cancellation/draining on scope, context or
+unit-of-work shutdown. No demand retries implicitly.
+
+## Publication fences and cleanup failures
+
+[NestedDetachCases.cs](NestedDetachCases.cs) pauses the final author read in
+`Book10.Editor → Author2.Books → Book12.Author`, then detaches Book12 after its key was captured.
+The demand refuses before publication: Book12 stays detached, its original navigation remains unchanged,
+and the initiating navigation is not partially assigned.
+
+[CleanupCases.cs](CleanupCases.cs) uses generated mapping over real database rows while a connection wrapper
+injects close/dispose failures. It checks that the original mapper exception object and stack survive,
+that both cleanup operations are attempted, that failed scope registration keeps its original error,
+and that a cleanup-only failure is still propagated. Secondary cleanup failures stay private.
+
+Run either focused case with `sqlite publication-fence` or `sqlite cleanup` after the normal JIT command's
+`--`; `postgres` selects the other provider. The default command includes both cases and all earlier cases.
+
+## Transactions and connection origins
+
+[BindingCases.cs](BindingCases.cs) uses a generated keyed read with the exact unit-of-work connection
+and transaction. An existing explicit `.On(connection)` or `.On(connection, null)` must match both
+the scope connection and transaction; explicit null cannot inherit a transaction-bound scope.
+The case also shows that a committed unit cannot be accepted as a generic bare connection.
+[GateOriginCases.cs](GateOriginCases.cs) checks ordinary externally opened gated connections, shared
+gate/provider objects with distinct selected contexts, mismatched providers and stale leases. The scope
+still selects one exact context for all later queries. A live source/provider witness is required; connection
+strings or matching driver types do not establish origin, and a closed/released lease cannot be revived.
+[CustomOriginCases.cs](CustomOriginCases.cs) shows known custom-source Open/UoW origins and safe
+refusal of unobserved externally opened custom connections, without probe opens.
+
+## Visibility and captured keys
+
+[VisibilityCases.cs](VisibilityCases.cs) covers root masking, masked navigation keys, nullable
+references and key changes after attachment. Refused work adds no SQL statements.
+
+The [relation guide](../../docs/relations.md#6-try-model-based-eager-and-asynchronous-lazy-loading) links these
+policy cases alongside the broader graph and loader surface. This
+demo makes no release or package-version claim and does not implement save cascades or getter I/O.

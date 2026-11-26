@@ -23,7 +23,7 @@ internal static class EntityReader
         var bound = s.IsStatic ? null : Buildability.BoundConstructor(s);
         var scan = new EntityScan(s, view, Buildability.SetsRequiredMembers(bound));
         foreach (var m in PropertiesOf(s)) scan.Visit(m);
-        return Assemble(scan, TableOf(s, view), bound);
+        return RelationPolicyReader.Read(s, Assemble(scan, TableOf(s, view), bound));
     }
 
     private static string TableOf(INamedTypeSymbol s, bool view) =>

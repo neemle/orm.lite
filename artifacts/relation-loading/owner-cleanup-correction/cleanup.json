@@ -1,0 +1,37 @@
+{
+  "generated": "2026-11-26T16:44:58.664029+00:00",
+  "PGorNetworkAllocated": false,
+  "resourceMode": "In-memory deterministic resource spies; no driver, SQL, database or OS connection allocated",
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "0f677aebd2692beb4081463c89bcbbd2cec6a686cbba16adbf495d6177266261"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 0f677aebd2692beb4081463c89bcbbd2cec6a686cbba16adbf495d6177266261\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "85aecaeb2e549e23ded22685175e4cd9dbdbe103144dc21e14fa0fd481001f22"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 85aecaeb2e549e23ded22685175e4cd9dbdbe103144dc21e14fa0fd481001f22\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "3979cacda61de48d1843b365970598f0cd5296eda2678bb9b1c4ada5f77174aa"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 3979cacda61de48d1843b365970598f0cd5296eda2678bb9b1c4ada5f77174aa\n"
+    }
+  ]
+}

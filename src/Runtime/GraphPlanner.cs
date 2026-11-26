@@ -8,7 +8,11 @@ internal static class GraphPlanner
     {
         ArgumentNullException.ThrowIfNull(query);
         ArgumentNullException.ThrowIfNull(request);
-        var state = query.GraphSnapshot();
+        return Build(query.GraphSnapshot(), request);
+    }
+
+    internal static GraphExecutionPlan<T> Build<T>(GraphQueryState<T> state, GraphRequest<T> request) where T : class
+    {
         var registry = GraphModel.Snapshot();
         var root = registry.Get(typeof(T));
         if (state.Unsupported || state.Root.From?.Table != root.Table || !root.Binding.Maps(state.Map))
@@ -23,6 +27,9 @@ internal static class GraphPlanner
         CheckCapacity(plan.RootStatement.Parameters.Count, state.Database.Provider.MaxBindParameters);
         return plan;
     }
+
+    internal static GraphPlanNode PolicyNode<T>(GraphExecutionPlan<T> plan, GraphEntitySnapshot source,
+        IGraphNavigationBinding edge) where T : class => AddNode(plan, [], source, edge, GraphModel.Snapshot());
 
     private static void CheckRoot<T>(GraphExecutionPlan<T> plan) where T : class
     {

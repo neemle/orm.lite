@@ -1,0 +1,11 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/Generator.csproj (in 274 ms).
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/RelationLoading/PolicyDiagnostics.cs(12,9): error RS1032: The diagnostic message should not contain any line return character nor any leading or trailing whitespaces and should either be a single sentence without a trailing period or a multi-sentences with a trailing period [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/Generator.csproj]
+
+Build FAILED.
+
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/RelationLoading/PolicyDiagnostics.cs(12,9): error RS1032: The diagnostic message should not contain any line return character nor any leading or trailing whitespaces and should either be a single sentence without a trailing period or a multi-sentences with a trailing period [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Generator/Generator.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:03.42
