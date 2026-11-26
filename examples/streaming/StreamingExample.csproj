@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>StreamingExample</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <OrmLiteUsesPackedPackages>true</OrmLiteUsesPackedPackages>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(ArtifactsPath)/generated/StreamingExample</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Neemle.OrmLite" Version="[$(OrmLiteVersion)]" />
+    <PackageReference Include="Neemle.OrmLite.Sqlite" Version="[$(OrmLiteVersion)]" />
+    <PackageReference Include="Neemle.OrmLite.Postgres" Version="[$(OrmLiteVersion)]" />
+  </ItemGroup>
+</Project>
