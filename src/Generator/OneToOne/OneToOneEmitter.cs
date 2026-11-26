@@ -53,37 +53,10 @@ internal static class OneToOneEmitter
         if (entity is null) return type;
         foreach (var pair in entity.OneToOnePairs)
             foreach (var unit in new[] { false, true })
-                type = type.AddMembers(SyntaxFactory.ParseMemberDeclaration(Loader(entity, pair, unit))!);
+                type = type.AddMembers(SyntaxFactory.ParseMemberDeclaration(
+                    new OneToOneLoader(entity, pair, unit).Source())!);
         return type;
     }
-
-    private static string Loader(Entity entity, OneToOneModel pair, bool unit)
-    {
-        var owner = entity.Full == pair.OwnerFull;
-        var navigation = owner ? pair.Intent.Navigation : pair.Intent.Inverse;
-        var target = owner ? pair.PrincipalToken : pair.OwnerToken;
-        var targetType = owner ? pair.PrincipalFull : pair.OwnerFull;
-        var property = owner ? pair.Intent.ForeignKey : pair.PrincipalKeyProperty;
-        var key = "e." + Identifier(property) + (owner && pair.NullableValue ? ".Value" : "!");
-        var parameter = unit ? Runtime + "UnitOfWork unit" : "global::System.Data.Common.DbConnection conn";
-        var scope = unit ? "db, unit.Connection, unit.Transaction" : "db, conn, null";
-        var absent = owner && pair.Nullable ? "if (e." + Identifier(property) + " is null) { e."
-            + Identifier(navigation) + " = null; return; }" : "";
-        var direction = owner ? "OwnerToPrincipal" : "PrincipalToOwner";
-        var column = owner ? pair.PrincipalKeyColumn : pair.ForeignKeyColumn;
-        return Signature(entity, navigation, parameter) + " { " + Runtime + "OneToOneReadGuard.Require(e, "
-            + Literal(navigation) + "); ct.ThrowIfCancellationRequested(); " + absent + " var value = await "
-            + Runtime + "OneToOneRows.ReadAsync(new " + Runtime + "OneToOneReadScope(" + scope + "), new "
-            + Runtime + "OneToOneLookup<" + targetType + ", " + pair.KeyType + ">(new " + Runtime
-            + "OneToOneLookupTarget(" + target + "Orm.Descriptor, " + Literal(column) + ", " + Literal(navigation)
-            + ", " + Runtime + "OneToOneDirection." + direction + "), " + key + ", " + target
-            + "Orm.Map), ct); e." + Identifier(navigation) + " = value; }";
-    }
-
-    private static string Signature(Entity entity, string navigation, string parameter) =>
-        "public static async global::System.Threading.Tasks.Task Load" + navigation + "Async(" + Runtime
-        + "OrmContext db, " + parameter + ", " + entity.Full
-        + " e, global::System.Threading.CancellationToken ct = default)";
 
     private static ClassDeclarationSyntax Register(ClassDeclarationSyntax type, ImmutableArray<Entity> entities)
     {
@@ -101,7 +74,4 @@ internal static class OneToOneEmitter
         return type;
     }
 
-    private static string Literal(string value) => SymbolDisplay.FormatLiteral(value, true);
-    private static string Identifier(string value) => SyntaxFacts.GetKeywordKind(value) == SyntaxKind.None
-        ? value : "@" + value;
 }

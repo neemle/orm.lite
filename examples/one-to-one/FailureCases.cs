@@ -27,7 +27,8 @@ internal static class FailureCases
         Results.Require(ReferenceEquals(old, person.Profile) && faults.CallerDisposals == 0
             && native.State == System.Data.ConnectionState.Open, "failure keeps old nav and borrowed connection");
         await CleanupOnlyAsync(f, person, native);
-        Results.Case("failures", "generated setter primary retained|both cleanup attempts|cleanup-only refuses publication");
+        Results.Case("failures",
+            "generated setter primary retained|both cleanup attempts|cleanup-only refuses publication");
     }
 
     private static async Task CleanupOnlyAsync(Fixture f, Person person, DbConnection native)

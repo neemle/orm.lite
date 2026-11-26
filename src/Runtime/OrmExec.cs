@@ -58,7 +58,8 @@ public static class OrmExec
         return await GetAsync(db, conn, d, key, map);
     }
 
-    public static async Task<T?> GetAsync<T>(OrmContext db, DbConnection conn, EntityDescriptor d, object? key, Func<DbDataReader, T> map) where T : class
+    public static async Task<T?> GetAsync<T>(OrmContext db, DbConnection conn, EntityDescriptor d,
+        object? key, Func<DbDataReader, T> map) where T : class
     {
         await using var cmd = Command(conn, Compile(db, EntityStatements.Get(d, key), StatementKind.Read, d.Table));
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
@@ -109,7 +110,7 @@ public static class OrmExec
         var executor = new StatementExecutor(db.DataSource, state);
         executor.On(conn, null);
         return executor.RowsAsync(Compile(db, tree, StatementKind.Read, link.OtherTable),
-            ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), read.Target)
+            ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), read.Target) && link.OtherTable == read.Target.Table
                 ? OneToOneReadMap.Wrap(read.Map, false) : read.Map);
     }
 

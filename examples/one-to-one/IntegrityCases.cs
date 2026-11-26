@@ -25,7 +25,8 @@ internal static class IntegrityCases
         await ProfileOrm.LoadPersonAsync(f.Db, connection, loaded);
         Results.Require(loaded.Person is null && f.Counter.Count == before,
             "optional null clears without lookup");
-        Results.Case("integrity", "orphan+duplicate refused|multiple NULLs|atomic reassignment|Restrict|null zero-query");
+        Results.Case("integrity",
+            "orphan+duplicate refused|multiple NULLs|atomic reassignment|Restrict|null zero-query");
     }
 
     internal static async Task RejectAsync(Func<Task> action)

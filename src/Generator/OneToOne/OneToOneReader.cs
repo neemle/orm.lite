@@ -21,22 +21,28 @@ internal static class OneToOneReader
         var owner = FirstAttr(property, Prefix + "OneToOneAttribute");
         var inverse = FirstAttr(property, Prefix + "InverseOneToOneAttribute");
         var target = property.Type is INamedTypeSymbol named ? FullNameOf(named) : "";
-        var normal = property.Type.IsReferenceType && IsNullable(property) && !property.IsStatic && !property.IsIndexer
-            && property.GetMethod?.DeclaredAccessibility == Accessibility.Public
-            && property.SetMethod is { DeclaredAccessibility: Accessibility.Public, IsInitOnly: false }
-            && !HasAttr(property, Prefix + "NotAColumnAttribute") && !(owner is not null && inverse is not null)
-            && !HasAttr(property, Prefix + "CalculatedLowerAttribute")
-            && !HasAttr(property, Prefix + "ManyToManyAttribute")
-            && (owner is null || AttrArg(property, Prefix + "ReferenceAttribute") is not { } reference
-                || reference == Argument(owner, 0));
         return new OneToOneIntent(property.Name, target, Argument(owner ?? inverse, 0), Argument(owner, 1),
             owner is not null)
         {
             UniqueName = AttrArg(property, Prefix + "OneToOneUniqueAttribute") ?? "",
-            Assignable = normal,
+            Assignable = Assignable(property) && Attributes(property, owner, inverse),
             Location = LocationOf(property),
         };
     }
+
+    private static bool Assignable(IPropertySymbol property) =>
+        property.Type.IsReferenceType && IsNullable(property) && !property.IsStatic && !property.IsIndexer
+        && property.GetMethod?.DeclaredAccessibility == Accessibility.Public
+        && property.SetMethod is { DeclaredAccessibility: Accessibility.Public, IsInitOnly: false };
+
+    private static bool Attributes(IPropertySymbol property, AttributeData? owner, AttributeData? inverse) =>
+        !HasAttr(property, Prefix + "NotAColumnAttribute") && !(owner is not null && inverse is not null)
+        && !HasAttr(property, Prefix + "CalculatedLowerAttribute")
+        && !HasAttr(property, Prefix + "ManyToManyAttribute") && Reference(property, owner);
+
+    private static bool Reference(IPropertySymbol property, AttributeData? owner) =>
+        owner is null || AttrArg(property, Prefix + "ReferenceAttribute") is not { } reference
+        || reference == Argument(owner, 0);
 
     private static string Argument(AttributeData? data, int index) =>
         data is not null && data.ConstructorArguments.Length > index

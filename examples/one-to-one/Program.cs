@@ -6,6 +6,7 @@ var fixture = await Fixture.OpenAsync(provider);
 try
 {
     await CatalogCases.RunAsync(fixture, provider);
+    DeclarationCases.Run(fixture);
     await DirectionCases.RunAsync(fixture);
     await IntegrityCases.RunAsync(fixture);
     await GuardCases.RunAsync(fixture);

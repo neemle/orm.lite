@@ -40,24 +40,43 @@ internal sealed class OneToOneAnalysis
 
     private void Resolve(Entity owner, OneToOneIntent intent)
     {
+        var target = Target(owner, intent);
+        if (target is null || !Inverse(owner, target, intent)) return;
+        var columns = Columns(owner, target, intent);
+        if (columns is null) return;
+        var constraint = Constraint(owner, intent);
+        if (constraint is null || !Names(owner, intent)) return;
+        Add(owner, target, intent, columns.Value, constraint);
+    }
+
+    private Entity? Target(Entity owner, OneToOneIntent intent)
+    {
         var target = _entities.FirstOrDefault(e => e.Full == intent.Target);
         if (target is null || !Supported(owner) || !Supported(target) || owner.Full == target.Full)
-        { Error(owner, intent, "UnsupportedSchema"); return; }
-        if (!intent.Assignable) { Error(owner, intent, "InvalidNullability"); return; }
+        { Error(owner, intent, "UnsupportedSchema"); return null; }
+        if (!intent.Assignable) { Error(owner, intent, "InvalidNullability"); return null; }
+        return target;
+    }
+
+    private bool Inverse(Entity owner, Entity target, OneToOneIntent intent)
+    {
         var inverse = target.OneToOneIntents.FirstOrDefault(i => i.Navigation == intent.Inverse);
         if (inverse is null || inverse.Owner || inverse.UniqueName.Length != 0
             || inverse.Target != owner.Full || inverse.ForeignKey != intent.Navigation)
-        { Error(owner, intent, "InvalidInverse"); return; }
-        if (!inverse.Assignable) { Error(owner, intent, "InvalidNullability"); return; }
+        { Error(owner, intent, "InvalidInverse"); return false; }
+        if (!inverse.Assignable) { Error(owner, intent, "InvalidNullability"); return false; }
+        return true;
+    }
+
+    private (Prop Local, Prop Key)? Columns(Entity owner, Entity target, OneToOneIntent intent)
+    {
         var primary = Key(target);
         var local = owner.Props.FirstOrDefault(p => p.Name == intent.ForeignKey);
-        if (primary is null || Key(owner) is null) { Error(owner, intent, "UnsupportedKey"); return; }
-        if (local is null) { Error(owner, intent, "UnmappedForeignKey"); return; }
+        if (primary is null || Key(owner) is null) { Error(owner, intent, "UnsupportedKey"); return null; }
+        if (local is null) { Error(owner, intent, "UnmappedForeignKey"); return null; }
         if (ForeignKeyAnalysis.Shape(local) != ForeignKeyAnalysis.Shape(primary))
-        { Error(owner, intent, "IncompatibleKey"); return; }
-        var constraint = Constraint(owner, intent);
-        if (constraint is null || !Names(owner, intent)) return;
-        Add(owner, target, intent, (local, primary), constraint);
+        { Error(owner, intent, "IncompatibleKey"); return null; }
+        return (local, primary);
     }
 
     private void Add(Entity owner, Entity target, OneToOneIntent intent, (Prop Local, Prop Key) columns,
@@ -106,7 +125,7 @@ internal sealed class OneToOneAnalysis
 
     private static bool Supported(Entity e) => e.Managed && !e.IsView && !OrmGenerator.Dropped(e);
     private static Prop? Key(Entity e) => e.Props.Count(p => p.IsKey) == 1
-        && e.LostKeys.IsEmpty ? e.Props.FirstOrDefault(p => p.IsKey && !p.Nullable) : null;
+        && e.LostKeys.IsEmpty ? e.Props.FirstOrDefault(p => p.IsKey && !p.Nullable && p.Type != "Json") : null;
 
     private void Error(Entity owner, OneToOneIntent intent, string reason)
     {

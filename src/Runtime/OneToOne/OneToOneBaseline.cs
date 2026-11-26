@@ -9,6 +9,8 @@ internal static class OneToOneBaseline
 
     internal static IReadOnlyList<Node> Create(IReadOnlyList<EntityDescriptor> entities)
     {
+        OneToOneValidation.Records(entities);
+        ForeignKeyBaseline.ValidateEntities(entities);
         var extra = entities.ToDictionary(e => e.Table, _ => new List<ForeignKeyDescriptor>(), StringComparer.Ordinal);
         var unique = new List<CreateIndex>();
         var names = entities.SelectMany(e => e.Indexes.Select(i => i.Name))

@@ -37,6 +37,8 @@ internal static class ForeignKeyBaseline
         return ForeignKeyOrder.Sort(tables, keys);
     }
 
+    internal static void ValidateEntities(IEnumerable<EntityDescriptor> entities) => _ = Entities(entities);
+
     private static Dictionary<string, EntityDescriptor> Entities(IEnumerable<EntityDescriptor> entities)
     {
         var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);

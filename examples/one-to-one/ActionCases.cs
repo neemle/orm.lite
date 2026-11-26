@@ -27,6 +27,7 @@ internal static class ActionCases
         await RequiredDependentOrm.DeleteAsync(f.Db, r.Id);
         Results.Require(await ActionParentOrm.GetAsync(f.Db, required) is not null,
             "dependent delete does not delete principal");
-        Results.Case("actions", "required resolves|Cascade|SetNull|NoAction+Restrict refuse|dependent retains principal");
+        Results.Case("actions",
+            "required resolves|Cascade|SetNull|NoAction+Restrict refuse|dependent retains principal");
     }
 }

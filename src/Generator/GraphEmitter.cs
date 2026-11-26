@@ -44,7 +44,6 @@ internal static class GraphEmitter
     {
         foreach (var relation in entity.Relations)
         {
-            if (entity.OneToOneIntents.Any(i => i.Navigation == relation.Nav)) continue;
             var target = entities.FirstOrDefault(e => e.Full == relation.TargetFull);
             if (Available(entity, target, relation.Nav, scope))
                 yield return (relation.Nav, target!.Full, Reference(entity, target, relation));
@@ -65,7 +64,8 @@ internal static class GraphEmitter
     }
 
     private static bool Available(Entity source, Entity? target, string navigation, EmitScope scope) =>
-        target is not null && Supported(target) && !scope.Guard.Blocked.Contains((source.Full, navigation));
+        target is not null && Supported(target) && !scope.Guard.Blocked.Contains((source.Full, navigation))
+        && !source.OneToOneIntents.Any(i => i.Navigation == navigation);
 
     private static CsExpression Key(Entity entity, Prop key) => New("GraphKeyBinding",
         [Cs.Type(entity.Full), Cs.Type(key.Cs)], [Syn.Str(key.Column), Read("e", key.Name)]);

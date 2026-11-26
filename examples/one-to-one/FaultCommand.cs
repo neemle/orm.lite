@@ -10,7 +10,8 @@ internal sealed class FaultCommand(DbCommand inner, FaultConnection owner, Clean
     public override int CommandTimeout { get => inner.CommandTimeout; set => inner.CommandTimeout = value; }
     public override CommandType CommandType { get => inner.CommandType; set => inner.CommandType = value; }
     public override bool DesignTimeVisible { get => inner.DesignTimeVisible; set => inner.DesignTimeVisible = value; }
-    public override UpdateRowSource UpdatedRowSource { get => inner.UpdatedRowSource; set => inner.UpdatedRowSource = value; }
+    public override UpdateRowSource UpdatedRowSource
+    { get => inner.UpdatedRowSource; set => inner.UpdatedRowSource = value; }
     protected override DbConnection? DbConnection { get => owner; set => inner.Connection = value; }
     protected override DbTransaction? DbTransaction { get => inner.Transaction; set => inner.Transaction = value; }
     protected override DbParameterCollection DbParameterCollection => inner.Parameters;
