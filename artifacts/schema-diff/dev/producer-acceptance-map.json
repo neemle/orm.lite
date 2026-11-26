@@ -1,0 +1,170 @@
+{
+  "authority": {
+    "speck": "b2e4ec8e-0a45-4e49-80d1-d8d89cf23883",
+    "immutable": "22f346d5-b13c-4ad5-a9af-f59cafb6a7ad",
+    "uc": "UC-011",
+    "examples": "1763a7f0-b0a7-4465-add0-dd295748ff4c"
+  },
+  "criteria": [
+    {
+      "criterion": "AC-117-01",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Bothproviders x missingtable/newnullablecolumn actual managed Observe/Compare/Emit, strictapply;4staticfactoriescompiled andnativeexecuted10/11.",
+      "remaining": "Complete unsupported-effect/wholeartifact-negative matrix and independent acceptance remain."
+    },
+    {
+      "criterion": "AC-117-02",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "TypedKnown/Unknown/Unsupported and completeinventory machinery; actual guardedAfterequality/repeat0mutationunits. Earlier NoOp/Unknown producerinstruments retained at their originalrevisions.",
+      "remaining": "Independent currenthead publicNoOp zeroartifact/history/actor and everyunknown/inventory case stillneeded; guardedrepeat isnot a substitute."
+    },
+    {
+      "criterion": "AC-117-03",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Currentall4 emittedneutralVersions match across providers; source escaping/type/default normalization implemented. Actualfactory CSharpSource regenerated inside FromRecipe onnative.",
+      "remaining": "Full shuffled/culture/case/Unicode/alias/defaultadversarial matrix remains."
+    },
+    {
+      "criterion": "AC-117-04",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Ownership/preservedinventories and wholeblockedreport implementation; earlier metadata/manual inventory witnesses retain originalSHA.",
+      "remaining": "Currenthead complete manual/dependency/rename/type/default/history risk matrix remains independentwork."
+    },
+    {
+      "criterion": "AC-117-05",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Currentmanaged actualpublic Observe usedbeforeapply; metadata-only ownedgate implementation and prior actor/command witnesses retained originalSHA.",
+      "remaining": "Full currenthead no-row-read/noactor/nobootstrap spies and hostile namespace/catalog boundaries remain."
+    },
+    {
+      "criterion": "AC-117-06",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Current415 actualbothprovider guardedstrictupgrade/add; oldrowsverified and Down/Up; earlierstrictcollision+rollback evidence retainsoriginalSHA.",
+      "remaining": "Independent realconcurrent DDL races and expanded drift/effect matrix remain."
+    },
+    {
+      "criterion": "AC-117-07",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Actualbothprovider upgrade/receipt/repeat0units/Down/Up/newdataloss; freshContributionseachunit+onlyCoverageVersion, repeat0units and coveredDownrefusal. Wrongreview/missingmanual/repeatedDown refusals also exercised managed415.",
+      "remaining": "All invalidmanual/fresh/anchor/interruptedmultunit lineage cases and written recovery guide remain."
+    },
+    {
+      "criterion": "AC-117-08",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Currentexactsource/review/physical/history guards executed; strictpreflight beforeopen implemented; immutable typedfactory FromRecipe revalidated inall8nativeexecutions.",
+      "remaining": "Independent mutableinput/capability/lowerer/strictSPI/stalescope/history/realrace matrix remains."
+    },
+    {
+      "criterion": "AC-117-09",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Seven injectedcases xruntime10/11: bodyprimary, commitlostackUnknown, rollbacklostackUnknown, committedrestoreUnknown, knownprecommitcancel, ignoredcancelawaitsettlement, compositeallcleanup. Actualprovider successfulperunitconfig paths retained.",
+      "remaining": "Injection ismemoryprovider/session/ADO orchestration, NOTactualdriver timeout/disconnect. Fullprep/bootstrap/multunitpartial/everycancellationstage/SQLite restorationuncertainty+associatedpool effects and oldbinaryregression remain."
+    },
+    {
+      "criterion": "AC-117-10",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Generatedstaticfactory NativeAOT publicationANDall4executions on10.0.15+11.0.0: realbothprovider guard/inspect/apply/down/up/fresh/repeat/history. FromRecipe executes sourcegeneration natively and Fresh path callsCompare.",
+      "remaining": "Directnative public ObserveAsync/Emit entrypoints and explicit independent publicrediffNoOp notseparately asserted; managedgenerator doespublicObserve/Compare/Emit. Full publicworkflow/recoverydocs and oldcontractmatrix remain."
+    },
+    {
+      "criterion": "SEC-117-01",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "NoRaw typedrecipe whitelist/sourceescaping implemented; spaces inactualquotedtablename and escapedstaticfactories. Injectedprivatecanary omittedfromsafeouterMessage/ToString whileoriginalcause retained.",
+      "remaining": "Complete hostileSQL/CSharp/default/identifier/Unicode payloads and diagnostic sinks/realdriversecretspies remain; privatecanary check isnot fullprivacy acceptance."
+    },
+    {
+      "criterion": "SEC-117-02",
+      "disposition": "PARTIAL \u2014 bounded DEV producer evidence; not independent whole-criterion acceptance",
+      "verifiedScope": "Explicitfixturemodes/sourcebinding/nativeguard/strictDDL/history/config protocol implemented, actualownedfixture IDs and cleanup attested. Ordinarystrictserializerseparate fromlegacy path.",
+      "remaining": "ScopeID alone isnot production/isolationauthority; fullhostadmission/sourcelegacybinary/securityreview and fault/effectmatrix remain. No productiongrant."
+    }
+  ],
+  "all17NfrDimensions": [
+    {
+      "dimension": "Critical usability",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Typedreport/artifact/result APIs+compiledconsumer exist; userguide/demo+independentstatusmatrix pending."
+    },
+    {
+      "dimension": "Performance SLOs and reliability",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Deterministicboundedproducer and7injectedfaults; fullspy/determinism/cancelmatrix pending. Exactdurations retained; no inventedpercentile/SLA."
+    },
+    {
+      "dimension": "Scalability and capacity",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Fivepositive limits+sharedactualcommandbudget implementation; everylimit/+1/catalog/incoming/cleanup independent cases pending."
+    },
+    {
+      "dimension": "Security posture and tenancy",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Owned isolatedPGnetwork+SQLitefile identities and exactcleanup; adversarialshadow/ownership/review/hostadmission independentmatrix pending."
+    },
+    {
+      "dimension": "Audit and retention",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "ActualVersion vsCoverage andfresh/repeat/revert receipts verified inbothproviders; broaderoldhistory/invalidmanualmatrix pending."
+    },
+    {
+      "dimension": "Observability",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Seveninjectedcases safeouterdiagnostics/perunittruth; diagnosticsink/privacy/everyfault/bootstrap/earliercommitmatrix pending."
+    },
+    {
+      "dimension": "Accessibility and i18n",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Typedsource/identifier workflows used; comprehensive culture/case/Unicode/escaping +guide review pending."
+    },
+    {
+      "dimension": "Rate limits",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Finitefivebudget/resourceimplementation; independent actualcommand/+1/lock tests incomplete."
+    },
+    {
+      "dimension": "Deploy and rollback",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "ActualUpDownUp/unaffectedoldrows/newdataloss shown; oldsourcebinaryregression/recoveryguide/deployedauthority remain separate."
+    },
+    {
+      "dimension": "Support SLAs",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Reproducibleproducer commands andtypederrors retained; executablepublicdemo/supportdocs notwritten underthisclaim. No hostedresponsepromise."
+    },
+    {
+      "dimension": "AI/LLM dependence",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "No newpackage/model/service/runtimecompiler dependency introduced; completeindependent dependency/source review pending."
+    },
+    {
+      "dimension": "Data integrity and consistency",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Bothprovider actualguard/strictapply/physicalhistory/olddata+injecteduncertainty witnesses; completeDDLrace/effect/faultmatrix pending."
+    },
+    {
+      "dimension": "Backup and disaster recovery",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "ActualintentionallynewpostUpdata lostbyDown shown; generatedsource warnsbackuprequired; writtenrecoveryguide/hostbackupRPO/RTO notcertified."
+    },
+    {
+      "dimension": "Privacy and data protection",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Metadataonlyroute andsafeoutererror design; fullcurrentrowread/log/credential/endpointspies andsecurityreview pending."
+    },
+    {
+      "dimension": "Maintainability and supportability",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Complete187CSharpfile inventory/1100newgeneratedmethods mechanicallymeasured0newviolations; Python2scripts measured; legacywholefile301findings remainOPEN."
+    },
+    {
+      "dimension": "Compatibility and interoperability",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Actualrealproviders+compiledgeneratednative10/11; unchangedoldtesttree; completecurrenthead oldAPI/sourcebinary/fullmatrix pending."
+    },
+    {
+      "dimension": "Cost and efficiency",
+      "disposition": "PARTIAL / independent acceptance OPEN",
+      "evidenceAndLimit": "Ownedresourcesremoved, boundedcontainerbudgets/fullargv/times recorded; cleanupcounting implemented. No newpaidservice/runtimecompiler. Fullboundaryworkload/costanalysis pending."
+    }
+  ],
+  "overall": "No wholecriterion/item/security/floor/802/legacy301/decomposition acceptance or waiver. All original17 dimensions retained."
+}

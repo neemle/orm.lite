@@ -1,0 +1,422 @@
+{
+  "started": "2026-11-26T08:01:36.211039+00:00",
+  "resources": [
+    {
+      "kind": "container",
+      "identity": "af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b",
+      "beforeInspect": {
+        "Id": "af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b",
+        "Created": "2026-11-26T06:00:06.49022542Z",
+        "Path": "/usr/local/pgsql/bin/postgres",
+        "Args": [
+          "--launcher"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 35790,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-11-26T06:00:06.579976128Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117",
+        "ResolvConfPath": "/var/lib/docker/containers/af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b/hostname",
+        "HostsPath": "/var/lib/docker/containers/af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b/hosts",
+        "LogPath": "",
+        "Name": "/orml117-dev-u5-f18cb0-pg",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "orml117-dev-u5-f18cb0",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": false,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": null,
+          "Tmpfs": {
+            "/var/lib/postgresql/data": "uid=70,gid=70,mode=0700"
+          },
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 0,
+          "NanoCpus": 0,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 0,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": null,
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "Storage": {
+          "RootFS": {
+            "Snapshot": {
+              "Name": "overlayfs"
+            }
+          }
+        },
+        "Mounts": [],
+        "Config": {
+          "Hostname": "af6c99ee2331",
+          "Domainname": "",
+          "User": "70:70",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "ExposedPorts": {
+            "5432/tcp": {}
+          },
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "POSTGRES_HOST_AUTH_METHOD=trust",
+            "POSTGRES_USER=postgres",
+            "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "PG_MAJOR=19",
+            "PG_VERSION=19.0",
+            "PGDATA=/var/lib/postgresql/data",
+            "LANG=C.UTF-8"
+          ],
+          "Cmd": null,
+          "Image": "neemle/pg.lite:19",
+          "Volumes": {
+            "/var/lib/postgresql/data": {}
+          },
+          "WorkingDir": "/",
+          "Entrypoint": [
+            "/usr/local/pgsql/bin/postgres",
+            "--launcher"
+          ],
+          "Labels": {
+            "io.github.neemle.pglite.packed": "yes",
+            "io.github.neemle.pglite.platform": "linux/arm64, static, musl",
+            "io.github.neemle.pglite.postgres-major": "19",
+            "org.opencontainers.image.created": "2026-11-21T00:54:51+01:00",
+            "org.opencontainers.image.description": "PostgreSQL 19.0 as one static executable in a FROM scratch image",
+            "org.opencontainers.image.documentation": "https://github.com/neemle/pg.lite#configuration-of-the-image",
+            "org.opencontainers.image.licenses": "PostgreSQL",
+            "org.opencontainers.image.revision": "1b5badb2c66cb6bf4917efca747e6cd0ad6c81da",
+            "org.opencontainers.image.source": "https://github.com/neemle/pg.lite",
+            "org.opencontainers.image.title": "pg.lite",
+            "org.opencontainers.image.url": "https://github.com/neemle/pg.lite",
+            "org.opencontainers.image.version": "19.0",
+            "orml.actor": "dev",
+            "orml.task": "ORML-117"
+          },
+          "StopSignal": "SIGINT"
+        },
+        "NetworkSettings": {
+          "SandboxID": "655f8caf5be3dbc76376ee4724e64c51548a49c9971f91f4bd602e1a6fb2d1b2",
+          "SandboxKey": "/var/run/docker/netns/655f8caf5be3",
+          "Ports": {
+            "5432/tcp": null
+          },
+          "Networks": {
+            "orml117-dev-u5-f18cb0": {
+              "IPAMConfig": null,
+              "Links": null,
+              "Aliases": [
+                "schema-pg"
+              ],
+              "DriverOpts": null,
+              "GwPriority": 0,
+              "NetworkID": "a3895f09e548437caa70ca9850bb8fcd77de9207b27d18ba37d454043171946a",
+              "EndpointID": "c94373a15cff3a36bb64b24fe8f6f8c8a71b7905de6514c6e075ac69d0f19c42",
+              "Gateway": "172.18.0.1",
+              "IPAddress": "172.18.0.2",
+              "MacAddress": "0e:0b:1f:bd:b7:bb",
+              "IPPrefixLen": 16,
+              "IPv6Gateway": "",
+              "GlobalIPv6Address": "",
+              "GlobalIPv6PrefixLen": 0,
+              "DNSNames": [
+                "orml117-dev-u5-f18cb0-pg",
+                "schema-pg",
+                "af6c99ee2331"
+              ]
+            }
+          }
+        },
+        "ImageManifestDescriptor": {
+          "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+          "digest": "sha256:abd4b86fec2f2d940ed3a7b79e925d2ff5286c9fbe819f8730ddbab421aaaae3",
+          "size": 735,
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux"
+          }
+        }
+      },
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b"
+      ],
+      "exitCode": 0,
+      "stdout": "af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b\n",
+      "stderr": "",
+      "afterInspectArgv": [
+        "docker",
+        "inspect",
+        "af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b"
+      ],
+      "afterInspectExit": 1,
+      "afterInspectStderr": "error: no such object: af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b\n"
+    },
+    {
+      "kind": "network",
+      "identity": "a3895f09e548437caa70ca9850bb8fcd77de9207b27d18ba37d454043171946a",
+      "beforeInspect": {
+        "Name": "orml117-dev-u5-f18cb0",
+        "Id": "a3895f09e548437caa70ca9850bb8fcd77de9207b27d18ba37d454043171946a",
+        "Created": "2026-11-26T06:00:06.444448837Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+          "Driver": "default",
+          "Options": {},
+          "Config": [
+            {
+              "Subnet": "172.18.0.0/16",
+              "Gateway": "172.18.0.1"
+            }
+          ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+          "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+          "com.docker.network.enable_ipv4": "true",
+          "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {
+          "orml.actor": "dev",
+          "orml.task": "ORML-117"
+        },
+        "Containers": {},
+        "Status": {
+          "IPAM": {
+            "Subnets": {
+              "172.18.0.0/16": {
+                "IPsInUse": 3,
+                "DynamicIPsAvailable": 65533
+              }
+            }
+          }
+        }
+      },
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "a3895f09e548437caa70ca9850bb8fcd77de9207b27d18ba37d454043171946a"
+      ],
+      "exitCode": 0,
+      "stdout": "a3895f09e548437caa70ca9850bb8fcd77de9207b27d18ba37d454043171946a\n",
+      "stderr": "",
+      "afterInspectArgv": [
+        "docker",
+        "network",
+        "inspect",
+        "a3895f09e548437caa70ca9850bb8fcd77de9207b27d18ba37d454043171946a"
+      ],
+      "afterInspectExit": 1,
+      "afterInspectStderr": "Error response from daemon: network a3895f09e548437caa70ca9850bb8fcd77de9207b27d18ba37d454043171946a not found\n"
+    }
+  ],
+  "files": [
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-0af7dd751946414fb695e8b0ab83e81f.db",
+      "sha256": "6b1c9551200b2ae4bf062204bd047fac594846b56e19a03b8da924781d644b2d",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-0af7dd751946414fb695e8b0ab83e81f.db.fresh",
+      "sha256": "1613d008f9875e49784d74cb539275dcc39df9d1a4cd26a50773e40a3ec2b90a",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-11e8856bf4924f0687224aabb94e1457.db",
+      "sha256": "c1d77aa789bf4ea4d75d4613d35626385766bee28be9d885401c209bdb12fda3",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-11e8856bf4924f0687224aabb94e1457.db.fresh",
+      "sha256": "8069c34d4b29dd3d691726524c7335b82d6f8d4b3b0247356b1ce9799aa1b746",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-11e8856bf4924f0687224aabb94e1457.db.n10",
+      "sha256": "5664677a50253f0e79ab714e2f13007a6b2f555d2d53703305f0c80815a55427",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-11e8856bf4924f0687224aabb94e1457.db.n11",
+      "sha256": "780342f9f7e95fb3047377aa5be11131f7045f242d978b7d08076d266ace3f79",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-1744dc51fa00490d9a0f6245463a0b36.db",
+      "sha256": "e83b53a501754c3fb3e23c0927db4f04ac7dd6d7baf27a0e320733ec1951ee80",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-1744dc51fa00490d9a0f6245463a0b36.db.fresh",
+      "sha256": "5a210cfcad241c9819bf609021378d4639ed0cdb06c6ee7a76c3e4296f2efc10",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-920bb780f7e74d5c98fb03fb8950b3c7.db",
+      "sha256": "276a169fe5b5e93d720c8d970a88139f2dd8610a605b928983b85aebe4372014",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-920bb780f7e74d5c98fb03fb8950b3c7.db.fresh",
+      "sha256": "0abb2596106df0a0f5cf26c5a13a0dbce216bbf928abc3f66afbab36d6df0593",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-f134f8bad7fd459e8dd567d7a7427d98.db",
+      "sha256": "022c3b91a19fbfe03c94f04de3a98b616f3e0aec962472302ec98643d3769282",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-f134f8bad7fd459e8dd567d7a7427d98.db.fresh",
+      "sha256": "bacc1147d7f6ad98f2efbf71fc4b69301bac5fe9e7a946e1c00bbbd729f4adf3",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-f134f8bad7fd459e8dd567d7a7427d98.db.n10",
+      "sha256": "b07aa774f3bf766ec6cdd259e8db3a5a8cd8c0eb7fe2a4d50189242fdd6d001b",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-f134f8bad7fd459e8dd567d7a7427d98.db.n11",
+      "sha256": "e53f745d2118efb3109a9d4cd1cd901450793983cab464ef09e74a0e4bdbf21b",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-fc595774bd284baeae3918da261f760a.db",
+      "sha256": "7be71a0cae215d74c1ba2a4cfb82d4f91a6ca9657d5b6fed1eccb0102c27dc77",
+      "bytes": 20480,
+      "absent": true
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/fixtures/bridge-fc595774bd284baeae3918da261f760a.db.fresh",
+      "sha256": "ce04a347c4b19325270848041648f47569e6c71015f0b76c0e64ee74cb3c8891",
+      "bytes": 20480,
+      "absent": true
+    }
+  ],
+  "foreignResourcesTouched": false,
+  "remainingOwnContainers": "",
+  "finished": "2026-11-26T08:01:39.510235+00:00",
+  "state": "OWN RESOURCES REMOVED AND ABSENCE VERIFIED"
+}
