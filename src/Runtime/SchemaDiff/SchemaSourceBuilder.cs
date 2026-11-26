@@ -58,7 +58,7 @@ internal sealed class SchemaSourceBuilder
         var text = "#nullable enable\nusing R = global::Neemle.OrmLite;\nusing N = global::Neemle.OrmLite.Nodes;\n"
             + "using G = global::System.Collections.Generic;\n\nnamespace "
             + name + ";\n\n"
-            + "// Down drops newly added columns/tables and loses post-Up data. Backup is required to retain that data.\n"
+            + "// Down drops added columns/tables and loses post-Up data. Backup is required to retain that data.\n"
             + "// DownProofRequired is an obligation: establish actual Up/Down/Up fixture evidence before acceptance.\n"
             + "// Comparison proves supported physical schema facts, not historical logical-domain intent.\n"
             + "public static class @" + identity.CSharpTypeName + "\n{\n"
