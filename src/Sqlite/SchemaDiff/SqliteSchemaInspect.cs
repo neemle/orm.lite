@@ -12,7 +12,8 @@ internal static class SqliteSchemaInspect
         if (connection is not SqliteConnection native)
             throw new SchemaDiffException(SchemaDiffError.UnsupportedProvider);
         var resources = new SqliteMetadataResources();
-        var tx = native.BeginTransaction(deferred: true);
+        var tx = native is OrmSqliteConnection mapped
+            ? mapped.BeginMetadataTransaction() : native.BeginTransaction(deferred: true);
         resources.Add(tx);
         SchemaDiffObservation? observation = null;
         Exception? primary = null;
