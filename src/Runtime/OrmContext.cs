@@ -55,8 +55,10 @@ namespace Neemle.OrmLite;
 
         public async ValueTask DisposeAsync()
         {
-            await PolicyLifetime.CloseAsync();
-            foreach (var owned in _owned) await owned.DisposeAsync();
+            var cleanup = new PolicyCleanupSteps();
+            await cleanup.RunAsync(PolicyLifetime.CloseAsync);
+            foreach (var owned in _owned) await cleanup.RunAsync(() => owned.DisposeAsync().AsTask());
+            cleanup.ThrowIfFailed();
         }
 
         private string PingText() =>

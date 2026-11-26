@@ -118,23 +118,14 @@ public sealed class UnitOfWork : IAsyncDisposable
     {
         if (_disposed) return;
         _disposed = true;
-        await PolicyLifetime.CloseAsync();
-        try
-        {
-            _trace?.Dispose();
-            s_open.Remove(_connection);
-            await _transaction.DisposeAsync();
-        }
-        finally
-        {
-            try
-            {
-                await _connection.DisposeAsync();
-            }
-            finally
-            {
-                await ReleaseAsync();
-            }
-        }
+        var cleanup = new PolicyCleanupSteps();
+        await cleanup.RunAsync(PolicyLifetime.CloseAsync);
+        cleanup.Run(() => _trace?.Dispose());
+        cleanup.Run(() => s_open.Remove(_connection));
+        await cleanup.RunAsync(() => _transaction.DisposeAsync().AsTask());
+        await cleanup.RunAsync(() => _connection.DisposeAsync().AsTask());
+        await cleanup.RunAsync(() => ReleaseAsync().AsTask());
+        cleanup.ThrowIfFailed();
     }
+
 }
