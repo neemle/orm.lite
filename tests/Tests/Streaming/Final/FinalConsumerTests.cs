@@ -44,7 +44,8 @@ public sealed class FinalConsumerTests
         // Default foreach hides Completion; attempted disposal is not a claim of successful cleanup.
     }
 
-    [Fact(DisplayName = "[UC-010][SEC02] interface cancellation retains sensitive cleanup evidence with safe formatting")]
+    [Fact(DisplayName =
+        "[UC-010][SEC02] interface cancellation retains sensitive cleanup evidence with safe formatting")]
     public async Task Interface_token_and_canceled_evidence_keep_their_contract()
     {
         var cleanup = new IOException("password=private-cancel-cleanup");
