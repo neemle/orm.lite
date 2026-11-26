@@ -62,7 +62,11 @@ public static class OrmExec
     {
         await using var cmd = Command(conn, Compile(db, EntityStatements.Get(d, key), StatementKind.Read, d.Table));
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
-        return await r.ReadAsync() ? map(r) : null;
+        if (!await r.ReadAsync()) return null;
+        var entity = map(r);
+        if (ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), d))
+            OneToOneProvenance.MarkIfEligible(entity, map, false);
+        return entity;
     }
 
     public static async Task<int> DeleteAsync(OrmContext db, EntityDescriptor d, object? key)
@@ -104,7 +108,9 @@ public static class OrmExec
         var state = new RenderState(db.Provider, link.OtherTable, read.Target.ColumnOf, []);
         var executor = new StatementExecutor(db.DataSource, state);
         executor.On(conn, null);
-        return executor.RowsAsync(Compile(db, tree, StatementKind.Read, link.OtherTable), read.Map);
+        return executor.RowsAsync(Compile(db, tree, StatementKind.Read, link.OtherTable),
+            ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), read.Target)
+                ? OneToOneReadMap.Wrap(read.Map, false) : read.Map);
     }
 
     public static async Task AddLinkAsync(OrmContext db, DbConnection conn, EntityDescriptor d, string navigation, object? thisId, object? otherId)

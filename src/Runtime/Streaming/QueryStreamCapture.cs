@@ -6,7 +6,7 @@ namespace Neemle.OrmLite;
 internal static class QueryStreamCapture
 {
     internal static StreamReadSnapshot<T> Entities<T>(Query<T> query) =>
-        Capture(query, query.CompileSelect, query.StreamMap);
+        Capture(query, query.CompileSelect, query.OneToOneStreamMap);
 
     internal static StreamReadSnapshot<TOut> Project<T, TOut>(Query<T> query,
         IReadOnlyList<Expression<Func<T, object?>>> columns, Func<DbDataReader, TOut> map)

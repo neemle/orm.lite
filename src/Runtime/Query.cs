@@ -277,12 +277,14 @@ namespace Neemle.OrmLite;
             CancellationToken ct = default) => new(QueryStreamCapture.Column<T, TCol>(this, column), ct);
 
         internal Func<DbDataReader, T> StreamMap => _map;
+        internal Func<DbDataReader, T> OneToOneStreamMap =>
+            OneToOneReadMap.Wrap(_map, _state.Redactions.Count != 0);
         internal StreamBinding StreamBinding => new(_db.DataSource, _db.Provider);
         internal StreamBorrowed? StreamBorrowed => _exec.StreamScope(_streamUnit);
         internal RowLock? StreamRowLock => _select.Build([], null).Lock;
 
         public async Task<List<T>> ToListAsync() =>
-            await _exec.RowsAsync(CompileSelect(), _map);
+            await _exec.RowsAsync(CompileSelect(), OneToOneReadMap.Wrap(_map, _state.Redactions.Count != 0));
 
         public async Task<List<TOut>> ProjectAsync<TOut>(
             IReadOnlyList<Expression<Func<T, object?>>> columns,
@@ -326,7 +328,8 @@ namespace Neemle.OrmLite;
         public async Task<T?> FirstOrDefaultAsync()
         {
             var rows = await _exec.RowsAsync(
-                CompileTree(_select.BuildFirst(SelectedColumns(), WhereNode(), lockRows: true)), _map);
+                CompileTree(_select.BuildFirst(SelectedColumns(), WhereNode(), lockRows: true)),
+                OneToOneReadMap.Wrap(_map, _state.Redactions.Count != 0));
             return rows.Count > 0 ? rows[0] : default;
         }
 

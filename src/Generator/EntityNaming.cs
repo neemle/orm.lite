@@ -87,6 +87,11 @@ internal static class EntityNaming
     private static Entity Renamed(Entity e, Dictionary<string, string> tokens) => e with
     {
         Type = Mapped(tokens, e.Full, e.Type),
+        OneToOnePairs = e.OneToOnePairs.Select(p => p with
+        {
+            OwnerToken = Mapped(tokens, p.OwnerFull, p.OwnerToken),
+            PrincipalToken = Mapped(tokens, p.PrincipalFull, p.PrincipalToken),
+        }).ToImmutableArray(),
         Relations = e.Relations
             .Select(r => r with { TargetType = Mapped(tokens, r.TargetFull, r.TargetType) })
             .ToImmutableArray(),

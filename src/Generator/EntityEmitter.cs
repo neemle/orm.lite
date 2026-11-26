@@ -25,12 +25,14 @@ internal static class EntityEmitter
         SourceProductionContext spc, ImmutableArray<Entity> all, string asmToken, ProviderSet providers)
     {
         EntityReports.Report(spc, all, providers);
+        var pairs = new OneToOneAnalysis(spc, all, providers);
+        all = pairs.Resolve();
         var blocked = NavigationAudit.Report(spc, all);
         var foreignKeys = new ForeignKeyAnalysis(spc, all, blocked, providers);
         var named = EntityNaming.Disambiguated(foreignKeys.Resolve());
         var dropped = new HashSet<string>(named.Where(OrmGenerator.Dropped).Select(e => e.Type));
         var emitted = named.Where(e => !OrmGenerator.Dropped(e));
-        var source = EntitiesSource([.. emitted], asmToken, dropped, blocked, foreignKeys.Valid);
+        var source = EntitiesSource([.. emitted], asmToken, dropped, blocked, foreignKeys.Valid && pairs.Valid);
         foreach (var (hint, text) in SourceLayout.Entities(source)) spc.AddSource(hint, text);
     }
 
@@ -56,7 +58,7 @@ internal static class EntityEmitter
         }
         if (foreignKeysValid) file = SchemaClass(file, entities, asmToken);
         file = InitializerClass(file, entities);
-        return file.Render(RenderOptions);
+        return OneToOneEmitter.Augment(file.Render(RenderOptions), entities);
     }
 
     private static HashSet<(string Type, string Member)> ExcludedPairs(ImmutableArray<Entity> entities)

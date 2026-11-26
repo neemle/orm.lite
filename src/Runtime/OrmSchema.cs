@@ -39,6 +39,7 @@ public sealed class OrmSchema
 
     public IReadOnlyList<Node> Baseline()
     {
+        if (OneToOneBaseline.HasIntent(Entities)) return OneToOneBaseline.Create(Entities);
         if (ForeignKeyBaseline.HasIntent(Entities)) return ForeignKeyBaseline.Create(Entities);
         var plan = new List<Node>();
         foreach (var entity in Entities)
