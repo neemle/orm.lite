@@ -3,34 +3,36 @@ using Xunit;
 namespace Neemle.OrmLite.Tests.GraphSave;
 
 [Collection("Graph")]
-public sealed class SaveSqliteSuccessTests
+public sealed class SaveProviderSuccessTests
 {
-    [Fact(DisplayName = "[UC-006][AC-112-01/02/04/05/06/08/09][SEC] real SQLite graph saves, repeats exact pair and preserves disabled rows")]
-    public async Task Success_repeat_and_disabled_navigation_have_exact_database_effects()
+    [Theory(DisplayName = "[UC-006][AC-112-01/02/04/05/06/08/09][SEC] real provider graph saves, repeats exact pair and preserves disabled rows")]
+    [InlineData("sqlite")] [InlineData("postgres")]
+    public async Task Success_repeat_and_disabled_navigation_have_exact_database_effects(string provider)
     {
-        await using var db = await SaveSqliteDatabase.OpenAsync();
-        Assert.Equal(1L, await db.ScalarAsync("PRAGMA foreign_keys"));
+        await using var db = await SaveProviderDatabase.OpenAsync(provider);
+        if (provider == "sqlite") Assert.Equal(1L, await db.ScalarAsync("PRAGMA foreign_keys"));
         var root = SaveProbeModel.Node(101);
         root.Name = "private ' payload; -- sentinel";
         var child = SaveProbeModel.Node(102);
         var tag = new SaveProbeTag { Id = SaveProbeModel.Id(103) };
         root.Children.Add(child);
         root.Tags.Add(tag);
-        var result = await global::Neemle.OrmLite.GraphSave.SaveAsync(db.Context, SaveSqliteAssertions.Request(root, child, tag));
+        var result = await global::Neemle.OrmLite.GraphSave.SaveAsync(db.Context, SaveProviderAssertions.Request(root, child, tag));
         Assert.Equal(GraphSaveOutcome.Committed, result.Outcome);
         Assert.True(result.WasWritten(root)); Assert.True(result.WasWritten(child)); Assert.True(result.WasWritten(tag));
         Assert.Equal(root.Id, result.BoundForeignKey<SaveProbeNode, Guid>(child, "ParentId"));
         Assert.Null(child.ParentId);
-        SaveSqliteAssertions.OneTransaction(db, 4, TransactionPhase.Commit);
+        SaveProviderAssertions.OneTransaction(db, 4, TransactionPhase.Commit);
         Assert.Equal(root.Name, await db.ScalarAsync("SELECT name FROM gs112_probe_node WHERE id = @p", root.Id));
-        Assert.Equal(root.Id, Guid.Parse((string)(await db.ScalarAsync("SELECT parent_id FROM gs112_probe_node WHERE id = @p", child.Id))!));
+        var stored = await db.ScalarAsync("SELECT parent_id FROM gs112_probe_node WHERE id = @p", child.Id);
+        Assert.Equal(root.Id, stored is Guid key ? key : Guid.Parse((string)stored!));
         Assert.Equal(2L, await db.ScalarAsync("SELECT COUNT(*) FROM gs112_probe_node"));
         Assert.Equal(1L, await db.ScalarAsync("SELECT COUNT(*) FROM gs112_probe_links"));
 
         root.Name = "changed root"; child.Name = "changed child";
         db.ClearEvents();
-        result = await global::Neemle.OrmLite.GraphSave.SaveAsync(db.Context, SaveSqliteAssertions.Request(root, child, tag, true));
-        SaveSqliteAssertions.OneTransaction(db, 4, TransactionPhase.Commit);
+        result = await global::Neemle.OrmLite.GraphSave.SaveAsync(db.Context, SaveProviderAssertions.Request(root, child, tag, true));
+        SaveProviderAssertions.OneTransaction(db, 4, TransactionPhase.Commit);
         Assert.False(result.WasWritten(tag));
         Assert.Equal(0, db.Statements.Last().RowsAffected);
         Assert.Equal(2L, await db.ScalarAsync("SELECT COUNT(*) FROM gs112_probe_node"));
@@ -44,7 +46,7 @@ public sealed class SaveSqliteSuccessTests
         db.ClearEvents();
         await global::Neemle.OrmLite.GraphSave.SaveAsync(db.Context, new GraphSaveRequest<SaveProbeNode>(root,
             GraphSaveIntent.Update, new(GraphSaveIntents.Empty, GraphSavePermissions.None, SaveProbeModel.Room)));
-        SaveSqliteAssertions.OneTransaction(db, 1, TransactionPhase.Commit);
+        SaveProviderAssertions.OneTransaction(db, 1, TransactionPhase.Commit);
         Assert.Equal(reads, root.ChildReads + root.TagReads);
         Assert.Equal("changed child", await db.ScalarAsync("SELECT name FROM gs112_probe_node WHERE id = @p", child.Id));
         Assert.Equal(1L, await db.ScalarAsync("SELECT COUNT(*) FROM gs112_probe_links"));

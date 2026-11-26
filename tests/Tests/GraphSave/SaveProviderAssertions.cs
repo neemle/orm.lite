@@ -2,9 +2,9 @@ using Xunit;
 
 namespace Neemle.OrmLite.Tests.GraphSave;
 
-internal static class SaveSqliteAssertions
+internal static class SaveProviderAssertions
 {
-    internal static void OneTransaction(SaveSqliteDatabase db, int statements, TransactionPhase ending)
+    internal static void OneTransaction(SaveProviderDatabase db, int statements, TransactionPhase ending)
     {
         Assert.Equal(statements, db.Statements.Count);
         var transaction = Assert.Single(db.Statements.Select(s => s.TransactionId).Distinct());

@@ -3,20 +3,21 @@ using Xunit;
 namespace Neemle.OrmLite.Tests.GraphSave;
 
 [Collection("Graph")]
-public sealed class SaveSqliteRollbackTests
+public sealed class SaveProviderRollbackTests
 {
-    [Theory(DisplayName = "[UC-006][AC-112-03/06/08/09][SEC] real SQLite failures after successful writes roll back the entire graph")]
-    [InlineData(false)] [InlineData(true)]
-    public async Task Constraint_after_successful_prefix_leaves_no_subset(bool linkFailure)
+    [Theory(DisplayName = "[UC-006][AC-112-03/06/08/09][SEC] real provider failures after successful writes roll back the entire graph")]
+    [InlineData("sqlite", false)] [InlineData("sqlite", true)]
+    [InlineData("postgres", false)] [InlineData("postgres", true)]
+    public async Task Constraint_after_successful_prefix_leaves_no_subset(string provider, bool linkFailure)
     {
-        await using var db = await SaveSqliteDatabase.OpenAsync(linkFailure);
+        await using var db = await SaveProviderDatabase.OpenAsync(provider, linkFailure);
         var root = SaveProbeModel.Node(201);
         var child = SaveProbeModel.Node(202);
         if (!linkFailure) child.Name = "reject";
         var tag = new SaveProbeTag { Id = SaveProbeModel.Id(203) };
         root.Children.Add(child); root.Tags.Add(tag);
         var error = await Assert.ThrowsAsync<GraphSaveException>(() =>
-            global::Neemle.OrmLite.GraphSave.SaveAsync(db.Context, SaveSqliteAssertions.Request(root, child, tag)));
+            global::Neemle.OrmLite.GraphSave.SaveAsync(db.Context, SaveProviderAssertions.Request(root, child, tag)));
         Assert.Equal(GraphSaveError.ProviderFailure, error.Error);
         Assert.Equal(GraphSaveOutcome.RolledBack, error.Outcome);
         Assert.Null(error.CommittedResult);
@@ -26,17 +27,18 @@ public sealed class SaveSqliteRollbackTests
         Assert.Contains(db.Statements.Take(db.Statements.Count - 1), s => s.RowsAffected == 1 && s.Error is null);
         Assert.NotNull(db.Statements.Last().Error);
         Assert.DoesNotContain("SQLite", db.Statements.Last().Error!.ToString());
-        SaveSqliteAssertions.OneTransaction(db, db.Statements.Count, TransactionPhase.Rollback);
+        SaveProviderAssertions.OneTransaction(db, db.Statements.Count, TransactionPhase.Rollback);
         Assert.Equal(0L, await db.ScalarAsync("SELECT COUNT(*) FROM gs112_probe_node"));
         Assert.Equal(0L, await db.ScalarAsync("SELECT COUNT(*) FROM gs112_probe_tag"));
         Assert.Equal(0L, await db.ScalarAsync("SELECT COUNT(*) FROM gs112_probe_links"));
     }
 
     [Theory(DisplayName = "[UC-006][AC-112-04/08] missing update and unchanged anchor refuse without upsert")]
-    [InlineData(false)] [InlineData(true)]
-    public async Task Missing_target_is_not_inserted(bool anchor)
+    [InlineData("sqlite", false)] [InlineData("sqlite", true)]
+    [InlineData("postgres", false)] [InlineData("postgres", true)]
+    public async Task Missing_target_is_not_inserted(string provider, bool anchor)
     {
-        await using var db = await SaveSqliteDatabase.OpenAsync();
+        await using var db = await SaveProviderDatabase.OpenAsync(provider);
         var root = SaveProbeModel.Node(301);
         var child = SaveProbeModel.Node(302);
         child.ParentId = root.Id;
@@ -49,7 +51,7 @@ public sealed class SaveSqliteRollbackTests
         var error = await Assert.ThrowsAsync<GraphSaveException>(() => global::Neemle.OrmLite.GraphSave.SaveAsync(db.Context, request));
         Assert.Equal(anchor ? GraphSaveError.MissingAnchor : GraphSaveError.MissingExisting, error.Error);
         Assert.Equal(GraphSaveOutcome.RolledBack, error.Outcome);
-        SaveSqliteAssertions.OneTransaction(db, 1, TransactionPhase.Rollback);
+        SaveProviderAssertions.OneTransaction(db, 1, TransactionPhase.Rollback);
         Assert.Equal(0L, await db.ScalarAsync("SELECT COUNT(*) FROM gs112_probe_node"));
     }
 }
