@@ -1,0 +1,105 @@
+-- schema
+CreateAll: CREATE TABLE IF NOT EXISTS "gn_orchards" ("id" uuid NOT NULL PRIMARY KEY, "name" text NOT NULL DEFAULT '', "climate" text NOT NULL DEFAULT '', "deleted_at" timestamp with time zone); CREATE TABLE IF NOT EXISTS "gn_trees" ("id" uuid NOT NULL PRIMARY KEY, "orchard_id" uuid NOT NULL, "species" text NOT NULL DEFAULT '', "age" integer NOT NULL DEFAULT 0)
+CreateIndexes:
+    CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_orchards_name_live" ON "gn_orchards" ("name") WHERE "deleted_at" IS NULL
+    CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_trees_orchard_id_species" ON "gn_trees" ("orchard_id", "species")
+ReconcileIndexes:
+    SET LOCAL lock_timeout = '5s'
+    DO $drift$ DECLARE current_index oid; BEGIN IF to_regclass('"gn_orchards"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_orchards"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['name', 'deleted_at'])) = 2 THEN SELECT ic.oid INTO current_index FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid WHERE i.indrelid = to_regclass('"gn_orchards"') AND ic.relname = 'ix_gn_orchards_name_live'; IF current_index IS NULL AND EXISTS (SELECT 1 FROM pg_class x WHERE x.relname = 'ix_gn_orchards_name_live' AND x.relnamespace = (SELECT t.relnamespace FROM pg_class t WHERE t.oid = to_regclass('"gn_orchards"'))) THEN RAISE EXCEPTION 'Index name % is already held by another relation in the schema of table %: PostgreSQL index names are schema-global, so creating it would be skipped and the table would stay without its index. Rename the index.', 'ix_gn_orchards_name_live', 'gn_orchards'; END IF; IF current_index IS NOT NULL THEN CREATE TEMP TABLE "orm_ix_check" (LIKE "gn_orchards"); EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_orchards_name_live" ON "orm_ix_check" ("name") WHERE "deleted_at" IS NULL'; IF replace(pg_get_indexdef(current_index), concat(' ON ', (SELECT concat(quote_ident(n.nspname), '.', quote_ident(c.relname)) FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.oid = to_regclass('"gn_orchards"')), ' USING '), ' USING ') <> regexp_replace(pg_get_indexdef(to_regclass('pg_temp."ix_gn_orchards_name_live"')), E' ON \\S+ USING ', ' USING ') THEN DROP TABLE pg_temp."orm_ix_check"; EXECUTE 'DROP INDEX ' || current_index::regclass; ELSE DROP TABLE pg_temp."orm_ix_check"; END IF; END IF; END IF; END $drift$
+    DO $reconcile$ BEGIN IF to_regclass('"gn_orchards"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_orchards"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['name', 'deleted_at'])) = 2 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_orchards_name_live" ON "gn_orchards" ("name") WHERE "deleted_at" IS NULL'; END IF; END $reconcile$
+    DO $collision$ DECLARE r record; BEGIN IF to_regclass('"gn_orchards"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_orchards"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['name', 'deleted_at'])) = 2 THEN FOR r IN SELECT ic.relname::text AS idx, c.conname::text AS con FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid LEFT JOIN pg_constraint c ON c.conindid = i.indexrelid AND c.contype IN ('u', 'p') WHERE i.indrelid = to_regclass('"gn_orchards"') AND i.indisunique AND i.indpred IS NULL AND i.indexprs IS NULL AND i.indnkeyatts = 1 AND (SELECT count(*) FROM unnest(i.indkey::int2[]) WITH ORDINALITY AS k(attnum, ord) JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = k.attnum WHERE k.ord <= i.indnkeyatts AND a.attname = ANY (ARRAY['name'])) = 1 LOOP RAISE EXCEPTION 'Live-only index % on table % over columns (%) cannot take effect: % % is unique over the same columns without a live-row predicate', 'ix_gn_orchards_name_live', 'gn_orchards', 'name', CASE WHEN r.con IS NULL THEN 'index' ELSE 'constraint' END, COALESCE(r.con, r.idx) USING HINT = 'Convert it with an explicit migration: create the partial index, then drop the total one.'; END LOOP; END IF; END $collision$
+    DO $drift$ DECLARE current_index oid; BEGIN IF to_regclass('"gn_trees"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_trees"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['orchard_id', 'species'])) = 2 THEN SELECT ic.oid INTO current_index FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid WHERE i.indrelid = to_regclass('"gn_trees"') AND ic.relname = 'ix_gn_trees_orchard_id_species'; IF current_index IS NULL AND EXISTS (SELECT 1 FROM pg_class x WHERE x.relname = 'ix_gn_trees_orchard_id_species' AND x.relnamespace = (SELECT t.relnamespace FROM pg_class t WHERE t.oid = to_regclass('"gn_trees"'))) THEN RAISE EXCEPTION 'Index name % is already held by another relation in the schema of table %: PostgreSQL index names are schema-global, so creating it would be skipped and the table would stay without its index. Rename the index.', 'ix_gn_trees_orchard_id_species', 'gn_trees'; END IF; IF current_index IS NOT NULL THEN CREATE TEMP TABLE "orm_ix_check" (LIKE "gn_trees"); EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_trees_orchard_id_species" ON "orm_ix_check" ("orchard_id", "species")'; IF replace(pg_get_indexdef(current_index), concat(' ON ', (SELECT concat(quote_ident(n.nspname), '.', quote_ident(c.relname)) FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.oid = to_regclass('"gn_trees"')), ' USING '), ' USING ') <> regexp_replace(pg_get_indexdef(to_regclass('pg_temp."ix_gn_trees_orchard_id_species"')), E' ON \\S+ USING ', ' USING ') THEN DROP TABLE pg_temp."orm_ix_check"; EXECUTE 'DROP INDEX ' || current_index::regclass; ELSE DROP TABLE pg_temp."orm_ix_check"; END IF; END IF; END IF; END $drift$
+    DO $reconcile$ BEGIN IF to_regclass('"gn_trees"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_trees"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['orchard_id', 'species'])) = 2 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_trees_orchard_id_species" ON "gn_trees" ("orchard_id", "species")'; END IF; END $reconcile$
+IndexSetHash: ae551789d8c9818c
+HistoryTables:
+  gn_orchards key=id soft=deleted_at tenant=<none> unversioned=[] arguments-hash=0cd466b26777dff0
+HistorySetHash: 1a3c33d971c4c2ce
+-- contributions
+version 0000_baseline_CorpusGlobalNamespace reversibility=Irreversible down=none
+  up:
+    CREATE TABLE IF NOT EXISTS "gn_orchards" ("id" uuid NOT NULL PRIMARY KEY, "name" text NOT NULL DEFAULT '', "climate" text NOT NULL DEFAULT '', "deleted_at" timestamp with time zone)
+    CREATE TABLE IF NOT EXISTS "gn_trees" ("id" uuid NOT NULL PRIMARY KEY, "orchard_id" uuid NOT NULL, "species" text NOT NULL DEFAULT '', "age" integer NOT NULL DEFAULT 0)
+version 0001_orm_indexes_CorpusGlobalNamespace reversibility=Reversible down=none
+  up:
+    CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_orchards_name_live" ON "gn_orchards" ("name") WHERE "deleted_at" IS NULL
+    CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_trees_orchard_id_species" ON "gn_trees" ("orchard_id", "species")
+version 0100_first_orchard reversibility=Reversible down=declared
+  up:
+    INSERT INTO "gn_orchards" ("id", "name", "climate") VALUES ('00000000-0000-0000-0000-00000000f00d', 'home', 'Mild')
+  down:
+    DELETE FROM "gn_orchards" WHERE "id" IN ('00000000-0000-0000-0000-00000000f00d')
+version 9900_orm_index_reconcile_CorpusGlobalNamespace_ae551789d8c9818c reversibility=Irreversible down=none
+  up:
+    SET LOCAL lock_timeout = '5s'
+    DO $drift$ DECLARE current_index oid; BEGIN IF to_regclass('"gn_orchards"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_orchards"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['name', 'deleted_at'])) = 2 THEN SELECT ic.oid INTO current_index FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid WHERE i.indrelid = to_regclass('"gn_orchards"') AND ic.relname = 'ix_gn_orchards_name_live'; IF current_index IS NULL AND EXISTS (SELECT 1 FROM pg_class x WHERE x.relname = 'ix_gn_orchards_name_live' AND x.relnamespace = (SELECT t.relnamespace FROM pg_class t WHERE t.oid = to_regclass('"gn_orchards"'))) THEN RAISE EXCEPTION 'Index name % is already held by another relation in the schema of table %: PostgreSQL index names are schema-global, so creating it would be skipped and the table would stay without its index. Rename the index.', 'ix_gn_orchards_name_live', 'gn_orchards'; END IF; IF current_index IS NOT NULL THEN CREATE TEMP TABLE "orm_ix_check" (LIKE "gn_orchards"); EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_orchards_name_live" ON "orm_ix_check" ("name") WHERE "deleted_at" IS NULL'; IF replace(pg_get_indexdef(current_index), concat(' ON ', (SELECT concat(quote_ident(n.nspname), '.', quote_ident(c.relname)) FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.oid = to_regclass('"gn_orchards"')), ' USING '), ' USING ') <> regexp_replace(pg_get_indexdef(to_regclass('pg_temp."ix_gn_orchards_name_live"')), E' ON \\S+ USING ', ' USING ') THEN DROP TABLE pg_temp."orm_ix_check"; EXECUTE 'DROP INDEX ' || current_index::regclass; ELSE DROP TABLE pg_temp."orm_ix_check"; END IF; END IF; END IF; END $drift$
+    DO $reconcile$ BEGIN IF to_regclass('"gn_orchards"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_orchards"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['name', 'deleted_at'])) = 2 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_orchards_name_live" ON "gn_orchards" ("name") WHERE "deleted_at" IS NULL'; END IF; END $reconcile$
+    DO $collision$ DECLARE r record; BEGIN IF to_regclass('"gn_orchards"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_orchards"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['name', 'deleted_at'])) = 2 THEN FOR r IN SELECT ic.relname::text AS idx, c.conname::text AS con FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid LEFT JOIN pg_constraint c ON c.conindid = i.indexrelid AND c.contype IN ('u', 'p') WHERE i.indrelid = to_regclass('"gn_orchards"') AND i.indisunique AND i.indpred IS NULL AND i.indexprs IS NULL AND i.indnkeyatts = 1 AND (SELECT count(*) FROM unnest(i.indkey::int2[]) WITH ORDINALITY AS k(attnum, ord) JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = k.attnum WHERE k.ord <= i.indnkeyatts AND a.attname = ANY (ARRAY['name'])) = 1 LOOP RAISE EXCEPTION 'Live-only index % on table % over columns (%) cannot take effect: % % is unique over the same columns without a live-row predicate', 'ix_gn_orchards_name_live', 'gn_orchards', 'name', CASE WHEN r.con IS NULL THEN 'index' ELSE 'constraint' END, COALESCE(r.con, r.idx) USING HINT = 'Convert it with an explicit migration: create the partial index, then drop the total one.'; END LOOP; END IF; END $collision$
+    DO $drift$ DECLARE current_index oid; BEGIN IF to_regclass('"gn_trees"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_trees"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['orchard_id', 'species'])) = 2 THEN SELECT ic.oid INTO current_index FROM pg_index i JOIN pg_class ic ON ic.oid = i.indexrelid WHERE i.indrelid = to_regclass('"gn_trees"') AND ic.relname = 'ix_gn_trees_orchard_id_species'; IF current_index IS NULL AND EXISTS (SELECT 1 FROM pg_class x WHERE x.relname = 'ix_gn_trees_orchard_id_species' AND x.relnamespace = (SELECT t.relnamespace FROM pg_class t WHERE t.oid = to_regclass('"gn_trees"'))) THEN RAISE EXCEPTION 'Index name % is already held by another relation in the schema of table %: PostgreSQL index names are schema-global, so creating it would be skipped and the table would stay without its index. Rename the index.', 'ix_gn_trees_orchard_id_species', 'gn_trees'; END IF; IF current_index IS NOT NULL THEN CREATE TEMP TABLE "orm_ix_check" (LIKE "gn_trees"); EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_trees_orchard_id_species" ON "orm_ix_check" ("orchard_id", "species")'; IF replace(pg_get_indexdef(current_index), concat(' ON ', (SELECT concat(quote_ident(n.nspname), '.', quote_ident(c.relname)) FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.oid = to_regclass('"gn_trees"')), ' USING '), ' USING ') <> regexp_replace(pg_get_indexdef(to_regclass('pg_temp."ix_gn_trees_orchard_id_species"')), E' ON \\S+ USING ', ' USING ') THEN DROP TABLE pg_temp."orm_ix_check"; EXECUTE 'DROP INDEX ' || current_index::regclass; ELSE DROP TABLE pg_temp."orm_ix_check"; END IF; END IF; END IF; END $drift$
+    DO $reconcile$ BEGIN IF to_regclass('"gn_trees"') IS NOT NULL AND (SELECT count(*) FROM pg_attribute WHERE attrelid = to_regclass('"gn_trees"') AND attnum > 0 AND NOT attisdropped AND attname = ANY (ARRAY['orchard_id', 'species'])) = 2 THEN EXECUTE 'CREATE UNIQUE INDEX IF NOT EXISTS "ix_gn_trees_orchard_id_species" ON "gn_trees" ("orchard_id", "species")'; END IF; END $reconcile$
+version 9900_orm_history_reconcile_CorpusGlobalNamespace_1a3c33d971c4c2ce reversibility=Irreversible down=none
+  up:
+    SET LOCAL lock_timeout = '5s'
+    CREATE TABLE IF NOT EXISTS row_history ( id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY, tenant_id uuid NULL, source_table text NOT NULL, row_id uuid NOT NULL, op text NOT NULL CHECK (op IN ('update', 'soft_delete', 'restore')), old_values jsonb NOT NULL, actor_user_id uuid NULL, actor_kind text NOT NULL CHECK (actor_kind IN ('user', 'system', 'unknown')), xact_id bigint NOT NULL, changed_at timestamptz NOT NULL DEFAULT now())
+    DO $rh$ BEGIN IF to_regclass('ix_row_history_source_row') IS NULL THEN CREATE INDEX ix_row_history_source_row ON row_history (source_table, row_id, id); END IF; END $rh$
+    DO $rh$ BEGIN IF to_regclass('ix_row_history_tenant_xact') IS NULL THEN CREATE INDEX ix_row_history_tenant_xact ON row_history (tenant_id, xact_id); END IF; END $rh$
+    DO $rh$ BEGIN IF to_regclass('ix_row_history_changed_at') IS NULL THEN CREATE INDEX ix_row_history_changed_at ON row_history (changed_at); END IF; END $rh$
+    CREATE OR REPLACE FUNCTION row_history_capture() RETURNS trigger LANGUAGE plpgsql AS $rh$
+    DECLARE
+      v_old jsonb;
+      v_new jsonb;
+      v_unversioned text[] := ARRAY[]::text[];
+      v_delta jsonb;
+      v_op text;
+      v_actor text;
+      v_actor_kind text;
+      v_actor_user uuid;
+      v_tenant uuid;
+      i int;
+    BEGIN
+      IF TG_OP = 'DELETE' THEN
+        DELETE FROM row_history
+         WHERE source_table = TG_TABLE_NAME AND row_id = (to_jsonb(OLD) ->> TG_ARGV[0])::uuid;
+        RETURN NULL;
+      END IF;
+      v_old := to_jsonb(OLD);
+      v_new := to_jsonb(NEW);
+      FOR i IN 3 .. TG_NARGS - 1 LOOP
+        v_unversioned := v_unversioned || TG_ARGV[i];
+      END LOOP;
+      v_delta := (SELECT coalesce(jsonb_object_agg(o.key, o.value), '{}'::jsonb)
+                    FROM jsonb_each(v_old) AS o(key, value)
+                   WHERE (v_new -> o.key) IS DISTINCT FROM o.value
+                     AND NOT (o.key = ANY (v_unversioned)));
+      IF v_delta = '{}'::jsonb THEN
+        RETURN NULL;
+      END IF;
+      v_op := CASE
+        WHEN v_old ->> TG_ARGV[1] IS NULL AND v_new ->> TG_ARGV[1] IS NOT NULL THEN 'soft_delete'
+        WHEN v_old ->> TG_ARGV[1] IS NOT NULL AND v_new ->> TG_ARGV[1] IS NULL THEN 'restore'
+        ELSE 'update' END;
+      IF TG_ARGV[2] <> '' THEN
+        v_tenant := (v_new ->> TG_ARGV[2])::uuid;
+      END IF;
+      v_actor := current_setting('ormlite.actor', true);
+      IF v_actor ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' THEN
+        v_actor_kind := 'user';
+        v_actor_user := v_actor::uuid;
+      ELSIF v_actor = 'system' THEN
+        v_actor_kind := 'system';
+      ELSE
+        v_actor_kind := 'unknown';
+      END IF;
+      INSERT INTO row_history (tenant_id, source_table, row_id, op, old_values, actor_user_id, actor_kind, xact_id)
+      VALUES (v_tenant, TG_TABLE_NAME, (v_old ->> TG_ARGV[0])::uuid, v_op, v_delta, v_actor_user, v_actor_kind,
+              pg_current_xact_id()::text::bigint);
+      RETURN NULL;
+    END
+    $rh$
+    DO $rh$ BEGIN IF to_regclass('"gn_orchards"') IS NOT NULL AND (NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"gn_orchards"') AND g.tgname = 'row_history_u' AND obj_description(g.oid, 'pg_trigger') = '0cd466b26777dff0') OR NOT EXISTS (SELECT 1 FROM pg_trigger g WHERE g.tgrelid = to_regclass('"gn_orchards"') AND g.tgname = 'row_history_d' AND obj_description(g.oid, 'pg_trigger') = '0cd466b26777dff0')) THEN CREATE OR REPLACE TRIGGER row_history_u AFTER UPDATE ON "gn_orchards" FOR EACH ROW WHEN (OLD IS DISTINCT FROM NEW) EXECUTE FUNCTION row_history_capture('id', 'deleted_at', ''); CREATE OR REPLACE TRIGGER row_history_d AFTER DELETE ON "gn_orchards" FOR EACH ROW EXECUTE FUNCTION row_history_capture('id', 'deleted_at', ''); COMMENT ON TRIGGER row_history_u ON "gn_orchards" IS '0cd466b26777dff0'; COMMENT ON TRIGGER row_history_d ON "gn_orchards" IS '0cd466b26777dff0'; END IF; END $rh$
+-- registry
+gn_orchards columns=[id,name,climate,deleted_at]
+  soft column=DeletedAt tenant=null platform=True key=id label=name token=orchard
+  live-only=[name] unversioned=[] owners=[] pinned=[] status=[]
+  property-columns=[Id>id;Name>name;Climate>climate;DeletedAt>deleted_at]
+  typed pinned=[id,deleted_at] owners=[] soft-column=deleted_at
+gn_trees columns=[id,orchard_id,species,age]

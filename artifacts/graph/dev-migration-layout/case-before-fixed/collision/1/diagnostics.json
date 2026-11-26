@@ -1,0 +1,8 @@
+{
+  "generator": [
+    "error ORMLITE031: OrmGenerator failed on this input and produced no output: ArgumentException: The hintName \u0027OrmLite.Entities.RowOrm.g.cs\u0027 of the added source file must be unique within a generator. (Parameter \u0027hintName\u0027). This is a defect of the generator, not of your declarations; report it together with the declaration that triggers it."
+  ],
+  "compilation": [
+    "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs(9,91): error CS0103: The name \u0027CaseFixtureSchema\u0027 does not exist in the current context"
+  ]
+}

@@ -1,0 +1,120 @@
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Text.Json;
+using System.Security.Cryptography;
+using System.Text;
+internal static class Program
+{
+    private static int Main(string[] args)
+    {
+        var before = Capture(args[0]);
+        var after = Capture(args[1]);
+        var sameKeys = before.Keys.Order().SequenceEqual(after.Keys.Order());
+        var rows = after.Select(pair => Compare(pair.Key, before[pair.Key].Type, pair.Value.Type,
+            pair.Value.File)).Select(row => new { row.Key, row.File, row.TokensEqual, row.InitializerException,
+                row.Valid, row.OriginalCalls, row.CurrentCalls }).ToArray();
+        var maps = MapRows(before, after);
+        var initializers = after.Where(pair => pair.Value.Type.Identifier.Text == "OrmMetaInit")
+            .Select(pair => InitProof(pair.Key, before[pair.Key].Type, pair.Value.Type)).ToArray();
+        Console.WriteLine(JsonSerializer.Serialize(new { beforeRoot = args[0], afterRoot = args[1], sameKeys,
+            typeCount = rows.Length, rows, initializers, preGraphMapRows = maps.Select(row => new { row.Key, row.BeforeFile,
+                row.AfterFile, row.TokensEqual, row.TextEqual, row.BeforeStart, row.BeforeEnd, row.AfterStart,
+                row.AfterEnd, row.BeforeSha256, row.AfterSha256 }) }, new JsonSerializerOptions { WriteIndented = true, IncludeFields = true }));
+        return sameKeys && rows.All(row => row.Valid) && maps.All(row => row.TokensEqual && row.TextEqual) ? 0 : 1;
+    }
+
+    private static (string Key, string File, bool TokensEqual, bool InitializerException, bool Valid,
+        int OriginalCalls, int CurrentCalls) Compare(string key, ClassDeclarationSyntax before,
+        ClassDeclarationSyntax after, string file)
+    {
+        var same = Tokens(before).SequenceEqual(Tokens(after));
+        if (same || before.Identifier.Text != "OrmMetaInit") return (key, file, same, false, same, 0, 0);
+        var original = before.Members.OfType<MethodDeclarationSyntax>().Single(method => method.Identifier.Text == "Init");
+        var methods = after.Members.OfType<MethodDeclarationSyntax>().ToDictionary(method => method.Identifier.Text);
+        string[] phases = ["RegisterEntities", "RegisterGraphs"];
+        var current = methods["Init"];
+        var flattened = phases.SelectMany(name => methods[name].Body!.Statements).ToArray();
+        var valid = methods.Count == 3 && phases.All(name => PrivateHelper(methods[name]))
+            && Tokens(before.WithMembers(default)).SequenceEqual(Tokens(after.WithMembers(default)))
+            && Tokens(original.WithBody(null)).SequenceEqual(Tokens(current.WithBody(null)))
+            && Statements(current.Body!.Statements).SequenceEqual(phases.Select(name =>
+                string.Join("|", Tokens(SyntaxFactory.ParseStatement(name + "();")))))
+            && Statements(original.Body!.Statements).SequenceEqual(Statements(flattened));
+        return (key, file, same, true, valid, original.Body!.Statements.Count, flattened.Length);
+    }
+
+    private static object InitProof(string key, ClassDeclarationSyntax before, ClassDeclarationSyntax after)
+    {
+        var old = before.Members.OfType<MethodDeclarationSyntax>().ToDictionary(method => method.Identifier.Text);
+        var current = after.Members.OfType<MethodDeclarationSyntax>().ToDictionary(method => method.Identifier.Text);
+        var left = Flatten(old["Init"], old).ToArray();
+        var right = Flatten(current["Init"], current).ToArray();
+        return new { key, sameFlattenedStatements = left.SequenceEqual(right), original = left, current = right,
+            unchangedModuleInitializerSignature = Tokens(old["Init"].WithBody(null))
+                .SequenceEqual(Tokens(current["Init"].WithBody(null))),
+            signature = Tokens(current["Init"].WithBody(null)) };
+    }
+
+    private static IEnumerable<string> Flatten(MethodDeclarationSyntax method,
+        Dictionary<string, MethodDeclarationSyntax> methods)
+    {
+        foreach (var statement in method.Body!.Statements)
+        {
+            if (statement is ExpressionStatementSyntax { Expression: InvocationExpressionSyntax call }
+                && call.Expression is IdentifierNameSyntax name && methods.TryGetValue(name.Identifier.Text, out var helper))
+                foreach (var nested in Flatten(helper, methods)) yield return nested;
+            else yield return string.Join("|", Tokens(statement));
+        }
+    }
+
+    private static bool PrivateHelper(MethodDeclarationSyntax method) =>
+        method.Modifiers.Any(token => token.IsKind(SyntaxKind.PrivateKeyword))
+        && method.Modifiers.Any(token => token.IsKind(SyntaxKind.StaticKeyword))
+        && method.ReturnType is PredefinedTypeSyntax type && type.Keyword.IsKind(SyntaxKind.VoidKeyword)
+        && method.ParameterList.Parameters.Count == 0 && method.AttributeLists.Count == 0;
+
+    private static Dictionary<string, (ClassDeclarationSyntax Type, string File)> Capture(string path)
+    {
+        var result = new Dictionary<string, (ClassDeclarationSyntax, string)>();
+        foreach (var file in Directory.EnumerateFiles(path, "*", SearchOption.AllDirectories).Where(file =>
+            Path.GetFileName(file).StartsWith("OrmLite.", StringComparison.OrdinalIgnoreCase)
+            && Path.GetFileName(file).Contains(".g.cs", StringComparison.OrdinalIgnoreCase)))
+        {
+            var root = CSharpSyntaxTree.ParseText(File.ReadAllText(file)).GetRoot();
+            var space = root.DescendantNodes().OfType<BaseNamespaceDeclarationSyntax>().Single().Name.ToString();
+            foreach (var type in root.DescendantNodes().OfType<ClassDeclarationSyntax>()
+                .Where(type => !type.Ancestors().OfType<TypeDeclarationSyntax>().Any()))
+                result.Add(Path.GetDirectoryName(Path.GetRelativePath(path, file)) + "|" + space + "|"
+                    + type.Identifier.Text, (type, file));
+        }
+        return result;
+    }
+
+    private static (string Key, string BeforeFile, string AfterFile, bool TokensEqual, bool TextEqual,
+        int BeforeStart, int BeforeEnd, int AfterStart, int AfterEnd, string BeforeSha256, string AfterSha256)[] MapRows(
+        Dictionary<string, (ClassDeclarationSyntax Type, string File)> before,
+        Dictionary<string, (ClassDeclarationSyntax Type, string File)> after) => after
+        .Where(pair => pair.Value.Type.Members.OfType<MethodDeclarationSyntax>().Any(method => method.Identifier.Text == "Map"))
+        .Select(pair => MapRow(pair.Key, before[pair.Key], pair.Value)).ToArray();
+
+    private static (string Key, string BeforeFile, string AfterFile, bool TokensEqual, bool TextEqual,
+        int BeforeStart, int BeforeEnd, int AfterStart, int AfterEnd, string BeforeSha256, string AfterSha256) MapRow(
+        string key, (ClassDeclarationSyntax Type, string File) before, (ClassDeclarationSyntax Type, string File) after)
+    {
+        var old = before.Type.Members.OfType<MethodDeclarationSyntax>().Single(method => method.Identifier.Text == "Map");
+        var current = after.Type.Members.OfType<MethodDeclarationSyntax>().Single(method => method.Identifier.Text == "Map");
+        return (key, before.File, after.File, Tokens(old).SequenceEqual(Tokens(current)),
+            old.ToFullString() == current.ToFullString(),
+            Line(old), End(old), Line(current), End(current), Hash(old.ToFullString()), Hash(current.ToFullString()));
+    }
+
+    private static IEnumerable<string> Statements(IEnumerable<StatementSyntax> nodes) =>
+        nodes.Select(node => string.Join("|", Tokens(node)));
+    private static string[] Tokens(SyntaxNode node) => node.DescendantTokens()
+        .Select(token => token.RawKind + ":" + token.Text).ToArray();
+    private static int Line(SyntaxNode node) => node.GetLocation().GetLineSpan().StartLinePosition.Line + 1;
+    private static int End(SyntaxNode node) => node.GetLocation().GetLineSpan().EndLinePosition.Line + 1;
+    private static string Hash(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text)))
+        .ToLowerInvariant();
+}

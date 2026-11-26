@@ -1,0 +1,4 @@
+Unaccounted actual surface: Query.GraphSnapshot/0
+PROPOSAL ONLY: current snapshots captured; no governed test/assertion/baseline/exclusion edited.
+COLLISION order=0 diagnostics=error ORMLITE031: OrmGenerator failed on this input and produced no output: ArgumentException: The hintName 'OrmLite.Entities.RowOrm.g.cs' of the added source file must be unique within a generator. (Parameter 'hintName'). This is a defect of the generator, not of your declarations; report it together with the declaration that triggers it.
+COLLISION order=1 diagnostics=error ORMLITE031: OrmGenerator failed on this input and produced no output: ArgumentException: The hintName 'OrmLite.Entities.rowOrm.g.cs' of the added source file must be unique within a generator. (Parameter 'hintName'). This is a defect of the generator, not of your declarations; report it together with the declaration that triggers it.

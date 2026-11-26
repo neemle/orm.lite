@@ -1,0 +1,178 @@
+{
+  "scope": "3 actual Generator source files +164 actual generated physical files: corpus/golden,hygiene,case,native10,native11,current packed demo",
+  "raw301": "FAIL retained old Map limits; NO blanket301 PASS",
+  "changedInputBoundaries": "PASS actual width/method/type/CC/nesting/parameters outside identical old Map outliers",
+  "outliers": [
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden",
+      "metric": "methodCodeLines",
+      "value": 31,
+      "method": {
+        "name": "Map",
+        "start": 22,
+        "end": 52,
+        "codeLines": 31,
+        "parameters": 1,
+        "complexity": 4,
+        "points": [
+          {
+            "kind": "ConditionalExpression",
+            "line": 40
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 49
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 50
+          }
+        ],
+        "nesting": {
+          "line": 23,
+          "depth": 0
+        }
+      },
+      "identity": {
+        "Key": "tests/Tests/OrmLiteGolden/Expected|Neemle.OrmLite.Generated|GoldenBookOrm",
+        "BeforeFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-capture/proposed/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.GoldenBookOrm.g.cs.golden",
+        "AfterFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden",
+        "TokensEqual": true,
+        "TextEqual": true,
+        "BeforeStart": 22,
+        "BeforeEnd": 52,
+        "AfterStart": 22,
+        "AfterEnd": 52,
+        "BeforeSha256": "b55c3078307f9ea8683159263fad8f8ad9951122326e55585d0dd00d97b44bb9",
+        "AfterSha256": "b55c3078307f9ea8683159263fad8f8ad9951122326e55585d0dd00d97b44bb9"
+      }
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+      "metric": "methodCodeLines",
+      "value": 31,
+      "method": {
+        "name": "Map",
+        "start": 22,
+        "end": 52,
+        "codeLines": 31,
+        "parameters": 1,
+        "complexity": 4,
+        "points": [
+          {
+            "kind": "ConditionalExpression",
+            "line": 40
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 49
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 50
+          }
+        ],
+        "nesting": {
+          "line": 23,
+          "depth": 0
+        }
+      },
+      "identity": {
+        "Key": "tests/Tests/Corpus/Goldens/generator-golden-fixtures|Neemle.OrmLite.Generated|GoldenBookOrm",
+        "BeforeFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.goldenbookorm.g.cs.golden",
+        "AfterFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+        "TokensEqual": true,
+        "TextEqual": true,
+        "BeforeStart": 22,
+        "BeforeEnd": 52,
+        "AfterStart": 22,
+        "AfterEnd": 52,
+        "BeforeSha256": "b55c3078307f9ea8683159263fad8f8ad9951122326e55585d0dd00d97b44bb9",
+        "AfterSha256": "b55c3078307f9ea8683159263fad8f8ad9951122326e55585d0dd00d97b44bb9"
+      }
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+      "metric": "methodCodeLines",
+      "value": 47,
+      "method": {
+        "name": "Map",
+        "start": 30,
+        "end": 76,
+        "codeLines": 47,
+        "parameters": 1,
+        "complexity": 8,
+        "points": [
+          {
+            "kind": "ConditionalExpression",
+            "line": 55
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 57
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 59
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 65
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 67
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 69
+          },
+          {
+            "kind": "ConditionalExpression",
+            "line": 71
+          }
+        ],
+        "nesting": {
+          "line": 31,
+          "depth": 0
+        }
+      },
+      "identity": {
+        "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|EverythingOrm",
+        "BeforeFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.everythingorm.g.cs.golden",
+        "AfterFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+        "TokensEqual": true,
+        "TextEqual": true,
+        "BeforeStart": 30,
+        "BeforeEnd": 76,
+        "AfterStart": 30,
+        "AfterEnd": 76,
+        "BeforeSha256": "418ab6e82070c12891daeefba34ceb6753a808cd75459dd6850868a9add957b6",
+        "AfterSha256": "418ab6e82070c12891daeefba34ceb6753a808cd75459dd6850868a9add957b6"
+      }
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+      "metric": "width",
+      "value": 146,
+      "line": 69,
+      "identity": {
+        "Key": "tests/Tests/Corpus/Goldens/generator-corpus-entities|Neemle.OrmLite.Generated|EverythingOrm",
+        "BeforeFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.everythingorm.g.cs.golden",
+        "AfterFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/after-capture/proposed/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+        "TokensEqual": true,
+        "TextEqual": true,
+        "BeforeStart": 30,
+        "BeforeEnd": 76,
+        "AfterStart": 30,
+        "AfterEnd": 76,
+        "BeforeSha256": "418ab6e82070c12891daeefba34ceb6753a808cd75459dd6850868a9add957b6",
+        "AfterSha256": "418ab6e82070c12891daeefba34ceb6753a808cd75459dd6850868a9add957b6"
+      }
+    }
+  ],
+  "migrationWidth": {
+    "before": 1363,
+    "after": 120
+  }
+}

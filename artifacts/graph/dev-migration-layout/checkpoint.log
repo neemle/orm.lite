@@ -1,0 +1,48 @@
+{
+  "sourceCheckpoint": "badb4701a8047b96d316908ade8cded1fb45d9f4",
+  "baseline": "d28c4c1df8d4c869b10f1bb3c338fedf6619a381",
+  "trees": {
+    "src": "25306975bacb1daba1d9237142b581bfd6e4a6c9",
+    "tests": "21c166b86ebc3b4b3eeb7405a396cee31ff50f36",
+    "demo": "0bb4582bc3b0255cf8adf9117a3641a8ff237ab0",
+    "docs": "430a51d73f4ec58cc51913008f2be7defcdcaa30"
+  },
+  "changedSource": [
+    "src/Generator/GraphLayout/GraphSourceLayout.cs",
+    "src/Generator/MigrationGenerator.cs"
+  ],
+  "gateCount": 17,
+  "proposal": {
+    "path": "proposal-manifest.json",
+    "sha256": "4af0b55c0fe4254f1685ae9fa7f1d4579de22b036bfb06f690627ec71155132a",
+    "counts": {
+      "ADD": 84,
+      "REMOVE": 9,
+      "MODIFY": 12
+    },
+    "applied": false,
+    "approved": false
+  },
+  "proofs": [
+    "tokens-corpus-report.json",
+    "tokens-native10-report.json",
+    "tokens-native11-report.json",
+    "tokens-demo-report.json",
+    "case-fixed-proof.json",
+    "packed-analyzer-identity.json",
+    "metrics-all-report.json",
+    "metrics-disposition.json"
+  ],
+  "limits": [
+    "Protected105-file proposal UNAPPLIED and UNAPPROVED. No test/golden/census/control source changed.",
+    "Raw301 retains old Map31/31/47 lines and width146, exact unchanged full-text loci recorded; no global301 PASS.",
+    "Current raw coverage NOT RUN; prior raw coverage FAIL remains historical and unresolved. Full hosted CI e4338950 (3756pass/5fail/2skip each) historical, not rerun/relabelled.",
+    "No whole QA/security/release/item PASS; only this generation-input unit verified.",
+    "Initial invalid permutation and old extraction-assuming proof are retained HARNESS HISTORY; corrected attributable records current."
+  ],
+  "generated": "2026-11-26T06:30:53.589738+00:00",
+  "usage": {
+    "tokens": "UNKNOWN",
+    "monetaryCost": "UNKNOWN"
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "beforeRoot": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-native",
+  "afterRoot": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated",
+  "sameKeys": true,
+  "typeCount": 8,
+  "rows": [
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|AotSmokeSchema",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|OrmMetaInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|AotGraphBookOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|AotGraphTagOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|AotCalculatedItemOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|AotGraphAuthorOrm",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator|Neemle.OrmLite.Generated|AotSmokeMigrations",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator|Neemle.OrmLite.Generated|OrmMigrationsInit",
+      "File": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "TokensEqual": true,
+      "InitializerException": false,
+      "Valid": true,
+      "OriginalCalls": 0,
+      "CurrentCalls": 0
+    }
+  ],
+  "initializers": [
+    {
+      "key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|OrmMetaInit",
+      "sameFlattenedStatements": true,
+      "original": [
+        "8508:OrmMeta|8218:.|8508:Register|8215:\u003C|8408:global|8264:::|8508:AotSmoke|8218:.|8508:AotCalculatedItem|8217:\u003E|8200:(|8508:AotCalculatedItemOrm|8218:.|8508:Descriptor|8201:)|8212:;",
+        "8508:OrmMeta|8218:.|8508:Register|8215:\u003C|8408:global|8264:::|8508:AotSmoke|8218:.|8508:AotGraphAuthor|8217:\u003E|8200:(|8508:AotGraphAuthorOrm|8218:.|8508:Descriptor|8201:)|8212:;",
+        "8508:OrmMeta|8218:.|8508:Register|8215:\u003C|8408:global|8264:::|8508:AotSmoke|8218:.|8508:AotGraphBook|8217:\u003E|8200:(|8508:AotGraphBookOrm|8218:.|8508:Descriptor|8201:)|8212:;",
+        "8508:OrmMeta|8218:.|8508:Register|8215:\u003C|8408:global|8264:::|8508:AotSmoke|8218:.|8508:AotGraphTag|8217:\u003E|8200:(|8508:AotGraphTagOrm|8218:.|8508:Descriptor|8201:)|8212:;",
+        "8508:AotCalculatedItemOrm|8218:.|8508:RegisterGraph|8200:(|8201:)|8212:;",
+        "8508:AotGraphAuthorOrm|8218:.|8508:RegisterGraph|8200:(|8201:)|8212:;",
+        "8508:AotGraphBookOrm|8218:.|8508:RegisterGraph|8200:(|8201:)|8212:;",
+        "8508:AotGraphTagOrm|8218:.|8508:RegisterGraph|8200:(|8201:)|8212:;"
+      ],
+      "current": [
+        "8508:OrmMeta|8218:.|8508:Register|8215:\u003C|8408:global|8264:::|8508:AotSmoke|8218:.|8508:AotCalculatedItem|8217:\u003E|8200:(|8508:AotCalculatedItemOrm|8218:.|8508:Descriptor|8201:)|8212:;",
+        "8508:OrmMeta|8218:.|8508:Register|8215:\u003C|8408:global|8264:::|8508:AotSmoke|8218:.|8508:AotGraphAuthor|8217:\u003E|8200:(|8508:AotGraphAuthorOrm|8218:.|8508:Descriptor|8201:)|8212:;",
+        "8508:OrmMeta|8218:.|8508:Register|8215:\u003C|8408:global|8264:::|8508:AotSmoke|8218:.|8508:AotGraphBook|8217:\u003E|8200:(|8508:AotGraphBookOrm|8218:.|8508:Descriptor|8201:)|8212:;",
+        "8508:OrmMeta|8218:.|8508:Register|8215:\u003C|8408:global|8264:::|8508:AotSmoke|8218:.|8508:AotGraphTag|8217:\u003E|8200:(|8508:AotGraphTagOrm|8218:.|8508:Descriptor|8201:)|8212:;",
+        "8508:AotCalculatedItemOrm|8218:.|8508:RegisterGraph|8200:(|8201:)|8212:;",
+        "8508:AotGraphAuthorOrm|8218:.|8508:RegisterGraph|8200:(|8201:)|8212:;",
+        "8508:AotGraphBookOrm|8218:.|8508:RegisterGraph|8200:(|8201:)|8212:;",
+        "8508:AotGraphTagOrm|8218:.|8508:RegisterGraph|8200:(|8201:)|8212:;"
+      ],
+      "unchangedModuleInitializerSignature": true,
+      "signature": [
+        "8207:[",
+        "8408:global",
+        "8264:::",
+        "8508:System",
+        "8218:.",
+        "8508:Runtime",
+        "8218:.",
+        "8508:CompilerServices",
+        "8218:.",
+        "8508:ModuleInitializer",
+        "8208:]",
+        "8345:internal",
+        "8347:static",
+        "8318:void",
+        "8508:Init",
+        "8200:(",
+        "8201:)"
+      ]
+    }
+  ],
+  "preGraphMapRows": [
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|AotGraphBookOrm",
+      "BeforeFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-native/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.AotGraphBookOrm.g.cs",
+      "AfterFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "TokensEqual": true,
+      "TextEqual": true,
+      "BeforeStart": 16,
+      "BeforeEnd": 26,
+      "AfterStart": 16,
+      "AfterEnd": 26,
+      "BeforeSha256": "3aa90a7bbfac2d7423b6adb559ed4b7d799153316b01014f3212abfeab3518a4",
+      "AfterSha256": "3aa90a7bbfac2d7423b6adb559ed4b7d799153316b01014f3212abfeab3518a4"
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|AotGraphTagOrm",
+      "BeforeFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-native/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.AotGraphTagOrm.g.cs",
+      "AfterFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "TokensEqual": true,
+      "TextEqual": true,
+      "BeforeStart": 14,
+      "BeforeEnd": 20,
+      "AfterStart": 14,
+      "AfterEnd": 20,
+      "BeforeSha256": "bf9aed8662d2a55dd9f7c7c0fc94680979d62e3f021a0619c1db785a2d143f81",
+      "AfterSha256": "bf9aed8662d2a55dd9f7c7c0fc94680979d62e3f021a0619c1db785a2d143f81"
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|AotCalculatedItemOrm",
+      "BeforeFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-native/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.AotCalculatedItemOrm.g.cs",
+      "AfterFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "TokensEqual": true,
+      "TextEqual": true,
+      "BeforeStart": 16,
+      "BeforeEnd": 26,
+      "AfterStart": 16,
+      "AfterEnd": 26,
+      "BeforeSha256": "1529ba4ae4fcf6005b95f5efe80d948a7412cf66326b70a3005a09702d77ba92",
+      "AfterSha256": "1529ba4ae4fcf6005b95f5efe80d948a7412cf66326b70a3005a09702d77ba92"
+    },
+    {
+      "Key": "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator|Neemle.OrmLite.Generated|AotGraphAuthorOrm",
+      "BeforeFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/before-native/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.AotGraphAuthorOrm.g.cs",
+      "AfterFile": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "TokensEqual": true,
+      "TextEqual": true,
+      "BeforeStart": 15,
+      "BeforeEnd": 21,
+      "AfterStart": 15,
+      "AfterEnd": 21,
+      "BeforeSha256": "c4a1b4ca6ab73a602278a0d9cc99afe33ea5fa44118e4ca6bd65f9d0d64c4fbd",
+      "AfterSha256": "c4a1b4ca6ab73a602278a0d9cc99afe33ea5fa44118e4ca6bd65f9d0d64c4fbd"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/sdk10/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/sdk10/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/sdk10/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/sdk10/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/sdk10/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/sdk10/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Tests -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/sdk10/bin/Tests/release/Neemle.OrmLite.Tests.dll
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/sdk10/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/runtime10-results/runtime10.trx
+
+Passed!  - Failed:     0, Passed:    74, Skipped:     0, Total:    74, Duration: 7 s - Neemle.OrmLite.Tests.dll (net10.0)

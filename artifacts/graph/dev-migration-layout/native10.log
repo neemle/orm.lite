@@ -1,0 +1,19 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/tests/AotSmoke/AotSmoke.csproj (in 324 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Core/Core.csproj (in 456 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Runtime/Runtime.csproj (in 458 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Sql/Sql.csproj (in 459 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Postgres/Postgres.csproj (in 460 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Sqlite/Sqlite.csproj (in 467 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Generator/Generator.csproj (in 550 ms).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  AotSmoke -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-build/bin/AotSmoke/release_linux-arm64/AotSmoke.dll
+  Generating native code
+  AotSmoke -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/dev-migration-layout/native10-out/
+aot runtime: 10.0.15
+aot smoke ok
