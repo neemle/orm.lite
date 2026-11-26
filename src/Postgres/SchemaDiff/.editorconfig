@@ -1,0 +1,3 @@
+# Schema-diff adapter helpers remain in the provider namespace beside PostgresProvider.
+[*.cs]
+dotnet_diagnostic.IDE0130.severity = none
