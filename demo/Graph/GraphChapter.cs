@@ -11,7 +11,6 @@ internal static class GraphChapter
         await fixture.SeedAsync(db);
         var ordinary = await Page(db).ToListAsync();
         var plain = ordinary.All(a => a.Books.Count == 0 && a.Tags.Count == 0);
-        // The completed list is published only after every requested path has succeeded.
         var roots = await Page(db).ToGraphListAsync(Request(20));
         var page = roots.Select(a => a.Id).SequenceEqual(ordinary.Select(a => a.Id));
         var membership = Membership(roots, fixture);
@@ -32,7 +31,6 @@ internal static class GraphChapter
     private static Query<GraphAuthor> Page(OrmContext db) => GraphAuthorOrm.Query(db)
         .Where(a => a.Name != "0 excluded").OrderBy(a => a.Name).Skip(1).Take(2);
 
-    // Every caller chooses six finite positive bounds; these numbers describe only this small fixture.
     private static GraphRequest<GraphAuthor> Request(int relatedRows) => new(
         new GraphLimits(new GraphTraversalLimits(2, 3, 3), new GraphWorkLimits(2, relatedRows, 8)),
         GraphAuthorOrm.Paths.Books, GraphAuthorOrm.Paths.Tags,

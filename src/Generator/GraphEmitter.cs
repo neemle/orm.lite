@@ -1,4 +1,3 @@
-using SourceLayout = Neemle.OrmLite.Generator.GeneratedSourceLayout.GeneratedSourceLayout;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -16,8 +15,6 @@ namespace Neemle.OrmLite.Generator;
 
 internal static class GraphEmitter
 {
-    internal static string WrapMembers(string source) => SourceLayout.Wrap(source);
-
     internal static bool Supported(Entity entity) => !entity.IsView && !OrmGenerator.KeyedApiWithheld(entity)
         && !Buildability.IsUnbuildable(entity) && OrmGenerator.FirstKey(entity) is { Nullable: false };
 
