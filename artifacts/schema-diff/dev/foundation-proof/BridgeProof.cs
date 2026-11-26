@@ -7,6 +7,8 @@ namespace FoundationProof;
 
 internal static class BridgeProof
 {
+    private static readonly List<BridgeFixture> Fixtures = [];
+
     internal static async Task RunAsync()
     {
         var server = Environment.GetEnvironmentVariable("ORMLITE_TEST_POSTGRES")
@@ -19,6 +21,8 @@ internal static class BridgeProof
         foreach (var create in new[] { false, true }) await PostgresAsync(postgres, server, create);
         SqliteProviderFactory.Register();
         foreach (var create in new[] { false, true }) await SqliteAsync(create);
+        await File.WriteAllTextAsync("artifacts/schema-diff/dev/bridge-generated/fixtures.json",
+            System.Text.Json.JsonSerializer.Serialize(Fixtures));
         Console.WriteLine("BRIDGE_PROOF_PASS runtime=" + Environment.Version);
     }
 
@@ -33,6 +37,11 @@ internal static class BridgeProof
         await using var source = NpgsqlDataSource.Create(builder.ConnectionString);
         await using var fresh = new OrmContext(source, PostgresProvider.Instance);
         await BridgeActions.FreshAsync(fresh, shape, artifact);
+        await BridgeSql.ExecuteAsync(context.DataSource, "CREATE DATABASE " + database + "_n10");
+        await BridgeSql.ExecuteAsync(context.DataSource, "CREATE DATABASE " + database + "_n11");
+        var original = new NpgsqlConnectionStringBuilder(server).Database
+            ?? throw new IOException("owned database required");
+        Fixtures.Add(new("postgres", original, new(database, database + "_n10", database + "_n11"), create));
     }
 
     private static async Task SqliteAsync(bool create)
@@ -48,6 +57,7 @@ internal static class BridgeProof
         await using var fresh = await OrmLite.OpenAsync(new OrmLiteOptions
             { Provider = "sqlite", Path = path + ".fresh", Pooling = false });
         await BridgeActions.FreshAsync(fresh, shape, artifact);
+        Fixtures.Add(new("sqlite", path, new(path + ".fresh", path + ".n10", path + ".n11"), create));
     }
 
     private static async Task<SchemaDiffArtifact> PrepareAsync(OrmContext context, BridgeCase shape)
@@ -59,6 +69,11 @@ internal static class BridgeProof
         var before = await SchemaDiff.ObserveAsync(context, shape.Target);
         var report = SchemaDiff.Compare(shape.Target, before);
         Check.That(report.Status == SchemaDiffStatus.Changes, "complete supported bridge report");
-        return SchemaDiff.Emit(report, new(shape.Prefix, "Generated117", "BridgeFactory"));
+        var name = (context.Provider.Id == "postgres" ? "Postgres" : "Sqlite")
+            + (shape.Created ? "Create" : "Add") + "BridgeFactory";
+        var artifact = SchemaDiff.Emit(report, new(shape.Prefix, "GeneratedBridge117", name));
+        Directory.CreateDirectory("artifacts/schema-diff/dev/bridge-generated");
+        await File.WriteAllTextAsync("artifacts/schema-diff/dev/bridge-generated/" + name + ".cs", artifact.CSharpSource);
+        return artifact;
     }
 }

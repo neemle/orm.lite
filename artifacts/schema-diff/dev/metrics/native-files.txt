@@ -1,0 +1,6 @@
+artifacts/schema-diff/dev/bridge-generated/NativeSmoke.cs
+artifacts/schema-diff/dev/bridge-generated/PostgresAddBridgeFactory.cs
+artifacts/schema-diff/dev/bridge-generated/PostgresCreateBridgeFactory.cs
+artifacts/schema-diff/dev/bridge-generated/Program.cs
+artifacts/schema-diff/dev/bridge-generated/SqliteAddBridgeFactory.cs
+artifacts/schema-diff/dev/bridge-generated/SqliteCreateBridgeFactory.cs

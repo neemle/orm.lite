@@ -39,9 +39,17 @@ def metadata(name, argv):
         'testTree': git('rev-parse', 'HEAD:tests'),
         'sourceDigest': source_digest(),
         'proofDigest': proof_digest(),
+        'nativeInputs': native_inputs(),
         'worktreeStatus': git('status', '--short'),
         'started': datetime.datetime.now(datetime.timezone.utc).isoformat(),
     }
+
+
+def native_inputs():
+    root = pathlib.Path('artifacts/schema-diff/dev/bridge-generated')
+    return {str(path): hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in sorted(root.glob('*'))
+            if path.is_file() and path.suffix in ('.cs', '.csproj', '.json')}
 
 
 def main():
@@ -53,6 +61,7 @@ def main():
         result['exitCode'] = subprocess.call(argv, stdout=output, stderr=subprocess.STDOUT)
     result['sourceChangedDuringRun'] = source_digest() != result['sourceDigest']
     result['proofChangedDuringRun'] = proof_digest() != result['proofDigest']
+    result['nativeInputsChangedDuringRun'] = native_inputs() != result['nativeInputs']
     result['finished'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     path.with_suffix('.json').write_text(json.dumps(result, indent=2))
     print(json.dumps(result))
