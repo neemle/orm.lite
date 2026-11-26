@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using static Neemle.OrmLite.Generator.SymbolFacts;
 
@@ -36,8 +37,9 @@ internal static class SaveSafetyReader
     private static bool TrivialSyntax(IPropertySymbol property) => property.DeclaringSyntaxReferences.Any(r =>
         r.GetSyntax() switch
         {
-            PropertyDeclarationSyntax { ExpressionBody: null, AccessorList: { } accessors } =>
-                accessors.Accessors.All(a => a.Body is null && a.ExpressionBody is null),
+            PropertyDeclarationSyntax { ExpressionBody: null, AccessorList: { } accessors } declaration =>
+                !declaration.Modifiers.Any(SyntaxKind.PartialKeyword)
+                && accessors.Accessors.All(a => a.Body is null && a.ExpressionBody is null),
             ParameterSyntax { Parent: ParameterListSyntax { Parent: RecordDeclarationSyntax } } =>
                 property.GetMethod?.IsImplicitlyDeclared == true,
             _ => false,

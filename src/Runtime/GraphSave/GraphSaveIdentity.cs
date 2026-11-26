@@ -4,7 +4,6 @@ internal sealed class GraphSaveIdentity(IGraphSaveEntity binding, object key) : 
 {
     internal IGraphSaveEntity Binding { get; } = binding;
     internal object Key { get; } = key;
-    internal byte[] Bytes { get; } = GraphSaveKeyBytes.Encode(key);
 
     public bool Equals(GraphSaveIdentity? other) => other is not null
         && Binding.EntityType == other.Binding.EntityType && Binding.Descriptor.Table == other.Binding.Descriptor.Table
