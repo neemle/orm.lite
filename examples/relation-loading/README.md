@@ -35,12 +35,24 @@ enabled. Any failed scenario throws and exits unsuccessfully. The provider argum
 fixture; [Program.cs](Program.cs) invokes the same cases in every mode. The project can target .NET 11
 with `-p:PolicySmokeTfm=net11.0`; set `ORMLITE_EXPECT_DOTNET=11` for that run.
 
+## Supported reads and ordinary streaming
+
+Model eager policies and `RelationReadOptions` apply to supported buffered full-entity `ToListAsync`,
+`FirstOrDefaultAsync`, generated `GetAsync` and navigation reads. A successful buffered read with
+`RelationReadOptions.Scope` is the supported route for attaching entities to that retained scope.
+
+Ordinary `StreamAsync` on a configured model keeps its
+[explicit row-stream behavior](../../docs/streaming.md#consume-rows-with-await-foreach).
+It has no policy-aware options, eager-expansion or loading-scope attachment contract. Use the buffered
+read methods above to choose model policies and scope attachment; the ordinary stream remains a row stream.
+
 ## Eager reads and suppression
 
 [ReadCases.cs](ReadCases.cs) loads a root page with eager books and back references, checks shared
 identity through a cycle, and counts batched statements. It compares this with per-call eager
-suppression, scalar reads and an entity without relation policies. Model declarations are in
-[Author.cs](Author.cs) and [Book.cs](Book.cs); all six finite graph bounds are explicit.
+suppression, scalar reads and an entity without relation policies. `EagerBehavior.Suppress` affects only
+that invocation; a later ordinary read still uses the model, and explicit loading/lazy eligibility remain.
+Model declarations are in [Author.cs](Author.cs) and [Book.cs](Book.cs); all six finite graph bounds are explicit.
 
 ## Explicit lazy demand
 
@@ -76,10 +88,13 @@ Run either focused case with `sqlite publication-fence` or `sqlite cleanup` afte
 ## Transactions and connection origins
 
 [BindingCases.cs](BindingCases.cs) uses a generated keyed read with the exact unit-of-work connection
-and transaction. It checks that explicit `.On(connection)` with a missing transaction is refused,
-and that a committed unit cannot be accepted as a generic bare connection.
+and transaction. An existing explicit `.On(connection)` or `.On(connection, null)` must match both
+the scope connection and transaction; explicit null cannot inherit a transaction-bound scope.
+The case also shows that a committed unit cannot be accepted as a generic bare connection.
 [GateOriginCases.cs](GateOriginCases.cs) checks ordinary externally opened gated connections, shared
-gate/provider objects with distinct selected contexts, mismatched providers and stale leases.
+gate/provider objects with distinct selected contexts, mismatched providers and stale leases. The scope
+still selects one exact context for all later queries. A live source/provider witness is required; connection
+strings or matching driver types do not establish origin, and a closed/released lease cannot be revived.
 [CustomOriginCases.cs](CustomOriginCases.cs) shows known custom-source Open/UoW origins and safe
 refusal of unobserved externally opened custom connections, without probe opens.
 
@@ -88,5 +103,6 @@ refusal of unobserved externally opened custom connections, without probe opens.
 [VisibilityCases.cs](VisibilityCases.cs) covers root masking, masked navigation keys, nullable
 references and key changes after attachment. Refused work adds no SQL statements.
 
-The [relation guide](../../docs/relations.md) describes the broader graph and loader surface. This
+The [relation guide](../../docs/relations.md#6-try-model-based-eager-and-asynchronous-lazy-loading) links these
+policy cases alongside the broader graph and loader surface. This
 demo makes no release or package-version claim and does not implement save cascades or getter I/O.

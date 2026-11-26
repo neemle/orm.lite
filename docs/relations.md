@@ -409,6 +409,16 @@ The [runnable relation-loading demo](../examples/relation-loading/README.md#run)
 JIT and NativeAOT on SQLite and PostgreSQL. It runs the same scenarios in every mode. Navigation getters
 perform no I/O; lazy relations load through an explicit asynchronous demand on a retained `LoadingScope`.
 
+Model policies and `RelationReadOptions` apply to supported buffered full-entity reads:
+`ToListAsync`, `FirstOrDefaultAsync`, and generated `GetAsync` and navigation loaders.
+`EagerBehavior.Suppress` changes automatic eager work for one invocation only; it does not change the
+model, later reads, explicit requests or lazy eligibility. See the
+[supported-read boundary](../examples/relation-loading/README.md#supported-reads-and-ordinary-streaming).
+
+Ordinary `StreamAsync` follows the [explicit row-stream contract](streaming.md#consume-rows-with-await-foreach),
+including on a model with relation policies. It has no policy-aware `RelationReadOptions`, eager-expansion
+or retained-scope attachment contract. Choose the supported buffered reads above when using those policies.
+
 - [Eager reads and per-call suppression](../examples/relation-loading/README.md#eager-reads-and-suppression):
   [ReadCases.cs](../examples/relation-loading/ReadCases.cs).
 - [Lazy demand, cached state and detach](../examples/relation-loading/README.md#explicit-lazy-demand):
