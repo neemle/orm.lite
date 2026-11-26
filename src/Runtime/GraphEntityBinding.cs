@@ -17,7 +17,9 @@ public sealed class GraphEntityBinding<T> : IGraphEntityBinding where T : class
         if (navigations is null || navigations.Any(n => n is null))
             throw new GraphRequestException(GraphRequestError.InvalidBinding);
         _navigations = Array.AsReadOnly(navigations.Cast<IGraphNavigationBinding>().ToArray());
-        if (descriptor.SoleKey?.Column != key.Column
+        var physicalKey = descriptor.SoleKey;
+        if (physicalKey is null || physicalKey.Nullable || physicalKey.Column != key.Column
+            || !key.Supports(physicalKey.Type)
             || _navigations.Select(n => n.Navigation).Distinct().Count() != navigations.Length)
             throw new GraphRequestException(GraphRequestError.InvalidBinding);
     }

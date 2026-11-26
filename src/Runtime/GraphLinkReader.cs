@@ -1,3 +1,4 @@
+using System.Data.Common;
 using Neemle.OrmLite.Nodes;
 
 namespace Neemle.OrmLite;
@@ -18,12 +19,19 @@ internal static class GraphLinkReader
             var filtered = GraphFrontier.Filter(shape, link.SourceColumn, chunk, context.Budget.RelatedRemaining);
             var statement = StatementCompiler.Compile(filtered, context.Database.Provider,
                 StatementKind.Read, link.Table);
-            var rows = await GraphStatementRunner.ReadAsync(context, statement, reader =>
-                (Source: Checked<TSourceKey>(source.ReadKey(reader, 0)),
-                 Target: Checked<TTargetKey>(node.Target.Binding.ReadKey(reader, 1))));
-            result.AddRange(rows);
+            var rows = await GraphStatementRunner.ReadAsync(context, statement,
+                reader => Keys<TSourceKey, TTargetKey>(reader, source, node.Target.Binding));
+            result.AddRange(rows.Where(row => row.HasValue).Select(row => row.GetValueOrDefault()));
         }
         return result;
+    }
+
+    private static (TSourceKey Source, TTargetKey Target)? Keys<TSourceKey, TTargetKey>(
+        DbDataReader reader, IGraphEntityBinding source, IGraphEntityBinding target)
+        where TSourceKey : notnull where TTargetKey : notnull
+    {
+        if (reader.IsDBNull(0) || reader.IsDBNull(1)) return null;
+        return (Checked<TSourceKey>(source.ReadKey(reader, 0)), Checked<TTargetKey>(target.ReadKey(reader, 1)));
     }
 
     private static TKey Checked<TKey>(object value) where TKey : notnull => value is TKey key ? key

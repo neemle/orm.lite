@@ -56,4 +56,20 @@ public sealed class GraphBatchTests
         Assert.Equal(GraphBudget.RelatedRows, error.Budget);
         Assert.Equal(3, db.Statements.Count);
     }
+    [Fact(DisplayName = "[AC-108-03] null and missing link targets never become a default-key association")]
+    public async Task Nullable_link_target_does_not_attach_a_zero_key_row()
+    {
+        await using var db = await GraphDatabase.OpenAsync();
+        await using (var connection = await db.Context.DataSource.OpenConnectionAsync())
+        await using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "INSERT INTO graph_tags VALUES (0, 'zero', NULL); "
+                + "INSERT INTO graph_author_tags VALUES (1, NULL), (1, 999)";
+            await command.ExecuteNonQueryAsync();
+        }
+        var request = new GraphRequest<GraphAuthor>(GraphDomain.Limits(), GraphDomain.AuthorTags);
+        var roots = await db.Authors().Where(a => a.Id == 1).ToGraphListAsync(request);
+        Assert.Equal(30, Assert.Single(roots.Single().Tags).Id);
+    }
+
 }

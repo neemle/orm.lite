@@ -24,7 +24,8 @@ internal static class GraphProbe
             return roots.Count == 2 && roots[0].Books.Count == 1 && roots[1].Books.Count == 1
                 && ReferenceEquals(roots[1], roots[0].Books[0].Editor)
                 && roots[1].Books[0].Editor is null
-                && roots[0].Tags.Count == 1 && ReferenceEquals(roots[0].Tags[0], roots[1].Tags.Single());
+                && roots[0].Tags.Count == 1 && roots[0].Tags[0].Id == AotGraphTagKey.Shared
+                && ReferenceEquals(roots[0].Tags[0], roots[1].Tags.Single());
         }
         finally
         {
@@ -40,12 +41,12 @@ internal static class GraphProbe
         command.CommandText = """
             CREATE TABLE aot_graph_authors (id INTEGER PRIMARY KEY);
             CREATE TABLE aot_graph_books (id INTEGER PRIMARY KEY, aot_graph_author_id INTEGER, editor_id INTEGER NULL);
-            CREATE TABLE aot_graph_tags (id INTEGER PRIMARY KEY);
-            CREATE TABLE aot_graph_links (author_id INTEGER, tag_id INTEGER);
+            CREATE TABLE aot_graph_tags (id TEXT PRIMARY KEY);
+            CREATE TABLE aot_graph_links (author_id INTEGER, tag_id TEXT);
             INSERT INTO aot_graph_authors VALUES (1), (2);
             INSERT INTO aot_graph_books VALUES (10, 1, 2), (11, 2, NULL);
-            INSERT INTO aot_graph_tags VALUES (30);
-            INSERT INTO aot_graph_links VALUES (1, 30), (2, 30);
+            INSERT INTO aot_graph_tags VALUES ('None'), ('Shared');
+            INSERT INTO aot_graph_links VALUES (1, 'Shared'), (2, 'Shared'), (1, NULL);
             """;
         await command.ExecuteNonQueryAsync();
     }

@@ -46,11 +46,23 @@ internal static class GraphDomain
     }
 
     internal static void Register() { }
-    internal static GraphAuthor MapAuthor(DbDataReader r) => new() { Id = r.GetInt32(r.GetOrdinal("id")),
-        Name = r.IsDBNull(r.GetOrdinal("name")) ? null : r.GetString(r.GetOrdinal("name")) };
-    internal static GraphBook MapBook(DbDataReader r) => new() { Id = r.GetInt32(r.GetOrdinal("id")),
-        AuthorId = r.GetInt32(r.GetOrdinal("author_id")),
-        EditorId = r.IsDBNull(r.GetOrdinal("editor_id")) ? null : r.GetInt32(r.GetOrdinal("editor_id")) };
+    internal static Action? RootReadHook { get; set; }
+    internal static Exception? BookMapError { get; set; }
+    internal static GraphAuthor MapAuthor(DbDataReader r)
+    {
+        RootReadHook?.Invoke();
+        return new GraphAuthor { Id = r.GetInt32(r.GetOrdinal("id")),
+            Name = r.IsDBNull(r.GetOrdinal("name")) ? null : r.GetString(r.GetOrdinal("name")) };
+    }
+
+    internal static GraphBook MapBook(DbDataReader r)
+    {
+        if (BookMapError is { } error) throw error;
+        return new GraphBook { Id = r.GetInt32(r.GetOrdinal("id")),
+            AuthorId = r.GetInt32(r.GetOrdinal("author_id")),
+            EditorId = r.IsDBNull(r.GetOrdinal("editor_id")) ? null : r.GetInt32(r.GetOrdinal("editor_id")) };
+    }
+
     internal static GraphTag MapTag(DbDataReader r) => new() { Id = r.GetInt32(r.GetOrdinal("id")),
         Name = r.IsDBNull(r.GetOrdinal("name")) ? null : r.GetString(r.GetOrdinal("name")),
         Deleted = r.IsDBNull(r.GetOrdinal("deleted")) ? null : r.GetString(r.GetOrdinal("deleted")) };
