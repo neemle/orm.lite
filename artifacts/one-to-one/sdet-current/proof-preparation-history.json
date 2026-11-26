@@ -1,0 +1,6 @@
+{
+  "disposition": "Artifact-analysis harness assumption, not product/test/matrix failure",
+  "initialProof": "AssertionError at resolved package XML documentation entries:4 absent .xml files under lib/net10.0; images set NUGET_XMLDOC_MODE=skip. All consumed library DLL/analyzer/props entries unchanged.",
+  "correctedScope": "Exact original package archive hashes plus actually consumed DLL/analyzer/buildTransitive/asset identities. XML docs are not runtime consumed assets and are not claimed present in cache.",
+  "secondProof": "Selector included only3 OrmLite packages but old list also includes Neemle.CSharpComposer/0.5.0. Corrected to exact complete Neemle dependency set (including unchanged Composer), Ordinal sorted. No product mismatch."
+}

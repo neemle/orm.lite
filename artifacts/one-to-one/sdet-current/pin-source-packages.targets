@@ -1,0 +1,1 @@
+<Project><Target Name="PinFrozenOneToOnePackages" AfterTargets="ResolveOrmLiteVersion"><ItemGroup><PackageReference Update="Neemle.OrmLite;Neemle.OrmLite.Sqlite;Neemle.OrmLite.Postgres" Version="[0.1.0-dev.g25ce031]" /></ItemGroup></Target></Project>

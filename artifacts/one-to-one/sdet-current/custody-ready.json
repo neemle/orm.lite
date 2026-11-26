@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "docker",
+    "exec",
+    "b79256d0f4a4a43280918650f8196ef4f065c8e3d5194be114a92317403fb930",
+    "pg_isready",
+    "-U",
+    "postgres"
+  ],
+  "exitCode": 127,
+  "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+  "stderr": "",
+  "disposition": "Readiness utility unavailable in scratch PG image; actual retained JIT10 connections passed, live connection will be observed by remaining scoped public runs. Running state and identity/labels recorded separately.",
+  "at": "2026-11-26T14:57:41.341872+00:00"
+}
