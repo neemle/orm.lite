@@ -8,7 +8,7 @@ namespace Neemle.OrmLite.Generator;
 
 internal static class PolicyDiagnostics
 {
-    private static readonly DiagnosticDescriptor Invalid = new("ORMLITE035", "Invalid relation loading policy",
+    private static readonly DiagnosticDescriptor Invalid = new("ORMLITE037", "Invalid relation loading policy",
         "Relation policy '{0}.{1}' is invalid: {2}", "OrmLite", DiagnosticSeverity.Error, true);
 
     internal static void Report(SourceProductionContext context, ImmutableArray<Entity> entities,
