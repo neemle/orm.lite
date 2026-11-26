@@ -1,0 +1,20 @@
+{
+  "cmd": "docker run --rm --ulimit core=0 --name orml117-nullability-native10-publish --cidfile artifacts/schema-diff/nullability-sdet/publish10.cid --label orml117.owner=nullability-sdet --memory=3g --memory-swap=3g --cpus=2 -e DOTNET_PROCESSOR_COUNT=2 -v \"$PWD:/repo\" -v /Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro -v orml-107-nuget:/root/.nuget/packages -w /repo sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27 dotnet publish tests/SchemaDiffAot/SchemaDiffAot.csproj -c Release -r linux-arm64 -p:PublishAot=true -p:IlcMaxParallelism=1 -p:DemoTfm=net10.0 --artifacts-path artifacts/schema-diff/nullability-sdet/native-build10 -o artifacts/schema-diff/nullability-sdet/native10 --verbosity minimal",
+  "started": {
+    "current_time": "2026-11-26 10:42:52 UTC"
+  },
+  "result": {
+    "chunk_id": "9fede7",
+    "wall_time_seconds": 0.000012334,
+    "exit_code": 0,
+    "original_token_count": 19,
+    "output": "  SchemaDiffAot -> /repo/artifacts/schema-diff/nullability-sdet/native10/\n"
+  },
+  "output": "  Determining projects to restore...\n  Restored /repo/src/Generator/Generator.csproj (in 809 ms).\n  Restored /repo/src/Postgres/Postgres.csproj (in 796 ms).\n  Restored /repo/src/Core/Core.csproj (in 27 ms).\n  Restored /repo/tests/SchemaDiffAot/SchemaDiffAot.csproj (in 35 ms).\n  Restored /repo/src/Sqlite/Sqlite.csproj (in 15 ms).\n  Restored /repo/src/Sql/Sql.csproj (in 8 ms).\n  Restored /repo/src/Runtime/Runtime.csproj (in 6 ms).\n  Generator -> /repo/artifacts/schema-diff/nullability-sdet/native-build10/bin/Generator/release/Neemle.OrmLite.Generator.dll\n  Runtime -> /repo/artifacts/schema-diff/nullability-sdet/native-build10/bin/Runtime/release/Neemle.OrmLite.Runtime.dll\n  Sql -> /repo/artifacts/schema-diff/nullability-sdet/native-build10/bin/Sql/release/Neemle.OrmLite.Sql.dll\n  Core -> /repo/artifacts/schema-diff/nullability-sdet/native-build10/bin/Core/release/Neemle.OrmLite.Core.dll\n  Postgres -> /repo/artifacts/schema-diff/nullability-sdet/native-build10/bin/Postgres/release/Neemle.OrmLite.Postgres.dll\n  Sqlite -> /repo/artifacts/schema-diff/nullability-sdet/native-build10/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll\n  SchemaDiffAot -> /repo/artifacts/schema-diff/nullability-sdet/native-build10/bin/SchemaDiffAot/release_linux-arm64/Neemle.OrmLite.SchemaDiffAot.dll\n  Generating native code\n  SchemaDiffAot -> /repo/artifacts/schema-diff/nullability-sdet/native10/\n",
+  "finished": {
+    "current_time": "2026-11-26 10:44:29 UTC"
+  },
+  "executionCommit": "d5d097f69d05947a9640a6d98e689c9be563a371",
+  "productCommit": "8d8ad048dfa5db513cdea751ba3974c32e4b22f3",
+  "fullCommand": "docker run --rm --ulimit core=0 --name orml117-nullability-native10-publish --cidfile artifacts/schema-diff/nullability-sdet/publish10.cid --label orml117.owner=nullability-sdet --memory=3g --memory-swap=3g --cpus=2 -e DOTNET_PROCESSOR_COUNT=2 -v \"/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff:/repo\" -v /Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro -v orml-107-nuget:/root/.nuget/packages -w /repo sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27 dotnet publish tests/SchemaDiffAot/SchemaDiffAot.csproj -c Release -r linux-arm64 -p:PublishAot=true -p:IlcMaxParallelism=1 -p:DemoTfm=net10.0 --artifacts-path artifacts/schema-diff/nullability-sdet/native-build10 -o artifacts/schema-diff/nullability-sdet/native10 --verbosity minimal"
+}
