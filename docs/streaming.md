@@ -9,6 +9,18 @@ The `Async` suffix does not mean the terminal returns a `Task`; do not `await` t
 The independent snippets below use the `Note` model, generated `NoteOrm`, and open `db` from the
 [quickstart](quickstart.md). They assume the same imports and an application `CancellationToken ct`.
 
+## Run the complete example
+
+The [streaming export example](../examples/streaming/README.md) runs the same scenarios with SQLite or PostgreSQL:
+
+- [Cold captured export](../examples/streaming/README.md#cold-captured-export)
+- [Projection and NULL values](../examples/streaming/README.md#projection-and-null-values)
+- [Early cleanup and cancellation](../examples/streaming/README.md#early-cleanup-and-cancellation)
+- [Borrowed transaction lifetime](../examples/streaming/README.md#borrowed-transaction-lifetime)
+
+Follow its [JIT commands](../examples/streaming/README.md#run-with-jit) or
+[NativeAOT commands](../examples/streaming/README.md#run-with-nativeaot) to run the application.
+
 ## Consume rows with await foreach
 
 ```csharp
