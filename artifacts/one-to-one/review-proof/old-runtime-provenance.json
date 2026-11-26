@@ -1,0 +1,8 @@
+{
+  "archive": "artifacts/one-to-one/demo/packages/Neemle.OrmLite.0.1.0-dev.g25ce031.nupkg",
+  "archiveSha256": "74af080f462c88b80d797adebb9863c466c3a222ac173f71a7debc140b0a1ff1",
+  "member": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+  "runtimeSha256": "2385a2f093d973b64d047921b6a5a2651e2f371f1172f907599d83550ffebac2",
+  "productCommit": "25ce031d9ce6216ff38f57f6088021900a68c509",
+  "sourceTree": "f1f92d50105366c2a6f02097b785a9cda2d4d5dd"
+}
