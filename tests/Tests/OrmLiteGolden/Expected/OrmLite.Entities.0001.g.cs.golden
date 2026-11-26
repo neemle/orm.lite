@@ -157,4 +157,35 @@ public static async global::System.Threading.Tasks.Task LoadTagsAsync(global::Ne
     e.Tags = await global::Neemle.OrmLite.OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<global
         ::GoldenFixtures.GoldenTag>(Descriptor, "Tags", e.Id, GoldenTagOrm.Descriptor, GoldenTagOrm.Map), options, ct);
 }
+
+internal static void RegisterSave()
+{
+    global::Neemle.OrmLite.GraphSaveModel.Register(new global::Neemle.OrmLite.GraphSaveEntityBinding<global::
+        GoldenFixtures.GoldenAuthor, global::System.Guid>(Descriptor, Values, static e => e.@Id, Map, new global::Neemle
+        .OrmLite.GraphSaveRelationBinding<global::GoldenFixtures.GoldenAuthor>[] { new global::Neemle.OrmLite.
+        GraphSaveRelationBinding<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenBook>(new global::
+        Neemle.OrmLite.GraphSaveRelationShape("Books", global::Neemle.OrmLite.GraphSaveRelationKind.Collection, global::
+        Neemle.OrmLite.GraphSaveForeignKeyOwner.Target, "AuthorId"), static e => e.@Books ?? new global::System.
+        Collections.Generic.List<global::GoldenFixtures.GoldenBook>()), new global::Neemle.OrmLite.
+        GraphSaveRelationBinding<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenTag>(new global::
+        Neemle.OrmLite.GraphSaveRelationShape("Tags", global::Neemle.OrmLite.GraphSaveRelationKind.Link, global::Neemle.
+        OrmLite.GraphSaveForeignKeyOwner.None, null), static e => e.@Tags ?? new global::System.Collections.Generic.List
+        <global::GoldenFixtures.GoldenTag>()) }));
+}
+
+public static __GraphSaveTokens SaveRelations { get; } = new __GraphSaveTokens();
+
+public sealed class __GraphSaveTokens
+{
+    internal __GraphSaveTokens()
+    {
+    }
+
+    public global::Neemle.OrmLite.SaveRelation<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenBook>
+        @Books => global::Neemle.OrmLite.SaveRelations.Edge<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.
+        GoldenBook>("Books");
+    public global::Neemle.OrmLite.SaveRelation<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenTag>
+        @Tags => global::Neemle.OrmLite.SaveRelations.Edge<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.
+        GoldenTag>("Tags");
+}
 }
