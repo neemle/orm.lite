@@ -693,5 +693,29 @@
   "resourceAudit": "GraphDemo owned context/database/temp dir cleanup attempts all steps and returns false on any cleanup failure; no retry, worker, staticcache, alternate credential or user-selected DB drop. CREATE acknowledgment uncertainty may leave scratch DB until owned fixture server is removed; no global rollback claim. Graph source/resource/mask/bounds/failure behavior remains frozen originalgraph semantics and eight current demo outcomes85de623e; main metadata open is additive unusedpath and existing Stream paths exactmain. Original old raw coverage and warnings remain history.",
   "dependencies": "git dependency-config delta from61d/approvedmain has no runtime library package intake; inherited8-project advisory0vuln/14samepackageSHA512+licenses9MIT1PostgreSQL4Apache2.0 at24a2d398 original06:45 source provenance, plus currentmain1093cdcb. Current private3package/DLL/analyzer/assets provenance85de623e, SDK11 official pinned compiler/linker MIT already read in117audit. No fresh advisory/SBOM/publication claim.",
   "scopeLimit": "Finite current combined source/public-demo SAST and resource delta only. Actual current golden/corpus integration/hostedCI, independent technical review and final802/merge remain separate.",
-  "disposition": "PASS after explicit triage, rawexit1/7ERRORcandidates/28partialpaths retained; not scanner-clean or production-security certification."
+  "disposition": "PASS after explicit triage, rawexit1/7ERRORcandidates/28partialpaths retained; not scanner-clean or production-security certification.",
+  "storageCorrection": {
+    "recorded": "2026-11-26T13:02:22.993482+00:00",
+    "originalOutputPath": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/security-final",
+    "archivePath": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/security-current-main-20261126",
+    "historicalRawOverwritten": [
+      {
+        "path": "artifacts/graph/security-final/semgrep-run.json",
+        "bytes": 1563,
+        "sha256": "dbe8e520482f95106666523f1e9b1f8094577a88490bad13ad940a18345a7de9"
+      },
+      {
+        "path": "artifacts/graph/security-final/semgrep.json",
+        "bytes": 38510,
+        "sha256": "1f524a14601836f897cc05361cccd59ac287f15e8460416def58de0b3c9b6802"
+      },
+      {
+        "path": "artifacts/graph/security-final/semgrep.log",
+        "bytes": 1372,
+        "sha256": "d8d73803f8c48e6384599453df22455c7721d48bba10c5f9a7802293cf2b8f5a"
+      }
+    ],
+    "recoveryAttempt": "Exact SHA256 search for these3filenames through sibling security*/** and originald216/61d Gitpath objects found NOmatchingcopy. Do not reconstruct or rerun historicalscan. OriginalMCP172ac752/e9608aab canonicalrecords remain intact; oldnative3fileavailability incomplete. Otherhistoricalfilesunmodified. CurrentfullsourceSASTnativeproof preservedhere; no source/test/demo/Dockerexecutioninput mutation.",
+    "supersededNewManifest": "First auditcommit e4679a3 manifest incorrectly included unrelatedignoredhistoricalfiles; this correctedmanifestlists ONLYactual4newpayloads and currenttriage. No oldscanrawcompletenessclaim."
+  }
 }
