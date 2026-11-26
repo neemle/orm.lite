@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -11,13 +12,15 @@ internal static class ForeignKeySourceLayout
     {
         var root = CSharpSyntaxTree.ParseText(source).GetCompilationUnitRoot();
         var space = (FileScopedNamespaceDeclarationSyntax)root.Members[0];
+        var ordinal = 0;
         foreach (var member in space.Members)
         {
-            var type = (ClassDeclarationSyntax)member;
             var isolated = space.WithMembers(SyntaxFactory.SingletonList(member));
             var file = root.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(isolated));
             var formatted = new ForeignKeyLineLayout().Format(file.ToFullString());
-            context.AddSource("OrmLite.Entities." + type.Identifier.ValueText + ".g.cs", formatted);
+            var hint = "OrmLite.Entities." + ordinal.ToString("D4", CultureInfo.InvariantCulture) + ".g.cs";
+            ordinal++;
+            context.AddSource(hint, formatted);
         }
     }
 }

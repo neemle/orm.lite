@@ -35,14 +35,20 @@ public sealed class MigrationGenerator : IIncrementalGenerator
             .WithTrackingName(MigrationsStep)
             .Collect();
 
-        var asmToken = context.CompilationProvider.Select(static (c, _) => OrmGenerator.AsmToken(c));
-        context.RegisterSourceOutput(
-            migrations.Combine(asmToken),
-            static (spc, pair) => GeneratorGuard.Run(
-                spc, nameof(MigrationGenerator), () => Emit(spc, pair.Left, pair.Right)));
+        RegisterOutputs(context, migrations);
     }
 
-    private static void Emit(SourceProductionContext spc, ImmutableArray<Mig> migs, string asmToken)
+    private static void RegisterOutputs(IncrementalGeneratorInitializationContext context,
+        IncrementalValueProvider<ImmutableArray<Mig>> migrations)
+    {
+        var asmToken = context.CompilationProvider.Select(static (c, _) => OrmGenerator.AsmToken(c));
+        var inputs = migrations.Combine(asmToken).Combine(ForeignKeyMigrationLayout.Enabled(context));
+        context.RegisterSourceOutput(inputs, static (spc, pair) => GeneratorGuard.Run(
+            spc, nameof(MigrationGenerator), () => Emit(spc, pair.Left.Left, pair.Left.Right, pair.Right)));
+    }
+
+    private static void Emit(
+        SourceProductionContext spc, ImmutableArray<Mig> migs, string asmToken, bool hasForeignKeys)
     {
         foreach (var m in migs.Where(m => m.Reversibility is null))
             spc.ReportDiagnostic(Diagnostic.Create(UnnamedReversibility, m.Location, m.Type, m.Version, m.Unnamed));
@@ -61,8 +67,9 @@ public sealed class MigrationGenerator : IIncrementalGenerator
             .ThenBy(m => m.Type, StringComparer.Ordinal)
             .ToArray();
 
-        spc.AddSource(MigrationsHint, MigrationsSource(ordered, asmToken));
-        spc.AddSource(RegistrationHint, RegistrationSource(asmToken));
+        spc.AddSource(MigrationsHint,
+            ForeignKeyMigrationLayout.Format(MigrationsSource(ordered, asmToken), hasForeignKeys));
+        spc.AddSource(RegistrationHint, ForeignKeyMigrationLayout.Format(RegistrationSource(asmToken), hasForeignKeys));
     }
 
     public const string MigrationsStep = "OrmLiteMigrations";
