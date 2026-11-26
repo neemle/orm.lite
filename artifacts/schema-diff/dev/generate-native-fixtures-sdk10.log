@@ -1,0 +1,3 @@
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/BridgeProof.cs(40,38): error CS8604: Possible null reference argument for parameter 'Source' in 'BridgeFixture.BridgeFixture(string Provider, string Source, string Fresh, bool Created)'. [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/FoundationProof.csproj]
+
+The build failed. Fix the build errors and run again.
