@@ -40,10 +40,12 @@ internal static class QueryStreamCapture
             var statement = compile();
             var binding = query.StreamBinding;
             var borrowed = query.StreamBorrowed;
+            var rowLock = query.StreamRowLock;
             Validate(statement, binding);
-            if (query.StreamLocked && borrowed?.Transaction is null)
+            if (rowLock is not null && borrowed?.Transaction is null)
                 throw new QueryStreamException(QueryStreamError.ResourceMismatch);
-            if (query.StreamLocked && borrowed is not null) StreamResourceChecks.Validate(binding, borrowed);
+            if (rowLock is not null && borrowed is not null) StreamResourceChecks.Validate(binding, borrowed);
+            StreamNativeLocks.Validate(rowLock, binding.Provider);
             return new StreamReadSnapshot<TOut>(statement, map, binding, borrowed);
         }
         catch (QueryStreamException) { throw; }

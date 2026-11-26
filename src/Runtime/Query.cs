@@ -279,7 +279,7 @@ namespace Neemle.OrmLite;
         internal Func<DbDataReader, T> StreamMap => _map;
         internal StreamBinding StreamBinding => new(_db.DataSource, _db.Provider);
         internal StreamBorrowed? StreamBorrowed => _exec.StreamScope(_streamUnit);
-        internal bool StreamLocked => (_select.Present & QueryClauses.RowLock) != 0;
+        internal RowLock? StreamRowLock => _select.Build([], null).Lock;
 
         public async Task<List<T>> ToListAsync() =>
             await _exec.RowsAsync(CompileSelect(), _map);
