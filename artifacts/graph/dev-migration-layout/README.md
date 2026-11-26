@@ -1,6 +1,6 @@
 ORML-108 generation-input repair evidence
 
-`checkpoint-manifest.json` is the native evidence home. It pins source/test/demo/docs trees, all17 final attributable gate runs, full inner argv/configuration/timestamps/exits, TRX and NativeAOT binary hashes, raw metrics/old Map exceptions, corrected case proof and private package/analyzer identity. MCP gate comments hold the canonical dispositions. No whole-item or raw-coverage PASS is asserted.
+`checkpoint-manifest.json` is the native evidence home. It pins source/test/demo/docs trees, all17 final attributable gate runs, full inner argv/configuration/timestamps/exits, TRX and NativeAOT binary hashes, raw metrics/old Map exceptions, corrected case proof and private package/analyzer identity. Canonical gate records hold the dispositions. No whole-item or raw-coverage PASS is asserted.
 
 `proposal-manifest.json` and `proposal/changes.patch` are UNAPPLIED/UNAPPROVED protected-control proposals, not edited controls. Both new control failures are included; all existing Quality order assertions and Hygiene no-comment/no-tracker/no-SQL assertions remain.
 

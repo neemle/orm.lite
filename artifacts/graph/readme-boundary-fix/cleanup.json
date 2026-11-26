@@ -1,0 +1,7 @@
+{
+  "checkedAt": "2026-11-26T14:10:41.844946+00:00",
+  "containerId": "af46bed73e890a930d790a870edeaef8c78e2fcc25e5141c1499aa9b6832566d",
+  "remainingContainerIds": [],
+  "exitCode": 0,
+  "scope": "Only own --rm guard container; no named volumes, fixtures or networks created."
+}
