@@ -21,9 +21,20 @@ internal sealed class SqliteMetadataResources
             if (primary is not null) ExceptionDispatchInfo.Capture(primary).Throw();
             return;
         }
+        throw Failure(primary, errors, ct);
+    }
+
+    private static Exception Failure(Exception? primary, IReadOnlyList<Exception> errors, CancellationToken ct)
+    {
+        if (primary is SchemaDiffCanceledException canceled)
+            return new SchemaDiffCanceledException(canceled.InnerException ?? canceled, canceled.CancellationToken,
+                canceled.CleanupErrors.Concat(errors).ToArray(), canceled.ApplyResult);
+        if (primary is SchemaDiffException known)
+            return new SchemaDiffException(known.Error, known.InnerException ?? known,
+                known.CleanupErrors.Concat(errors).ToArray(), known.ApplyResult);
         if (primary is OperationCanceledException && ct.IsCancellationRequested)
-            throw new SchemaDiffCanceledException(primary, ct, errors);
-        throw new SchemaDiffException(primary is SchemaDiffException known ? known.Error
-            : primary is null ? SchemaDiffError.CleanupFailure : SchemaDiffError.ProviderFailure, primary, errors);
+            return new SchemaDiffCanceledException(primary, ct, errors);
+        return new SchemaDiffException(primary is null ? SchemaDiffError.CleanupFailure : SchemaDiffError.ProviderFailure,
+            primary, errors);
     }
 }

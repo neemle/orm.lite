@@ -89,6 +89,7 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         var connection = LaneSource(DbLane.Current).CreateConnection();
         try
         {
+            DetachMetadataLease(connection);
             await connection.OpenAsync(ct);
             AttachMetadataLease(connection);
             return connection;
@@ -104,13 +105,17 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         }
     }
 
-    private void AttachMetadataLease(DbConnection connection)
+    private static void DetachMetadataLease(DbConnection connection)
     {
         if (s_leases.TryGetValue(connection, out var prior))
         {
             connection.StateChange -= prior.OnStateChange;
             s_leases.Remove(connection);
         }
+    }
+
+    private void AttachMetadataLease(DbConnection connection)
+    {
         var lease = new Lease(DbLane.CurrentScope, _diagnostics);
         lease.Acquire();
         s_leases.Add(connection, lease);

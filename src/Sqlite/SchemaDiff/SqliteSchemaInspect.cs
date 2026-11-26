@@ -35,7 +35,8 @@ internal static class SqliteSchemaInspect
         var history = await HistoryAsync(read, schema, ct);
         var mainFile = databases.Single(d => (string)d[0]! == "main")[1];
         var identity = SqliteSchemaRead.Hash(read.Connection.DataSource + "|" + mainFile);
-        return SchemaDiffObservation.FromFacts(new(identity, "sqlite:schema-diff-v1", true),
+        // A pathname alone cannot certify the opened file incarnation. Keep required provenance incomplete.
+        return SchemaDiffObservation.FromFacts(new(identity, "sqlite:schema-diff-v1", false),
             tables, history, read.Request);
     }
 
