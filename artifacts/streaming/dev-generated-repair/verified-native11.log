@@ -1,0 +1,18 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/StreamingAot/StreamingAot.csproj (in 164 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Core/Core.csproj (in 296 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Runtime/Runtime.csproj (in 300 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Sql/Sql.csproj (in 303 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Sqlite/Sqlite.csproj (in 302 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Postgres/Postgres.csproj (in 305 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/Generator.csproj (in 320 ms).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/verified-native11-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/verified-native11-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/verified-native11-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/verified-native11-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/verified-native11-build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/verified-native11-build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  StreamingAot -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/verified-native11-build/bin/StreamingAot/release_linux-arm64/Neemle.OrmLite.StreamingAot.dll
+  Generating native code
+  StreamingAot -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/verified-native11-out/
+STREAMING_NATIVE_PASS runtime=11.0.0 providers=sqlite,postgres

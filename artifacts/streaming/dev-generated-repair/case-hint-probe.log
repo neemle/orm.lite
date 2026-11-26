@@ -1,0 +1,2 @@
+error ORMLITE031: OrmGenerator failed on this input and produced no output: ArgumentException: The hintName 'OrmLite.Entities.RowOrm.g.cs' of the added source file must be unique within a generator. (Parameter 'hintName'). This is a defect of the generator, not of your declarations; report it together with the declaration that triggers it.
+OrmLite.Entities.rowOrm.g.cs
