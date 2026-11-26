@@ -29,7 +29,10 @@ internal sealed class SchemaDiffSnapshot
         var tables = SchemaDiffNames.Limited(target.Scope.OwnedTables, target.Limits.MaxTables);
         SchemaDiffNames.Unique(tables);
         if (tables.Count == 0) throw new SchemaDiffException(SchemaDiffError.Ownership);
-        var managed = target.Schema.Entities.Where(e => e.Managed).Select(e => e.Table).Order(StringComparer.Ordinal);
+        var entities = SchemaDiffNames.Limited(target.Schema.Entities.Where(e => e.Managed), target.Limits.MaxTables);
+        var budget = new SchemaDiffBudget(target.Limits);
+        foreach (var column in entities.SelectMany(e => e.Columns)) budget.Column();
+        var managed = entities.Select(e => e.Table).Order(StringComparer.Ordinal);
         if (!managed.SequenceEqual(tables.Order(StringComparer.Ordinal)))
             throw new SchemaDiffException(SchemaDiffError.Ownership);
         var baseline = Array.AsReadOnly(target.Schema.Baseline().ToArray());

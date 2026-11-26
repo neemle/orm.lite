@@ -98,6 +98,8 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
             var errors = new List<Exception>();
             try { await connection.DisposeAsync(); }
             catch (Exception cleanup) { errors.Add(cleanup); }
+            if (primary is OperationCanceledException && ct.IsCancellationRequested)
+                throw new SchemaDiffCanceledException(primary, ct, errors);
             throw new SchemaDiffException(SchemaDiffError.ProviderFailure, primary, errors);
         }
     }
