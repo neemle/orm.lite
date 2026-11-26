@@ -23,5 +23,6 @@ internal sealed class FaultProvider(FaultControl control) : ISqlProvider, ISchem
         CancellationToken ct) => throw new NotSupportedException();
     public Task<ISchemaDiffApplySession> BeginDiffApplyAsync(DbConnection connection, SchemaDiffInspection request,
         CancellationToken ct)
-    { control.Events.Add("session-open"); return Task.FromResult<ISchemaDiffApplySession>(new FaultSession(control, this)); }
+    { control.Events.Add("session-open");
+             return Task.FromResult<ISchemaDiffApplySession>(new FaultSession(control, this)); }
 }

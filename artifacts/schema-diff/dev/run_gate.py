@@ -40,6 +40,7 @@ def metadata(name, argv):
         'sourceDigest': source_digest(),
         'proofDigest': proof_digest(),
         'nativeInputs': native_inputs(),
+        'faultInputs': fault_inputs(),
         'worktreeStatus': git('status', '--short'),
         'started': datetime.datetime.now(datetime.timezone.utc).isoformat(),
     }
@@ -52,6 +53,13 @@ def native_inputs():
             if path.is_file() and path.suffix in ('.cs', '.csproj', '.json')}
 
 
+def fault_inputs():
+    root = pathlib.Path('artifacts/schema-diff/dev/fault-proof')
+    return {str(path): hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in sorted(root.glob('*'))
+            if path.is_file() and path.suffix in ('.cs', '.csproj')}
+
+
 def main():
     name, argv = sys.argv[1], sys.argv[2:]
     path = pathlib.Path('artifacts/schema-diff/dev') / name
@@ -62,6 +70,7 @@ def main():
     result['sourceChangedDuringRun'] = source_digest() != result['sourceDigest']
     result['proofChangedDuringRun'] = proof_digest() != result['proofDigest']
     result['nativeInputsChangedDuringRun'] = native_inputs() != result['nativeInputs']
+    result['faultInputsChangedDuringRun'] = fault_inputs() != result['faultInputs']
     result['finished'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     path.with_suffix('.json').write_text(json.dumps(result, indent=2))
     print(json.dumps(result))

@@ -1,0 +1,13 @@
+artifacts/schema-diff/dev/fault-proof/FaultCommand.cs
+artifacts/schema-diff/dev/fault-proof/FaultConnection.cs
+artifacts/schema-diff/dev/fault-proof/FaultControl.cs
+artifacts/schema-diff/dev/fault-proof/FaultKind.cs
+artifacts/schema-diff/dev/fault-proof/FaultPlanner.cs
+artifacts/schema-diff/dev/fault-proof/FaultProvider.cs
+artifacts/schema-diff/dev/fault-proof/FaultRelease.cs
+artifacts/schema-diff/dev/fault-proof/FaultSession.cs
+artifacts/schema-diff/dev/fault-proof/FaultSource.cs
+artifacts/schema-diff/dev/fault-proof/FaultTransaction.cs
+artifacts/schema-diff/dev/fault-proof/FaultUnit.cs
+artifacts/schema-diff/dev/fault-proof/FaultWitness.cs
+artifacts/schema-diff/dev/fault-proof/Program.cs

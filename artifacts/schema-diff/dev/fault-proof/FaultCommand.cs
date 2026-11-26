@@ -28,7 +28,8 @@ internal sealed class FaultCommand(FaultControl control, DbConnection connection
             control.Events.Add("run-lock-release");
             if (control.Kind == FaultKind.Composite) throw new IOException(FaultControl.Canary + " release");
         }
-        else if (CommandText.Contains("pg_advisory_lock", StringComparison.Ordinal)) control.Events.Add("run-lock-acquire");
+        else if (CommandText.Contains("pg_advisory_lock",
+             StringComparison.Ordinal)) control.Events.Add("run-lock-acquire");
         else if (DbTransaction is FaultTransaction transaction) Execute(transaction);
         return 1;
     }
