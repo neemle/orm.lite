@@ -6,7 +6,10 @@ namespace Neemle.OrmLite.Tests.Graph;
 [Collection("Graph")]
 public sealed class GraphNavigationInputTests
 {
-    public static IEnumerable<object[]> InvalidNavigations()
+    public static IEnumerable<object[]> InvalidNavigations() =>
+        InvalidReferences().Concat(InvalidCollections()).Concat(InvalidLinks());
+
+    private static IEnumerable<object[]> InvalidReferences()
     {
         yield return Case("reference reader", () =>
             new GraphReferenceBinding<GraphBook, GraphAuthor, int>("Editor", "editor_id", null!, (_, _) => { }));
@@ -16,6 +19,10 @@ public sealed class GraphNavigationInputTests
             new GraphReferenceBinding<GraphBook, GraphAuthor, int>(" ", "editor_id", _ => new(true, 1), (_, _) => { }));
         yield return Case("reference column", () =>
             new GraphReferenceBinding<GraphBook, GraphAuthor, int>("Editor", "", _ => new(true, 1), (_, _) => { }));
+    }
+
+    private static IEnumerable<object[]> InvalidCollections()
+    {
         yield return Case("collection source", () =>
             new GraphCollectionBinding<GraphAuthor, GraphBook, int>("Books", "author_id", null!,
                 _ => new(true, 1), (_, _) => { }));
@@ -30,6 +37,10 @@ public sealed class GraphNavigationInputTests
         yield return Case("collection column", () =>
             new GraphCollectionBinding<GraphAuthor, GraphBook, int>("Books", " ", _ => 1,
                 _ => new(true, 1), (_, _) => { }));
+    }
+
+    private static IEnumerable<object[]> InvalidLinks()
+    {
         yield return Case("link metadata", () =>
             new GraphLinkBinding<GraphAuthor, GraphTag, int, int>("Tags", null!, _ => 1, (_, _) => { }));
         yield return Case("link reader", () => new GraphLinkBinding<GraphAuthor, GraphTag, int, int>("Tags",
