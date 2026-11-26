@@ -109,6 +109,10 @@ public sealed class OrmGenerator : IIncrementalGenerator
         string? TypeIssue = null, string? RequiredMissing = null, EquatableArray<string> LostKeys = default,
         EquatableArray<string> ExcludedMembers = default, bool IsStatic = false)
     {
+        public EquatableArray<OneToOneIntent> OneToOneIntents { get; init; } = default;
+
+        public EquatableArray<OneToOneModel> OneToOnePairs { get; init; } = default;
+
         public EquatableArray<ForeignKeyIntent> ForeignKeyIntents { get; init; } = default;
 
         public EquatableArray<ForeignKeyModel> ForeignKeys { get; init; } = default;

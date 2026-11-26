@@ -1,0 +1,5 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj (in 33.56 sec).
+  OneToOneDemo -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/sdet-current/native10-build/bin/OneToOneDemo/release_linux-arm64/OneToOneDemo.dll
+  Generating native code
+  OneToOneDemo -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/sdet-current/native10-out/

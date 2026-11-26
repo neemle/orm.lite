@@ -1,0 +1,333 @@
+{
+  "generated": "2026-11-26T15:16:13.142933+00:00",
+  "disposition": "Finite SDET tests+remaining SAME public matrix PASS; docs/security/currentCI/TL remain owning work",
+  "productCommit": "25ce031d9ce6216ff38f57f6088021900a68c509",
+  "srcTree": "f1f92d50105366c2a6f02097b785a9cda2d4d5dd",
+  "workspaceHead": "e2dcb99d9b6ef18a99c5af136e75f21e03b7ee30",
+  "privateVersion": "0.1.0-dev.g25ce031",
+  "retainedSourceCheckpoint": "artifacts/one-to-one/source-case-checkpoint.json",
+  "retainedSourceCheckpointSha256": "e6fd505504da1378ee3b82f2a88e0d36bfa3f7b1fcd442ab98845db7297ea118",
+  "canonicalDev": "81e2a305-80ed-47fd-ab19-a31c446cccea",
+  "newTests": {
+    "counters": {
+      "total": "19",
+      "executed": "19",
+      "passed": "19",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "trx": "artifacts/one-to-one/sdet-current/results/independent.trx",
+    "sha256": "89cb5c59abf5c57cb64069a0fb1345c957e994ffcb07d7f42b6d5de0f2885d96"
+  },
+  "matrix": [
+    {
+      "mode": "jit",
+      "runtime": 10,
+      "provider": "sqlite",
+      "retainedOriginal": true,
+      "gate": "artifacts/one-to-one/jit10-sqlite-author-7.json",
+      "log": "artifacts/one-to-one/jit10-sqlite-author-7.log",
+      "logSha256": "256f9d452716feccf5da1925ed377c259dae2cb8ddf0efd82b101eb94648ffc1",
+      "common13Exact": true,
+      "printedAssertions": 55,
+      "cleanup": "Final post-print scratch cleanup Require passed via process exit0",
+      "exitCode": 0
+    },
+    {
+      "mode": "jit",
+      "runtime": 10,
+      "provider": "postgres",
+      "retainedOriginal": true,
+      "gate": "artifacts/one-to-one/jit10-postgres-author-7.json",
+      "log": "artifacts/one-to-one/jit10-postgres-author-7.log",
+      "logSha256": "dca688b59045296fe98299985a942eb4a527e67c1b67c3591b82c459cd64f86d",
+      "common13Exact": true,
+      "printedAssertions": 54,
+      "cleanup": "Final post-print scratch cleanup Require passed via process exit0",
+      "exitCode": 0
+    },
+    {
+      "mode": "jit",
+      "runtime": 11,
+      "provider": "sqlite",
+      "retainedOriginal": false,
+      "gate": "artifacts/one-to-one/sdet-current/jit11-sqlite.json",
+      "log": "artifacts/one-to-one/sdet-current/jit11-sqlite.log",
+      "logSha256": "96824cc6a88fffa2d86e7e2fd6f2f78262c477b80ea83a3645283b16016f543d",
+      "common13Exact": true,
+      "printedAssertions": 55,
+      "cleanup": "Final post-print scratch cleanup Require passed via process exit0",
+      "exitCode": 0
+    },
+    {
+      "mode": "jit",
+      "runtime": 11,
+      "provider": "postgres",
+      "retainedOriginal": false,
+      "gate": "artifacts/one-to-one/sdet-current/jit11-postgres.json",
+      "log": "artifacts/one-to-one/sdet-current/jit11-postgres.log",
+      "logSha256": "6787edcae25a598de64e0e0575779bde5de342a1ded45f2b890c8146248561ea",
+      "common13Exact": true,
+      "printedAssertions": 54,
+      "cleanup": "Final post-print scratch cleanup Require passed via process exit0",
+      "exitCode": 0
+    },
+    {
+      "mode": "native",
+      "runtime": 10,
+      "provider": "sqlite",
+      "retainedOriginal": false,
+      "gate": "artifacts/one-to-one/sdet-current/native10-sqlite.json",
+      "log": "artifacts/one-to-one/sdet-current/native10-sqlite.log",
+      "logSha256": "256f9d452716feccf5da1925ed377c259dae2cb8ddf0efd82b101eb94648ffc1",
+      "common13Exact": true,
+      "printedAssertions": 55,
+      "cleanup": "Final post-print scratch cleanup Require passed via process exit0",
+      "exitCode": 0
+    },
+    {
+      "mode": "native",
+      "runtime": 10,
+      "provider": "postgres",
+      "retainedOriginal": false,
+      "gate": "artifacts/one-to-one/sdet-current/native10-postgres.json",
+      "log": "artifacts/one-to-one/sdet-current/native10-postgres.log",
+      "logSha256": "dca688b59045296fe98299985a942eb4a527e67c1b67c3591b82c459cd64f86d",
+      "common13Exact": true,
+      "printedAssertions": 54,
+      "cleanup": "Final post-print scratch cleanup Require passed via process exit0",
+      "exitCode": 0
+    },
+    {
+      "mode": "native",
+      "runtime": 11,
+      "provider": "sqlite",
+      "retainedOriginal": false,
+      "gate": "artifacts/one-to-one/sdet-current/native11-sqlite.json",
+      "log": "artifacts/one-to-one/sdet-current/native11-sqlite.log",
+      "logSha256": "96824cc6a88fffa2d86e7e2fd6f2f78262c477b80ea83a3645283b16016f543d",
+      "common13Exact": true,
+      "printedAssertions": 55,
+      "cleanup": "Final post-print scratch cleanup Require passed via process exit0",
+      "exitCode": 0
+    },
+    {
+      "mode": "native",
+      "runtime": 11,
+      "provider": "postgres",
+      "retainedOriginal": false,
+      "gate": "artifacts/one-to-one/sdet-current/native11-postgres.json",
+      "log": "artifacts/one-to-one/sdet-current/native11-postgres.log",
+      "logSha256": "6787edcae25a598de64e0e0575779bde5de342a1ded45f2b890c8146248561ea",
+      "common13Exact": true,
+      "printedAssertions": 54,
+      "cleanup": "Final post-print scratch cleanup Require passed via process exit0",
+      "exitCode": 0
+    }
+  ],
+  "packages": [
+    {
+      "file": "artifacts/one-to-one/demo/packages/Neemle.OrmLite.0.1.0-dev.g25ce031.nupkg",
+      "sha256": "74af080f462c88b80d797adebb9863c466c3a222ac173f71a7debc140b0a1ff1",
+      "resolvedEntries": [
+        {
+          "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite/0.1.0-dev.g25ce031/analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "sha256": "cdaed3964e62186ebc59152f8cee3e5ef4ca69f90f82d88d4d557016375a57bc"
+        },
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.props",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite/0.1.0-dev.g25ce031/buildTransitive/Neemle.OrmLite.props",
+          "sha256": "bb7836a65d67958406268d885836e0b0c0fbbc44e63250ae899da9a5c5bfe6fa"
+        },
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.targets",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite/0.1.0-dev.g25ce031/buildTransitive/Neemle.OrmLite.targets",
+          "sha256": "d64d23127dfc3d46d8abcbfabff05fd8b212155cb70cb0ca9addf2038de428b6"
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite/0.1.0-dev.g25ce031/lib/net10.0/Neemle.OrmLite.Runtime.dll",
+          "sha256": "2385a2f093d973b64d047921b6a5a2651e2f371f1172f907599d83550ffebac2"
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite/0.1.0-dev.g25ce031/lib/net10.0/Neemle.OrmLite.Sql.dll",
+          "sha256": "135e8c6007b182fcafcb778a157b7b39fbf539667021130a30465aa9e16ea48d"
+        }
+      ]
+    },
+    {
+      "file": "artifacts/one-to-one/demo/packages/Neemle.OrmLite.Postgres.0.1.0-dev.g25ce031.nupkg",
+      "sha256": "7d61a12b0e6e891812f894d1255470b4686528605a21ba4abec2d6e1a3eeed7a",
+      "resolvedEntries": [
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.Postgres.props",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite.postgres/0.1.0-dev.g25ce031/buildTransitive/Neemle.OrmLite.Postgres.props",
+          "sha256": "10cfa9a1976f1ca12ba6b11dfcf4528fe16b9d02cd8f4c345e467b45f1d3d3bf"
+        },
+        {
+          "entry": "buildTransitive/ormlite.capabilities.postgres.txt",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite.postgres/0.1.0-dev.g25ce031/buildTransitive/ormlite.capabilities.postgres.txt",
+          "sha256": "b3d3919dd0c276083178e0c843093d8bfa2dc579253a8e758744a22ea9fd4cfb"
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite.postgres/0.1.0-dev.g25ce031/lib/net10.0/Neemle.OrmLite.Postgres.dll",
+          "sha256": "821c418517fe5d284d7f603ce107d26496ce7144fdb248777d69f96687f129b0"
+        }
+      ]
+    },
+    {
+      "file": "artifacts/one-to-one/demo/packages/Neemle.OrmLite.Sqlite.0.1.0-dev.g25ce031.nupkg",
+      "sha256": "24371e99b50381411bdb4af2e7b87abcad58c416d261fa4922232bd069028c8d",
+      "resolvedEntries": [
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.Sqlite.props",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite.sqlite/0.1.0-dev.g25ce031/buildTransitive/Neemle.OrmLite.Sqlite.props",
+          "sha256": "2e54f6f6eae3e04ba6efdbd869f97d3bfb19c6fde07077e6c4f62356376250dd"
+        },
+        {
+          "entry": "buildTransitive/ormlite.capabilities.sqlite.txt",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite.sqlite/0.1.0-dev.g25ce031/buildTransitive/ormlite.capabilities.sqlite.txt",
+          "sha256": "c734bfb412300a946145935f1f8f2dd19b7d0693a976865ca9ccf50b8aa34a70"
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+          "resolvedPath": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite.sqlite/0.1.0-dev.g25ce031/lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+          "sha256": "8252ebd6afe6886c88463ba378fcc1837efad1613063e8bdeefc86c8f162baaa"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "kind": "jit11",
+      "file": "artifacts/one-to-one/sdet-current/jit11-build/obj/OneToOneDemo/project.assets.json",
+      "sha256": "f8ee040013822a3094b85032cb1f23c5fbef2fdc69f22662418159885acba763",
+      "resolvedLibraries": [
+        "Neemle.CSharpComposer/0.5.0",
+        "Neemle.OrmLite.Postgres/0.1.0-dev.g25ce031",
+        "Neemle.OrmLite.Sqlite/0.1.0-dev.g25ce031",
+        "Neemle.OrmLite/0.1.0-dev.g25ce031"
+      ]
+    },
+    {
+      "kind": "native10",
+      "file": "artifacts/one-to-one/sdet-current/native10-build/obj/OneToOneDemo/project.assets.json",
+      "sha256": "3ef3196f80c0c5d84381db438ebbe0d8b2bb05c5132bd59ff9d6ba5973d8e7f4",
+      "resolvedLibraries": [
+        "Neemle.CSharpComposer/0.5.0",
+        "Neemle.OrmLite.Postgres/0.1.0-dev.g25ce031",
+        "Neemle.OrmLite.Sqlite/0.1.0-dev.g25ce031",
+        "Neemle.OrmLite/0.1.0-dev.g25ce031"
+      ]
+    },
+    {
+      "kind": "native11",
+      "file": "artifacts/one-to-one/sdet-current/native11-build/obj/OneToOneDemo/project.assets.json",
+      "sha256": "1429ca736bae4b65341dedaac1b06217b58543a0dc5edd7399abfaa74a78e2ee",
+      "resolvedLibraries": [
+        "Neemle.CSharpComposer/0.5.0",
+        "Neemle.OrmLite.Postgres/0.1.0-dev.g25ce031",
+        "Neemle.OrmLite.Sqlite/0.1.0-dev.g25ce031",
+        "Neemle.OrmLite/0.1.0-dev.g25ce031"
+      ]
+    }
+  ],
+  "binaries": [
+    {
+      "kind": "jit11",
+      "file": "artifacts/one-to-one/sdet-current/jit11-build/bin/OneToOneDemo/release/OneToOneDemo.dll",
+      "bytes": 187392,
+      "sha256": "273ad3df8ead6e2d49402fe6f256f33567e28089104ee2590611b862c05dc86a"
+    },
+    {
+      "kind": "native10",
+      "file": "artifacts/one-to-one/sdet-current/native10-out/OneToOneDemo",
+      "bytes": 15984640,
+      "sha256": "c095623a98cd3f880677277422a1e0b69b543e9ba43883a003bdb80e0d1bd2db"
+    },
+    {
+      "kind": "native11",
+      "file": "artifacts/one-to-one/sdet-current/native11-out/OneToOneDemo",
+      "bytes": 16053112,
+      "sha256": "5521039e6b2d3fdf99a65ae513e2260b0a1c9e9af09b92d9189691f5e1b41b9c"
+    }
+  ],
+  "generatedBridge": [
+    {
+      "kind": "jit11",
+      "exactOriginalGeneratedSources": true,
+      "files": {
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0008.g.cs": "986840375f25ab402fd881296d2d2ebd778abca118ab9251a33ef8dd50c4d6ff",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs": "481809f119b59a3ef46dea6ce7d2e47e78020704e74542b1062fb9a98524c459",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs": "ab86b0e1a1f8876aed9b4f3c6166902a0ad3c25ab33f8d346b643ea42c369947",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0009.g.cs": "5ba48cba40001ee8c0eb8b31682021172475996baa18f3f5ba34087dde6161d7",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs": "0b79f62702623bc148e92e5fc599d2a0f62e5139a9759a1f030ecc054f250b4c",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs": "24c4fa28cdf70d079721540b339ee64a51e342aa1f60199a00f965d0e3805489",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs": "73f5cda7f22c74c674597266bfac8e9adfebf04e84e6230d3a23a8c859dab360",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs": "589cf433d8006b878287a5d7563fc57315b285f408ee9178d190d7073e8f1e1f",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0010.g.cs": "ccd42600a2f4daa0bbec80a5fbc0f05211e781e2373691fde090299f126f8cd9",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0006.g.cs": "2b47386f321da8be8bded547929e2799471aa2fc7aa2c2e6e7cdac8a05904ec1",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0007.g.cs": "2ecafb5347bb1535c07af71787130491b882e78370d9240707c356f3878326c3",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0011.g.cs": "faba5506f039d77a4dcca05d1433cbc0a1307a2888f7b1c22d45b71b52d376e9",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs": "3bd1e748d908bc3c35279d7e75a585b9fe5d224751a2cb207d5b5ff04b6625c8",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs": "196e46d83f07eab08fe02c62ac6679c997838a28a405b81806b204eafdd7e0b6"
+      }
+    },
+    {
+      "kind": "native10",
+      "exactOriginalGeneratedSources": true,
+      "files": {
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0008.g.cs": "986840375f25ab402fd881296d2d2ebd778abca118ab9251a33ef8dd50c4d6ff",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs": "481809f119b59a3ef46dea6ce7d2e47e78020704e74542b1062fb9a98524c459",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs": "ab86b0e1a1f8876aed9b4f3c6166902a0ad3c25ab33f8d346b643ea42c369947",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0009.g.cs": "5ba48cba40001ee8c0eb8b31682021172475996baa18f3f5ba34087dde6161d7",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs": "0b79f62702623bc148e92e5fc599d2a0f62e5139a9759a1f030ecc054f250b4c",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs": "24c4fa28cdf70d079721540b339ee64a51e342aa1f60199a00f965d0e3805489",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs": "73f5cda7f22c74c674597266bfac8e9adfebf04e84e6230d3a23a8c859dab360",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs": "589cf433d8006b878287a5d7563fc57315b285f408ee9178d190d7073e8f1e1f",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0010.g.cs": "ccd42600a2f4daa0bbec80a5fbc0f05211e781e2373691fde090299f126f8cd9",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0006.g.cs": "2b47386f321da8be8bded547929e2799471aa2fc7aa2c2e6e7cdac8a05904ec1",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0007.g.cs": "2ecafb5347bb1535c07af71787130491b882e78370d9240707c356f3878326c3",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0011.g.cs": "faba5506f039d77a4dcca05d1433cbc0a1307a2888f7b1c22d45b71b52d376e9",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs": "3bd1e748d908bc3c35279d7e75a585b9fe5d224751a2cb207d5b5ff04b6625c8",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs": "196e46d83f07eab08fe02c62ac6679c997838a28a405b81806b204eafdd7e0b6"
+      }
+    },
+    {
+      "kind": "native11",
+      "exactOriginalGeneratedSources": true,
+      "files": {
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0008.g.cs": "986840375f25ab402fd881296d2d2ebd778abca118ab9251a33ef8dd50c4d6ff",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs": "481809f119b59a3ef46dea6ce7d2e47e78020704e74542b1062fb9a98524c459",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs": "ab86b0e1a1f8876aed9b4f3c6166902a0ad3c25ab33f8d346b643ea42c369947",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0009.g.cs": "5ba48cba40001ee8c0eb8b31682021172475996baa18f3f5ba34087dde6161d7",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs": "0b79f62702623bc148e92e5fc599d2a0f62e5139a9759a1f030ecc054f250b4c",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs": "24c4fa28cdf70d079721540b339ee64a51e342aa1f60199a00f965d0e3805489",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs": "73f5cda7f22c74c674597266bfac8e9adfebf04e84e6230d3a23a8c859dab360",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs": "589cf433d8006b878287a5d7563fc57315b285f408ee9178d190d7073e8f1e1f",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0010.g.cs": "ccd42600a2f4daa0bbec80a5fbc0f05211e781e2373691fde090299f126f8cd9",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0006.g.cs": "2b47386f321da8be8bded547929e2799471aa2fc7aa2c2e6e7cdac8a05904ec1",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0007.g.cs": "2ecafb5347bb1535c07af71787130491b882e78370d9240707c356f3878326c3",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0011.g.cs": "faba5506f039d77a4dcca05d1433cbc0a1307a2888f7b1c22d45b71b52d376e9",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs": "3bd1e748d908bc3c35279d7e75a585b9fe5d224751a2cb207d5b5ff04b6625c8",
+        "Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs": "196e46d83f07eab08fe02c62ac6679c997838a28a405b81806b204eafdd7e0b6"
+      }
+    }
+  ],
+  "normalization": "Only runtime/provider heading and separately documented55SQLite/54PG printed total/extraPRAGMA environment witness differ; compare13 namedCOMMONlines exactly, no key/value replacement and no false whole-stdout parity.",
+  "limits": "JIT10 actual25ce reused unchanged;19 tests actuale2dcb99 compiled same new-file hashes from precommit25ce build. No repack/publiccase/source edit/oldoracle change; injected cleanup faults are injection, native missing-table case actual driver. No rawcoverage/census/fullsuite/oldGraphFKmatrix. SEC01 hostileidentifier/privacy breadth and compatibilityCI/docs/review not whole-accepted here."
+}

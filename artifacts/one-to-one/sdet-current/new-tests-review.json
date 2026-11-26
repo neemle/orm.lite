@@ -1,0 +1,32 @@
+{
+  "generated": "2026-11-26T15:01:37.523930+00:00",
+  "widthCommand": "python3: max(map(len, Path(file).read_text().splitlines())) for the4 named new OneToOne files; assert <=120",
+  "files": [
+    {
+      "file": "tests/Tests/OneToOne/OneToOneGeneratorTests.cs",
+      "sha256": "d0b9e053f5c8f1666675c3db862bf405a3999abf04a4166300f494301d2320d7",
+      "maxWidth": 117,
+      "nonemptyLines": 45
+    },
+    {
+      "file": "tests/Tests/OneToOne/OneToOneSource.cs",
+      "sha256": "30073fe9a4527efcf9eda979af3f7bf1c17c7a71ac313f7458bf4530ee02bfb1",
+      "maxWidth": 113,
+      "nonemptyLines": 56
+    },
+    {
+      "file": "tests/Tests/OneToOne/OneToOneManualTests.cs",
+      "sha256": "7fb65677bdefa70eb6fe4e28e79bbf3f78e8e8c365a2abbb992d2e3727a2abd1",
+      "maxWidth": 115,
+      "nonemptyLines": 56
+    },
+    {
+      "file": "tests/Tests/OneToOne/OneToOneRuntimeTests.cs",
+      "sha256": "5f5272c7f58e7fa389f283c96145e2444697b8e3d056c6276fdb974ae4c7f69a",
+      "maxWidth": 116,
+      "nonemptyLines": 42
+    }
+  ],
+  "manualReview": "4 bound types/4 files, each <500 nonempty lines; fixture declarations embedded in const Text are string data, not bound declarations in that file. Real test/helper bodies are <=30 nonempty lines, <=3 parameters, max block nesting2 (try/finally + await using). Cyclomatic convention1+if/loop/catch/shortcircuit/null-coalescing decisions: Manual_endpoints_preserve_the_declared_pair=7 (six if); Invalid_pair predicate lambda=3 (two &&), enclosing method1; runtime test=1 (try/finally no branch); expression factory methods1. Embedded Operations.Duplicate=4 (onecatch+two&&), GuardBeforeCancellation=3 (onecatch+one&&), each <=30 lines. No synthetic-only coverage tests or product changes.",
+  "disposition": "Bounded new-test maintainability review only, not repeated product/generated quality gate; originalDEV actual162methods+14generated/130methods proof retains25ce attribution."
+}

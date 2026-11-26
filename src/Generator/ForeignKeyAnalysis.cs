@@ -154,7 +154,7 @@ internal sealed class ForeignKeyAnalysis
             owner, intent);
     }
 
-    private static (string Clr, string Type, int Precision, int Scale) Shape(Prop property) =>
+    internal static (string Clr, string Type, int Precision, int Scale) Shape(Prop property) =>
         (property.Cs, property.Type, property.Precision == 0 && property.Type == "Decimal" ? 12 : property.Precision,
             property.Precision == 0 && property.Type == "Decimal" ? 4 : property.Scale);
 

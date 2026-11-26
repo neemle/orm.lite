@@ -1,0 +1,67 @@
+{
+  "generated": "2026-11-26T15:17:19.678947+00:00",
+  "scope": "Finite independent SDET19cases +8cell publicmatrix, not wholeitemPASS",
+  "criteria": [
+    {
+      "criterion": "AC-111-01",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "Directions/common13 all8; typed intprincipal/Guiddependent customFK/calculated lookup"
+    },
+    {
+      "criterion": "AC-111-02",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "Null/missing/required common13;19tests guard-before-ct/null/SQL"
+    },
+    {
+      "criterion": "AC-111-03",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "Real physical FK/exactunique/catalog/orphan+DML common13 all8"
+    },
+    {
+      "criterion": "AC-111-04",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "MultipleNULL and atomic conflicting reassignment common13 all8"
+    },
+    {
+      "criterion": "AC-111-05",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "8generatornegative+6manualendpoint+precision/equivalentidentity tests;13publicdeclaration block; not exhaustive metadata permutation census"
+    },
+    {
+      "criterion": "AC-111-06",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "Threelegacyrows maps1st only, cardinalityerror+oldnav+callerconnection; filteredinverse public0SQL"
+    },
+    {
+      "criterion": "AC-111-07",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "Explicit physical actions common13 all8"
+    },
+    {
+      "criterion": "AC-111-08",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "No-retrofit/history/reconcile public8; ordinary many-to-one/collection/link/fullgoldenCI still ROOT pending"
+    },
+    {
+      "criterion": "AC-111-09",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "Actual bothproviders/common13 all4modes; SQLite enabledPRAGMA separateextraassertion"
+    },
+    {
+      "criterion": "AC-111-10",
+      "disposition": "Observed behavior PASS in bounded scope; remaining current fullCI/review gate not inferred",
+      "evidence": "Actual static samepublicNative/JIT10/11 all8 PASS; publicfeatureguide/directlinks MKT/ROOT still pending"
+    },
+    {
+      "criterion": "SEC-111-01",
+      "disposition": "PARTIAL, no whole security acceptance",
+      "evidence": "Declared normalized manual/generator refusal, actual bound normal model reads and safe diagnostics; hostilequotedidentifier/logprivacy breadth and current802 remain owning security review, not proved by13normal public blocks."
+    },
+    {
+      "criterion": "SEC-111-02",
+      "disposition": "Observed conservative provenance/refusal behavior PASS; current security review still pending",
+      "evidence": "Public8 mask/conditional/raw/custom/projection/NULL/repeatedRequire/filteredinverse cases; independent guardbeforecancellation with nullhandle and unchangednav. No public tagwrite introduced."
+    }
+  ],
+  "remaining": "MKT docs/directfeaturelinks, currentTL/CI/security/closure and retained ordinary decomposition debt; no coverage/census/fullsuite replay or fake100%"
+}

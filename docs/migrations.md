@@ -96,6 +96,33 @@ show the separate fresh-schema path and unchanged history/constraint counts on r
 `Foreign Keys=False`, observes `PRAGMA=0` and demonstrates an **unenforced** orphan write; this is a
 SQLite-specific connection option, not PostgreSQL behavior.
 
+## One-to-one integrity in fresh and existing databases
+
+An explicit one-to-one owner declares OneToOne, ForeignKey with a required physical delete action, and
+OneToOneUnique; the other endpoint declares InverseOneToOne. See the
+[actual typed pair](relations.md#6-declare-and-load-one-to-one-relations) and
+[public demo declarations](../examples/one-to-one/README.md#declare-one-owner-and-inverse).
+
+For a fresh supported schema, the baseline creates the exact FK plus a plain unfiltered unique index over only
+the owning FK column. The unique index follows the baseline tables/inline FKs and precedes seed/manual contributions.
+It is baseline-owned, excluded from ordinary IndexSetHash and index reconciliation; discovering it does not create
+an upgrade or acquire an existing index. Multiple optional NULL FKs remain valid and unrelated. The
+[catalog](../examples/one-to-one/CatalogCases.cs) and [integrity](../examples/one-to-one/IntegrityCases.cs) cases
+check the physical constraints and actual database behavior.
+
+Adding this metadata after a baseline has been recorded does not retrofit either constraint, repair duplicates
+or orphans, rebuild tables, replace indexes or rewrite migration history. The
+[upgrade case](../examples/one-to-one/UpgradeCases.cs) retains its old duplicate orphan rows, unchanged history
+and reconciliation hash. Existing databases need a reviewed explicit migration installing both the FK and exact
+unique index, preceded by orphan/duplicate validation and an appropriate recovery plan. Keep one owner for each
+constraint and account for manual migrations also running on fresh databases.
+
+Physical delete actions remain separate from soft-delete visibility and ORM saves; ownership does not infer
+Cascade. Confirm effective SQLite enforcement as well as catalog shape. Follow the demo's
+[case overview](../examples/one-to-one/README.md#existing-databases-and-unsupported-shapes),
+[package/JIT instructions](../examples/one-to-one/README.md#prepare-and-run) and
+[NativeAOT instructions](../examples/one-to-one/README.md#nativeaot) on disposable databases.
+
 ## Review schema differences in an isolated fixture
 
 Schema diff supports complete-known missing simple managed tables and new nullable nonkey columns without defaults.

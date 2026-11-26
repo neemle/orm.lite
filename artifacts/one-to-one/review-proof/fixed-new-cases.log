@@ -1,0 +1,22 @@
+VSTest version 18.7.1 (arm64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+  Failed [UC-005][SEC][R2] generated quoted TEXT pair binds private values on the real provider(provider: "sqlite") [559 ms]
+  Error Message:
+   System.NotSupportedException : GatedDataSource refuses CreateConnection: every connection is leased through the gate, so use OpenConnectionAsync instead.
+  Stack Trace:
+     at Neemle.OrmLite.GatedDataSource.CreateDbConnection() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Runtime/GatedDataSource.cs:line 160
+   at Neemle.OrmLite.Sqlite.SqliteDataSourceProbe.Require(String name, DbDataSource source) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Sqlite/SqliteDataSourceProbe.cs:line 14
+   at Neemle.OrmLite.Sqlite.SqliteProvider.ValidateDataSource(String name, DbDataSource source) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Sqlite/SqliteProvider.cs:line 53
+   at Neemle.OrmLite.GatedDataSource.Checked(ISqlProvider provider, DbDataSource source, String name) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Runtime/GatedDataSource.cs:line 33
+   at Neemle.OrmLite.GatedDataSource..ctor(ISqlProvider provider, DbDataSource request, DbDataSource background, DbDataSource ops) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Runtime/GatedDataSource.cs:line 18
+   at Neemle.OrmLite.GatedDataSource..ctor(ISqlProvider provider, DbDataSource request, DbDataSource background, DbDataSource ops, OrmDiagnostics diagnostics) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Runtime/GatedDataSource.cs:line 23
+   at Neemle.OrmLite.Tests.OneToOne.ReviewSecurityDatabase..ctor(ForeignKeyDatabase database) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/ReviewSecurityDatabase.cs:line 23
+   at Neemle.OrmLite.Tests.OneToOne.ReviewSecurityDatabase.OpenAsync(String provider) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/ReviewSecurityDatabase.cs:line 28
+   at Neemle.OrmLite.Tests.OneToOne.OneToOneReviewSecurityTests.Quoted_pair_keeps_exact_associations_and_private_diagnostics(String provider) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/OneToOneReviewSecurityTests.cs:line 21
+--- End of stack trace from previous location ---
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/results/fixed-new-cases.trx
+
+Failed!  - Failed:     1, Passed:     4, Skipped:     0, Total:     5, Duration: 4 s - Neemle.OrmLite.Tests.dll (net10.0)
+[xUnit.net 00:00:06.11]     [UC-005][SEC][R2] generated quoted TEXT pair binds private values on the real provider(provider: "sqlite") [FAIL]

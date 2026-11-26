@@ -1,0 +1,33 @@
+  Determining projects to restore...
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite with version (= 0.1.0-dev.ge2dcb99)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Found 3 version(s) in private [ Nearest version: 0.1.0-dev.g93f37d0 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from warm were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite.Sqlite with version (= 0.1.0-dev.ge2dcb99)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Found 3 version(s) in private [ Nearest version: 0.1.0-dev.g93f37d0 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from warm were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite.Postgres with version (= 0.1.0-dev.ge2dcb99)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Found 3 version(s) in private [ Nearest version: 0.1.0-dev.g93f37d0 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from warm were not considered
+  Failed to restore /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj (in 2.68 sec).
+
+Build FAILED.
+
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite with version (= 0.1.0-dev.ge2dcb99)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Found 3 version(s) in private [ Nearest version: 0.1.0-dev.g93f37d0 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from warm were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite.Sqlite with version (= 0.1.0-dev.ge2dcb99)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Found 3 version(s) in private [ Nearest version: 0.1.0-dev.g93f37d0 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from warm were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite.Postgres with version (= 0.1.0-dev.ge2dcb99)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Found 3 version(s) in private [ Nearest version: 0.1.0-dev.g93f37d0 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj : error NU1102:   - Versions from warm were not considered
+    0 Warning(s)
+    3 Error(s)
+
+Time Elapsed 00:00:07.05

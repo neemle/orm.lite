@@ -282,7 +282,7 @@ namespace Neemle.OrmLite;
         internal RowLock? StreamRowLock => _select.Build([], null).Lock;
 
         public async Task<List<T>> ToListAsync() =>
-            await _exec.RowsAsync(CompileSelect(), _map);
+            await _exec.RowsAsync(CompileSelect(), OneToOneReadMap.Wrap(_map, _state.Redactions.Count != 0));
 
         public async Task<List<TOut>> ProjectAsync<TOut>(
             IReadOnlyList<Expression<Func<T, object?>>> columns,
@@ -323,12 +323,9 @@ namespace Neemle.OrmLite;
         public async Task<List<TOut>> ProjectionAsync<TOut>(Func<DbDataReader, TOut> map) =>
             await _exec.RowsAsync(CompileProjection(), map);
 
-        public async Task<T?> FirstOrDefaultAsync()
-        {
-            var rows = await _exec.RowsAsync(
-                CompileTree(_select.BuildFirst(SelectedColumns(), WhereNode(), lockRows: true)), _map);
-            return rows.Count > 0 ? rows[0] : default;
-        }
+        public async Task<T?> FirstOrDefaultAsync() => await OneToOneReadMap.FirstAsync(_exec,
+            CompileTree(_select.BuildFirst(SelectedColumns(), WhereNode(), lockRows: true)),
+            _map, _state.Redactions.Count != 0);
 
         public async Task<long> CountAsync()
         {

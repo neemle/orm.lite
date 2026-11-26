@@ -1,0 +1,7 @@
+VSTest version 18.7.1 (arm64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/sdet-current/results/independent.trx
+
+Passed!  - Failed:     0, Passed:    19, Skipped:     0, Total:    19, Duration: 4 s - Neemle.OrmLite.Tests.dll (net10.0)

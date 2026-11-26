@@ -57,6 +57,8 @@ public sealed class EntityDescriptor
 
     private readonly List<ForeignKeyDescriptor> _foreignKeys = [];
 
+    private readonly List<OneToOneDescriptor> _oneToOnes = [];
+
     private readonly List<LinkIntent> _linkForeignKeys = [];
 
     internal sealed record LinkIntent(string Navigation, LinkForeignKeyEnd End, LinkForeignKeyDeclaration Declaration);
@@ -87,6 +89,15 @@ public sealed class EntityDescriptor
     public SoftDeletion? Soft { get; private set; }
 
     public IReadOnlyList<ForeignKeyDescriptor> ForeignKeys => _foreignKeys;
+
+    public IReadOnlyList<OneToOneDescriptor> OneToOnes => _oneToOnes;
+
+    public EntityDescriptor OneToOne(OneToOneDescriptor relation)
+    {
+        ArgumentNullException.ThrowIfNull(relation);
+        _oneToOnes.Add(relation);
+        return this;
+    }
 
     internal IReadOnlyList<LinkIntent> LinkForeignKeys => _linkForeignKeys;
 
