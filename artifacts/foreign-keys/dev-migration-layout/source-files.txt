@@ -1,0 +1,4 @@
+src/Generator/MigrationGenerator.cs
+src/Generator/ForeignKeyLayout/ForeignKeyLineLayout.cs
+src/Generator/ForeignKeyLayout/ForeignKeyMigrationLayout.cs
+src/Generator/ForeignKeyLayout/ForeignKeySourceLayout.cs

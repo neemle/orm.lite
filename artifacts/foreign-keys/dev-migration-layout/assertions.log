@@ -1,0 +1,16 @@
+{
+  "sourceCommit": "0f4b8c989bcd7ab7668ae598adb7baac07dce52a",
+  "trees": {
+    "src": "624c2b36d4a529f4e784a387656737688f1a7241",
+    "tests": "13306f57f2988ba7d1b03a4de866db224dd10830",
+    "demo": "3401e601d9f15e8f3e3a30f3c0fb615ab826e1d2"
+  },
+  "sourceFilesMeasured": 4,
+  "generated": 41,
+  "width": {
+    "old": 1363,
+    "new": 120
+  },
+  "classComparisons": 29,
+  "zeroOptInEntries": 669
+}
