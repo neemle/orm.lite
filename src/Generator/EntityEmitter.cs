@@ -60,7 +60,7 @@ internal static class EntityEmitter
         }
         file = SchemaClass(file, entities, asmToken);
         file = InitializerClass(file, entities);
-        return GraphEmitter.WrapMembers(file.Render(RenderOptions));
+        return file.Render(RenderOptions);
     }
 
     private static HashSet<(string Type, string Member)> ExcludedPairs(ImmutableArray<Entity> entities)
@@ -106,13 +106,16 @@ internal static class EntityEmitter
             .Select(e => Cs.Statement(Syn.Static("OrmMeta", "Register")
                 .OfTypes(Cs.Type(e.Full))
                 .Of(Cs.Id(e.Type + "Orm").Dot("Descriptor"))))
-            .Concat(entities.Where(GraphEmitter.Supported).Select(e =>
-                Cs.Statement(Cs.Id(e.Type + "Orm").Dot("RegisterGraph").Of())))
             .ToArray();
+        var graphs = entities.Where(GraphEmitter.Supported)
+            .Select(e => Cs.Statement(Cs.Id(e.Type + "Orm").Dot("RegisterGraph").Of())).ToArray();
         return file.Class("OrmMetaInit").Internal().Static()
             .Method(Cs.Void, "Init").Internal().Static()
                 .Attribute(Cs.Attribute(Syn.Sys("Runtime.CompilerServices.ModuleInitializer")))
-                .Body(registrations).End()
+                .Body(Cs.Statement(Cs.Id("RegisterEntities").Of()),
+                    Cs.Statement(Cs.Id("RegisterGraphs").Of())).End()
+            .Method(Cs.Void, "RegisterEntities").Private().Static().Body(registrations).End()
+            .Method(Cs.Void, "RegisterGraphs").Private().Static().Body(graphs).End()
             .End();
     }
 }

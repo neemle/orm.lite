@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -16,7 +17,19 @@ internal static class GraphSourceLayout
             var type = (ClassDeclarationSyntax)declaration;
             var isolated = space.WithMembers(SyntaxFactory.SingletonList(declaration));
             var file = document.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(isolated));
-            context.AddSource("OrmLite.Entities." + type.Identifier.ValueText + ".g.cs", file.ToFullString());
+            context.AddSource("OrmLite.Entities." + type.Identifier.ValueText + ".g.cs", Wrap(file));
         }
+    }
+
+    private static string Wrap(CompilationUnitSyntax file)
+    {
+        var originalMap = file.DescendantNodes().OfType<MethodDeclarationSyntax>()
+            .SingleOrDefault(method => method.Identifier.ValueText == "Map");
+        var wrapped = CSharpSyntaxTree.ParseText(GraphEmitter.WrapMembers(file.ToFullString()))
+            .GetCompilationUnitRoot();
+        if (originalMap is null) return wrapped.ToFullString();
+        var formattedMap = wrapped.DescendantNodes().OfType<MethodDeclarationSyntax>()
+            .Single(method => method.Identifier.ValueText == "Map");
+        return wrapped.ReplaceNode(formattedMap, originalMap).ToFullString();
     }
 }
