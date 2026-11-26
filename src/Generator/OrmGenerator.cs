@@ -113,10 +113,13 @@ public sealed class OrmGenerator : IIncrementalGenerator
 
         public EquatableArray<ForeignKeyModel> ForeignKeys { get; init; } = default;
 
+        public EquatableArray<CalculatedProp> Calculated { get; init; } = default;
+
         public string Full { get; init; } = "";
 
         public string? NameIssue { get; init; }
     }
+    internal sealed record CalculatedProp(Prop Property, string SourceProperty);
     internal sealed record Unmapped(string Property, string TypeName, Location Location, string Note = "");
     internal sealed record SoftDeleteIssue(string Property, string Reason, Location Location);
     internal sealed record Relation(string Nav, string TargetType, string FkProp, bool FkNullable)

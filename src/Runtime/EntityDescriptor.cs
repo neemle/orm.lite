@@ -51,6 +51,8 @@ public sealed class EntityDescriptor
 
     private readonly List<IndexDescriptor> _indexes = [];
 
+    private readonly List<CalculatedDescriptor> _calculated = [];
+
     private readonly List<ManyToManyDescriptor> _manyToMany = [];
 
     private readonly List<ForeignKeyDescriptor> _foreignKeys = [];
@@ -77,6 +79,8 @@ public sealed class EntityDescriptor
     public IReadOnlyList<ColumnDescriptor> Columns => _columns;
 
     public IReadOnlyList<IndexDescriptor> Indexes => _indexes;
+
+    public IReadOnlyList<CalculatedDescriptor> Calculated => _calculated;
 
     public IReadOnlyList<ManyToManyDescriptor> ManyToMany => _manyToMany;
 
@@ -116,6 +120,22 @@ public sealed class EntityDescriptor
     {
         var (declaredPrecision, declaredScale) = type == ColumnType.Decimal ? DecimalShape(property, precision, scale) : (0, 0);
         _columns.Add(new ColumnDescriptor(property, column, type, nullable, key, declaredPrecision, declaredScale));
+        return this;
+    }
+
+    public EntityDescriptor CalculatedLower(string property, string alias, string sourceProperty)
+    {
+        var source = _columns.FirstOrDefault(c => c.Property == sourceProperty);
+        if (source is null || source.Type != ColumnType.Text)
+            throw new ArgumentException(
+                "A calculated Lower source must be a physical text property.", nameof(sourceProperty));
+        if (string.IsNullOrWhiteSpace(alias) || _columns.Any(c =>
+                string.Equals(c.Column, alias, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(c.Property, property, StringComparison.Ordinal))
+            || _calculated.Any(c => string.Equals(c.Alias, alias, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(c.Property, property, StringComparison.Ordinal)))
+            throw new ArgumentException("A calculated field needs a distinct property and read alias.", nameof(alias));
+        _calculated.Add(new CalculatedDescriptor(property, alias, source.Column));
         return this;
     }
 

@@ -37,6 +37,9 @@ internal static class DescriptorEmitter
                     Syn.Str(p.Name), Syn.Str(p.Column), ColumnType(p), Syn.Flag(p.Nullable), Syn.Flag(p.IsKey),
                     Cs.Literal(p.Precision), Cs.Literal(p.Scale),
                 ]);
+        foreach (var field in e.Calculated)
+            d = d.Dot("CalculatedLower").Of(
+                Syn.Str(field.Property.Name), Syn.Str(field.Property.Column), Syn.Str(field.SourceProperty));
         return d;
     }
 

@@ -1,0 +1,11 @@
+provider=postgres runtime=10.0.15
+CALCULATED-DEMO v1
+empty-relations=0|0
+keyed=mixed
+list=mixed|<null>|<empty>
+physical-query=MiXeD
+refusals=filter|order|projection|mask|conditional-mask:zero-SQL
+relations=mixed|child|tag
+schema=id|label
+write=changed
+assertions=18 PASS

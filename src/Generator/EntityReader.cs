@@ -33,12 +33,14 @@ internal static class EntityReader
     {
         var s = scan.Type;
         var props = scan.Props;
+        var calculated = CalculatedReader.Read(scan);
         var found = scan.Found;
         var indexes = IndexReader.ReadIndexes(s, table, props, scan.OnProperties);
         var relations = ResolveRelations(scan.Navs, props, found);
         var typeIssue = Buildability.TypeIssueOf(s, bound);
         var requiredMissing = Buildability.AddRequiredIssues(
-            s, props, scan.UnmappedProps, scan.SetsRequired, found.Issues);
+            s, props.Concat(calculated.Select(c => c.Property)).ToList(),
+            scan.UnmappedProps, scan.SetsRequired, found.Issues);
         var keyProp = props.FirstOrDefault(p => p.IsKey)?.Name ?? "Id";
         var collections = scan.Collections.Select(c => CollectionOf(c, keyProp)).ToImmutableArray();
         var managed = !scan.View && NamedBoolOrDefault(s, "Neemle.OrmLite.TableAttribute", "Managed", true);
@@ -52,7 +54,7 @@ internal static class EntityReader
             found.Excluded.ToImmutableArray(), s.IsStatic)
         {
             Full = FullNameOf(s), NameIssue = EntityNaming.NameIssueOf(s),
-            ForeignKeyIntents = ForeignKeyReader.Read(s),
+            ForeignKeyIntents = ForeignKeyReader.Read(s), Calculated = calculated,
         };
     }
 

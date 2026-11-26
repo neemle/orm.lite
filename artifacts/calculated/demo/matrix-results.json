@@ -1,0 +1,170 @@
+{
+  "frozenImplementation": "c9fd3ed772eadc68119dab56b66b460fa88d73f2",
+  "project": "examples/calculated/CalculatedDemo.csproj",
+  "legs": [
+    {
+      "sdk": 10,
+      "mode": "jit",
+      "provider": "sqlite",
+      "runtime": "10.0.15",
+      "gate": "jit10-sqlite.json",
+      "log": "jit10-sqlite.log",
+      "result": "CALCULATED-DEMO v1\nempty-relations=0|0\nkeyed=mixed\nlist=mixed|<null>|<empty>\nphysical-query=MiXeD\nrefusals=filter|order|projection|mask|conditional-mask:zero-SQL\nrelations=mixed|child|tag\nschema=id|label\nwrite=changed\nassertions=18 PASS",
+      "resultSha256": "53d091d1257fefa4dfe588a57555e44d297eabec62597ffc066098a1c7737f1f"
+    },
+    {
+      "sdk": 10,
+      "mode": "jit",
+      "provider": "postgres",
+      "runtime": "10.0.15",
+      "gate": "jit10-postgres.json",
+      "log": "jit10-postgres.log",
+      "result": "CALCULATED-DEMO v1\nempty-relations=0|0\nkeyed=mixed\nlist=mixed|<null>|<empty>\nphysical-query=MiXeD\nrefusals=filter|order|projection|mask|conditional-mask:zero-SQL\nrelations=mixed|child|tag\nschema=id|label\nwrite=changed\nassertions=18 PASS",
+      "resultSha256": "53d091d1257fefa4dfe588a57555e44d297eabec62597ffc066098a1c7737f1f"
+    },
+    {
+      "sdk": 10,
+      "mode": "aot",
+      "provider": "sqlite",
+      "runtime": "10.0.15",
+      "gate": "native10.json",
+      "log": "native10.log",
+      "result": "CALCULATED-DEMO v1\nempty-relations=0|0\nkeyed=mixed\nlist=mixed|<null>|<empty>\nphysical-query=MiXeD\nrefusals=filter|order|projection|mask|conditional-mask:zero-SQL\nrelations=mixed|child|tag\nschema=id|label\nwrite=changed\nassertions=18 PASS",
+      "resultSha256": "53d091d1257fefa4dfe588a57555e44d297eabec62597ffc066098a1c7737f1f"
+    },
+    {
+      "sdk": 10,
+      "mode": "aot",
+      "provider": "postgres",
+      "runtime": "10.0.15",
+      "gate": "native10.json",
+      "log": "native10.log",
+      "result": "CALCULATED-DEMO v1\nempty-relations=0|0\nkeyed=mixed\nlist=mixed|<null>|<empty>\nphysical-query=MiXeD\nrefusals=filter|order|projection|mask|conditional-mask:zero-SQL\nrelations=mixed|child|tag\nschema=id|label\nwrite=changed\nassertions=18 PASS",
+      "resultSha256": "53d091d1257fefa4dfe588a57555e44d297eabec62597ffc066098a1c7737f1f"
+    },
+    {
+      "sdk": 11,
+      "mode": "jit",
+      "provider": "sqlite",
+      "runtime": "11.0.0",
+      "gate": "jit11-sqlite.json",
+      "log": "jit11-sqlite.log",
+      "result": "CALCULATED-DEMO v1\nempty-relations=0|0\nkeyed=mixed\nlist=mixed|<null>|<empty>\nphysical-query=MiXeD\nrefusals=filter|order|projection|mask|conditional-mask:zero-SQL\nrelations=mixed|child|tag\nschema=id|label\nwrite=changed\nassertions=18 PASS",
+      "resultSha256": "53d091d1257fefa4dfe588a57555e44d297eabec62597ffc066098a1c7737f1f"
+    },
+    {
+      "sdk": 11,
+      "mode": "jit",
+      "provider": "postgres",
+      "runtime": "11.0.0",
+      "gate": "jit11-postgres.json",
+      "log": "jit11-postgres.log",
+      "result": "CALCULATED-DEMO v1\nempty-relations=0|0\nkeyed=mixed\nlist=mixed|<null>|<empty>\nphysical-query=MiXeD\nrefusals=filter|order|projection|mask|conditional-mask:zero-SQL\nrelations=mixed|child|tag\nschema=id|label\nwrite=changed\nassertions=18 PASS",
+      "resultSha256": "53d091d1257fefa4dfe588a57555e44d297eabec62597ffc066098a1c7737f1f"
+    },
+    {
+      "sdk": 11,
+      "mode": "aot",
+      "provider": "sqlite",
+      "runtime": "11.0.0",
+      "gate": "native11.json",
+      "log": "native11.log",
+      "result": "CALCULATED-DEMO v1\nempty-relations=0|0\nkeyed=mixed\nlist=mixed|<null>|<empty>\nphysical-query=MiXeD\nrefusals=filter|order|projection|mask|conditional-mask:zero-SQL\nrelations=mixed|child|tag\nschema=id|label\nwrite=changed\nassertions=18 PASS",
+      "resultSha256": "53d091d1257fefa4dfe588a57555e44d297eabec62597ffc066098a1c7737f1f"
+    },
+    {
+      "sdk": 11,
+      "mode": "aot",
+      "provider": "postgres",
+      "runtime": "11.0.0",
+      "gate": "native11.json",
+      "log": "native11.log",
+      "result": "CALCULATED-DEMO v1\nempty-relations=0|0\nkeyed=mixed\nlist=mixed|<null>|<empty>\nphysical-query=MiXeD\nrefusals=filter|order|projection|mask|conditional-mask:zero-SQL\nrelations=mixed|child|tag\nschema=id|label\nwrite=changed\nassertions=18 PASS",
+      "resultSha256": "53d091d1257fefa4dfe588a57555e44d297eabec62597ffc066098a1c7737f1f"
+    }
+  ],
+  "normalization": "Compare complete CALCULATED-DEMO result blocks BYTE-for-BYTE; exclude only separate provider/runtime header and build logs. No result rows/values sorted or removed by proof.",
+  "binaries": [
+    {
+      "path": "native10-out/CalculatedDemo",
+      "bytes": 15380344,
+      "sha256": "2a78cbbf3e11679069acec2230b24d87e18d1c6fbf6b943fb22ca9714142dc4e"
+    },
+    {
+      "path": "native11-out/CalculatedDemo",
+      "bytes": 15448752,
+      "sha256": "f5ddcace147f0146b4a14ccc5eff8f2c4fb1d744625db988970e36d6e4d8999c"
+    }
+  ],
+  "images": [
+    {
+      "tags": [
+        "orml108-graph-native-sdk10:verified"
+      ],
+      "id": "sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27"
+    },
+    {
+      "tags": [
+        "orml108-graph-native-sdk11:verified"
+      ],
+      "id": "sha256:617441f9e33eea21c352a4343ee42a50ecd9003fe5fbbe6f0cf035f2e9ff62c6"
+    },
+    {
+      "tags": [
+        "neemle/pg.lite:19"
+      ],
+      "id": "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117"
+    }
+  ],
+  "limits": [
+    "Functional same-demo criterion only, not full item/QA/security/coverage/merge approval.",
+    "Full source/tests/goldens/census unchanged; old gates not rerun.",
+    "ASCII Lower/null/empty parity only; non-ASCII provider semantics not promised.",
+    "Virtual filter/order/projection are tested as preSQL refusals, not supported operations.",
+    "No history/soft-delete model in these cases; no new history execution claim.",
+    "Private packed frozen107 packages only; no newer108\u2013117 implementation or release."
+  ],
+  "cleanup": [
+    {
+      "kind": "container",
+      "id": "c00bfc3ca929cc896405087bd1a21238f4c0d9ba6fd1c3c5c4862205522f1926",
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "c00bfc3ca929cc896405087bd1a21238f4c0d9ba6fd1c3c5c4862205522f1926"
+      ],
+      "exitCode": 0,
+      "stdout": "c00bfc3ca929cc896405087bd1a21238f4c0d9ba6fd1c3c5c4862205522f1926\n",
+      "absenceArgv": [
+        "docker",
+        "inspect",
+        "c00bfc3ca929cc896405087bd1a21238f4c0d9ba6fd1c3c5c4862205522f1926"
+      ],
+      "absenceExitCode": 1,
+      "absenceStderr": "error: no such object: c00bfc3ca929cc896405087bd1a21238f4c0d9ba6fd1c3c5c4862205522f1926\n",
+      "time": "2026-11-26T10:02:09.286516+00:00"
+    },
+    {
+      "kind": "network",
+      "id": "869a499133714e2417f405b8afe11b4e519cb98ca437038295e61520673c23b8",
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "869a499133714e2417f405b8afe11b4e519cb98ca437038295e61520673c23b8"
+      ],
+      "exitCode": 0,
+      "stdout": "869a499133714e2417f405b8afe11b4e519cb98ca437038295e61520673c23b8\n",
+      "absenceArgv": [
+        "docker",
+        "network",
+        "inspect",
+        "869a499133714e2417f405b8afe11b4e519cb98ca437038295e61520673c23b8"
+      ],
+      "absenceExitCode": 1,
+      "absenceStderr": "Error response from daemon: network 869a499133714e2417f405b8afe11b4e519cb98ca437038295e61520673c23b8 not found\n",
+      "time": "2026-11-26T10:02:09.414755+00:00"
+    }
+  ]
+}
