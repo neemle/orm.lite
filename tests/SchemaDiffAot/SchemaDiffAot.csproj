@@ -15,4 +15,8 @@
     <ProjectReference Include="../../src/Postgres/Postgres.csproj" />
     <ProjectReference Include="../../src/Sqlite/Sqlite.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../Tests/SchemaDiff/SqliteKeyForm.cs" />
+    <Compile Include="../Tests/SchemaDiff/SqliteNullabilityContract.cs" />
+  </ItemGroup>
 </Project>

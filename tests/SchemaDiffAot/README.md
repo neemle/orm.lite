@@ -8,6 +8,12 @@ This executable uses the public schema-diff API on PostgreSQL and SQLite. The sa
 
 [`DemoScenario.RunAsync`](DemoScenario.cs) initializes an old `items(id, original)` model and an original row. The desired model adds the nullable `added` field and a simple `new_items` table. Public `ObserveAsync`, `Compare` and `Emit` must report exactly those two changes without changing history or the original row.
 
+#### SQLite primary-key nullability
+
+The SQLite route also runs seven quiet checks in separate owned temporary databases before the additive scenario. An ordinary `TEXT PRIMARY KEY` and an inline `INTEGER PRIMARY KEY DESC` can store NULL: observation must retain that fact, comparison with a required nonnullable key must report `NullabilityChange`/`ManualRequired`, and emission must refuse. Explicit `TEXT PRIMARY KEY NOT NULL`, an `INTEGER` rowid alias and table-level `PRIMARY KEY(id DESC)` retain nonnullable no-op behavior. `STRICT` and `WITHOUT ROWID` shapes remain manual-required under the existing supported-shape boundary.
+
+These checks use the same [permanent regression contract](../Tests/SchemaDiff/SqliteNullabilityContract.cs) as the focused xUnit cases. They verify actual NULL insertion/storage and public observation/comparison/refusal, remove their fixtures, and leave the original `PARITY` output unchanged. To run only this compare/review case, pass `sqlite-nullability` as the executable's sole argument in either JIT or NativeAOT.
+
 ### Apply and repeat
 
 The explicit fixture runner applies the reviewed artifact. Public observation and comparison must then return `NoOp`; attempting to emit that no-op must refuse. The old row retains its original value, and its new field is NULL. Repeating application must report `AlreadyApplied` with no new unit or history entry.
