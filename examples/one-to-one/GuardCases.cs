@@ -24,7 +24,7 @@ internal static class GuardCases
         Results.Case("guards", "unknown null|masked|custom mapper:zero SQL");
     }
 
-    private static async Task RefuseAsync(Func<Task> action, OneToOneError expected)
+    internal static async Task RefuseAsync(Func<Task> action, OneToOneError expected)
     {
         try { await action(); }
         catch (OneToOneDeclarationException error)

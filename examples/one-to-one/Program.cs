@@ -9,7 +9,14 @@ try
     await DirectionCases.RunAsync(fixture);
     await IntegrityCases.RunAsync(fixture);
     await GuardCases.RunAsync(fixture);
+    await AdditionalGuardCases.RunAsync(fixture);
+    await ActionCases.RunAsync(fixture);
+    await VisibilityCases.RunAsync(fixture);
+    await CancellationCases.RunAsync(fixture);
+    await UpgradeCases.RunAsync(fixture);
+    await FailureCases.RunAsync(fixture);
     await LegacyCases.RunAsync(fixture);
+    await FailureCases.ProviderAsync(fixture);
     Results.Print();
 }
 finally { await fixture.DisposeAsync(); }
