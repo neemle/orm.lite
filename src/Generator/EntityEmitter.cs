@@ -13,7 +13,7 @@ using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
 namespace Neemle.OrmLite.Generator;
 
 /// <summary>
-/// Emits the one generated file of the entities: reports what is wrong, then writes the static Orm class of each
+/// Emits the entity declarations: reports what is wrong, then writes the static Orm class of each
 /// entity, the purge class of each soft-delete entity, the schema class and the module initializer that registers the
 /// descriptors.
 /// </summary>

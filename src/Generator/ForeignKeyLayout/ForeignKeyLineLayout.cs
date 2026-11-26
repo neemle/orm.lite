@@ -42,7 +42,7 @@ internal sealed class ForeignKeyLineLayout
         for (var i = tokens.Length - 1; i >= 0; i--)
         {
             widths[i] = end - tokens[i].SpanStart;
-            if (tokens[i].HasLeadingTrivia) end = tokens[i].FullSpan.Start;
+            if (i > 0 && tokens[i].SpanStart > tokens[i - 1].Span.End) end = tokens[i - 1].Span.End;
         }
         return widths;
     }
