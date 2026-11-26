@@ -25,7 +25,17 @@ internal static class PolicyOrigins
         {
             if (Origins.TryGetValue(connection, out var witness)) return witness.Require(context, connection,
             transaction);
-            throw new RelationScopeException(RelationScopeError.InvalidResource);
+            RequireGate(connection, context);
+            Record(connection, context);
+            return null;
         }
+    }
+    private static void RequireGate(DbConnection connection, OrmContext context)
+    {
+        if (context.DataSource is not GatedDataSource source
+            || GatedDataSource.LeaseOf(connection) is not { IsCurrent: true })
+            throw new RelationScopeException(RelationScopeError.InvalidResource);
+        if (!ReferenceEquals(source.Provider, context.Provider) || !GatedDataSource.OriginatesFrom(connection, source))
+            throw new RelationScopeException(RelationScopeError.DifferentScope);
     }
 }
