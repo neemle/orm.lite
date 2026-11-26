@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -12,12 +13,14 @@ internal static class GraphSourceLayout
     {
         var document = CSharpSyntaxTree.ParseText(source).GetCompilationUnitRoot();
         var space = (FileScopedNamespaceDeclarationSyntax)document.Members[0];
+        var ordinal = 0;
         foreach (var declaration in space.Members)
         {
-            var type = (ClassDeclarationSyntax)declaration;
             var isolated = space.WithMembers(SyntaxFactory.SingletonList(declaration));
             var file = document.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(isolated));
-            context.AddSource("OrmLite.Entities." + type.Identifier.ValueText + ".g.cs", Wrap(file));
+            var hint = "OrmLite.Entities." + ordinal.ToString("D4", CultureInfo.InvariantCulture) + ".g.cs";
+            context.AddSource(hint, Wrap(file));
+            ordinal++;
         }
     }
 

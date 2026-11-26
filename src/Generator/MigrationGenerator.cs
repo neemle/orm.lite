@@ -61,8 +61,8 @@ public sealed class MigrationGenerator : IIncrementalGenerator
             .ThenBy(m => m.Type, StringComparer.Ordinal)
             .ToArray();
 
-        spc.AddSource(MigrationsHint, MigrationsSource(ordered, asmToken));
-        spc.AddSource(RegistrationHint, RegistrationSource(asmToken));
+        spc.AddSource(MigrationsHint, GraphEmitter.WrapMembers(MigrationsSource(ordered, asmToken)));
+        spc.AddSource(RegistrationHint, GraphEmitter.WrapMembers(RegistrationSource(asmToken)));
     }
 
     public const string MigrationsStep = "OrmLiteMigrations";
