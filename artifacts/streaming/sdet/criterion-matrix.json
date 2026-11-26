@@ -1,0 +1,53 @@
+{
+  "authorities": "Speck v1 all10AC+2SEC; no whole-item PASS",
+  "criteria": {
+    "AC-116-01": {
+      "disposition": "PARTIAL",
+      "evidenceAndLimits": "Producer zero/one/many and no-prefetch counters PASS; actual provider row parity and all4terminals PASS; full old regressions not repeated."
+    },
+    "AC-116-02": {
+      "disposition": "PARTIAL",
+      "evidenceAndLimits": "Producer GC prior-row collectible test and independent pending-read map/current checks PASS; actual DB memory scaling/soak NOT RUN."
+    },
+    "AC-116-03": {
+      "disposition": "PARTIAL",
+      "evidenceAndLimits": "Producer cold/freeze/reuse/typed-array and unsafe-lazy refusal PASS; independent actual projection input-array mutation PASS; closure/On mutation and owned concurrency expansion incomplete."
+    },
+    "AC-116-04": {
+      "disposition": "PASS_SCOPED",
+      "evidenceAndLimits": "Retained typed Completion: producer body error survives three cleanup faults; independent primary+all cleanup combinations and empty EOF cleanup faults PASS; Dispose retains same completion."
+    },
+    "AC-116-05": {
+      "disposition": "PARTIAL",
+      "evidenceAndLimits": "Producer token/callback/privateDispose and independent user-cancel ignoring-driver pending-settlement checks PASS; actual idle cancel +generatedNative cancel bothproviders PASS; no claim all realdriver fault timings."
+    },
+    "AC-116-06": {
+      "disposition": "PARTIAL",
+      "evidenceAndLimits": "Independent exact borrowed transaction mismatch pre-command and command cleanup identity retirement PASS; actualPG lock+caller command and existing UoW reuse PASS; all abort/resource identity permutations incomplete."
+    },
+    "AC-116-07": {
+      "disposition": "PARTIAL",
+      "evidenceAndLimits": "Producer same advance/concurrent borrowed guard and independent uncertain command cleanup exact-identity checks PASS; real legacy/UoW active-race no-global-drain expansion incomplete."
+    },
+    "AC-116-08": {
+      "disposition": "PASS_SCOPED",
+      "evidenceAndLimits": "Independent stale Current invalid during pending read; detached prefix survives actual map failure and retained RowsYielded; no re-execution counters PASS."
+    },
+    "AC-116-09": {
+      "disposition": "FAIL",
+      "evidenceAndLimits": "Bothproviders view/projection/typed NULL/no-write/masks visibility PASS; actualPG transaction lock PASS; explicit SQLite refusal required by pinned authorities fails on bothSDKs; fullold regression guard proposals unapplied."
+    },
+    "AC-116-10": {
+      "disposition": "PARTIAL",
+      "evidenceAndLimits": "Standalone generated NativeAOT publish AND RUN10+11 each SQLite+PG PASS incl4terminals/earlyCompletion/cancel; docs/demo/native memory-failure proof remains incomplete."
+    },
+    "SEC-116-01": {
+      "disposition": "PARTIAL",
+      "evidenceAndLimits": "Producer gated-open original primary+cleanup spy and copied typed parameters PASS; independent all4live/IncludingDeleted SQLite census +bothprovider projection masks PASS; disputed lock admission remainsFAIL."
+    },
+    "SEC-116-02": {
+      "disposition": "PARTIAL",
+      "evidenceAndLimits": "Independent realprovider sink: exactly1 execute event, LogParameters=false=>Parameters null, late map fault no duplicate/error event, private marker absent; combined fault safeToString PASS; enabled-redaction/provider-late-fault permutations incomplete."
+    }
+  }
+}
