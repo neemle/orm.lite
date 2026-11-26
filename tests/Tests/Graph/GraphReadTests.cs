@@ -60,7 +60,8 @@ public sealed class GraphReadTests
     {
         await using var db = await GraphDatabase.OpenAsync();
         var request = new GraphRequest<GraphAuthor>(GraphDomain.Limits(), GraphDomain.AuthorBooks);
-        await Assert.ThrowsAsync<GraphVisibilityException>(() => db.Authors().Redact(a => a.Id).ToGraphListAsync(request));
+        await Assert.ThrowsAsync<GraphVisibilityException>(() =>
+            db.Authors().Redact(a => a.Id).ToGraphListAsync(request));
         await Assert.ThrowsAsync<GraphVisibilityException>(() =>
             db.Authors().RedactWhen(a => a.Id, a => a.Id == 99).ToGraphListAsync(request));
         Assert.Empty(db.Statements);
