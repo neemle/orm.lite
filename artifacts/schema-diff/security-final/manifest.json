@@ -1,0 +1,18 @@
+{
+  "semgrep-run.json": {
+    "bytes": 2006,
+    "sha256": "8a168804f1a1a46001397fe95897bb6cf9a421dc566c5782a91c6df0b42beda6"
+  },
+  "semgrep.json.gz": {
+    "bytes": 57931,
+    "sha256": "7f918259e40979ff201d4a8db39b0b7bacfda318b356fe6c87edbb323d82462c"
+  },
+  "semgrep.log.gz": {
+    "bytes": 20967,
+    "sha256": "d3b42b9368543bffa5d26348e2a2442b71d6048f8bbed5d6005aabebcb2de4fc"
+  },
+  "triage.json": {
+    "bytes": 33474,
+    "sha256": "eba7c944d954a169e26a1b4d6e5a09e32f80466faaecd1c90f380feccd5a8916"
+  }
+}
