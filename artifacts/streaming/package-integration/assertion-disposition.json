@@ -1,0 +1,40 @@
+{
+  "functionalCommit": "ba790a5",
+  "packCheck": {
+    "oldIntent": "Package consumers must actually receive the generator and declared entity classes, and the configured owned entity must retain owner_id.",
+    "newProperty": "Numeric per-entity hint files must declare every expected fixture Orm class; owner_id is inspected only in ProbeOwnedOrm source. Migration hint, compiler diagnostics, analyzer/runtime-only negatives, registrations, provider lists, content, README and provenance checks remain unchanged.",
+    "witnesses": {
+      "A": [
+        "ProbeDocOrm",
+        "ProbeNoteOrm",
+        "OrmLite.Migrations.g.cs"
+      ],
+      "D": [
+        "ProbeDocOrm",
+        "ProbeNoteOrm",
+        "ProbeOwnedOrm",
+        "owner_id"
+      ],
+      "O/P": [
+        "ProbeDocOrm",
+        "ProbeNoteOrm"
+      ],
+      "H/I/J/K": [
+        "ProbeDocOrm",
+        "ProbeGlobalDocOrm"
+      ]
+    }
+  },
+  "goldens": {
+    "oldIntent": "Byte-exact complete generated output, deterministic corpus, no orphaned or unaccounted cases.",
+    "newProperty": "Same byte-exact oracle after the approved main107 typed LinkedRead source merge; only three numeric output files change.",
+    "witnesses": [
+      "Project.Labels",
+      "Project.Members",
+      "GoldenAuthor.Tags"
+    ],
+    "captureIsNotVerification": true
+  },
+  "unchangedDemoEvidence": "artifacts/streaming/demo/final/mode-provider-equivalence.json; existing 8 legs reused without rerun",
+  "fullMatrix": "Hosted CI after one push; no duplicate local matrix"
+}

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="d6759cda-48a6-4c7b-ad28-8554c3261929" name="@443d9f60a17f 2026-11-26 11:18:21" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-26T11:18:21.5789663+00:00" queuing="2026-11-26T11:18:21.5789665+00:00" start="2026-11-26T11:18:19.7293699+00:00" finish="2026-11-26T11:18:39.4177458+00:00" />
+  <TestSettings name="default" id="a172557a-7475-4cad-93f6-971fc7e18371">
+    <Deployment runDeploymentRoot="_443d9f60a17f_2026-11-26_11_18_21" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="78c03cd0-3d60-41a3-8f71-e9c635700a46" testId="b38dff4a-db63-fcf6-ae35-02d0ad20f8bf" testName="Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_pinned_fixture_directories_hold_no_soft_delete_entity" computerName="443d9f60a17f" duration="00:00:00.0121017" startTime="2026-11-26T11:18:21.3339408+00:00" endTime="2026-11-26T11:18:21.3339409+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="78c03cd0-3d60-41a3-8f71-e9c635700a46" />
+    <UnitTestResult executionId="14406ede-929a-4417-bc5a-53c5729df5c8" testId="a0ebdd4d-526c-d1d5-4ee7-853e49e72c92" testName="capturing twice in one process yields identical text for every entry and for the index" computerName="443d9f60a17f" duration="00:00:09.9747122" startTime="2026-11-26T11:18:31.3156205+00:00" endTime="2026-11-26T11:18:31.3156205+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="14406ede-929a-4417-bc5a-53c5729df5c8" />
+    <UnitTestResult executionId="415d8ab0-d2e7-461e-bedf-9893a1605cbb" testId="8b904b24-43fa-6040-643c-44e49bb37393" testName="Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte" computerName="443d9f60a17f" duration="00:00:00.7418819" startTime="2026-11-26T11:18:21.3266764+00:00" endTime="2026-11-26T11:18:21.3266990+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="415d8ab0-d2e7-461e-bedf-9893a1605cbb" />
+    <UnitTestResult executionId="6b69ef01-3ad6-4442-8138-3d56940edc82" testId="6d193560-063a-7a46-4fb7-5e289fd31f0e" testName="the live PostgreSQL output of the library equals every golden of the corpus, and no golden is orphaned" computerName="443d9f60a17f" duration="00:00:03.9035983" startTime="2026-11-26T11:18:39.3275179+00:00" endTime="2026-11-26T11:18:39.3275180+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b69ef01-3ad6-4442-8138-3d56940edc82" />
+    <UnitTestResult executionId="ef959335-ab46-4e1c-b42a-99587964c7c6" testId="930e2e50-2e1e-caaa-93ee-d7bf6b250053" testName="every statement-producing member of the surveyed surface is referenced by a case or excluded with a reason" computerName="443d9f60a17f" duration="00:00:04.1070405" startTime="2026-11-26T11:18:35.4232966+00:00" endTime="2026-11-26T11:18:35.4232968+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ef959335-ab46-4e1c-b42a-99587964c7c6" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_pinned_fixture_directories_hold_no_soft_delete_entity" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/tests/release/neemle.ormlite.tests.dll" id="b38dff4a-db63-fcf6-ae35-02d0ad20f8bf">
+      <Execution id="78c03cd0-3d60-41a3-8f71-e9c635700a46" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests" name="The_pinned_fixture_directories_hold_no_soft_delete_entity" />
+    </UnitTest>
+    <UnitTest name="the live PostgreSQL output of the library equals every golden of the corpus, and no golden is orphaned" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/tests/release/neemle.ormlite.tests.dll" id="6d193560-063a-7a46-4fb7-5e289fd31f0e">
+      <Execution id="6b69ef01-3ad6-4442-8138-3d56940edc82" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Corpus.CorpusGoldenTests" name="The_live_output_equals_the_goldens" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/tests/release/neemle.ormlite.tests.dll" id="8b904b24-43fa-6040-643c-44e49bb37393">
+      <Execution id="415d8ab0-d2e7-461e-bedf-9893a1605cbb" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests" name="The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte" />
+    </UnitTest>
+    <UnitTest name="every statement-producing member of the surveyed surface is referenced by a case or excluded with a reason" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/tests/release/neemle.ormlite.tests.dll" id="930e2e50-2e1e-caaa-93ee-d7bf6b250053">
+      <Execution id="ef959335-ab46-4e1c-b42a-99587964c7c6" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Corpus.CorpusGoldenTests" name="Every_surface_member_is_accounted_for" />
+    </UnitTest>
+    <UnitTest name="capturing twice in one process yields identical text for every entry and for the index" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/tests/release/neemle.ormlite.tests.dll" id="a0ebdd4d-526c-d1d5-4ee7-853e49e72c92">
+      <Execution id="14406ede-929a-4417-bc5a-53c5729df5c8" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.Corpus.CorpusGoldenTests" name="Capture_is_deterministic" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b38dff4a-db63-fcf6-ae35-02d0ad20f8bf" executionId="78c03cd0-3d60-41a3-8f71-e9c635700a46" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0ebdd4d-526c-d1d5-4ee7-853e49e72c92" executionId="14406ede-929a-4417-bc5a-53c5729df5c8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8b904b24-43fa-6040-643c-44e49bb37393" executionId="415d8ab0-d2e7-461e-bedf-9893a1605cbb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6d193560-063a-7a46-4fb7-5e289fd31f0e" executionId="6b69ef01-3ad6-4442-8138-3d56940edc82" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="930e2e50-2e1e-caaa-93ee-d7bf6b250053" executionId="ef959335-ab46-4e1c-b42a-99587964c7c6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="5" executed="5" passed="5" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.19]   Discovering: Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.47]   Discovered:  Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.48]   Starting:    Neemle.OrmLite.Tests
+[xUnit.net 00:00:19.26]   Finished:    Neemle.OrmLite.Tests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
