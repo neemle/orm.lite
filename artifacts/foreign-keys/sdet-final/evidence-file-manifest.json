@@ -1,0 +1,138 @@
+[
+  {
+    "path": "artifacts/foreign-keys/sdet-final/checkpoint-manifest.json",
+    "bytes": 5052
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/cleanup.json",
+    "bytes": 10559
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/coverage-report.json",
+    "bytes": 142636
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/coverage-reporter-origin.json",
+    "bytes": 388
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/coverage-results/coverage.trx",
+    "bytes": 6052614
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/coverage.runsettings",
+    "bytes": 515
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/coverage10.json",
+    "bytes": 2221
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/coverage10.log",
+    "bytes": 3888
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/metric-files.txt",
+    "bytes": 1203
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/metrics-summary.json",
+    "bytes": 148
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/native11-publish-run.json",
+    "bytes": 1882
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/native11-publish-run.log",
+    "bytes": 2142
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/new-test-case-mapping.json",
+    "bytes": 7538
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/new-test-metrics-report.json",
+    "bytes": 10888
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/new-test-metrics.json",
+    "bytes": 1820
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/new-test-metrics.log",
+    "bytes": 10904
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/owned-resources.json",
+    "bytes": 9342
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/passing-gates-summary.json",
+    "bytes": 3816
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/postgres-version.json",
+    "bytes": 640
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/postgres-version.log",
+    "bytes": 27
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/providers10-results/providers.trx",
+    "bytes": 122037
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/providers10.json",
+    "bytes": 2160
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/providers10.log",
+    "bytes": 542
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/providers11-results/providers.trx",
+    "bytes": 122036
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/providers11.json",
+    "bytes": 2148
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/providers11.log",
+    "bytes": 2709
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/raw-coverage-manifest.json",
+    "bytes": 459
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/raw-coverage.cobertura.xml.gz",
+    "bytes": 104932
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/run.py",
+    "bytes": 1033
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/unit10-corrected.json",
+    "bytes": 2003
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/unit10-corrected.log",
+    "bytes": 2713
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/unit10-results/unit.trx",
+    "bytes": 98304
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/unit10.json",
+    "bytes": 1993
+  },
+  {
+    "path": "artifacts/foreign-keys/sdet-final/unit10.log",
+    "bytes": 2399
+  }
+]

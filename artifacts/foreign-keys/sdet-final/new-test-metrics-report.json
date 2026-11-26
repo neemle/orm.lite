@@ -1,0 +1,447 @@
+{
+  "convention": "McCabe: 1 + if/loops/catch/nondefault cases/conditional expressions and each &&, ||, ?? operand boundary; lambda points belong to containing method",
+  "records": [
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/ForeignKeys/Sdet/SdetDependencyGeneratorTests.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "SdetDependencyGeneratorTests",
+          "line": 6,
+          "end": 62,
+          "codeLines": 54
+        }
+      ],
+      "methods": [
+        {
+          "name": "Unsupported_cycles_are_diagnosed_before_any_schema_execution",
+          "start": 8,
+          "end": 17,
+          "codeLines": 10,
+          "parameters": 1,
+          "nesting": {
+            "line": 12,
+            "depth": 0
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 15
+            }
+          ]
+        },
+        {
+          "name": "Discovery_order_cannot_change_the_semantic_baseline",
+          "start": 19,
+          "end": 32,
+          "codeLines": 14,
+          "parameters": 0,
+          "nesting": {
+            "line": 21,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Plan",
+          "start": 34,
+          "end": 39,
+          "codeLines": 6,
+          "parameters": 1,
+          "nesting": {
+            "line": 35,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "CyclicSource",
+          "start": 41,
+          "end": 61,
+          "codeLines": 21,
+          "parameters": 1,
+          "nesting": {
+            "line": 42,
+            "depth": 0
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 43
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/ForeignKeys/Sdet/SdetDiagnosticPrivacyTests.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "SdetDiagnosticPrivacyTests",
+          "line": 7,
+          "end": 30,
+          "codeLines": 24
+        }
+      ],
+      "methods": [
+        {
+          "name": "Invalid_name_diagnostics_expose_category_without_sensitive_input",
+          "start": 9,
+          "end": 29,
+          "codeLines": 21,
+          "parameters": 1,
+          "nesting": {
+            "line": 14,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/ForeignKeys/Sdet/SdetExistingBaseline.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "SdetExistingBaseline",
+          "line": 6,
+          "end": 30,
+          "codeLines": 25
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 29,
+          "codeLines": 22,
+          "parameters": 1,
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/ForeignKeys/Sdet/SdetGeneratedWrites.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "SdetGeneratedWrites",
+          "line": 6,
+          "end": 27,
+          "codeLines": 20
+        }
+      ],
+      "methods": [
+        {
+          "name": "New",
+          "start": 8,
+          "end": 15,
+          "codeLines": 8,
+          "parameters": 3,
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 13
+            }
+          ]
+        },
+        {
+          "name": "RunAsync",
+          "start": 17,
+          "end": 22,
+          "codeLines": 6,
+          "parameters": 5,
+          "nesting": {
+            "line": 19,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Method",
+          "start": 24,
+          "end": 26,
+          "codeLines": 3,
+          "parameters": 3,
+          "nesting": null,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 26
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/ForeignKeys/Sdet/SdetHostileIdentifiers.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "SdetHostileIdentifiers",
+          "line": 8,
+          "end": 51,
+          "codeLines": 40
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 15,
+          "end": 33,
+          "codeLines": 19,
+          "parameters": 1,
+          "nesting": {
+            "line": 16,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Quote",
+          "start": 35,
+          "end": 35,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Literal",
+          "start": 37,
+          "end": 37,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Source",
+          "start": 39,
+          "end": 50,
+          "codeLines": 12,
+          "parameters": 0,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/ForeignKeys/Sdet/SdetPostgresMatrixTests.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "SdetPostgresMatrixTests",
+          "line": 5,
+          "end": 34,
+          "codeLines": 27
+        }
+      ],
+      "methods": [
+        {
+          "name": "Valid_and_nullable_updates_succeed",
+          "start": 7,
+          "end": 12,
+          "codeLines": 6,
+          "parameters": 0,
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Soft_delete_and_generated_writes_preserve_their_existing_meaning",
+          "start": 14,
+          "end": 19,
+          "codeLines": 6,
+          "parameters": 0,
+          "nesting": {
+            "line": 16,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Existing_baseline_is_not_implicitly_retrofitted",
+          "start": 21,
+          "end": 26,
+          "codeLines": 6,
+          "parameters": 0,
+          "nesting": {
+            "line": 23,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Quoted_table_and_column_names_cannot_execute_payloads",
+          "start": 28,
+          "end": 33,
+          "codeLines": 6,
+          "parameters": 0,
+          "nesting": {
+            "line": 30,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/ForeignKeys/Sdet/SdetSoftComposition.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "SdetSoftComposition",
+          "line": 7,
+          "end": 66,
+          "codeLines": 58
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 28,
+          "end": 51,
+          "codeLines": 24,
+          "parameters": 1,
+          "nesting": {
+            "line": 29,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "VerifyNoImplicitSaveAsync",
+          "start": 53,
+          "end": 65,
+          "codeLines": 13,
+          "parameters": 2,
+          "nesting": {
+            "line": 54,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/ForeignKeys/Sdet/SdetSqliteMatrixTests.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "SdetSqliteMatrixTests",
+          "line": 5,
+          "end": 30,
+          "codeLines": 24
+        }
+      ],
+      "methods": [
+        {
+          "name": "Valid_and_nullable_updates_succeed",
+          "start": 7,
+          "end": 13,
+          "codeLines": 7,
+          "parameters": 0,
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Soft_delete_and_generated_writes_preserve_their_existing_meaning",
+          "start": 15,
+          "end": 21,
+          "codeLines": 7,
+          "parameters": 0,
+          "nesting": {
+            "line": 17,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Quoted_table_and_column_names_cannot_execute_payloads",
+          "start": 23,
+          "end": 29,
+          "codeLines": 7,
+          "parameters": 0,
+          "nesting": {
+            "line": 25,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/ForeignKeys/Sdet/SdetUpdateWitness.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "SdetUpdateWitness",
+          "line": 6,
+          "end": 30,
+          "codeLines": 25
+        }
+      ],
+      "methods": [
+        {
+          "name": "VerifyAsync",
+          "start": 8,
+          "end": 29,
+          "codeLines": 22,
+          "parameters": 1,
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    }
+  ]
+}

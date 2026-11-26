@@ -1,0 +1,13 @@
+provider=sqlite runtime=10.0.15
+provider-option sqlite ForeignKeys=False PRAGMA=0 orphan=admitted (unenforced)
+FOREIGN-KEY-DEMO v1
+actions=Cascade=child removed|Restrict=refused|NoAction=refused
+catalog=7 named exact owner/endpoint/action constraints; inverse deduplicated
+enforcement=enabled; observed native orphan/action enforcement
+generated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull
+links=tag|both orphans refused|source Restrict|target Cascade removes links
+refusals=NonNullableSetNull|DependencyCycle:zero-SQL
+repeat=same catalog and migration history
+soft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade
+upgrade-boundary=no retrofit|history unchanged|old orphan retained
+assertions=47 PASS

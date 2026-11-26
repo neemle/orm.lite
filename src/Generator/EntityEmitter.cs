@@ -26,10 +26,11 @@ internal static class EntityEmitter
     {
         EntityReports.Report(spc, all, providers);
         var blocked = NavigationAudit.Report(spc, all);
-        var named = EntityNaming.Disambiguated(all);
+        var foreignKeys = new ForeignKeyAnalysis(spc, all, blocked, providers);
+        var named = EntityNaming.Disambiguated(foreignKeys.Resolve());
         var dropped = new HashSet<string>(named.Where(OrmGenerator.Dropped).Select(e => e.Type));
         var emitted = named.Where(e => !OrmGenerator.Dropped(e));
-        var source = EntitiesSource([.. emitted], asmToken, dropped, blocked);
+        var source = EntitiesSource([.. emitted], asmToken, dropped, blocked, foreignKeys.Valid);
         foreach (var (hint, text) in SourceLayout.Entities(source)) spc.AddSource(hint, text);
     }
 
@@ -41,7 +42,7 @@ internal static class EntityEmitter
 
     private static string EntitiesSource(
         ImmutableArray<Entity> entities, string asmToken, HashSet<string> dropped,
-        HashSet<(string Entity, string Nav)> blocked)
+        HashSet<(string Entity, string Nav)> blocked, bool foreignKeysValid)
     {
         var allTables = new HashSet<string>(entities.Select(x => x.Table));
         var withheld = entities.Where(OrmGenerator.KeyedApiWithheld).Select(x => x.Type);
@@ -53,7 +54,7 @@ internal static class EntityEmitter
             file = EntityClassEmitter.EntityClass(file, e, scope, entities);
             if (e.SoftDeleteColumn is not null) file = PurgeClass(file, e);
         }
-        file = SchemaClass(file, entities, asmToken);
+        if (foreignKeysValid) file = SchemaClass(file, entities, asmToken);
         file = InitializerClass(file, entities);
         return file.Render(RenderOptions);
     }

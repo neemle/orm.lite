@@ -1,0 +1,6 @@
+{
+  "readonlySource": "artifacts/foreign-keys/sdet/coverage_report.py",
+  "sourceSha256": "6877e251f9f0b8862e2c2718060ac01f8a960f961fdf8908fcce0596cf2d475e",
+  "outputBaseReboundOnly": true,
+  "scope": "Original all-new-FK-files and complete modified helper files plus FK units in EntityDescriptor/OrmGenerator.Entity; includes current ForeignKeyLayout files; no exclusion/floor change"
+}

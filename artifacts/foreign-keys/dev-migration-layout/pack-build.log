@@ -1,0 +1,77 @@
+.NET SDK:
+ Version:           10.0.404
+ Commit:            2ab2854867
+ Workload version:  10.0.400-manifests.ad9f6d83
+ MSBuild version:   18.9.15+2ab285486
+
+Runtime Environment:
+ OS Name:     ubuntu
+ OS Version:  24.04
+ OS Platform: Linux
+ RID:         linux-arm64
+ Base Path:   /usr/share/dotnet/sdk/10.0.404/
+
+.NET workloads installed:
+There are no installed workloads to display.
+Configured to use workload sets when installing new manifests.
+No workload sets are installed. Run "dotnet workload restore" to install a workload set.
+
+Host:
+  Version:      10.0.15
+  Architecture: arm64
+  Commit:       8e0f8ed231
+
+.NET SDKs installed:
+  10.0.404 [/usr/share/dotnet/sdk]
+
+.NET runtimes installed:
+  Microsoft.AspNetCore.App 10.0.15 [/usr/share/dotnet/shared/Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 10.0.15 [/usr/share/dotnet/shared/Microsoft.NETCore.App]
+
+Other architectures found:
+  None
+
+Environment variables:
+  DOTNET_CLI_HOME                          [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/cli]
+  DOTNET_GENERATE_ASPNET_CERTIFICATE       [false]
+  DOTNET_NOLOGO                            [true]
+  DOTNET_RUNNING_IN_CONTAINER              [true]
+  DOTNET_SDK_VERSION                       [10.0.404]
+  DOTNET_USE_POLLING_FILE_WATCHER          [true]
+  DOTNET_VERSION                           [10.0.15]
+
+global.json file:
+  Not found
+
+Learn more:
+  https://aka.ms/dotnet/info
+
+Download .NET:
+  https://aka.ms/dotnet/download
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Core/Core.csproj (in 1.86 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/Runtime.csproj (in 1.91 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sql/Sql.csproj (in 1.91 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Postgres/Postgres.csproj (in 2.1 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Ports.Tests/Ports.Tests.csproj (in 3.17 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sqlite/Sqlite.csproj (in 3.92 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Generator/Generator.csproj (in 4.02 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Tests.csproj (in 4.04 sec).
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Successfully created package '/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/feed/Neemle.OrmLite.0.1.0-dev.g0f4b8c9.nupkg'.
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Successfully created package '/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/feed/Neemle.OrmLite.Postgres.0.1.0-dev.g0f4b8c9.nupkg'.
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Successfully created package '/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/feed/Neemle.OrmLite.Sqlite.0.1.0-dev.g0f4b8c9.nupkg'.
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/demo/OrmLiteDemo.csproj (in 1.39 sec).
+  OrmLiteDemo -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/consumer/bin/OrmLiteDemo/release/OrmLiteDemo.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:09.39

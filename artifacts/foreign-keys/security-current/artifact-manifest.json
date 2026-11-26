@@ -1,0 +1,184 @@
+{
+  "generated": "2026-11-26T09:21:48.996873+00:00",
+  "productHead": "6c38687ccc895f96df169f39826b52004640c685",
+  "sourceTree": "624c2b36d4a529f4e784a387656737688f1a7241",
+  "testTree": "94446033dbd2fd35f3fb9306abec404b5e9fd97b",
+  "scope": "frozen product+demo and five new Final test files; compiler all8projects, no old source/test changes",
+  "rawScannerExits": {
+    "semgrep": 1,
+    "devskim": 2,
+    "roslyn": 0,
+    "dependencies": 0,
+    "licenses": 0
+  },
+  "disposition": "Bounded no NEW security finding established; existing3Semgrep+2DevSkim+72compilerSecurity warnings and18parsepartials retained, full802 stillOPEN",
+  "files": [
+    {
+      "path": "artifacts/foreign-keys/security-current/audit_runner.py",
+      "sha256": "4cadda7cd80a4a1318055b90df37bcfc22c585ba5eb136779c6cd120cff76d38",
+      "bytes": 3427
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/dependencies-run.json",
+      "sha256": "5942ba0a2cb3828d0532487bcc8bc38051b4e6954aba8d890a347af8d8c72967",
+      "bytes": 2645
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/dependencies.cid",
+      "sha256": "ffc0010aae4c113fe4d6e5696f80f2d29835cdf8ccb50e8f492a3baea920bf50",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/dependencies.log",
+      "sha256": "2f8646c6e39e346bf2842d4911c667ae134dffc8e6e9d9896d5170b0eacd0a5d",
+      "bytes": 1328
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/devskim-run.json",
+      "sha256": "1b4386ec9b9a0285f381aed1907d8307a82260298cf7a2da1a35ef602c382ff2",
+      "bytes": 2452
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/devskim.cid",
+      "sha256": "637de04b4b4d4f2e5827629eb8e185b240d362941772e8e51197f06cf8263efc",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/devskim.log",
+      "sha256": "0f05583f106086e83b49a74f5ad70fd2175cd38be08bee77837ddd8f43fabb63",
+      "bytes": 17774
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/devskim.sarif",
+      "sha256": "7b664ba7b69ed0e6c0fd97c64c442a0e8e0ace44b6b5ecef955061057eaa4797",
+      "bytes": 2164
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/licenses-run.json",
+      "sha256": "5fa861d50f4ba108ed260dc4a62391a874108c1f4c92a16644da8a1302690607",
+      "bytes": 2159
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/licenses.cid",
+      "sha256": "7cdfc41d928a1b28c34241d2dc35afcf81e2dd984af95a1edf26b4b14b3f18b8",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/licenses.log",
+      "sha256": "4affb61433dfffa4f309fc8ac811031ee466cced9f2ec7e346b8b88f734f9965",
+      "bytes": 4130
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/owned-cleanup.json",
+      "sha256": "1e48cfc24df7ba1a161d8e1804346d495c8c1d313932d970ff1f2b2fb5246a15",
+      "bytes": 1606
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn-Core.sarif.gz",
+      "sha256": "360748032e305965fdd0b5530d05cc2847d3299ff027df6c5fb134dab934e9d9",
+      "bytes": 258
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn-Generator.sarif.gz",
+      "sha256": "624e5bedbaa6ba763930cb1e57e9e65f54d490159d78a565d750a209664ff7c7",
+      "bytes": 3260
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn-Ports.Tests.sarif.gz",
+      "sha256": "7d489a9118eb58551058778d5b53d92a48a48f0ea12add636c00e5ca7d88085a",
+      "bytes": 4791
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn-Postgres.sarif.gz",
+      "sha256": "f42a25db8566eea0c212270b49899f5e619020b407fafe7d1e292d12796ae76d",
+      "bytes": 4298
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn-Runtime.sarif.gz",
+      "sha256": "94467aa8f0a53d722a1f374a687638540d5a060ed44796bb11ded19758ac5cf1",
+      "bytes": 21524
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn-Sql.sarif.gz",
+      "sha256": "8f7dcdbfa749ce48949becccbb0a354a36a0c3361da4ceb25ccbec8b2acd85bd",
+      "bytes": 3747
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn-Sqlite.sarif.gz",
+      "sha256": "d789c94757083f63c7b7ae7b1353e1b27214d25905e4c365c3c5c368943367a9",
+      "bytes": 6969
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn-Tests.sarif.gz",
+      "sha256": "046404201e928adebd9726da6cb97609b5c88e9a0258c30e5c415fe61a19a618",
+      "bytes": 167315
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn-run.json",
+      "sha256": "486e7cb86613de946ff288d1d8b6807edf0fec8b4a2ba903712d6d74ade12843",
+      "bytes": 2920
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn.cid",
+      "sha256": "713ad5b1cb8dbd188202b8c72d6805a942c7fcbe5a82713419d718ee722a0c80",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/roslyn.log",
+      "sha256": "c3a979a360d114c957a6b0ad379d612e6eba8d0cf2ddba0121bc357f9e0148ca",
+      "bytes": 5203553
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/security.globalconfig",
+      "sha256": "6efd65602f2b1b669468b4dab7fdff1450cd8df027bb87f2d17bb80dabeff2dc",
+      "bytes": 143
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/security.targets",
+      "sha256": "cdd50cb7c0efee5313dbabbadcfe2b0b9045e5560064010780ff05ee4b6d88e3",
+      "bytes": 427
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/semgrep-run.json",
+      "sha256": "1b7ca1e9a0cfab0785a1d6176d6c75a1df6e309cc26cc5e056584dc5ff43c0d4",
+      "bytes": 2333
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/semgrep.cid",
+      "sha256": "9da66821a9a2aefd04c09915dacc2f11e6975c8138d8b41a4b1a9d17f680fd7a",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/semgrep.json",
+      "sha256": "d79af996cb60b136635796892bc499f8209a5b8693d195f58e3c684298fa566d",
+      "bytes": 34653
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/semgrep.log",
+      "sha256": "5bfa95c5b5daa86675d0dabe26996c1e0f0e523e8386424baccf16d7b892ebd4",
+      "bytes": 1725
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/source-package-inventory.json",
+      "sha256": "59112413827dfa24a3dea2893e867d729e73aef2c6299326ebbed82d70438c29",
+      "bytes": 1859
+    },
+    {
+      "path": "artifacts/foreign-keys/security-current/triage.json",
+      "sha256": "5994d51186d124ae252cbd604e597f580ab77d0886cee3bf15316034b8665a29",
+      "bytes": 7262
+    }
+  ],
+  "rawRoslynSarifDisposition": "gzip retains exact original raw SARIF bytes; uncompressed originals remain local unchanged",
+  "remaining": "raw100/legacyPDB/full802807808applicability402/decomp/review/integration; no release/newtasks",
+  "rawRoslynSha256": {
+    "artifacts/foreign-keys/security-current/roslyn-Core.sarif": "6cb1f44ca16353dff0d9938fa8b40d385d1a5486f2a0b82f94e3c2231697c989",
+    "artifacts/foreign-keys/security-current/roslyn-Postgres.sarif": "ee91ee9641fd8ea17c5202d879bae92f3bb474a0f97aa8e07e9136c6e53c6b3b",
+    "artifacts/foreign-keys/security-current/roslyn-Runtime.sarif": "87197a4dfe323e7d895d51c0c3749081f3dbaba885eff6a806398352b297dbfe",
+    "artifacts/foreign-keys/security-current/roslyn-Sql.sarif": "a9d1f2d4fb5e8896c4d5dd242582fde72e1e3929f6835ca86c80f80cd09e02f8",
+    "artifacts/foreign-keys/security-current/roslyn-Generator.sarif": "2e38d70aba8f23d0a0609112a8f2a545f312c8e9393b0999a2203ee6e9f57ca3",
+    "artifacts/foreign-keys/security-current/roslyn-Sqlite.sarif": "efecb477a20b79a456ff5ff4f79bde1155b283b73afeeec70409eeb9537c62ed",
+    "artifacts/foreign-keys/security-current/roslyn-Ports.Tests.sarif": "9b9fdf13c86c7f31dfb07e06ccecce728cc28c517101edb09c622f351d8a4ace",
+    "artifacts/foreign-keys/security-current/roslyn-Tests.sarif": "6e070472039d6829d0fb9452d2887fb42e30c3b0bdff6328a3bec5aa3dfcaa04"
+  }
+}

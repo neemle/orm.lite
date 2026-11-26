@@ -1,0 +1,9 @@
+[
+  {
+    "package": "artifacts/foreign-keys/dev-migration-layout/feed/Neemle.OrmLite.0.1.0-dev.g0f4b8c9.nupkg",
+    "packageSha256": "65022586eb588caeb974b8a085a7862bc6b349c6b7343a0d5a7c29f84da87c97",
+    "member": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+    "generatorSha256": "796e580a540bb81781a88af8b1c93cfd3679bf4d17aca107c35e749238f31ca8",
+    "matchesCurrentBuild": true
+  }
+]

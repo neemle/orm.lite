@@ -54,8 +54,9 @@ internal static class TrackerChapters
         var cleanup = await CascadeDeleteAsync(db);
         var report = await GroupedReportAsync(db);
         var graph = await GraphChapter.RunAsync(db);
+        var foreignKeys = await ForeignKeyChapter.RunAsync(db);
         return schema && transactions && indexes && aggregates && cascade
-            && json && views && cleanup && report && graph;
+            && json && views && cleanup && report && graph && foreignKeys;
     }
 
     // Chapter 8: the schema the tracker migrations left, read back from the database.

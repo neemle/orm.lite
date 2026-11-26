@@ -1,0 +1,126 @@
+{
+  "newReadmeLinks": [
+    "Parent.cs",
+    "SetNullChild.cs",
+    "Tag.cs",
+    "CatalogCases.cs",
+    "LoaderChild.cs",
+    "GeneratedCases.cs",
+    "Parent.cs",
+    "LinkCases.cs",
+    "ActionCases.cs",
+    "SoftDeleteCases.cs",
+    "UpgradeCases.cs",
+    "RefusalCases.cs",
+    "ConfigurationCases.cs",
+    "../../docs/relations.md"
+  ],
+  "newLinksResolve": true,
+  "evidence": [
+    {
+      "file": "finish.py",
+      "bytes": 4174,
+      "sha256": "bf6c998aea2afa17cb948d2229bfa37b37c734bda9ae571ea193fef1cac13e73"
+    },
+    {
+      "file": "jit10-postgres.json",
+      "bytes": 4856,
+      "sha256": "ea42448f2c69672389563390bae245faa7fe03c7ce2a3808c18805ae7d4aa917"
+    },
+    {
+      "file": "jit10-postgres.log",
+      "bytes": 692,
+      "sha256": "2ca251f739fb184e4a291145add61f9b7cf728c8f59a867ec8e4a3a2dc70dcdc"
+    },
+    {
+      "file": "jit10-sqlite.json",
+      "bytes": 4854,
+      "sha256": "3b8e42346bfd4b2433314d71c1fff5b7aed69cce6592d6c94661873150a17797"
+    },
+    {
+      "file": "jit10-sqlite.log",
+      "bytes": 769,
+      "sha256": "d997ea6b26c1be28bb093f38e633647acb1c60d9a2a1351910e918e6a3ca5093"
+    },
+    {
+      "file": "jit11-postgres.json",
+      "bytes": 4856,
+      "sha256": "5e99650c8a75905be2ae8de711418255dcab05dae3947671132e6caca2780f36"
+    },
+    {
+      "file": "jit11-postgres.log",
+      "bytes": 691,
+      "sha256": "bc8fe0f97704dd4ed1b121664d00f1c9bb4689ff819b00720d5009f06a6377f4"
+    },
+    {
+      "file": "jit11-sqlite.json",
+      "bytes": 4854,
+      "sha256": "5ed144ce0e00bff0c9ebb458de82d5eef0087a78c9e322989b1fca367163eb6f"
+    },
+    {
+      "file": "jit11-sqlite.log",
+      "bytes": 768,
+      "sha256": "fb2d5079b778911f55cba52b42eb1b363baccdcc82e8d9b4917f696c56d5cec8"
+    },
+    {
+      "file": "matrix-results.json",
+      "bytes": 13947,
+      "sha256": "2a4442ce19afd563363018bda30808828cccaed801ccc9eb359198277504dc18"
+    },
+    {
+      "file": "matrix.py",
+      "bytes": 1749,
+      "sha256": "1dbd2219058db9b81d669169e9e7cebf2b62b29af0044cd65f3b639a7ffb3a4f"
+    },
+    {
+      "file": "native10.json",
+      "bytes": 5261,
+      "sha256": "c2e47937c83c24310423352223a8ff3c67bdb72bae3e5c23986d4fb46c7be820"
+    },
+    {
+      "file": "native10.log",
+      "bytes": 2032,
+      "sha256": "b91c6406a56f8fda050a7ee3532e9fd100e3b0c59bbd70f32f442021c13ae462"
+    },
+    {
+      "file": "native11.json",
+      "bytes": 5261,
+      "sha256": "3be9ce3131c7cba88d3e57fef09f1cf318176d67ea566badfaaf7d878da34d43"
+    },
+    {
+      "file": "native11.log",
+      "bytes": 2030,
+      "sha256": "cba4cd186d36d9825cd7f5be9ac901d6a008424ec3840228723ed665300074d6"
+    },
+    {
+      "file": "network-id.txt",
+      "bytes": 64,
+      "sha256": "54033a19e040b5ceee92975f1e6dc3c2ee5b9f936d35b5292b0e6f994cdfe8a6"
+    },
+    {
+      "file": "pack-current.json",
+      "bytes": 4116,
+      "sha256": "52a68264119dfd8dbdb774c35a7a87129ec0e21286c4ccb8969f85e42c00e114"
+    },
+    {
+      "file": "pack-current.log",
+      "bytes": 4131,
+      "sha256": "f4bfdb0322455b3990033590bbbb686b32bfe94b0697d0a50b3c2e53db6006f5"
+    },
+    {
+      "file": "postgres-id.txt",
+      "bytes": 64,
+      "sha256": "e5d3b0cd1664b081b4624030cca9fe00dc6fb4878600c78a37d443ca20c52a2e"
+    },
+    {
+      "file": "resource-creation.json",
+      "bytes": 1038,
+      "sha256": "2c471c56fe835a948f7098db73ea983c8bf5a8efbb68f48bc742d69399bab7b4"
+    },
+    {
+      "file": "run.py",
+      "bytes": 961,
+      "sha256": "ad1854e994143e44af34fffdc1d50e15a219cfacbe9431916c7eccdc47a8be87"
+    }
+  ]
+}

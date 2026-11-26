@@ -1,0 +1,532 @@
+{
+  "time": "2026-11-26T06:10:18.502852+00:00",
+  "containers": [
+    {
+      "id": "e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848",
+      "before": {
+        "Id": "e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848",
+        "Created": "2026-11-26T06:02:00.893525167Z",
+        "Path": "/usr/local/pgsql/bin/postgres",
+        "Args": [
+          "--launcher"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 38952,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-11-26T06:02:01.002905084Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117",
+        "ResolvConfPath": "/var/lib/docker/containers/e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848/hostname",
+        "HostsPath": "/var/lib/docker/containers/e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848/hosts",
+        "LogPath": "",
+        "Name": "/orml110-mig-pg",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "11fbfe82bf064ff7229dd54ac0f3a80ac594cf2862a25946fce695fff754f335",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": true,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": null,
+          "Tmpfs": {
+            "/var/lib/postgresql/data": "uid=70,gid=70,mode=0700"
+          },
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 0,
+          "NanoCpus": 0,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 0,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": null,
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "Storage": {
+          "RootFS": {
+            "Snapshot": {
+              "Name": "overlayfs"
+            }
+          }
+        },
+        "Mounts": [],
+        "Config": {
+          "Hostname": "e27df4ffef21",
+          "Domainname": "",
+          "User": "70:70",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "ExposedPorts": {
+            "5432/tcp": {}
+          },
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "POSTGRES_HOST_AUTH_METHOD=trust",
+            "POSTGRES_USER=postgres",
+            "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "PG_MAJOR=19",
+            "PG_VERSION=19.0",
+            "PGDATA=/var/lib/postgresql/data",
+            "LANG=C.UTF-8"
+          ],
+          "Cmd": null,
+          "Image": "neemle/pg.lite:19",
+          "Volumes": {
+            "/var/lib/postgresql/data": {}
+          },
+          "WorkingDir": "/",
+          "Entrypoint": [
+            "/usr/local/pgsql/bin/postgres",
+            "--launcher"
+          ],
+          "Labels": {
+            "io.github.neemle.pglite.packed": "yes",
+            "io.github.neemle.pglite.platform": "linux/arm64, static, musl",
+            "io.github.neemle.pglite.postgres-major": "19",
+            "org.opencontainers.image.created": "2026-11-21T00:54:51+01:00",
+            "org.opencontainers.image.description": "PostgreSQL 19.0 as one static executable in a FROM scratch image",
+            "org.opencontainers.image.documentation": "https://github.com/neemle/pg.lite#configuration-of-the-image",
+            "org.opencontainers.image.licenses": "PostgreSQL",
+            "org.opencontainers.image.revision": "1b5badb2c66cb6bf4917efca747e6cd0ad6c81da",
+            "org.opencontainers.image.source": "https://github.com/neemle/pg.lite",
+            "org.opencontainers.image.title": "pg.lite",
+            "org.opencontainers.image.url": "https://github.com/neemle/pg.lite",
+            "org.opencontainers.image.version": "19.0",
+            "orml.actor": "dev-migration-layout",
+            "orml.task": "ORML-110"
+          },
+          "StopSignal": "SIGINT"
+        },
+        "NetworkSettings": {
+          "SandboxID": "5555fb4dca447668cb28824a79d60ad792ab4e85c158643f0088076f2e70e99a",
+          "SandboxKey": "/var/run/docker/netns/5555fb4dca44",
+          "Ports": {
+            "5432/tcp": null
+          },
+          "Networks": {
+            "orml110-migration-layout": {
+              "IPAMConfig": null,
+              "Links": null,
+              "Aliases": [
+                "mig-pg"
+              ],
+              "DriverOpts": null,
+              "GwPriority": 0,
+              "NetworkID": "11fbfe82bf064ff7229dd54ac0f3a80ac594cf2862a25946fce695fff754f335",
+              "EndpointID": "35a79435c9e1adc99a52796ca023180cd156f9b8956cdaeb124b2a4a466ef64a",
+              "Gateway": "172.20.0.1",
+              "IPAddress": "172.20.0.2",
+              "MacAddress": "32:d6:77:23:32:66",
+              "IPPrefixLen": 16,
+              "IPv6Gateway": "",
+              "GlobalIPv6Address": "",
+              "GlobalIPv6PrefixLen": 0,
+              "DNSNames": [
+                "orml110-mig-pg",
+                "mig-pg",
+                "e27df4ffef21"
+              ]
+            }
+          }
+        },
+        "ImageManifestDescriptor": {
+          "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+          "digest": "sha256:abd4b86fec2f2d940ed3a7b79e925d2ff5286c9fbe819f8730ddbab421aaaae3",
+          "size": 735,
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux"
+          }
+        }
+      },
+      "absent": true
+    },
+    {
+      "id": "b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7",
+      "before": {
+        "Id": "b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7",
+        "Created": "2026-11-26T06:02:05.643668836Z",
+        "Path": "/usr/local/pgsql/bin/postgres",
+        "Args": [
+          "--launcher"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 39112,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-11-26T06:02:05.705886295Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117",
+        "ResolvConfPath": "/var/lib/docker/containers/b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7/hostname",
+        "HostsPath": "/var/lib/docker/containers/b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7/hosts",
+        "LogPath": "",
+        "Name": "/orml110-demo-pg",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "11fbfe82bf064ff7229dd54ac0f3a80ac594cf2862a25946fce695fff754f335",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": true,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": null,
+          "Tmpfs": {
+            "/var/lib/postgresql/data": "uid=70,gid=70,mode=0700"
+          },
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 0,
+          "NanoCpus": 0,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 0,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": null,
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "Storage": {
+          "RootFS": {
+            "Snapshot": {
+              "Name": "overlayfs"
+            }
+          }
+        },
+        "Mounts": [],
+        "Config": {
+          "Hostname": "b8d1a759a3dc",
+          "Domainname": "",
+          "User": "70:70",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "ExposedPorts": {
+            "5432/tcp": {}
+          },
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "POSTGRES_HOST_AUTH_METHOD=trust",
+            "POSTGRES_USER=postgres",
+            "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "PG_MAJOR=19",
+            "PG_VERSION=19.0",
+            "PGDATA=/var/lib/postgresql/data",
+            "LANG=C.UTF-8"
+          ],
+          "Cmd": null,
+          "Image": "neemle/pg.lite:19",
+          "Volumes": {
+            "/var/lib/postgresql/data": {}
+          },
+          "WorkingDir": "/",
+          "Entrypoint": [
+            "/usr/local/pgsql/bin/postgres",
+            "--launcher"
+          ],
+          "Labels": {
+            "io.github.neemle.pglite.packed": "yes",
+            "io.github.neemle.pglite.platform": "linux/arm64, static, musl",
+            "io.github.neemle.pglite.postgres-major": "19",
+            "org.opencontainers.image.created": "2026-11-21T00:54:51+01:00",
+            "org.opencontainers.image.description": "PostgreSQL 19.0 as one static executable in a FROM scratch image",
+            "org.opencontainers.image.documentation": "https://github.com/neemle/pg.lite#configuration-of-the-image",
+            "org.opencontainers.image.licenses": "PostgreSQL",
+            "org.opencontainers.image.revision": "1b5badb2c66cb6bf4917efca747e6cd0ad6c81da",
+            "org.opencontainers.image.source": "https://github.com/neemle/pg.lite",
+            "org.opencontainers.image.title": "pg.lite",
+            "org.opencontainers.image.url": "https://github.com/neemle/pg.lite",
+            "org.opencontainers.image.version": "19.0",
+            "orml.actor": "dev-migration-layout",
+            "orml.task": "ORML-110"
+          },
+          "StopSignal": "SIGINT"
+        },
+        "NetworkSettings": {
+          "SandboxID": "cef6494614202498c070a37bf3884e094bba929ae621b2ca0e7cf393f1394021",
+          "SandboxKey": "/var/run/docker/netns/cef649461420",
+          "Ports": {
+            "5432/tcp": null
+          },
+          "Networks": {
+            "orml110-migration-layout": {
+              "IPAMConfig": null,
+              "Links": null,
+              "Aliases": [
+                "demo-pg"
+              ],
+              "DriverOpts": null,
+              "GwPriority": 0,
+              "NetworkID": "11fbfe82bf064ff7229dd54ac0f3a80ac594cf2862a25946fce695fff754f335",
+              "EndpointID": "db4c8e9b3c353727f7a15b6051406aa726f5345426c364cd991f1be10b25a0cd",
+              "Gateway": "172.20.0.1",
+              "IPAddress": "172.20.0.3",
+              "MacAddress": "ba:4a:12:e3:0b:0a",
+              "IPPrefixLen": 16,
+              "IPv6Gateway": "",
+              "GlobalIPv6Address": "",
+              "GlobalIPv6PrefixLen": 0,
+              "DNSNames": [
+                "orml110-demo-pg",
+                "demo-pg",
+                "b8d1a759a3dc"
+              ]
+            }
+          }
+        },
+        "ImageManifestDescriptor": {
+          "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+          "digest": "sha256:abd4b86fec2f2d940ed3a7b79e925d2ff5286c9fbe819f8730ddbab421aaaae3",
+          "size": 735,
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux"
+          }
+        }
+      },
+      "absent": true
+    }
+  ],
+  "networkBefore": {
+    "Name": "orml110-migration-layout",
+    "Id": "11fbfe82bf064ff7229dd54ac0f3a80ac594cf2862a25946fce695fff754f335",
+    "Created": "2026-11-26T06:02:00.825608042Z",
+    "Scope": "local",
+    "Driver": "bridge",
+    "EnableIPv4": true,
+    "EnableIPv6": false,
+    "IPAM": {
+      "Driver": "default",
+      "Options": {},
+      "Config": [
+        {
+          "Subnet": "172.20.0.0/16",
+          "Gateway": "172.20.0.1"
+        }
+      ]
+    },
+    "Internal": false,
+    "Attachable": false,
+    "Ingress": false,
+    "ConfigFrom": {
+      "Network": ""
+    },
+    "ConfigOnly": false,
+    "Options": {
+      "com.docker.network.enable_ipv4": "true",
+      "com.docker.network.enable_ipv6": "false"
+    },
+    "Labels": {
+      "orml.actor": "dev-migration-layout",
+      "orml.task": "ORML-110"
+    },
+    "Containers": {
+      "b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7": {
+        "Name": "orml110-demo-pg",
+        "EndpointID": "db4c8e9b3c353727f7a15b6051406aa726f5345426c364cd991f1be10b25a0cd",
+        "MacAddress": "ba:4a:12:e3:0b:0a",
+        "IPv4Address": "172.20.0.3/16",
+        "IPv6Address": ""
+      },
+      "e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848": {
+        "Name": "orml110-mig-pg",
+        "EndpointID": "35a79435c9e1adc99a52796ca023180cd156f9b8956cdaeb124b2a4a466ef64a",
+        "MacAddress": "32:d6:77:23:32:66",
+        "IPv4Address": "172.20.0.2/16",
+        "IPv6Address": ""
+      }
+    },
+    "Status": {
+      "IPAM": {
+        "Subnets": {
+          "172.20.0.0/16": {
+            "IPsInUse": 5,
+            "DynamicIPsAvailable": 65531
+          }
+        }
+      }
+    }
+  },
+  "networkAbsent": true
+}

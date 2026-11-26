@@ -1,0 +1,17 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/ForeignKeysAot/ForeignKeysAot.csproj (in 265 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Core/Core.csproj (in 398 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/Runtime.csproj (in 396 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sql/Sql.csproj (in 403 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sqlite/Sqlite.csproj (in 404 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Generator/Generator.csproj (in 425 ms).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/native10-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/native10-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/native10-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/native10-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/native10-build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  ForeignKeysAot -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/native10-build/bin/ForeignKeysAot/release_linux-arm64/ForeignKeysAot.dll
+  Generating native code
+  ForeignKeysAot -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/native10-out/
+foreign-key native runtime: 10.0.15
+foreign-key native ok
