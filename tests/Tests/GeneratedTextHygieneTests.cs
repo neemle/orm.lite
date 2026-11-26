@@ -18,14 +18,21 @@ public sealed class GeneratedTextHygieneTests
     {
         var source = Source + MigrationClass("M0001", "0001_docs_extra", "Reversible", DownOverride("SELECT 'down'"));
 
-        var (diagnostics, generated, _) = Run(source);
+        var (diagnostics, generated, output) = Run(source);
 
         Assert.Empty(diagnostics);
         Assert.Contains("class DocOrm", generated, StringComparison.Ordinal);
         Assert.Contains("OrmSchema.Of(", generated, StringComparison.Ordinal);
         Assert.Contains("MigrationContribution.For<global::Fixture.M0001>(", generated, StringComparison.Ordinal);
         var lines = generated.Split('\n').Select(l => l.Trim()).ToArray();
-        Assert.Equal(3, lines.Count(l => l == Header));
+        var files = output.SyntaxTrees.Where(t => t.FilePath.EndsWith(".g.cs", StringComparison.Ordinal))
+            .OrderBy(t => Path.GetFileName(t.FilePath), StringComparer.Ordinal).ToArray();
+        Assert.Equal(new[] { "OrmLite.Entities.0000.g.cs", "OrmLite.Entities.0001.g.cs",
+            "OrmLite.Entities.0002.g.cs", "OrmLite.Entities.0003.g.cs", "OrmLite.MigrationRegistry.g.cs",
+            "OrmLite.Migrations.g.cs" }, files.Select(t => Path.GetFileName(t.FilePath)));
+        Assert.All(files, file => Assert.Equal(1,
+            file.ToString().Split('\n').Count(line => line.Trim() == Header)));
+        Assert.Equal(files.Length, lines.Count(l => l == Header));
         Assert.DoesNotContain(lines, l => l.StartsWith("//", StringComparison.Ordinal) && l != Header);
         Assert.DoesNotContain(lines, l => l.Contains(TrackerPrefix, StringComparison.Ordinal));
     }

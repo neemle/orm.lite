@@ -1,0 +1,131 @@
+--- a/tests/Tests/SoftDelete/Reads/RootReadPath.cs
++++ b/tests/Tests/SoftDelete/Reads/RootReadPath.cs
+@@ -12,6 +12,19 @@
+ {
+     public static readonly IReadOnlyList<RootReadPath> Census =
+     [
++        new("StreamAsync", [nameof(Query<SoftRoot>.StreamAsync)],
++            q => ConsumeStream(q.OrderBy(r => r.Rank).StreamAsync(), r => r.Rank),
++            [SoftDeleteDb.LiveRank], [SoftDeleteDb.LiveRank, SoftDeleteDb.DeletedRank]),
++        new("StreamProjectAsync", [nameof(Query<SoftRoot>.StreamProjectAsync)],
++            q => ConsumeStream(q.OrderBy(r => r.Rank).StreamProjectAsync([r => r.Rank], r => r.GetInt32(0)), r => r),
++            [SoftDeleteDb.LiveRank], [SoftDeleteDb.LiveRank, SoftDeleteDb.DeletedRank]),
++        new("StreamProjectionAsync", [nameof(Query<SoftRoot>.StreamProjectionAsync)],
++            q => ConsumeStream(q.OrderBy(r => r.Rank).ProjectColumn(r => r.Rank)
++                .StreamProjectionAsync(r => r.GetInt32(0)), r => r),
++            [SoftDeleteDb.LiveRank], [SoftDeleteDb.LiveRank, SoftDeleteDb.DeletedRank]),
++        new("StreamColumnAsync", [nameof(Query<SoftRoot>.StreamColumnAsync)],
++            q => ConsumeStream(q.OrderBy(r => r.Rank).StreamColumnAsync<int>(r => r.Rank), r => r),
++            [SoftDeleteDb.LiveRank], [SoftDeleteDb.LiveRank, SoftDeleteDb.DeletedRank]),
+         new("ToListAsync", [nameof(Query<SoftRoot>.ToListAsync), nameof(Query<SoftRoot>.RenderSelect)],
+             async q => (await q.OrderBy(r => r.Rank).ToListAsync()).Select(r => (long)r.Rank).ToArray(),
+             [SoftDeleteDb.LiveRank], [SoftDeleteDb.LiveRank, SoftDeleteDb.DeletedRank]),
+@@ -53,5 +66,16 @@
+             [SoftDeleteDb.LiveRank], [SoftDeleteDb.LiveRank, SoftDeleteDb.DeletedRank]),
+     ];
+ 
++    private static async Task<long[]> ConsumeStream<T>(QueryStream<T> stream, Func<T, long> rank)
++    {
++        var result = new List<long>();
++        await using var e = stream.GetAsyncEnumerator();
++        while (await e.MoveNextAsync()) result.Add(rank(e.Current));
++        var completion = await e.Completion;
++        if (completion.Reason != QueryStreamStopReason.Completed || !completion.CleanupSucceeded)
++            throw new InvalidOperationException("stream census did not establish clean EOF");
++        return result.ToArray();
++    }
++
+     public static RootReadPath Named(string name) => Census.Single(p => p.Name == name);
+ }
+--- a/tests/Tests/QueryIdentifierSurfaceTests.cs
++++ b/tests/Tests/QueryIdentifierSurfaceTests.cs
+@@ -21,6 +21,7 @@
+             [
+                 "Action<ViewColumns<T, TView>>",
+                 "Boolean",
++                "CancellationToken",
+                 "DbCommand",
+                 "DbConnection",
+                 "DbTransaction",
+--- a/tests/Tests/QueryTerminalState/TerminalCensus.cs
++++ b/tests/Tests/QueryTerminalState/TerminalCensus.cs
+@@ -28,8 +28,25 @@
+         return Task.CompletedTask;
+     };
+ 
++    private static async Task ConsumeStream<T>(QueryStream<T> stream)
++    {
++        await using var e = stream.GetAsyncEnumerator();
++        while (await e.MoveNextAsync()) _ = e.Current;
++        var completion = await e.Completion;
++        if (completion.Reason != QueryStreamStopReason.Completed || !completion.CleanupSucceeded)
++            throw new InvalidOperationException("stream census did not establish clean EOF");
++    }
++
+     internal static readonly IReadOnlyList<CensusEntry> Entries =
+     [
++        new("StreamAsync", [nameof(Query<BehaveNote>.StreamAsync)], false, true,
++            q => ConsumeStream(q.StreamAsync())),
++        new("StreamProjectAsync", [nameof(Query<BehaveNote>.StreamProjectAsync)], false, true,
++            q => ConsumeStream(q.StreamProjectAsync(Id, r => r.GetGuid(0)))),
++        new("StreamProjectionAsync", [nameof(Query<BehaveNote>.StreamProjectionAsync)], false, true,
++            q => ConsumeStream(q.StreamProjectionAsync(r => r.GetGuid(0)))),
++        new("StreamColumnAsync", [nameof(Query<BehaveNote>.StreamColumnAsync)], false, true,
++            q => ConsumeStream(q.StreamColumnAsync<Guid>(n => n.Id))),
+         new("ToListAsync",
+             [nameof(Query<BehaveNote>.ToListAsync)],
+             false, true,
+--- a/tests/Tests/Corpus/Support/CorpusSurface.cs
++++ b/tests/Tests/Corpus/Support/CorpusSurface.cs
+@@ -43,6 +43,14 @@
+ 
+     public static readonly IReadOnlyDictionary<string, string> Exclusions = new Dictionary<string, string>(StringComparer.Ordinal)
+     {
++        ["Query.StreamAsync/1"] = "cold row-stream capture shares CompileSelect text; SdetSoftReadCensusTests executes visibility and SdetProviderTests executes parity, no-write and Completion on both providers",
++        ["Query.StreamProjectAsync/3"] = "cold projection-stream capture shares CompileProject text; SdetProviderTests executes frozen columns, no-write and Completion on both providers",
++        ["Query.StreamProjectionAsync/2"] = "cold configured-projection capture shares CompileProjection text; SdetProviderTests executes no-write and Completion on both providers",
++        ["Query.StreamColumnAsync/2"] = "row-wise scalar stream shares CompileProject text, not ScalarAsync first-row cap; SdetProviderTests executes typed NULL/default, no-write and Completion on both providers",
++        ["Query.get_StreamMap/0"] = "internal captured trusted mapper identity; SdetPrimaryCleanupTests and SdetProviderTests exercise exact cause and detached-row mapping, emits no SQL",
++        ["Query.get_StreamBinding/0"] = "internal provider/data-source snapshot; producer gated-open and independent real-provider diagnostic/lock witnesses execute this path, emits no SQL",
++        ["Query.get_StreamBorrowed/0"] = "internal borrowed connection/transaction snapshot; SdetBorrowedBoundaryTests executes exact-identity isolation and mismatch refusal, emits no SQL",
++        ["Query.get_StreamLocked/0"] = "internal row-lock metadata snapshot; SdetBorrowedBoundaryTests and SdetProviderTests execute transaction prerequisite and actual PostgreSQL lock path, emits no SQL",
+         ["Query.BuildSelect/0"] = "internal tree builder beneath CompileSelect; the corpus pins the text it compiles to and QueryTreeTests pin the tree",
+         ["Query.BuildProject/1"] = "internal tree builder beneath CompileProject; the corpus pins the text it compiles to and QueryTreeTests pin the tree",
+         ["Query.BuildProjection/0"] = "internal tree builder beneath CompileProjection; the corpus pins the text it compiles to and QueryTreeTests pin the tree",
+--- a/tests/Tests/Corpus/INDEX.md
++++ b/tests/Tests/Corpus/INDEX.md
+@@ -1012,7 +1012,7 @@
+ | `OrmContext` | 5 | 2 | 3 |
+ | `OrmEnum` | 2 | 2 | 0 |
+ | `OrmLiteSettings` | 2 | 2 | 0 |
+-| `Query` | 108 | 95 | 13 |
++| `Query` | 116 | 95 | 21 |
+ | `Row` | 3 | 3 | 0 |
+ | `RowHistoryDdl` | 10 | 7 | 3 |
+ | `RowHistoryRead` | 6 | 6 | 0 |
+@@ -1024,7 +1024,7 @@
+ | `TableBuilder` | 5 | 4 | 1 |
+ | `UnitOfWork` | 5 | 5 | 0 |
+ | `UpsertSet` | 7 | 5 | 2 |
+-| total | 234 | 200 | 34 |
++| total | 242 | 200 | 42 |
+ 
+ Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `ConflictGuard`.
+ 
+@@ -1056,8 +1056,16 @@
+ | `Query.CompileScalar/1` | the statement ScalarAsync runs; the clause-free text is pinned by the executed query-scalar-soft and query-scalar-null-answer-is-the-default entries, which run through it, and the order and offset text on both providers by ScalarRenderingTests |
+ | `Query.Definition/1` | internal factory of the provider-bound query that MigrationBuilder.From returns; its use is pinned by every ddl-builder view entry |
+ | `Query.RenderScalar/1` | text of CompileScalar; pinned by the same executed entries and by ScalarRenderingTests on both providers |
++| `Query.StreamAsync/1` | cold row-stream capture shares CompileSelect text; SdetSoftReadCensusTests executes visibility and SdetProviderTests executes parity, no-write and Completion on both providers |
++| `Query.StreamColumnAsync/2` | row-wise scalar stream shares CompileProject text, not ScalarAsync first-row cap; SdetProviderTests executes typed NULL/default, no-write and Completion on both providers |
++| `Query.StreamProjectAsync/3` | cold projection-stream capture shares CompileProject text; SdetProviderTests executes frozen columns, no-write and Completion on both providers |
++| `Query.StreamProjectionAsync/2` | cold configured-projection capture shares CompileProjection text; SdetProviderTests executes no-write and Completion on both providers |
+ | `Query.get_SourceTable/0` | internal accessor read only by ViewColumns; the table it names is pinned by ddl-builder/create-view-over-a-filtered-query |
+ | `Query.get_State/0` | internal accessor read only by ViewColumns; the scope it carries is pinned by ddl-builder/view-over-a-join-and-an-aggregate |
++| `Query.get_StreamBinding/0` | internal provider/data-source snapshot; producer gated-open and independent real-provider diagnostic/lock witnesses execute this path, emits no SQL |
++| `Query.get_StreamBorrowed/0` | internal borrowed connection/transaction snapshot; SdetBorrowedBoundaryTests executes exact-identity isolation and mismatch refusal, emits no SQL |
++| `Query.get_StreamLocked/0` | internal row-lock metadata snapshot; SdetBorrowedBoundaryTests and SdetProviderTests execute transaction prerequisite and actual PostgreSQL lock path, emits no SQL |
++| `Query.get_StreamMap/0` | internal captured trusted mapper identity; SdetPrimaryCleanupTests and SdetProviderTests exercise exact cause and detached-row mapping, emits no SQL |
+ | `Query.get_Translator/0` | internal accessor read only by ViewColumns; the predicates it translates are pinned by ddl-builder/view-over-a-join-and-an-aggregate |
+ | `Query.get_WhereTerms/0` | node-tree accessor beside WhereClauses; the terms it exposes are the ones WhereClauses renders, pinned by query-read/select-render-is-repeatable-and-exposes-the-where-terms |
+ | `RowHistoryDdl.Install/1` | node factory beneath Reconcile; the statements it lowers to are pinned by the row-history/ddl-reconcile-* entries |

@@ -1,0 +1,28 @@
+{
+  "status": "HISTORICAL FAILED INPUT RECONSTRUCTED FROM FIRST SOURCE COMMIT AND EXACT NAMESPACE/ALIAS CORRECTION",
+  "recordedSourceDigest": "3e9751fa738988f9ba19050e9a52bfbce7c2db88f8da8ed2fb0c5f67408b9223",
+  "reconstructedDigest": "3e9751fa738988f9ba19050e9a52bfbce7c2db88f8da8ed2fb0c5f67408b9223",
+  "exactDigestMatch": true,
+  "files": [
+    {
+      "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/EntityEmitter.cs",
+      "sha256": "e5556019f0a4727f398f32db0fd77b353e3b64e0574f7de576598a8b3eba4303"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/MigrationGenerator.cs",
+      "sha256": "fbe41ccd81fb95e71a8071e7ba90cf63701aad8f7f5c311ae5b52a391635e042"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/GeneratedSourceLayout/GeneratedInitializer.cs",
+      "sha256": "fbd5e59817403122e1f7baff2cb7db34cfe29127e8faddb40de2efe7c9c1bec8"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/GeneratedSourceLayout/GeneratedLineWrap.cs",
+      "sha256": "70b7704983d958284cd9c2d600a9129942881751afd73b4a400db38b5aacbc21"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/GeneratedSourceLayout/GeneratedSourceLayout.cs",
+      "sha256": "ddfbb22371a3c8258ae4881b22432bdd25fc1b80be3a64d5e4069d9611861b7c"
+    }
+  ]
+}

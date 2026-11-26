@@ -1,0 +1,85 @@
+{
+  "schema": "ORML-116-package-integration-v1",
+  "generated": "2026-11-26T11:20:13.769757+00:00",
+  "run": "18599b3a-eac8-4b70-bc58-3e24715717ae",
+  "claim": "a6134270-7b68-4b66-be94-7068995449e0",
+  "functionalCommit": "ba790a509fe4fc67b7b6cb7a443fa7d87ea3b137",
+  "sourceTree": "73506871ce5d6640376ead3a9bf6f4729ec0c8f6",
+  "testTree": "18cf1d436d96a843c081af33a720cc8a36cfa70f",
+  "mergedInput": "d6569eacc01cfbd2d7ad652d8fac65b9029c4538",
+  "mergedMain107": "cd520480412245d3cdb3ef1b7878010008fe6c9d",
+  "changedVerificationFiles": [
+    {
+      "path": "scripts/PackCheck.cs",
+      "sha256": "34719889c5eed6dbc4595533ded61520007c7923f6d984d439b8accb0bba3a40"
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden",
+      "sha256": "4bcfd1a8e89436dcfabe04824ab0639589f3c0336f5381d0d6111f34d83daa4f"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+      "sha256": "955425deebe15570c77db58de0d75ee94e2b41ddde8f4ea986b09873fc94f78f"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+      "sha256": "4bcfd1a8e89436dcfabe04824ab0639589f3c0336f5381d0d6111f34d83daa4f"
+    }
+  ],
+  "gates": {
+    "compile-current-tests": {
+      "native": "compile-current-tests.json",
+      "log": "compile-current-tests.log",
+      "exitCode": 0,
+      "commit": "d6569eacc01cfbd2d7ad652d8fac65b9029c4538",
+      "scope": "PASS bounded executable scope"
+    },
+    "capture-three-current-goldens": {
+      "native": "capture-three-current-goldens.json",
+      "log": "capture-three-current-goldens.log",
+      "exitCode": 0,
+      "commit": "d6569eacc01cfbd2d7ad652d8fac65b9029c4538",
+      "scope": "CAPTURE ONLY, not an oracle pass"
+    },
+    "normal-five-golden-tests": {
+      "native": "normal-five-golden-tests.json",
+      "log": "normal-five-golden-tests.log",
+      "exitCode": 0,
+      "commit": "ba790a509fe4fc67b7b6cb7a443fa7d87ea3b137",
+      "scope": "PASS bounded executable scope"
+    },
+    "pack-current-private-packages": {
+      "native": "pack-current-private-packages.json",
+      "log": "pack-current-private-packages.log",
+      "exitCode": 0,
+      "commit": "ba790a509fe4fc67b7b6cb7a443fa7d87ea3b137",
+      "scope": "PASS bounded executable scope"
+    },
+    "actual-pack-consumer": {
+      "native": "actual-pack-consumer.json",
+      "log": "actual-pack-consumer.log",
+      "exitCode": 0,
+      "commit": "ba790a509fe4fc67b7b6cb7a443fa7d87ea3b137",
+      "scope": "PASS bounded executable scope"
+    }
+  },
+  "goldenCounters": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0,
+    "regeneration": "UNSET"
+  },
+  "captureDisposition": "capture-disposition.json; exactly three numeric goldens differ; 743 corpus entries captured; other bytes, entry sets and INDEX unchanged",
+  "assertionDisposition": "assertion-disposition.json",
+  "packages": "package-identities.json; three current private packages 0.1.0-dev.gba790a5",
+  "resource": "runtime-resource.json",
+  "cleanup": "cleanup.json",
+  "priorUnchangedEvidence": {
+    "full116CI": "45804678594: both Main/SkipGate/timezone/Ports and both AOT passed; package failed stale hints",
+    "demo": "artifacts/streaming/demo/final/mode-provider-equivalence.json: reuse unchanged 8 legs"
+  },
+  "remaining": "Single current-head hosted full .NET10/11 CI after push pending ROOT; no local duplicate matrix or unchanged demo replay. This is finite verification-integration SUCCESS, not whole-item acceptance.",
+  "canonicalCarrier": "c400d801-4405-44e5-8afd-53130c3ff0cf",
+  "canonicalReadback": "full body10577 chars, uncapped"
+}

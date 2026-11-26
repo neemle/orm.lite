@@ -1,0 +1,49 @@
+{
+  "containerId": "9f81bf2c5b0224ad651af8f3be506102c906db4b5109162586b5a428e678529d",
+  "imageId": "sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27",
+  "runtimeImage": "orml108-graph-native-sdk10:verified",
+  "mounts": [
+    {
+      "Type": "bind",
+      "Source": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/package-integration/tmp",
+      "Destination": "/tmp/orml116-package",
+      "Mode": "",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "volume",
+      "Name": "orml-107-nuget",
+      "Source": "/var/lib/docker/volumes/orml-107-nuget/_data",
+      "Destination": "/root/.nuget/packages",
+      "Driver": "local",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": ""
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/para/work/tskr/libs/orm.lite/.git",
+      "Destination": "/Users/para/work/tskr/libs/orm.lite/.git",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming",
+      "Destination": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming",
+      "Mode": "",
+      "RW": true,
+      "Propagation": "rprivate"
+    }
+  ],
+  "labels": {
+    "org.opencontainers.image.version": "24.04",
+    "orml.actor": "sdet-package-integration",
+    "orml.task": "ORML-116"
+  },
+  "noDatabaseOrNetworkCreated": true,
+  "scratchAlias": "/tmp/orml116-package points only to this claimed artifact tree/tmp",
+  "cacheVolume": "orml-107-nuget mounted readonly; foreign ownership retained"
+}

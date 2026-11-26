@@ -12,12 +12,19 @@ the other `Compile*`, `Render*` and `*Async` calls) never change it, so one quer
 not thread-safe. `FirstOrDefaultAsync` reads at most the smaller of one and `Take` rows, so after `Take(0)` it returns
 null.
 
+## Stream rows
+
+`StreamAsync`, `StreamProjectAsync`, `StreamProjectionAsync`, and `StreamColumnAsync` return cold row streams with
+zero ORM read-ahead. See [streaming query rows](streaming.md) for capture, cancellation, borrowed transactions, and
+the typed `Completion` check required to establish early cleanup success.
+
 ## Paging and ordering: which terminals take them
 
 `Take`, `Skip` and the `OrderBy` family (`OrderBy`, `ThenBy`, `OrderByPredicate`, the JSON-key orders) shape the
 rows a query reads. What a terminal does with them depends on what it is:
 
-- Reads that return rows (`ToListAsync`, `ProjectAsync`, `ProjectionAsync`, `FirstOrDefaultAsync`) honour all three.
+- Reads that return rows (`ToListAsync`, `ProjectAsync`, `ProjectionAsync`, `FirstOrDefaultAsync`, and the four stream
+  terminals) honour all three.
 - `ScalarAsync` reads the column of the first row of the order: it honours `OrderBy`/`ThenBy` and `Skip`, and a
   `Take(n)` counts as at most one row, so `Take(0)` reads no row and gives the default value.
 - Writes (`UpdateAsync`, `DeleteAsync`, `UpdateReturningAsync`, `DeleteReturningAsync`, and the hidden `PurgeAsync()`)
@@ -33,11 +40,16 @@ rows a query reads. What a terminal does with them depends on what it is:
 ## Lock rows in a unit of work
 
 - A row lock (`ForUpdate`, `ForNoKeyUpdate`) is taken by the reads that return rows (`ToListAsync`, `ProjectAsync`,
-  `ProjectionAsync`, `FirstOrDefaultAsync`). Every other terminal refuses a query that carries one, with an
-  `InvalidOperationException` that names the operation and the lock: `CountAsync`, `AnyAsync`, `SumAsync`,
-  `AggregatesAsync` and its `Compile`/`Render` forms, `ScalarAsync` and its `Compile`/`Render` forms, `GroupBy(...)`,
+  `ProjectionAsync`, `FirstOrDefaultAsync`, and the four stream terminals). Every other terminal refuses a query that
+  carries one, with an `InvalidOperationException` that names the operation and the lock: `CountAsync`, `AnyAsync`,
+  `SumAsync`, `AggregatesAsync` and its `Compile`/`Render` forms, `ScalarAsync` and its `Compile`/`Render` forms, `GroupBy(...)`,
   and the writes. They return no row to lock or lock the rows they change by themselves, so the lock was dropped
   without a word before. Read the rows with the lock in a unit of work, then count, sum or write by their keys.
+
+Streaming row locks also require a captured caller transaction and native support for the requested lock. See
+[connections, transactions, and locks](streaming.md#connections-transactions-and-locks); SQLite buffered emulation
+does not satisfy this streaming requirement.
+
 ## Ordering and NULL values
 
 - Every plain order term (`OrderBy`, `OrderByDescending`, `ThenBy`, `ThenByDescending`, `OrderByPredicate`,

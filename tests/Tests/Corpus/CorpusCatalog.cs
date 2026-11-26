@@ -34,6 +34,7 @@ public static class CorpusCatalog
         UpsertSetCases.Register(run);
         EnumOrderCases.Register(run);
         ExecutedCases.Register(run);
+        Streaming.CiIntegration.StreamCorpusCases.Register(run);
         ConstantsCases.Register(run);
         GeneratorCases.Register(run);
         var entries = recorder.Entries.OrderBy(e => e.Group, StringComparer.Ordinal).ThenBy(e => e.Name, StringComparer.Ordinal).ToList();

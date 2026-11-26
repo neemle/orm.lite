@@ -6,5 +6,6 @@ namespace Neemle.OrmLite.Generated;
 
 public static class TenantOptionDefaultMigrations
 {
-    public static readonly global::Neemle.OrmLite.MigrationContribution[] Contributions = TenantOptionDefaultSchema.Instance.Contributions();
+    public static readonly global::Neemle.OrmLite.MigrationContribution[] Contributions = TenantOptionDefaultSchema.
+        Instance.Contributions();
 }
