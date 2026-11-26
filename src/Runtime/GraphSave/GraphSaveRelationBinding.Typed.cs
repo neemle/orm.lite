@@ -19,16 +19,24 @@ public sealed class GraphSaveRelationBinding<T, TTarget> : GraphSaveRelationBind
     Type IGraphSaveRelation.TargetType => typeof(TTarget);
     GraphSaveRelationShape IGraphSaveRelation.Shape => Shape;
 
-    IReadOnlyList<object> IGraphSaveRelation.Capture(object source)
+    IReadOnlyList<object> IGraphSaveRelation.Capture(object source, Action countSlot)
     {
         if (source is not T typed) throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
         var supplied = _targets(typed);
         if (supplied is null) throw GraphSaveRefusal.At(GraphSaveError.InvalidRequest);
-        var captured = supplied.ToArray();
-        if (captured.Any(t => t is null)) throw GraphSaveRefusal.At(GraphSaveError.InvalidRequest);
-        if (Shape.Kind == GraphSaveRelationKind.Reference && captured.Length > 1)
-            throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
-        return Array.AsReadOnly(captured.Cast<object>().ToArray());
+        if (Shape.Kind == GraphSaveRelationKind.Reference)
+        {
+            countSlot();
+            if (supplied.Count > 1) throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
+        }
+        var captured = new List<object>();
+        foreach (var target in supplied)
+        {
+            if (Shape.Kind != GraphSaveRelationKind.Reference) countSlot();
+            if (target is null) throw GraphSaveRefusal.At(GraphSaveError.InvalidRequest);
+            captured.Add(target);
+        }
+        return captured.AsReadOnly();
     }
 
     bool IGraphSaveRelation.Equivalent(IGraphSaveRelation other) =>
