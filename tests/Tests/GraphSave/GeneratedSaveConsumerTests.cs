@@ -7,8 +7,6 @@ namespace Neemle.OrmLite.Tests.GraphSave;
 [Collection("Graph")]
 public sealed class GeneratedSaveConsumerTests
 {
-    // UC-006 promises an ordinary external consumer can use generated tokens and registration.
-    // This fixture compiles those calls, rather than accepting generated text as the oracle.
     internal const string Source = """
         using System.Collections.Generic;
         using Neemle.OrmLite.Generated;
