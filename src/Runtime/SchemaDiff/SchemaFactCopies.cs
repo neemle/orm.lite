@@ -13,7 +13,8 @@ internal static class SchemaFactCopies
         }
         SchemaDiffNames.Unique(columns.Select(c => c.Name));
         var facts = table.Facts;
-        var copied = new SchemaObservedTableFacts(Inventory(facts.Indexes, budget), Inventory(facts.Constraints, budget),
+        var copied = new SchemaObservedTableFacts(
+            Inventory(facts.Indexes, budget), Inventory(facts.Constraints, budget),
             Inventory(facts.Triggers, budget), Inventory(facts.DependentObjects, budget));
         if (table.Exists.Knowledge == SchemaKnowledge.Known && !table.Exists.GetKnown()
             && columns.Count > 0)
