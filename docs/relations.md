@@ -4,6 +4,8 @@
 
 ORM.lite generates methods for loading related entities on SQLite and PostgreSQL. This guide creates an author,
 a book, and a tag, then loads the book’s author, the author’s books, and the author’s tags.
+For several roots and nested reads, [request an explicit graph](#5-load-an-explicit-graph) with generated typed
+paths and finite limits. The individual loaders and manual migration tutorial below remain available.
 
 | Relation | Model declaration | Generated methods |
 | --- | --- | --- |
@@ -152,3 +154,121 @@ createdb -h localhost -U "$(id -un)" ormlite_relations
 dotnet add package Neemle.OrmLite.Postgres --version 0.1.0
 ORMLITE_RELATIONS_POSTGRES="Host=localhost;Database=ormlite_relations;Username=$(id -un)" dotnet run
 ```
+
+## 5. Load an explicit graph
+
+`ToGraphListAsync(request, cancellationToken)` returns a full-entity root list with the requested navigations
+populated. Import `Neemle.OrmLite` for the graph types and extension method, and `Neemle.OrmLite.Generated` for
+generated repositories. Use generated `Paths` tokens rather than relation names or SQL strings.
+
+The following declaration excerpt is from the compiled NativeAOT consumer's
+[AotGraphAuthor.cs](../tests/AotSmoke/AotGraphAuthor.cs). Its companion
+[book](../tests/AotSmoke/AotGraphBook.cs) has a nullable `EditorId` and `Editor` reference back to an author;
+the [tag](../tests/AotSmoke/AotGraphTag.cs) uses the [tag key enum](../tests/AotSmoke/AotGraphTagKey.cs).
+These are separate fixture models, not additions to the author/book/tag tutorial above. `Managed = false`
+means that this fixture creates its tables separately; graph reads do not create or change a schema.
+
+```csharp
+[Table("aot_graph_authors", Managed = false)]
+internal sealed class AotGraphAuthor
+{
+    [Key] public int Id { get; set; }
+    public List<AotGraphBook> Books { get; set; } = [];
+    [ManyToMany("aot_graph_links", "author_id", "tag_id")]
+    public List<AotGraphTag> Tags { get; set; } = [];
+}
+```
+
+This exact call excerpt is reused from [GraphProbe.cs](../tests/AotSmoke/GraphProbe.cs), where `db` is an open,
+seeded context. It requests Books, Tags and Books → Editor for every selected author:
+
+```csharp
+var request = new GraphRequest<AotGraphAuthor>(
+    new(new(3, 3, 4), new(2, 20, 8)), AotGraphAuthorOrm.Paths.Books,
+    AotGraphAuthorOrm.Paths.Tags, AotGraphAuthorOrm.Paths.Books.Then(AotGraphBookOrm.Paths.Editor));
+var roots = await AotGraphAuthorOrm.Query(db).OrderBy(a => a.Id).ToGraphListAsync(request);
+```
+
+The nested construction is `GraphLimits(GraphTraversalLimits, GraphWorkLimits)`. Its example values allow
+depth 3, 3 complete paths, 4 prefix nodes, 2 roots, 20 related physical rows and 8 statements. They are fixture
+budgets, not recommended production defaults. Choose limits for your application's expected fan-out and work.
+
+`Then` appends one generated edge whose source type matches the preceding target. Only the listed paths are
+traversed; there is no implicit eager or lazy traversal. Duplicate paths and shared prefixes are normalized.
+The request snapshots its path array, and its limits are immutable.
+
+### Root page, batching and identity
+
+Apply ordinary `Where`, explicit `OrderBy`, `Skip` and `Take` before `ToGraphListAsync`. The root query runs
+first, so related rows neither multiply roots nor consume the root page. Root ordering remains the query's
+ordering; graph loading does not add a collection ordering contract. An empty root page runs no relation query.
+
+References batch distinct target keys, collections batch inverse foreign keys, and many-to-many reads batch
+join associations and target rows. Work is grouped across roots for each requested prefix and key chunk,
+rather than one relation query per root. Chunks respect the provider's bind-parameter capacity after reserving
+other parameters. One caller-facing operation therefore uses several SQL statements, not one joined statement.
+
+Missing or nullable references remain `null`; collections with no visible members are empty. Shared targets
+reuse the same entity instance within the call, keyed by entity type and typed physical key. A nested Editor
+may therefore be the same object as another returned root. There is no cross-call identity cache or tracking.
+
+### Supply all six bounds
+
+There is no default or unlimited graph budget. Every invocation supplies strictly positive values for:
+
+| Group | Limit | What counts |
+| --- | --- | --- |
+| `GraphTraversalLimits` | `MaxDepth` | Edges in the longest requested path. |
+| `GraphTraversalLimits` | `MaxPaths` | Distinct complete requested paths after deduplication. |
+| `GraphTraversalLimits` | `MaxNodes` | Distinct canonical prefix nodes, excluding the root. |
+| `GraphWorkLimits` | `MaxRoots` | Root rows returned by the root query. |
+| `GraphWorkLimits` | `MaxRelatedRows` | All physical relation rows read, including link association rows; identity reuse or discarded null links do not refund work. |
+| `GraphWorkLimits` | `MaxStatements` | All executed root and relation statements. |
+
+An explicit `Take` greater than `MaxRoots` refuses before I/O. Without an explicit `Take`, root reading
+detects overflow rather than silently truncating the result. Related reading likewise stops at an overflow
+witness, and the statement cap is checked before another statement executes. These bounds limit work; they
+do not establish a latency, memory-byte or snapshot guarantee.
+
+### Visibility and trusted host policy
+
+The ordinary root filter, live-row selection and scalar masks remain effective. Related targets retain the
+existing loader live-row restriction. `IncludingDeleted()` on the root does not silently include deleted
+related targets. When a nested path revisits the root entity type, it retains that type's root masks and cannot
+replace a masked instance with an unrestricted one.
+
+An unconditional or conditional mask on a required identity or traversal key refuses the request before root
+I/O. A conditional mask is not bypassed because its condition might be false for the current rows.
+
+Generated registrations are trusted application composition, not an authorization sandbox. Root `Where`
+conditions do not become row-authorization or tenant filters on other related tables. The host must authorize
+the requested relations and access to every related entity type. This API adds no per-path target policy or
+tenant isolation mechanism; custom registrations and their mapping/assignment delegates remain trusted code.
+
+### Refusal, cancellation and resource ownership
+
+The graph API supports registered full-entity queries over the existing mapped reference, collection and link
+shapes. Custom projections, keyless or unsupported shapes, invalid paths/bindings, invalid limits and missing
+bind capacity are refused before root I/O. Failure types distinguish the cause:
+
+| Failure | Public signal |
+| --- | --- |
+| Invalid request, unsupported shape or binding/capacity problem | `GraphRequestException.Error` (`GraphRequestError`). |
+| A required key is masked | `GraphVisibilityException.Path` and `.Property`. |
+| A traversal or work bound is exceeded | `GraphLimitExceededException.Budget` and `.Limit`. |
+| Cancellation | `OperationCanceledException`; pass the token as the second argument to `ToGraphListAsync`. |
+| Provider, timeout or mapper failure | The existing provider/runtime exception. |
+
+The operation returns the list only after every requested path succeeds. Failure, cancellation or overflow
+returns no partial list, and does not silently truncate or retry. This is a result-publication guarantee,
+not a database transaction or a guarantee that no work occurred before failure.
+
+With no `On` binding, the operation owns one connection and disposes it, its commands and readers. With
+`On(unitOfWork)` or `On(connection, transaction)`, every statement uses that exact caller binding; the caller
+still owns commit, rollback and disposal. Commands run sequentially. No hidden transaction, snapshot or retry
+is added, so concurrent changes can be visible between statements and a repeated call can return different data.
+
+Graph request and visibility errors carry identifier context rather than row or parameter values. Existing
+[SQL diagnostics](diagnostics.md#parameter-values-and-redaction) still apply: parameter logging is off by
+default, and enabling it does not make heuristic secret redaction complete. Keep values disabled when that
+privacy boundary is required.
