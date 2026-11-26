@@ -15,6 +15,7 @@ public sealed class QueryStreamEnumerator<T> : IAsyncEnumerator<T>
     private Task? _runner;
     private QueryStreamError _category = QueryStreamError.ProviderFailure;
     private Task? _dispose;
+    private Task? _disposeRunner;
     private QueryStreamStopReason? _stop;
     private ExceptionDispatchInfo? _fault;
     private bool _advancing;
@@ -156,6 +157,7 @@ public sealed class QueryStreamEnumerator<T> : IAsyncEnumerator<T>
 
     private async Task FinishAsync(QueryStreamStopReason reason, Exception? primary)
     {
+        await _tokens.BeginCleanupAsync();
         await _cursor.CleanupAsync(_cleanup);
         _tokens.Cleanup(_cleanup);
         var errors = _cleanup.Errors;
@@ -190,15 +192,26 @@ public sealed class QueryStreamEnumerator<T> : IAsyncEnumerator<T>
 
     public ValueTask DisposeAsync()
     {
+        TaskCompletionSource result;
+        Task<bool>? advance;
         lock (_sync)
         {
             if (_dispose is not null) return new ValueTask(_dispose);
             _disposeRequested = true;
             ClearCurrent();
-            _tokens.RequestDispose(_cleanup);
-            _dispose = DisposeCoreAsync(_advance);
-            return new ValueTask(_dispose);
+            result = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+            _dispose = result.Task;
+            advance = _advance;
         }
+        _tokens.RequestDispose(_cleanup);
+        _disposeRunner = CompleteDisposeAsync(advance, result);
+        return new ValueTask(result.Task);
+    }
+
+    private async Task CompleteDisposeAsync(Task<bool>? advance, TaskCompletionSource result)
+    {
+        try { await DisposeCoreAsync(advance); }
+        finally { result.TrySetResult(); }
     }
 
     private async Task DisposeCoreAsync(Task<bool>? advance)

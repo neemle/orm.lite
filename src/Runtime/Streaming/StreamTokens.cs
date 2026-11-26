@@ -7,6 +7,8 @@ internal sealed class StreamTokens(CancellationToken terminal, CancellationToken
     private CancellationTokenSource? _userLink;
     private CancellationTokenSource? _operation;
     private bool _requested;
+    private bool _cleaning;
+    private TaskCompletionSource? _cancelSettled;
 
     internal bool UserCanceled => terminal.IsCancellationRequested || enumeration.IsCancellationRequested;
     internal CancellationToken UserToken => terminal.IsCancellationRequested ? terminal : enumeration;
@@ -34,11 +36,27 @@ internal sealed class StreamTokens(CancellationToken terminal, CancellationToken
 
     internal void RequestDispose(StreamCleanup cleanup)
     {
+        CancellationTokenSource? source;
+        TaskCompletionSource settled;
         lock (_sync)
         {
             _requested = true;
-            try { _private?.Cancel(); }
-            catch (Exception error) { cleanup.Add(error); }
+            if (_cleaning) return;
+            source = _private;
+            settled = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+            _cancelSettled = settled;
+        }
+        try { source?.Cancel(); }
+        catch (Exception error) { cleanup.Add(error); }
+        finally { settled.TrySetResult(); }
+    }
+
+    internal Task BeginCleanupAsync()
+    {
+        lock (_sync)
+        {
+            _cleaning = true;
+            return _cancelSettled?.Task ?? Task.CompletedTask;
         }
     }
 

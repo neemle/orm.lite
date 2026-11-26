@@ -97,4 +97,27 @@ public sealed class StreamingCancellationTests
         Assert.Equal(1, probe.Reads);
         Assert.Equal((1, 1, 1), (probe.ReaderDisposals, probe.CommandDisposals, probe.ConnectionDisposals));
     }
+    [Fact(DisplayName = "[UC-010] Completion waits for private-cancellation callbacks and retains their failures")]
+    public async Task Cancel_callback_failure_cannot_arrive_after_published_completion()
+    {
+        var reached = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var callbackError = new IOException("private callback");
+        var probe = new StreamProbe { BeforeRead = ct =>
+        {
+            ct.Register(() => throw callbackError);
+            reached.TrySetResult();
+            return Task.Delay(Timeout.Infinite, ct);
+        } };
+        var e = probe.Query().StreamAsync().GetAsyncEnumerator();
+        var advance = e.MoveNextAsync().AsTask();
+        await reached.Task;
+        await e.DisposeAsync();
+        Assert.False(await advance);
+        var end = await e.Completion;
+        Assert.Equal(QueryStreamStopReason.Disposed, end.Reason);
+        Assert.False(end.CleanupSucceeded);
+        var aggregate = Assert.IsType<AggregateException>(Assert.Single(end.CleanupErrors));
+        Assert.Same(callbackError, Assert.Single(aggregate.InnerExceptions));
+        Assert.DoesNotContain("private", end.ToString());
+    }
 }
