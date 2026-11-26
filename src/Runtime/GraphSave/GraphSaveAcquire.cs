@@ -13,7 +13,7 @@ internal sealed class GraphSaveAcquire(DbConnection connection, Action unregiste
         if (Unit is not null)
         {
             try { await connection.CloseAsync(); }
-            catch (Exception cleanup) { PolicyCleanup.Retain(primary, cleanup); }
+            catch (Exception secondary) { PolicyCleanup.Retain(primary, secondary); }
             await PolicyCleanup.DisposeAsync(Unit, primary);
             return;
         }
