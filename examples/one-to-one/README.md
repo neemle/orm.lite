@@ -90,6 +90,9 @@ to this demo; they add no public library fault-injection API or automatic error 
 one-to-one metadata under the same token. No FK/index is retrofitted, data/history remain unchanged and
 ordinary index reconciliation does not acquire the baseline-owned unique index.
 
+[DeclarationCases.cs](DeclarationCases.cs) also refuses malformed manual metadata, constraint-name collisions
+and an unmapped physical FK before SQL.
+
 Existing databases need a reviewed explicit migration and orphan/duplicate validation. This feature performs
 no rebuild, index repair or history rewrite. Unsupported mappings include ambiguous/dual ownership,
 composite/alternate keys, unmanaged/view/cross-baseline endpoints and self/cyclic FK dependencies.

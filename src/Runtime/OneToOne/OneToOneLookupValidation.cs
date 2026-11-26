@@ -30,13 +30,15 @@ internal static class OneToOneLookupValidation
         _ => [],
     };
 
+    private static bool TextKey(Type type) => type == typeof(string) || type.IsEnum;
+
     private static bool KeyMatches(Type type, ColumnType column) => column switch
     {
         ColumnType.Uuid => type == typeof(Guid), ColumnType.Int32 => type == typeof(int),
         ColumnType.Int64 => type == typeof(long), ColumnType.Bool => type == typeof(bool),
         ColumnType.Double => type == typeof(double), ColumnType.Decimal => type == typeof(decimal),
         ColumnType.Timestamp => type == typeof(DateTime), ColumnType.Date => type == typeof(DateOnly),
-        ColumnType.Text => type == typeof(string) || type.IsEnum,
+        ColumnType.Text => TextKey(type),
         _ => false,
     };
 }
