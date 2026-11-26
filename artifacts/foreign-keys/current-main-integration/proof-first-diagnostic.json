@@ -1,0 +1,8 @@
+{
+  "scope": "Host provenance reconciliation only; no project/test/demo failure",
+  "exitCode": 1,
+  "locus": "proof.py:28 first version",
+  "assertion": "Tests-build analyzer DLL bytes == independently packed analyzer DLL bytes",
+  "actual": "false",
+  "disposition": "No requirement promises binary byte identity across different build output trees. Preserve BOTH hashes, package/cache equality, and exact actualMSBuildgeneratedtext == capturetext, which closes the semantic comparison transitively. No product/assertion/expectedoutput modification or project rerun."
+}

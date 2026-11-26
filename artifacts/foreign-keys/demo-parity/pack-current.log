@@ -1,0 +1,28 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Core/Core.csproj (in 1.6 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/Runtime.csproj (in 1.6 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sql/Sql.csproj (in 1.6 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Generator/Generator.csproj (in 1.6 sec).
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Successfully created package '/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/packages/Neemle.OrmLite.0.1.0-dev.g39a20f2.nupkg'.
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sqlite/Sqlite.csproj (in 1.05 sec).
+  4 of 5 projects are up-to-date for restore.
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Successfully created package '/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/packages/Neemle.OrmLite.Sqlite.0.1.0-dev.g39a20f2.nupkg'.
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Postgres/Postgres.csproj (in 550 ms).
+  4 of 5 projects are up-to-date for restore.
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/pack-build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Successfully created package '/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/demo-parity/packages/Neemle.OrmLite.Postgres.0.1.0-dev.g39a20f2.nupkg'.

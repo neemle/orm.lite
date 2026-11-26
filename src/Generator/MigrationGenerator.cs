@@ -36,14 +36,19 @@ public sealed class MigrationGenerator : IIncrementalGenerator
             .WithTrackingName(MigrationsStep)
             .Collect();
 
-        var asmToken = context.CompilationProvider.Select(static (c, _) => OrmGenerator.AsmToken(c));
-        context.RegisterSourceOutput(
-            migrations.Combine(asmToken),
-            static (spc, pair) => GeneratorGuard.Run(
-                spc, nameof(MigrationGenerator), () => Emit(spc, pair.Left, pair.Right)));
+        RegisterOutputs(context, migrations);
     }
 
-    private static void Emit(SourceProductionContext spc, ImmutableArray<Mig> migs, string asmToken)
+    private static void RegisterOutputs(IncrementalGeneratorInitializationContext context,
+        IncrementalValueProvider<ImmutableArray<Mig>> migrations)
+    {
+        var asmToken = context.CompilationProvider.Select(static (c, _) => OrmGenerator.AsmToken(c));
+        context.RegisterSourceOutput(migrations.Combine(asmToken), static (spc, pair) => GeneratorGuard.Run(
+            spc, nameof(MigrationGenerator), () => Emit(spc, pair.Left, pair.Right)));
+    }
+
+    private static void Emit(
+        SourceProductionContext spc, ImmutableArray<Mig> migs, string asmToken)
     {
         foreach (var m in migs.Where(m => m.Reversibility is null))
             spc.ReportDiagnostic(Diagnostic.Create(UnnamedReversibility, m.Location, m.Type, m.Version, m.Unnamed));

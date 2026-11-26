@@ -1,0 +1,4929 @@
+{
+  "commit": "7e35646a0f55f4f331f827cf68ebe07403a2778c",
+  "coverageFile": "artifacts/foreign-keys/sdet-final/coverage-results/7e2ef946-b097-4758-aa11-f709dc78cccd/_10437163e5aa_2026-11-26.04_43_35.cobertura.xml",
+  "scope": "All new FK files, complete modified generator/helper files and OrmSchema; modified OrmGenerator.Entity record and EntityDescriptor FK/new initialization units; no synthetic exclusion",
+  "limitations": [
+    "Broad whole-file scope includes unchanged helper methods, conservatively.",
+    "Per-method instrumentation linepoints are not unique physical source lines.",
+    "Dynamic generated-consumer source has no instrumented PDB; separate execution is not fabricated coverage."
+  ],
+  "methods": [
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor",
+      "method": ".ctor",
+      "signature": "(string, string, bool)",
+      "linePoints": 10,
+      "coveredLinePoints": 10,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor",
+      "method": "get_ForeignKeys",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor",
+      "method": "get_LinkForeignKeys",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor",
+      "method": "ForeignKey",
+      "signature": "(Neemle.OrmLite.ForeignKeyDescriptor)",
+      "linePoints": 3,
+      "coveredLinePoints": 3,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor",
+      "method": "LinkForeignKey",
+      "signature": "(string, Neemle.OrmLite.LinkForeignKeyEnd, Neemle.OrmLite.LinkForeignKeyDeclaration)",
+      "linePoints": 3,
+      "coveredLinePoints": 3,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyActionDdl.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyActionDdl",
+      "method": "Up",
+      "signature": "(string, string, System.Collections.Generic.IReadOnlyList<string>, string, System.Collections.Generic.IReadOnlyList<string>, string, string, string)",
+      "linePoints": 2,
+      "coveredLinePoints": 2,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyActionDdl.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyActionDdl",
+      "method": "Down",
+      "signature": "(string, string, System.Collections.Generic.IReadOnlyList<string>, string, System.Collections.Generic.IReadOnlyList<string>, string, string, string)",
+      "linePoints": 2,
+      "coveredLinePoints": 2,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyActionDdl.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyActionDdl",
+      "method": "Parse",
+      "signature": "(string)",
+      "linePoints": 8,
+      "coveredLinePoints": 8,
+      "branches": 8,
+      "coveredBranches": 8,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyActionDdl.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyActionDdl",
+      "method": "Convert",
+      "signature": "(string, string, System.Collections.Generic.IReadOnlyList<string>, string, System.Collections.Generic.IReadOnlyList<string>, string, string, string)",
+      "linePoints": 3,
+      "coveredLinePoints": 3,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyActionDdl.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyActionDdl",
+      "method": "Check",
+      "signature": "(string, string, System.Collections.Generic.IReadOnlyList<string>, string, System.Collections.Generic.IReadOnlyList<string>, string, string, string)",
+      "linePoints": 14,
+      "coveredLinePoints": 14,
+      "branches": 20,
+      "coveredBranches": 20,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyActionDdl.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyActionDdl",
+      "method": "RequireIdentifier",
+      "signature": "(string, string)",
+      "linePoints": 3,
+      "coveredLinePoints": 3,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyActionDdl.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyActionDdl",
+      "method": "RequireIdentifiers",
+      "signature": "(System.Collections.Generic.IReadOnlyList<string>, string)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyActionDdl.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyActionDdl",
+      "method": ".cctor",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyAttribute",
+      "method": ".ctor",
+      "signature": "(string, Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 3,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "7",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "9",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "11",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyAttribute",
+      "method": "get_Name",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "9",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyAttribute",
+      "method": "get_OnDelete",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "11",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline",
+      "method": "HasIntent",
+      "signature": "(System.Collections.Generic.IEnumerable<Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline",
+      "method": "Create",
+      "signature": "(System.Collections.Generic.IReadOnlyList<Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 13,
+      "coveredLinePoints": 13,
+      "branches": 16,
+      "coveredBranches": 16,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline",
+      "method": "Entities",
+      "signature": "(System.Collections.Generic.IEnumerable<Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 8,
+      "coveredLinePoints": 7,
+      "branches": 4,
+      "coveredBranches": 3,
+      "gaps": [
+        {
+          "number": "43",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline",
+      "method": "AddJoins",
+      "signature": "(System.Collections.Generic.IEnumerable<Neemle.OrmLite.EntityDescriptor>, System.Collections.Generic.Dictionary<string, Neemle.OrmLite.Nodes.CreateTable>, System.Collections.Generic.Dictionary<string, Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline",
+      "method": "AddJoin",
+      "signature": "(Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.Nodes.CreateTable, System.Collections.Generic.IEnumerable<Neemle.OrmLite.EntityDescriptor>, System.Collections.Generic.Dictionary<string, Neemle.OrmLite.Nodes.CreateTable>, System.Collections.Generic.Dictionary<string, Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 18,
+      "coveredLinePoints": 15,
+      "branches": 18,
+      "coveredBranches": 15,
+      "gaps": [
+        {
+          "number": "64",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "67",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "71",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline",
+      "method": "Add",
+      "signature": "(Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.ForeignKeyDescriptor, System.Collections.Generic.IReadOnlyDictionary<string, Neemle.OrmLite.EntityDescriptor>, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<Neemle.OrmLite.ForeignKeyDescriptor>>, System.Collections.Generic.Dictionary<string, System.ValueTuple<string, Neemle.OrmLite.ForeignKeyDescriptor>>)",
+      "linePoints": 12,
+      "coveredLinePoints": 12,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDeclarationException.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDeclarationException",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.ForeignKeyDeclarationError, string, string)",
+      "linePoints": 5,
+      "coveredLinePoints": 5,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDeclarationException.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDeclarationException",
+      "method": "get_Error",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDeclarationException.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDeclarationException",
+      "method": "get_Entity",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "18",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDeclarationException.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDeclarationException",
+      "method": "get_Navigation",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDeclarationException.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDeclarationException",
+      "method": "Safe",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": ".ctor",
+      "signature": "(string, string, Neemle.OrmLite.ForeignKeyTarget, Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "get_Name",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "set_Name",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "6",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "get_LocalColumn",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "set_LocalColumn",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "get_Target",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "set_Target",
+      "signature": "(Neemle.OrmLite.ForeignKeyTarget)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "get_OnDelete",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "set_OnDelete",
+      "signature": "(Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "6",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.ForeignKeyDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder",
+      "method": "Sort",
+      "signature": "(System.Collections.Generic.IReadOnlyDictionary<string, Neemle.OrmLite.Nodes.CreateTable>, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.List<Neemle.OrmLite.ForeignKeyDescriptor>>)",
+      "linePoints": 17,
+      "coveredLinePoints": 17,
+      "branches": 34,
+      "coveredBranches": 34,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder",
+      "method": "Constrained",
+      "signature": "(Neemle.OrmLite.Nodes.CreateTable, System.Collections.Generic.IEnumerable<Neemle.OrmLite.ForeignKeyDescriptor>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder",
+      "method": "NodeOf",
+      "signature": "(Neemle.OrmLite.ForeignKeyDescriptor)",
+      "linePoints": 2,
+      "coveredLinePoints": 2,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyTarget.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyTarget",
+      "method": ".ctor",
+      "signature": "(string, string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyTarget.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyTarget",
+      "method": "get_Table",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyTarget.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyTarget",
+      "method": "set_Table",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyTarget.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyTarget",
+      "method": "get_Column",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyTarget.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyTarget",
+      "method": "set_Column",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyTarget.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyTarget",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.ForeignKeyTarget)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "ValidName",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "Name",
+      "signature": "(string, string)",
+      "linePoints": 2,
+      "coveredLinePoints": 2,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "Fail",
+      "signature": "(Neemle.OrmLite.ForeignKeyDeclarationError, string, string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "Action",
+      "signature": "(Neemle.OrmLite.Nodes.ReferentialAction, string)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "Shape",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 4,
+      "coveredBranches": 3,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "SchemaEntity",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 8,
+      "coveredBranches": 8,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "Endpoints",
+      "signature": "(Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.ForeignKeyDescriptor, System.Collections.Generic.IReadOnlyDictionary<string, Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 20,
+      "coveredLinePoints": 20,
+      "branches": 22,
+      "coveredBranches": 22,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "ValidPrimary",
+      "signature": "(Neemle.OrmLite.ColumnDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "Managed",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 3,
+      "coveredLinePoints": 3,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "Link",
+      "signature": "(Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.EntityDescriptor.LinkIntent, System.Collections.Generic.IReadOnlyDictionary<string, Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 20,
+      "coveredLinePoints": 16,
+      "branches": 20,
+      "coveredBranches": 15,
+      "gaps": [
+        {
+          "number": "86",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "90",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "93",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "98",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "GuidLink",
+      "signature": "(Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.ManyToManyDescriptor)",
+      "linePoints": 5,
+      "coveredLinePoints": 4,
+      "branches": 14,
+      "coveredBranches": 7,
+      "gaps": [
+        {
+          "number": "109",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "Unicode",
+      "signature": "(string)",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 10,
+      "coveredBranches": 10,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyAttribute",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.LinkForeignKeyEnd, string, Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 4,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "7",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "9",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "11",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "13",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyAttribute",
+      "method": "get_End",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "9",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyAttribute",
+      "method": "get_Name",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "11",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyAttribute",
+      "method": "get_OnDelete",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "13",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyDeclaration.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyDeclaration",
+      "method": ".ctor",
+      "signature": "(string, Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyDeclaration.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyDeclaration",
+      "method": "get_Name",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyDeclaration.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyDeclaration",
+      "method": "set_Name",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyDeclaration.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyDeclaration",
+      "method": "get_OnDelete",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyDeclaration.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyDeclaration",
+      "method": "set_OnDelete",
+      "signature": "(Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyDeclaration.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyDeclaration",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.LinkForeignKeyDeclaration)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": ".ctor",
+      "signature": "(string, System.Collections.Generic.IReadOnlyList<Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "get_Token",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "get_Entities",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "get_HasSoftDeletion",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "Of",
+      "signature": "(string, Neemle.OrmLite.EntityDescriptor[])",
+      "linePoints": 3,
+      "coveredLinePoints": 3,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "get_HistoryTables",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "Baseline",
+      "signature": "()",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "Indexes",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "Reconcile",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "get_IndexSetHash",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "Contributions",
+      "signature": "(Neemle.OrmLite.MigrationContribution[])",
+      "linePoints": 18,
+      "coveredLinePoints": 18,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "IdentityOfIndexes",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "IdentityOf",
+      "signature": "(Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.IndexDescriptor)",
+      "linePoints": 7,
+      "coveredLinePoints": 7,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema",
+      "method": "StableHash",
+      "signature": "(System.Collections.Generic.IEnumerable<string>)",
+      "linePoints": 5,
+      "coveredLinePoints": 5,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": ".ctor",
+      "signature": "(string, Neemle.OrmLite.LinkForeignKeyEnd, Neemle.OrmLite.LinkForeignKeyDeclaration)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": "get_Navigation",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": "set_Navigation",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "60",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": "get_End",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": "set_End",
+      "signature": "(Neemle.OrmLite.LinkForeignKeyEnd)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "60",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": "get_Declaration",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": "set_Declaration",
+      "signature": "(Neemle.OrmLite.LinkForeignKeyDeclaration)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "60",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.EntityDescriptor.LinkIntent)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "60",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c",
+      "method": "<HasIntent>b__0_0",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c",
+      "method": "<Create>b__1_0",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c",
+      "method": "<Create>b__1_1",
+      "signature": "(Neemle.OrmLite.Nodes.CreateTable)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c",
+      "method": "<Create>b__1_2",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c",
+      "method": "<Create>b__1_3",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c",
+      "method": "<AddJoins>b__3_0",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c",
+      "method": "<AddJoin>b__4_0",
+      "signature": "(Neemle.OrmLite.Nodes.ColumnDef)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c",
+      "method": "<AddJoin>b__4_3",
+      "signature": "(Neemle.OrmLite.Nodes.ColumnDef)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c",
+      "method": "<AddJoin>b__4_4",
+      "signature": "(Neemle.OrmLite.Nodes.ColumnDef)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c__DisplayClass1_0",
+      "method": "<Create>b__4",
+      "signature": "(Neemle.OrmLite.ManyToManyDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c__DisplayClass4_0",
+      "method": "<AddJoin>b__1",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c__DisplayClass4_0",
+      "method": "<AddJoin>b__2",
+      "signature": "(string)",
+      "linePoints": 2,
+      "coveredLinePoints": 2,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline.<>c__DisplayClass5_0",
+      "method": "<Add>b__0",
+      "signature": "(Neemle.OrmLite.ForeignKeyDescriptor)",
+      "linePoints": 2,
+      "coveredLinePoints": 2,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_0",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.List<Neemle.OrmLite.ForeignKeyDescriptor>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_1",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.List<Neemle.OrmLite.ForeignKeyDescriptor>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_11",
+      "signature": "(Neemle.OrmLite.ForeignKeyDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_2",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_3",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_4",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.HashSet<string>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_5",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.HashSet<string>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_6",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.HashSet<string>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_7",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.HashSet<string>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_9",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.List<Neemle.OrmLite.ForeignKeyDescriptor>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Sort>b__0_10",
+      "signature": "(Neemle.OrmLite.ForeignKeyDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c",
+      "method": "<Constrained>b__1_0",
+      "signature": "(Neemle.OrmLite.ForeignKeyDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyOrder.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyOrder.<>c__DisplayClass0_0",
+      "method": "<Sort>b__8",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.List<Neemle.OrmLite.ForeignKeyDescriptor>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation.<>c",
+      "method": "<SchemaEntity>b__5_0",
+      "signature": "(Neemle.OrmLite.ColumnDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation.<>c__DisplayClass6_0",
+      "method": "<Endpoints>b__0",
+      "signature": "(Neemle.OrmLite.ColumnDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation.<>c__DisplayClass9_0",
+      "method": "<Link>b__0",
+      "signature": "(Neemle.OrmLite.ManyToManyDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation.<>c__DisplayClass9_0",
+      "method": "<Link>b__1",
+      "signature": "(Neemle.OrmLite.ManyToManyDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c",
+      "method": "<get_HasSoftDeletion>b__11_0",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c",
+      "method": "<get_HistoryTables>b__14_0",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c",
+      "method": "<get_HistoryTables>b__14_1",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c",
+      "method": "<Contributions>b__20_0",
+      "signature": "(Neemle.OrmLite.MigrationContribution)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c",
+      "method": "<IdentityOfIndexes>b__21_0",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c",
+      "method": "<IdentityOfIndexes>b__21_1",
+      "signature": "(Neemle.OrmLite.EntityDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c",
+      "method": "<StableHash>b__23_0",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c__DisplayClass20_0",
+      "method": "<Contributions>b__1",
+      "signature": "(Neemle.OrmLite.ISqlProvider)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c__DisplayClass20_0",
+      "method": "<Contributions>b__2",
+      "signature": "(Neemle.OrmLite.ISqlProvider)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Runtime/OrmSchema.cs",
+      "cls": "Neemle.OrmLite.OrmSchema.<>c__DisplayClass21_0",
+      "method": "<IdentityOfIndexes>b__2",
+      "signature": "(Neemle.OrmLite.IndexDescriptor)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "Describe",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, string, System.Collections.Generic.HashSet<string>)",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "Columns",
+      "signature": "(Neemle.CSharpComposer.Model.CsExpression, Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 8,
+      "coveredLinePoints": 8,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "ColumnType",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Prop)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "Indexes",
+      "signature": "(Neemle.CSharpComposer.Model.CsExpression, Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "Links",
+      "signature": "(Neemle.CSharpComposer.Model.CsExpression, Neemle.OrmLite.Generator.OrmGenerator.Entity, System.Collections.Generic.HashSet<string>)",
+      "linePoints": 7,
+      "coveredLinePoints": 7,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "SoftDelete",
+      "signature": "(Neemle.CSharpComposer.Model.CsExpression, Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "SoftOptions",
+      "signature": "(Neemle.CSharpComposer.Model.CsExpression, Neemle.OrmLite.Generator.OrmGenerator.SoftDeclaration)",
+      "linePoints": 7,
+      "coveredLinePoints": 7,
+      "branches": 16,
+      "coveredBranches": 16,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "DescribeIndex",
+      "signature": "(Neemle.CSharpComposer.Model.CsExpression, Neemle.OrmLite.Generator.OrmGenerator.IndexDef)",
+      "linePoints": 8,
+      "coveredLinePoints": 8,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "NullsName",
+      "signature": "(int)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "ConditionOf",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.CondDef)",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "ValueOf",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.CondDef)",
+      "linePoints": 6,
+      "coveredLinePoints": 5,
+      "branches": 4,
+      "coveredBranches": 3,
+      "gaps": [
+        {
+          "number": "110",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "EntityToken",
+      "signature": "(string)",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 10,
+      "coveredBranches": 10,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "IsUpper",
+      "signature": "(char)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "IsLowerOrDigit",
+      "signature": "(char)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 6,
+      "coveredBranches": 5,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter",
+      "method": "EmitEntities",
+      "signature": "(Microsoft.CodeAnalysis.SourceProductionContext, System.Collections.Immutable.ImmutableArray<Neemle.OrmLite.Generator.OrmGenerator.Entity>, string, Neemle.OrmLite.Generator.ProviderSet)",
+      "linePoints": 10,
+      "coveredLinePoints": 10,
+      "branches": 10,
+      "coveredBranches": 10,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter",
+      "method": "NewFile",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter",
+      "method": "Access",
+      "signature": "(Neemle.CSharpComposer.Builders.TypeBuilder<Neemle.CSharpComposer.Builders.FileBuilder>, string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter",
+      "method": "EntitiesSource",
+      "signature": "(System.Collections.Immutable.ImmutableArray<Neemle.OrmLite.Generator.OrmGenerator.Entity>, string, System.Collections.Generic.HashSet<string>, System.Collections.Generic.HashSet<System.ValueTuple<string, string>>, bool)",
+      "linePoints": 11,
+      "coveredLinePoints": 11,
+      "branches": 12,
+      "coveredBranches": 12,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter",
+      "method": "ExcludedPairs",
+      "signature": "(System.Collections.Immutable.ImmutableArray<Neemle.OrmLite.Generator.OrmGenerator.Entity>)",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter",
+      "method": "PurgeClass",
+      "signature": "(Neemle.CSharpComposer.Builders.FileBuilder, Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 16,
+      "coveredLinePoints": 16,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter",
+      "method": "SchemaClass",
+      "signature": "(Neemle.CSharpComposer.Builders.FileBuilder, System.Collections.Immutable.ImmutableArray<Neemle.OrmLite.Generator.OrmGenerator.Entity>, string)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter",
+      "method": "InitializerClass",
+      "signature": "(Neemle.CSharpComposer.Builders.FileBuilder, System.Collections.Immutable.ImmutableArray<Neemle.OrmLite.Generator.OrmGenerator.Entity>)",
+      "linePoints": 7,
+      "coveredLinePoints": 7,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter",
+      "method": ".cctor",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityReader.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityReader",
+      "method": "ReadEntity",
+      "signature": "(Microsoft.CodeAnalysis.INamedTypeSymbol, bool)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityReader.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityReader",
+      "method": "TableOf",
+      "signature": "(Microsoft.CodeAnalysis.INamedTypeSymbol, bool)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 4,
+      "coveredBranches": 3,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityReader.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityReader",
+      "method": "Assemble",
+      "signature": "(Neemle.OrmLite.Generator.EntityScan, string, Microsoft.CodeAnalysis.IMethodSymbol)",
+      "linePoints": 23,
+      "coveredLinePoints": 23,
+      "branches": 8,
+      "coveredBranches": 8,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityReader.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityReader",
+      "method": "ResolveRelations",
+      "signature": "(System.Collections.Generic.IEnumerable<Neemle.OrmLite.Generator.EntityScan.NavRef>, System.Collections.Generic.List<Neemle.OrmLite.Generator.OrmGenerator.Prop>, Neemle.OrmLite.Generator.Findings)",
+      "linePoints": 12,
+      "coveredLinePoints": 12,
+      "branches": 12,
+      "coveredBranches": 12,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityReader.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityReader",
+      "method": "CollectionOf",
+      "signature": "(System.ValueTuple<string, Microsoft.CodeAnalysis.INamedTypeSymbol, string>, string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": ".ctor",
+      "signature": "(Microsoft.CodeAnalysis.SourceProductionContext, System.Collections.Immutable.ImmutableArray<Neemle.OrmLite.Generator.OrmGenerator.Entity>, System.Collections.Generic.HashSet<System.ValueTuple<string, string>>, Neemle.OrmLite.Generator.ProviderSet)",
+      "linePoints": 13,
+      "coveredLinePoints": 13,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "get_Valid",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Resolve",
+      "signature": "()",
+      "linePoints": 11,
+      "coveredLinePoints": 11,
+      "branches": 8,
+      "coveredBranches": 8,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "ValidateTables",
+      "signature": "()",
+      "linePoints": 10,
+      "coveredLinePoints": 10,
+      "branches": 18,
+      "coveredBranches": 13,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "ValidateJoins",
+      "signature": "()",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "ValidateJoin",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.OrmGenerator.ManyToMany, System.Collections.Generic.Dictionary<string, string>)",
+      "linePoints": 14,
+      "coveredLinePoints": 9,
+      "branches": 18,
+      "coveredBranches": 10,
+      "gaps": [
+        {
+          "number": "85",
+          "hits": "0",
+          "branch": "True",
+          "condition-coverage": "0% (0/2)"
+        },
+        {
+          "number": "86",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "89",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "93",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "95",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Resolve",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 13,
+      "coveredLinePoints": 13,
+      "branches": 16,
+      "coveredBranches": 16,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Endpoint",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, string, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 7,
+      "coveredLinePoints": 5,
+      "branches": 14,
+      "coveredBranches": 11,
+      "gaps": [
+        {
+          "number": "122",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "126",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Key",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 8,
+      "coveredBranches": 8,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Reference",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, string, string, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 16,
+      "coveredLinePoints": 14,
+      "branches": 22,
+      "coveredBranches": 19,
+      "gaps": [
+        {
+          "number": "150",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "152",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Shape",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Prop)",
+      "linePoints": 2,
+      "coveredLinePoints": 2,
+      "branches": 8,
+      "coveredBranches": 8,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Link",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 14,
+      "coveredLinePoints": 14,
+      "branches": 16,
+      "coveredBranches": 13,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "LinkKeys",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 3,
+      "coveredLinePoints": 3,
+      "branches": 4,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "SupportedLink",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.ManyToMany, Neemle.OrmLite.Generator.ForeignKeyIntent, System.ValueTuple<Neemle.OrmLite.Generator.OrmGenerator.Prop, Neemle.OrmLite.Generator.OrmGenerator.Prop>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 10,
+      "coveredBranches": 8,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "LinkIssue",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.OrmGenerator.ManyToMany, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 10,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Add",
+      "signature": "(string, Neemle.OrmLite.Generator.ForeignKeyModel, Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 13,
+      "coveredLinePoints": 13,
+      "branches": 10,
+      "coveredBranches": 9,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "CheckCycles",
+      "signature": "()",
+      "linePoints": 10,
+      "coveredLinePoints": 10,
+      "branches": 26,
+      "coveredBranches": 26,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Error",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.ForeignKeyIntent, string)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 12,
+      "coveredBranches": 10,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "ValidName",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Unicode",
+      "signature": "(string)",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 10,
+      "coveredBranches": 10,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": ".cctor",
+      "signature": "()",
+      "linePoints": 3,
+      "coveredLinePoints": 3,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "<Resolve>b__13_1",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 5,
+      "coveredLinePoints": 5,
+      "branches": 8,
+      "coveredBranches": 8,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyEmitter",
+      "method": "Describe",
+      "signature": "(Neemle.CSharpComposer.Model.CsExpression, Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 9,
+      "coveredLinePoints": 9,
+      "branches": 8,
+      "coveredBranches": 8,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyEmitter",
+      "method": "Action",
+      "signature": "(int)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyEmitter",
+      "method": "New",
+      "signature": "(string, Neemle.CSharpComposer.Model.CsExpression[])",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": ".ctor",
+      "signature": "(string, string, int, System.Nullable<int>, Microsoft.CodeAnalysis.Location)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "get_Navigation",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_Navigation",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "get_Name",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_Name",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "get_Action",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_Action",
+      "signature": "(int)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "get_End",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_End",
+      "signature": "(System.Nullable<int>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "get_Location",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_Location",
+      "signature": "(Microsoft.CodeAnalysis.Location)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyLayout/ForeignKeyLineLayout.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyLineLayout",
+      "method": "Format",
+      "signature": "(string)",
+      "linePoints": 15,
+      "coveredLinePoints": 15,
+      "branches": 12,
+      "coveredBranches": 11,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyLayout/ForeignKeyLineLayout.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyLineLayout",
+      "method": "ChunkWidths",
+      "signature": "(Microsoft.CodeAnalysis.SyntaxToken[], int)",
+      "linePoints": 5,
+      "coveredLinePoints": 5,
+      "branches": 6,
+      "coveredBranches": 6,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyLayout/ForeignKeyLineLayout.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyLineLayout",
+      "method": "Append",
+      "signature": "(string)",
+      "linePoints": 4,
+      "coveredLinePoints": 4,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyLayout/ForeignKeyLineLayout.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyLineLayout",
+      "method": ".ctor",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyLayout/ForeignKeySourceLayout.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeySourceLayout",
+      "method": "Emit",
+      "signature": "(Microsoft.CodeAnalysis.SourceProductionContext, string)",
+      "linePoints": 9,
+      "coveredLinePoints": 9,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": ".ctor",
+      "signature": "(string, string, string, string, int)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "get_Name",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_Name",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "get_Column",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_Column",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "get_TargetTable",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_TargetTable",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "get_TargetColumn",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_TargetColumn",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "get_Action",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_Action",
+      "signature": "(int)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyModel)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyReader.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyReader",
+      "method": "Read",
+      "signature": "(Microsoft.CodeAnalysis.INamedTypeSymbol)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyReader.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyReader",
+      "method": "ReadProperty",
+      "signature": "(Microsoft.CodeAnalysis.IPropertySymbol)",
+      "linePoints": 8,
+      "coveredLinePoints": 8,
+      "branches": 8,
+      "coveredBranches": 7,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyReader.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyReader",
+      "method": "Intent",
+      "signature": "(Microsoft.CodeAnalysis.IPropertySymbol, Microsoft.CodeAnalysis.AttributeData, bool)",
+      "linePoints": 7,
+      "coveredLinePoints": 7,
+      "branches": 18,
+      "coveredBranches": 10,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/IdentifierDiagnostics.cs",
+      "cls": "Neemle.OrmLite.Generator.IdentifierDiagnostics",
+      "method": "ReportIdentifierLengths",
+      "signature": "(Microsoft.CodeAnalysis.SourceProductionContext, Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.ProviderSet)",
+      "linePoints": 8,
+      "coveredLinePoints": 8,
+      "branches": 10,
+      "coveredBranches": 10,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/IdentifierDiagnostics.cs",
+      "cls": "Neemle.OrmLite.Generator.IdentifierDiagnostics",
+      "method": "ForeignKeyNamesFit",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.ProviderSet)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/IdentifierDiagnostics.cs",
+      "cls": "Neemle.OrmLite.Generator.IdentifierDiagnostics",
+      "method": ".cctor",
+      "signature": "()",
+      "linePoints": 8,
+      "coveredLinePoints": 8,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter.<>c",
+      "method": "<Indexes>b__3_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.IndexDef)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter.<>c",
+      "method": "<DescribeIndex>b__7_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.TermDef)",
+      "linePoints": 6,
+      "coveredLinePoints": 6,
+      "branches": 2,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter.<>c__DisplayClass5_0",
+      "method": "<SoftDelete>b__0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Prop)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter.<>c",
+      "method": "<EmitEntities>b__4_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter.<>c",
+      "method": "<EmitEntities>b__4_1",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter.<>c",
+      "method": "<EmitEntities>b__4_2",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter.<>c",
+      "method": "<EntitiesSource>b__7_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter.<>c",
+      "method": "<EntitiesSource>b__7_1",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter.<>c",
+      "method": "<SchemaClass>b__10_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityEmitter.<>c",
+      "method": "<InitializerClass>b__11_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 3,
+      "coveredLinePoints": 3,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityReader.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityReader.<>c",
+      "method": "<Assemble>b__2_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Prop)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityReader.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityReader.<>c__DisplayClass2_0",
+      "method": "<Assemble>b__1",
+      "signature": "(System.ValueTuple<string, Microsoft.CodeAnalysis.INamedTypeSymbol, string>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/EntityReader.cs",
+      "cls": "Neemle.OrmLite.Generator.EntityReader.<>c__DisplayClass3_0",
+      "method": "<ResolveRelations>b__0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Prop)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<.ctor>b__10_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<.ctor>b__10_1",
+      "signature": "(System.Linq.IGrouping<string, Neemle.OrmLite.Generator.OrmGenerator.Entity>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<.ctor>b__10_2",
+      "signature": "(System.Linq.IGrouping<string, Neemle.OrmLite.Generator.OrmGenerator.Entity>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<Resolve>b__13_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<Resolve>b__13_2",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyModel)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "52",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<ValidateJoins>b__15_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<ValidateJoin>b__16_1",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<Key>b__19_0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Prop)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<CheckCycles>b__27_0",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.HashSet<string>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<CheckCycles>b__27_1",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.HashSet<string>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<CheckCycles>b__27_2",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.HashSet<string>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<CheckCycles>b__27_3",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.HashSet<string>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<CheckCycles>b__27_6",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.List<Neemle.OrmLite.Generator.ForeignKeyModel>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<CheckCycles>b__27_7",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyModel)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c__DisplayClass16_0",
+      "method": "<ValidateJoin>b__0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c__DisplayClass17_0",
+      "method": "<Resolve>b__0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Relation)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c__DisplayClass17_0",
+      "method": "<Resolve>b__1",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Collection)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c__DisplayClass20_0",
+      "method": "<Reference>b__0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Prop)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c__DisplayClass22_0",
+      "method": "<Link>b__0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.ManyToMany)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c__DisplayClass24_0",
+      "method": "<SupportedLink>b__0",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c__DisplayClass26_0",
+      "method": "<Add>b__0",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyModel)",
+      "linePoints": 2,
+      "coveredLinePoints": 2,
+      "branches": 4,
+      "coveredBranches": 4,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c__DisplayClass27_0",
+      "method": "<CheckCycles>b__4",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c__DisplayClass27_0",
+      "method": "<CheckCycles>b__5",
+      "signature": "(System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.List<Neemle.OrmLite.Generator.ForeignKeyModel>>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyEmitter.<>c",
+      "method": "<Describe>b__0_0",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyReader.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyReader.<>c",
+      "method": "<Read>b__0_0",
+      "signature": "(Microsoft.CodeAnalysis.IPropertySymbol)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/IdentifierDiagnostics.cs",
+      "cls": "Neemle.OrmLite.Generator.IdentifierDiagnostics.<>c",
+      "method": "<NamesOf>b__2_0",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/IdentifierDiagnostics.cs",
+      "cls": "Neemle.OrmLite.Generator.IdentifierDiagnostics.<>c__DisplayClass3_0",
+      "method": "<ForeignKeyNamesFit>b__0",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 4,
+      "coveredBranches": 2,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/IdentifierDiagnostics.cs",
+      "cls": "Neemle.OrmLite.Generator.IdentifierDiagnostics.<>c__DisplayClass3_1",
+      "method": "<ForeignKeyNamesFit>b__1",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/IdentifierDiagnostics.cs",
+      "cls": "Neemle.OrmLite.Generator.IdentifierDiagnostics.<NamesOf>d__2",
+      "method": "MoveNext",
+      "signature": "()",
+      "linePoints": 8,
+      "coveredLinePoints": 8,
+      "branches": 16,
+      "coveredBranches": 12,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": ".ctor",
+      "signature": "(string, string, Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Prop>, Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.IndexDef>, Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Relation>, Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Collection>, Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.ManyToMany>, bool, Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Unmapped>, string, Neemle.OrmLite.Generator.OrmGenerator.SoftDeleteIssue, Neemle.OrmLite.Generator.OrmGenerator.SoftDeclaration, string, bool, Microsoft.CodeAnalysis.Location, Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.MemberIssue>, string, string, Neemle.OrmLite.Generator.EquatableArray<string>, Neemle.OrmLite.Generator.EquatableArray<string>, bool)",
+      "linePoints": 2,
+      "coveredLinePoints": 2,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Type",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Type",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Table",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Table",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "104",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Props",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Props",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Prop>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "104",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Indexes",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Indexes",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.IndexDef>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "104",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Relations",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Relations",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Relation>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Collections",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Collections",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Collection>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_ManyToMany",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_ManyToMany",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.ManyToMany>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Managed",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Managed",
+      "signature": "(bool)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "106",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Unmapped",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Unmapped",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Unmapped>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "106",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_SoftDeleteColumn",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_SoftDeleteColumn",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "107",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_SoftDeleteIssue",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_SoftDeleteIssue",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.SoftDeleteIssue)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "107",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Soft",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Soft",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.SoftDeclaration)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Access",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Access",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "107",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_IsView",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_IsView",
+      "signature": "(bool)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "108",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Location",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Location",
+      "signature": "(Microsoft.CodeAnalysis.Location)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "108",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_MemberIssues",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_MemberIssues",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.MemberIssue>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "108",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_TypeIssue",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_TypeIssue",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "109",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_RequiredMissing",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_RequiredMissing",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "109",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_LostKeys",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_LostKeys",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<string>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "109",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_ExcludedMembers",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_ExcludedMembers",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<string>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "110",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_IsStatic",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_IsStatic",
+      "signature": "(bool)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "110",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_ForeignKeyIntents",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_ForeignKeyIntents",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.ForeignKeyIntent>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_ForeignKeys",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_ForeignKeys",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.ForeignKeyModel>)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_Full",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Full",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "get_NameIssue",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_NameIssue",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity)",
+      "linePoints": 1,
+      "coveredLinePoints": 1,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": []
+    }
+  ],
+  "totals": {
+    "functions": 312,
+    "coveredFunctions": 263,
+    "linePoints": 888,
+    "coveredLinePoints": 815,
+    "branches": 738,
+    "coveredBranches": 669,
+    "classes": 57,
+    "coveredClasses": 55
+  },
+  "incompleteMethods": [
+    {
+      "file": "src/Runtime/ForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyAttribute",
+      "method": ".ctor",
+      "signature": "(string, Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 3,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "7",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "9",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "11",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyAttribute",
+      "method": "get_Name",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "9",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyAttribute",
+      "method": "get_OnDelete",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "11",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline",
+      "method": "Entities",
+      "signature": "(System.Collections.Generic.IEnumerable<Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 8,
+      "coveredLinePoints": 7,
+      "branches": 4,
+      "coveredBranches": 3,
+      "gaps": [
+        {
+          "number": "43",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyBaseline.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyBaseline",
+      "method": "AddJoin",
+      "signature": "(Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.Nodes.CreateTable, System.Collections.Generic.IEnumerable<Neemle.OrmLite.EntityDescriptor>, System.Collections.Generic.Dictionary<string, Neemle.OrmLite.Nodes.CreateTable>, System.Collections.Generic.Dictionary<string, Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 18,
+      "coveredLinePoints": 15,
+      "branches": 18,
+      "coveredBranches": 15,
+      "gaps": [
+        {
+          "number": "64",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "67",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "71",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDeclarationException.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDeclarationException",
+      "method": "get_Entity",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "18",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "set_Name",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "6",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyDescriptor.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyDescriptor",
+      "method": "set_OnDelete",
+      "signature": "(Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "6",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyTarget.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyTarget",
+      "method": "set_Table",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyTarget.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyTarget",
+      "method": "set_Column",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyTarget.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyTarget",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.ForeignKeyTarget)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "Link",
+      "signature": "(Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.EntityDescriptor.LinkIntent, System.Collections.Generic.IReadOnlyDictionary<string, Neemle.OrmLite.EntityDescriptor>)",
+      "linePoints": 20,
+      "coveredLinePoints": 16,
+      "branches": 20,
+      "coveredBranches": 15,
+      "gaps": [
+        {
+          "number": "86",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "90",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "93",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "98",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/ForeignKeyValidation.cs",
+      "cls": "Neemle.OrmLite.ForeignKeyValidation",
+      "method": "GuidLink",
+      "signature": "(Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.EntityDescriptor, Neemle.OrmLite.ManyToManyDescriptor)",
+      "linePoints": 5,
+      "coveredLinePoints": 4,
+      "branches": 14,
+      "coveredBranches": 7,
+      "gaps": [
+        {
+          "number": "109",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyAttribute",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.LinkForeignKeyEnd, string, Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 4,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "7",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "9",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "11",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "13",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyAttribute",
+      "method": "get_End",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "9",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyAttribute",
+      "method": "get_Name",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "11",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyAttribute.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyAttribute",
+      "method": "get_OnDelete",
+      "signature": "()",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "13",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyDeclaration.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyDeclaration",
+      "method": "set_Name",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyDeclaration.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyDeclaration",
+      "method": "set_OnDelete",
+      "signature": "(Neemle.OrmLite.Nodes.ReferentialAction)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/LinkForeignKeyDeclaration.cs",
+      "cls": "Neemle.OrmLite.LinkForeignKeyDeclaration",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.LinkForeignKeyDeclaration)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": "set_Navigation",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "60",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": "set_End",
+      "signature": "(Neemle.OrmLite.LinkForeignKeyEnd)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "60",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": "set_Declaration",
+      "signature": "(Neemle.OrmLite.LinkForeignKeyDeclaration)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "60",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/EntityDescriptor.cs",
+      "cls": "Neemle.OrmLite.EntityDescriptor.LinkIntent",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.EntityDescriptor.LinkIntent)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "60",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/DescriptorEmitter.cs",
+      "cls": "Neemle.OrmLite.Generator.DescriptorEmitter",
+      "method": "ValueOf",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.CondDef)",
+      "linePoints": 6,
+      "coveredLinePoints": 5,
+      "branches": 4,
+      "coveredBranches": 3,
+      "gaps": [
+        {
+          "number": "110",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "ValidateJoin",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, Neemle.OrmLite.Generator.OrmGenerator.ManyToMany, System.Collections.Generic.Dictionary<string, string>)",
+      "linePoints": 14,
+      "coveredLinePoints": 9,
+      "branches": 18,
+      "coveredBranches": 10,
+      "gaps": [
+        {
+          "number": "85",
+          "hits": "0",
+          "branch": "True",
+          "condition-coverage": "0% (0/2)"
+        },
+        {
+          "number": "86",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "89",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "93",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "95",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Endpoint",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, string, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 7,
+      "coveredLinePoints": 5,
+      "branches": 14,
+      "coveredBranches": 11,
+      "gaps": [
+        {
+          "number": "122",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "126",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis",
+      "method": "Reference",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.Entity, string, string, Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 16,
+      "coveredLinePoints": 14,
+      "branches": 22,
+      "coveredBranches": 19,
+      "gaps": [
+        {
+          "number": "150",
+          "hits": "0",
+          "branch": "False"
+        },
+        {
+          "number": "152",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_Navigation",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_Name",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_Action",
+      "signature": "(int)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_End",
+      "signature": "(System.Nullable<int>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": "set_Location",
+      "signature": "(Microsoft.CodeAnalysis.Location)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyIntent.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyIntent",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyIntent)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "5",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_Name",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_Column",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_TargetTable",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_TargetColumn",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": "set_Action",
+      "signature": "(int)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyModel.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyModel",
+      "method": ".ctor",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyModel)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "3",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/ForeignKeyAnalysis.cs",
+      "cls": "Neemle.OrmLite.Generator.ForeignKeyAnalysis.<>c",
+      "method": "<Resolve>b__13_2",
+      "signature": "(Neemle.OrmLite.Generator.ForeignKeyModel)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "52",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Table",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "104",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Props",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Prop>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "104",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Indexes",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.IndexDef>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "104",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Managed",
+      "signature": "(bool)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "106",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Unmapped",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.Unmapped>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "106",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_SoftDeleteColumn",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "107",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_SoftDeleteIssue",
+      "signature": "(Neemle.OrmLite.Generator.OrmGenerator.SoftDeleteIssue)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "107",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Access",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "107",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_IsView",
+      "signature": "(bool)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "108",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_Location",
+      "signature": "(Microsoft.CodeAnalysis.Location)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "108",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_MemberIssues",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<Neemle.OrmLite.Generator.OrmGenerator.MemberIssue>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "108",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_TypeIssue",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "109",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_RequiredMissing",
+      "signature": "(string)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "109",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_LostKeys",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<string>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "109",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_ExcludedMembers",
+      "signature": "(Neemle.OrmLite.Generator.EquatableArray<string>)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "110",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "cls": "Neemle.OrmLite.Generator.OrmGenerator.Entity",
+      "method": "set_IsStatic",
+      "signature": "(bool)",
+      "linePoints": 1,
+      "coveredLinePoints": 0,
+      "branches": 0,
+      "coveredBranches": 0,
+      "gaps": [
+        {
+          "number": "110",
+          "hits": "0",
+          "branch": "False"
+        }
+      ]
+    }
+  ]
+}

@@ -25,7 +25,7 @@ internal static class DescriptorEmitter
         d = Columns(d, e);
         d = Indexes(d, e);
         d = Links(d, e, allTables);
-        return SoftDelete(d, e);
+        return SoftDelete(ForeignKeyEmitter.Describe(d, e), e);
     }
 
     private static CsExpression Columns(CsExpression d, Entity e)

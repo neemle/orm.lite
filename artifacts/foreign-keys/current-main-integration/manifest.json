@@ -1,0 +1,423 @@
+{
+  "schema": "ORML110-current-main-finite-SDET-v1",
+  "generated": "2026-11-26T13:02:56.253390+00:00",
+  "run": "d06d5f0d-ae1d-4069-966d-cf9b0e129cdf",
+  "claim": "39c0169c-ebcc-43e6-ac8e-1999d57176a4",
+  "executionCommit": "2f14178742d386a430dcadc4676a7d700602714a",
+  "sourceTree": "5ac963aa6b60d175ade27276ae0107fb3203aa88",
+  "testTree": "470a28bf1b507925dce5a30be6478e6293497e64",
+  "mainParent": "c0ac439893b0f2c817ec608fa853a0ce41b60b23",
+  "gates": {
+    "build-current-public-demo": {
+      "carrier": "build-current-public-demo.json",
+      "log": "build-current-public-demo.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:58:50.954051+00:00",
+      "finished": "2026-11-26T12:59:21.483269+00:00"
+    },
+    "pack-Postgres": {
+      "carrier": "pack-Postgres.json",
+      "log": "pack-Postgres.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:57:46.752405+00:00",
+      "finished": "2026-11-26T12:58:06.907652+00:00"
+    },
+    "current-jit10-sqlite": {
+      "carrier": "current-jit10-sqlite.json",
+      "log": "current-jit10-sqlite.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:59:21.772878+00:00",
+      "finished": "2026-11-26T12:59:31.371984+00:00"
+    },
+    "compile-merged-tests": {
+      "carrier": "compile-merged-tests.json",
+      "log": "compile-merged-tests.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:54:24.791530+00:00",
+      "finished": "2026-11-26T12:56:49.515676+00:00"
+    },
+    "affected-fk-generator-goldens": {
+      "carrier": "affected-fk-generator-goldens.json",
+      "log": "affected-fk-generator-goldens.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:57:26.117621+00:00",
+      "finished": "2026-11-26T12:58:28.208062+00:00"
+    },
+    "capture-current-semantics": {
+      "carrier": "capture-current-semantics.json",
+      "log": "capture-current-semantics.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:58:45.168362+00:00",
+      "finished": "2026-11-26T12:59:09.858060+00:00"
+    },
+    "pack-Sqlite": {
+      "carrier": "pack-Sqlite.json",
+      "log": "pack-Sqlite.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:57:23.390801+00:00",
+      "finished": "2026-11-26T12:57:46.524137+00:00"
+    },
+    "capture-old-semantics": {
+      "carrier": "capture-old-semantics.json",
+      "log": "capture-old-semantics.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:58:32.011702+00:00",
+      "finished": "2026-11-26T12:58:44.932758+00:00"
+    },
+    "current-jit10-postgres": {
+      "carrier": "current-jit10-postgres.json",
+      "log": "current-jit10-postgres.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:59:31.625360+00:00",
+      "finished": "2026-11-26T12:59:36.813670+00:00"
+    },
+    "pack-Core": {
+      "carrier": "pack-Core.json",
+      "log": "pack-Core.log",
+      "exitCode": 0,
+      "started": "2026-11-26T12:56:06.603168+00:00",
+      "finished": "2026-11-26T12:57:23.122179+00:00"
+    }
+  },
+  "proof": "semantic-and-runtime-proof.json",
+  "cleanup": "cleanup.json",
+  "firstProvenanceDiagnostic": "proof-first-diagnostic.json; separate build analyzer DLL identity was not promised; actual packed generated output exacttext closes token equality transitively. No test/product failure.",
+  "affectedResult": "158/158 passed0failed0skip, currentFK+generator/migration/normal5golden contracts; no source/test/assertion/golden changes",
+  "currentPublicDemo": "2JIT10providers each47/9commonblocks exactoriginal; SQLiteFalse separate UNENFORCED",
+  "originalNativeEvidenceReuse": "21dfe551/fbb1ea6a actual39+0c original8SHA retained, not currentNativeexecution; samepublicinputs14generatedtypes tokenexact,currentMSBuild sourceexact,unchangedFKruntimeunits,current2providerproof. No newNative risk found.",
+  "remaining": "One final branch push triggers sole hosted fullCI; ROOT watches/handlesactualfailure/TL/security/merge. No local fullmatrix/coverage/census/Native8replay.",
+  "evidence": [
+    {
+      "file": "affected-fk-generator-goldens.json",
+      "bytes": 6506,
+      "sha256": "cc597e57168d6034437a7c32d1eb3ff291d405c7555a3f7769378367e6c51d14"
+    },
+    {
+      "file": "affected-fk-generator-goldens.log",
+      "bytes": 558,
+      "sha256": "bb3b4d7c8cae51c269bbd06d879df3799b96b1e200542d0f37bb2ebdbac3dc24"
+    },
+    {
+      "file": "build-current-public-demo.json",
+      "bytes": 6372,
+      "sha256": "2f5e85091ae06c3138d7838f5fc0ac5fd8ff320d39254375452d3fa72f6e7e0f"
+    },
+    {
+      "file": "build-current-public-demo.log",
+      "bytes": 470,
+      "sha256": "4397258c8ce14e145fb7d7387ccea159caa19de124757ecd1271b3f8ccd3c608"
+    },
+    {
+      "file": "capture-current-semantics.json",
+      "bytes": 6639,
+      "sha256": "4fc63dc1cceaab1304574b1bfb3dc7a0e3e51fa786fcb925fa78f178832fb094"
+    },
+    {
+      "file": "capture-current-semantics.log",
+      "bytes": 42,
+      "sha256": "2b31459b26d8ca02ace94ce7028c03dac027b1245f5b484161889178d8061cad"
+    },
+    {
+      "file": "capture-old-semantics.json",
+      "bytes": 6646,
+      "sha256": "2c419485914e16242299f9868f1285e609c4a7c3923384fd8d33f24c50a49b91"
+    },
+    {
+      "file": "capture-old-semantics.log",
+      "bytes": 42,
+      "sha256": "2b31459b26d8ca02ace94ce7028c03dac027b1245f5b484161889178d8061cad"
+    },
+    {
+      "file": "capture.py",
+      "bytes": 938,
+      "sha256": "b163994a74ffae447a57ea8d400d2b27be548ed133c83f54663b7b184b1f8e7d"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0000.g.cs",
+      "bytes": 3861,
+      "sha256": "8e8a1a06527e5c52ea59b4500a3efbd126571f52b4f448035f658c2a823691f3"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0001.g.cs",
+      "bytes": 3633,
+      "sha256": "17cb6ebf03ce8680287147b317dbc00d851e0f35d408ea71f9988d8add79ca78"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0002.g.cs",
+      "bytes": 3880,
+      "sha256": "a9c280bebcf85cf5cab3e72e7e6563b42868fe0a6087d89cd8a51a36916ea584"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0003.g.cs",
+      "bytes": 5158,
+      "sha256": "863769da828412bcd450ab3e98865c1306b34acd4f3649475f5e9b6ce3991ceb"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0004.g.cs",
+      "bytes": 3878,
+      "sha256": "36a9cad83b1f949e1ea52a0df55d6c1130d92dfde97360e5fbcff4b86c68c147"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0005.g.cs",
+      "bytes": 4010,
+      "sha256": "4bb3e2c934710347308135ae195e9e2fac0a0c37755c72cfa784c5f4c2d24bc2"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0006.g.cs",
+      "bytes": 4019,
+      "sha256": "1373c8a399e05d2aaaa8f27af70ab1cdab49aa94b9cfee517d8abf7f71582d21"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0007.g.cs",
+      "bytes": 3571,
+      "sha256": "0cd3db42aea7667086fde4151e6a4e55eb6916bab2f191ae14aaff6558822153"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0008.g.cs",
+      "bytes": 953,
+      "sha256": "d092f24517c0c8ce31cd050043063559a1ee87a3fd7da279d5342dcf214a3fae"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0009.g.cs",
+      "bytes": 3346,
+      "sha256": "68b7868c5d2e16f4fccd3aafd7ff1169242eadebf330b4621eb4e4ece1c94e1b"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0010.g.cs",
+      "bytes": 478,
+      "sha256": "282c165eb55e6bacef4d0ef213f53d1575e1365825a3fccd0bf827f872c0651d"
+    },
+    {
+      "file": "captured-current/OrmLite.Entities.0011.g.cs",
+      "bytes": 1013,
+      "sha256": "ee62ae9f6af4f0d0bfcde286a5cf993551cd1fd7d20266410e5248d7d74f5cb8"
+    },
+    {
+      "file": "captured-current/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 334,
+      "sha256": "e9ee170a0212e801d07a91a42fc651b72090adecf03468136471ed052de3eb79"
+    },
+    {
+      "file": "captured-current/OrmLite.Migrations.g.cs",
+      "bytes": 274,
+      "sha256": "f1b9ae60387caaa55149946a516aa62609123c4b3a0eb9b7f7b14dd50de7dbd3"
+    },
+    {
+      "file": "captured-current/tokens.json",
+      "bytes": 95739,
+      "sha256": "c6ebd8ca8e785c03d23cbda2c83d2cb61da416e8fa37b061a6d8451985620684"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0000.g.cs",
+      "bytes": 3857,
+      "sha256": "e7678dc2d8db818944f643ceda14be72ac33ca0d82f1f637ad511bf6c691b098"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0001.g.cs",
+      "bytes": 3631,
+      "sha256": "8992fa9178651ba7dcdc8c386223cea63b028e9ff1f8eeca601c321371e916b8"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0002.g.cs",
+      "bytes": 3876,
+      "sha256": "a786ad59a0e50d9847a38c179f29ec780330d21fbcd5a4634f01d9b3c96f53f0"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0003.g.cs",
+      "bytes": 5163,
+      "sha256": "51e6ccc47a302129d5ad4eb3858fada9b26e88e3febe460adef635d8e0596d50"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0004.g.cs",
+      "bytes": 3874,
+      "sha256": "a7a8f25a10731a4159449061583a0f4a3e626147f5303ba4f2347d878368c39a"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0005.g.cs",
+      "bytes": 4006,
+      "sha256": "33080559683ec013c89660dc8f78b870d784a853d0cfb5d88a2217c15c4b806f"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0006.g.cs",
+      "bytes": 4015,
+      "sha256": "9657c5205e14725d59014efd96555213dc307ea16b235cb8d0c508bdaef8f996"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0007.g.cs",
+      "bytes": 3577,
+      "sha256": "ab86ac83f80a5f8d4c13ec3198a301aa5b9f5c951016ced65de7ceacebf45bd1"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0008.g.cs",
+      "bytes": 959,
+      "sha256": "8378f24a0504f562bf9b8505ebec12ee8f8252dd49e7e7ea01cc28c9a1272ec5"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0009.g.cs",
+      "bytes": 3354,
+      "sha256": "14e02c22d466a9269bc286c169a396549063d0eb4cd325585baabeeee2851244"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0010.g.cs",
+      "bytes": 484,
+      "sha256": "57d5bd3bad1ba3433225c360d5167712c21515dbfb393d545de52438b8bbaf54"
+    },
+    {
+      "file": "captured-old/OrmLite.Entities.0011.g.cs",
+      "bytes": 1013,
+      "sha256": "ee62ae9f6af4f0d0bfcde286a5cf993551cd1fd7d20266410e5248d7d74f5cb8"
+    },
+    {
+      "file": "captured-old/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 334,
+      "sha256": "e9ee170a0212e801d07a91a42fc651b72090adecf03468136471ed052de3eb79"
+    },
+    {
+      "file": "captured-old/OrmLite.Migrations.g.cs",
+      "bytes": 273,
+      "sha256": "0e95f94bc902474d753205ed2d4b5da75a863c5845f0ff28dfd6c39764cb491c"
+    },
+    {
+      "file": "captured-old/tokens.json",
+      "bytes": 95739,
+      "sha256": "c6ebd8ca8e785c03d23cbda2c83d2cb61da416e8fa37b061a6d8451985620684"
+    },
+    {
+      "file": "cleanup.json",
+      "bytes": 13760,
+      "sha256": "fa1a42ddd525c7de032a2013693a2e9c21cb0e0c0e84497295de0306bb29302d"
+    },
+    {
+      "file": "cleanup.py",
+      "bytes": 1716,
+      "sha256": "98bce507893c531a8976d47658f30dc77a33de80d3bb6e37e263054d3f530364"
+    },
+    {
+      "file": "compile-merged-tests.json",
+      "bytes": 5946,
+      "sha256": "fcf8f470157ea3e69fbd4a6991d334e2b12cdb1c8c5f89663f8a6cfc427e6442"
+    },
+    {
+      "file": "compile-merged-tests.log",
+      "bytes": 2343,
+      "sha256": "cd23970095de63d0df8edd635651fbb6514ea81c3d064195a82880042f4c9d69"
+    },
+    {
+      "file": "current-jit10-postgres.json",
+      "bytes": 5881,
+      "sha256": "1ee815a6f6b9ac4ced8a2d8f15f689d7517f3ef6491810a230df356edb8347aa"
+    },
+    {
+      "file": "current-jit10-postgres.log",
+      "bytes": 692,
+      "sha256": "2ca251f739fb184e4a291145add61f9b7cf728c8f59a867ec8e4a3a2dc70dcdc"
+    },
+    {
+      "file": "current-jit10-sqlite.json",
+      "bytes": 5877,
+      "sha256": "5359d1a6e09f3adbf39b64feafb51a86a474d55dcbd896232c75e19a51975bd3"
+    },
+    {
+      "file": "current-jit10-sqlite.log",
+      "bytes": 769,
+      "sha256": "d997ea6b26c1be28bb093f38e633647acb1c60d9a2a1351910e918e6a3ca5093"
+    },
+    {
+      "file": "demo.py",
+      "bytes": 1089,
+      "sha256": "1792669945dd00ec3aa8ee4cd74f78ca8858165dbba851d1d5bfedb790254a25"
+    },
+    {
+      "file": "docker-base.json",
+      "bytes": 1763,
+      "sha256": "906e84ee14d4726b45f4018d3ee04e793c583264773099ba2e9c06b5978cddfa"
+    },
+    {
+      "file": "fixture.json",
+      "bytes": 12089,
+      "sha256": "1e8d75965ff87dbb6bd916146a5cafc6f02bb5428dd7cbda21f27348f43898ae"
+    },
+    {
+      "file": "fixture.py",
+      "bytes": 1526,
+      "sha256": "7cfceefee0cc7d9a9f184d0501f09ff45c5ed32ec2196af71c416c20fa93284d"
+    },
+    {
+      "file": "nuget.config",
+      "bytes": 605,
+      "sha256": "dedfe6db3cd8392a95affaef7d4d7a950e0cda5a75112b797bf1e33c77e2462e"
+    },
+    {
+      "file": "pack-Core.json",
+      "bytes": 6084,
+      "sha256": "8727f29662c95d8f440b8cffd312381ca6c67de98a8b4adb89f01795236e2205"
+    },
+    {
+      "file": "pack-Core.log",
+      "bytes": 1531,
+      "sha256": "7c0e7ecb3899419e238cb9e3faa968e91551196382bef870677cbdcdc2a3e5cd"
+    },
+    {
+      "file": "pack-Postgres.json",
+      "bytes": 6096,
+      "sha256": "07f786d48594b1d3732802b941406b0c913bc9ede96d040af0212b392a0ee2f0"
+    },
+    {
+      "file": "pack-Postgres.log",
+      "bytes": 1408,
+      "sha256": "09f583dd3717c292b6d4341d21a536d8146c56dea12e55f0ef35169255f70409"
+    },
+    {
+      "file": "pack-Sqlite.json",
+      "bytes": 6090,
+      "sha256": "3c6f9d6937b5061730a0d66b2549f1032f696c65b68ba49e910cebd3378d4c5e"
+    },
+    {
+      "file": "pack-Sqlite.log",
+      "bytes": 1396,
+      "sha256": "3d438dd96c20e1d71ecefa74b9bd9ed676a20ad3eec5933d061d919dcb85ca6b"
+    },
+    {
+      "file": "pack.py",
+      "bytes": 591,
+      "sha256": "07873ad95cf19782f514d0d778864abcc75ebd7f22baf58947359336e33aef2d"
+    },
+    {
+      "file": "proof-first-diagnostic.json",
+      "bytes": 572,
+      "sha256": "c5088ad325f5a4e094bbb475e0ffaa94291482d6ee5f00c33b9f8459ba32b76c"
+    },
+    {
+      "file": "proof.py",
+      "bytes": 6051,
+      "sha256": "2adaafc17e7ad8d57e28385a3a65b7c676e6f5e79723e5d44dd46778c828e087"
+    },
+    {
+      "file": "results/affected.trx",
+      "bytes": 251636,
+      "sha256": "017404bb6f972d4eceb8a096cc8129304f81e5dd06b7a4e9a2bda9e527ecb046"
+    },
+    {
+      "file": "run.py",
+      "bytes": 1084,
+      "sha256": "deb65bac3358a7b2a0ff4938bb7f8567a436e4d5535c3c02fe28640662954497"
+    },
+    {
+      "file": "semantic-and-runtime-proof.json",
+      "bytes": 13486,
+      "sha256": "8c89abdac1b3c9c061ac4242a1dacff1bac95913c0802998eb331141d20c0d69"
+    },
+    {
+      "file": "semantic-capture/Capture.csproj",
+      "bytes": 1152,
+      "sha256": "a931145413f71114d256737d45d6a8547b8ff4d166a42fda611f7d7cb6c201fc"
+    },
+    {
+      "file": "semantic-capture/Program.cs",
+      "bytes": 4155,
+      "sha256": "93d06f639ab7bae16b4e4981f57c09abe2689782498e9ecbb6a998f2fe2682ac"
+    }
+  ],
+  "canonicalCarrier": "b7a2eab9-0ac5-4fd6-8eaf-47b630376d8b",
+  "canonicalReadback": "full28155chars uncapped"
+}

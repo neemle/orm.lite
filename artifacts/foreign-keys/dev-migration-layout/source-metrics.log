@@ -1,0 +1,418 @@
+{
+  "convention": "McCabe: 1 \u002B if/loops/catch/nondefault cases/conditional expressions and each \u0026\u0026, ||, ?? operand boundary; lambda points belong to containing method",
+  "records": [
+    {
+      "file": "src/Generator/MigrationGenerator.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "MigrationGenerator",
+          "line": 12,
+          "end": 182,
+          "codeLines": 150
+        }
+      ],
+      "methods": [
+        {
+          "name": "Initialize",
+          "start": 15,
+          "end": 39,
+          "codeLines": 23,
+          "parameters": 1,
+          "nesting": {
+            "line": 22,
+            "depth": 1
+          },
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 24
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 25
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 28
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 29
+            }
+          ]
+        },
+        {
+          "name": "RegisterOutputs",
+          "start": 41,
+          "end": 48,
+          "codeLines": 8,
+          "parameters": 2,
+          "nesting": {
+            "line": 43,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Emit",
+          "start": 50,
+          "end": 73,
+          "codeLines": 20,
+          "parameters": 4,
+          "nesting": {
+            "line": 52,
+            "depth": 0
+          },
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 53
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 57
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 57
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 60
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 65
+            }
+          ]
+        },
+        {
+          "name": "MigrationsSource",
+          "start": 83,
+          "end": 94,
+          "codeLines": 12,
+          "parameters": 2,
+          "nesting": {
+            "line": 84,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "RegistrationSource",
+          "start": 96,
+          "end": 107,
+          "codeLines": 12,
+          "parameters": 1,
+          "nesting": {
+            "line": 97,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "ReportAudit",
+          "start": 117,
+          "end": 134,
+          "codeLines": 18,
+          "parameters": 2,
+          "nesting": {
+            "line": 118,
+            "depth": 0
+          },
+          "complexity": 9,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 120
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 121
+            },
+            {
+              "kind": "IfStatement",
+              "line": 122
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 122
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 122
+            },
+            {
+              "kind": "IfStatement",
+              "line": 129
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 129
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 129
+            }
+          ]
+        },
+        {
+          "name": "OverridesDown",
+          "start": 158,
+          "end": 166,
+          "codeLines": 9,
+          "parameters": 1,
+          "nesting": {
+            "line": 159,
+            "depth": 0
+          },
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "ForStatement",
+              "line": 160
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 160
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 161
+            },
+            {
+              "kind": "IfStatement",
+              "line": 162
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 162
+            }
+          ]
+        },
+        {
+          "name": "ReadReversibility",
+          "start": 168,
+          "end": 177,
+          "codeLines": 10,
+          "parameters": 1,
+          "nesting": {
+            "line": 169,
+            "depth": 0
+          },
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 170
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 173
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 174
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 175
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyLayout/ForeignKeyLineLayout.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ForeignKeyLineLayout",
+          "line": 9,
+          "end": 56,
+          "codeLines": 45
+        }
+      ],
+      "methods": [
+        {
+          "name": "Format",
+          "start": 16,
+          "end": 37,
+          "codeLines": 22,
+          "parameters": 1,
+          "nesting": {
+            "line": 28,
+            "depth": 2
+          },
+          "complexity": 7,
+          "points": [
+            {
+              "kind": "ForStatement",
+              "line": 22
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 26
+            },
+            {
+              "kind": "IfStatement",
+              "line": 27
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 27
+            },
+            {
+              "kind": "WhileStatement",
+              "line": 29
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 29
+            }
+          ]
+        },
+        {
+          "name": "ChunkWidths",
+          "start": 39,
+          "end": 48,
+          "codeLines": 10,
+          "parameters": 2,
+          "nesting": {
+            "line": 43,
+            "depth": 1
+          },
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ForStatement",
+              "line": 42
+            },
+            {
+              "kind": "IfStatement",
+              "line": 45
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 45
+            }
+          ]
+        },
+        {
+          "name": "Append",
+          "start": 50,
+          "end": 55,
+          "codeLines": 6,
+          "parameters": 1,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 54
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyLayout/ForeignKeyMigrationLayout.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ForeignKeyMigrationLayout",
+          "line": 7,
+          "end": 21,
+          "codeLines": 13
+        }
+      ],
+      "methods": [
+        {
+          "name": "Enabled",
+          "start": 9,
+          "end": 12,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalOrExpression",
+              "line": 12
+            }
+          ]
+        },
+        {
+          "name": "Intents",
+          "start": 14,
+          "end": 17,
+          "codeLines": 4,
+          "parameters": 2,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Format",
+          "start": 19,
+          "end": 20,
+          "codeLines": 2,
+          "parameters": 2,
+          "nesting": null,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 20
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/ForeignKeyLayout/ForeignKeySourceLayout.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ForeignKeySourceLayout",
+          "line": 9,
+          "end": 26,
+          "codeLines": 18
+        }
+      ],
+      "methods": [
+        {
+          "name": "Emit",
+          "start": 11,
+          "end": 25,
+          "codeLines": 15,
+          "parameters": 2,
+          "nesting": {
+            "line": 17,
+            "depth": 1
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 16
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    }
+  ]
+}

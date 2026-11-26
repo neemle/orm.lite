@@ -1,0 +1,5 @@
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/sdk10/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/dev-migration-layout/providers10-results/providers.trx
+
+Passed!  - Failed:     0, Passed:    79, Skipped:     0, Total:    79, Duration: 5 s - Neemle.OrmLite.Tests.dll (net10.0)

@@ -1,0 +1,158 @@
+[
+  {
+    "leg": "providers10",
+    "name": "[UC-003] PostgreSQL accepts valid and nullable FK updates with exact references",
+    "method": "Valid_and_nullable_updates_succeed",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetPostgresMatrixTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[UC-003] reordered and repeated model discovery preserves physical FK order and identity",
+    "method": "Discovery_order_cannot_change_the_semantic_baseline",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDependencyGeneratorTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[SEC][UC-003] malformed generated FK names never disclose their payload or row defaults(control: \"\\t\")",
+    "method": "Invalid_name_diagnostics_expose_category_without_sensitive_input",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDiagnosticPrivacyTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[SEC][UC-003] PostgreSQL soft delete and generated writes infer no graph cascade",
+    "method": "Soft_delete_and_generated_writes_preserve_their_existing_meaning",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetPostgresMatrixTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[UC-003] PostgreSQL existing baseline retains exact history and orphan data",
+    "method": "Existing_baseline_is_not_implicitly_retrofitted",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetPostgresMatrixTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[SEC][UC-003] generated self and cyclic FK graphs withhold the entire baseline(cycle: True)",
+    "method": "Unsupported_cycles_are_diagnosed_before_any_schema_execution",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDependencyGeneratorTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[SEC][UC-003] generated self and cyclic FK graphs withhold the entire baseline(cycle: False)",
+    "method": "Unsupported_cycles_are_diagnosed_before_any_schema_execution",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDependencyGeneratorTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[SEC][UC-003] PostgreSQL hostile table and column names retain exact endpoints",
+    "method": "Quoted_table_and_column_names_cannot_execute_payloads",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetPostgresMatrixTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[SEC][UC-003] SQLite hostile table and column names retain exact enforced endpoints",
+    "method": "Quoted_table_and_column_names_cannot_execute_payloads",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetSqliteMatrixTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[SEC][UC-003] malformed generated FK names never disclose their payload or row defaults(control: \"\\0\")",
+    "method": "Invalid_name_diagnostics_expose_category_without_sensitive_input",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDiagnosticPrivacyTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[SEC][UC-003] malformed generated FK names never disclose their payload or row defaults(control: \"\\r\")",
+    "method": "Invalid_name_diagnostics_expose_category_without_sensitive_input",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDiagnosticPrivacyTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[SEC][UC-003] SQLite soft delete and generated writes never infer FK graph cascades",
+    "method": "Soft_delete_and_generated_writes_preserve_their_existing_meaning",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetSqliteMatrixTests"
+  },
+  {
+    "leg": "providers10",
+    "name": "[UC-003] enabled SQLite accepts valid and nullable FK updates with exact final references",
+    "method": "Valid_and_nullable_updates_succeed",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetSqliteMatrixTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[UC-003] PostgreSQL accepts valid and nullable FK updates with exact references",
+    "method": "Valid_and_nullable_updates_succeed",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetPostgresMatrixTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[UC-003] reordered and repeated model discovery preserves physical FK order and identity",
+    "method": "Discovery_order_cannot_change_the_semantic_baseline",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDependencyGeneratorTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[SEC][UC-003] malformed generated FK names never disclose their payload or row defaults(control: \"\\t\")",
+    "method": "Invalid_name_diagnostics_expose_category_without_sensitive_input",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDiagnosticPrivacyTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[SEC][UC-003] PostgreSQL soft delete and generated writes infer no graph cascade",
+    "method": "Soft_delete_and_generated_writes_preserve_their_existing_meaning",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetPostgresMatrixTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[UC-003] PostgreSQL existing baseline retains exact history and orphan data",
+    "method": "Existing_baseline_is_not_implicitly_retrofitted",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetPostgresMatrixTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[SEC][UC-003] generated self and cyclic FK graphs withhold the entire baseline(cycle: True)",
+    "method": "Unsupported_cycles_are_diagnosed_before_any_schema_execution",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDependencyGeneratorTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[SEC][UC-003] generated self and cyclic FK graphs withhold the entire baseline(cycle: False)",
+    "method": "Unsupported_cycles_are_diagnosed_before_any_schema_execution",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDependencyGeneratorTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[SEC][UC-003] PostgreSQL hostile table and column names retain exact endpoints",
+    "method": "Quoted_table_and_column_names_cannot_execute_payloads",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetPostgresMatrixTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[SEC][UC-003] SQLite hostile table and column names retain exact enforced endpoints",
+    "method": "Quoted_table_and_column_names_cannot_execute_payloads",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetSqliteMatrixTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[SEC][UC-003] malformed generated FK names never disclose their payload or row defaults(control: \"\\0\")",
+    "method": "Invalid_name_diagnostics_expose_category_without_sensitive_input",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDiagnosticPrivacyTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[SEC][UC-003] malformed generated FK names never disclose their payload or row defaults(control: \"\\r\")",
+    "method": "Invalid_name_diagnostics_expose_category_without_sensitive_input",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetDiagnosticPrivacyTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[SEC][UC-003] SQLite soft delete and generated writes never infer FK graph cascades",
+    "method": "Soft_delete_and_generated_writes_preserve_their_existing_meaning",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetSqliteMatrixTests"
+  },
+  {
+    "leg": "providers11",
+    "name": "[UC-003] enabled SQLite accepts valid and nullable FK updates with exact final references",
+    "method": "Valid_and_nullable_updates_succeed",
+    "type": "Neemle.OrmLite.Tests.ForeignKeys.Sdet.SdetSqliteMatrixTests"
+  }
+]

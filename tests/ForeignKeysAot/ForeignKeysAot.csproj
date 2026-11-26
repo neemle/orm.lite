@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AotTfm Condition="'$(AotTfm)' == ''">net10.0</AotTfm>
+    <TargetFramework>$(AotTfm)</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>ForeignKeysAot</AssemblyName>
+    <RootNamespace>ForeignKeysAot</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PublishAot>true</PublishAot>
+    <IsPackable>false</IsPackable>
+    <NuGetAudit>false</NuGetAudit>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(ArtifactsPath)/generated/ForeignKeysAot</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Runtime/Runtime.csproj" />
+    <ProjectReference Include="../../src/Sql/Sql.csproj" />
+    <ProjectReference Include="../../src/Sqlite/Sqlite.csproj" />
+    <ProjectReference Include="../../src/Generator/Generator.csproj"
+                      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <PackageReference Include="Neemle.CSharpComposer" Version="$(OrmLiteComposerVersion)"
+                      GeneratePathProperty="true" PrivateAssets="all" />
+    <Analyzer Include="$(PkgNeemle_CSharpComposer)/lib/net10.0/Neemle.CSharpComposer.dll" />
+  </ItemGroup>
+</Project>

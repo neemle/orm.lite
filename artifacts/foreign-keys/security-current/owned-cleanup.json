@@ -1,0 +1,45 @@
+{
+  "generated": "2026-11-26T09:21:48.912039+00:00",
+  "containers": [
+    {
+      "gate": "devskim",
+      "containerId": "a14dd321f51a46d51474cffd37d26ea305113051794ae48d6717347c7d02f227",
+      "inspectExit": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: a14dd321f51a46d51474cffd37d26ea305113051794ae48d6717347c7d02f227\n",
+      "absent": true
+    },
+    {
+      "gate": "licenses",
+      "containerId": "aec0e1d120cee4d6b732f80e6614a05350413d2eb8f958ac559a5e4c950dfecd",
+      "inspectExit": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: aec0e1d120cee4d6b732f80e6614a05350413d2eb8f958ac559a5e4c950dfecd\n",
+      "absent": true
+    },
+    {
+      "gate": "semgrep",
+      "containerId": "961a6ec1ef62e356d88c2496e0a8b8693842ce2401a08a63f2d229e740d81494",
+      "inspectExit": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 961a6ec1ef62e356d88c2496e0a8b8693842ce2401a08a63f2d229e740d81494\n",
+      "absent": true
+    },
+    {
+      "gate": "roslyn",
+      "containerId": "ce14fca1fa26ea68eae910f1fc6025fce2a764295977972fdd5196734566f691",
+      "inspectExit": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: ce14fca1fa26ea68eae910f1fc6025fce2a764295977972fdd5196734566f691\n",
+      "absent": true
+    },
+    {
+      "gate": "dependencies",
+      "containerId": "1c014d5021e845191718177d10527deee19c0f4ed4c72c861864ba87bd27786e",
+      "inspectExit": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 1c014d5021e845191718177d10527deee19c0f4ed4c72c861864ba87bd27786e\n",
+      "absent": true
+    }
+  ]
+}

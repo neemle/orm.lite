@@ -1,0 +1,117 @@
+{
+  "recorded": "2026-11-26T04:40:26.728000+00:00",
+  "gates": [
+    {
+      "gate": "unit10",
+      "exitCode": 1,
+      "started": "2026-11-26T04:36:23.749557+00:00",
+      "finished": "2026-11-26T04:36:44.914611+00:00",
+      "commit": "a5b25a7fbe52ffaa04fea7e1acea979c7e0a93b0",
+      "sourceTree": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e",
+      "testTree": "1415c7fe70b485a4ab470db3ed02bc5caefe1a4a"
+    },
+    {
+      "gate": "unit10-corrected",
+      "exitCode": 0,
+      "started": "2026-11-26T04:37:01.075621+00:00",
+      "finished": "2026-11-26T04:37:29.471590+00:00",
+      "commit": "7e35646a0f55f4f331f827cf68ebe07403a2778c",
+      "sourceTree": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e",
+      "testTree": "13306f57f2988ba7d1b03a4de866db224dd10830",
+      "counters": {
+        "total": "63",
+        "executed": "63",
+        "passed": "63",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    {
+      "gate": "providers10",
+      "exitCode": 0,
+      "started": "2026-11-26T04:38:11.367264+00:00",
+      "finished": "2026-11-26T04:38:20.429697+00:00",
+      "commit": "7e35646a0f55f4f331f827cf68ebe07403a2778c",
+      "sourceTree": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e",
+      "testTree": "13306f57f2988ba7d1b03a4de866db224dd10830",
+      "counters": {
+        "total": "79",
+        "executed": "79",
+        "passed": "79",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    {
+      "gate": "providers11",
+      "exitCode": 0,
+      "started": "2026-11-26T04:39:14.020978+00:00",
+      "finished": "2026-11-26T04:40:02.176115+00:00",
+      "commit": "7e35646a0f55f4f331f827cf68ebe07403a2778c",
+      "sourceTree": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e",
+      "testTree": "13306f57f2988ba7d1b03a4de866db224dd10830",
+      "counters": {
+        "total": "79",
+        "executed": "79",
+        "passed": "79",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    }
+  ],
+  "native11": {
+    "exitCode": 0,
+    "started": "2026-11-26T04:39:15.168596+00:00",
+    "finished": "2026-11-26T04:39:55.613757+00:00",
+    "runtimeWitness": "11.0.0",
+    "binarySha256": "e5d571471c169b40b6b91b47715fa0a2ff224026afec38bde5e5021acb37f616",
+    "binaryBytes": 5704288
+  },
+  "sourceTree": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e",
+  "sourceUnchanged": true,
+  "changedTestPaths": [
+    "tests/Tests/ForeignKeys/Sdet/SdetDependencyGeneratorTests.cs",
+    "tests/Tests/ForeignKeys/Sdet/SdetDiagnosticPrivacyTests.cs",
+    "tests/Tests/ForeignKeys/Sdet/SdetExistingBaseline.cs",
+    "tests/Tests/ForeignKeys/Sdet/SdetGeneratedWrites.cs",
+    "tests/Tests/ForeignKeys/Sdet/SdetHostileIdentifiers.cs",
+    "tests/Tests/ForeignKeys/Sdet/SdetPostgresMatrixTests.cs",
+    "tests/Tests/ForeignKeys/Sdet/SdetSoftComposition.cs",
+    "tests/Tests/ForeignKeys/Sdet/SdetSqliteMatrixTests.cs",
+    "tests/Tests/ForeignKeys/Sdet/SdetUpdateWitness.cs"
+  ],
+  "oldControlsUnchanged": true
+}

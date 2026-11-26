@@ -1,0 +1,16 @@
+{
+  "gate": "FK_MIGRATION_FINAL_ASSERTIONS",
+  "argv": [
+    "python3",
+    "artifacts/foreign-keys/dev-migration-layout/finalize.py"
+  ],
+  "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys",
+  "commit": "0f4b8c989bcd7ab7668ae598adb7baac07dce52a",
+  "worktreeStatus": "",
+  "sourceDigest": "2f4853bdf8458d32037cd113e33c3b943048620f687191f7019f05a0a41cca24",
+  "started": "2026-11-26T06:09:39.226673+00:00",
+  "exitCode": 0,
+  "finished": "2026-11-26T06:09:39.380804+00:00",
+  "sourceChangedDuringRun": false,
+  "log": "artifacts/foreign-keys/dev-migration-layout/assertions.log"
+}

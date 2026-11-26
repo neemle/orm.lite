@@ -1,0 +1,20 @@
+{
+  "gate": "postgres-version",
+  "argv": [
+    "docker",
+    "exec",
+    "orml110-sdet-final-pg",
+    "/usr/local/pgsql/bin/postgres",
+    "--version"
+  ],
+  "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys",
+  "commit": "7e35646a0f55f4f331f827cf68ebe07403a2778c",
+  "sourceTree": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e",
+  "testTree": "13306f57f2988ba7d1b03a4de866db224dd10830",
+  "started": "2026-11-26T04:41:37.242742+00:00",
+  "status": "",
+  "exitCode": 0,
+  "finished": "2026-11-26T04:41:37.870317+00:00",
+  "finalStatus": "",
+  "sourceTreeAfter": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e"
+}
