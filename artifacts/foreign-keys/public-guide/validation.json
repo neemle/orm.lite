@@ -1,0 +1,109 @@
+{
+  "scope": "ORML-110 MARKETING public technical guide only",
+  "observed_utc": "2026-11-26T04:58:14.553541+00:00",
+  "starting_commit": "6798005e1957b8c3d26f140333f45e87b8eac2c2",
+  "source_tree": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e",
+  "tests_tree": "13306f57f2988ba7d1b03a4de866db224dd10830",
+  "audience_and_offer": "Application developers choosing opt-in fresh-baseline constraints or explicit foreign-key upgrade migrations; practical technical guidance, no campaign or launch.",
+  "authority": {
+    "adr": "5d9cbf93-81b1-44c2-8558-58515ba4e1a4 v2 / fa78b166-5385-4d76-bd37-fb0c510c568f",
+    "speck": "bd2b56c9-6d19-4c81-a3ce-dee320e99360 v2 / 69018a3a-d88b-4c82-ac79-b4a7dc30ff62",
+    "requirements": "Examples UC-003, node 1763a7f0-b0a7-4465-add0-dd295748ff4c",
+    "sdet": "d99bdc8a-c9df-4cc7-b913-ed06245ae5d9",
+    "location": "4b431259-1e72-4cb1-b13e-09dd9a3ffedb"
+  },
+  "static_checks": {
+    "local_links": [
+      {
+        "from": "docs/relations.md",
+        "target": "README.md",
+        "result": "file exists"
+      },
+      {
+        "from": "docs/relations.md",
+        "target": "../demo/Tracker/Migrations.cs",
+        "result": "file exists"
+      },
+      {
+        "from": "docs/relations.md",
+        "target": "migrations.md",
+        "result": "file exists"
+      },
+      {
+        "from": "docs/relations.md",
+        "target": "migrations.md#foreign-keys-fresh-baseline-and-existing-databases",
+        "result": "file and anchor exist"
+      },
+      {
+        "from": "docs/relations.md",
+        "target": "../demo/README.md#what-each-chapter-proves",
+        "result": "file and anchor exist"
+      },
+      {
+        "from": "docs/migrations.md",
+        "target": "README.md",
+        "result": "file exists"
+      },
+      {
+        "from": "docs/migrations.md",
+        "target": "relations.md#opt-in-for-a-fresh-baseline",
+        "result": "file and anchor exist"
+      },
+      {
+        "from": "docs/migrations.md",
+        "target": "relations.md#keep-the-explicit-migration-route",
+        "result": "file and anchor exist"
+      },
+      {
+        "from": "docs/migrations.md",
+        "target": "#provider-behavior-during-schema-changes",
+        "result": "file and anchor exist"
+      },
+      {
+        "from": "docs/migrations.md",
+        "target": "relations.md#check-sqlite-enforcement",
+        "result": "file and anchor exist"
+      }
+    ],
+    "compiled_excerpt_reuse": [
+      {
+        "source": "tests/ForeignKeysAot/NativeParent.cs",
+        "comparison": "exact full file content",
+        "sha256": "236e1bf3710dd72985e390cddc4ea88c4c69c036ac4cc83b808f884b86f0889b"
+      },
+      {
+        "source": "tests/ForeignKeysAot/NativeChild.cs",
+        "comparison": "exact full file content",
+        "sha256": "5ea9d45ec13fc9764adbd76426cf7a2997ad21372f5771542ac98f7840717176"
+      },
+      {
+        "source": "tests/Tests/ForeignKeys/ForeignKeyLinks.cs:15-18",
+        "comparison": "exact annotation/navigation lines after removing raw-string indentation",
+        "sha256": "ede613a58896d96224f714b416042e3e003c6ff610b96330ea38713eeb883f68"
+      }
+    ],
+    "prior_examples": [
+      {
+        "path": "docs/relations.md",
+        "existing_fenced_blocks_preserved": 6,
+        "sha256": "887fa8c90f3992aaea08d4a073234a08231ef31a4478f5a9de7b60b19384e1c7"
+      },
+      {
+        "path": "docs/migrations.md",
+        "existing_fenced_blocks_preserved": 1,
+        "sha256": "3a28ed1d0b68f5db4834e8b31680237bc0b30da62d5c43af146a2d19742d6ce8"
+      }
+    ],
+    "public_attribute_signatures": "matched actual source",
+    "sqlite_option": "matched ConnectionStringOf explicit-keyword check",
+    "whitespace": "git diff --check passed before evidence creation"
+  },
+  "validation_limits": [
+    "No build, executable test, provider, NativeAOT or coverage run in this documentation-only task.",
+    "Reused model excerpts come from the already compiled consumer; the new Markdown was not compiled as an application.",
+    "Existing tutorial fenced blocks preserved without new execution; their existing package version commands are unchanged and do not assert availability of this feature in that package.",
+    "Full raw coverage floor remains FAIL with 57 incomplete classes in the cited SDET record; no overall QA, GO_TO_MARKET, release or item PASS.",
+    "Runnable application demo is separate work.",
+    "Subscription SaaS GUIDED pathway is inapplicable to this library guide; no telemetry or analytics integration."
+  ]
+}

@@ -4,6 +4,8 @@
 
 ORM.lite generates methods for loading related entities on SQLite and PostgreSQL. This guide creates an author,
 a book, and a tag, then loads the book’s author, the author’s books, and the author’s tags.
+Navigation declarations alone keep their loading behavior. Database foreign keys are an explicit choice:
+use opt-in attributes for a fresh generated baseline, or a migration for an existing database.
 
 | Relation | Model declaration | Generated methods |
 | --- | --- | --- |
@@ -63,9 +65,111 @@ public sealed class Tag
 - **Author ↔ Tags:** The attribute names the join table, then its author and tag columns. For this simple
   managed link, the baseline creates `author_tags` with a primary key over both columns.
 
-## 3. Add foreign keys in a migration
+## 3. Choose how to create foreign keys
 
-The navigation declarations generate loading methods. Database enforcement comes from the constraints below.
+### Opt in for a fresh baseline
+
+`[ForeignKey(name, onDelete)]` adds a named constraint to the generated baseline. The delete action is required;
+there is no implicit action or `ON UPDATE` option. Put the attribute on a reference navigation or its inverse
+collection. Both describe the same physical foreign key on the child table.
+
+These two model files are reused from the compiled NativeAOT consumer. They form a separate example from the
+author/book/tag tutorial below.
+
+`NativeParent.cs`:
+
+```csharp
+using Neemle.OrmLite;
+using Neemle.OrmLite.Nodes;
+
+namespace ForeignKeysAot;
+
+[Table("aot_parents")]
+public sealed class NativeParent
+{
+    public Guid Id { get; set; }
+
+    [ForeignKey("fk_aot_child_parent", ReferentialAction.SetNull)]
+    public List<NativeChild> Children { get; set; } = [];
+}
+```
+
+`NativeChild.cs`:
+
+```csharp
+using Neemle.OrmLite;
+
+namespace ForeignKeysAot;
+
+[Table("aot_children")]
+public sealed class NativeChild
+{
+    public Guid Id { get; set; }
+
+    public Guid? NativeParentId { get; set; }
+
+    public NativeParent? NativeParent { get; set; }
+}
+```
+
+The constraint is on `aot_children.native_parent_id`, referencing `aot_parents.id`. A physical parent delete
+sets the nullable child key to `null`. Declaring the same name, columns and action on both navigation ends
+produces one constraint; conflicting declarations are refused.
+
+| `ReferentialAction` | Effect of a physical delete of the referenced row |
+| --- | --- |
+| `NoAction` | The database rejects a delete that violates the constraint. |
+| `Restrict` | The database restricts deletion while referencing rows remain. |
+| `Cascade` | The database deletes the referencing rows. |
+| `SetNull` | The database clears the referencing key; that key must be nullable. |
+
+Soft delete updates a row and does not invoke `ON DELETE`. Setting a navigation property also does not save
+its entities: call the generated insert/update methods for each row you intend to write.
+
+### Supported relation shapes
+
+These rules apply on both PostgreSQL and SQLite; SQLite must also have enforcement enabled on the connection.
+Ordinary entity mapping restrictions still apply; this table does not extend support for keyless or composite models.
+
+| Shape | Baseline opt-in support |
+| --- | --- |
+| Reference or inverse collection | Managed, non-view endpoints in the same `OrmSchema` contribution; mapped child FK column referencing the target's sole nonnullable primary key. |
+| Key types | Child FK and target key must match after removing CLR nullability, including column type, precision and scale. The unrelated primary key of the child is not the referenced target key. |
+| Generated pure many-to-many link | Uniquely owned join and same-baseline managed endpoints with `Guid` keys; each end has its own declaration and action. |
+| Explicit mapped link entity | Declare ordinary `[ForeignKey]` relations on the link entity; `[LinkForeignKey]` does not apply to an entity-owned join. |
+| Self-reference, directed cycle, cross-baseline, unmanaged or view endpoint | Refused. Composite target keys and unsupported link shapes are also refused. |
+
+For a pure managed link, the following annotation excerpt from the compiled generator fixture belongs on
+`User.Roles`. Import `Neemle.OrmLite` and `Neemle.OrmLite.Nodes`; both `User.Id` and `Role.Id` are `Guid`.
+
+```csharp
+[ManyToMany("user_roles", "user_id", "role_id")]
+[LinkForeignKey(LinkForeignKeyEnd.Source, "fk_user", ReferentialAction.Restrict)]
+[LinkForeignKey(LinkForeignKeyEnd.Target, "fk_role", ReferentialAction.Cascade)]
+public System.Collections.Generic.List<Role> Roles { get; set; } = new();
+```
+
+`Source` references the declaring `User`; `Target` references `Role`. This declaration restricts deleting a
+linked user and removes join rows when a role is physically deleted. It does not delete the other endpoint.
+Generated join columns are nonnullable, so `SetNull` is refused for either end.
+
+Constraint names must be nonempty and contain no NUL, control characters or malformed UTF-16. Accepted
+punctuation is quoted as identifier data. Names must be unique, ignoring case, across distinct physical
+constraints; the database provider still owns its identifier length limit.
+
+An invalid declaration reports generator diagnostic `ORMLITE035` and withholds the whole invalid baseline.
+Manual descriptor planning throws `ForeignKeyDeclarationException`; inspect its `Error`, `Entity` and
+`Navigation` properties. Errors distinguish invalid names, missing relations or columns, incompatible or
+unsupported keys, unmanaged or external endpoints, duplicate names, conflicting declarations, invalid delete
+actions, nonnullable `SetNull`, unsupported links and dependency cycles. Fix the declaration rather than
+expecting a partial schema. Tables in a valid opt-in baseline are ordered parent before child.
+
+### Keep the explicit migration route
+
+The author/book/tag models above intentionally have no foreign-key opt-in attributes. Their loading methods
+continue to work, and database enforcement comes from the constraints below. This manual route remains
+available for loader-only models and existing databases. Do not add the same constraints through both an
+opt-in baseline and this migration.
 Create `RelationsForeignKeys.cs` to add a foreign key for the book and one for each side of the join table.
 
 ```csharp
@@ -89,6 +193,16 @@ public sealed class RelationsForeignKeys : Migration
 The baseline creates the tables before this migration runs. For an existing database, ensure existing rows
 satisfy the constraints before applying the migration. For an explicit delete action such as `ON DELETE CASCADE`,
 see the [tracker migration](../demo/Tracker/Migrations.cs) and the [migration guide](migrations.md).
+Adding an attribute after a baseline was recorded does not retrofit the database; follow the
+[existing-database upgrade guidance](migrations.md#foreign-keys-fresh-baseline-and-existing-databases).
+
+### Check SQLite enforcement
+
+The SQLite factory supplies `Foreign Keys=True` when the connection string does not specify the option.
+An explicit `Foreign Keys=False` is honored: constraints can exist in the catalog while orphan writes remain
+unenforced. Check `PRAGMA foreign_keys;` on the connection that performs the writes: `1` means enabled and `0`
+means disabled. A catalog listing alone does not prove enforcement. PostgreSQL enforces an installed foreign
+key independently of this SQLite option.
 
 ## 4. Insert, load, and unlink
 
