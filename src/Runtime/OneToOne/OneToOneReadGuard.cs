@@ -14,6 +14,8 @@ public static class OneToOneReadGuard
             throw new OneToOneDeclarationException(OneToOneError.ConflictingConstraint, typeof(T).FullName);
     }
 
+    public static void Require(object entity, string navigation) => OneToOneProvenance.Require(entity, navigation);
+
     internal static bool Eligible(Type type, Delegate map) =>
         Maps.TryGetValue(type, out var registered) && registered.Equals(map);
 
