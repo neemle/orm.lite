@@ -1,3 +1,4 @@
+using SourceLayout = Neemle.OrmLite.Generator.GeneratedSourceLayout.GeneratedSourceLayout;
 using System;
 using System.Collections.Immutable;
 using System.Linq;
@@ -61,8 +62,8 @@ public sealed class MigrationGenerator : IIncrementalGenerator
             .ThenBy(m => m.Type, StringComparer.Ordinal)
             .ToArray();
 
-        spc.AddSource(MigrationsHint, MigrationsSource(ordered, asmToken));
-        spc.AddSource(RegistrationHint, RegistrationSource(asmToken));
+        spc.AddSource(MigrationsHint, SourceLayout.Wrap(MigrationsSource(ordered, asmToken)));
+        spc.AddSource(RegistrationHint, SourceLayout.Wrap(RegistrationSource(asmToken)));
     }
 
     public const string MigrationsStep = "OrmLiteMigrations";
