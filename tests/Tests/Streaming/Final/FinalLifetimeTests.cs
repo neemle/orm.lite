@@ -63,4 +63,43 @@ public sealed class FinalLifetimeTests
         Assert.Equal(1, (await e.Completion).RowsYielded);
         Assert.Equal(QueryStreamStopReason.Faulted, (await e.Completion).Reason);
     }
+
+    [Fact(DisplayName = "[UC-010][SEC01] recorded UoW provider mismatch never executes or replaces caller resources")]
+    public async Task Different_provider_binding_refuses_before_command()
+    {
+        var p = new StreamProbe();
+        var context = new OrmContext(new StreamProbeSource(p), new StreamProbeProvider(p));
+        await using var unit = await UnitOfWork.BeginAsync(context);
+        var query = FinalQueries.Query(p, new FinalCapabilityProvider(CapabilitySet.Everything())).On(unit);
+        var e = query.StreamAsync().GetAsyncEnumerator();
+        var fault = await Assert.ThrowsAsync<QueryStreamException>(() => e.MoveNextAsync().AsTask());
+        Assert.Equal(QueryStreamError.ResourceMismatch, fault.Error);
+        await e.DisposeAsync();
+        Assert.Equal((0, 0, 0), (p.Commands, p.Executions, p.ConnectionDisposals));
+        Assert.False(unit.Committed);
+        Assert.Equal(ConnectionState.Open, unit.Connection.State);
+        Assert.True((await e.Completion).CleanupSucceeded);
+    }
+
+    [Fact(DisplayName = "[UC-010][AC03] explicit native rebind clears previous UoW provenance")]
+    public async Task Native_rebind_does_not_keep_a_committed_old_scope()
+    {
+        var p = new StreamProbe();
+        var context = new OrmContext(new StreamProbeSource(p), new StreamProbeProvider(p));
+        await using var unit = await UnitOfWork.BeginAsync(context);
+        _ = p.Query();
+        var query = FinalQueries.Query(context).On(unit);
+        await using var native = new StreamProbeConnection(p);
+        await native.OpenAsync();
+        await using var transaction = await native.BeginTransactionAsync();
+        query.On(native, transaction);
+        await unit.CommitAsync();
+        var e = query.StreamAsync().GetAsyncEnumerator();
+        Assert.True(await e.MoveNextAsync());
+        Assert.Same(transaction, p.Transaction);
+        await e.DisposeAsync();
+        Assert.True((await e.Completion).CleanupSucceeded);
+        Assert.Equal(ConnectionState.Open, native.State);
+        Assert.Equal((1, 0), (p.Executions, p.ConnectionDisposals));
+    }
 }
