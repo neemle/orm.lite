@@ -47,19 +47,28 @@ public sealed class CompositeKeyNoRefusalTests
             Assert.False(method.IsGenericMethod);
             Assert.Equal(typeof(Task<>), method.ReturnType.GetGenericTypeDefinition());
             Assert.Equal("Fixture." + entity, method.ReturnType.GenericTypeArguments.Single().FullName);
-            Assert.True(method.GetParameters()[^1].IsOptional);
-            Assert.True(method.GetParameters()[^1].HasDefaultValue);
-            Assert.All(method.GetParameters()[..^1], parameter => Assert.False(parameter.IsOptional));
+            ParameterDefaults(method);
         });
         var context = typeof(OrmContext).FullName + ",";
         var connection = typeof(System.Data.Common.DbConnection).FullName + ",";
-        var key = keyType.FullName + ",";
+        var key = keyType.FullName;
         var options = typeof(RelationReadOptions).FullName + ",";
         var ct = typeof(CancellationToken).FullName;
-        Assert.Equal(new[] { context + key + ct, context + connection + key + ct,
-                context + key + options + ct, context + connection + key + options + ct }.Order(StringComparer.Ordinal),
+        Assert.Equal(new[] { context + key, context + connection + key,
+                context + key + "," + options + ct, context + connection + key + "," + options + ct }
+                .Order(StringComparer.Ordinal),
             methods.Select(m => string.Join(",", m.GetParameters().Select(p => p.ParameterType.FullName)))
                 .Order(StringComparer.Ordinal));
+    }
+
+    private static void ParameterDefaults(MethodInfo method)
+    {
+        var parameters = method.GetParameters();
+        var last = parameters[^1];
+        var token = last.ParameterType == typeof(CancellationToken);
+        Assert.Equal(token, last.IsOptional);
+        Assert.Equal(token, last.HasDefaultValue);
+        Assert.All(parameters[..^1], parameter => Assert.False(parameter.IsOptional));
     }
 
     [Fact(DisplayName = "AC3 an entity with no key is not refused and still emits no member that takes a key")]
