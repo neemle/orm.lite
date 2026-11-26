@@ -49,6 +49,33 @@ public static class ProjectOrm
         return new global::Neemle.OrmLite.Query<global::CorpusEntities.Project>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusEntities.Project>(new global::Neemle.OrmLite.GraphEntityBinding<global::
+            CorpusEntities.Project>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::CorpusEntities.
+            Project, global::System.Guid>("id", (e) => e.Id), new global::Neemle.OrmLite.GraphCollectionBinding<global::
+            CorpusEntities.Project, global::CorpusEntities.WorkItem, global::System.Guid>("Tasks", "project_id", (e) =>
+            e.Id, (e) => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(true, e.ProjectId), (e, @value) => e.
+            Tasks = @value), new global::Neemle.OrmLite.GraphLinkBinding<global::CorpusEntities.Project, global::
+            CorpusEntities.Label, global::System.Guid, global::System.Guid>("Labels", new global::Neemle.OrmLite.
+            GraphLinkSource("ce_project_labels", "project_id", "label_id"), (e) => e.Id, (e, @value) => e.Labels =
+            @value), new global::Neemle.OrmLite.GraphLinkBinding<global::CorpusEntities.Project, global::CorpusEntities.
+            Member, global::System.Guid, global::System.Guid>("Members", new global::Neemle.OrmLite.GraphLinkSource(
+            "ce_project_members", "project_id", "member_id"), (e) => e.Id, (e, @value) => e.Members = @value)));
+    }
+
+    public static class Paths
+    {
+        public static global::Neemle.OrmLite.GraphPath<global::CorpusEntities.Project, global::CorpusEntities.WorkItem>
+            Tasks => GraphPaths.Edge<global::CorpusEntities.Project, global::CorpusEntities.WorkItem>("Tasks");
+
+        public static global::Neemle.OrmLite.GraphPath<global::CorpusEntities.Project, global::CorpusEntities.Label>
+            Labels => GraphPaths.Edge<global::CorpusEntities.Project, global::CorpusEntities.Label>("Labels");
+
+        public static global::Neemle.OrmLite.GraphPath<global::CorpusEntities.Project, global::CorpusEntities.Member>
+            Members => GraphPaths.Edge<global::CorpusEntities.Project, global::CorpusEntities.Member>("Members");
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusEntities.Project e)
     {

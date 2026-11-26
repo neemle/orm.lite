@@ -35,6 +35,30 @@ public static class GoldenAuthorOrm
         return new global::Neemle.OrmLite.Query<global::GoldenFixtures.GoldenAuthor>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::GoldenFixtures.GoldenAuthor>(new global::Neemle.OrmLite.GraphEntityBinding<global::
+            GoldenFixtures.GoldenAuthor>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::
+            GoldenFixtures.GoldenAuthor, global::System.Guid>("id", (e) => e.Id), new global::Neemle.OrmLite.
+            GraphCollectionBinding<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenBook, global::
+            System.Guid>("Books", "author_id", (e) => e.Id, (e) => new global::Neemle.OrmLite.GraphKey<global::System.
+            Guid>(true, e.AuthorId), (e, @value) => e.Books = @value), new global::Neemle.OrmLite.GraphLinkBinding<
+            global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenTag, global::System.Guid, global::System.
+            Guid>("Tags", new global::Neemle.OrmLite.GraphLinkSource("golden_author_tags", "author_id", "tag_id"), (e)
+            => e.Id, (e, @value) => e.Tags = @value)));
+    }
+
+    public static class Paths
+    {
+        public static global::Neemle.OrmLite.GraphPath<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.
+            GoldenBook> Books => GraphPaths.Edge<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenBook>
+            ("Books");
+
+        public static global::Neemle.OrmLite.GraphPath<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.
+            GoldenTag> Tags => GraphPaths.Edge<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenTag>(
+            "Tags");
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         GoldenFixtures.GoldenAuthor e)
     {

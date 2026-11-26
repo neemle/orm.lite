@@ -31,6 +31,17 @@ public static class LabelOrm
         return new global::Neemle.OrmLite.Query<global::CorpusEntities.Label>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusEntities.Label>(new global::Neemle.OrmLite.GraphEntityBinding<global::
+            CorpusEntities.Label>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::CorpusEntities.
+            Label, global::System.Guid>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusEntities.Label e)
     {

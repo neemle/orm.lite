@@ -33,6 +33,18 @@ public static class LiveOnlyOnPlainEntityOrm
         return new global::Neemle.OrmLite.Query<global::CorpusDiagnostics.LiveOnlyOnPlainEntity>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusDiagnostics.LiveOnlyOnPlainEntity>(new global::Neemle.OrmLite.
+            GraphEntityBinding<global::CorpusDiagnostics.LiveOnlyOnPlainEntity>(Descriptor, Map, new global::Neemle.
+            OrmLite.GraphKeyBinding<global::CorpusDiagnostics.LiveOnlyOnPlainEntity, global::System.Guid>("id", (e) => e
+            .Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusDiagnostics.LiveOnlyOnPlainEntity e)
     {

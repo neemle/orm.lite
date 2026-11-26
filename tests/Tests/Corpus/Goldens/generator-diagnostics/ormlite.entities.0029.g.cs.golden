@@ -9,6 +9,12 @@ internal static class OrmMetaInit
     [global::System.Runtime.CompilerServices.ModuleInitializer]
     internal static void Init()
     {
+        RegisterEntities();
+        RegisterGraphs();
+    }
+
+    private static void RegisterEntities()
+    {
         OrmMeta.Register<global::CorpusDiagnostics.UnmappedType>(UnmappedTypeOrm.Descriptor);
         OrmMeta.Register<global::CorpusDiagnostics.SoftColumnMissing>(SoftColumnMissingOrm.Descriptor);
         OrmMeta.Register<global::CorpusDiagnostics.SoftColumnWrongType>(SoftColumnWrongTypeOrm.Descriptor);
@@ -26,5 +32,23 @@ internal static class OrmMetaInit
         OrmMeta.Register<global::CorpusDiagnostics.SoftUnknownNames>(SoftUnknownNamesOrm.Descriptor);
         OrmMeta.Register<global::CorpusDiagnostics.SoftLabelNotText>(SoftLabelNotTextOrm.Descriptor);
         OrmMeta.Register<global::CorpusDiagnostics.SoftStatusPinned>(SoftStatusPinnedOrm.Descriptor);
+    }
+
+    private static void RegisterGraphs()
+    {
+        UnmappedTypeOrm.RegisterGraph();
+        SoftColumnMissingOrm.RegisterGraph();
+        SoftColumnWrongTypeOrm.RegisterGraph();
+        SoftColumnNotMappedOrm.RegisterGraph();
+        LiveOnlyOnPlainEntityOrm.RegisterGraph();
+        LiveOnlyNotUniqueOrm.RegisterGraph();
+        DuplicateIndexNameOrm.RegisterGraph();
+        SoftWithoutTenantOrm.RegisterGraph();
+        SoftTenantWrongTypeOrm.RegisterGraph();
+        SoftNamedTenantMissingOrm.RegisterGraph();
+        SoftKeyNotGuidOrm.RegisterGraph();
+        SoftUnknownNamesOrm.RegisterGraph();
+        SoftLabelNotTextOrm.RegisterGraph();
+        SoftStatusPinnedOrm.RegisterGraph();
     }
 }
