@@ -42,7 +42,7 @@ internal static class SqliteSchemaInventory
                 && (string)r[1]! == (string)index[0]!);
             var text = string.Join("|", index) + ";" + (string?)definition?[3]
                 + ";" + string.Join(";", terms.Select(t => string.Join("|", t)));
-            stamps.Add(new("index", (string)index[0]!, SqliteSchemaRead.Hash(text)));
+            stamps.Add(new("index:" + (string)index[2]!, (string)index[0]!, SqliteSchemaRead.Hash(text)));
         }
         return SchemaFact<IReadOnlyList<SchemaObjectStamp>>.Known(stamps);
     }

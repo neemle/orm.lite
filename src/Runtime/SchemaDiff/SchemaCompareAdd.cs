@@ -29,6 +29,6 @@ internal static class SchemaCompareAdd
             || constraints.Any(c => c.Kind is not ("constraint:p" or "constraint:n"))
             || table.Facts.DependentObjects.GetKnown().Any(c =>
                 !c.Kind.StartsWith("dependent-local:", StringComparison.Ordinal))
-            || table.Facts.Indexes.GetKnown().Any(c => !primaryNames.Contains(c.Name));
+            || table.Facts.Indexes.GetKnown().Any(c => c.Kind != "index:pk" && !primaryNames.Contains(c.Name));
     }
 }
