@@ -26,6 +26,7 @@ internal static class LoaderEmitter
     {
         foreach (var rel in RelationsOf(e, scope.Refused, scope.Guard)) cls = LoadRelation(cls, entity, rel);
         foreach (var col in CollectionsOf(e, scope.Guard)) cls = LoadCollection(cls, entity, col);
+        if (key is null) return cls;
         foreach (var mm in LinksOf(e, scope.Refused, scope.Guard))
             cls = Linked(cls, entity, key, mm, !scope.AllTables.Contains(mm.JoinTable));
         return cls;
@@ -83,9 +84,9 @@ internal static class LoaderEmitter
     }
 
     private static TypeBuilder<FileBuilder> Linked(
-        TypeBuilder<FileBuilder> cls, CsType entity, Prop? key, ManyToMany mm, bool pure)
+        TypeBuilder<FileBuilder> cls, CsType entity, Prop key, ManyToMany mm, bool pure)
     {
-        var thisKey = Cs.Id("e").Dot(key?.Name ?? "Id");
+        var thisKey = Cs.Id("e").Dot(key.Name);
         var target = Cs.Id(mm.OtherType + "Orm");
         var read = new CsExpression(ExpressionKind.New, "", new Values<CsExpression>([
             Cs.Id("Descriptor"), Syn.Str(mm.Nav), thisKey, target.Dot("Descriptor"), target.Dot("Map"),
