@@ -1,0 +1,130 @@
+{
+  "productHead": "6c38687ccc895f96df169f39826b52004640c685",
+  "sourceTree": "624c2b36d4a529f4e784a387656737688f1a7241",
+  "testTree": "94446033dbd2fd35f3fb9306abec404b5e9fd97b",
+  "semgrep": {
+    "files": 313,
+    "rules": 67,
+    "findings": [
+      [
+        "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+        "/src/Postgres/PostgresActorStamp.cs",
+        16,
+        16
+      ],
+      [
+        "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+        "/src/Runtime/GatedDataSource.cs",
+        160,
+        160
+      ],
+      [
+        "csharp.lang.security.sqli.csharp-sqli.csharp-sqli",
+        "/src/Runtime/UnitOfWork.cs",
+        86,
+        86
+      ]
+    ],
+    "sameFindings": true,
+    "partialCount": 18,
+    "partialPaths": [
+      "/src/Generator/DefaultTenants.cs",
+      "/src/Generator/DescriptorEmitter.cs",
+      "/src/Generator/EntityNaming.cs",
+      "/src/Generator/ForeignKeyAnalysis.cs",
+      "/src/Postgres/PostgresCatalog.cs",
+      "/src/Postgres/PostgresMigrationPlanner.cs",
+      "/src/Postgres/PostgresNames.cs",
+      "/src/Runtime/GatedDataSource.cs",
+      "/src/Runtime/MigrationPlanning.cs",
+      "/src/Runtime/OrmLiteOptions.Binding.cs",
+      "/src/Runtime/SoftRestore.cs",
+      "/src/Runtime/StatementExecutor.cs",
+      "/src/Sqlite/SqliteCatalog.cs",
+      "/src/Sqlite/SqliteConnectionParts.cs",
+      "/src/Sqlite/SqliteEngineAggregate.cs",
+      "/src/Sqlite/SqliteHistoryPlan.cs",
+      "/src/Sqlite/SqliteMigrationPlanner.cs",
+      "/src/Sqlite/SqliteProvider.cs"
+    ]
+  },
+  "devskim": {
+    "sameFindings": true,
+    "findings": [
+      [
+        "DS162092",
+        "demo/compose.yaml",
+        29
+      ],
+      [
+        "DS162092",
+        "src/Sqlite/SqliteDataSourceName.cs",
+        94
+      ]
+    ]
+  },
+  "roslyn": {
+    "allDiagnostics": 7216,
+    "priorAllDiagnostics": 7176,
+    "securityDiagnostics": 72,
+    "sameSecuritySignatures": true,
+    "newSecuritySignatures": [],
+    "warningFiles": [
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Postgres/PostgresActorStamp.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Postgres/PostgresCatalog.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/AdvisorySessionLocks.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/Diagnostics/OrmDiagnostics.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/GatedDataSource.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/HistoryStatements.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/MigrationRunner.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/OrmExec.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/StatementCommand.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/UnitOfWork.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sqlite/SqliteCatalog.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sqlite/SqliteConnectionParts.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sqlite/SqliteMigrationPlanner.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sqlite/SqliteProviderFactory.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Behaviour/ActorReuseSuite.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Behaviour/BehaviourSuite.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Behaviour/PostgresHostileNameTests.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Behaviour/PostgresJsonAgreementTests.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Behaviour/PostgresMigrationLockTests.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Behaviour/ProviderFixture.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Behaviour/SqliteDataLiteralTests.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Corpus/Support/RecordingProvider.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/EnumReadAndInListTests.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/LikeEscapingQueryTests.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/QueryTerminalState/GatedReadCommand.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/SoftDelete/Fixtures/SoftDeleteDb.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/SoftDelete/Writes/SoftWriteProbe.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/SqliteRules/SqliteHistoryTriggerTests.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/SqliteRules/SqliteInnocuousFunctionTests.cs",
+      "file:///Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/SqliteRules/SqliteProviderTests.cs"
+    ],
+    "securityRuleSelection": "SARIF run.rules properties.category == Security"
+  },
+  "review": "All five new Final files read: controlled enum chooses constant SQL identifiers, data values parameterized, fresh GUID fixture ownership and awaited disposal; no credentials, logging, runtime caches/workers/retry/new auth or provider behavior. Product src unchanged, no new project or dependency declarations. Compiler emits forty additional non-security test-style diagnostics; raw warnings retained, not hidden.",
+  "boundedCredentialPatterns": {
+    "privateKey": [],
+    "githubToken": [],
+    "awsKey": [],
+    "passwordAssignment": []
+  },
+  "differentVendorCommands": {
+    "claude": null,
+    "gemini": null
+  },
+  "limits": "Bounded current product and ten-case test delta only; raw 100/full802 host807/808 applicability and402/decomposition/review/integration remain OPEN. Existing controls unchanged; no new items or release.",
+  "dependency": {
+    "projects": 8,
+    "advisoryVulnerabilities": 0,
+    "productPackages": 14,
+    "sameProductPackageHashes": true,
+    "licenses": {
+      "MIT": 9,
+      "PostgreSQL": 1,
+      "Apache-2.0": 4
+    }
+  },
+  "generated": "2026-11-26T09:19:19.656843+00:00"
+}

@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "parameters": "--vulnerable --include-transitive",
+  "sources": [
+    "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts",
+    "https://api.nuget.org/v3/index.json"
+  ],
+  "projects": [
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Core/Core.csproj"
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Generator/Generator.csproj"
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Postgres/Postgres.csproj"
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/Runtime.csproj"
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sql/Sql.csproj"
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sqlite/Sqlite.csproj"
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Ports.Tests/Ports.Tests.csproj"
+    },
+    {
+      "path": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Tests.csproj"
+    }
+  ]
+}
