@@ -80,7 +80,9 @@ public abstract class SdetProviderTests<TFixture>(TFixture fixture) : IClassFixt
         await using var unit = await UnitOfWork.BeginAsync(fixture.Context);
         if (fixture.ProviderId == "sqlite")
         {
-            Assert.ThrowsAny<Exception>(() => StreamingProviderChecks.Query(fixture, tenant).On(unit).ForUpdate().StreamAsync());
+            var fault = Assert.Throws<QueryStreamException>(() =>
+                StreamingProviderChecks.Query(fixture, tenant).On(unit).ForUpdate().StreamAsync());
+            Assert.Equal(QueryStreamError.InvalidRequest, fault.Error);
             return;
         }
         var e = StreamingProviderChecks.Query(fixture, tenant).On(unit).ForUpdate().StreamAsync().GetAsyncEnumerator();
@@ -93,5 +95,30 @@ public abstract class SdetProviderTests<TFixture>(TFixture fixture) : IClassFixt
         command.Transaction = unit.Transaction;
         command.CommandText = "SELECT 1";
         Assert.Equal(1, Convert.ToInt32(await command.ExecuteScalarAsync()));
+    }
+
+    [Theory(DisplayName = "[UC-010] each stream terminal leaves all shared query clauses unchanged")]
+    [InlineData("entity")] [InlineData("project")] [InlineData("projection")] [InlineData("column")]
+    public async Task Stream_terminals_do_not_write_the_query(string terminal)
+    {
+        fixture.RequireAvailable();
+        var tenant = await StreamingProviderChecks.SeedAsync(fixture);
+        var q = StreamingProviderChecks.Query(fixture, tenant).Skip(1).Take(2).ProjectColumn(n => n.Stars);
+        var before = q.CompileSelect();
+        var projection = q.RenderProjection();
+        switch (terminal)
+        {
+            case "entity": await StreamingProviderChecks.CollectAsync(q.StreamAsync()); break;
+            case "project":
+                await StreamingProviderChecks.CollectAsync(q.StreamProjectAsync([n => n.Stars], r => r.GetInt32(0)));
+                break;
+            case "projection":
+                await StreamingProviderChecks.CollectAsync(q.StreamProjectionAsync(r => r.GetInt32(0)));
+                break;
+            default: await StreamingProviderChecks.CollectAsync(q.StreamColumnAsync<int>(n => n.Stars)); break;
+        }
+        Assert.Equal(before.Text, q.CompileSelect().Text);
+        Assert.Equal(before.Values, q.CompileSelect().Values);
+        Assert.Equal(projection, q.RenderProjection());
     }
 }
