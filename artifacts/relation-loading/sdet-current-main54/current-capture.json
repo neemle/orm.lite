@@ -1,0 +1,3025 @@
+{
+  "Disposition": "DATA CAPTURE ONLY, not oracle acceptance or a test pass",
+  "CurrentProblems": [
+    "generator-corpus-entities/ormlite.entities.0000.g.cs.golden: line 100 differs; golden: } | captured: ",
+    "generator-corpus-entities/ormlite.entities.0002.g.cs.golden: line 158 differs; golden: } | captured: ",
+    "generator-corpus-entities/ormlite.entities.0004.g.cs.golden: line 136 differs; golden: } | captured: ",
+    "generator-corpus-entities/ormlite.entities.0006.g.cs.golden: line 92 differs; golden: } | captured: ",
+    "generator-corpus-entities/ormlite.entities.0007.g.cs.golden: line 96 differs; golden: } | captured: ",
+    "generator-corpus-entities/ormlite.entities.0010.g.cs.golden: line 147 differs; golden: } | captured: ",
+    "generator-corpus-entities/ormlite.entities.0012.g.cs.golden: line 93 differs; golden: } | captured: ",
+    "generator-demo/ormlite.entities.0000.g.cs.golden: line 105 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0000.g.cs.golden: line 78 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0001.g.cs.golden: line 93 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0002.g.cs.golden: line 97 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0003.g.cs.golden: line 93 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0004.g.cs.golden: line 95 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0005.g.cs.golden: line 98 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0007.g.cs.golden: line 96 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0008.g.cs.golden: line 82 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0010.g.cs.golden: line 98 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0012.g.cs.golden: line 84 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0018.g.cs.golden: line 82 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0022.g.cs.golden: line 82 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0024.g.cs.golden: line 97 differs; golden: } | captured: ",
+    "generator-diagnostics/ormlite.entities.0026.g.cs.golden: line 98 differs; golden: } | captured: ",
+    "generator-global-namespace/ormlite.entities.0000.g.cs.golden: line 108 differs; golden: } | captured: ",
+    "generator-global-namespace/ormlite.entities.0002.g.cs.golden: line 108 differs; golden: } | captured: ",
+    "generator-golden-fixtures/ormlite.entities.0000.g.cs.golden: line 96 differs; golden: } | captured: ",
+    "generator-golden-fixtures/ormlite.entities.0001.g.cs.golden: line 134 differs; golden: } | captured: ",
+    "generator-golden-fixtures/ormlite.entities.0002.g.cs.golden: line 155 differs; golden: } | captured: ",
+    "generator-golden-fixtures/ormlite.entities.0003.g.cs.golden: line 93 differs; golden: } | captured: ",
+    "generator-tenant-option-default/ormlite.entities.0000.g.cs.golden: line 102 differs; golden: } | captured: ",
+    "generator-tenant-option-default/ormlite.entities.0002.g.cs.golden: line 99 differs; golden: } | captured: ",
+    "generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden: line 102 differs; golden: } | captured: ",
+    "generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden: line 99 differs; golden: } | captured: ",
+    "generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden: line 102 differs; golden: } | captured: ",
+    "generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden: line 99 differs; golden: } | captured: ",
+    "INDEX.md: line 1016 differs; golden: | \u0060Query\u0060 | 117 | 103 | 14 | | captured: | \u0060Query\u0060 | 118 | 103 | 14 |"
+  ],
+  "Unaccounted": [
+    "Query.GraphFirstSnapshot/0"
+  ],
+  "ActualCorpusEntries": [
+    {
+      "Group": "constants",
+      "Name": "runtime-string-constants"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "add-column-not-null"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "add-column-nullable"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "add-column-nullable-with-default"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "add-column-with-default"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "add-foreign-key"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "add-jsonb-column-not-null-gets-empty-document-default"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "add-jsonb-column-nullable"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "create-index-composite"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "create-index-single-column"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "create-table-all-column-shapes"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "create-table-with-jsonb-columns"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "create-table-without-columns"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "create-unique-index-composite"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "create-unique-index-single-column"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "create-view-over-a-filtered-query"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "delete-data-backslash-text"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "delete-data-guid-enum-and-date-values"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "delete-data-one-value"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "delete-data-several-values"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "drop-column"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "drop-index"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "drop-table"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "every-operation-in-order"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "explicit-ddl-dialect-constructor"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "identifiers-are-quote-doubled"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "insert-data-backslash-and-quote-text"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "insert-data-literal-kinds"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "insert-data-one-row"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "insert-data-temporal-enum-and-char-kinds"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "migration-up-and-down-bodies"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "rename-column"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "replace-view-and-drop-view"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "sql-raw-text-is-forwarded-verbatim"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "table-builder-standalone-render"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "view-over-a-join-and-an-aggregate"
+    },
+    {
+      "Group": "ddl-builder",
+      "Name": "views-in-dependency-order"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-action-names-and-codes"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-code-of-an-unknown-action"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-column-count-mismatch"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-column-not-an-identifier"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-constraint-not-an-identifier"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-down-cascade"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-down-composite-with-restrict-on-update"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-down-set-null-restrict"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-empty-column-list"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-new-action-not-convertible"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-null-column-list"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-old-action-not-restorable"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-on-update-not-allowed"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-referenced-table-not-an-identifier"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-table-not-an-identifier"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-up-cascade"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-up-composite-with-restrict-on-update"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "foreign-key-up-set-null-restrict"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-down-lowered-composite-key-undeclared-live-index"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-down-plain-key-declared-live-index"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-empty-key-terms"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-key-term-not-a-term"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-live-index-not-an-identifier"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-null-key-term"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-null-key-terms"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-soft-column-not-an-identifier"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-table-not-an-identifier"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-total-index-not-an-identifier"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-up-lowered-composite-key-undeclared-live-index"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-up-plain-key"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "live-only-version-not-a-version-name"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "soft-delete-column-down"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "soft-delete-column-down-version-not-a-name"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "soft-delete-column-name"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "soft-delete-column-up"
+    },
+    {
+      "Group": "ddl-helpers",
+      "Name": "soft-delete-column-up-table-not-a-name"
+    },
+    {
+      "Group": "executed",
+      "Name": "actor-stamp-user-and-system"
+    },
+    {
+      "Group": "executed",
+      "Name": "advisory-lease-acquired-then-released"
+    },
+    {
+      "Group": "executed",
+      "Name": "advisory-lease-not-acquired"
+    },
+    {
+      "Group": "executed",
+      "Name": "advisory-statements-constants"
+    },
+    {
+      "Group": "executed",
+      "Name": "constraint-columns-empty-and-null-names-run-no-statement"
+    },
+    {
+      "Group": "executed",
+      "Name": "constraint-columns-falls-back-to-an-index"
+    },
+    {
+      "Group": "executed",
+      "Name": "constraint-columns-from-a-constraint"
+    },
+    {
+      "Group": "executed",
+      "Name": "constraint-columns-null-context-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "constraint-columns-unknown-name"
+    },
+    {
+      "Group": "executed",
+      "Name": "gated-data-source-command-refusals"
+    },
+    {
+      "Group": "executed",
+      "Name": "gated-data-source-lanes-and-actor-stamp"
+    },
+    {
+      "Group": "executed",
+      "Name": "gated-data-source-null-lane-source"
+    },
+    {
+      "Group": "executed",
+      "Name": "gated-data-source-refusals"
+    },
+    {
+      "Group": "executed",
+      "Name": "gated-data-source-refuses-no-reset-on-close"
+    },
+    {
+      "Group": "executed",
+      "Name": "insert-many-chunk-boundary-exactly-full"
+    },
+    {
+      "Group": "executed",
+      "Name": "insert-many-chunked-inside-a-caller-transaction"
+    },
+    {
+      "Group": "executed",
+      "Name": "insert-many-chunked-on-a-caller-connection-without-a-transaction"
+    },
+    {
+      "Group": "executed",
+      "Name": "insert-many-chunked-runs-in-its-own-transaction"
+    },
+    {
+      "Group": "executed",
+      "Name": "insert-many-chunked-with-clock-columns"
+    },
+    {
+      "Group": "executed",
+      "Name": "insert-many-row-wider-than-the-capacity"
+    },
+    {
+      "Group": "executed",
+      "Name": "insert-many-single-statement-without-a-transaction"
+    },
+    {
+      "Group": "executed",
+      "Name": "lane-default-and-scoped"
+    },
+    {
+      "Group": "executed",
+      "Name": "ping"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-aggregates-async"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-aggregates-async-without-a-row"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-any-is-count-greater-than-zero"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-bind-copies-the-parameters-onto-a-command"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-constructor-maps-the-rows-it-reads"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-count-soft"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-count-with-no-scalar-answer"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-delete-async-physical"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-delete-async-soft"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-delete-returning-async"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-first-or-default-limits-to-one"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-on-unit-of-work-runs-inside-the-transaction"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-project-async"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-project-async-without-columns"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-projection-async"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-purge-async-by-key-platform"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-purge-async-by-key-tenant"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-purge-async-predicate"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-restore-async-platform"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-restore-async-tenant"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-scalar-int32-answer-widens-to-long"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-scalar-integer-answer-converts-to-int"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-scalar-null-answer-is-the-default"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-scalar-soft"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-scalar-text-answer-converts-to-guid"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-sum"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-sum-soft"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-to-list-empty"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-update-async"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-update-async-soft"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-update-returning-async"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-upsert-do-nothing"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-upsert-do-update-returning"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-upsert-soft-conflict-with-a-deleted-row-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-upsert-soft-conflict-with-returning-and-no-row-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "query-upsert-soft-do-nothing-is-never-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-exists-with-tenant"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-exists-without-tenant"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-key-less-table-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-revert-apply"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-revert-lock-platform-entity-without-a-row"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-revert-lock-tenant-entity"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-revert-newest-version"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-revert-newest-version-without-history-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-revert-null-unit-of-work-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-revert-version-exists"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-state-of-a-missing-version"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-state-of-a-version"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-unregistered-table-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-versions-with-tenant"
+    },
+    {
+      "Group": "executed",
+      "Name": "row-history-versions-without-tenant"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-apply-refuses-a-partial-restore"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-apply-restores-every-group"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-null-arguments-are-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-plan-of-a-batched-delete"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-plan-of-a-single-update-history"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-plan-of-an-unregistered-batch-member"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-plan-platform-root"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-plan-root-already-live"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-plan-root-deleted-but-not-locked"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-plan-root-missing"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-restore-share-lock-read-tenant-and-platform"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-trash-existing-tables-are-cached-per-data-source"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-trash-existing-tables-refuses-a-bad-table-name"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-trash-list-skips-missing-tables-and-keyless-entries"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-trash-list-with-a-project-filter-and-offset"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-trash-list-with-more-rows"
+    },
+    {
+      "Group": "executed",
+      "Name": "soft-trash-list-with-no-listable-entry-runs-no-union"
+    },
+    {
+      "Group": "executed",
+      "Name": "unit-of-work-locks-and-commit"
+    },
+    {
+      "Group": "executed",
+      "Name": "unit-of-work-null-context-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "unit-of-work-null-lock-key-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "unit-of-work-second-commit-is-refused"
+    },
+    {
+      "Group": "executed",
+      "Name": "unit-of-work-use-after-dispose-is-refused"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "compiles-with-the-runtime"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "diagnostics"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "executed-schema-contributions-and-registry"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "migration-runner-fresh-database"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "migration-runner-partially-applied"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0000.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0001.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0002.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0003.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0004.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0005.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0006.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0007.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0008.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0009.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0010.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0011.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0012.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0013.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.entities.0014.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.migrationregistry.g.cs"
+    },
+    {
+      "Group": "generator-corpus-entities",
+      "Name": "ormlite.migrations.g.cs"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "compiles-with-the-runtime"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "diagnostics"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "executed-schema-contributions-and-registry"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "migration-runner-fresh-database"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "migration-runner-partially-applied"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "ormlite.entities.0000.g.cs"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "ormlite.entities.0001.g.cs"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "ormlite.entities.0002.g.cs"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "ormlite.entities.0003.g.cs"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "ormlite.migrationregistry.g.cs"
+    },
+    {
+      "Group": "generator-demo",
+      "Name": "ormlite.migrations.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "diagnostics"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0000.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0001.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0002.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0003.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0004.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0005.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0006.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0007.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0008.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0009.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0010.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0011.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0012.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0013.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0014.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0015.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0016.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0017.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0018.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0019.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0020.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0021.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0022.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0023.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0024.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0025.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0026.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0027.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0028.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.entities.0029.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.migrationregistry.g.cs"
+    },
+    {
+      "Group": "generator-diagnostics",
+      "Name": "ormlite.migrations.g.cs"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "compiles-with-the-runtime"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "diagnostics"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "executed-schema-contributions-and-registry"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "migration-runner-fresh-database"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "migration-runner-partially-applied"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "ormlite.entities.0000.g.cs"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "ormlite.entities.0001.g.cs"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "ormlite.entities.0002.g.cs"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "ormlite.entities.0003.g.cs"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "ormlite.entities.0004.g.cs"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "ormlite.migrationregistry.g.cs"
+    },
+    {
+      "Group": "generator-global-namespace",
+      "Name": "ormlite.migrations.g.cs"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "compiles-with-the-runtime"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "diagnostics"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "executed-schema-contributions-and-registry"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "migration-runner-fresh-database"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "migration-runner-partially-applied"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "ormlite.entities.0000.g.cs"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "ormlite.entities.0001.g.cs"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "ormlite.entities.0002.g.cs"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "ormlite.entities.0003.g.cs"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "ormlite.entities.0004.g.cs"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "ormlite.entities.0005.g.cs"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "ormlite.migrationregistry.g.cs"
+    },
+    {
+      "Group": "generator-golden-fixtures",
+      "Name": "ormlite.migrations.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "compiles-with-the-runtime"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "diagnostics"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "executed-schema-contributions-and-registry"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "ormlite.entities.0000.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "ormlite.entities.0001.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "ormlite.entities.0002.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "ormlite.entities.0003.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "ormlite.entities.0004.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "ormlite.entities.0005.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "ormlite.migrationregistry.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-default",
+      "Name": "ormlite.migrations.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "compiles-with-the-runtime"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "diagnostics"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "executed-schema-contributions-and-registry"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "ormlite.entities.0000.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "ormlite.entities.0001.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "ormlite.entities.0002.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "ormlite.entities.0003.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "ormlite.entities.0004.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "ormlite.entities.0005.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "ormlite.migrationregistry.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-invalid",
+      "Name": "ormlite.migrations.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "compiles-with-the-runtime"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "diagnostics"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "executed-schema-contributions-and-registry"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "ormlite.entities.0000.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "ormlite.entities.0001.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "ormlite.entities.0002.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "ormlite.entities.0003.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "ormlite.entities.0004.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "ormlite.entities.0005.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "ormlite.migrationregistry.g.cs"
+    },
+    {
+      "Group": "generator-tenant-option-scope-id",
+      "Name": "ormlite.migrations.g.cs"
+    },
+    {
+      "Group": "hash",
+      "Name": "arguments-hash-vectors"
+    },
+    {
+      "Group": "hash",
+      "Name": "set-hash-equals-statements-hash-of-reconcile"
+    },
+    {
+      "Group": "hash",
+      "Name": "set-hash-vectors"
+    },
+    {
+      "Group": "hash",
+      "Name": "statements-hash-vectors"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-ascending-nulls-last"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-descending-nulls-first"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-of-arranged"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-of-boolean"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-of-number-descending"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-of-soft-other-adds-live-term"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-of-text"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-of-then-by"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-of-with-correlation-value"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-parameter-order"
+    },
+    {
+      "Group": "json",
+      "Name": "order-json-key-then-by"
+    },
+    {
+      "Group": "json",
+      "Name": "order-moved-field-number-or-epoch-millis"
+    },
+    {
+      "Group": "json",
+      "Name": "order-two-json-key-of-aliases"
+    },
+    {
+      "Group": "json",
+      "Name": "set-json-member-increment"
+    },
+    {
+      "Group": "json",
+      "Name": "set-json-member-increment-negative"
+    },
+    {
+      "Group": "json",
+      "Name": "set-json-merge"
+    },
+    {
+      "Group": "json",
+      "Name": "set-json-merge-after-other-sets"
+    },
+    {
+      "Group": "json",
+      "Name": "set-json-merge-beside-a-set-of-another-column"
+    },
+    {
+      "Group": "json",
+      "Name": "set-json-merge-soft-entity"
+    },
+    {
+      "Group": "json",
+      "Name": "set-json-remove-then-merge"
+    },
+    {
+      "Group": "json",
+      "Name": "set-json-remove-then-merge-only-clears"
+    },
+    {
+      "Group": "json",
+      "Name": "set-json-remove-then-merge-only-sets"
+    },
+    {
+      "Group": "json",
+      "Name": "update-returning-after-json-merge"
+    },
+    {
+      "Group": "json",
+      "Name": "where-array-contains-any-one"
+    },
+    {
+      "Group": "json",
+      "Name": "where-array-contains-any-several"
+    },
+    {
+      "Group": "json",
+      "Name": "where-array-contains-string"
+    },
+    {
+      "Group": "json",
+      "Name": "where-has-key"
+    },
+    {
+      "Group": "json",
+      "Name": "where-json-on-soft-entity"
+    },
+    {
+      "Group": "json",
+      "Name": "where-json-terms-parameter-order"
+    },
+    {
+      "Group": "json",
+      "Name": "where-jsonb-parameter-is-cast"
+    },
+    {
+      "Group": "json",
+      "Name": "where-key-equals-boolean"
+    },
+    {
+      "Group": "json",
+      "Name": "where-key-equals-number"
+    },
+    {
+      "Group": "json",
+      "Name": "where-key-equals-text"
+    },
+    {
+      "Group": "json",
+      "Name": "where-moved-field-contains"
+    },
+    {
+      "Group": "json",
+      "Name": "where-moved-field-equals-guid"
+    },
+    {
+      "Group": "json",
+      "Name": "where-moved-field-equals-integer"
+    },
+    {
+      "Group": "json",
+      "Name": "where-moved-field-equals-string"
+    },
+    {
+      "Group": "json",
+      "Name": "where-moved-field-is-null"
+    },
+    {
+      "Group": "json",
+      "Name": "where-moved-field-terms-combined"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "any-of-guid-array"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "any-of-guid-list"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "any-of-soft"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "any-of-string-list-with-other-terms"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "filter-aggregate-boolean-negated"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "filter-aggregate-several-with-where"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "filter-aggregate-single"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "interval-now-plus-minutes"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "interval-now-plus-minutes-soft"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "interval-now-plus-negative-minutes"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "lock-for-no-key-update"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "lock-for-no-key-update-with-order-limit"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "lock-for-update"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "lock-for-update-soft"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "lock-for-update-with-order-limit-offset"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "lock-no-key-after-update-is-no-key"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "lock-update-after-no-key-keeps-key-preserving"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "null-safe-equals-guid"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "null-safe-equals-null-value"
+    },
+    {
+      "Group": "locks-intervals",
+      "Name": "null-safe-equals-string"
+    },
+    {
+      "Group": "query-insert-many",
+      "Name": "rows-with-clock-columns"
+    },
+    {
+      "Group": "query-insert-many",
+      "Name": "rows-with-jsonb-null-and-enum"
+    },
+    {
+      "Group": "query-insert-many",
+      "Name": "single-row"
+    },
+    {
+      "Group": "query-insert-many",
+      "Name": "soft-entity-rows"
+    },
+    {
+      "Group": "query-insert-many",
+      "Name": "split-boundaries"
+    },
+    {
+      "Group": "query-insert-many",
+      "Name": "split-row-wider-than-capacity"
+    },
+    {
+      "Group": "query-insert-many",
+      "Name": "two-rows"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-all-with-where"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-avg"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-count"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-count-distinct"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-count-where"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-decimal-sum-min-max-and-exact-average-with-where"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-max"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-min"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-soft-including-deleted"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-soft-live"
+    },
+    {
+      "Group": "query-read",
+      "Name": "aggregate-sum"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-a-decimal-column-with-exact-aggregates-having-and-order"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-having-and-order-by-aggregate"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-having-on-a-filtered-count"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-key-only"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-one-column-with-every-aggregate"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-soft-including-deleted"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-soft-live"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-three-columns"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-two-columns"
+    },
+    {
+      "Group": "query-read",
+      "Name": "group-by-with-where-exists-and-in"
+    },
+    {
+      "Group": "query-read",
+      "Name": "limit-full-statement-soft"
+    },
+    {
+      "Group": "query-read",
+      "Name": "limit-skip"
+    },
+    {
+      "Group": "query-read",
+      "Name": "limit-take"
+    },
+    {
+      "Group": "query-read",
+      "Name": "limit-take-and-skip"
+    },
+    {
+      "Group": "query-read",
+      "Name": "limit-zero"
+    },
+    {
+      "Group": "query-read",
+      "Name": "order-by-ascending"
+    },
+    {
+      "Group": "query-read",
+      "Name": "order-by-descending"
+    },
+    {
+      "Group": "query-read",
+      "Name": "order-by-predicate"
+    },
+    {
+      "Group": "query-read",
+      "Name": "order-by-predicate-with-parameter-before-where-parameter"
+    },
+    {
+      "Group": "query-read",
+      "Name": "order-by-replaces-earlier-order"
+    },
+    {
+      "Group": "query-read",
+      "Name": "order-then-by-chain"
+    },
+    {
+      "Group": "query-read",
+      "Name": "order-then-by-predicate"
+    },
+    {
+      "Group": "query-read",
+      "Name": "project-columns"
+    },
+    {
+      "Group": "query-read",
+      "Name": "project-columns-soft-where-order"
+    },
+    {
+      "Group": "query-read",
+      "Name": "projection-column-terms"
+    },
+    {
+      "Group": "query-read",
+      "Name": "projection-predicate-parameter-order"
+    },
+    {
+      "Group": "query-read",
+      "Name": "projection-predicate-term"
+    },
+    {
+      "Group": "query-read",
+      "Name": "redact-conditional"
+    },
+    {
+      "Group": "query-read",
+      "Name": "redact-conditional-parameter-order"
+    },
+    {
+      "Group": "query-read",
+      "Name": "redact-one-column"
+    },
+    {
+      "Group": "query-read",
+      "Name": "redact-soft-with-where"
+    },
+    {
+      "Group": "query-read",
+      "Name": "select-all-plain"
+    },
+    {
+      "Group": "query-read",
+      "Name": "select-all-soft-including-deleted"
+    },
+    {
+      "Group": "query-read",
+      "Name": "select-all-soft-live"
+    },
+    {
+      "Group": "query-read",
+      "Name": "select-all-soft-platform"
+    },
+    {
+      "Group": "query-read",
+      "Name": "select-render-is-repeatable-and-exposes-the-where-terms"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-db-exists-inside-soft-outer"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-db-exists-marker"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-db-exists-negated"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-db-exists-soft-other"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-db-exists-with-outer-predicate"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-two-where-exists-aliases"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-where-exists"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-where-exists-soft-other-adds-live-term"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-where-exists-with-inner-value"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-where-in"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-where-in-nested"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-where-in-parameter-offset"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-where-in-soft-outer-and-inner"
+    },
+    {
+      "Group": "query-read",
+      "Name": "subquery-where-in-without-inner-where"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-and-or-not-nesting"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-bool-column"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-bool-column-negated"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-bool-equals-constant"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-captured-field"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-captured-nested-field"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-captured-property"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-array-length"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-as-cast"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-checked-cast"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-checked-negate"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-double-not-bool"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-double-to-decimal"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-enum-cast-to-int"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-narrowing-double-to-int"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-narrowing-long-to-int"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-negated-decimal"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-negated-int"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-negated-value-on-the-left"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-not-bool"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-nullable-lift-unchanged"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-ones-complement"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-user-defined-conversion"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-widening-int-to-double"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-closure-widening-int-to-long"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-column-against-column"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-column-equals-column"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-constant-left-equals"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-constant-left-not-equals"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-database-clock-left"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-database-clock-right"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-datetime-and-dateonly"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-enum-compared-as-integer"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-enum-equals"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-equals-ignore-case"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-guid-equals"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-in-after-other-parameters"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-in-array"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-in-empty-list"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-in-list"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-int-greater"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-int-greater-or-equal"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-int-less"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-int-less-or-equal"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-int-not-equal"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-like-contains"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-like-contains-ignore-case"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-like-ends-with"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-like-ends-with-case-sensitive-comparison"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-like-starts-with"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-like-starts-with-ignore-case"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-long-and-double-and-decimal"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-not-null"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-not-of-comparison"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-null-equals"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-nullable-enum-equals"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-nullable-guid-equals"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-nullable-guid-null"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-reversed-operands"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-reversed-operands-greater"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-reversed-operands-greater-or-equal"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-reversed-operands-less-or-equal"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-soft-including-deleted-then-predicate"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-soft-live-term-then-predicates"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-string-equals"
+    },
+    {
+      "Group": "query-read",
+      "Name": "where-two-calls-are-anded"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "clock-columns-render-database-now"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-nothing-ignores-sets"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-nothing-targeted"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-nothing-untargeted"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-nothing-with-returning"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-update-increment"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-update-inserted-column"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-update-mixed-sets"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-update-multi-column-target"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-update-now"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-update-several-inserted-columns"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "do-update-with-returning"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "row-with-datetime-and-guid-values"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "row-with-jsonb-and-null-values"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "soft-do-update-with-returning"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "soft-key-target-do-nothing-has-no-guard"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "soft-key-target-do-update-guards-live-rows"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "soft-live-only-target-carries-partial-predicate"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "soft-live-only-target-do-update-guards-live-rows"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "soft-live-only-target-order-insensitive"
+    },
+    {
+      "Group": "query-upsert",
+      "Name": "soft-platform-do-update"
+    },
+    {
+      "Group": "query-write",
+      "Name": "delete-physical"
+    },
+    {
+      "Group": "query-write",
+      "Name": "delete-physical-several-terms"
+    },
+    {
+      "Group": "query-write",
+      "Name": "delete-returning-columns"
+    },
+    {
+      "Group": "query-write",
+      "Name": "delete-returning-soft"
+    },
+    {
+      "Group": "query-write",
+      "Name": "delete-returning-soft-including-deleted"
+    },
+    {
+      "Group": "query-write",
+      "Name": "delete-soft-becomes-update-with-live-term"
+    },
+    {
+      "Group": "query-write",
+      "Name": "delete-soft-including-deleted-keeps-live-term"
+    },
+    {
+      "Group": "query-write",
+      "Name": "delete-soft-platform"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-many-sets-parameter-order"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-returning-columns"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-returning-no-columns"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-returning-soft"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-coalesce"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-coalesce-jsonb"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-column-from-column"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-datetime-and-dateonly"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-enum"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-guid-and-bool"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-increment"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-increment-negative"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-int-long-double-decimal"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-jsonb-value-is-cast"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-now"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-null"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-predicate"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-predicate-parameter-order"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-set-string"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-soft-adds-live-term"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-soft-including-deleted"
+    },
+    {
+      "Group": "query-write",
+      "Name": "update-where-before-and-after-sets"
+    },
+    {
+      "Group": "refusals",
+      "Name": "actor-setting-not-a-dotted-lowercase-pair"
+    },
+    {
+      "Group": "refusals",
+      "Name": "actor-setting-null"
+    },
+    {
+      "Group": "refusals",
+      "Name": "actor-setting-with-a-long-part"
+    },
+    {
+      "Group": "refusals",
+      "Name": "actor-setting-without-a-dot"
+    },
+    {
+      "Group": "refusals",
+      "Name": "aggregate-avg-of-a-decimal-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "aggregates-without-terms"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-aggregate-filter"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-array-parameter"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-delete-returning"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-interval-arithmetic"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-bind-document-in-compare"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-bind-document-in-set"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-filter-array-contains-any"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-filter-array-contains-string"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-filter-has-key"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-filter-key-equals"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-member-increment"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-merge"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-moved-field"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-order-by-key"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-order-by-key-of-other-table"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-order-by-moved-field"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-remove-then-merge"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-json-upsert-binds-document"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-key-preserving-row-lock"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-null-safe-equality"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-row-lock"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-update-returning"
+    },
+    {
+      "Group": "refusals",
+      "Name": "capability-upsert"
+    },
+    {
+      "Group": "refusals",
+      "Name": "ddl-literal-non-finite-number"
+    },
+    {
+      "Group": "refusals",
+      "Name": "ddl-literal-string-with-a-lone-surrogate"
+    },
+    {
+      "Group": "refusals",
+      "Name": "ddl-literal-string-with-nul"
+    },
+    {
+      "Group": "refusals",
+      "Name": "ddl-literal-unsupported-type"
+    },
+    {
+      "Group": "refusals",
+      "Name": "delete-returning-without-a-where"
+    },
+    {
+      "Group": "refusals",
+      "Name": "delete-without-a-where"
+    },
+    {
+      "Group": "refusals",
+      "Name": "enum-read-of-a-blank-stored-value"
+    },
+    {
+      "Group": "refusals",
+      "Name": "enum-read-of-an-unknown-stored-value"
+    },
+    {
+      "Group": "refusals",
+      "Name": "enum-try-parse-exact-table"
+    },
+    {
+      "Group": "refusals",
+      "Name": "group-by-aggregate-of-another-grouping"
+    },
+    {
+      "Group": "refusals",
+      "Name": "group-by-avg-of-a-decimal-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "group-by-count-where-without-the-filter-capability"
+    },
+    {
+      "Group": "refusals",
+      "Name": "group-by-having-compares-to-null"
+    },
+    {
+      "Group": "refusals",
+      "Name": "insert-many-null-rows"
+    },
+    {
+      "Group": "refusals",
+      "Name": "insert-many-rows-with-different-clock-columns"
+    },
+    {
+      "Group": "refusals",
+      "Name": "insert-many-rows-with-different-column-counts"
+    },
+    {
+      "Group": "refusals",
+      "Name": "insert-many-rows-with-different-columns"
+    },
+    {
+      "Group": "refusals",
+      "Name": "insert-many-without-rows"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-key-default"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-key-null"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-member-increment-null-document"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-merge-after-a-set-of-the-same-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-merge-null-document"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-merge-null-patch"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-order-null-arrangement"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-order-of-null-arranged-option"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-order-of-null-ordering"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-remove-then-merge-duplicate-cleared-key"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-remove-then-merge-key-cleared-and-set"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-remove-then-merge-null-cleared-keys"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-remove-then-merge-null-patch"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-remove-then-merge-null-set-keys"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-remove-then-merge-without-keys"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-second-merge"
+    },
+    {
+      "Group": "refusals",
+      "Name": "json-set-after-a-merge"
+    },
+    {
+      "Group": "refusals",
+      "Name": "jsonb-from-storage-null"
+    },
+    {
+      "Group": "refusals",
+      "Name": "jsonb-parse-invalid"
+    },
+    {
+      "Group": "refusals",
+      "Name": "jsonb-parse-null"
+    },
+    {
+      "Group": "refusals",
+      "Name": "migration-builder-delete-data-with-a-null-value"
+    },
+    {
+      "Group": "refusals",
+      "Name": "migration-builder-delete-data-without-values"
+    },
+    {
+      "Group": "refusals",
+      "Name": "migration-builder-insert-data-without-columns"
+    },
+    {
+      "Group": "refusals",
+      "Name": "migration-builder-insert-data-without-rows"
+    },
+    {
+      "Group": "refusals",
+      "Name": "migration-without-a-down-override"
+    },
+    {
+      "Group": "refusals",
+      "Name": "moved-field-key-default"
+    },
+    {
+      "Group": "refusals",
+      "Name": "moved-field-key-empty"
+    },
+    {
+      "Group": "refusals",
+      "Name": "moved-field-key-null"
+    },
+    {
+      "Group": "refusals",
+      "Name": "moved-field-key-uppercase"
+    },
+    {
+      "Group": "refusals",
+      "Name": "moved-field-key-with-a-quote"
+    },
+    {
+      "Group": "refusals",
+      "Name": "order-by-an-enum-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "order-by-descending-a-nullable-enum-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-any-of-first-argument-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-any-of-lazy-sequence"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-contains-of-a-character"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-equals-ignore-case-first-argument-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-exists-marker-executed-directly"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-array-contains-any-empty"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-array-contains-any-first-argument-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-array-contains-any-null-element"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-array-contains-string-first-argument-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-array-contains-string-null-value"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-has-key-first-argument-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-has-key-null-key"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-key-equals-first-argument-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-key-equals-null-key"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-json-key-equals-null-value"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-marker-executed-directly"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-moved-field-contains-null-term"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-moved-field-document-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-moved-field-equals-null-value"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-now-marker-executed-directly"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-null-safe-equals-first-argument-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-range-over-a-nullable-enum-column-constant-on-the-left"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-range-over-an-enum-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-range-over-an-enum-column-as-integers"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-unsupported-binary"
+    },
+    {
+      "Group": "refusals",
+      "Name": "predicate-unsupported-call"
+    },
+    {
+      "Group": "refusals",
+      "Name": "project-without-columns"
+    },
+    {
+      "Group": "refusals",
+      "Name": "projection-without-terms"
+    },
+    {
+      "Group": "refusals",
+      "Name": "purge-by-key-null-ids"
+    },
+    {
+      "Group": "refusals",
+      "Name": "purge-by-key-on-an-entity-that-is-not-soft"
+    },
+    {
+      "Group": "refusals",
+      "Name": "purge-by-key-platform-entity-with-tenant"
+    },
+    {
+      "Group": "refusals",
+      "Name": "purge-by-key-tenant-entity-without-tenant"
+    },
+    {
+      "Group": "refusals",
+      "Name": "purge-by-key-without-a-key-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "purge-by-key-without-ids"
+    },
+    {
+      "Group": "refusals",
+      "Name": "purge-without-a-where"
+    },
+    {
+      "Group": "refusals",
+      "Name": "query-for-an-unregistered-type"
+    },
+    {
+      "Group": "refusals",
+      "Name": "query-on-a-null-unit-of-work"
+    },
+    {
+      "Group": "refusals",
+      "Name": "restore-null-ids"
+    },
+    {
+      "Group": "refusals",
+      "Name": "restore-on-an-entity-that-is-not-soft"
+    },
+    {
+      "Group": "refusals",
+      "Name": "restore-platform-entity-with-tenant"
+    },
+    {
+      "Group": "refusals",
+      "Name": "restore-tenant-entity-without-tenant"
+    },
+    {
+      "Group": "refusals",
+      "Name": "restore-without-a-key-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "returning-a-computed-lambda"
+    },
+    {
+      "Group": "refusals",
+      "Name": "returning-a-lambda-that-is-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "returning-an-unregistered-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "row-with-a-null-clock-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "row-with-a-null-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "soft-delete-without-a-where"
+    },
+    {
+      "Group": "refusals",
+      "Name": "soft-upsert-update-without-sets"
+    },
+    {
+      "Group": "refusals",
+      "Name": "update-returning-without-a-set"
+    },
+    {
+      "Group": "refusals",
+      "Name": "update-returning-without-a-where"
+    },
+    {
+      "Group": "refusals",
+      "Name": "update-without-a-set"
+    },
+    {
+      "Group": "refusals",
+      "Name": "update-without-a-where"
+    },
+    {
+      "Group": "refusals",
+      "Name": "upsert-inserted-column-not-in-the-row"
+    },
+    {
+      "Group": "refusals",
+      "Name": "upsert-null-row"
+    },
+    {
+      "Group": "refusals",
+      "Name": "upsert-returning-an-unregistered-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "upsert-set-with-a-null-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "upsert-target-lambda-is-not-a-column"
+    },
+    {
+      "Group": "refusals",
+      "Name": "upsert-update-without-a-target"
+    },
+    {
+      "Group": "refusals",
+      "Name": "upsert-update-without-sets"
+    },
+    {
+      "Group": "refusals",
+      "Name": "upsert-with-an-undefined-conflict-action"
+    },
+    {
+      "Group": "refusals",
+      "Name": "where-closure-checked-overflow"
+    },
+    {
+      "Group": "refusals",
+      "Name": "where-in-builder-returns-another-query"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-capture-function-under-a-custom-actor-setting"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-capture-function-under-the-default-actor-setting"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-function-with-an-invalid-actor-setting"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-preamble-under-the-default-actor-setting"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-reconcile-platform-table"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-reconcile-public-entry-point"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-reconcile-several-tables-keep-their-order"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-reconcile-table-not-an-identifier"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-reconcile-tenant-is-key-table-with-unversioned-columns"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-reconcile-tenant-not-an-identifier"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-reconcile-tenant-table"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-reconcile-unversioned-not-an-identifier"
+    },
+    {
+      "Group": "row-history",
+      "Name": "ddl-reconcile-without-tables"
+    },
+    {
+      "Group": "row-history",
+      "Name": "names-and-prefixes"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-exists-sql-key-not-an-identifier"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-exists-sql-with-tenant"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-exists-sql-without-tenant"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-state-sql-table-not-an-identifier"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-state-sql-unversioned-not-an-identifier"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-state-sql-with-tenant-and-unversioned"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-state-sql-without-tenant"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-versions-sql-tenant-not-an-identifier"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-versions-sql-with-tenant"
+    },
+    {
+      "Group": "row-history",
+      "Name": "read-versions-sql-without-tenant"
+    },
+    {
+      "Group": "row-history",
+      "Name": "revert-columns-platform-entity"
+    },
+    {
+      "Group": "row-history",
+      "Name": "revert-columns-with-status"
+    },
+    {
+      "Group": "row-history",
+      "Name": "revert-columns-without-status"
+    },
+    {
+      "Group": "row-history",
+      "Name": "revert-sql-null-entry"
+    },
+    {
+      "Group": "row-history",
+      "Name": "revert-sql-platform-entity"
+    },
+    {
+      "Group": "row-history",
+      "Name": "revert-sql-tenant-entity-with-status"
+    },
+    {
+      "Group": "row-history",
+      "Name": "revert-sql-tenant-entity-without-status"
+    },
+    {
+      "Group": "row-history",
+      "Name": "revert-sql-tenant-is-key-entity"
+    },
+    {
+      "Group": "row-history",
+      "Name": "revert-sql-with-nothing-to-revert"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-helpers"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-quote-not-an-identifier"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-union-default-filter"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-union-including-platform"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-union-label-not-an-identifier"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-union-no-entries"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-union-nothing-matches"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-union-one-entity-token"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-union-project-filter"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-union-project-filter-including-platform"
+    },
+    {
+      "Group": "row-history",
+      "Name": "trash-union-token-and-project-filters"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "delete-by-key-statement"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "purge-by-key-platform"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "purge-by-key-tenant"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "purge-by-key-tenant-is-key"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "purge-by-predicate-includes-deleted"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "purge-by-predicate-plain-entity"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "restore-after-bound-parameters"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "restore-platform"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "restore-tenant"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "restore-tenant-is-key"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "soft-delete-fragments"
+    },
+    {
+      "Group": "soft-delete",
+      "Name": "soft-registry-metadata"
+    },
+    {
+      "Group": "streaming",
+      "Name": "column-rows"
+    },
+    {
+      "Group": "streaming",
+      "Name": "entity-rows"
+    },
+    {
+      "Group": "streaming",
+      "Name": "project-rows"
+    },
+    {
+      "Group": "streaming",
+      "Name": "projection-rows"
+    }
+  ],
+  "ActualOrmHints": [
+    "OrmLite.Entities.0000.g.cs",
+    "OrmLite.Entities.0001.g.cs",
+    "OrmLite.Entities.0002.g.cs",
+    "OrmLite.Entities.0003.g.cs",
+    "OrmLite.Entities.0004.g.cs",
+    "OrmLite.Entities.0005.g.cs"
+  ]
+}

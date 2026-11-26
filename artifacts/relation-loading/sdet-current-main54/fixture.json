@@ -1,0 +1,54 @@
+{
+  "actor": "109-SDET-6e047777",
+  "containerId": "ecb2d80b7a831ad3fe17ca025d375990af229e2552f0ce4a1c62e092424e553e",
+  "networkId": "a0872999b02ac8c3ed073a6b6accae163aecc648efff7b6a45bd02dd0a6accbf",
+  "records": [
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--label",
+        "orml.task=ORML-109",
+        "--label",
+        "orml.actor=109-SDET-6e047777",
+        "orml109-sdet-6e047777"
+      ],
+      "exitCode": 0,
+      "stdout": "a0872999b02ac8c3ed073a6b6accae163aecc648efff7b6a45bd02dd0a6accbf\n",
+      "stderr": "",
+      "at": "2026-11-26T15:32:17.212172+00:00"
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--rm",
+        "--memory=320m",
+        "--cpus=1",
+        "--label",
+        "orml.task=ORML-109",
+        "--label",
+        "orml.actor=109-SDET-6e047777",
+        "--network",
+        "a0872999b02ac8c3ed073a6b6accae163aecc648efff7b6a45bd02dd0a6accbf",
+        "--network-alias",
+        "pg",
+        "--tmpfs",
+        "/var/lib/postgresql/data:rw,size=160m,uid=70,gid=70,mode=0700",
+        "-e",
+        "POSTGRES_HOST_AUTH_METHOD=trust",
+        "-e",
+        "POSTGRES_USER=postgres",
+        "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117"
+      ],
+      "exitCode": 0,
+      "stdout": "ecb2d80b7a831ad3fe17ca025d375990af229e2552f0ce4a1c62e092424e553e\n",
+      "stderr": "",
+      "at": "2026-11-26T15:32:20.830398+00:00"
+    }
+  ],
+  "connection": "Host=pg;Username=postgres;Database=postgres",
+  "ownership": "Only thisSDET run-created IDs/labels; foreign untouched; no hostports, boundedPG320MiB1CPU/tmpfs"
+}

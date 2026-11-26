@@ -1,0 +1,82 @@
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Tests -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/build/bin/Tests/release/Neemle.OrmLite.Tests.dll
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/build/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+  Failed AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"shadowed\")]\npublic class Shadowed\n{\n "···, entity: "Shadowed", keyType: typeof(System.Guid)) [5 s]
+  Error Message:
+   Assert.All() Failure: 2 out of 4 items in the collection did not pass.
+[0]: Item:  System.Threading.Tasks.Task`1[Fixture.Shadowed] GetAsync(Neemle.OrmLite.OrmContext, System.Guid)
+     Error: Assert.True() Failure
+            Expected: True
+            Actual:   False
+[1]: Item:  System.Threading.Tasks.Task`1[Fixture.Shadowed] GetAsync(Neemle.OrmLite.OrmContext, System.Data.Common.DbConnection, System.Guid)
+     Error: Assert.True() Failure
+            Expected: True
+            Actual:   False
+  Stack Trace:
+     at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.KeyedSignatures(Compilation output, String entity, Type keyType) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 45
+   at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(String source, String entity, Type keyType) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 37
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"things\")]\npublic class Thing\n{\n    pu"···, entity: "Thing", keyType: typeof(System.Guid)) [276 ms]
+  Error Message:
+   Assert.All() Failure: 2 out of 4 items in the collection did not pass.
+[0]: Item:  System.Threading.Tasks.Task`1[Fixture.Thing] GetAsync(Neemle.OrmLite.OrmContext, System.Guid)
+     Error: Assert.True() Failure
+            Expected: True
+            Actual:   False
+[1]: Item:  System.Threading.Tasks.Task`1[Fixture.Thing] GetAsync(Neemle.OrmLite.OrmContext, System.Data.Common.DbConnection, System.Guid)
+     Error: Assert.True() Failure
+            Expected: True
+            Actual:   False
+  Stack Trace:
+     at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.KeyedSignatures(Compilation output, String entity, Type keyType) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 45
+   at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(String source, String entity, Type keyType) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 37
+   at InvokeStub_CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"docs\")]\npublic class Doc\n{\n    [Key] "···, entity: "Doc", keyType: typeof(System.Guid)) [129 ms]
+  Error Message:
+   Assert.All() Failure: 2 out of 4 items in the collection did not pass.
+[0]: Item:  System.Threading.Tasks.Task`1[Fixture.Doc] GetAsync(Neemle.OrmLite.OrmContext, System.Guid)
+     Error: Assert.True() Failure
+            Expected: True
+            Actual:   False
+[1]: Item:  System.Threading.Tasks.Task`1[Fixture.Doc] GetAsync(Neemle.OrmLite.OrmContext, System.Data.Common.DbConnection, System.Guid)
+     Error: Assert.True() Failure
+            Expected: True
+            Actual:   False
+  Stack Trace:
+     at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.KeyedSignatures(Compilation output, String entity, Type keyType) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 45
+   at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(String source, String entity, Type keyType) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 37
+   at InvokeStub_CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"registers\")]\npublic class Register\n{\n"···, entity: "Register", keyType: typeof(string)) [212 ms]
+  Error Message:
+   Assert.All() Failure: 2 out of 4 items in the collection did not pass.
+[0]: Item:  System.Threading.Tasks.Task`1[Fixture.Register] GetAsync(Neemle.OrmLite.OrmContext, System.String)
+     Error: Assert.True() Failure
+            Expected: True
+            Actual:   False
+[1]: Item:  System.Threading.Tasks.Task`1[Fixture.Register] GetAsync(Neemle.OrmLite.OrmContext, System.Data.Common.DbConnection, System.String)
+     Error: Assert.True() Failure
+            Expected: True
+            Actual:   False
+  Stack Trace:
+     at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.KeyedSignatures(Compilation output, String entity, Type keyType) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 45
+   at Neemle.OrmLite.Tests.CompositeKey.CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(String source, String entity, Type keyType) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/CompositeKey/CompositeKeyNoRefusalTests.cs:line 37
+   at InvokeStub_CompositeKeyNoRefusalTests.A_single_key_keeps_the_keyed_members(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/sdet-current-main54/results/failed-scope-after.trx
+
+Failed!  - Failed:     4, Passed:   459, Skipped:     0, Total:   463, Duration: 1 m 6 s - Neemle.OrmLite.Tests.dll (net10.0)
+[xUnit.net 00:00:10.32]     AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"shadowed\")]\npublic class Shadowed\n{\n "···, entity: "Shadowed", keyType: typeof(System.Guid)) [FAIL]
+[xUnit.net 00:00:10.57]     AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"things\")]\npublic class Thing\n{\n    pu"···, entity: "Thing", keyType: typeof(System.Guid)) [FAIL]
+[xUnit.net 00:00:10.70]     AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"docs\")]\npublic class Doc\n{\n    [Key] "···, entity: "Doc", keyType: typeof(System.Guid)) [FAIL]
+[xUnit.net 00:00:10.91]     AC3 [SEC] an entity with one key is not refused and keeps its keyed members: a [Key] on Id, a [Key] on another property, a key named Id without [Key], a [Key] on a [NotAColumn] property next to one key(source: "[Table(\"registers\")]\npublic class Register\n{\n"···, entity: "Register", keyType: typeof(string)) [FAIL]

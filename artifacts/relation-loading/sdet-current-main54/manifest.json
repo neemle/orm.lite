@@ -1,0 +1,119 @@
+{
+  "generated": "2026-11-26T16:02:29.720726+00:00",
+  "disposition": "Finite current generated-output/control settlement SUCCESS; no single new full-green run/hostedCI claim",
+  "productCommit": "f5d521ea8ef8f16c377842239e274e384bc49fb8",
+  "sourceTree": "44435d01c20a769b87f3482925a213a1f41eecbc",
+  "testExecutionHead": "32accd386b25c1ee0dbfbc5538bdea362f8caa49",
+  "testTree": "4ad2df453584096cbc255d33c8c067efca18a056",
+  "initialHead": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+  "rawResults": {
+    "initial": {
+      "total": 4017,
+      "passed": 3552,
+      "failed": 22,
+      "skipped": 443
+    },
+    "correctedFixtureAndOracles": {
+      "total": 463,
+      "passed": 459,
+      "failed": 4,
+      "skipped": 0
+    },
+    "finalExactAbi": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "composedEvidence": "3552 unchanged initial passes +459 corrected-fixture/oracle passes +4 final ABI passes =4015 observed passes;2 original reasoned SQLite-only PG skips retained. Raw TRX remain separate; no fabricated merged run.",
+  "oracles": "34Corpus+4Orm generated files: only76Get+15existing-navigation options overloads, oldtokens/Map fulltext preserved. Other709Corpusentries+2Ormhints unchanged; no missing/orphan/SQL transcript delta. typed-diff-disposition.json and generated-semantic-review.json list each subject.",
+  "controls": "Exact four Get signatures preserve legacy2/3arguments without ct and new4/5options/defaultct, Task<correctFixtureEntity>, Guid/string keys and required others. Existing exactmembermultiset retained, noDistinct/Contains weakening. Only GraphFirstSnapshot nonterminal excluded; existingGraphSnapshot preserved. INDEX only2counterrows+oneexplanationrow under09f3d984 extension. Quality/hygiene/skip allowlist untouched.",
+  "commands": [
+    {
+      "name": "suite-before",
+      "file": "suite-before.json",
+      "exitCode": 1,
+      "workspaceHead": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "started": "2026-11-26T15:25:37.032169+00:00",
+      "finished": "2026-11-26T15:37:59.694560+00:00",
+      "inputChanged": false
+    },
+    {
+      "name": "controlled-capture",
+      "file": "controlled-capture.json",
+      "exitCode": 0,
+      "workspaceHead": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "started": "2026-11-26T15:35:04.904602+00:00",
+      "finished": "2026-11-26T15:37:39.062018+00:00",
+      "inputChanged": false
+    },
+    {
+      "name": "generated-review",
+      "file": "generated-review.json",
+      "exitCode": 134,
+      "workspaceHead": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "started": "2026-11-26T15:40:27.650616+00:00",
+      "finished": "2026-11-26T15:41:11.627041+00:00",
+      "inputChanged": false
+    },
+    {
+      "name": "generated-review-ready",
+      "file": "generated-review-ready.json",
+      "exitCode": 0,
+      "workspaceHead": "96c21baa534e3663ca86da702c9b53f9da35fa8f",
+      "started": "2026-11-26T15:42:14.593189+00:00",
+      "finished": "2026-11-26T15:42:54.950828+00:00",
+      "inputChanged": false
+    },
+    {
+      "name": "failed-scope-after",
+      "file": "failed-scope-after.json",
+      "exitCode": 1,
+      "workspaceHead": "28168e254c134afc65de3e373f44f096b201d9cf",
+      "started": "2026-11-26T15:44:57.313544+00:00",
+      "finished": "2026-11-26T15:51:52.615365+00:00",
+      "inputChanged": false
+    },
+    {
+      "name": "keyed-signatures-final",
+      "file": "keyed-signatures-final.json",
+      "exitCode": 0,
+      "workspaceHead": "32accd386b25c1ee0dbfbc5538bdea362f8caa49",
+      "started": "2026-11-26T15:52:37.990188+00:00",
+      "finished": "2026-11-26T16:01:22.049888+00:00",
+      "inputChanged": false
+    }
+  ],
+  "history": "Initial15missingPGfaults/441PGdependent skips separate from7oraclefails; firstreview134 selected nested Paths instead of one top-level class; correctedreview0 reads frozen38old/new CSharp, rawinputChanged=true reflects only simultaneousComposite/Surface control edits, no source/golden change duringreview. Initial newABI assertion wronglyassumedlegacyct, correctedfromold96baseline; only4rows replayed. All histories retained.",
+  "cleanup": {
+    "file": "cleanup.json",
+    "container": "ecb2d80b7a831ad3fe17ca025d375990af229e2552f0ce4a1c62e092424e553e",
+    "network": "a0872999b02ac8c3ed073a6b6accae163aecc648efff7b6a45bd02dd0a6accbf",
+    "absent": true,
+    "ownRostersEmpty": true,
+    "foreignUntouched": true
+  },
+  "retainedEvidence": {
+    "public126All8": "9bbf2fd5-f222-4270-86e5-5ebda45cdd8c atb184/sourceDdef",
+    "current39": "07069cd0-777e-4b5b-b14b-11895caafc76 atf5/source44435"
+  },
+  "remaining": "ROOT hostedCI10/11/currentreview/security/docs/merge/decomposition disposition; no source/public126/Native/coverage/census/fullsuite replay or push",
+  "evidence": [
+    "results/suite-before.trx",
+    "results/failed-scope-after.trx",
+    "results/keyed-signatures-final.trx",
+    "typed-diff-disposition.json",
+    "generated-semantic-review.json",
+    "changed-generated-inputs.json",
+    "current-capture.json",
+    "failed-scope-selection.json",
+    "failed-scope.runsettings",
+    "index-exact-delta.patch",
+    "fixture.json",
+    "fixture-ready.json",
+    "cleanup.json"
+  ],
+  "canonicalComment": "b5f0ce63-3820-433e-b385-b81b25690be1",
+  "testingFields": "automatedTests/qaEvidence full exactserverreadback"
+}
