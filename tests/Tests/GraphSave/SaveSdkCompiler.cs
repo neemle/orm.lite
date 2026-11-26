@@ -36,14 +36,14 @@ internal static class SaveSdkCompiler
     private static ProcessStartInfo Start(string source, string output, string directory)
     {
         var runtime = RuntimeEnvironment.GetRuntimeDirectory();
-        var root = Directory.GetParent(runtime)!.Parent!.Parent!.FullName;
+        var root = new DirectoryInfo(runtime).Parent!.Parent!.Parent!.FullName;
         var sdk = Directory.GetDirectories(Path.Combine(root, "sdk")).Order(StringComparer.Ordinal).Last();
         var compiler = Path.Combine(sdk, "Roslyn", "bincore", "csc.dll");
         var start = new ProcessStartInfo("dotnet")
         {
             RedirectStandardOutput = true, RedirectStandardError = true, UseShellExecute = false,
         };
-        foreach (var argument in new[] { compiler, "-nologo", "-target:library", "-langversion:preview",
+        foreach (var argument in new[] { compiler, "-nologo", "-target:library", "-langversion:13.0",
             "-nullable:enable", "-out:" + output, "-generatedfilesout:" + directory,
             "-analyzer:" + typeof(OrmGenerator).Assembly.Location, source })
             start.ArgumentList.Add(argument);
