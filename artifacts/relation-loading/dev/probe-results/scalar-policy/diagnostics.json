@@ -1,0 +1,14 @@
+{
+  "Name": "scalar-policy",
+  "Invalid": true,
+  "pass": true,
+  "registered": false,
+  "diagnostics": [
+    {
+      "Id": "ORMLITE035",
+      "severity": "Error",
+      "message": "Relation policy \u0027global::Probe.Author.Name\u0027 is invalid: navigation has no supported graph binding"
+    }
+  ],
+  "compilerErrors": []
+}

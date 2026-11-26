@@ -1,0 +1,2609 @@
+{
+  "schema": "ORML109-functional-producer-v1",
+  "matrix": {
+    "sourceCommit": "712530c979fe316bfa5e40b1b6d6f933c70432ae",
+    "sourceTree": "2b3f01e4be430d703284bb87c5f0792a7eaef978",
+    "testTree": "21c166b86ebc3b4b3eeb7405a396cee31ff50f36",
+    "consumerInputs": "same-consumer-inputs.json",
+    "consumerInputsSha256": "39d2bdd45cb462245736d8e86e5c4fe4bb87019a53870e4043d8b66fa0ed558e",
+    "legs": [
+      {
+        "sdk": 10,
+        "mode": "jit",
+        "provider": "sqlite",
+        "outcome": "policy smoke sqlite assertions=109 PASS",
+        "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+        "gate": "final-runtime10-sqlite.json",
+        "gateSha256": "fe709fec22f76c6b7b9281040c52bb6ab93b786bf7b8593ed7774771a856d931",
+        "logSha256": "fbee1e5a4d0f01c35e036dc2a0c185f5936857b6542e5f898783102e99b9b299",
+        "started": "2026-11-26T09:24:15.994759+00:00",
+        "finished": "2026-11-26T09:24:38.270580+00:00"
+      },
+      {
+        "sdk": 10,
+        "mode": "jit",
+        "provider": "postgres",
+        "outcome": "policy smoke postgres assertions=109 PASS",
+        "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+        "gate": "final-runtime10-postgres.json",
+        "gateSha256": "682dd9ef24606dad18a148843bc696c6a04b826b516c253a1740b0441f7c2f4e",
+        "logSha256": "f7538ae321bcfb87c31f57db93a105be41c01cac77561d4ccfc74dedcc7962b0",
+        "started": "2026-11-26T09:24:38.855220+00:00",
+        "finished": "2026-11-26T09:24:46.426111+00:00"
+      },
+      {
+        "sdk": 10,
+        "mode": "aot",
+        "provider": "sqlite",
+        "outcome": "policy smoke sqlite assertions=109 PASS",
+        "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+        "gate": "final-native10.json",
+        "gateSha256": "6703d35ecbf1f2b092f3c93fc925aeede8e37b3b419c9412a220fc60d5913c7d",
+        "logSha256": "5f4a7288b3a7e4b9c50c7ce772f17c1f114f96244225ad3ab5dd279c4c5008de",
+        "started": "2026-11-26T09:25:26.690515+00:00",
+        "finished": "2026-11-26T09:27:59.246367+00:00"
+      },
+      {
+        "sdk": 10,
+        "mode": "aot",
+        "provider": "postgres",
+        "outcome": "policy smoke postgres assertions=109 PASS",
+        "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+        "gate": "final-native10.json",
+        "gateSha256": "6703d35ecbf1f2b092f3c93fc925aeede8e37b3b419c9412a220fc60d5913c7d",
+        "logSha256": "5f4a7288b3a7e4b9c50c7ce772f17c1f114f96244225ad3ab5dd279c4c5008de",
+        "started": "2026-11-26T09:25:26.690515+00:00",
+        "finished": "2026-11-26T09:27:59.246367+00:00"
+      },
+      {
+        "sdk": 11,
+        "mode": "jit",
+        "provider": "sqlite",
+        "outcome": "policy smoke sqlite assertions=109 PASS",
+        "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+        "gate": "final-runtime11-sqlite.json",
+        "gateSha256": "af4fcfa125e2fcbeb8345aa9efd94ca55695d006961b42195066160f52ff8719",
+        "logSha256": "666576495fda51824dd6fbf0abf09c20e7887f96f2152ab0b552ce74da50e87a",
+        "started": "2026-11-26T09:24:46.683175+00:00",
+        "finished": "2026-11-26T09:25:11.753012+00:00"
+      },
+      {
+        "sdk": 11,
+        "mode": "jit",
+        "provider": "postgres",
+        "outcome": "policy smoke postgres assertions=109 PASS",
+        "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+        "gate": "final-runtime11-postgres.json",
+        "gateSha256": "d032602d35a1303cf237582f3ffbb70013654c2049d4d4fa686ee03b2cd9077f",
+        "logSha256": "442fdabad8d51bb5d45c6a778a6545cac1be65abc58aff69468f2a2a299e1488",
+        "started": "2026-11-26T09:25:12.301241+00:00",
+        "finished": "2026-11-26T09:25:26.343844+00:00"
+      },
+      {
+        "sdk": 11,
+        "mode": "aot",
+        "provider": "sqlite",
+        "outcome": "policy smoke sqlite assertions=109 PASS",
+        "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+        "gate": "final-native11.json",
+        "gateSha256": "0cc6cd03b609b7980b5b7afb4b335b47375a6737e811b33e4d12c8d58b0cc341",
+        "logSha256": "44aeece053abf10d857b51595b9fe63bedd7477ba7acb8e9abb65a30fab5a1e4",
+        "started": "2026-11-26T09:28:00.143949+00:00",
+        "finished": "2026-11-26T09:32:03.866155+00:00"
+      },
+      {
+        "sdk": 11,
+        "mode": "aot",
+        "provider": "postgres",
+        "outcome": "policy smoke postgres assertions=109 PASS",
+        "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+        "gate": "final-native11.json",
+        "gateSha256": "0cc6cd03b609b7980b5b7afb4b335b47375a6737e811b33e4d12c8d58b0cc341",
+        "logSha256": "44aeece053abf10d857b51595b9fe63bedd7477ba7acb8e9abb65a30fab5a1e4",
+        "started": "2026-11-26T09:28:00.143949+00:00",
+        "finished": "2026-11-26T09:32:03.866155+00:00"
+      }
+    ],
+    "normalization": "Only provider token is replaced. Runtime version line is separately retained in every full log; assertion count and PASS unchanged.",
+    "binaries": [
+      {
+        "file": "final-native10-out/PolicySmoke",
+        "bytes": 15516264,
+        "sha256": "a8fd5f4e83700f89d9748177bddd38b8349b14c7f62e4991213ae22050422448"
+      },
+      {
+        "file": "final-native11-out/PolicySmoke",
+        "bytes": 15584736,
+        "sha256": "41547ea6fa897074430020e9de193b0508d5ec5106c3513610eb2b7902f699e7"
+      }
+    ],
+    "assemblies": [
+      {
+        "file": "final-native10-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll",
+        "bytes": 867840,
+        "sha256": "a417ec57393610ea82cd8b2ba4af6d5c39580aa86f78e1f4dc2f9704fc92ee56"
+      },
+      {
+        "file": "final-native10-build/bin/Generator/release/Neemle.OrmLite.Generator.dll",
+        "bytes": 290816,
+        "sha256": "a155a527c6109b59e4350c795f5a20bd94bcfd3eee6f014134066b9f94b6ef46"
+      },
+      {
+        "file": "final-native11-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll",
+        "bytes": 867840,
+        "sha256": "0cebca1f38124a7c8a33e50cc72cc1190cf4c6a2632c1610f0171c9a7c888897"
+      },
+      {
+        "file": "final-native11-build/bin/Generator/release/Neemle.OrmLite.Generator.dll",
+        "bytes": 290816,
+        "sha256": "448fb31f1f2b266029c132db443771fa1743dff6e0f94535f09288b71d4290dd"
+      }
+    ],
+    "limits": [
+      "Same functional demo criterion proven; not whole item/stage/QA PASS.",
+      "No current raw coverage measurement; historical coverage FAIL is not relabeled.",
+      "No release/merge/public package claim. Project-built analyzer is used, not a newly packed package.",
+      "No new SDET tests or protected control/baseline edits. Independent SDET/security/review/docs remain separate.",
+      "Unobserved custom externally opened origins intentionally refuse; known custom Open/UoW and current gated leases proven.",
+      "Inherited ABI six-parameter OrmExec signatures unchanged; existing controls and full quality gate are not claimed PASS.",
+      "User narrowed verification to same-demo matrix; unrelated current-unit run was explicitly stopped, partial results retained as history."
+    ]
+  },
+  "publicRelocation": "public-relocation-proof.json",
+  "publicCases": "examples/relation-loading/README.md",
+  "cleanup": "final-resource-cleanup.json",
+  "authorities": {
+    "adr": "ae8a58a0-0a6e-45ed-8c6a-038544034f41",
+    "effective": "eba536ab56d8bf9b77318a07dee4a2ca712dffc4bd6f00e855959dbc536b1949",
+    "speck": "8b330b6d-0f7d-47e3-b03a-9643fc32f849"
+  },
+  "reused": [
+    "abi-first.json",
+    "generator-probe-first.json",
+    "native10-first.json",
+    "native11-first.json"
+  ],
+  "unitHistory": "current-unit-stopped.json",
+  "evidence": [
+    {
+      "file": "abi/AbiRow.cs",
+      "bytes": 33,
+      "sha256": "31cbbf854869f39ac18ea84a5fb59495713880d224ac13e5fd6583baea51d8b3"
+    },
+    {
+      "file": "abi/Program.cs",
+      "bytes": 826,
+      "sha256": "0e2767643b2d8236f0a916063bdacd34dae8396e755edb6294bef4b5531d5885"
+    },
+    {
+      "file": "abi/abi.csproj",
+      "bytes": 564,
+      "sha256": "437c118eead606650152d80192c349f1a37fd686e6a3165266fe28ab78f94ea1"
+    },
+    {
+      "file": "abi-first.json",
+      "bytes": 1289,
+      "sha256": "d7360d54b1f343702449ce555c3d29106f022a212e05d411753f6ca79dde2136"
+    },
+    {
+      "file": "abi-first.log",
+      "bytes": 1239,
+      "sha256": "abb15632122ff0b4041c4d62b57500fd4b78f96f4af04cb24218e1c7295a6c07"
+    },
+    {
+      "file": "abi-run.sh",
+      "bytes": 782,
+      "sha256": "6d777a7ca0b28af7babeddbd9dd985b716674ec62ac6bf748031b65130166887"
+    },
+    {
+      "file": "attachments-edit.py",
+      "bytes": 6962,
+      "sha256": "d2eb617144938e50018902db12f219424e43555b38e64e56e2361aee357f7b7c"
+    },
+    {
+      "file": "base-edit.py",
+      "bytes": 9258,
+      "sha256": "1bb286ab8adaf886837a99355fe4ddd9119a4214ae441bbd2228fb119c73d3b9"
+    },
+    {
+      "file": "build-checkpoint-committed.json",
+      "bytes": 1510,
+      "sha256": "173f1107cdbe8871fb3f2b7be59fd204cd44f957e5a677ce1e7642d0f49cf433"
+    },
+    {
+      "file": "build-checkpoint-committed.log",
+      "bytes": 864,
+      "sha256": "50015025e7fa8c7fed0c5ba500a9b885eab26d02bad1f3c5c44286c63e5edde9"
+    },
+    {
+      "file": "build-first.json",
+      "bytes": 1839,
+      "sha256": "99ff7371b66c0ac1d9085642c205d1e8e4d98d355d648846ccff8131296913ed"
+    },
+    {
+      "file": "build-first.log",
+      "bytes": 2593,
+      "sha256": "9216cba5ff5558eeaf625f5838e7880fb84bf82bf4fca0be4db13ab6ce60ccb2"
+    },
+    {
+      "file": "build-generator.json",
+      "bytes": 1790,
+      "sha256": "dc66aa787e6da7754300cc7a5b0676012005ab786776ae1ee035b13755cfeabc"
+    },
+    {
+      "file": "build-generator.log",
+      "bytes": 1225,
+      "sha256": "b2ca0f8f6850fb3ea1004fd3b696c1e0af264530df57a89100d01c5efec0c5ef"
+    },
+    {
+      "file": "build-runtime.json",
+      "bytes": 1839,
+      "sha256": "71b2830505babbe642fb259f58b217de682cae4b18729a2e22d6ee017c843073"
+    },
+    {
+      "file": "build-runtime.log",
+      "bytes": 336,
+      "sha256": "0762e64646e4a6c062f06491c72e459a4e1c9c0d544118fe13f6dc1a28e08640"
+    },
+    {
+      "file": "build-source-checkpoint.json",
+      "bytes": 1880,
+      "sha256": "3ff34a2dea171dec2c93a86870be54724d3687e88384163f7816f97ee54dfc75"
+    },
+    {
+      "file": "build-source-checkpoint.log",
+      "bytes": 769,
+      "sha256": "db400912022e4489f5d6a29c4672a15a3c02417b681727813d11124965ac3d3e"
+    },
+    {
+      "file": "checkpoint-manifest.json",
+      "bytes": 10743,
+      "sha256": "cf282a2a0301c2d5dd20a22b863e5b7767144b28cb70e1c6ed2b151113686a3a"
+    },
+    {
+      "file": "consumer/Author.cs",
+      "bytes": 558,
+      "sha256": "0de80db0c861ce47044ff1f66c59608dbc18de272ed139439dad496f412eb6c7"
+    },
+    {
+      "file": "consumer/AuthorJsonConverter.cs",
+      "bytes": 870,
+      "sha256": "038207cc38fc821a3c29c62a270b6b1f7824168a5f6d5ff5cb0f5ffaf706212f"
+    },
+    {
+      "file": "consumer/BindingCases.cs",
+      "bytes": 2232,
+      "sha256": "7d32d51b96134278349b79a6483e33f96e287c495413485d02a7ccb03e4608ef"
+    },
+    {
+      "file": "consumer/Book.cs",
+      "bytes": 517,
+      "sha256": "f990d8fb5567c12e06264d26ee20981cb8a824a774265fdee9bcb761f4414b55"
+    },
+    {
+      "file": "consumer/Check.cs",
+      "bytes": 620,
+      "sha256": "bbaccb3ba558ddb6016a8b8853a5bb86a801f2963586293ea9f9043f731850a2"
+    },
+    {
+      "file": "consumer/ConcurrencyCases.cs",
+      "bytes": 4016,
+      "sha256": "53ccd4f0b9ba130278981a4cf457a47ca95e44609c16202ff6bfa947af5068ca"
+    },
+    {
+      "file": "consumer/CustomOriginCases.cs",
+      "bytes": 1513,
+      "sha256": "025b88cc8124acc85ba51d57b85a7e198efd4518a8a02cc84554a2b28d6478b4"
+    },
+    {
+      "file": "consumer/FaultCases.cs",
+      "bytes": 1515,
+      "sha256": "9cb7eaca332be7eba8fc217a17f8dfd0c9395b6326838af6976ec24a94913cf8"
+    },
+    {
+      "file": "consumer/Fixture.cs",
+      "bytes": 2985,
+      "sha256": "024d164349cf0bbf1c8555c946f3cb5fda26977c17b8201aa88f7e5f91e33d4d"
+    },
+    {
+      "file": "consumer/GateOriginCases.cs",
+      "bytes": 3556,
+      "sha256": "abe47b94743caa6b499ecc657815e8739d89a0e3587a9ff618f2bbd4523d0464"
+    },
+    {
+      "file": "consumer/LazyCases.cs",
+      "bytes": 1850,
+      "sha256": "87c1423e938fdb8c9d0d7ba0e180513da9003f26ea93cbf954358f86442e8a4c"
+    },
+    {
+      "file": "consumer/LifetimeCases.cs",
+      "bytes": 4152,
+      "sha256": "d2c0fbc81c37fe9bbf9d016d385657017fa1d230a07f4e1a4a6d12da94abb8d3"
+    },
+    {
+      "file": "consumer/LimitCases.cs",
+      "bytes": 1276,
+      "sha256": "7d70bf15cb95489f41f79b80a73a5a3a03ef7ab5301ce153d8e9bc543b50ee39"
+    },
+    {
+      "file": "consumer/MapSentinelException.cs",
+      "bytes": 156,
+      "sha256": "f58a9a106b32dabf26f59e945f766823a9d9ad6274106df4ace894d39837ac81"
+    },
+    {
+      "file": "consumer/ObservedSource.cs",
+      "bytes": 517,
+      "sha256": "140b35641bb4b988034643f6c9d42479cf4479eeaadfe55e1132229c475cb399"
+    },
+    {
+      "file": "consumer/Plain.cs",
+      "bytes": 157,
+      "sha256": "a825dbdec2e73537cef6f8e938d4099fef2519886baf00e52b50e97332dc6256"
+    },
+    {
+      "file": "consumer/PolicySmoke.csproj",
+      "bytes": 1052,
+      "sha256": "2274009be3e4e0b6203ddd303c4200ec5bfb5793c066ced6c7eeddcfa5a7a1b5"
+    },
+    {
+      "file": "consumer/Program.cs",
+      "bytes": 1213,
+      "sha256": "73fa608b26791b0a734dd1105280e7c826f5f93cd413a986be34cba188e36372"
+    },
+    {
+      "file": "consumer/QueueCases.cs",
+      "bytes": 1746,
+      "sha256": "4507b97fb5c25b15617ab81fef444b72ad762cacd2153296ec5cff72550a53f9"
+    },
+    {
+      "file": "consumer/ReadCases.cs",
+      "bytes": 1739,
+      "sha256": "74650022dc47285e5bfc390abd095fafe0f733bcd2fe6abb71c5c38a467a70a3"
+    },
+    {
+      "file": "consumer/ReadPause.cs",
+      "bytes": 599,
+      "sha256": "29b0559d852b2c88da5596d3412a01d9fbecc58780933c74685c0a67bfa62889"
+    },
+    {
+      "file": "consumer/SmokeJsonContext.cs",
+      "bytes": 360,
+      "sha256": "169fcf7a406b76399eac770349e3ab30a4bde0bc48161630f01d8c4916ff98e0"
+    },
+    {
+      "file": "consumer/SpySink.cs",
+      "bytes": 792,
+      "sha256": "896423c56123403a62dd9d31e43d53fdfca17a3f51773aa7466aef4d0955e879"
+    },
+    {
+      "file": "consumer/Tag.cs",
+      "bytes": 369,
+      "sha256": "10f2abd4bb6653d4865778c5652dc447fa0b6e00c5ec10aec0540c3ba322574b"
+    },
+    {
+      "file": "consumer/VisibilityCases.cs",
+      "bytes": 1895,
+      "sha256": "13700c554298441aa706e563e82cd144c91dcad906a3d77813701b8a095c503d"
+    },
+    {
+      "file": "consumer-compile-corrected.json",
+      "bytes": 2119,
+      "sha256": "da18d157b3de76f75209d8b07554311e31108e614c9fee4b1065c41c2998cc29"
+    },
+    {
+      "file": "consumer-compile-corrected.log",
+      "bytes": 2378,
+      "sha256": "5b1c2327e402712ea4f0206cc8e41623c17fca42acbb131d6b5f0526536bf344"
+    },
+    {
+      "file": "consumer-compile-first.json",
+      "bytes": 2119,
+      "sha256": "5eba365ffbbfb4d19d5f66ed6e2f1cf63614c208c9151aae74672e98024421e3"
+    },
+    {
+      "file": "consumer-compile-first.log",
+      "bytes": 32934,
+      "sha256": "8f9698e96c780c4428582b7ca0990003fd069c5aa2b39618df63bb05276ab009"
+    },
+    {
+      "file": "consumer-custom-first-inputs/Author.cs",
+      "bytes": 558,
+      "sha256": "0de80db0c861ce47044ff1f66c59608dbc18de272ed139439dad496f412eb6c7"
+    },
+    {
+      "file": "consumer-custom-first-inputs/AuthorJsonConverter.cs",
+      "bytes": 870,
+      "sha256": "038207cc38fc821a3c29c62a270b6b1f7824168a5f6d5ff5cb0f5ffaf706212f"
+    },
+    {
+      "file": "consumer-custom-first-inputs/BindingCases.cs",
+      "bytes": 2232,
+      "sha256": "7d32d51b96134278349b79a6483e33f96e287c495413485d02a7ccb03e4608ef"
+    },
+    {
+      "file": "consumer-custom-first-inputs/Book.cs",
+      "bytes": 517,
+      "sha256": "f990d8fb5567c12e06264d26ee20981cb8a824a774265fdee9bcb761f4414b55"
+    },
+    {
+      "file": "consumer-custom-first-inputs/Check.cs",
+      "bytes": 620,
+      "sha256": "bbaccb3ba558ddb6016a8b8853a5bb86a801f2963586293ea9f9043f731850a2"
+    },
+    {
+      "file": "consumer-custom-first-inputs/ConcurrencyCases.cs",
+      "bytes": 4016,
+      "sha256": "53ccd4f0b9ba130278981a4cf457a47ca95e44609c16202ff6bfa947af5068ca"
+    },
+    {
+      "file": "consumer-custom-first-inputs/CustomOriginCases.cs",
+      "bytes": 1513,
+      "sha256": "025b88cc8124acc85ba51d57b85a7e198efd4518a8a02cc84554a2b28d6478b4"
+    },
+    {
+      "file": "consumer-custom-first-inputs/FaultCases.cs",
+      "bytes": 1515,
+      "sha256": "9cb7eaca332be7eba8fc217a17f8dfd0c9395b6326838af6976ec24a94913cf8"
+    },
+    {
+      "file": "consumer-custom-first-inputs/Fixture.cs",
+      "bytes": 2985,
+      "sha256": "024d164349cf0bbf1c8555c946f3cb5fda26977c17b8201aa88f7e5f91e33d4d"
+    },
+    {
+      "file": "consumer-custom-first-inputs/LazyCases.cs",
+      "bytes": 1850,
+      "sha256": "87c1423e938fdb8c9d0d7ba0e180513da9003f26ea93cbf954358f86442e8a4c"
+    },
+    {
+      "file": "consumer-custom-first-inputs/LifetimeCases.cs",
+      "bytes": 4152,
+      "sha256": "d2c0fbc81c37fe9bbf9d016d385657017fa1d230a07f4e1a4a6d12da94abb8d3"
+    },
+    {
+      "file": "consumer-custom-first-inputs/LimitCases.cs",
+      "bytes": 1276,
+      "sha256": "7d70bf15cb95489f41f79b80a73a5a3a03ef7ab5301ce153d8e9bc543b50ee39"
+    },
+    {
+      "file": "consumer-custom-first-inputs/MapSentinelException.cs",
+      "bytes": 156,
+      "sha256": "f58a9a106b32dabf26f59e945f766823a9d9ad6274106df4ace894d39837ac81"
+    },
+    {
+      "file": "consumer-custom-first-inputs/ObservedSource.cs",
+      "bytes": 431,
+      "sha256": "a20e4f809d7cc8447252a58d3e38b0932cdd62a328c65ceb4a6409665dbc0bd0"
+    },
+    {
+      "file": "consumer-custom-first-inputs/Plain.cs",
+      "bytes": 157,
+      "sha256": "a825dbdec2e73537cef6f8e938d4099fef2519886baf00e52b50e97332dc6256"
+    },
+    {
+      "file": "consumer-custom-first-inputs/PolicySmoke.csproj",
+      "bytes": 1052,
+      "sha256": "2274009be3e4e0b6203ddd303c4200ec5bfb5793c066ced6c7eeddcfa5a7a1b5"
+    },
+    {
+      "file": "consumer-custom-first-inputs/Program.cs",
+      "bytes": 1137,
+      "sha256": "aa2ec7d0b1f7cfb1743f0d3b896df3a78294f9e8966d51a1045996cb28f2d404"
+    },
+    {
+      "file": "consumer-custom-first-inputs/QueueCases.cs",
+      "bytes": 1746,
+      "sha256": "4507b97fb5c25b15617ab81fef444b72ad762cacd2153296ec5cff72550a53f9"
+    },
+    {
+      "file": "consumer-custom-first-inputs/ReadCases.cs",
+      "bytes": 1739,
+      "sha256": "74650022dc47285e5bfc390abd095fafe0f733bcd2fe6abb71c5c38a467a70a3"
+    },
+    {
+      "file": "consumer-custom-first-inputs/ReadPause.cs",
+      "bytes": 599,
+      "sha256": "29b0559d852b2c88da5596d3412a01d9fbecc58780933c74685c0a67bfa62889"
+    },
+    {
+      "file": "consumer-custom-first-inputs/SmokeJsonContext.cs",
+      "bytes": 308,
+      "sha256": "3db184024c435e471d97a82ffa49190db8ad0a857b484d9f02e9727dfa3f6823"
+    },
+    {
+      "file": "consumer-custom-first-inputs/SpySink.cs",
+      "bytes": 792,
+      "sha256": "896423c56123403a62dd9d31e43d53fdfca17a3f51773aa7466aef4d0955e879"
+    },
+    {
+      "file": "consumer-custom-first-inputs/Tag.cs",
+      "bytes": 369,
+      "sha256": "10f2abd4bb6653d4865778c5652dc447fa0b6e00c5ec10aec0540c3ba322574b"
+    },
+    {
+      "file": "consumer-custom-first-inputs/VisibilityCases.cs",
+      "bytes": 1895,
+      "sha256": "13700c554298441aa706e563e82cd144c91dcad906a3d77813701b8a095c503d"
+    },
+    {
+      "file": "consumer-first-inputs/Models.cs.txt",
+      "bytes": 1284,
+      "sha256": "c2854df5088b3d4910fac12a7274c0dabfe75465752b454a8885ede767a30b5a"
+    },
+    {
+      "file": "consumer-first-inputs/PolicySmoke.csproj.txt",
+      "bytes": 895,
+      "sha256": "bbd2495800dae660216021c39704a9a7a3d0e8be3fc846b2382ac4c631059477"
+    },
+    {
+      "file": "consumer-native-first-inputs/Author.cs",
+      "bytes": 558,
+      "sha256": "0de80db0c861ce47044ff1f66c59608dbc18de272ed139439dad496f412eb6c7"
+    },
+    {
+      "file": "consumer-native-first-inputs/BindingCases.cs",
+      "bytes": 2232,
+      "sha256": "7d32d51b96134278349b79a6483e33f96e287c495413485d02a7ccb03e4608ef"
+    },
+    {
+      "file": "consumer-native-first-inputs/Book.cs",
+      "bytes": 517,
+      "sha256": "f990d8fb5567c12e06264d26ee20981cb8a824a774265fdee9bcb761f4414b55"
+    },
+    {
+      "file": "consumer-native-first-inputs/Check.cs",
+      "bytes": 620,
+      "sha256": "bbaccb3ba558ddb6016a8b8853a5bb86a801f2963586293ea9f9043f731850a2"
+    },
+    {
+      "file": "consumer-native-first-inputs/ConcurrencyCases.cs",
+      "bytes": 4016,
+      "sha256": "53ccd4f0b9ba130278981a4cf457a47ca95e44609c16202ff6bfa947af5068ca"
+    },
+    {
+      "file": "consumer-native-first-inputs/FaultCases.cs",
+      "bytes": 1515,
+      "sha256": "9cb7eaca332be7eba8fc217a17f8dfd0c9395b6326838af6976ec24a94913cf8"
+    },
+    {
+      "file": "consumer-native-first-inputs/Fixture.cs",
+      "bytes": 2985,
+      "sha256": "024d164349cf0bbf1c8555c946f3cb5fda26977c17b8201aa88f7e5f91e33d4d"
+    },
+    {
+      "file": "consumer-native-first-inputs/LazyCases.cs",
+      "bytes": 1858,
+      "sha256": "ba88e0c866ffd802082dac52828a2d8bd70456153d1656891b5052db66318a97"
+    },
+    {
+      "file": "consumer-native-first-inputs/LifetimeCases.cs",
+      "bytes": 4152,
+      "sha256": "d2c0fbc81c37fe9bbf9d016d385657017fa1d230a07f4e1a4a6d12da94abb8d3"
+    },
+    {
+      "file": "consumer-native-first-inputs/LimitCases.cs",
+      "bytes": 1276,
+      "sha256": "7d70bf15cb95489f41f79b80a73a5a3a03ef7ab5301ce153d8e9bc543b50ee39"
+    },
+    {
+      "file": "consumer-native-first-inputs/MapSentinelException.cs",
+      "bytes": 156,
+      "sha256": "f58a9a106b32dabf26f59e945f766823a9d9ad6274106df4ace894d39837ac81"
+    },
+    {
+      "file": "consumer-native-first-inputs/Plain.cs",
+      "bytes": 157,
+      "sha256": "a825dbdec2e73537cef6f8e938d4099fef2519886baf00e52b50e97332dc6256"
+    },
+    {
+      "file": "consumer-native-first-inputs/PolicySmoke.csproj",
+      "bytes": 1052,
+      "sha256": "2274009be3e4e0b6203ddd303c4200ec5bfb5793c066ced6c7eeddcfa5a7a1b5"
+    },
+    {
+      "file": "consumer-native-first-inputs/Program.cs",
+      "bytes": 1069,
+      "sha256": "c27699acd83666b2c63b7b16ab41141f7715d188ae813097d670100cab860168"
+    },
+    {
+      "file": "consumer-native-first-inputs/QueueCases.cs",
+      "bytes": 1746,
+      "sha256": "4507b97fb5c25b15617ab81fef444b72ad762cacd2153296ec5cff72550a53f9"
+    },
+    {
+      "file": "consumer-native-first-inputs/ReadCases.cs",
+      "bytes": 1739,
+      "sha256": "74650022dc47285e5bfc390abd095fafe0f733bcd2fe6abb71c5c38a467a70a3"
+    },
+    {
+      "file": "consumer-native-first-inputs/ReadPause.cs",
+      "bytes": 599,
+      "sha256": "29b0559d852b2c88da5596d3412a01d9fbecc58780933c74685c0a67bfa62889"
+    },
+    {
+      "file": "consumer-native-first-inputs/SmokeJsonContext.cs",
+      "bytes": 166,
+      "sha256": "bbdd66ae2ab70541a2023d3f9260ecc6dc0d8d8199bfc25e0fd606e2fe988a6f"
+    },
+    {
+      "file": "consumer-native-first-inputs/SpySink.cs",
+      "bytes": 792,
+      "sha256": "896423c56123403a62dd9d31e43d53fdfca17a3f51773aa7466aef4d0955e879"
+    },
+    {
+      "file": "consumer-native-first-inputs/Tag.cs",
+      "bytes": 369,
+      "sha256": "10f2abd4bb6653d4865778c5652dc447fa0b6e00c5ec10aec0540c3ba322574b"
+    },
+    {
+      "file": "consumer-native-first-inputs/VisibilityCases.cs",
+      "bytes": 1895,
+      "sha256": "13700c554298441aa706e563e82cd144c91dcad906a3d77813701b8a095c503d"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/Author.cs",
+      "bytes": 558,
+      "sha256": "0de80db0c861ce47044ff1f66c59608dbc18de272ed139439dad496f412eb6c7"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/AuthorJsonConverter.cs",
+      "bytes": 870,
+      "sha256": "038207cc38fc821a3c29c62a270b6b1f7824168a5f6d5ff5cb0f5ffaf706212f"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/BindingCases.cs",
+      "bytes": 2232,
+      "sha256": "7d32d51b96134278349b79a6483e33f96e287c495413485d02a7ccb03e4608ef"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/Book.cs",
+      "bytes": 517,
+      "sha256": "f990d8fb5567c12e06264d26ee20981cb8a824a774265fdee9bcb761f4414b55"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/Check.cs",
+      "bytes": 620,
+      "sha256": "bbaccb3ba558ddb6016a8b8853a5bb86a801f2963586293ea9f9043f731850a2"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/ConcurrencyCases.cs",
+      "bytes": 4016,
+      "sha256": "53ccd4f0b9ba130278981a4cf457a47ca95e44609c16202ff6bfa947af5068ca"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/CustomOriginCases.cs",
+      "bytes": 1513,
+      "sha256": "025b88cc8124acc85ba51d57b85a7e198efd4518a8a02cc84554a2b28d6478b4"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/FaultCases.cs",
+      "bytes": 1515,
+      "sha256": "9cb7eaca332be7eba8fc217a17f8dfd0c9395b6326838af6976ec24a94913cf8"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/Fixture.cs",
+      "bytes": 2985,
+      "sha256": "024d164349cf0bbf1c8555c946f3cb5fda26977c17b8201aa88f7e5f91e33d4d"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/GateOriginCases.cs",
+      "bytes": 3556,
+      "sha256": "abe47b94743caa6b499ecc657815e8739d89a0e3587a9ff618f2bbd4523d0464"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/LazyCases.cs",
+      "bytes": 1850,
+      "sha256": "87c1423e938fdb8c9d0d7ba0e180513da9003f26ea93cbf954358f86442e8a4c"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/LifetimeCases.cs",
+      "bytes": 4152,
+      "sha256": "d2c0fbc81c37fe9bbf9d016d385657017fa1d230a07f4e1a4a6d12da94abb8d3"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/LimitCases.cs",
+      "bytes": 1276,
+      "sha256": "7d70bf15cb95489f41f79b80a73a5a3a03ef7ab5301ce153d8e9bc543b50ee39"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/MapSentinelException.cs",
+      "bytes": 156,
+      "sha256": "f58a9a106b32dabf26f59e945f766823a9d9ad6274106df4ace894d39837ac81"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/ObservedSource.cs",
+      "bytes": 517,
+      "sha256": "140b35641bb4b988034643f6c9d42479cf4479eeaadfe55e1132229c475cb399"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/Plain.cs",
+      "bytes": 157,
+      "sha256": "a825dbdec2e73537cef6f8e938d4099fef2519886baf00e52b50e97332dc6256"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/PolicySmoke.csproj",
+      "bytes": 1052,
+      "sha256": "2274009be3e4e0b6203ddd303c4200ec5bfb5793c066ced6c7eeddcfa5a7a1b5"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/Program.cs",
+      "bytes": 1213,
+      "sha256": "73fa608b26791b0a734dd1105280e7c826f5f93cd413a986be34cba188e36372"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/QueueCases.cs",
+      "bytes": 1746,
+      "sha256": "4507b97fb5c25b15617ab81fef444b72ad762cacd2153296ec5cff72550a53f9"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/ReadCases.cs",
+      "bytes": 1739,
+      "sha256": "74650022dc47285e5bfc390abd095fafe0f733bcd2fe6abb71c5c38a467a70a3"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/ReadPause.cs",
+      "bytes": 599,
+      "sha256": "29b0559d852b2c88da5596d3412a01d9fbecc58780933c74685c0a67bfa62889"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/SmokeJsonContext.cs",
+      "bytes": 308,
+      "sha256": "3db184024c435e471d97a82ffa49190db8ad0a857b484d9f02e9727dfa3f6823"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/SpySink.cs",
+      "bytes": 792,
+      "sha256": "896423c56123403a62dd9d31e43d53fdfca17a3f51773aa7466aef4d0955e879"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/Tag.cs",
+      "bytes": 369,
+      "sha256": "10f2abd4bb6653d4865778c5652dc447fa0b6e00c5ec10aec0540c3ba322574b"
+    },
+    {
+      "file": "consumer-static-json-first-inputs/VisibilityCases.cs",
+      "bytes": 1895,
+      "sha256": "13700c554298441aa706e563e82cd144c91dcad906a3d77813701b8a095c503d"
+    },
+    {
+      "file": "current-unit-stopped.json",
+      "bytes": 918,
+      "sha256": "d04aaaeff4a0b0d3cd4088afbba3b0b2facc6e76adc5e257214a293f16fe4a63"
+    },
+    {
+      "file": "current-unit.json",
+      "bytes": 2108,
+      "sha256": "c8a0c4df18642e45bdb80f3b16c0e42183f0c0b13e9a9b79d5c8b50c934fe226"
+    },
+    {
+      "file": "current-unit.log",
+      "bytes": 13109,
+      "sha256": "29637f831f799cd64150f62d80a708972cb0f77784784ba07e075c85700bec6b"
+    },
+    {
+      "file": "custom-origin-sqlite-fixed.json",
+      "bytes": 1428,
+      "sha256": "c92c62af343fca7e541802368fd191bed93a7af762719996bee957cba0f6e6c4"
+    },
+    {
+      "file": "custom-origin-sqlite-fixed.log",
+      "bytes": 1298,
+      "sha256": "4cb4c4b99c67652e81482d4afafe001b6d7c7a0f25db140978e290241fbcf58b"
+    },
+    {
+      "file": "custom-origin-sqlite.json",
+      "bytes": 1426,
+      "sha256": "c8e853b5810284b4432b6d7162cc5ad7beec0dee338c56158e062c40707864e6"
+    },
+    {
+      "file": "custom-origin-sqlite.log",
+      "bytes": 459,
+      "sha256": "722d0f96bcde5dc28a194025465a51cb5c5bb7f73a7658d21f4c5fd9658f42b3"
+    },
+    {
+      "file": "final-matrix.json",
+      "bytes": 6801,
+      "sha256": "c7ded6d35b789e176cd90cab7e40d96e22504af79f444d3075f3fcb98eb85c54"
+    },
+    {
+      "file": "final-native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 329,
+      "sha256": "17441e6acacc5ada2b71b31a956ca7042493ab433545eb560c85f7df5b7e3ff5"
+    },
+    {
+      "file": "final-native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "bytes": 273,
+      "sha256": "20202ec4f9f253857b811f05db7a9b69dcd2142eba39f49e555ca6cec430d614"
+    },
+    {
+      "file": "final-native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "bytes": 8342,
+      "sha256": "d70f524272ef681dce28cd1c341727385259e3698c60be864915a3c68ae1bb24"
+    },
+    {
+      "file": "final-native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "bytes": 7799,
+      "sha256": "cda9115956cfca0bdefa7a488f7f0f6a1f4ff9adfd0ebc338ca21f62c0786537"
+    },
+    {
+      "file": "final-native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "bytes": 3716,
+      "sha256": "f6c2082411de93f8cea4de2f82b0a6b3cac7a99f1516ae5cfb743739a8cbcb96"
+    },
+    {
+      "file": "final-native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "bytes": 4363,
+      "sha256": "1831fa815b55fca2c443891b16cbaa14ec8bb7a2559bae1c98a9037df42e56e1"
+    },
+    {
+      "file": "final-native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+      "bytes": 316,
+      "sha256": "779e2446fd61e20e9d66832c66e4c4aa944db1fb30b2a32310ab3348548a7e9b"
+    },
+    {
+      "file": "final-native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+      "bytes": 949,
+      "sha256": "8f0b911c9c003c269bbc99dc3db2d8ab210ebc067aed22d3bcbb4b4c47cb45cb"
+    },
+    {
+      "file": "final-native10.json",
+      "bytes": 2662,
+      "sha256": "6703d35ecbf1f2b092f3c93fc925aeede8e37b3b419c9412a220fc60d5913c7d"
+    },
+    {
+      "file": "final-native10.log",
+      "bytes": 2654,
+      "sha256": "5f4a7288b3a7e4b9c50c7ce772f17c1f114f96244225ad3ab5dd279c4c5008de"
+    },
+    {
+      "file": "final-native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 329,
+      "sha256": "17441e6acacc5ada2b71b31a956ca7042493ab433545eb560c85f7df5b7e3ff5"
+    },
+    {
+      "file": "final-native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "bytes": 273,
+      "sha256": "20202ec4f9f253857b811f05db7a9b69dcd2142eba39f49e555ca6cec430d614"
+    },
+    {
+      "file": "final-native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "bytes": 8342,
+      "sha256": "d70f524272ef681dce28cd1c341727385259e3698c60be864915a3c68ae1bb24"
+    },
+    {
+      "file": "final-native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "bytes": 7799,
+      "sha256": "cda9115956cfca0bdefa7a488f7f0f6a1f4ff9adfd0ebc338ca21f62c0786537"
+    },
+    {
+      "file": "final-native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "bytes": 3716,
+      "sha256": "f6c2082411de93f8cea4de2f82b0a6b3cac7a99f1516ae5cfb743739a8cbcb96"
+    },
+    {
+      "file": "final-native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "bytes": 4363,
+      "sha256": "1831fa815b55fca2c443891b16cbaa14ec8bb7a2559bae1c98a9037df42e56e1"
+    },
+    {
+      "file": "final-native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+      "bytes": 316,
+      "sha256": "779e2446fd61e20e9d66832c66e4c4aa944db1fb30b2a32310ab3348548a7e9b"
+    },
+    {
+      "file": "final-native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+      "bytes": 949,
+      "sha256": "8f0b911c9c003c269bbc99dc3db2d8ab210ebc067aed22d3bcbb4b4c47cb45cb"
+    },
+    {
+      "file": "final-native11.json",
+      "bytes": 2662,
+      "sha256": "0cc6cd03b609b7980b5b7afb4b335b47375a6737e811b33e4d12c8d58b0cc341"
+    },
+    {
+      "file": "final-native11.log",
+      "bytes": 2644,
+      "sha256": "44aeece053abf10d857b51595b9fe63bedd7477ba7acb8e9abb65a30fab5a1e4"
+    },
+    {
+      "file": "final-resource-cleanup.json",
+      "bytes": 1377,
+      "sha256": "f79865a8fe6d9e748d56f0f74693a6c7e747c91dc3ec424e80e4cb89bc66def1"
+    },
+    {
+      "file": "final-runtime-native.py",
+      "bytes": 1900,
+      "sha256": "080f33df055e48a4bdc1a6008cc50f228e89fbe7c6ad6a98597739d0ac4bbcb7"
+    },
+    {
+      "file": "final-runtime10-postgres.json",
+      "bytes": 1982,
+      "sha256": "682dd9ef24606dad18a148843bc696c6a04b826b516c253a1740b0441f7c2f4e"
+    },
+    {
+      "file": "final-runtime10-postgres.log",
+      "bytes": 58,
+      "sha256": "f7538ae321bcfb87c31f57db93a105be41c01cac77561d4ccfc74dedcc7962b0"
+    },
+    {
+      "file": "final-runtime10-sqlite.json",
+      "bytes": 1980,
+      "sha256": "fe709fec22f76c6b7b9281040c52bb6ab93b786bf7b8593ed7774771a856d931"
+    },
+    {
+      "file": "final-runtime10-sqlite.log",
+      "bytes": 56,
+      "sha256": "fbee1e5a4d0f01c35e036dc2a0c185f5936857b6542e5f898783102e99b9b299"
+    },
+    {
+      "file": "final-runtime11-postgres.json",
+      "bytes": 1982,
+      "sha256": "d032602d35a1303cf237582f3ffbb70013654c2049d4d4fa686ee03b2cd9077f"
+    },
+    {
+      "file": "final-runtime11-postgres.log",
+      "bytes": 57,
+      "sha256": "442fdabad8d51bb5d45c6a778a6545cac1be65abc58aff69468f2a2a299e1488"
+    },
+    {
+      "file": "final-runtime11-sqlite.json",
+      "bytes": 1980,
+      "sha256": "af4fcfa125e2fcbeb8345aa9efd94ca55695d006961b42195066160f52ff8719"
+    },
+    {
+      "file": "final-runtime11-sqlite.log",
+      "bytes": 55,
+      "sha256": "666576495fda51824dd6fbf0abf09c20e7887f96f2152ab0b552ce74da50e87a"
+    },
+    {
+      "file": "finalize-matrix.py",
+      "bytes": 2862,
+      "sha256": "cf4e9b0b4107e579a6d19e37c1f5322b084ec084faa65a71887ae0b628cacb5c"
+    },
+    {
+      "file": "first-generator-input.cs.txt",
+      "bytes": 2035,
+      "sha256": "73dbd8f31e0298edb896115ce4a11e2450a6cf80a3a838e61206cbaf7370dced"
+    },
+    {
+      "file": "format/Program.cs",
+      "bytes": 559,
+      "sha256": "05927ad15abf1160673ce966d9032e2f85b7df1123c60e89a96485da562a18a1"
+    },
+    {
+      "file": "format/format.csproj",
+      "bytes": 354,
+      "sha256": "ec659d662ae2bf914710102a72e4fc39610f4c6a8e88449e72d02046019697a9"
+    },
+    {
+      "file": "format-files.txt",
+      "bytes": 3035,
+      "sha256": "557492b931ec04fa08f73973923026ac5ec5a146afe56925bf5ea231b88eeb04"
+    },
+    {
+      "file": "format-gate-files.txt",
+      "bytes": 76,
+      "sha256": "78cac7fbd873c8334f765d27fccdf12f4c6644f715f373159169d35023110d3b"
+    },
+    {
+      "file": "format-gate.json",
+      "bytes": 1380,
+      "sha256": "c7288ec25f89ab5511bf74f0b9f5b403212c784842a85a8eb1935eeaa6d44a29"
+    },
+    {
+      "file": "format-gate.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "gate-origin-sqlite-first.json",
+      "bytes": 1510,
+      "sha256": "c2504ed5dde31ab9295a115b2fc6b5c070a488c1b7d858d3b8ff819e88f7c272"
+    },
+    {
+      "file": "gate-origin-sqlite-first.log",
+      "bytes": 56,
+      "sha256": "36b9b5d2c7a1ca56e4e15eb2dcfb0d79fe0ecbb26c8f63829c6b00b53404c236"
+    },
+    {
+      "file": "generated-first-final-byteproof.json",
+      "bytes": 2207,
+      "sha256": "1b0da5fd46317a7b4b171f3f31f453a524a2e2745e14f2e412b77b04b5d81f07"
+    },
+    {
+      "file": "generator-edit.py",
+      "bytes": 15385,
+      "sha256": "266c2ff6cda57ea5da5431cc9749a3a8bbcd3d4431fa32d0c3a394f1f5b0078c"
+    },
+    {
+      "file": "generator-probe/ProbeInput.cs",
+      "bytes": 77,
+      "sha256": "5be9df13811436311614d09b69d9a63252cfd0bc816ed0fdc82a81fa13a35f8a"
+    },
+    {
+      "file": "generator-probe/ProbeInputs.cs",
+      "bytes": 2479,
+      "sha256": "f43feb7c41ac69c30e9f8f3e5cb08edd997ab70a1044ffbbac820a67d375a34a"
+    },
+    {
+      "file": "generator-probe/Program.cs",
+      "bytes": 2565,
+      "sha256": "08bf42d0918689493b42234fb87f46b7b723893f3c6def30ef126f0b260f5519"
+    },
+    {
+      "file": "generator-probe/probe.csproj",
+      "bytes": 517,
+      "sha256": "bcb8635f7646adafb1bf3a3632d57837095e872ed0730bbaef2d8c6bc75af149"
+    },
+    {
+      "file": "generator-probe-first.json",
+      "bytes": 1500,
+      "sha256": "bf333922d93a9b0e0e9d947e7e04f120794af8943215f128a8cba99a78d56d7d"
+    },
+    {
+      "file": "generator-probe-first.log",
+      "bytes": 102,
+      "sha256": "4ceb07b848f75dca306cc442d23acc216e1f2d3fd622c54ebb1b243ad64e36f4"
+    },
+    {
+      "file": "graph-edit.py",
+      "bytes": 4876,
+      "sha256": "4d32b677f80a03d45b62a807ee20c51f87e37111535309cbb30db18cf05628f5"
+    },
+    {
+      "file": "metrics/MetricScan.cs",
+      "bytes": 3282,
+      "sha256": "255ff0f1201b0e2139923a566ae742dc7d57cb68363bc883d2f706d48714203d"
+    },
+    {
+      "file": "metrics/Program.cs",
+      "bytes": 320,
+      "sha256": "23d65458ffc8f74640cecf1d95fea0577c650e3e03d62d3ea3b2843c9a0ad7a6"
+    },
+    {
+      "file": "metrics/metrics.csproj",
+      "bytes": 652,
+      "sha256": "84037c680c8623ac68d33f6d2523cd4caa80f06a7f31f5e17890017da0161f9d"
+    },
+    {
+      "file": "metrics-artifact-files.txt",
+      "bytes": 1738,
+      "sha256": "2836d6578bef63ecc14d88a56a222898e72252e92a3673e54129d1db2de7fc6a"
+    },
+    {
+      "file": "metrics-artifact-report.json",
+      "bytes": 31611,
+      "sha256": "a069d72c27c6a7aa7823197495e21f0eb42c0a05ca06113d987c45b74a3eb435"
+    },
+    {
+      "file": "metrics-artifact.json",
+      "bytes": 1189,
+      "sha256": "e143adb77b47c32109a688d35549d417724e9e5b23de4d7c256835f2bc19f205"
+    },
+    {
+      "file": "metrics-artifact.log",
+      "bytes": 31627,
+      "sha256": "a0516f91ad11d6ef65ad9f60ecd68c7c45b6fc0140f75597adc004c97fac58f2"
+    },
+    {
+      "file": "metrics-current-files.txt",
+      "bytes": 6018,
+      "sha256": "132a6c1adc27b2e6b3eb808d785acff7c4b02cdc9d5ca77ca342575176da4a45"
+    },
+    {
+      "file": "metrics-current-report.json",
+      "bytes": 191331,
+      "sha256": "5993bd406a43d5c3194bd167b90fa37bf6c1842c6e6ad043862bfe40f5bb4c9f"
+    },
+    {
+      "file": "metrics-current.json",
+      "bytes": 1304,
+      "sha256": "ee1882d974944d0a2fe48c4a38cd1e159829a087cecf5c3d54dbe030faf2952e"
+    },
+    {
+      "file": "metrics-current.log",
+      "bytes": 191347,
+      "sha256": "c7723cac12047caf62ea7c2f2af4f996455162339a760c641dbc2177654471fe"
+    },
+    {
+      "file": "metrics-source-files.txt",
+      "bytes": 3035,
+      "sha256": "557492b931ec04fa08f73973923026ac5ec5a146afe56925bf5ea231b88eeb04"
+    },
+    {
+      "file": "metrics-source-first-report.json",
+      "bytes": 145777,
+      "sha256": "a7d4faa51428522222a0ddfa2affdc7dd85876d63392a42d7f5b9e4532138c94"
+    },
+    {
+      "file": "metrics-source-first.json",
+      "bytes": 1739,
+      "sha256": "74b9e5bd9c77725456a267e3e2d90d52cc5daccf46292f989516dec38d37a624"
+    },
+    {
+      "file": "metrics-source-first.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native10-first.json",
+      "bytes": 2547,
+      "sha256": "88d2e970fda9ad31605252688f3b0e2ef161173dd43b6dd5bf4ebc4fbb9933a9"
+    },
+    {
+      "file": "native10-first.log",
+      "bytes": 2610,
+      "sha256": "c3b00de5683482fb77a17ac98c07c1066a5403099d8dc5dd359857bccd55c8d3"
+    },
+    {
+      "file": "native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 329,
+      "sha256": "17441e6acacc5ada2b71b31a956ca7042493ab433545eb560c85f7df5b7e3ff5"
+    },
+    {
+      "file": "native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "bytes": 273,
+      "sha256": "20202ec4f9f253857b811f05db7a9b69dcd2142eba39f49e555ca6cec430d614"
+    },
+    {
+      "file": "native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "bytes": 8342,
+      "sha256": "d70f524272ef681dce28cd1c341727385259e3698c60be864915a3c68ae1bb24"
+    },
+    {
+      "file": "native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "bytes": 7799,
+      "sha256": "cda9115956cfca0bdefa7a488f7f0f6a1f4ff9adfd0ebc338ca21f62c0786537"
+    },
+    {
+      "file": "native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "bytes": 3716,
+      "sha256": "f6c2082411de93f8cea4de2f82b0a6b3cac7a99f1516ae5cfb743739a8cbcb96"
+    },
+    {
+      "file": "native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "bytes": 4363,
+      "sha256": "1831fa815b55fca2c443891b16cbaa14ec8bb7a2559bae1c98a9037df42e56e1"
+    },
+    {
+      "file": "native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+      "bytes": 316,
+      "sha256": "779e2446fd61e20e9d66832c66e4c4aa944db1fb30b2a32310ab3348548a7e9b"
+    },
+    {
+      "file": "native10-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+      "bytes": 949,
+      "sha256": "8f0b911c9c003c269bbc99dc3db2d8ab210ebc067aed22d3bcbb4b4c47cb45cb"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.Author.g.cs",
+      "bytes": 8919,
+      "sha256": "1f6c2205946ca0c2140d96ea3dab001295c80e837508e017c6ee1473960b47cd"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.Book.g.cs",
+      "bytes": 9762,
+      "sha256": "19cc064502e78ddb1560ca78980d8d3a7ee95bd0e0660042e602e09737fbd102"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.GetJsonTypeInfo.g.cs",
+      "bytes": 2041,
+      "sha256": "91fac759b360c8c17bb7565269a0463b071b76562dc27019db9a0d1ace0f5767"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.Int32.g.cs",
+      "bytes": 1562,
+      "sha256": "f42a7aeb0e51fd8494ddb3e1a45952733d555427efd92ecd63e04723751426b7"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.ListBook.g.cs",
+      "bytes": 3226,
+      "sha256": "3b19eb4fdebb6f6b7c45b1dd46ea160db2cfc275e786c52b71ffbddce7972611"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.ListTag.g.cs",
+      "bytes": 3207,
+      "sha256": "4c6de830841e26620925aed3cd7c50e26f93fcd01580c33e41a7ee17e31d81b2"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.NullableInt32.g.cs",
+      "bytes": 1714,
+      "sha256": "3c404a063fb040a2acf19b51bdc767396e883b73ce0a6ffffe5e03cce2d3fe2f"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.PropertyNames.g.cs",
+      "bytes": 1471,
+      "sha256": "1ba2d1d1cfb5abef6bdd753077cb9c344694e2cf822331e8a15723650849ac7d"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.String.g.cs",
+      "bytes": 1591,
+      "sha256": "3ea05a1ebe0eb31ab12ddf185079b9e8411a082be7a48e0fb363021b76f1c8a8"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.Tag.g.cs",
+      "bytes": 5733,
+      "sha256": "4f596d1553bb8ea55761fe20138a3d448e2120ab33f1dc50f60b61ce1efa4a86"
+    },
+    {
+      "file": "native10-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.g.cs",
+      "bytes": 4238,
+      "sha256": "ef62424faae41f59cea0b08971067ecef0bdfc38cf2847a9571fc6d772415f79"
+    },
+    {
+      "file": "native11-first.json",
+      "bytes": 2547,
+      "sha256": "ab6370ca1e06e7cd578baff17fb23dbdb7ad7981412e5137a0a5479777fe41b5"
+    },
+    {
+      "file": "native11-first.log",
+      "bytes": 2608,
+      "sha256": "a59d52d8e566c5d14a639ad246ae803a13edfd61038ac9460c87769edfee3734"
+    },
+    {
+      "file": "native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 329,
+      "sha256": "17441e6acacc5ada2b71b31a956ca7042493ab433545eb560c85f7df5b7e3ff5"
+    },
+    {
+      "file": "native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "bytes": 273,
+      "sha256": "20202ec4f9f253857b811f05db7a9b69dcd2142eba39f49e555ca6cec430d614"
+    },
+    {
+      "file": "native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "bytes": 8342,
+      "sha256": "d70f524272ef681dce28cd1c341727385259e3698c60be864915a3c68ae1bb24"
+    },
+    {
+      "file": "native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "bytes": 7799,
+      "sha256": "cda9115956cfca0bdefa7a488f7f0f6a1f4ff9adfd0ebc338ca21f62c0786537"
+    },
+    {
+      "file": "native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "bytes": 3716,
+      "sha256": "f6c2082411de93f8cea4de2f82b0a6b3cac7a99f1516ae5cfb743739a8cbcb96"
+    },
+    {
+      "file": "native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "bytes": 4363,
+      "sha256": "1831fa815b55fca2c443891b16cbaa14ec8bb7a2559bae1c98a9037df42e56e1"
+    },
+    {
+      "file": "native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+      "bytes": 316,
+      "sha256": "779e2446fd61e20e9d66832c66e4c4aa944db1fb30b2a32310ab3348548a7e9b"
+    },
+    {
+      "file": "native11-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+      "bytes": 949,
+      "sha256": "8f0b911c9c003c269bbc99dc3db2d8ab210ebc067aed22d3bcbb4b4c47cb45cb"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.Author.g.cs",
+      "bytes": 9083,
+      "sha256": "58f10190f7f0736e9d153e043cbaf17598d133f6cad76e2d99c112d60fc27e68"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.Book.g.cs",
+      "bytes": 9926,
+      "sha256": "3d6bed44e61155c696c365a14691cd8dec526e1c8a46b5994eb8b38f1c83245f"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.GetJsonTypeInfo.g.cs",
+      "bytes": 2034,
+      "sha256": "6c12c1be551379da7638d284bcb693c63b0cd4ff29e9d7326ab01eaa62adff76"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.Int32.g.cs",
+      "bytes": 1555,
+      "sha256": "1c67679e28923e975663733a8e65f7df7a8b709294434a367102a64b7bdeb62b"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.ListBook.g.cs",
+      "bytes": 3391,
+      "sha256": "74088404c3105b61d5e649c63a18683a0be9152e3b3cc266d400f1ef54b08bed"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.ListTag.g.cs",
+      "bytes": 3372,
+      "sha256": "f6895467c6a4230a6b3c3e6c6584f09242adf765eae420d172fc959f054fdd7d"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.NullableInt32.g.cs",
+      "bytes": 1707,
+      "sha256": "1e066e01111f9e7b36cdc6b9cd742d021e9dcc8b89267ffbd71e57f930862650"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.PropertyNames.g.cs",
+      "bytes": 1464,
+      "sha256": "0de01601ba08ecb3dd7be284cd2b9dfc02dab9c4ee3ffeefe9fab575b44e2011"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.String.g.cs",
+      "bytes": 1584,
+      "sha256": "36ef209be54b8af0066759c2be7b3cfd8756d57279cbb92a30216d58204d76aa"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.Tag.g.cs",
+      "bytes": 5897,
+      "sha256": "e7cd5484e8c0958f9cb1d82eba8f46bda3622374ab0e2c06fbf66d82db95b8be"
+    },
+    {
+      "file": "native11-generated/System.Text.Json.SourceGeneration/System.Text.Json.SourceGeneration.JsonSourceGenerator/SmokeJsonContext.g.cs",
+      "bytes": 4231,
+      "sha256": "bdfc37712af292a96f9d021766dca488d1a073be79c58b232b9e663b2d914cad"
+    },
+    {
+      "file": "network-v3-id.txt",
+      "bytes": 64,
+      "sha256": "22adecea406197beb712e77fa2b2993039984c478a858201c40ab2601d1b6898"
+    },
+    {
+      "file": "ormexec-edit.py",
+      "bytes": 5017,
+      "sha256": "014531e6d3e7e35ca912f284f7d8e36b39026a17c4e91db7f5fe76f4dec5fe99"
+    },
+    {
+      "file": "pg-v3-id.txt",
+      "bytes": 64,
+      "sha256": "f59f0958f4e35fdf83b559a57592035d0d26f4c7dc620e10550b6dbc25dfd14d"
+    },
+    {
+      "file": "policy-work-edit.py",
+      "bytes": 12629,
+      "sha256": "d1acd95e0fff4f5ef10015dbebba57e3cac9e9a7681a4dd9d1bfc692e155cc9e"
+    },
+    {
+      "file": "postgres-first.json",
+      "bytes": 1851,
+      "sha256": "6d749ccfa5de19be991aef90994cc7a29024a842315dcfff0686292698f28709"
+    },
+    {
+      "file": "postgres-first.log",
+      "bytes": 57,
+      "sha256": "83815738adaaba29ed11ef4168b55da7e0263e3e02da48812c36d26ee8c8da8f"
+    },
+    {
+      "file": "probe-results/MaxDepth--1/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxDepth--1/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxDepth--1/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxDepth--1/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxDepth--1/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxDepth--1/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxDepth--1/diagnostics.json",
+      "bytes": 333,
+      "sha256": "aea33c63b0c3a3257a4e6cba14206563b19f26878f02c7942f7bc44224d0cbc4"
+    },
+    {
+      "file": "probe-results/MaxDepth--1/input.cs.txt",
+      "bytes": 590,
+      "sha256": "589c28644367f13608066160cdf87235aec837f3bfa6da548ec7ed5491658a17"
+    },
+    {
+      "file": "probe-results/MaxDepth-0/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxDepth-0/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxDepth-0/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxDepth-0/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxDepth-0/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxDepth-0/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxDepth-0/diagnostics.json",
+      "bytes": 332,
+      "sha256": "295da5bf63c1da9de3c7aee84e57f11410b1e77b2a9f886d431121a81d7c0d22"
+    },
+    {
+      "file": "probe-results/MaxDepth-0/input.cs.txt",
+      "bytes": 589,
+      "sha256": "a2df142c5b86d1f26ecc7c0f5e8e094171a70076c9598893ee5a9f4104421dd4"
+    },
+    {
+      "file": "probe-results/MaxDepth-missing/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxDepth-missing/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxDepth-missing/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxDepth-missing/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxDepth-missing/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxDepth-missing/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxDepth-missing/diagnostics.json",
+      "bytes": 338,
+      "sha256": "445f7983454fb76379519480bfcb900387bbf4986f4fe6466e133c8b737d832d"
+    },
+    {
+      "file": "probe-results/MaxDepth-missing/input.cs.txt",
+      "bytes": 578,
+      "sha256": "0207c335889a234bfd9095a6b20327522b6d0b0adfc522557e08f727d4a8f709"
+    },
+    {
+      "file": "probe-results/MaxNodes--1/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxNodes--1/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxNodes--1/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxNodes--1/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxNodes--1/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxNodes--1/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxNodes--1/diagnostics.json",
+      "bytes": 333,
+      "sha256": "15609cd60ec1422f640f64fac79f9dfd57f11eee6e23ab9a69640e6755a780c4"
+    },
+    {
+      "file": "probe-results/MaxNodes--1/input.cs.txt",
+      "bytes": 589,
+      "sha256": "7ca8a8174c7c5feddf1025f6687c943a845869539b540e8214a904ae6c6930ee"
+    },
+    {
+      "file": "probe-results/MaxNodes-0/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxNodes-0/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxNodes-0/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxNodes-0/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxNodes-0/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxNodes-0/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxNodes-0/diagnostics.json",
+      "bytes": 332,
+      "sha256": "f1c4e3a71d8cb01360c0e28ab67186db397a76dc4390b649979bdcd3e93d5270"
+    },
+    {
+      "file": "probe-results/MaxNodes-0/input.cs.txt",
+      "bytes": 588,
+      "sha256": "e881f7e0dac0328a25d453135859f50e1d65a4f1064d2b3e5bc99dbaa524f856"
+    },
+    {
+      "file": "probe-results/MaxNodes-missing/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxNodes-missing/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxNodes-missing/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxNodes-missing/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxNodes-missing/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxNodes-missing/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxNodes-missing/diagnostics.json",
+      "bytes": 338,
+      "sha256": "f1e6db28ba85d52e990bd4ce8972325e6f866169f30c5d5774b5fa1f42af12f4"
+    },
+    {
+      "file": "probe-results/MaxNodes-missing/input.cs.txt",
+      "bytes": 577,
+      "sha256": "3bdf61476331723ac515c6fcf9432786010adb60f649de0019df3ab32e4ef394"
+    },
+    {
+      "file": "probe-results/MaxPaths--1/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxPaths--1/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxPaths--1/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxPaths--1/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxPaths--1/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxPaths--1/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxPaths--1/diagnostics.json",
+      "bytes": 333,
+      "sha256": "ef89da36502acf239908931948f1e61486fbe7aebf8cfbf46a93d1ca5a02264f"
+    },
+    {
+      "file": "probe-results/MaxPaths--1/input.cs.txt",
+      "bytes": 589,
+      "sha256": "54f569b67716be9ab2adf928dbe25f07da0149f26bbc2263ab35c26d4dd540c6"
+    },
+    {
+      "file": "probe-results/MaxPaths-0/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxPaths-0/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxPaths-0/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxPaths-0/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxPaths-0/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxPaths-0/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxPaths-0/diagnostics.json",
+      "bytes": 332,
+      "sha256": "f7181a5e5ad11c961946a57bef3608545d1ef7af6807b7fd6db02bc10ff81795"
+    },
+    {
+      "file": "probe-results/MaxPaths-0/input.cs.txt",
+      "bytes": 588,
+      "sha256": "6b168d8182b7ee035ad88965b7a88369f4b310ae4858695f2ae02081ce4240c7"
+    },
+    {
+      "file": "probe-results/MaxPaths-missing/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxPaths-missing/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxPaths-missing/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxPaths-missing/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxPaths-missing/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxPaths-missing/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxPaths-missing/diagnostics.json",
+      "bytes": 338,
+      "sha256": "9a12facb8677f9dfab15009da395e27666ddfff9b4b5105e0becf64770f2648a"
+    },
+    {
+      "file": "probe-results/MaxPaths-missing/input.cs.txt",
+      "bytes": 577,
+      "sha256": "bb1114dc8166ed978457d0f0779bf3c1fc93d015412841ef0a39e064f82eed55"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows--1/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows--1/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows--1/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows--1/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows--1/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows--1/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows--1/diagnostics.json",
+      "bytes": 339,
+      "sha256": "c5e2147bddfdcfbcc22811de2eb92f2cc7027308440877440169b631748f92a7"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows--1/input.cs.txt",
+      "bytes": 587,
+      "sha256": "0bc887e82a5eee48c045d64340dd6ac3f028f76d8aafbfe7ad89a6516578a69d"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-0/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-0/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-0/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-0/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-0/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-0/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-0/diagnostics.json",
+      "bytes": 338,
+      "sha256": "0f0ed7db9b10334b7c68ae6ec09406c6d78c32eca0d3aae7d5d5cd736112e76c"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-0/input.cs.txt",
+      "bytes": 586,
+      "sha256": "7f34d76f9433a83f3c91cd3dba4d4d97b9a2d8a0cf29cbfa821984c604a42e3c"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-missing/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-missing/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-missing/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-missing/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-missing/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-missing/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-missing/diagnostics.json",
+      "bytes": 344,
+      "sha256": "a068f89bb1c11e36e5e12caa4579b3385ab04668e3d66df35d905b3ffd336e1e"
+    },
+    {
+      "file": "probe-results/MaxRelatedRows-missing/input.cs.txt",
+      "bytes": 569,
+      "sha256": "5574588af67c19b254d5a4d5ff6326e81d507d54ec368a34fdcb73206bf2e7b9"
+    },
+    {
+      "file": "probe-results/MaxRoots--1/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxRoots--1/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxRoots--1/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxRoots--1/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxRoots--1/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxRoots--1/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxRoots--1/diagnostics.json",
+      "bytes": 333,
+      "sha256": "63be4222a8f749ee95310540ce1910139b38ccacf6c118996d1a567a7daa3642"
+    },
+    {
+      "file": "probe-results/MaxRoots--1/input.cs.txt",
+      "bytes": 588,
+      "sha256": "fa6a2dd6f0be510ce2eda5c0082d85eaae133606c993ed56992ff8f6bbfae3ac"
+    },
+    {
+      "file": "probe-results/MaxRoots-0/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxRoots-0/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxRoots-0/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxRoots-0/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxRoots-0/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxRoots-0/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxRoots-0/diagnostics.json",
+      "bytes": 332,
+      "sha256": "73b0080197c0a674c4e0f2e4c698adc3bf5c0e1748fe7fff43a1a7b2abda91ba"
+    },
+    {
+      "file": "probe-results/MaxRoots-0/input.cs.txt",
+      "bytes": 587,
+      "sha256": "559186b19d489301d556e6ee19240f7ae69986c50de2035ebe537f3fe2a20aa5"
+    },
+    {
+      "file": "probe-results/MaxRoots-missing/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxRoots-missing/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxRoots-missing/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxRoots-missing/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxRoots-missing/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxRoots-missing/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxRoots-missing/diagnostics.json",
+      "bytes": 338,
+      "sha256": "5281029b42e29bec5a110313562cdca655407e12e87d0d171b347483e54a4da4"
+    },
+    {
+      "file": "probe-results/MaxRoots-missing/input.cs.txt",
+      "bytes": 576,
+      "sha256": "e673432a93582a6472e16ab81f2235ed4174af85017078366133e9f4ea39b1f5"
+    },
+    {
+      "file": "probe-results/MaxStatements--1/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxStatements--1/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxStatements--1/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxStatements--1/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxStatements--1/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxStatements--1/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxStatements--1/diagnostics.json",
+      "bytes": 338,
+      "sha256": "f1bc44af22a03337b4948f67521fd925212b568ecf63372fda7caffd8a57c855"
+    },
+    {
+      "file": "probe-results/MaxStatements--1/input.cs.txt",
+      "bytes": 589,
+      "sha256": "d4ad5c9e7af58ded8f71c2248e84bd9cc67b09d9ce82c00b5e26e6a1f3963631"
+    },
+    {
+      "file": "probe-results/MaxStatements-0/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxStatements-0/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxStatements-0/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxStatements-0/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxStatements-0/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxStatements-0/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxStatements-0/diagnostics.json",
+      "bytes": 337,
+      "sha256": "e1c238260c5ef78caca49e09bc781a2cd35bee8c794a24b1271092aea303fb97"
+    },
+    {
+      "file": "probe-results/MaxStatements-0/input.cs.txt",
+      "bytes": 588,
+      "sha256": "841cf4be6232bd033e7a667f84c7014ce9ee9b44aefe1792daab55b53a8df159"
+    },
+    {
+      "file": "probe-results/MaxStatements-missing/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/MaxStatements-missing/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/MaxStatements-missing/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/MaxStatements-missing/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/MaxStatements-missing/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/MaxStatements-missing/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/MaxStatements-missing/diagnostics.json",
+      "bytes": 343,
+      "sha256": "130e13211a5d2a089525fddec77c247f2bb0b02edd9799b101b80c8b6cad8ccb"
+    },
+    {
+      "file": "probe-results/MaxStatements-missing/input.cs.txt",
+      "bytes": 572,
+      "sha256": "dfbf406053ac1f759d6569ec60226f21372376c45aa233c0f3cc0269de242138"
+    },
+    {
+      "file": "probe-results/escaped-member/OrmLite.Entities.0000.g.cs",
+      "bytes": 5892,
+      "sha256": "f9fa4f3f23071e3a404595afaa484dacf2aef5923b6c82a0bf2361d94e394842"
+    },
+    {
+      "file": "probe-results/escaped-member/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/escaped-member/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/escaped-member/OrmLite.Entities.0003.g.cs",
+      "bytes": 691,
+      "sha256": "d97ce5b098055f9e87a739646be2719fc00fa9911e3378a92b98668f9bd4b4bc"
+    },
+    {
+      "file": "probe-results/escaped-member/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/escaped-member/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/escaped-member/diagnostics.json",
+      "bytes": 133,
+      "sha256": "68ed574b960c1c0cc6035e7f569424a1f097e055404b59877ec7081851b019d5"
+    },
+    {
+      "file": "probe-results/escaped-member/input.cs.txt",
+      "bytes": 590,
+      "sha256": "7151bc2b39ff802d27acaf234bc57620eb299b0293a04ca16664fea171ac58a0"
+    },
+    {
+      "file": "probe-results/explicit-no-limits/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/explicit-no-limits/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/explicit-no-limits/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/explicit-no-limits/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/explicit-no-limits/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/explicit-no-limits/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/explicit-no-limits/diagnostics.json",
+      "bytes": 138,
+      "sha256": "bf0a2f0ba1eafb4d7bdfe7785dbc839ac9e7e2a7d6bb3c0daed5474e4a9d98eb"
+    },
+    {
+      "file": "probe-results/explicit-no-limits/input.cs.txt",
+      "bytes": 486,
+      "sha256": "61f6fa88d89640b708a7adb2d256188c363b4d30442e62e794b889f65a97739d"
+    },
+    {
+      "file": "probe-results/keyless-source/OrmLite.Entities.0000.g.cs",
+      "bytes": 1650,
+      "sha256": "3ff04a82bb464bad938bc3ab7a0b64412c13d75609f3982b95e9d6445e3dd40f"
+    },
+    {
+      "file": "probe-results/keyless-source/OrmLite.Entities.0001.g.cs",
+      "bytes": 1628,
+      "sha256": "5369cba814e23213414a06127c541c346a71c0fb047f6d75a2cf9529932546df"
+    },
+    {
+      "file": "probe-results/keyless-source/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/keyless-source/OrmLite.Entities.0003.g.cs",
+      "bytes": 523,
+      "sha256": "8467f338724f0fef34e469dd37d3344f6b02ab60b0dc5b3def14777c5306ff4c"
+    },
+    {
+      "file": "probe-results/keyless-source/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/keyless-source/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/keyless-source/diagnostics.json",
+      "bytes": 880,
+      "sha256": "121365d515bcb440f5aa52673b0f9e73c479000f51706dccce55386a2e47cb54"
+    },
+    {
+      "file": "probe-results/keyless-source/input.cs.txt",
+      "bytes": 581,
+      "sha256": "732bfe8f875320fb9d95f2c01076a3f0571eb48217c6d4571a19da88e6401253"
+    },
+    {
+      "file": "probe-results/mode-conflict/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/mode-conflict/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/mode-conflict/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/mode-conflict/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/mode-conflict/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/mode-conflict/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/mode-conflict/diagnostics.json",
+      "bytes": 413,
+      "sha256": "0efbb66dfcbd12b4ddc0b9be6f2529effec63e8f671d76fd4ad59a10e918353f"
+    },
+    {
+      "file": "probe-results/mode-conflict/input.cs.txt",
+      "bytes": 627,
+      "sha256": "70bf2bc4a2023acbb33de726775f4fbe0eb7a1dc1fb8f20a12ac563c2f735bf3"
+    },
+    {
+      "file": "probe-results/mode-invalid/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/mode-invalid/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/mode-invalid/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/mode-invalid/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/mode-invalid/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/mode-invalid/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/mode-invalid/diagnostics.json",
+      "bytes": 327,
+      "sha256": "b5c627c14e6a25dc408342bba6dfcd9128a71a049c508ef83382398c0bc553dc"
+    },
+    {
+      "file": "probe-results/mode-invalid/input.cs.txt",
+      "bytes": 587,
+      "sha256": "2ce6fa962447e108216b62ace2e4bc469a60b17c42c12b5ca69843d102c647d4"
+    },
+    {
+      "file": "probe-results/report.json",
+      "bytes": 10019,
+      "sha256": "b7bb816ba06e31965b0f945052a0ea78549358485681ee4ac9524a2a8bdf3202"
+    },
+    {
+      "file": "probe-results/scalar-policy/OrmLite.Entities.0000.g.cs",
+      "bytes": 5441,
+      "sha256": "609a1d69a6c99435f3d1ed28e66f743b82d5bda4787b2c0c123c5cc0f6e7cd6d"
+    },
+    {
+      "file": "probe-results/scalar-policy/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/scalar-policy/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/scalar-policy/OrmLite.Entities.0003.g.cs",
+      "bytes": 591,
+      "sha256": "acf42754db9bffe8a9f392dc843a88b49a1229a168b8d024a4eafa737b379b46"
+    },
+    {
+      "file": "probe-results/scalar-policy/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/scalar-policy/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/scalar-policy/diagnostics.json",
+      "bytes": 327,
+      "sha256": "70f87e7f4a429453fd1b202a12f1c291ab804902a9650956cd6c15c8816fb6d2"
+    },
+    {
+      "file": "probe-results/scalar-policy/input.cs.txt",
+      "bytes": 627,
+      "sha256": "e9f961c2f366912acf3f1eb0999cbc4213b03d849f867c0887addbc354d66191"
+    },
+    {
+      "file": "probe-results/valid-six-named/OrmLite.Entities.0000.g.cs",
+      "bytes": 5887,
+      "sha256": "6b4cffe65caf5be1b2a688b9b71ceebe1af1b56e924e125561ad67229bae4c02"
+    },
+    {
+      "file": "probe-results/valid-six-named/OrmLite.Entities.0001.g.cs",
+      "bytes": 5418,
+      "sha256": "0bb7e75fe994421f8702cd00653e0be857d0ac12ff899ed9e4230dd07bb708a6"
+    },
+    {
+      "file": "probe-results/valid-six-named/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "f44a694e4375e19afeed2b93ec31c6bb7f28e6f86db3084f6d629ed174e25ac1"
+    },
+    {
+      "file": "probe-results/valid-six-named/OrmLite.Entities.0003.g.cs",
+      "bytes": 691,
+      "sha256": "d97ce5b098055f9e87a739646be2719fc00fa9911e3378a92b98668f9bd4b4bc"
+    },
+    {
+      "file": "probe-results/valid-six-named/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/valid-six-named/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/valid-six-named/diagnostics.json",
+      "bytes": 134,
+      "sha256": "4a179e2dc24874c841a2e486744091f55dea590765c5ebf88d3553d8f583e31c"
+    },
+    {
+      "file": "probe-results/valid-six-named/input.cs.txt",
+      "bytes": 589,
+      "sha256": "c7375b7cea8bcbec219c09aba85f5cc55b04a08bb51fe03f435bd78e90d08a3f"
+    },
+    {
+      "file": "probe-results/view-policy/OrmLite.Entities.0000.g.cs",
+      "bytes": 4261,
+      "sha256": "e73d02df410942de0398d38a36643f4d16208331e9ee49fdb1db8e50047304f6"
+    },
+    {
+      "file": "probe-results/view-policy/OrmLite.Entities.0001.g.cs",
+      "bytes": 2362,
+      "sha256": "02e1eddfe1569a0752c427f6944ce1edd7c28681c11d05f9a57ca0df8f9e6a98"
+    },
+    {
+      "file": "probe-results/view-policy/OrmLite.Entities.0002.g.cs",
+      "bytes": 273,
+      "sha256": "0cdf610888144ded8ca7ba4a98dc3ec96d982297da382e23a1817a329a48429c"
+    },
+    {
+      "file": "probe-results/view-policy/OrmLite.Entities.0003.g.cs",
+      "bytes": 556,
+      "sha256": "b923f26d7e24d4daf5d4077fc6205fa04284a9ab64ea10eafcc65478b60f68c1"
+    },
+    {
+      "file": "probe-results/view-policy/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 326,
+      "sha256": "41682f2ac60c9bff7e354fcf833a64d03f1a2d9c527819e290d7ff6c0bfe25a3"
+    },
+    {
+      "file": "probe-results/view-policy/OrmLite.Migrations.g.cs",
+      "bytes": 270,
+      "sha256": "49f7a4ef82b35399214e2131a7dbdc75bb304b9880b170c8d65400788a38b8e4"
+    },
+    {
+      "file": "probe-results/view-policy/diagnostics.json",
+      "bytes": 836,
+      "sha256": "8f27be83da1ff4977becac5dcab3f97d3d127334bd5431d880a05aed96a79544"
+    },
+    {
+      "file": "probe-results/view-policy/input.cs.txt",
+      "bytes": 574,
+      "sha256": "3f45a21152c7192e2431eab2a3a493466106d5cdef8999ab306e2280fcfd69c0"
+    },
+    {
+      "file": "prove-relocation.py",
+      "bytes": 1904,
+      "sha256": "309c065069a2cd1cdb156c1ff219d3d63679288557acd442d5cf4fdd79acab64"
+    },
+    {
+      "file": "provider-setup-v3.json",
+      "bytes": 11906,
+      "sha256": "44cdd3a5428bc64a508c2975fd0f134b888f823948d03f6364c956458fea5953"
+    },
+    {
+      "file": "provider-setup.py",
+      "bytes": 1296,
+      "sha256": "fa2e9963218fc63b2cc1c771a4758051ae4368006bc70db7b2b1c4970dc31439"
+    },
+    {
+      "file": "public-demo-postgres.json",
+      "bytes": 1902,
+      "sha256": "21ae89da6c5c0e236fd9efe869638a77c253c233dc1a9bc77c2222a8b1b92c29"
+    },
+    {
+      "file": "public-demo-postgres.log",
+      "bytes": 58,
+      "sha256": "f7538ae321bcfb87c31f57db93a105be41c01cac77561d4ccfc74dedcc7962b0"
+    },
+    {
+      "file": "public-demo-sqlite.json",
+      "bytes": 1900,
+      "sha256": "e82b873323d5b498ae27a9a16342cbc05a499d0f2cee25fe21dc0e04a330b426"
+    },
+    {
+      "file": "public-demo-sqlite.log",
+      "bytes": 56,
+      "sha256": "fbee1e5a4d0f01c35e036dc2a0c185f5936857b6542e5f898783102e99b9b299"
+    },
+    {
+      "file": "public-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "bytes": 329,
+      "sha256": "17441e6acacc5ada2b71b31a956ca7042493ab433545eb560c85f7df5b7e3ff5"
+    },
+    {
+      "file": "public-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "bytes": 273,
+      "sha256": "20202ec4f9f253857b811f05db7a9b69dcd2142eba39f49e555ca6cec430d614"
+    },
+    {
+      "file": "public-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "bytes": 8342,
+      "sha256": "d70f524272ef681dce28cd1c341727385259e3698c60be864915a3c68ae1bb24"
+    },
+    {
+      "file": "public-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "bytes": 7799,
+      "sha256": "cda9115956cfca0bdefa7a488f7f0f6a1f4ff9adfd0ebc338ca21f62c0786537"
+    },
+    {
+      "file": "public-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "bytes": 3716,
+      "sha256": "f6c2082411de93f8cea4de2f82b0a6b3cac7a99f1516ae5cfb743739a8cbcb96"
+    },
+    {
+      "file": "public-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "bytes": 4363,
+      "sha256": "1831fa815b55fca2c443891b16cbaa14ec8bb7a2559bae1c98a9037df42e56e1"
+    },
+    {
+      "file": "public-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+      "bytes": 316,
+      "sha256": "779e2446fd61e20e9d66832c66e4c4aa944db1fb30b2a32310ab3348548a7e9b"
+    },
+    {
+      "file": "public-generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+      "bytes": 949,
+      "sha256": "8f0b911c9c003c269bbc99dc3db2d8ab210ebc067aed22d3bcbb4b4c47cb45cb"
+    },
+    {
+      "file": "public-relocation-capture-forced.json",
+      "bytes": 2203,
+      "sha256": "0d66ade10fefab97db87da07377ce9efed3729d746f25f5cd4203f27928514de"
+    },
+    {
+      "file": "public-relocation-capture-forced.log",
+      "bytes": 281,
+      "sha256": "5222e58a073ad944e41e800fb319c6a52a91c2694a8a363c851196d7bd301707"
+    },
+    {
+      "file": "public-relocation-capture-no-output.json",
+      "bytes": 230,
+      "sha256": "cfd64fe9185c39684e97e76dcffef5b38f185b2cfa28652981d228e8989c22e9"
+    },
+    {
+      "file": "public-relocation-capture.json",
+      "bytes": 2146,
+      "sha256": "6b6b758fe57d907aec6371d75ab9f35f0a8d1fdf36ba7b5adcff1a189d8e4f32"
+    },
+    {
+      "file": "public-relocation-capture.log",
+      "bytes": 1418,
+      "sha256": "c0b58a304c7559431d3a075d4e55dc14d69ead25ca3cfb293a0678deda97a278"
+    },
+    {
+      "file": "public-relocation-first-proof.py.txt",
+      "bytes": 1859,
+      "sha256": "dbab591a89de69dbd9d394cf600264315cd5362342f9715d12994d527d35a41d"
+    },
+    {
+      "file": "public-relocation-proof.json",
+      "bytes": 4436,
+      "sha256": "df65e57da3b324178d72e8876f9fee211abbe1e61686c3ca34a75704956dee72"
+    },
+    {
+      "file": "public-relocation-sourceproof.json",
+      "bytes": 5822,
+      "sha256": "7241d8cf35682313866d7e5d20e2a111a388339b6c9bf3bdfeb87af94f1e0636"
+    },
+    {
+      "file": "publication-concurrency-edit.py",
+      "bytes": 5032,
+      "sha256": "55fd3ccf509b25c3390035a98e243d1ff0a4d50d4e460bce790a488fb478d39e"
+    },
+    {
+      "file": "resume-v3-edit.py",
+      "bytes": 7180,
+      "sha256": "b27d2f000e0c1657f71e82f5f0dbde5e719d3da4bad3dc42cdf3224f08ea8daf"
+    },
+    {
+      "file": "run.py",
+      "bytes": 1094,
+      "sha256": "6834846537ed780d928f502a2584813a391f11bd6c76fd25e6b7e16d05386dee"
+    },
+    {
+      "file": "runtime-native-v3.py",
+      "bytes": 1756,
+      "sha256": "e5220488f9033efb9cb443b23cccdd8dab51c95081ce97f877652851d6da876c"
+    },
+    {
+      "file": "runtime11-postgres.json",
+      "bytes": 1891,
+      "sha256": "aa678ad5a958727f4170f5e44ffeaba159e08d92b81652f2d066e91a116326fd"
+    },
+    {
+      "file": "runtime11-postgres.log",
+      "bytes": 56,
+      "sha256": "a3e9ae588ea8a3690d6dc71eca415ef33b79e97184efe9833d251ecfcc52dbde"
+    },
+    {
+      "file": "runtime11-sqlite.json",
+      "bytes": 1889,
+      "sha256": "e2206f83a6de4daf0495ace1b03125f51557aa2d5b225b20f0714d04821e96e5"
+    },
+    {
+      "file": "runtime11-sqlite.log",
+      "bytes": 215,
+      "sha256": "ca76052b550d4f74c704b883b367bfd3aa9e8b5c3f0a70c31c827527fdf92cae"
+    },
+    {
+      "file": "same-consumer-inputs.json",
+      "bytes": 4197,
+      "sha256": "39d2bdd45cb462245736d8e86e5c4fe4bb87019a53870e4043d8b66fa0ed558e"
+    },
+    {
+      "file": "scope-edit.py",
+      "bytes": 9122,
+      "sha256": "64be05d62e69d8472c77b3393dc086ae1097210586e89d0612fe3051a50a2878"
+    },
+    {
+      "file": "sqlite-bounds-lifetime.json",
+      "bytes": 1464,
+      "sha256": "2b872465578968c6253678fd48a919aad34b4a6f70e94979ec41ebd76dcd955d"
+    },
+    {
+      "file": "sqlite-bounds-lifetime.log",
+      "bytes": 55,
+      "sha256": "5e8feff2c8748a188f4575a597df67e62ed37e0c797e49873b36dc929902b8ce"
+    },
+    {
+      "file": "sqlite-first.json",
+      "bytes": 2276,
+      "sha256": "bf38428d26c4d68cc0370d922e6702e942228cfa8ca27717e62942f12fb61493"
+    },
+    {
+      "file": "sqlite-first.log",
+      "bytes": 55,
+      "sha256": "fadfc2e419fb7b3831a219e863eb6a34c22cdea3b7a3267c7707db7cd668284f"
+    },
+    {
+      "file": "sqlite-states-first.json",
+      "bytes": 2276,
+      "sha256": "3aa47e88e415ae3c0209bd5d07728f5dd00977672b3b486ca4b8d7ac742c2312"
+    },
+    {
+      "file": "sqlite-states-first.log",
+      "bytes": 55,
+      "sha256": "60dfc61f268ec9a3f6885cfc88b602bcd5c3319f7ca51a18568935fdc7aeb49f"
+    }
+  ]
+}

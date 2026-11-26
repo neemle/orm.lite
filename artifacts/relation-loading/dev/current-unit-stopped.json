@@ -1,0 +1,24 @@
+{
+  "id": "fa23ebea27d17f6354baa1ced01b50bbd717240338efed7ef92023f1cad80d8c",
+  "reason": "Explicit user narrows verification to identical functional demo JIT/AOT PG/SQLite; stop unrelated control expansion",
+  "time": "2026-11-26T09:28:07.876283+00:00",
+  "argv": [
+    "dotnet",
+    "test",
+    "tests/Tests/Tests.csproj",
+    "-c",
+    "Release",
+    "--artifacts-path",
+    "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-build",
+    "--logger",
+    "trx;LogFileName=current-unit.trx",
+    "--results-directory",
+    "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/current-unit-results",
+    "-m:1",
+    "--filter",
+    "FullyQualifiedName!~Postgres"
+  ],
+  "exit": 0,
+  "stdout": "fa23ebea27d17f6354baa1ced01b50bbd717240338efed7ef92023f1cad80d8c\n",
+  "stderr": ""
+}

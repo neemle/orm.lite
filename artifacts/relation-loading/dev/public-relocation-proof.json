@@ -1,0 +1,130 @@
+{
+  "csharp": "public-relocation-sourceproof.json",
+  "generated": [
+    {
+      "file": "Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "testedSha256": "17441e6acacc5ada2b71b31a956ca7042493ab433545eb560c85f7df5b7e3ff5",
+      "publicSha256": "17441e6acacc5ada2b71b31a956ca7042493ab433545eb560c85f7df5b7e3ff5",
+      "byteEqual": true
+    },
+    {
+      "file": "Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "testedSha256": "20202ec4f9f253857b811f05db7a9b69dcd2142eba39f49e555ca6cec430d614",
+      "publicSha256": "20202ec4f9f253857b811f05db7a9b69dcd2142eba39f49e555ca6cec430d614",
+      "byteEqual": true
+    },
+    {
+      "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "testedSha256": "d70f524272ef681dce28cd1c341727385259e3698c60be864915a3c68ae1bb24",
+      "publicSha256": "d70f524272ef681dce28cd1c341727385259e3698c60be864915a3c68ae1bb24",
+      "byteEqual": true
+    },
+    {
+      "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "testedSha256": "cda9115956cfca0bdefa7a488f7f0f6a1f4ff9adfd0ebc338ca21f62c0786537",
+      "publicSha256": "cda9115956cfca0bdefa7a488f7f0f6a1f4ff9adfd0ebc338ca21f62c0786537",
+      "byteEqual": true
+    },
+    {
+      "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "testedSha256": "f6c2082411de93f8cea4de2f82b0a6b3cac7a99f1516ae5cfb743739a8cbcb96",
+      "publicSha256": "f6c2082411de93f8cea4de2f82b0a6b3cac7a99f1516ae5cfb743739a8cbcb96",
+      "byteEqual": true
+    },
+    {
+      "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "testedSha256": "1831fa815b55fca2c443891b16cbaa14ec8bb7a2559bae1c98a9037df42e56e1",
+      "publicSha256": "1831fa815b55fca2c443891b16cbaa14ec8bb7a2559bae1c98a9037df42e56e1",
+      "byteEqual": true
+    },
+    {
+      "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+      "testedSha256": "779e2446fd61e20e9d66832c66e4c4aa944db1fb30b2a32310ab3348548a7e9b",
+      "publicSha256": "779e2446fd61e20e9d66832c66e4c4aa944db1fb30b2a32310ab3348548a7e9b",
+      "byteEqual": true
+    },
+    {
+      "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+      "testedSha256": "8f0b911c9c003c269bbc99dc3db2d8ab210ebc067aed22d3bcbb4b4c47cb45cb",
+      "publicSha256": "8f0b911c9c003c269bbc99dc3db2d8ab210ebc067aed22d3bcbb4b4c47cb45cb",
+      "byteEqual": true
+    }
+  ],
+  "assemblies": [
+    {
+      "project": "Runtime",
+      "testedSha256": "d04482658c69dab72bc6a170bb06b47cc5cf001e3fc24963a73c5a9199ac2208",
+      "publicSha256": "1e1799088e165ec589e6d9802a727aa8928d7fbbd9164ebeddf5868e4779a68d",
+      "byteEqual": false
+    },
+    {
+      "project": "Generator",
+      "testedSha256": "390c242a1e347de9a50c78155d9cf8a82b8cbed375bccdadb7c2e284fd6efac3",
+      "publicSha256": "c1cc1830cb5b3870432bc4e19602277c843c51ca046c31b9e718f60caa236b19",
+      "byteEqual": false
+    }
+  ],
+  "readmeLinks": [
+    {
+      "link": "Program.cs",
+      "exists": true
+    },
+    {
+      "link": "ReadCases.cs",
+      "exists": true
+    },
+    {
+      "link": "Author.cs",
+      "exists": true
+    },
+    {
+      "link": "Book.cs",
+      "exists": true
+    },
+    {
+      "link": "LazyCases.cs",
+      "exists": true
+    },
+    {
+      "link": "ConcurrencyCases.cs",
+      "exists": true
+    },
+    {
+      "link": "FaultCases.cs",
+      "exists": true
+    },
+    {
+      "link": "QueueCases.cs",
+      "exists": true
+    },
+    {
+      "link": "LimitCases.cs",
+      "exists": true
+    },
+    {
+      "link": "LifetimeCases.cs",
+      "exists": true
+    },
+    {
+      "link": "BindingCases.cs",
+      "exists": true
+    },
+    {
+      "link": "GateOriginCases.cs",
+      "exists": true
+    },
+    {
+      "link": "CustomOriginCases.cs",
+      "exists": true
+    },
+    {
+      "link": "VisibilityCases.cs",
+      "exists": true
+    },
+    {
+      "link": "../../docs/relations.md",
+      "exists": true
+    }
+  ],
+  "configuration": "Identical24 C# bytes, net10 Release, same frozen Runtime+Generator source with actual differing DLL file hashes recorded (no binary byte equality claim), same Composer0.5.0 analyzer resolved portably. Only relative project paths/portable analyzer reference differ. Native10/11 original tested project/binary provenance in final-matrix.json is reused; public project not separately native-published."
+}

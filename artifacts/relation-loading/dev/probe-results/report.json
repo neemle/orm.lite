@@ -1,0 +1,365 @@
+[
+  {
+    "Name": "valid-six-named",
+    "Invalid": false,
+    "pass": true,
+    "registered": true,
+    "diagnostics": [],
+    "compilerErrors": []
+  },
+  {
+    "Name": "explicit-no-limits",
+    "Invalid": false,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxDepth-0",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxDepth--1",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxDepth-missing",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxPaths-0",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxPaths--1",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxPaths-missing",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxNodes-0",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxNodes--1",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxNodes-missing",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxRoots-0",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxRoots--1",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxRoots-missing",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxRelatedRows-0",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxRelatedRows--1",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxRelatedRows-missing",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxStatements-0",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxStatements--1",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "MaxStatements-missing",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "mode-invalid",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Books\u0027 is invalid: invalid or conflicting relation load mode"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "mode-conflict",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Books\u0027 is invalid: invalid or conflicting relation load mode"
+      }
+    ],
+    "compilerErrors": [
+      "input.cs(10,44): error CS0579: Duplicate \u0027RelationLoad\u0027 attribute"
+    ]
+  },
+  {
+    "Name": "scalar-policy",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Name\u0027 is invalid: navigation has no supported graph binding"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "keyless-source",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE026",
+        "severity": "Error",
+        "message": "Navigation \u0027Author.Books\u0027 cannot be loaded: \u0027Author\u0027 has no key property, so its key cannot be matched with the inverse key \u0027AuthorId\u0027. No LoadBooksAsync is generated for it."
+      },
+      {
+        "Id": "ORMLITE026",
+        "severity": "Error",
+        "message": "Navigation \u0027Book.Author\u0027 cannot be loaded: \u0027Author\u0027 has no key property, so there is no get by key to load it with. No LoadAuthorAsync is generated for it."
+      },
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Books\u0027 is invalid: navigation has no supported graph binding"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "view-policy",
+    "Invalid": true,
+    "pass": true,
+    "registered": false,
+    "diagnostics": [
+      {
+        "Id": "ORMLITE001",
+        "severity": "Error",
+        "message": "Orm.Lite has no column mapping for property \u0027Book.Author\u0027 of type \u0027Probe.Author?\u0027. Use a supported type (string, int, long, bool, double, decimal, Guid, DateTime, DateOnly or an enum, each also nullable), type the property as Neemle.OrmLite.Jsonb to store it as a jsonb column, or mark it [NotAColumn] to leave it out. The generator no longer falls back to a text column, so this property is not emitted."
+      },
+      {
+        "Id": "ORMLITE035",
+        "severity": "Error",
+        "message": "Relation policy \u0027global::Probe.Author.Books\u0027 is invalid: navigation has no supported graph binding"
+      }
+    ],
+    "compilerErrors": []
+  },
+  {
+    "Name": "escaped-member",
+    "Invalid": false,
+    "pass": true,
+    "registered": true,
+    "diagnostics": [],
+    "compilerErrors": []
+  }
+]

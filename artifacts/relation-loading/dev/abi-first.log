@@ -1,0 +1,26 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/abi/abi.csproj (in 68 ms).
+  abi -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/abi-old-build/bin/abi/release/AbiProbe.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.58
+old null/default overload resolved and dispatched
+unconstrained generic/source/binary ABI probe PASS
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/abi/abi.csproj (in 54 ms).
+  abi -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/dev/abi-current-build/bin/abi/release/AbiProbe.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.21
+old null/default overload resolved and dispatched
+exact four REQUIRED args witnessed
+unconstrained generic/source/binary ABI probe PASS
+old null/default overload resolved and dispatched
+exact four REQUIRED args witnessed
+unconstrained generic/source/binary ABI probe PASS

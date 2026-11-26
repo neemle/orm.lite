@@ -1,0 +1,146 @@
+[
+  {
+    "source": "artifacts/relation-loading/dev/consumer/Author.cs",
+    "public": "examples/relation-loading/Author.cs",
+    "sha256": "0de80db0c861ce47044ff1f66c59608dbc18de272ed139439dad496f412eb6c7",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/AuthorJsonConverter.cs",
+    "public": "examples/relation-loading/AuthorJsonConverter.cs",
+    "sha256": "038207cc38fc821a3c29c62a270b6b1f7824168a5f6d5ff5cb0f5ffaf706212f",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/BindingCases.cs",
+    "public": "examples/relation-loading/BindingCases.cs",
+    "sha256": "7d32d51b96134278349b79a6483e33f96e287c495413485d02a7ccb03e4608ef",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/Book.cs",
+    "public": "examples/relation-loading/Book.cs",
+    "sha256": "f990d8fb5567c12e06264d26ee20981cb8a824a774265fdee9bcb761f4414b55",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/Check.cs",
+    "public": "examples/relation-loading/Check.cs",
+    "sha256": "bbaccb3ba558ddb6016a8b8853a5bb86a801f2963586293ea9f9043f731850a2",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/ConcurrencyCases.cs",
+    "public": "examples/relation-loading/ConcurrencyCases.cs",
+    "sha256": "53ccd4f0b9ba130278981a4cf457a47ca95e44609c16202ff6bfa947af5068ca",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/CustomOriginCases.cs",
+    "public": "examples/relation-loading/CustomOriginCases.cs",
+    "sha256": "025b88cc8124acc85ba51d57b85a7e198efd4518a8a02cc84554a2b28d6478b4",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/FaultCases.cs",
+    "public": "examples/relation-loading/FaultCases.cs",
+    "sha256": "9cb7eaca332be7eba8fc217a17f8dfd0c9395b6326838af6976ec24a94913cf8",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/Fixture.cs",
+    "public": "examples/relation-loading/Fixture.cs",
+    "sha256": "024d164349cf0bbf1c8555c946f3cb5fda26977c17b8201aa88f7e5f91e33d4d",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/GateOriginCases.cs",
+    "public": "examples/relation-loading/GateOriginCases.cs",
+    "sha256": "abe47b94743caa6b499ecc657815e8739d89a0e3587a9ff618f2bbd4523d0464",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/LazyCases.cs",
+    "public": "examples/relation-loading/LazyCases.cs",
+    "sha256": "87c1423e938fdb8c9d0d7ba0e180513da9003f26ea93cbf954358f86442e8a4c",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/LifetimeCases.cs",
+    "public": "examples/relation-loading/LifetimeCases.cs",
+    "sha256": "d2c0fbc81c37fe9bbf9d016d385657017fa1d230a07f4e1a4a6d12da94abb8d3",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/LimitCases.cs",
+    "public": "examples/relation-loading/LimitCases.cs",
+    "sha256": "7d70bf15cb95489f41f79b80a73a5a3a03ef7ab5301ce153d8e9bc543b50ee39",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/MapSentinelException.cs",
+    "public": "examples/relation-loading/MapSentinelException.cs",
+    "sha256": "f58a9a106b32dabf26f59e945f766823a9d9ad6274106df4ace894d39837ac81",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/ObservedSource.cs",
+    "public": "examples/relation-loading/ObservedSource.cs",
+    "sha256": "140b35641bb4b988034643f6c9d42479cf4479eeaadfe55e1132229c475cb399",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/Plain.cs",
+    "public": "examples/relation-loading/Plain.cs",
+    "sha256": "a825dbdec2e73537cef6f8e938d4099fef2519886baf00e52b50e97332dc6256",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/Program.cs",
+    "public": "examples/relation-loading/Program.cs",
+    "sha256": "73fa608b26791b0a734dd1105280e7c826f5f93cd413a986be34cba188e36372",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/QueueCases.cs",
+    "public": "examples/relation-loading/QueueCases.cs",
+    "sha256": "4507b97fb5c25b15617ab81fef444b72ad762cacd2153296ec5cff72550a53f9",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/ReadCases.cs",
+    "public": "examples/relation-loading/ReadCases.cs",
+    "sha256": "74650022dc47285e5bfc390abd095fafe0f733bcd2fe6abb71c5c38a467a70a3",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/ReadPause.cs",
+    "public": "examples/relation-loading/ReadPause.cs",
+    "sha256": "29b0559d852b2c88da5596d3412a01d9fbecc58780933c74685c0a67bfa62889",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/SmokeJsonContext.cs",
+    "public": "examples/relation-loading/SmokeJsonContext.cs",
+    "sha256": "169fcf7a406b76399eac770349e3ab30a4bde0bc48161630f01d8c4916ff98e0",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/SpySink.cs",
+    "public": "examples/relation-loading/SpySink.cs",
+    "sha256": "896423c56123403a62dd9d31e43d53fdfca17a3f51773aa7466aef4d0955e879",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/Tag.cs",
+    "public": "examples/relation-loading/Tag.cs",
+    "sha256": "10f2abd4bb6653d4865778c5652dc447fa0b6e00c5ec10aec0540c3ba322574b",
+    "byteEqual": true
+  },
+  {
+    "source": "artifacts/relation-loading/dev/consumer/VisibilityCases.cs",
+    "public": "examples/relation-loading/VisibilityCases.cs",
+    "sha256": "13700c554298441aa706e563e82cd144c91dcad906a3d77813701b8a095c503d",
+    "byteEqual": true
+  }
+]

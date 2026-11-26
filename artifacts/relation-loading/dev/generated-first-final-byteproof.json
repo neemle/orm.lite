@@ -1,0 +1,50 @@
+[
+  {
+    "file": "Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+    "before": "17441e6acacc5ada2b71b31a956ca7042493ab433545eb560c85f7df5b7e3ff5",
+    "after": "17441e6acacc5ada2b71b31a956ca7042493ab433545eb560c85f7df5b7e3ff5",
+    "byteEqual": true
+  },
+  {
+    "file": "Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+    "before": "20202ec4f9f253857b811f05db7a9b69dcd2142eba39f49e555ca6cec430d614",
+    "after": "20202ec4f9f253857b811f05db7a9b69dcd2142eba39f49e555ca6cec430d614",
+    "byteEqual": true
+  },
+  {
+    "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+    "before": "d70f524272ef681dce28cd1c341727385259e3698c60be864915a3c68ae1bb24",
+    "after": "d70f524272ef681dce28cd1c341727385259e3698c60be864915a3c68ae1bb24",
+    "byteEqual": true
+  },
+  {
+    "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+    "before": "cda9115956cfca0bdefa7a488f7f0f6a1f4ff9adfd0ebc338ca21f62c0786537",
+    "after": "cda9115956cfca0bdefa7a488f7f0f6a1f4ff9adfd0ebc338ca21f62c0786537",
+    "byteEqual": true
+  },
+  {
+    "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+    "before": "f6c2082411de93f8cea4de2f82b0a6b3cac7a99f1516ae5cfb743739a8cbcb96",
+    "after": "f6c2082411de93f8cea4de2f82b0a6b3cac7a99f1516ae5cfb743739a8cbcb96",
+    "byteEqual": true
+  },
+  {
+    "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+    "before": "1831fa815b55fca2c443891b16cbaa14ec8bb7a2559bae1c98a9037df42e56e1",
+    "after": "1831fa815b55fca2c443891b16cbaa14ec8bb7a2559bae1c98a9037df42e56e1",
+    "byteEqual": true
+  },
+  {
+    "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+    "before": "779e2446fd61e20e9d66832c66e4c4aa944db1fb30b2a32310ab3348548a7e9b",
+    "after": "779e2446fd61e20e9d66832c66e4c4aa944db1fb30b2a32310ab3348548a7e9b",
+    "byteEqual": true
+  },
+  {
+    "file": "Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+    "before": "8f0b911c9c003c269bbc99dc3db2d8ab210ebc067aed22d3bcbb4b4c47cb45cb",
+    "after": "8f0b911c9c003c269bbc99dc3db2d8ab210ebc067aed22d3bcbb4b4c47cb45cb",
+    "byteEqual": true
+  }
+]

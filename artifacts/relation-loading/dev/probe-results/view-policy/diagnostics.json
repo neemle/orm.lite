@@ -1,0 +1,19 @@
+{
+  "Name": "view-policy",
+  "Invalid": true,
+  "pass": true,
+  "registered": false,
+  "diagnostics": [
+    {
+      "Id": "ORMLITE001",
+      "severity": "Error",
+      "message": "Orm.Lite has no column mapping for property \u0027Book.Author\u0027 of type \u0027Probe.Author?\u0027. Use a supported type (string, int, long, bool, double, decimal, Guid, DateTime, DateOnly or an enum, each also nullable), type the property as Neemle.OrmLite.Jsonb to store it as a jsonb column, or mark it [NotAColumn] to leave it out. The generator no longer falls back to a text column, so this property is not emitted."
+    },
+    {
+      "Id": "ORMLITE035",
+      "severity": "Error",
+      "message": "Relation policy \u0027global::Probe.Author.Books\u0027 is invalid: navigation has no supported graph binding"
+    }
+  ],
+  "compilerErrors": []
+}

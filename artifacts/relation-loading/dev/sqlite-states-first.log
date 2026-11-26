@@ -1,0 +1,2 @@
+runtime 10.0.15
+policy smoke sqlite assertions=60 PASS
