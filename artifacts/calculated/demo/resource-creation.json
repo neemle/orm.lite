@@ -1,0 +1,46 @@
+[
+  {
+    "argv": [
+      "docker",
+      "network",
+      "create",
+      "--label",
+      "orml.task=ORML-107",
+      "--label",
+      "orml.actor=calculated-demo",
+      "orml107-calc-demo-ebe26593"
+    ],
+    "exitCode": 0,
+    "stdout": "869a499133714e2417f405b8afe11b4e519cb98ca437038295e61520673c23b8\n",
+    "stderr": "",
+    "time": "2026-11-26T09:54:54.717471+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "run",
+      "-d",
+      "--name",
+      "orml107-calc-demo-pg-ebe26593",
+      "--network",
+      "869a499133714e2417f405b8afe11b4e519cb98ca437038295e61520673c23b8",
+      "--network-alias",
+      "pg",
+      "--label",
+      "orml.task=ORML-107",
+      "--label",
+      "orml.actor=calculated-demo",
+      "-e",
+      "POSTGRES_HOST_AUTH_METHOD=trust",
+      "-e",
+      "POSTGRES_DB=calculated_demo",
+      "--tmpfs",
+      "/var/lib/postgresql/data:uid=70,gid=70,mode=0700",
+      "neemle/pg.lite:19"
+    ],
+    "exitCode": 0,
+    "stdout": "c00bfc3ca929cc896405087bd1a21238f4c0d9ba6fd1c3c5c4862205522f1926\n",
+    "stderr": "",
+    "time": "2026-11-26T09:54:55.340727+00:00"
+  }
+]

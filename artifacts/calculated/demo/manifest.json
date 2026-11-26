@@ -1,0 +1,131 @@
+{
+  "publicReadmeLinks": [
+    "Note.cs",
+    "Child.cs",
+    "Tag.cs",
+    "ReadCases.cs",
+    "RelationCases.cs",
+    "BoundaryCases.cs",
+    "RefusalCases.cs",
+    "../../docs/entities.md#calculated-read-fields"
+  ],
+  "allResolve": true,
+  "auxiliaryProbe": "A separate optional docker exec psql version probe ended with a tooling assertion before its return output was persisted. It is not a demo scenario or product failure; no repeat. Exact fixture image ID retained in matrix-results.json.",
+  "files": [
+    {
+      "file": "finish.py",
+      "bytes": 4094,
+      "sha256": "939ba9c72d36e2a98407ae4135fec3d0e4d85559881cf32539b646699cd29778"
+    },
+    {
+      "file": "jit10-postgres.json",
+      "bytes": 3445,
+      "sha256": "ef208f0b1a11292ab07582d4e5500b6bce89418cb1446ad3a7a3ef7d61516158"
+    },
+    {
+      "file": "jit10-postgres.log",
+      "bytes": 271,
+      "sha256": "28783b0e1bd3ffc098bef9be5e3adfc0348934a1491e0d321bee82541b0a595b"
+    },
+    {
+      "file": "jit10-sqlite.json",
+      "bytes": 3443,
+      "sha256": "346acc5ef3fd4d3dd2d13c72fd01adf981765a48960a9a39510c1b250888320a"
+    },
+    {
+      "file": "jit10-sqlite.log",
+      "bytes": 269,
+      "sha256": "fac433c1763489a513f92536aafca2996b7b3b342c70cafd5737bd894b2a0cf9"
+    },
+    {
+      "file": "jit11-postgres.json",
+      "bytes": 3445,
+      "sha256": "177a74f1ef8ca76485c15e27577f0fa6d2388a2c96c339c055203929ddcc7717"
+    },
+    {
+      "file": "jit11-postgres.log",
+      "bytes": 270,
+      "sha256": "847c8b81ce9e427638bfd8d48052fbbd2c9b9addddbe3cfee27226e55f280e21"
+    },
+    {
+      "file": "jit11-sqlite.json",
+      "bytes": 3443,
+      "sha256": "ba64f0cc31e8a5fafd597b921dff4ae79ebd5a99f2ef116c1bb48fb60ece7bd2"
+    },
+    {
+      "file": "jit11-sqlite.log",
+      "bytes": 268,
+      "sha256": "ee77b6b831401c573d044cb40b5f06d470dbb4b766a686017754a5e196ece0ea"
+    },
+    {
+      "file": "matrix-results.json",
+      "bytes": 7446,
+      "sha256": "5aece03bcb782e184f0f6f2b4bdc17a724abd0be0d64ed2b45b955ed933fcca0"
+    },
+    {
+      "file": "matrix.py",
+      "bytes": 1812,
+      "sha256": "e57f44e0f54c694fe0e66b148d08c7cfd4c0a4ef841a0934b2ecc7eec8cb44f6"
+    },
+    {
+      "file": "native-gate-home.md",
+      "bytes": 14829,
+      "sha256": "a3f922827c1135d61948ed8598667cb6a16ff8663f0cde63b6dc1299a7325282"
+    },
+    {
+      "file": "native10.json",
+      "bytes": 4004,
+      "sha256": "2efc8c4e76e18a61a607d06d93942929fad98c8a95f21ea2b60b5bbde72c5d97"
+    },
+    {
+      "file": "native10.log",
+      "bytes": 1077,
+      "sha256": "5eb0608118d9f41e4cedeba2b892d9267a87ce4769c0478d73c6f97a252be4cf"
+    },
+    {
+      "file": "native11.json",
+      "bytes": 4004,
+      "sha256": "67d52ff8a2aa5caad9e906615b82d9fcc615ccc668d0cae975f4fc59f83710a6"
+    },
+    {
+      "file": "native11.log",
+      "bytes": 1075,
+      "sha256": "f6e276c00a13ea0f585cff2e9baeb6f34c0f3158f777c0b815111744d2b4006b"
+    },
+    {
+      "file": "network-id.txt",
+      "bytes": 64,
+      "sha256": "43904e55adf17304498a453fda0aa1551ce8b826790d25c8e823638970891a27"
+    },
+    {
+      "file": "pack-frozen107.json",
+      "bytes": 2827,
+      "sha256": "2ae439a25b8da7afdfc43e9975100435fb3bb95090db3ba953472af8628f09ac"
+    },
+    {
+      "file": "pack-frozen107.log",
+      "bytes": 3903,
+      "sha256": "4df44fa1982a6e297316980c6a0945893503da9924cb414449586afab71a6b52"
+    },
+    {
+      "file": "packed-provenance.json",
+      "bytes": 1995,
+      "sha256": "ed9b9504117e6f6643917b88cea923e3d326dcd24c3908253f7ebb767fb8d526"
+    },
+    {
+      "file": "postgres-id.txt",
+      "bytes": 64,
+      "sha256": "6d0e61f3b43876aaf35f059e97b7644c68b1e63138e9f32b61f67f24f2a43f14"
+    },
+    {
+      "file": "resource-creation.json",
+      "bytes": 1107,
+      "sha256": "fedab42850cf068fd1876cd45cd3a214b439e5e00b09a2dfb801f18e8535b1eb"
+    },
+    {
+      "file": "run.py",
+      "bytes": 959,
+      "sha256": "33ab1555190a6665580e2f9a20a41dcd20665c563233ff0d9dce3d206b4abf7d"
+    }
+  ]
+}

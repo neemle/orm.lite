@@ -146,7 +146,7 @@ public static class GoldenAuthorOrm
 
     public static async global::System.Threading.Tasks.Task LoadTagsAsync(global::Neemle.OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenAuthor e)
     {
-        e.Tags = await OrmExec.LoadLinkedAsync(db, conn, Descriptor, "Tags", e.Id, GoldenTagOrm.Map);
+        e.Tags = await OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<global::GoldenFixtures.GoldenTag>(Descriptor, "Tags", e.Id, GoldenTagOrm.Descriptor, GoldenTagOrm.Map));
     }
 
     public static async global::System.Threading.Tasks.Task AddTagAsync(global::Neemle.OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid thisId, global::System.Guid otherId)
