@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -13,11 +14,14 @@ internal static class GeneratedSourceLayout
     {
         var root = CSharpSyntaxTree.ParseText(source).GetCompilationUnitRoot();
         var ns = root.Members.OfType<FileScopedNamespaceDeclarationSyntax>().Single();
+        var ordinal = 0;
         foreach (var type in ns.Members.OfType<TypeDeclarationSyntax>())
         {
             var unit = root.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(
                 ns.WithMembers(SyntaxFactory.SingletonList<MemberDeclarationSyntax>(type))));
-            yield return ($"OrmLite.Entities.{type.Identifier.ValueText}.g.cs", Wrap(unit.ToFullString()));
+            var hint = "OrmLite.Entities." + ordinal.ToString("D4", CultureInfo.InvariantCulture) + ".g.cs";
+            ordinal++;
+            yield return (hint, Wrap(unit.ToFullString()));
         }
     }
 
