@@ -1,0 +1,3 @@
+MSBuild server unavailable: could not connect to the server within the timeout window; the server may have failed to start. Falling back to an in-process build.
+runtime 11.0.0
+policy smoke sqlite assertions=92 PASS

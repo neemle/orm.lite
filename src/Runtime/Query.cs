@@ -281,8 +281,7 @@ namespace Neemle.OrmLite;
         internal StreamBorrowed? StreamBorrowed => _exec.StreamScope(_streamUnit);
         internal RowLock? StreamRowLock => _select.Build([], null).Lock;
 
-        public async Task<List<T>> ToListAsync() =>
-            await _exec.RowsAsync(CompileSelect(), OneToOneReadMap.Wrap(_map, _state.Redactions.Count != 0));
+        public Task<List<T>> ToListAsync() => QueryPolicyReads<T>.RowsAsync(this, _exec);
 
         public async Task<List<TOut>> ProjectAsync<TOut>(
             IReadOnlyList<Expression<Func<T, object?>>> columns,
@@ -323,9 +322,7 @@ namespace Neemle.OrmLite;
         public async Task<List<TOut>> ProjectionAsync<TOut>(Func<DbDataReader, TOut> map) =>
             await _exec.RowsAsync(CompileProjection(), map);
 
-        public async Task<T?> FirstOrDefaultAsync() => await OneToOneReadMap.FirstAsync(_exec,
-            CompileTree(_select.BuildFirst(SelectedColumns(), WhereNode(), lockRows: true)),
-            _map, _state.Redactions.Count != 0);
+        public Task<T?> FirstOrDefaultAsync() => QueryPolicyReads<T>.FirstAsync(this, _exec);
 
         public async Task<long> CountAsync()
         {
@@ -628,6 +625,9 @@ namespace Neemle.OrmLite;
             Masks = new Dictionary<string, Node>(_state.Redactions),
             Unsupported = _projection.Count != 0,
         };
+
+        internal GraphQueryState<T> GraphFirstSnapshot() =>
+            QueryPolicyReads<T>.FirstSnapshot(GraphSnapshot());
 
         internal Select BuildSelect() => _select.Build(SelectedColumns(), WhereNode());
 

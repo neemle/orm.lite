@@ -155,4 +155,38 @@ public static class ProjectOrm
         e.Members = await OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<global::CorpusEntities
             .Member>(Descriptor, "Members", e.Id, MemberOrm.Descriptor, MemberOrm.Map));
     }
+
+public static global::System.Threading.Tasks.Task<global::CorpusEntities.Project?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Guid key, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading
+    .CancellationToken ct = default) => global::Neemle.OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).
+    Where(e => e.Id == key), options, ct);
+
+public static global::System.Threading.Tasks.Task<global::CorpusEntities.Project?> GetAsync(global::Neemle.OrmLite.
+    OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.
+    RelationReadOptions options, global::System.Threading.CancellationToken ct = default) => global::Neemle.OrmLite.
+    RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
+
+public static async global::System.Threading.Tasks.Task LoadTasksAsync(global::Neemle.OrmLite.OrmContext db, global::
+    CorpusEntities.Project e, global::Neemle.OrmLite.RelationReadOptions options, global::System.Threading.
+    CancellationToken ct = default)
+{
+    e.Tasks = await global::Neemle.OrmLite.RelationQueryExtensions.ToListAsync(WorkItemOrm.Query(db).Where(c => c.
+        ProjectId == e.Id), options, ct);
+}
+
+public static async global::System.Threading.Tasks.Task LoadLabelsAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Data.Common.DbConnection conn, global::CorpusEntities.Project e, global::Neemle.OrmLite.RelationReadOptions
+    options, global::System.Threading.CancellationToken ct = default)
+{
+    e.Labels = await global::Neemle.OrmLite.OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<
+        global::CorpusEntities.Label>(Descriptor, "Labels", e.Id, LabelOrm.Descriptor, LabelOrm.Map), options, ct);
+}
+
+public static async global::System.Threading.Tasks.Task LoadMembersAsync(global::Neemle.OrmLite.OrmContext db, global::
+    System.Data.Common.DbConnection conn, global::CorpusEntities.Project e, global::Neemle.OrmLite.RelationReadOptions
+    options, global::System.Threading.CancellationToken ct = default)
+{
+    e.Members = await global::Neemle.OrmLite.OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<
+        global::CorpusEntities.Member>(Descriptor, "Members", e.Id, MemberOrm.Descriptor, MemberOrm.Map), options, ct);
+}
 }

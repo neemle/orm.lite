@@ -1,0 +1,149 @@
+{
+  "sourceCommit": "712530c979fe316bfa5e40b1b6d6f933c70432ae",
+  "sourceTree": "2b3f01e4be430d703284bb87c5f0792a7eaef978",
+  "testTree": "21c166b86ebc3b4b3eeb7405a396cee31ff50f36",
+  "consumerInputs": "same-consumer-inputs.json",
+  "consumerInputsSha256": "39d2bdd45cb462245736d8e86e5c4fe4bb87019a53870e4043d8b66fa0ed558e",
+  "legs": [
+    {
+      "sdk": 10,
+      "mode": "jit",
+      "provider": "sqlite",
+      "outcome": "policy smoke sqlite assertions=109 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+      "gate": "final-runtime10-sqlite.json",
+      "gateSha256": "fe709fec22f76c6b7b9281040c52bb6ab93b786bf7b8593ed7774771a856d931",
+      "logSha256": "fbee1e5a4d0f01c35e036dc2a0c185f5936857b6542e5f898783102e99b9b299",
+      "started": "2026-11-26T09:24:15.994759+00:00",
+      "finished": "2026-11-26T09:24:38.270580+00:00"
+    },
+    {
+      "sdk": 10,
+      "mode": "jit",
+      "provider": "postgres",
+      "outcome": "policy smoke postgres assertions=109 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+      "gate": "final-runtime10-postgres.json",
+      "gateSha256": "682dd9ef24606dad18a148843bc696c6a04b826b516c253a1740b0441f7c2f4e",
+      "logSha256": "f7538ae321bcfb87c31f57db93a105be41c01cac77561d4ccfc74dedcc7962b0",
+      "started": "2026-11-26T09:24:38.855220+00:00",
+      "finished": "2026-11-26T09:24:46.426111+00:00"
+    },
+    {
+      "sdk": 10,
+      "mode": "aot",
+      "provider": "sqlite",
+      "outcome": "policy smoke sqlite assertions=109 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+      "gate": "final-native10.json",
+      "gateSha256": "6703d35ecbf1f2b092f3c93fc925aeede8e37b3b419c9412a220fc60d5913c7d",
+      "logSha256": "5f4a7288b3a7e4b9c50c7ce772f17c1f114f96244225ad3ab5dd279c4c5008de",
+      "started": "2026-11-26T09:25:26.690515+00:00",
+      "finished": "2026-11-26T09:27:59.246367+00:00"
+    },
+    {
+      "sdk": 10,
+      "mode": "aot",
+      "provider": "postgres",
+      "outcome": "policy smoke postgres assertions=109 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+      "gate": "final-native10.json",
+      "gateSha256": "6703d35ecbf1f2b092f3c93fc925aeede8e37b3b419c9412a220fc60d5913c7d",
+      "logSha256": "5f4a7288b3a7e4b9c50c7ce772f17c1f114f96244225ad3ab5dd279c4c5008de",
+      "started": "2026-11-26T09:25:26.690515+00:00",
+      "finished": "2026-11-26T09:27:59.246367+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "jit",
+      "provider": "sqlite",
+      "outcome": "policy smoke sqlite assertions=109 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+      "gate": "final-runtime11-sqlite.json",
+      "gateSha256": "af4fcfa125e2fcbeb8345aa9efd94ca55695d006961b42195066160f52ff8719",
+      "logSha256": "666576495fda51824dd6fbf0abf09c20e7887f96f2152ab0b552ce74da50e87a",
+      "started": "2026-11-26T09:24:46.683175+00:00",
+      "finished": "2026-11-26T09:25:11.753012+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "jit",
+      "provider": "postgres",
+      "outcome": "policy smoke postgres assertions=109 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+      "gate": "final-runtime11-postgres.json",
+      "gateSha256": "d032602d35a1303cf237582f3ffbb70013654c2049d4d4fa686ee03b2cd9077f",
+      "logSha256": "442fdabad8d51bb5d45c6a778a6545cac1be65abc58aff69468f2a2a299e1488",
+      "started": "2026-11-26T09:25:12.301241+00:00",
+      "finished": "2026-11-26T09:25:26.343844+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "aot",
+      "provider": "sqlite",
+      "outcome": "policy smoke sqlite assertions=109 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+      "gate": "final-native11.json",
+      "gateSha256": "0cc6cd03b609b7980b5b7afb4b335b47375a6737e811b33e4d12c8d58b0cc341",
+      "logSha256": "44aeece053abf10d857b51595b9fe63bedd7477ba7acb8e9abb65a30fab5a1e4",
+      "started": "2026-11-26T09:28:00.143949+00:00",
+      "finished": "2026-11-26T09:32:03.866155+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "aot",
+      "provider": "postgres",
+      "outcome": "policy smoke postgres assertions=109 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=109 PASS",
+      "gate": "final-native11.json",
+      "gateSha256": "0cc6cd03b609b7980b5b7afb4b335b47375a6737e811b33e4d12c8d58b0cc341",
+      "logSha256": "44aeece053abf10d857b51595b9fe63bedd7477ba7acb8e9abb65a30fab5a1e4",
+      "started": "2026-11-26T09:28:00.143949+00:00",
+      "finished": "2026-11-26T09:32:03.866155+00:00"
+    }
+  ],
+  "normalization": "Only provider token is replaced. Runtime version line is separately retained in every full log; assertion count and PASS unchanged.",
+  "binaries": [
+    {
+      "file": "final-native10-out/PolicySmoke",
+      "bytes": 15516264,
+      "sha256": "a8fd5f4e83700f89d9748177bddd38b8349b14c7f62e4991213ae22050422448"
+    },
+    {
+      "file": "final-native11-out/PolicySmoke",
+      "bytes": 15584736,
+      "sha256": "41547ea6fa897074430020e9de193b0508d5ec5106c3513610eb2b7902f699e7"
+    }
+  ],
+  "assemblies": [
+    {
+      "file": "final-native10-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll",
+      "bytes": 867840,
+      "sha256": "a417ec57393610ea82cd8b2ba4af6d5c39580aa86f78e1f4dc2f9704fc92ee56"
+    },
+    {
+      "file": "final-native10-build/bin/Generator/release/Neemle.OrmLite.Generator.dll",
+      "bytes": 290816,
+      "sha256": "a155a527c6109b59e4350c795f5a20bd94bcfd3eee6f014134066b9f94b6ef46"
+    },
+    {
+      "file": "final-native11-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll",
+      "bytes": 867840,
+      "sha256": "0cebca1f38124a7c8a33e50cc72cc1190cf4c6a2632c1610f0171c9a7c888897"
+    },
+    {
+      "file": "final-native11-build/bin/Generator/release/Neemle.OrmLite.Generator.dll",
+      "bytes": 290816,
+      "sha256": "448fb31f1f2b266029c132db443771fa1743dff6e0f94535f09288b71d4290dd"
+    }
+  ],
+  "limits": [
+    "Same functional demo criterion proven; not whole item/stage/QA PASS.",
+    "No current raw coverage measurement; historical coverage FAIL is not relabeled.",
+    "No release/merge/public package claim. Project-built analyzer is used, not a newly packed package.",
+    "No new SDET tests or protected control/baseline edits. Independent SDET/security/review/docs remain separate.",
+    "Unobserved custom externally opened origins intentionally refuse; known custom Open/UoW and current gated leases proven.",
+    "Inherited ABI six-parameter OrmExec signatures unchanged; existing controls and full quality gate are not claimed PASS.",
+    "User narrowed verification to same-demo matrix; unrelated current-unit run was explicitly stopped, partial results retained as history."
+  ]
+}

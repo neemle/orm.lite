@@ -1,0 +1,93 @@
+{
+  "commit": "0918d83a227f14804375567fd8a2e88b9728b80a",
+  "route": "read-only Python line-length/nonempty count plus direct C# source declaration/body/decision enumeration",
+  "convention": "1 + if + conditional expression + coalesce; named calls do not count as decisions; block depth excludes function root block",
+  "newHelper": {
+    "file": "src/Runtime/RelationLoading/QueryPolicyReads.cs",
+    "widthMaximum": 118,
+    "declarations": [
+      {
+        "kind": "class",
+        "name": "QueryPolicyReads<T>",
+        "line": 5
+      }
+    ],
+    "typeRange": [
+      5,
+      34
+    ],
+    "typeNonempty": 28,
+    "methods": [
+      {
+        "name": "RowsAsync",
+        "range": [
+          7,
+          12
+        ],
+        "lines": 6,
+        "parameters": 2,
+        "nesting": 0,
+        "maxDepthLine": 8,
+        "complexity": 2,
+        "decisions": [
+          {
+            "kind": "if",
+            "line": 9
+          }
+        ]
+      },
+      {
+        "name": "FirstAsync",
+        "range": [
+          14,
+          23
+        ],
+        "lines": 10,
+        "parameters": 2,
+        "nesting": 0,
+        "maxDepthLine": 15,
+        "complexity": 3,
+        "decisions": [
+          {
+            "kind": "if",
+            "line": 16
+          },
+          {
+            "kind": "conditional",
+            "line": 22
+          }
+        ]
+      },
+      {
+        "name": "FirstSnapshot",
+        "range": [
+          25,
+          33
+        ],
+        "lines": 9,
+        "parameters": 1,
+        "nesting": 0,
+        "maxDepthLine": 25,
+        "complexity": 2,
+        "decisions": [
+          {
+            "kind": "coalesce",
+            "line": 26
+          }
+        ]
+      }
+    ]
+  },
+  "Query": {
+    "file": "src/Runtime/Query.cs",
+    "declaredName": "Query<T>",
+    "range": [
+      14,
+      638
+    ],
+    "nonemptyNoncomment": 499,
+    "unconstrained": true
+  },
+  "limits": "120 width/30 method/500 type/CC10/nesting4/params5/one bound declaration",
+  "existingOutliers": "Unchanged legacy methods, widths, declarations and parameters outside the owned changed unit are not asserted conforming; no general census run."
+}

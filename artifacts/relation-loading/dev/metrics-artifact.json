@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--label",
+    "orml.task=ORML-109",
+    "--label",
+    "orml.actor=dev-policy",
+    "-v",
+    "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+    "-v",
+    "/Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro",
+    "-v",
+    "orml-107-nuget:/root/.nuget/packages",
+    "-w",
+    "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+    "orml108-graph-native-sdk10:verified",
+    "dotnet",
+    "artifacts/relation-loading/dev/metrics-build/bin/metrics/release/metrics.dll",
+    "artifacts/relation-loading/dev/metrics-artifact-files.txt"
+  ],
+  "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+  "commit": "712530c979fe316bfa5e40b1b6d6f933c70432ae",
+  "status": "",
+  "sourceDigest": "355d77ba4594088a6a7fc6768d8776c45e7ad97fafd592be90ced69114aaf85a",
+  "started": "2026-11-26T09:25:07.116611+00:00",
+  "exitCode": 0,
+  "finished": "2026-11-26T09:25:08.510999+00:00",
+  "sourceChangedDuringRun": false
+}

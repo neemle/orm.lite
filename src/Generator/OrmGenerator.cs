@@ -109,6 +109,8 @@ public sealed class OrmGenerator : IIncrementalGenerator
         string? TypeIssue = null, string? RequiredMissing = null, EquatableArray<string> LostKeys = default,
         EquatableArray<string> ExcludedMembers = default, bool IsStatic = false)
     {
+        public PolicyMetadata? LoadingPolicy { get; init; }
+
         public EquatableArray<OneToOneIntent> OneToOneIntents { get; init; } = default;
 
         public EquatableArray<OneToOneModel> OneToOnePairs { get; init; } = default;

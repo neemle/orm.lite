@@ -1,0 +1,163 @@
+{
+  "implementation": "b1840eb54ac82ff47f60db6e401a440fc3175e96",
+  "review": "32ee3026-10f4-4a90-8ab5-44e17700f2c8",
+  "legs": [
+    {
+      "sdk": 10,
+      "mode": "jit",
+      "provider": "sqlite",
+      "gate": "jit10-sqlite.json",
+      "outcome": "policy smoke sqlite assertions=126 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=126 PASS",
+      "logSha256": "9401cc3773e40da99dca81c762a3d2b7d322fa25dd6257ab25d0b7b14ce5f36c",
+      "started": "2026-11-26T10:41:21.562581+00:00",
+      "finished": "2026-11-26T10:41:53.643100+00:00"
+    },
+    {
+      "sdk": 10,
+      "mode": "jit",
+      "provider": "postgres",
+      "gate": "jit10-postgres.json",
+      "outcome": "policy smoke postgres assertions=126 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=126 PASS",
+      "logSha256": "fd1deefc56f3c1e1d34934336139f4da8af713d5afb417262b0b5169ec9170de",
+      "started": "2026-11-26T10:41:54.308874+00:00",
+      "finished": "2026-11-26T10:42:03.024990+00:00"
+    },
+    {
+      "sdk": 10,
+      "mode": "aot",
+      "provider": "sqlite",
+      "gate": "native10.json",
+      "outcome": "policy smoke sqlite assertions=126 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=126 PASS",
+      "logSha256": "eb372ac2d9bdf8d38bae68e3152f88d2d41b5014c28ed9033141f89c31043f7a",
+      "started": "2026-11-26T10:46:30.078688+00:00",
+      "finished": "2026-11-26T10:47:12.675048+00:00"
+    },
+    {
+      "sdk": 10,
+      "mode": "aot",
+      "provider": "postgres",
+      "gate": "native10.json",
+      "outcome": "policy smoke postgres assertions=126 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=126 PASS",
+      "logSha256": "eb372ac2d9bdf8d38bae68e3152f88d2d41b5014c28ed9033141f89c31043f7a",
+      "started": "2026-11-26T10:46:30.078688+00:00",
+      "finished": "2026-11-26T10:47:12.675048+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "jit",
+      "provider": "sqlite",
+      "gate": "jit11-sqlite.json",
+      "outcome": "policy smoke sqlite assertions=126 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=126 PASS",
+      "logSha256": "12e78c62c3131877b6255f4eb249d22b7036674b95b3e53c5722ce27e4a37cda",
+      "started": "2026-11-26T10:42:03.332113+00:00",
+      "finished": "2026-11-26T10:42:24.975742+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "jit",
+      "provider": "postgres",
+      "gate": "jit11-postgres.json",
+      "outcome": "policy smoke postgres assertions=126 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=126 PASS",
+      "logSha256": "9ba998b7d4363f5eb9cbf6ba9554acc537c0146f3a2514cc8e0fb6dc7fcebf35",
+      "started": "2026-11-26T10:42:25.588956+00:00",
+      "finished": "2026-11-26T10:42:36.933874+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "aot",
+      "provider": "sqlite",
+      "gate": "native11.json",
+      "outcome": "policy smoke sqlite assertions=126 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=126 PASS",
+      "logSha256": "dd9a34b5764048e3246cb3bb667a2a4cb88a5b3964d08c93cd3fbd5f98492b10",
+      "started": "2026-11-26T10:47:13.293728+00:00",
+      "finished": "2026-11-26T10:47:50.981649+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "aot",
+      "provider": "postgres",
+      "gate": "native11.json",
+      "outcome": "policy smoke postgres assertions=126 PASS",
+      "normalizedOutcome": "policy smoke <provider> assertions=126 PASS",
+      "logSha256": "dd9a34b5764048e3246cb3bb667a2a4cb88a5b3964d08c93cd3fbd5f98492b10",
+      "started": "2026-11-26T10:47:13.293728+00:00",
+      "finished": "2026-11-26T10:47:50.981649+00:00"
+    }
+  ],
+  "reproductions": {
+    "before-fence": "before-publication-fence.json",
+    "before-cleanup": "before-cleanup.json",
+    "harnessCorrection": "harness-correction.txt",
+    "after-fence": "after-publication-fence.json",
+    "after-real-generated-mapper": "after-generated-mapper-cleanup.json"
+  },
+  "normalization": "Only provider token in final outcome; runtime versions retained in full logs. Same entire public project and scenarios, old cases preserved.",
+  "binaries": [
+    {
+      "file": "native10-out/PolicySmoke",
+      "sha256": "2e8e229306db1126a3f7c99855ffd771c4abc418ec077265d0546f187631a313",
+      "bytes": 15582856
+    },
+    {
+      "file": "native11-out/PolicySmoke",
+      "sha256": "43fc287e1473000dc0ebc442edefd3c1f6fc7afd2bebcbde4e1bf7af7d16a44d",
+      "bytes": 15651336
+    }
+  ],
+  "cleanup": [
+    {
+      "kind": "container",
+      "id": "480a9439fd604e48c82a5f754baad0e05aad5d56d4a6c2ce3a916979bb68bd2d",
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "480a9439fd604e48c82a5f754baad0e05aad5d56d4a6c2ce3a916979bb68bd2d"
+      ],
+      "exitCode": 0,
+      "stdout": "480a9439fd604e48c82a5f754baad0e05aad5d56d4a6c2ce3a916979bb68bd2d\n",
+      "absenceArgv": [
+        "docker",
+        "inspect",
+        "480a9439fd604e48c82a5f754baad0e05aad5d56d4a6c2ce3a916979bb68bd2d"
+      ],
+      "absenceExitCode": 1,
+      "absenceStderr": "error: no such object: 480a9439fd604e48c82a5f754baad0e05aad5d56d4a6c2ce3a916979bb68bd2d\n",
+      "finished": "2026-11-26T10:49:35.635753+00:00"
+    },
+    {
+      "kind": "network",
+      "id": "4fae550631da2c190c5d9dd4d68c43834ac2fbdc8335d22ca2a2cc73e0181f7a",
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "4fae550631da2c190c5d9dd4d68c43834ac2fbdc8335d22ca2a2cc73e0181f7a"
+      ],
+      "exitCode": 0,
+      "stdout": "4fae550631da2c190c5d9dd4d68c43834ac2fbdc8335d22ca2a2cc73e0181f7a\n",
+      "absenceArgv": [
+        "docker",
+        "network",
+        "inspect",
+        "4fae550631da2c190c5d9dd4d68c43834ac2fbdc8335d22ca2a2cc73e0181f7a"
+      ],
+      "absenceExitCode": 1,
+      "absenceStderr": "Error response from daemon: network 4fae550631da2c190c5d9dd4d68c43834ac2fbdc8335d22ca2a2cc73e0181f7a not found\n",
+      "finished": "2026-11-26T10:49:35.746927+00:00"
+    }
+  ],
+  "limits": [
+    "Only two review fixes and affected same-demo parity; no full QA/security/coverage/301/release/merge claim.",
+    "Initial custom Query mapper was unsupported; retained as harness history, not real-mapper evidence. Final real generated mapper case uses faulting Author.Name setter over actual DB row.",
+    "Existing unrelated proof retained; no old unit/golden/census or unaffected compatibility replay.",
+    "Private weak secondary-error retention limited to4 per primary, no logging or public exception Data."
+  ]
+}

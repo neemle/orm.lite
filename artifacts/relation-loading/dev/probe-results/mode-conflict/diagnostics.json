@@ -1,0 +1,16 @@
+{
+  "Name": "mode-conflict",
+  "Invalid": true,
+  "pass": true,
+  "registered": false,
+  "diagnostics": [
+    {
+      "Id": "ORMLITE035",
+      "severity": "Error",
+      "message": "Relation policy \u0027global::Probe.Author.Books\u0027 is invalid: invalid or conflicting relation load mode"
+    }
+  ],
+  "compilerErrors": [
+    "input.cs(10,44): error CS0579: Duplicate \u0027RelationLoad\u0027 attribute"
+  ]
+}

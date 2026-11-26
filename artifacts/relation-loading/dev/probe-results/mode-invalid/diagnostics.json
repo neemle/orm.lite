@@ -1,0 +1,14 @@
+{
+  "Name": "mode-invalid",
+  "Invalid": true,
+  "pass": true,
+  "registered": false,
+  "diagnostics": [
+    {
+      "Id": "ORMLITE035",
+      "severity": "Error",
+      "message": "Relation policy \u0027global::Probe.Author.Books\u0027 is invalid: invalid or conflicting relation load mode"
+    }
+  ],
+  "compilerErrors": []
+}

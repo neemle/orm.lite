@@ -1,0 +1,14 @@
+{
+  "Name": "MaxRoots--1",
+  "Invalid": true,
+  "pass": true,
+  "registered": false,
+  "diagnostics": [
+    {
+      "Id": "ORMLITE035",
+      "severity": "Error",
+      "message": "Relation policy \u0027global::Probe.Author.Author\u0027 is invalid: all six positive named load limits are required"
+    }
+  ],
+  "compilerErrors": []
+}

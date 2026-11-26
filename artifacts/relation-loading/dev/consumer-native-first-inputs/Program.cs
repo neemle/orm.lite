@@ -1,0 +1,27 @@
+using PolicySmoke;
+
+Console.WriteLine("runtime " + Environment.Version);
+var expected = Environment.GetEnvironmentVariable("ORMLITE_EXPECT_DOTNET");
+if (expected is not null) Check.That(Environment.Version.Major.ToString() == expected, "actual runtime leg");
+var provider = args.FirstOrDefault() ?? "sqlite";
+await using var fixture = await Fixture.OpenAsync(provider);
+await ReadCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await LazyCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await FaultCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await ConcurrencyCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await BindingCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await VisibilityCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await QueueCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await LimitCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await LifetimeCases.VerifyAsync(fixture);
+fixture.Sink.Clear();
+await LifetimeCases.ContextDrainAsync(fixture);
+Console.WriteLine("policy smoke " + provider + " assertions=" + Check.Count + " PASS");

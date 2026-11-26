@@ -1,0 +1,480 @@
+{
+  "sourceCommit": "b1840eb54ac82ff47f60db6e401a440fc3175e96",
+  "newLinks": [
+    "NestedDetachCases.cs",
+    "CleanupCases.cs"
+  ],
+  "newLinksResolve": true,
+  "evidence": [
+    {
+      "file": "after-cleanup.json",
+      "bytes": 2708,
+      "sha256": "f5a11493c32d835d5a49fe9f4e8d66c3fd52740e493f803d8757f6d629e89a54"
+    },
+    {
+      "file": "after-cleanup.log",
+      "bytes": 3356,
+      "sha256": "532e9457f0ccf56cb883eb995c69018c7c217339ea539c5cc55a77394a5fcf76"
+    },
+    {
+      "file": "after-generated-mapper-cleanup.json",
+      "bytes": 2746,
+      "sha256": "73539f8f888c0ff29ce9417bec627477075c52e237772b5b454f7242de7f511a"
+    },
+    {
+      "file": "after-generated-mapper-cleanup.log",
+      "bytes": 51,
+      "sha256": "f8db7c535376ba5d0f647788e3792fe64a7e287ae5da9f5a4c046df8cfc1c507"
+    },
+    {
+      "file": "after-publication-fence.json",
+      "bytes": 2716,
+      "sha256": "00dbf1c2619bad9f48c6fe74c79e0e17f479fcfdcb53dd04f45293c1e0242d0e"
+    },
+    {
+      "file": "after-publication-fence.log",
+      "bytes": 60,
+      "sha256": "09efd38c006ba5cea8d57b4e17b2ce4405386b038d317848b00a424805456b4b"
+    },
+    {
+      "file": "before-cleanup.json",
+      "bytes": 2252,
+      "sha256": "8ee896e78bef8cf04c143ac2bab283fd8b632a7d77598de61a572a958b4c4538"
+    },
+    {
+      "file": "before-cleanup.log",
+      "bytes": 2257,
+      "sha256": "7cb1999e1c05ecff4122a0309650b3f26d4840c8a23c5ec498c82a191e845650"
+    },
+    {
+      "file": "before-demo-inputs/Author.cs",
+      "bytes": 558,
+      "sha256": "0de80db0c861ce47044ff1f66c59608dbc18de272ed139439dad496f412eb6c7"
+    },
+    {
+      "file": "before-demo-inputs/AuthorJsonConverter.cs",
+      "bytes": 870,
+      "sha256": "038207cc38fc821a3c29c62a270b6b1f7824168a5f6d5ff5cb0f5ffaf706212f"
+    },
+    {
+      "file": "before-demo-inputs/BindingCases.cs",
+      "bytes": 2232,
+      "sha256": "7d32d51b96134278349b79a6483e33f96e287c495413485d02a7ccb03e4608ef"
+    },
+    {
+      "file": "before-demo-inputs/Book.cs",
+      "bytes": 517,
+      "sha256": "f990d8fb5567c12e06264d26ee20981cb8a824a774265fdee9bcb761f4414b55"
+    },
+    {
+      "file": "before-demo-inputs/Check.cs",
+      "bytes": 620,
+      "sha256": "bbaccb3ba558ddb6016a8b8853a5bb86a801f2963586293ea9f9043f731850a2"
+    },
+    {
+      "file": "before-demo-inputs/CleanupCases.cs",
+      "bytes": 2797,
+      "sha256": "e3c7f9c27f68c0ecd4e17a003f4e289b267c54446c470876da7d6a91851b66d6"
+    },
+    {
+      "file": "before-demo-inputs/CleanupFaultConnection.cs",
+      "bytes": 1772,
+      "sha256": "29b722d52d0c9a32e2db40f2e553a247ffdc0668b793e1d6a9533c2cfb6754f6"
+    },
+    {
+      "file": "before-demo-inputs/CleanupFaultPlan.cs",
+      "bytes": 491,
+      "sha256": "5f80dd4dd50d0f14d7c4b06ede23b24a361f2849c44fccdb580ed6bbe3b99c80"
+    },
+    {
+      "file": "before-demo-inputs/CleanupFaultSource.cs",
+      "bytes": 509,
+      "sha256": "68408ebe039a9a0f29f921ff72b5ecef7c3219aec145f61e1e1dd9d68b7bd4cc"
+    },
+    {
+      "file": "before-demo-inputs/CleanupSentinelException.cs",
+      "bytes": 105,
+      "sha256": "5d5fdc266bf32d56c48015ea9ef1797196dd3d18c20b32177295cc434eb89cbe"
+    },
+    {
+      "file": "before-demo-inputs/ConcurrencyCases.cs",
+      "bytes": 4016,
+      "sha256": "53ccd4f0b9ba130278981a4cf457a47ca95e44609c16202ff6bfa947af5068ca"
+    },
+    {
+      "file": "before-demo-inputs/CustomOriginCases.cs",
+      "bytes": 1513,
+      "sha256": "025b88cc8124acc85ba51d57b85a7e198efd4518a8a02cc84554a2b28d6478b4"
+    },
+    {
+      "file": "before-demo-inputs/FaultCases.cs",
+      "bytes": 1515,
+      "sha256": "9cb7eaca332be7eba8fc217a17f8dfd0c9395b6326838af6976ec24a94913cf8"
+    },
+    {
+      "file": "before-demo-inputs/Fixture.cs",
+      "bytes": 2985,
+      "sha256": "024d164349cf0bbf1c8555c946f3cb5fda26977c17b8201aa88f7e5f91e33d4d"
+    },
+    {
+      "file": "before-demo-inputs/GateOriginCases.cs",
+      "bytes": 3556,
+      "sha256": "abe47b94743caa6b499ecc657815e8739d89a0e3587a9ff618f2bbd4523d0464"
+    },
+    {
+      "file": "before-demo-inputs/LazyCases.cs",
+      "bytes": 1850,
+      "sha256": "87c1423e938fdb8c9d0d7ba0e180513da9003f26ea93cbf954358f86442e8a4c"
+    },
+    {
+      "file": "before-demo-inputs/LifetimeCases.cs",
+      "bytes": 4152,
+      "sha256": "d2c0fbc81c37fe9bbf9d016d385657017fa1d230a07f4e1a4a6d12da94abb8d3"
+    },
+    {
+      "file": "before-demo-inputs/LimitCases.cs",
+      "bytes": 1276,
+      "sha256": "7d70bf15cb95489f41f79b80a73a5a3a03ef7ab5301ce153d8e9bc543b50ee39"
+    },
+    {
+      "file": "before-demo-inputs/MapSentinelException.cs",
+      "bytes": 156,
+      "sha256": "f58a9a106b32dabf26f59e945f766823a9d9ad6274106df4ace894d39837ac81"
+    },
+    {
+      "file": "before-demo-inputs/NestedDetachCases.cs",
+      "bytes": 1703,
+      "sha256": "f1686275c1c17f5b1c4c79b92de82cdfbf5cfebaa8317f2ca2f1bb3f3469446a"
+    },
+    {
+      "file": "before-demo-inputs/ObservedSource.cs",
+      "bytes": 517,
+      "sha256": "140b35641bb4b988034643f6c9d42479cf4479eeaadfe55e1132229c475cb399"
+    },
+    {
+      "file": "before-demo-inputs/Plain.cs",
+      "bytes": 157,
+      "sha256": "a825dbdec2e73537cef6f8e938d4099fef2519886baf00e52b50e97332dc6256"
+    },
+    {
+      "file": "before-demo-inputs/Program.cs",
+      "bytes": 1703,
+      "sha256": "33d6ebc5bdd3694d50c6835502d43a3d97b76537b0a858c4987abf6106dcfbbe"
+    },
+    {
+      "file": "before-demo-inputs/QueueCases.cs",
+      "bytes": 1746,
+      "sha256": "4507b97fb5c25b15617ab81fef444b72ad762cacd2153296ec5cff72550a53f9"
+    },
+    {
+      "file": "before-demo-inputs/README.md",
+      "bytes": 4235,
+      "sha256": "a383d7b4ab77fc492969ac54ad1f4690f854ec5b58a3d79a31e102fc82c41929"
+    },
+    {
+      "file": "before-demo-inputs/ReadCases.cs",
+      "bytes": 1739,
+      "sha256": "74650022dc47285e5bfc390abd095fafe0f733bcd2fe6abb71c5c38a467a70a3"
+    },
+    {
+      "file": "before-demo-inputs/ReadPause.cs",
+      "bytes": 704,
+      "sha256": "3fee08cff31ddd74ccb25e812e5f9b12f27be399b2c032bb9c51c2fd7e665676"
+    },
+    {
+      "file": "before-demo-inputs/RelationLoadingDemo.csproj",
+      "bytes": 1169,
+      "sha256": "2413700b71966de07e2d2d585ffaf8fd75a1752b88adedcc099797a606bffcb9"
+    },
+    {
+      "file": "before-demo-inputs/SmokeJsonContext.cs",
+      "bytes": 360,
+      "sha256": "169fcf7a406b76399eac770349e3ab30a4bde0bc48161630f01d8c4916ff98e0"
+    },
+    {
+      "file": "before-demo-inputs/SpySink.cs",
+      "bytes": 792,
+      "sha256": "896423c56123403a62dd9d31e43d53fdfca17a3f51773aa7466aef4d0955e879"
+    },
+    {
+      "file": "before-demo-inputs/Tag.cs",
+      "bytes": 369,
+      "sha256": "10f2abd4bb6653d4865778c5652dc447fa0b6e00c5ec10aec0540c3ba322574b"
+    },
+    {
+      "file": "before-demo-inputs/VisibilityCases.cs",
+      "bytes": 1895,
+      "sha256": "13700c554298441aa706e563e82cd144c91dcad906a3d77813701b8a095c503d"
+    },
+    {
+      "file": "before-publication-fence.json",
+      "bytes": 2262,
+      "sha256": "32788ff1013449b158d28525fb9a6fc76b655da43c642e87c3f0d3d70d437261"
+    },
+    {
+      "file": "before-publication-fence.log",
+      "bytes": 1061,
+      "sha256": "68650ed35eb8bc6431235870011a9b8f91a7ed1517c41c3c6c6acc4630d80af6"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/Author.cs",
+      "bytes": 558,
+      "sha256": "0de80db0c861ce47044ff1f66c59608dbc18de272ed139439dad496f412eb6c7"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/AuthorJsonConverter.cs",
+      "bytes": 870,
+      "sha256": "038207cc38fc821a3c29c62a270b6b1f7824168a5f6d5ff5cb0f5ffaf706212f"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/BindingCases.cs",
+      "bytes": 2232,
+      "sha256": "7d32d51b96134278349b79a6483e33f96e287c495413485d02a7ccb03e4608ef"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/Book.cs",
+      "bytes": 517,
+      "sha256": "f990d8fb5567c12e06264d26ee20981cb8a824a774265fdee9bcb761f4414b55"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/Check.cs",
+      "bytes": 620,
+      "sha256": "bbaccb3ba558ddb6016a8b8853a5bb86a801f2963586293ea9f9043f731850a2"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/CleanupCases.cs",
+      "bytes": 2797,
+      "sha256": "e3c7f9c27f68c0ecd4e17a003f4e289b267c54446c470876da7d6a91851b66d6"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/CleanupFaultConnection.cs",
+      "bytes": 1772,
+      "sha256": "29b722d52d0c9a32e2db40f2e553a247ffdc0668b793e1d6a9533c2cfb6754f6"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/CleanupFaultPlan.cs",
+      "bytes": 491,
+      "sha256": "5f80dd4dd50d0f14d7c4b06ede23b24a361f2849c44fccdb580ed6bbe3b99c80"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/CleanupFaultSource.cs",
+      "bytes": 509,
+      "sha256": "68408ebe039a9a0f29f921ff72b5ecef7c3219aec145f61e1e1dd9d68b7bd4cc"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/CleanupSentinelException.cs",
+      "bytes": 105,
+      "sha256": "5d5fdc266bf32d56c48015ea9ef1797196dd3d18c20b32177295cc434eb89cbe"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/ConcurrencyCases.cs",
+      "bytes": 4016,
+      "sha256": "53ccd4f0b9ba130278981a4cf457a47ca95e44609c16202ff6bfa947af5068ca"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/CustomOriginCases.cs",
+      "bytes": 1513,
+      "sha256": "025b88cc8124acc85ba51d57b85a7e198efd4518a8a02cc84554a2b28d6478b4"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/FaultCases.cs",
+      "bytes": 1515,
+      "sha256": "9cb7eaca332be7eba8fc217a17f8dfd0c9395b6326838af6976ec24a94913cf8"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/Fixture.cs",
+      "bytes": 2985,
+      "sha256": "024d164349cf0bbf1c8555c946f3cb5fda26977c17b8201aa88f7e5f91e33d4d"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/GateOriginCases.cs",
+      "bytes": 3556,
+      "sha256": "abe47b94743caa6b499ecc657815e8739d89a0e3587a9ff618f2bbd4523d0464"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/LazyCases.cs",
+      "bytes": 1850,
+      "sha256": "87c1423e938fdb8c9d0d7ba0e180513da9003f26ea93cbf954358f86442e8a4c"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/LifetimeCases.cs",
+      "bytes": 4152,
+      "sha256": "d2c0fbc81c37fe9bbf9d016d385657017fa1d230a07f4e1a4a6d12da94abb8d3"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/LimitCases.cs",
+      "bytes": 1276,
+      "sha256": "7d70bf15cb95489f41f79b80a73a5a3a03ef7ab5301ce153d8e9bc543b50ee39"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/MapSentinelException.cs",
+      "bytes": 156,
+      "sha256": "f58a9a106b32dabf26f59e945f766823a9d9ad6274106df4ace894d39837ac81"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/NestedDetachCases.cs",
+      "bytes": 1703,
+      "sha256": "f1686275c1c17f5b1c4c79b92de82cdfbf5cfebaa8317f2ca2f1bb3f3469446a"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/ObservedSource.cs",
+      "bytes": 517,
+      "sha256": "140b35641bb4b988034643f6c9d42479cf4479eeaadfe55e1132229c475cb399"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/Plain.cs",
+      "bytes": 157,
+      "sha256": "a825dbdec2e73537cef6f8e938d4099fef2519886baf00e52b50e97332dc6256"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/Program.cs",
+      "bytes": 1703,
+      "sha256": "33d6ebc5bdd3694d50c6835502d43a3d97b76537b0a858c4987abf6106dcfbbe"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/QueueCases.cs",
+      "bytes": 1746,
+      "sha256": "4507b97fb5c25b15617ab81fef444b72ad762cacd2153296ec5cff72550a53f9"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/README.md",
+      "bytes": 4235,
+      "sha256": "a383d7b4ab77fc492969ac54ad1f4690f854ec5b58a3d79a31e102fc82c41929"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/ReadCases.cs",
+      "bytes": 1739,
+      "sha256": "74650022dc47285e5bfc390abd095fafe0f733bcd2fe6abb71c5c38a467a70a3"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/ReadPause.cs",
+      "bytes": 704,
+      "sha256": "3fee08cff31ddd74ccb25e812e5f9b12f27be399b2c032bb9c51c2fd7e665676"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/RelationLoadingDemo.csproj",
+      "bytes": 1169,
+      "sha256": "2413700b71966de07e2d2d585ffaf8fd75a1752b88adedcc099797a606bffcb9"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/SmokeJsonContext.cs",
+      "bytes": 360,
+      "sha256": "169fcf7a406b76399eac770349e3ab30a4bde0bc48161630f01d8c4916ff98e0"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/SpySink.cs",
+      "bytes": 792,
+      "sha256": "896423c56123403a62dd9d31e43d53fdfca17a3f51773aa7466aef4d0955e879"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/Tag.cs",
+      "bytes": 369,
+      "sha256": "10f2abd4bb6653d4865778c5652dc447fa0b6e00c5ec10aec0540c3ba322574b"
+    },
+    {
+      "file": "custom-mapper-harness-inputs/VisibilityCases.cs",
+      "bytes": 1895,
+      "sha256": "13700c554298441aa706e563e82cd144c91dcad906a3d77813701b8a095c503d"
+    },
+    {
+      "file": "finish.py",
+      "bytes": 2955,
+      "sha256": "268927825dc14715a61dd4b72c4a2b28096ce6608bd3413a63cb6e776bbf082d"
+    },
+    {
+      "file": "harness-correction.txt",
+      "bytes": 427,
+      "sha256": "a541b09e9c9bd558dffa8b6cc80dec7c4f3793f8beca910da1065472546e8251"
+    },
+    {
+      "file": "jit10-postgres.json",
+      "bytes": 1963,
+      "sha256": "8fe7226b55d4e43c4ce87ca65762231dc9cae990a7e9fd8e9ac054c375783b1e"
+    },
+    {
+      "file": "jit10-postgres.log",
+      "bytes": 58,
+      "sha256": "fd1deefc56f3c1e1d34934336139f4da8af713d5afb417262b0b5169ec9170de"
+    },
+    {
+      "file": "jit10-sqlite.json",
+      "bytes": 1961,
+      "sha256": "45b67b126da49d3140ec35ca2916beb890717ee14cf45f52b1df02d8aa925039"
+    },
+    {
+      "file": "jit10-sqlite.log",
+      "bytes": 56,
+      "sha256": "9401cc3773e40da99dca81c762a3d2b7d322fa25dd6257ab25d0b7b14ce5f36c"
+    },
+    {
+      "file": "jit11-postgres.json",
+      "bytes": 1963,
+      "sha256": "819cb951b477fde6ff77e91fbdd8ca0c224da316f093c3ad35caa62e0f30a4da"
+    },
+    {
+      "file": "jit11-postgres.log",
+      "bytes": 57,
+      "sha256": "9ba998b7d4363f5eb9cbf6ba9554acc537c0146f3a2514cc8e0fb6dc7fcebf35"
+    },
+    {
+      "file": "jit11-sqlite.json",
+      "bytes": 1961,
+      "sha256": "df6bfd421c2d1c3c819d63c777f76fbb436d20cada4fc38fc5cd3645d4e5d83c"
+    },
+    {
+      "file": "jit11-sqlite.log",
+      "bytes": 55,
+      "sha256": "12e78c62c3131877b6255f4eb249d22b7036674b95b3e53c5722ce27e4a37cda"
+    },
+    {
+      "file": "matrix-results.json",
+      "bytes": 6503,
+      "sha256": "dea01bc4bbb3dfc9a6372a877441bdd2230c010fb294b01863f3973d03949e68"
+    },
+    {
+      "file": "matrix.py",
+      "bytes": 1604,
+      "sha256": "f9b01fb3860b36c9c6223f8e1445288f80638afc739b02aec224d941d270bb54"
+    },
+    {
+      "file": "native10.json",
+      "bytes": 2394,
+      "sha256": "f4bb6499433145deaa9fd702f52d88f39644da7f972af5970f31e8cc2038e7f4"
+    },
+    {
+      "file": "native10.log",
+      "bytes": 2702,
+      "sha256": "eb372ac2d9bdf8d38bae68e3152f88d2d41b5014c28ed9033141f89c31043f7a"
+    },
+    {
+      "file": "native11.json",
+      "bytes": 2394,
+      "sha256": "ecd62f514cff2eb21a70a5cedc3911df781f475d08d1e44f51de4b1e9f828441"
+    },
+    {
+      "file": "native11.log",
+      "bytes": 2700,
+      "sha256": "dd9a34b5764048e3246cb3bb667a2a4cb88a5b3964d08c93cd3fbd5f98492b10"
+    },
+    {
+      "file": "network-id.txt",
+      "bytes": 64,
+      "sha256": "545e4296cbccc17026445ac7ccb959310efc3b884df4946543f6d3f350c568e6"
+    },
+    {
+      "file": "postgres-id.txt",
+      "bytes": 64,
+      "sha256": "57efc5504fda5cf135d364ebf1c30b2402fcbf191e34466dee4babef16069666"
+    },
+    {
+      "file": "resource-creation.json",
+      "bytes": 1046,
+      "sha256": "26d24076377dcc2d82f8fbeca697af714f79556a05c1362283d9e501e675e8a8"
+    },
+    {
+      "file": "run.py",
+      "bytes": 1094,
+      "sha256": "6834846537ed780d928f502a2584813a391f11bd6c76fd25e6b7e16d05386dee"
+    }
+  ]
+}

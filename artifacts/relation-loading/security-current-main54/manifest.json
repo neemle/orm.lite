@@ -1,0 +1,80 @@
+{
+  "scope": "actual source44435 scan plus manual owner-cleanup correction delta to beaf383f; not future main111 composition",
+  "actualScan": {
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--name",
+      "orml109-current-semgrep",
+      "--label",
+      "orml.task=ORML-109",
+      "--label",
+      "orml.actor=root-current-security",
+      "--cpus",
+      "2",
+      "--memory",
+      "1g",
+      "--mount",
+      "type=bind,source=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src,target=/src,readonly",
+      "--mount",
+      "type=bind,source=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading,target=/demo,readonly",
+      "--mount",
+      "type=bind,source=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/security-current-main54,target=/out",
+      "-w",
+      "/src",
+      "semgrep/semgrep@sha256:6e1b04340e60e910fbb4ddbf3c857ab0918f064417ad5ac530014ccb3cf8c8f1",
+      "semgrep",
+      "scan",
+      "--config",
+      "p/csharp",
+      "--config",
+      "p/security-audit",
+      "--config",
+      "p/secrets",
+      "--metrics",
+      "off",
+      "--disable-version-check",
+      "--no-git-ignore",
+      "--exclude",
+      "**/bin/**",
+      "--exclude",
+      "**/obj/**",
+      "--strict",
+      "--error",
+      "--time",
+      "--debug",
+      "--json",
+      "--output",
+      "/out/semgrep.json",
+      "/src",
+      "/demo"
+    ],
+    "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+    "head": "5f4c6b500b41b3ec058025b3fb9403e20e40e31a",
+    "srcTree": "44435d01c20a769b87f3482925a213a1f41eecbc",
+    "started": "2026-11-26T16:05:49.696996+00:00",
+    "exitCode": 1,
+    "finished": "2026-11-26T16:06:52.252851+00:00"
+  },
+  "assessment": "triage.json",
+  "artifacts": {
+    "command.json": {
+      "bytes": 1609,
+      "sha256": "87e5b95dccb6571d2d4a633dadf66f829679b13af4db2f03bbdf857d71742e24"
+    },
+    "semgrep.json": {
+      "bytes": 1429215,
+      "sha256": "373d659aa87183c0a18353ad3a3c0f5a757ea192710ce888f8644d6cd3ce8488"
+    },
+    "semgrep.log": {
+      "bytes": 198085,
+      "sha256": "ac8bee77986305340a0942d5a4f0f30fe00fa4d462a5d1ebfc03d8cad3a4aa93"
+    },
+    "triage.json": {
+      "bytes": 5192,
+      "sha256": "ecdcde3cb0c7b647c5aa114e4d0d7d5d2b3bbc73c61ba33f5bcdd5b73bd36c84"
+    }
+  },
+  "generated": "2026-11-26T16:47:50.043827+00:00"
+}

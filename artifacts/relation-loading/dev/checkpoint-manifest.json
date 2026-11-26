@@ -1,0 +1,250 @@
+{
+  "sourceCheckpoint": "b22f19a593aa243e202ae1381350eaf8e0423e7b",
+  "sourceTree": "272fde8b5e4bbd8bf452c96db47583a3de52d5ce",
+  "testTree": "21c166b86ebc3b4b3eeb7405a396cee31ff50f36",
+  "baseline": "61dffffd3c1a749098fd2aefedf42911b1d6f97e",
+  "changedSource": [
+    "src/Generator/EntityEmitter.cs",
+    "src/Generator/EntityReader.cs",
+    "src/Generator/OrmGenerator.cs",
+    "src/Generator/RelationLoading/.editorconfig",
+    "src/Generator/RelationLoading/PolicyCode.cs",
+    "src/Generator/RelationLoading/PolicyDeclaration.cs",
+    "src/Generator/RelationLoading/PolicyDiagnostics.cs",
+    "src/Generator/RelationLoading/PolicyIssue.cs",
+    "src/Generator/RelationLoading/PolicyKeyedEmitter.cs",
+    "src/Generator/RelationLoading/PolicyLoaderEmitter.cs",
+    "src/Generator/RelationLoading/PolicyMetadata.cs",
+    "src/Generator/RelationLoading/PolicyRegistrationEmitter.cs",
+    "src/Generator/RelationLoading/PolicySourceEmitter.cs",
+    "src/Generator/RelationLoading/RelationPolicyReader.cs",
+    "src/Runtime/GraphCollectionBinding.cs",
+    "src/Runtime/GraphExecutor.cs",
+    "src/Runtime/GraphLinkBinding.cs",
+    "src/Runtime/GraphNavigationBinding.cs",
+    "src/Runtime/GraphPlanner.cs",
+    "src/Runtime/GraphReadContext.cs",
+    "src/Runtime/GraphReferenceBinding.cs",
+    "src/Runtime/IGraphNavigationBinding.cs",
+    "src/Runtime/OrmContext.cs",
+    "src/Runtime/OrmExec.cs",
+    "src/Runtime/Query.cs",
+    "src/Runtime/RelationLoading/.editorconfig",
+    "src/Runtime/RelationLoading/EagerBehavior.cs",
+    "src/Runtime/RelationLoading/IPolicyOperation.cs",
+    "src/Runtime/RelationLoading/IPolicySession.cs",
+    "src/Runtime/RelationLoading/LoadingScope.cs",
+    "src/Runtime/RelationLoading/LoadingScopeOptions.cs",
+    "src/Runtime/RelationLoading/PolicyAttachment.cs",
+    "src/Runtime/RelationLoading/PolicyDemand.cs",
+    "src/Runtime/RelationLoading/PolicyDemandRunner.cs",
+    "src/Runtime/RelationLoading/PolicyDemandWork.cs",
+    "src/Runtime/RelationLoading/PolicyFrontier.cs",
+    "src/Runtime/RelationLoading/PolicyKnownEntity.cs",
+    "src/Runtime/RelationLoading/PolicyLifetime.cs",
+    "src/Runtime/RelationLoading/PolicyLimits.cs",
+    "src/Runtime/RelationLoading/PolicyMaterializer.cs",
+    "src/Runtime/RelationLoading/PolicyModel.cs",
+    "src/Runtime/RelationLoading/PolicyOperation.cs",
+    "src/Runtime/RelationLoading/PolicyOrigins.cs",
+    "src/Runtime/RelationLoading/PolicyPlainReader.cs",
+    "src/Runtime/RelationLoading/PolicyPreflight.cs",
+    "src/Runtime/RelationLoading/PolicyPublication.cs",
+    "src/Runtime/RelationLoading/PolicyReadHooks.cs",
+    "src/Runtime/RelationLoading/PolicyReader.cs",
+    "src/Runtime/RelationLoading/PolicySession.cs",
+    "src/Runtime/RelationLoading/PolicyTraversal.cs",
+    "src/Runtime/RelationLoading/PolicyWork.cs",
+    "src/Runtime/RelationLoading/RelationLoadAttribute.cs",
+    "src/Runtime/RelationLoading/RelationLoadLimitsAttribute.cs",
+    "src/Runtime/RelationLoading/RelationLoadMode.cs",
+    "src/Runtime/RelationLoading/RelationLoadSnapshot.cs",
+    "src/Runtime/RelationLoading/RelationLoadState.cs",
+    "src/Runtime/RelationLoading/RelationPolicies.cs",
+    "src/Runtime/RelationLoading/RelationPolicy.cs",
+    "src/Runtime/RelationLoading/RelationQueryExtensions.cs",
+    "src/Runtime/RelationLoading/RelationReadOptions.cs",
+    "src/Runtime/RelationLoading/RelationScopeError.cs",
+    "src/Runtime/RelationLoading/RelationScopeException.cs",
+    "src/Runtime/RelationLoading/ScopeAttachments.cs",
+    "src/Runtime/RelationLoading/ScopeBinding.cs",
+    "src/Runtime/RelationLoading/ScopeClock.cs",
+    "src/Runtime/RelationLoading/ScopeScheduler.cs",
+    "src/Runtime/UnitOfWork.cs"
+  ],
+  "compileGate": {
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--label",
+      "orml.task=ORML-109",
+      "--label",
+      "orml.actor=dev-policy",
+      "-v",
+      "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+      "-v",
+      "/Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro",
+      "-v",
+      "orml-107-nuget:/root/.nuget/packages",
+      "-w",
+      "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+      "-e",
+      "GIT_CONFIG_COUNT=1",
+      "-e",
+      "GIT_CONFIG_KEY_0=safe.directory",
+      "-e",
+      "GIT_CONFIG_VALUE_0=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+      "orml108-graph-native-sdk10:verified",
+      "sh",
+      "-c",
+      "dotnet build src/Runtime/Runtime.csproj -c Release --artifacts-path artifacts/relation-loading/dev/build -m:1 -warnaserror && dotnet build src/Generator/Generator.csproj -c Release --artifacts-path artifacts/relation-loading/dev/build -m:1 -warnaserror"
+    ],
+    "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+    "commit": "b22f19a593aa243e202ae1381350eaf8e0423e7b",
+    "status": "",
+    "sourceDigest": "2e4a3784e6e1ba4c56a4e994760e3f1f67f6e849771f908b389e1666bc62580e",
+    "started": "2026-11-26T07:12:02.629598+00:00",
+    "exitCode": 0,
+    "finished": "2026-11-26T07:12:15.230152+00:00",
+    "sourceChangedDuringRun": false
+  },
+  "buildAssemblies": [
+    {
+      "path": "artifacts/relation-loading/dev/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll",
+      "sha256": "faa807d14fa0dd7103577033947bc79f31fffdb972feef39968da5fc55f4d724",
+      "size": 860160
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build/bin/Generator/release/Neemle.OrmLite.Generator.dll",
+      "sha256": "5e5c306101e98adc3e0900351397a9eacfbc2875bcfb1b20444533c93fb0b1a2",
+      "size": 288768
+    }
+  ],
+  "files": [
+    {
+      "path": "artifacts/relation-loading/dev/attachments-edit.py",
+      "sha256": "d2eb617144938e50018902db12f219424e43555b38e64e56e2361aee357f7b7c",
+      "size": 6962
+    },
+    {
+      "path": "artifacts/relation-loading/dev/base-edit.py",
+      "sha256": "1bb286ab8adaf886837a99355fe4ddd9119a4214ae441bbd2228fb119c73d3b9",
+      "size": 9258
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-checkpoint-committed.json",
+      "sha256": "173f1107cdbe8871fb3f2b7be59fd204cd44f957e5a677ce1e7642d0f49cf433",
+      "size": 1510
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-checkpoint-committed.log",
+      "sha256": "50015025e7fa8c7fed0c5ba500a9b885eab26d02bad1f3c5c44286c63e5edde9",
+      "size": 864
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-first.json",
+      "sha256": "99ff7371b66c0ac1d9085642c205d1e8e4d98d355d648846ccff8131296913ed",
+      "size": 1839
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-first.log",
+      "sha256": "9216cba5ff5558eeaf625f5838e7880fb84bf82bf4fca0be4db13ab6ce60ccb2",
+      "size": 2593
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-generator.json",
+      "sha256": "dc66aa787e6da7754300cc7a5b0676012005ab786776ae1ee035b13755cfeabc",
+      "size": 1790
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-generator.log",
+      "sha256": "b2ca0f8f6850fb3ea1004fd3b696c1e0af264530df57a89100d01c5efec0c5ef",
+      "size": 1225
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-runtime.json",
+      "sha256": "71b2830505babbe642fb259f58b217de682cae4b18729a2e22d6ee017c843073",
+      "size": 1839
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-runtime.log",
+      "sha256": "0762e64646e4a6c062f06491c72e459a4e1c9c0d544118fe13f6dc1a28e08640",
+      "size": 336
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-source-checkpoint.json",
+      "sha256": "3ff34a2dea171dec2c93a86870be54724d3687e88384163f7816f97ee54dfc75",
+      "size": 1880
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build-source-checkpoint.log",
+      "sha256": "db400912022e4489f5d6a29c4672a15a3c02417b681727813d11124965ac3d3e",
+      "size": 769
+    },
+    {
+      "path": "artifacts/relation-loading/dev/first-build-inputs/GraphCollectionBinding.cs.txt",
+      "sha256": "253e6e9cca4ddfe6e91ac6ea31f9a7c1f7b948bd6d08bda13ca738072aa6ad6c",
+      "size": 3653
+    },
+    {
+      "path": "artifacts/relation-loading/dev/first-build-inputs/GraphLinkBinding.cs.txt",
+      "sha256": "623e1cf825dd6ce445c886bb1b01718a3e9ec3f8113440a1ac8306c5c35ec461",
+      "size": 3401
+    },
+    {
+      "path": "artifacts/relation-loading/dev/first-build-inputs/GraphReferenceBinding.cs.txt",
+      "sha256": "5c3f1a7e58044dfc3df81645d374d03025dd32146ac8b19a36a1363b353ea169",
+      "size": 3043
+    },
+    {
+      "path": "artifacts/relation-loading/dev/first-generator-input.cs.txt",
+      "sha256": "73dbd8f31e0298edb896115ce4a11e2450a6cf80a3a838e61206cbaf7370dced",
+      "size": 2035
+    },
+    {
+      "path": "artifacts/relation-loading/dev/generator-edit.py",
+      "sha256": "266c2ff6cda57ea5da5431cc9749a3a8bbcd3d4431fa32d0c3a394f1f5b0078c",
+      "size": 15385
+    },
+    {
+      "path": "artifacts/relation-loading/dev/graph-edit.py",
+      "sha256": "4d32b677f80a03d45b62a807ee20c51f87e37111535309cbb30db18cf05628f5",
+      "size": 4876
+    },
+    {
+      "path": "artifacts/relation-loading/dev/ormexec-edit.py",
+      "sha256": "014531e6d3e7e35ca912f284f7d8e36b39026a17c4e91db7f5fe76f4dec5fe99",
+      "size": 5017
+    },
+    {
+      "path": "artifacts/relation-loading/dev/owner-packet.md",
+      "sha256": "462c01d8c68a7de0221f3ed858c2381b30b7924e9cf63c8e767203deea83a05e",
+      "size": 3977
+    },
+    {
+      "path": "artifacts/relation-loading/dev/policy-work-edit.py",
+      "sha256": "d1acd95e0fff4f5ef10015dbebba57e3cac9e9a7681a4dd9d1bfc692e155cc9e",
+      "size": 12629
+    },
+    {
+      "path": "artifacts/relation-loading/dev/run.py",
+      "sha256": "6834846537ed780d928f502a2584813a391f11bd6c76fd25e6b7e16d05386dee",
+      "size": 1094
+    },
+    {
+      "path": "artifacts/relation-loading/dev/scope-edit.py",
+      "sha256": "64be05d62e69d8472c77b3393dc086ae1097210586e89d0612fe3051a50a2878",
+      "size": 9122
+    }
+  ],
+  "disposition": "CHECKPOINT ONLY, NOT FULL PRODUCER SUCCESS",
+  "remaining": [
+    "Owner disposition: neutral bare-connection origin/same-gate context semantics",
+    "Owner disposition: generated connection-bearing Get plus bound UoW transaction bridge",
+    "Actual generated consumer compilation and runtime/state/concurrency/lifetime/adversarial/provider/NativeAOT verification NOT RUN",
+    "Whole changed-source/generated301, coverage/security/docs/review/decomposition remain OPEN"
+  ],
+  "cleanup": "Docker build containers used --rm; no server/container/network resources created",
+  "generated": "2026-11-26T07:12:34.093281+00:00"
+}

@@ -1,0 +1,96 @@
+{
+  "disposition": "FINITE RECOVERY SUCCESS \u2014 checkpoint reconciliation only, NOT full producer delivery",
+  "verifiedCheckpoint": "c0dbba7f6017e4ae2a39fdfb163a2b178102b843",
+  "sourceTree": "272fde8b5e4bbd8bf452c96db47583a3de52d5ce",
+  "testTree": "21c166b86ebc3b4b3eeb7405a396cee31ff50f36",
+  "originalManifestSha256": "cf282a2a0301c2d5dd20a22b863e5b7767144b28cb70e1c6ed2b151113686a3a",
+  "manifestFilesVerified": 23,
+  "assembliesVerified": [
+    {
+      "path": "artifacts/relation-loading/dev/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll",
+      "sha256": "faa807d14fa0dd7103577033947bc79f31fffdb972feef39968da5fc55f4d724",
+      "size": 860160
+    },
+    {
+      "path": "artifacts/relation-loading/dev/build/bin/Generator/release/Neemle.OrmLite.Generator.dll",
+      "sha256": "5e5c306101e98adc3e0900351397a9eacfbc2875bcfb1b20444533c93fb0b1a2",
+      "size": 288768
+    }
+  ],
+  "changedSourceCount": 67,
+  "allPathsContained": true,
+  "compileComment": "4222173b-ffe4-4123-ae33-2836b5a69428 freshly read in full; compile-only scope retained",
+  "compileRecord": {
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--label",
+      "orml.task=ORML-109",
+      "--label",
+      "orml.actor=dev-policy",
+      "-v",
+      "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+      "-v",
+      "/Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro",
+      "-v",
+      "orml-107-nuget:/root/.nuget/packages",
+      "-w",
+      "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+      "-e",
+      "GIT_CONFIG_COUNT=1",
+      "-e",
+      "GIT_CONFIG_KEY_0=safe.directory",
+      "-e",
+      "GIT_CONFIG_VALUE_0=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+      "orml108-graph-native-sdk10:verified",
+      "sh",
+      "-c",
+      "dotnet build src/Runtime/Runtime.csproj -c Release --artifacts-path artifacts/relation-loading/dev/build -m:1 -warnaserror && dotnet build src/Generator/Generator.csproj -c Release --artifacts-path artifacts/relation-loading/dev/build -m:1 -warnaserror"
+    ],
+    "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading",
+    "commit": "b22f19a593aa243e202ae1381350eaf8e0423e7b",
+    "status": "",
+    "sourceDigest": "2e4a3784e6e1ba4c56a4e994760e3f1f67f6e849771f908b389e1666bc62580e",
+    "started": "2026-11-26T07:12:02.629598+00:00",
+    "exitCode": 0,
+    "finished": "2026-11-26T07:12:15.230152+00:00",
+    "sourceChangedDuringRun": false
+  },
+  "cleanupAbsence": [
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=orml.actor=dev-policy"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "ls",
+        "-q",
+        "--filter",
+        "label=orml.task=ORML-109"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "history": "Both initial compile failure logs and source inputs retained unchanged in original23-file manifest",
+  "remaining": [
+    "Owner disposition: neutral bare-connection origin/same-gate context semantics",
+    "Owner disposition: generated connection-bearing Get plus bound UoW transaction bridge",
+    "Actual generated consumer compilation and runtime/state/concurrency/lifetime/adversarial/provider/NativeAOT verification NOT RUN",
+    "Whole changed-source/generated301, coverage/security/docs/review/decomposition remain OPEN"
+  ],
+  "noRerun": "No build/test/provider/AOT/quality/coverage/security run or source/API edit in recovery",
+  "generated": "2026-11-26T07:15:40.443683+00:00"
+}

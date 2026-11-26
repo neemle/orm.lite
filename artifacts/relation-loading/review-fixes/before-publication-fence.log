@@ -1,0 +1,8 @@
+runtime 10.0.15
+Unhandled exception. System.InvalidOperationException: Expected RelationScopeException
+   at PolicySmoke.Check.ThrowsAsync[T](Func`1 operation) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/Check.cs:line 18
+   at PolicySmoke.NestedDetachCases.VerifyAsync(Fixture f) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/NestedDetachCases.cs:line 26
+   at PolicySmoke.NestedDetachCases.VerifyAsync(Fixture f) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/NestedDetachCases.cs:line 32
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/Program.cs:line 10
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/examples/relation-loading/Program.cs:line 43
+   at Program.<Main>(String[] args)

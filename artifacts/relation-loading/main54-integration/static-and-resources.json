@@ -1,0 +1,119 @@
+{
+  "static": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code",
+        "54abe783",
+        "--",
+        "tests",
+        "demo",
+        "artifacts/calculated",
+        "artifacts/graph",
+        "artifacts/streaming",
+        "artifacts/schema-diff",
+        "artifacts/foreign-keys",
+        "examples/calculated",
+        "examples/foreign-keys",
+        "examples/streaming",
+        "README.md",
+        "scripts/PackCheck.cs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "at": "2026-11-26T15:20:31.838500+00:00"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code",
+        "0753aa47",
+        "--",
+        "examples/relation-loading",
+        "src/Runtime/RelationLoading/PolicyWork.cs",
+        "src/Runtime/RelationLoading/ScopeAttachments.cs",
+        "src/Runtime/RelationLoading/PolicyPublication.cs",
+        "src/Runtime/RelationLoading/PolicyCleanupSteps.cs",
+        "src/Runtime/RelationLoading/PolicySecondaryErrors.cs",
+        "src/Runtime/RelationLoading/PolicyBoundFirstReader.cs",
+        "src/Runtime/RelationLoading/ScopeBinding.cs",
+        "src/Runtime/RelationLoading/PolicyOrigins.cs",
+        "src/Runtime/RelationLoading/PolicyOriginWitness.cs"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "at": "2026-11-26T15:20:31.874982+00:00"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "at": "2026-11-26T15:20:31.929040+00:00"
+    }
+  ],
+  "ownedContainers": [
+    {
+      "id": "afac105f24994932364ab545c32c03164dcb77fb04700f706cd6f3f2c6de33b2",
+      "argv": [
+        "docker",
+        "inspect",
+        "afac105f24994932364ab545c32c03164dcb77fb04700f706cd6f3f2c6de33b2"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: afac105f24994932364ab545c32c03164dcb77fb04700f706cd6f3f2c6de33b2\n",
+      "at": "2026-11-26T15:20:32.020532+00:00"
+    },
+    {
+      "id": "51b54129be820ea8447452628766c0659a24c98a907023e34968c8bf92bc4db5",
+      "argv": [
+        "docker",
+        "inspect",
+        "51b54129be820ea8447452628766c0659a24c98a907023e34968c8bf92bc4db5"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 51b54129be820ea8447452628766c0659a24c98a907023e34968c8bf92bc4db5\n",
+      "at": "2026-11-26T15:20:32.159205+00:00"
+    },
+    {
+      "id": "5f85c1bac6c89555dde2d2624ba9023825f15401c2f6f07914aaee6710a41fd2",
+      "argv": [
+        "docker",
+        "inspect",
+        "5f85c1bac6c89555dde2d2624ba9023825f15401c2f6f07914aaee6710a41fd2"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 5f85c1bac6c89555dde2d2624ba9023825f15401c2f6f07914aaee6710a41fd2\n",
+      "at": "2026-11-26T15:20:32.321097+00:00"
+    }
+  ],
+  "actorRoster": {
+    "argv": [
+      "docker",
+      "ps",
+      "-a",
+      "--no-trunc",
+      "--filter",
+      "label=orml.actor=main54-integration",
+      "--format",
+      "{{.ID}}"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "at": "2026-11-26T15:20:32.369472+00:00"
+  },
+  "ownedSqliteFilesRemaining": [],
+  "noOwnedPostgresOrNetworkCreated": true
+}

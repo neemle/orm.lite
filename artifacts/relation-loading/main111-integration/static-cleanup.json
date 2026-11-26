@@ -1,0 +1,106 @@
+{
+  "checks": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code",
+        "ea18936",
+        "--",
+        "tests/Tests/OneToOne",
+        "examples/one-to-one",
+        "artifacts/one-to-one",
+        "docs/migrations.md",
+        "src/Runtime/OneToOne",
+        "src/Generator/OneToOne"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "at": "2026-11-26T17:05:38.405929+00:00"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--exit-code",
+        "f6dcaf7",
+        "--",
+        "src/Runtime/UnitOfWork.cs",
+        "src/Runtime/OrmContext.cs",
+        "examples/relation-loading"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "at": "2026-11-26T17:05:38.421161+00:00"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "at": "2026-11-26T17:05:38.444079+00:00"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "at": "2026-11-26T17:05:38.460920+00:00"
+    }
+  ],
+  "resources": [
+    {
+      "id": "c9599b2f6665598b0c80ca8277e56e4e850c36b7f2b2f70fa74239bcb756aefc",
+      "argv": [
+        "docker",
+        "inspect",
+        "c9599b2f6665598b0c80ca8277e56e4e850c36b7f2b2f70fa74239bcb756aefc"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: c9599b2f6665598b0c80ca8277e56e4e850c36b7f2b2f70fa74239bcb756aefc\n",
+      "at": "2026-11-26T17:05:38.519436+00:00"
+    },
+    {
+      "id": "60de1a89101506b483dfba4f1545491116cc59fa685726b87a2090d2ec110c2e",
+      "argv": [
+        "docker",
+        "inspect",
+        "60de1a89101506b483dfba4f1545491116cc59fa685726b87a2090d2ec110c2e"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 60de1a89101506b483dfba4f1545491116cc59fa685726b87a2090d2ec110c2e\n",
+      "at": "2026-11-26T17:05:38.546896+00:00"
+    }
+  ],
+  "actorRoster": {
+    "argv": [
+      "docker",
+      "ps",
+      "-a",
+      "--no-trunc",
+      "--filter",
+      "label=orml.actor=main111-integration",
+      "--format",
+      "{{.ID}}"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "at": "2026-11-26T17:05:38.564335+00:00"
+  },
+  "bothDocSectionsVerbatim": true,
+  "noOwnedPgOrNetwork": true,
+  "sqliteScratchEmpty": true
+}

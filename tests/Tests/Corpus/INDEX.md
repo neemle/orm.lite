@@ -1013,7 +1013,7 @@ Method: the surface is every public method (and, for the types marked internal b
 | `OrmContext` | 5 | 3 | 2 |
 | `OrmEnum` | 2 | 2 | 0 |
 | `OrmLiteSettings` | 2 | 2 | 0 |
-| `Query` | 117 | 103 | 14 |
+| `Query` | 118 | 103 | 15 |
 | `Row` | 3 | 3 | 0 |
 | `RowHistoryDdl` | 10 | 7 | 3 |
 | `RowHistoryRead` | 6 | 6 | 0 |
@@ -1025,7 +1025,7 @@ Method: the surface is every public method (and, for the types marked internal b
 | `TableBuilder` | 5 | 4 | 1 |
 | `UnitOfWork` | 5 | 5 | 0 |
 | `UpsertSet` | 7 | 5 | 2 |
-| total | 243 | 209 | 34 |
+| total | 244 | 209 | 35 |
 
 Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `ConflictGuard`.
 
@@ -1055,6 +1055,7 @@ Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `Conflict
 | `Query.BuildView/2` | internal tree builder beneath AsView; the corpus pins the CREATE VIEW text it compiles to in ddl-builder/create-view-* and view-over-a-join-and-an-aggregate |
 | `Query.CompileScalar/1` | the statement ScalarAsync runs; the clause-free text is pinned by the executed query-scalar-soft and query-scalar-null-answer-is-the-default entries, which run through it, and the order and offset text on both providers by ScalarRenderingTests |
 | `Query.Definition/1` | internal factory of the provider-bound query that MigrationBuilder.From returns; its use is pinned by every ddl-builder view entry |
+| `Query.GraphFirstSnapshot/0` | internal first-root state capture beneath ordinary and policy FirstOrDefaultAsync; emits no SQL; Take(0), order/offset and bindings witnessed by main54 narrow-sqlite (39 checks); policy reads and visibility retained in ReadCases and BindingCases |
 | `Query.GraphSnapshot/0` | internal graph-state capture beneath ToGraphListAsync; emits no SQL; paging, masks and ownership pinned by GraphReadTests, metadata validation by GraphBindingTests |
 | `Query.RenderScalar/1` | text of CompileScalar; pinned by the same executed entries and by ScalarRenderingTests on both providers |
 | `Query.get_SourceTable/0` | internal accessor read only by ViewColumns; the table it names is pinned by ddl-builder/create-view-over-a-filtered-query |

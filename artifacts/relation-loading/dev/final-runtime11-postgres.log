@@ -1,0 +1,2 @@
+runtime 11.0.0
+policy smoke postgres assertions=109 PASS

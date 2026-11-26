@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e3057a15-bae1-46a8-910d-73793d533457" name="@3979cacda61d 2026-11-26 16:44:02" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-26T16:44:02.2833675+00:00" queuing="2026-11-26T16:44:02.2833675+00:00" start="2026-11-26T16:43:59.7983887+00:00" finish="2026-11-26T16:44:02.2865677+00:00" />
+  <TestSettings name="default" id="6b214ce2-c5a9-429a-9228-19f068447bf1">
+    <Deployment runDeploymentRoot="_3979cacda61d_2026-11-26_16_44_02" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="87321025-775e-42fb-ad05-e2e82f576674" testId="3930d595-a4b7-9ff8-16f1-e1785d14c965" testName="[UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: False)" computerName="3979cacda61d" duration="00:00:00.0167455" startTime="2026-11-26T16:44:02.1504465+00:00" endTime="2026-11-26T16:44:02.1504466+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="87321025-775e-42fb-ad05-e2e82f576674">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Collections differ
+                                          ↓ (pos 3)
+Expected: [···, "drained", "unsubscribe", "transaction", "connection", "release"]
+Actual:   [···, "drained", "unsubscribe"]</Message>
+          <StackTrace>   at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.UnitResults(OwnerFaultPlan plan, Exception primary, UnitOfWork unit, DbConnection connection) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs:line 40
+   at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.Unit_close_fault_keeps_primary_and_releases_every_owner_stage(Boolean callback) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs:line 29
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="190d8d31-e019-4e1b-905c-451d63a9ba30" testId="f98d800d-4db5-abce-99d6-c8705f831b92" testName="[UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: True)" computerName="3979cacda61d" duration="00:00:00.1040591" startTime="2026-11-26T16:44:02.1451975+00:00" endTime="2026-11-26T16:44:02.1452068+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="190d8d31-e019-4e1b-905c-451d63a9ba30">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Collections differ
+                                          ↓ (pos 3)
+Expected: [···, "drained", "unsubscribe", "transaction", "connection", "release"]
+Actual:   [···, "drained", "unsubscribe"]</Message>
+          <StackTrace>   at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.UnitResults(OwnerFaultPlan plan, Exception primary, UnitOfWork unit, DbConnection connection) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs:line 40
+   at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.Unit_close_fault_keeps_primary_and_releases_every_owner_stage(Boolean callback) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs:line 29
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7f655d8c-40a9-4d43-b61d-eb4dcf4dbd18" testId="69ceaa47-d6dc-fbc8-f226-09d4fe440226" testName="[UC-004][AC07/08][SEC] context attempts all owned sources after scope drain/close failure" computerName="3979cacda61d" duration="00:00:00.0280169" startTime="2026-11-26T16:44:02.1814268+00:00" endTime="2026-11-26T16:44:02.1814268+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7f655d8c-40a9-4d43-b61d-eb4dcf4dbd18">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Collections differ
+                                                               ↓ (pos 5)
+Expected: Concat2Iterator&lt;string&gt; [···, "close", "connection", "owned0", "owned1", "owned2", ···]
+Actual:   List&lt;string&gt;            [···, "close", "connection"]</Message>
+          <StackTrace>   at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.Context_close_fault_keeps_all_owned_cleanup_and_private_bounded_errors() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs:line 66
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="[UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: True)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/owner-cleanup-correction/old-host/neemle.ormlite.tests.dll" id="f98d800d-4db5-abce-99d6-c8705f831b92">
+      <Execution id="190d8d31-e019-4e1b-905c-451d63a9ba30" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/owner-cleanup-correction/old-host/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests" name="Unit_close_fault_keeps_primary_and_releases_every_owner_stage" />
+    </UnitTest>
+    <UnitTest name="[UC-004][AC07/08][SEC] context attempts all owned sources after scope drain/close failure" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/owner-cleanup-correction/old-host/neemle.ormlite.tests.dll" id="69ceaa47-d6dc-fbc8-f226-09d4fe440226">
+      <Execution id="7f655d8c-40a9-4d43-b61d-eb4dcf4dbd18" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/owner-cleanup-correction/old-host/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests" name="Context_close_fault_keeps_all_owned_cleanup_and_private_bounded_errors" />
+    </UnitTest>
+    <UnitTest name="[UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: False)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/owner-cleanup-correction/old-host/neemle.ormlite.tests.dll" id="3930d595-a4b7-9ff8-16f1-e1785d14c965">
+      <Execution id="87321025-775e-42fb-ad05-e2e82f576674" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/artifacts/relation-loading/owner-cleanup-correction/old-host/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests" name="Unit_close_fault_keeps_primary_and_releases_every_owner_stage" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="3930d595-a4b7-9ff8-16f1-e1785d14c965" executionId="87321025-775e-42fb-ad05-e2e82f576674" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f98d800d-4db5-abce-99d6-c8705f831b92" executionId="190d8d31-e019-4e1b-905c-451d63a9ba30" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="69ceaa47-d6dc-fbc8-f226-09d4fe440226" executionId="7f655d8c-40a9-4d43-b61d-eb4dcf4dbd18" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="0" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.53]   Discovering: Neemle.OrmLite.Tests
+[xUnit.net 00:00:01.41]   Discovered:  Neemle.OrmLite.Tests
+[xUnit.net 00:00:01.41]   Starting:    Neemle.OrmLite.Tests
+[xUnit.net 00:00:01.57]       Assert.Equal() Failure: Collections differ
+[xUnit.net 00:00:01.57]                                                 ↓ (pos 3)
+[xUnit.net 00:00:01.57]       Expected: [···, "drained", "unsubscribe", "transaction", "connection", "release"]
+[xUnit.net 00:00:01.57]       Actual:   [···, "drained", "unsubscribe"]
+[xUnit.net 00:00:01.57]       Stack Trace:
+[xUnit.net 00:00:01.58]         /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs(40,0): at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.UnitResults(OwnerFaultPlan plan, Exception primary, UnitOfWork unit, DbConnection connection)
+[xUnit.net 00:00:01.58]         /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs(29,0): at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.Unit_close_fault_keeps_primary_and_releases_every_owner_stage(Boolean callback)
+[xUnit.net 00:00:01.58]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:01.58]       Assert.Equal() Failure: Collections differ
+[xUnit.net 00:00:01.58]                                                 ↓ (pos 3)
+[xUnit.net 00:00:01.58]       Expected: [···, "drained", "unsubscribe", "transaction", "connection", "release"]
+[xUnit.net 00:00:01.58]       Actual:   [···, "drained", "unsubscribe"]
+[xUnit.net 00:00:01.58]       Stack Trace:
+[xUnit.net 00:00:01.58]         /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs(40,0): at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.UnitResults(OwnerFaultPlan plan, Exception primary, UnitOfWork unit, DbConnection connection)
+[xUnit.net 00:00:01.58]         /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs(29,0): at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.Unit_close_fault_keeps_primary_and_releases_every_owner_stage(Boolean callback)
+[xUnit.net 00:00:01.58]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:01.61]       Assert.Equal() Failure: Collections differ
+[xUnit.net 00:00:01.61]                                                                      ↓ (pos 5)
+[xUnit.net 00:00:01.61]       Expected: Concat2Iterator&lt;string&gt; [···, "close", "connection", "owned0", "owned1", "owned2", ···]
+[xUnit.net 00:00:01.61]       Actual:   List&lt;string&gt;            [···, "close", "connection"]
+[xUnit.net 00:00:01.61]       Stack Trace:
+[xUnit.net 00:00:01.61]         /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs(66,0): at Neemle.OrmLite.Tests.RelationLoadingOwnerCleanup.OwnerCleanupTests.Context_close_fault_keeps_all_owned_cleanup_and_private_bounded_errors()
+[xUnit.net 00:00:01.61]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:01.62]   Finished:    Neemle.OrmLite.Tests
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="3979cacda61d" outcome="Error" timestamp="2026-11-26T16:44:02.1383115+00:00">
+        <Text>[xUnit.net 00:00:01.57]     [UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="3979cacda61d" outcome="Error" timestamp="2026-11-26T16:44:02.1512120+00:00">
+        <Text>[xUnit.net 00:00:01.58]     [UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="3979cacda61d" outcome="Error" timestamp="2026-11-26T16:44:02.1815700+00:00">
+        <Text>[xUnit.net 00:00:01.61]     [UC-004][AC07/08][SEC] context attempts all owned sources after scope drain/close failure [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

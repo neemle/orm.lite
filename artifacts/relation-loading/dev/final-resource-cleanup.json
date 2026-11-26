@@ -1,0 +1,43 @@
+[
+  {
+    "kind": "container",
+    "id": "0bbca1904e2727d01181b0f5a7cce6650adad6afdf855c1b2588ff0aa8f83469",
+    "time": "2026-11-26T09:36:33.695405+00:00",
+    "argv": [
+      "docker",
+      "rm",
+      "-f",
+      "0bbca1904e2727d01181b0f5a7cce6650adad6afdf855c1b2588ff0aa8f83469"
+    ],
+    "exitCode": 0,
+    "stdout": "0bbca1904e2727d01181b0f5a7cce6650adad6afdf855c1b2588ff0aa8f83469\n",
+    "absenceArgv": [
+      "docker",
+      "inspect",
+      "0bbca1904e2727d01181b0f5a7cce6650adad6afdf855c1b2588ff0aa8f83469"
+    ],
+    "absenceExit": 1,
+    "absenceStderr": "error: no such object: 0bbca1904e2727d01181b0f5a7cce6650adad6afdf855c1b2588ff0aa8f83469\n"
+  },
+  {
+    "kind": "network",
+    "id": "24e9e515964db514f2cc073dc24f70b5f19290bf9e63b312723a77f7f2c1680d",
+    "time": "2026-11-26T09:36:33.877480+00:00",
+    "argv": [
+      "docker",
+      "network",
+      "rm",
+      "24e9e515964db514f2cc073dc24f70b5f19290bf9e63b312723a77f7f2c1680d"
+    ],
+    "exitCode": 0,
+    "stdout": "24e9e515964db514f2cc073dc24f70b5f19290bf9e63b312723a77f7f2c1680d\n",
+    "absenceArgv": [
+      "docker",
+      "network",
+      "inspect",
+      "24e9e515964db514f2cc073dc24f70b5f19290bf9e63b312723a77f7f2c1680d"
+    ],
+    "absenceExit": 1,
+    "absenceStderr": "Error response from daemon: network 24e9e515964db514f2cc073dc24f70b5f19290bf9e63b312723a77f7f2c1680d not found\n"
+  }
+]

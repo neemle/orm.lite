@@ -1,0 +1,6570 @@
+{
+  "convention": "McCabe1\u002Bif/loops/catch/nondefault cases/conditional expression and \u0026\u0026/||/?? boundaries",
+  "records": [
+    {
+      "file": "src/Generator/EntityEmitter.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "EntityEmitter",
+          "start": 20,
+          "end": 122,
+          "codeLines": 92,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "EmitEntities",
+          "start": 30,
+          "end": 40,
+          "codeLines": 11,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 32,
+            "depth": 0
+          }
+        },
+        {
+          "name": "NewFile",
+          "start": 42,
+          "end": 43,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Access",
+          "start": 45,
+          "end": 46,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 46
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "EntitiesSource",
+          "start": 48,
+          "end": 65,
+          "codeLines": 18,
+          "parameters": 4,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 57
+            },
+            {
+              "kind": "IfStatement",
+              "line": 60
+            }
+          ],
+          "nesting": {
+            "line": 58,
+            "depth": 1
+          }
+        },
+        {
+          "name": "ExcludedPairs",
+          "start": 67,
+          "end": 75,
+          "codeLines": 9,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 70
+            },
+            {
+              "kind": "IfStatement",
+              "line": 71
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 72
+            }
+          ],
+          "nesting": {
+            "line": 68,
+            "depth": 0
+          }
+        },
+        {
+          "name": "PurgeClass",
+          "start": 77,
+          "end": 95,
+          "codeLines": 19,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 78,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SchemaClass",
+          "start": 97,
+          "end": 102,
+          "codeLines": 6,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "InitializerClass",
+          "start": 104,
+          "end": 121,
+          "codeLines": 18,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 105,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/EntityReader.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "EntityReader",
+          "start": 19,
+          "end": 80,
+          "codeLines": 57,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ReadEntity",
+          "start": 21,
+          "end": 27,
+          "codeLines": 7,
+          "parameters": 2,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 23
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 25
+            }
+          ],
+          "nesting": {
+            "line": 22,
+            "depth": 0
+          }
+        },
+        {
+          "name": "TableOf",
+          "start": 29,
+          "end": 30,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 30
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 30
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "Assemble",
+          "start": 32,
+          "end": 56,
+          "codeLines": 25,
+          "parameters": 3,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 44
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 46
+            }
+          ],
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ResolveRelations",
+          "start": 59,
+          "end": 76,
+          "codeLines": 18,
+          "parameters": 3,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 63
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 66
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 70
+            },
+            {
+              "kind": "IfStatement",
+              "line": 72
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 72
+            }
+          ],
+          "nesting": {
+            "line": 64,
+            "depth": 1
+          }
+        },
+        {
+          "name": "CollectionOf",
+          "start": 78,
+          "end": 79,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/OrmGenerator.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "OrmGenerator",
+          "start": 16,
+          "end": 158,
+          "codeLines": 122,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Initialize",
+          "start": 30,
+          "end": 52,
+          "codeLines": 22,
+          "parameters": 1,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 48
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 48
+            }
+          ],
+          "nesting": {
+            "line": 31,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AsmToken",
+          "start": 54,
+          "end": 62,
+          "codeLines": 9,
+          "parameters": 1,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 56
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 58
+            },
+            {
+              "kind": "IfStatement",
+              "line": 58
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 59
+            },
+            {
+              "kind": "IfStatement",
+              "line": 60
+            }
+          ],
+          "nesting": {
+            "line": 55,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Dropped",
+          "start": 64,
+          "end": 64,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalOrExpression",
+              "line": 64
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "Refused",
+          "start": 66,
+          "end": 66,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 66
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "FirstKey",
+          "start": 68,
+          "end": 68,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "KeyedApiWithheld",
+          "start": 70,
+          "end": 70,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalOrExpression",
+              "line": 70
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "RegisterOutputs",
+          "start": 72,
+          "end": 89,
+          "codeLines": 18,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 76,
+            "depth": 0
+          }
+        },
+        {
+          "name": "IsEntityDeclaration",
+          "start": 91,
+          "end": 94,
+          "codeLines": 4,
+          "parameters": 1,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "LogicalOrExpression",
+              "line": 92
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 93
+            }
+          ],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/RelationLoading/PolicyCode.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyCode",
+          "start": 5,
+          "end": 14,
+          "codeLines": 10,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Identifier",
+          "start": 11,
+          "end": 12,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 11
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 11
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "Literal",
+          "start": 13,
+          "end": 13,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/RelationLoading/PolicyDeclaration.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "PolicyDeclaration",
+          "start": 5,
+          "end": 5,
+          "codeLines": 1,
+          "primaryParameters": 3
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/RelationLoading/PolicyDiagnostics.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyDiagnostics",
+          "start": 9,
+          "end": 43,
+          "codeLines": 32,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Report",
+          "start": 14,
+          "end": 21,
+          "codeLines": 8,
+          "parameters": 3,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 17
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 18
+            }
+          ],
+          "nesting": {
+            "line": 16,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Issues",
+          "start": 23,
+          "end": 37,
+          "codeLines": 15,
+          "parameters": 3,
+          "complexity": 9,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 26
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 27
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 28
+            },
+            {
+              "kind": "IfStatement",
+              "line": 31
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 31
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 31
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 31
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            }
+          ],
+          "nesting": {
+            "line": 29,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Target",
+          "start": 39,
+          "end": 42,
+          "codeLines": 4,
+          "parameters": 2,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 40
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 41
+            }
+          ],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/RelationLoading/PolicyIssue.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "PolicyIssue",
+          "start": 5,
+          "end": 5,
+          "codeLines": 1,
+          "primaryParameters": 3
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/RelationLoading/PolicyKeyedEmitter.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyKeyedEmitter",
+          "start": 8,
+          "end": 23,
+          "codeLines": 16,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Members",
+          "start": 10,
+          "end": 22,
+          "codeLines": 13,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 13
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 15
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 16
+            }
+          ],
+          "nesting": {
+            "line": 14,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/RelationLoading/PolicyLoaderEmitter.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyLoaderEmitter",
+          "start": 9,
+          "end": 47,
+          "codeLines": 37,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Members",
+          "start": 11,
+          "end": 33,
+          "codeLines": 23,
+          "parameters": 3,
+          "complexity": 13,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 14
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 14
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 15
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 18
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 18
+            },
+            {
+              "kind": "IfStatement",
+              "line": 21
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 25
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 25
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 26
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 30
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 30
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 31
+            }
+          ],
+          "nesting": {
+            "line": 16,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Header",
+          "start": 35,
+          "end": 37,
+          "codeLines": 3,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 37
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "Linked",
+          "start": 39,
+          "end": 46,
+          "codeLines": 8,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 40,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 28,
+          "length": 121
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/RelationLoading/PolicyMetadata.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "PolicyMetadata",
+          "start": 3,
+          "end": 4,
+          "codeLines": 2,
+          "primaryParameters": 3
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Generator/RelationLoading/PolicyRegistrationEmitter.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyRegistrationEmitter",
+          "start": 9,
+          "end": 24,
+          "codeLines": 16,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Member",
+          "start": 11,
+          "end": 23,
+          "codeLines": 13,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 14
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 14
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 14
+            }
+          ],
+          "nesting": {
+            "line": 12,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 20,
+          "length": 127
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/RelationLoading/PolicySourceEmitter.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicySourceEmitter",
+          "start": 11,
+          "end": 53,
+          "codeLines": 40,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Augment",
+          "start": 13,
+          "end": 26,
+          "codeLines": 14,
+          "parameters": 3,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 17
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 21
+            }
+          ],
+          "nesting": {
+            "line": 15,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Members",
+          "start": 28,
+          "end": 35,
+          "codeLines": 8,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 33
+            }
+          ],
+          "nesting": {
+            "line": 30,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AddInitialization",
+          "start": 37,
+          "end": 49,
+          "codeLines": 13,
+          "parameters": 2,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 39
+            },
+            {
+              "kind": "IfStatement",
+              "line": 41
+            }
+          ],
+          "nesting": {
+            "line": 38,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Parse",
+          "start": 51,
+          "end": 52,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": [
+        {
+          "line": 32,
+          "length": 130
+        },
+        {
+          "line": 47,
+          "length": 124
+        }
+      ]
+    },
+    {
+      "file": "src/Generator/RelationLoading/RelationPolicyReader.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "RelationPolicyReader",
+          "start": 11,
+          "end": 55,
+          "codeLines": 41,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Read",
+          "start": 18,
+          "end": 27,
+          "codeLines": 10,
+          "parameters": 2,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 22
+            },
+            {
+              "kind": "IfStatement",
+              "line": 24
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 24
+            }
+          ],
+          "nesting": {
+            "line": 19,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ReadProperty",
+          "start": 29,
+          "end": 38,
+          "codeLines": 10,
+          "parameters": 3,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 33
+            },
+            {
+              "kind": "IfStatement",
+              "line": 35
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 35
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 35
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 35
+            }
+          ],
+          "nesting": {
+            "line": 31,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ReadLimits",
+          "start": 40,
+          "end": 52,
+          "codeLines": 13,
+          "parameters": 3,
+          "complexity": 8,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 44
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 44
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 45
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 47
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 47
+            },
+            {
+              "kind": "IfStatement",
+              "line": 49
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 49
+            }
+          ],
+          "nesting": {
+            "line": 42,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Is",
+          "start": 54,
+          "end": 54,
+          "codeLines": 1,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": [
+        {
+          "line": 36,
+          "length": 122
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/GraphCollectionBinding.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "GraphCollectionBinding",
+          "start": 3,
+          "end": 73,
+          "codeLines": 63,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 10,
+          "end": 19,
+          "codeLines": 10,
+          "parameters": 5,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 15
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 16
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 17
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 18
+            }
+          ],
+          "nesting": {
+            "line": 12,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CaptureSourceKey",
+          "start": 21,
+          "end": 21,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Equivalent",
+          "start": 31,
+          "end": 34,
+          "codeLines": 4,
+          "parameters": 1,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "Validate",
+          "start": 36,
+          "end": 40,
+          "codeLines": 5,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 38
+            }
+          ],
+          "nesting": {
+            "line": 37,
+            "depth": 0
+          }
+        },
+        {
+          "name": "LoadAsync",
+          "start": 42,
+          "end": 57,
+          "codeLines": 16,
+          "parameters": 3,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 51
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 53
+            }
+          ],
+          "nesting": {
+            "line": 52,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Group",
+          "start": 59,
+          "end": 72,
+          "codeLines": 14,
+          "parameters": 1,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 62
+            },
+            {
+              "kind": "IfStatement",
+              "line": 66
+            },
+            {
+              "kind": "IfStatement",
+              "line": 67
+            },
+            {
+              "kind": "IfStatement",
+              "line": 68
+            }
+          ],
+          "nesting": {
+            "line": 63,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 53,
+          "length": 149
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/GraphExecutor.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "GraphExecutor",
+          "start": 3,
+          "end": 45,
+          "codeLines": 40,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ExecuteAsync",
+          "start": 5,
+          "end": 16,
+          "codeLines": 12,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 10
+            }
+          ],
+          "nesting": {
+            "line": 7,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ReadAsync",
+          "start": 18,
+          "end": 24,
+          "codeLines": 7,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 22
+            }
+          ],
+          "nesting": {
+            "line": 20,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ReadRootsAsync",
+          "start": 26,
+          "end": 28,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "ExpandAsync",
+          "start": 30,
+          "end": 44,
+          "codeLines": 15,
+          "parameters": 3,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "WhileStatement",
+              "line": 35
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 37
+            },
+            {
+              "kind": "IfStatement",
+              "line": 40
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 40
+            }
+          ],
+          "nesting": {
+            "line": 38,
+            "depth": 2
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/GraphLinkBinding.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "GraphLinkBinding",
+          "start": 3,
+          "end": 60,
+          "codeLines": 51,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 9,
+          "end": 18,
+          "codeLines": 10,
+          "parameters": 4,
+          "complexity": 7,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 13
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 14
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 15
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 16
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 16
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 16
+            }
+          ],
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CaptureSourceKey",
+          "start": 20,
+          "end": 20,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Equivalent",
+          "start": 31,
+          "end": 34,
+          "codeLines": 4,
+          "parameters": 1,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 32
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "Validate",
+          "start": 36,
+          "end": 37,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 37
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "LoadAsync",
+          "start": 39,
+          "end": 59,
+          "codeLines": 21,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 52
+            }
+          ],
+          "nesting": {
+            "line": 53,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 54,
+          "length": 135
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/GraphNavigationBinding.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "GraphNavigationBinding",
+          "start": 3,
+          "end": 40,
+          "codeLines": 35,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 5,
+          "end": 5,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 5,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CaptureSourceKey",
+          "start": 13,
+          "end": 13,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Equivalent",
+          "start": 14,
+          "end": 14,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Validate",
+          "start": 15,
+          "end": 15,
+          "codeLines": 1,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "LoadAsync",
+          "start": 16,
+          "end": 17,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CaptureSourceKey",
+          "start": 27,
+          "end": 28,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Equivalent",
+          "start": 29,
+          "end": 29,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Validate",
+          "start": 30,
+          "end": 31,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "LoadAsync",
+          "start": 32,
+          "end": 33,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Require",
+          "start": 35,
+          "end": 36,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 36
+            }
+          ],
+          "nesting": {
+            "line": 36,
+            "depth": 0
+          }
+        },
+        {
+          "name": "HasColumn",
+          "start": 38,
+          "end": 39,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/GraphPlanner.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "GraphPlanner",
+          "start": 5,
+          "end": 102,
+          "codeLines": 91,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Build",
+          "start": 7,
+          "end": 12,
+          "codeLines": 6,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 8,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Build",
+          "start": 14,
+          "end": 29,
+          "codeLines": 16,
+          "parameters": 2,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 18
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 18
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 18
+            },
+            {
+              "kind": "IfStatement",
+              "line": 24
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 24
+            }
+          ],
+          "nesting": {
+            "line": 15,
+            "depth": 0
+          }
+        },
+        {
+          "name": "PolicyNode",
+          "start": 31,
+          "end": 32,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CheckRoot",
+          "start": 34,
+          "end": 40,
+          "codeLines": 7,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 37
+            }
+          ],
+          "nesting": {
+            "line": 35,
+            "depth": 0
+          }
+        },
+        {
+          "name": "BuildPaths",
+          "start": 42,
+          "end": 62,
+          "codeLines": 21,
+          "parameters": 3,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 46
+            },
+            {
+              "kind": "IfStatement",
+              "line": 48
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 53
+            }
+          ],
+          "nesting": {
+            "line": 54,
+            "depth": 2
+          }
+        },
+        {
+          "name": "AddNode",
+          "start": 64,
+          "end": 85,
+          "codeLines": 22,
+          "parameters": 5,
+          "complexity": 7,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 67
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 67
+            },
+            {
+              "kind": "IfStatement",
+              "line": 70
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 76
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 78
+            },
+            {
+              "kind": "IfStatement",
+              "line": 81
+            }
+          ],
+          "nesting": {
+            "line": 66,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CheckVisibility",
+          "start": 87,
+          "end": 96,
+          "codeLines": 10,
+          "parameters": 3,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 90
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 90
+            },
+            {
+              "kind": "IfStatement",
+              "line": 92
+            },
+            {
+              "kind": "IfStatement",
+              "line": 94
+            }
+          ],
+          "nesting": {
+            "line": 89,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Bound",
+          "start": 98,
+          "end": 99,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 99
+            }
+          ],
+          "nesting": {
+            "line": 99,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CheckCapacity",
+          "start": 100,
+          "end": 101,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 101
+            }
+          ],
+          "nesting": {
+            "line": 101,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/GraphReadContext.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "GraphReadContext",
+          "start": 5,
+          "end": 26,
+          "codeLines": 21,
+          "primaryParameters": 5
+        }
+      ],
+      "methods": [
+        {
+          "name": "Assign",
+          "start": 18,
+          "end": 22,
+          "codeLines": 5,
+          "parameters": 4,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 20
+            }
+          ],
+          "nesting": {
+            "line": 19,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SourceKey",
+          "start": 23,
+          "end": 25,
+          "codeLines": 3,
+          "parameters": 3,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 24
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 24
+            }
+          ],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/GraphReferenceBinding.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "GraphReferenceBinding",
+          "start": 3,
+          "end": 58,
+          "codeLines": 49,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 9,
+          "end": 17,
+          "codeLines": 9,
+          "parameters": 4,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 14
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 15
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 16
+            }
+          ],
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CaptureSourceKey",
+          "start": 19,
+          "end": 19,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Equivalent",
+          "start": 29,
+          "end": 32,
+          "codeLines": 4,
+          "parameters": 1,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 30
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 30
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 30
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 30
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "Validate",
+          "start": 34,
+          "end": 38,
+          "codeLines": 5,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 36
+            }
+          ],
+          "nesting": {
+            "line": 35,
+            "depth": 0
+          }
+        },
+        {
+          "name": "LoadAsync",
+          "start": 40,
+          "end": 57,
+          "codeLines": 18,
+          "parameters": 3,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 51
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 53
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 53
+            }
+          ],
+          "nesting": {
+            "line": 52,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/IGraphNavigationBinding.cs",
+      "types": [
+        {
+          "kind": "InterfaceDeclaration",
+          "name": "IGraphNavigationBinding",
+          "start": 3,
+          "end": 17,
+          "codeLines": 15,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "CaptureSourceKey",
+          "start": 13,
+          "end": 13,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Equivalent",
+          "start": 14,
+          "end": 14,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Validate",
+          "start": 15,
+          "end": 15,
+          "codeLines": 1,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "LoadAsync",
+          "start": 16,
+          "end": 16,
+          "codeLines": 1,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/OrmContext.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "OrmContext",
+          "start": 11,
+          "end": 73,
+          "codeLines": 51,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Detached",
+          "start": 19,
+          "end": 19,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "ConstructorDeclaration",
+          "start": 21,
+          "end": 24,
+          "codeLines": 4,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 23,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ConstructorDeclaration",
+          "start": 26,
+          "end": 31,
+          "codeLines": 6,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 29
+            }
+          ],
+          "nesting": {
+            "line": 27,
+            "depth": 0
+          }
+        },
+        {
+          "name": "PingAsync",
+          "start": 35,
+          "end": 48,
+          "codeLines": 13,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "CatchClause",
+              "line": 44
+            }
+          ],
+          "nesting": {
+            "line": 41,
+            "depth": 1
+          }
+        },
+        {
+          "name": "MigrateAsync",
+          "start": 50,
+          "end": 51,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "MigrateAsync",
+          "start": 53,
+          "end": 54,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "DisposeAsync",
+          "start": 56,
+          "end": 60,
+          "codeLines": 5,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 59
+            }
+          ],
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          }
+        },
+        {
+          "name": "PingText",
+          "start": 62,
+          "end": 63,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "PingWithinTheDriversOwnDeadline",
+          "start": 65,
+          "end": 72,
+          "codeLines": 8,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 66,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/OrmExec.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "OrmExec",
+          "start": 10,
+          "end": 171,
+          "codeLines": 142,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Row",
+          "start": 12,
+          "end": 12,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "InsertAsync",
+          "start": 14,
+          "end": 20,
+          "codeLines": 7,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 15,
+            "depth": 0
+          }
+        },
+        {
+          "name": "InsertAsync",
+          "start": 22,
+          "end": 26,
+          "codeLines": 5,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 23,
+            "depth": 0
+          }
+        },
+        {
+          "name": "InsertCoreAsync",
+          "start": 28,
+          "end": 32,
+          "codeLines": 5,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 29,
+            "depth": 0
+          }
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 34,
+          "end": 40,
+          "codeLines": 7,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 35,
+            "depth": 0
+          }
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 42,
+          "end": 46,
+          "codeLines": 5,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 43,
+            "depth": 0
+          }
+        },
+        {
+          "name": "UpdateCoreAsync",
+          "start": 48,
+          "end": 52,
+          "codeLines": 5,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 49,
+            "depth": 0
+          }
+        },
+        {
+          "name": "GetAsync",
+          "start": 54,
+          "end": 61,
+          "codeLines": 8,
+          "parameters": 4,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 57
+            }
+          ],
+          "nesting": {
+            "line": 55,
+            "depth": 0
+          }
+        },
+        {
+          "name": "GetAsync",
+          "start": 63,
+          "end": 70,
+          "codeLines": 8,
+          "parameters": 5,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 65
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 69
+            }
+          ],
+          "nesting": {
+            "line": 64,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 72,
+          "end": 78,
+          "codeLines": 7,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 73,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 80,
+          "end": 84,
+          "codeLines": 5,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 81,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DeleteCoreAsync",
+          "start": 86,
+          "end": 90,
+          "codeLines": 5,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 87,
+            "depth": 0
+          }
+        },
+        {
+          "name": "LoadLinkedAsync",
+          "start": 92,
+          "end": 104,
+          "codeLines": 13,
+          "parameters": 6,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 96
+            },
+            {
+              "kind": "WhileStatement",
+              "line": 102
+            }
+          ],
+          "nesting": {
+            "line": 94,
+            "depth": 0
+          }
+        },
+        {
+          "name": "LoadLinkedAsync",
+          "start": 106,
+          "end": 118,
+          "codeLines": 13,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 109
+            }
+          ],
+          "nesting": {
+            "line": 107,
+            "depth": 0
+          }
+        },
+        {
+          "name": "LoadLinkedAsync",
+          "start": 120,
+          "end": 126,
+          "codeLines": 7,
+          "parameters": 5,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 122,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AddLinkAsync",
+          "start": 128,
+          "end": 134,
+          "codeLines": 7,
+          "parameters": 6,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 129,
+            "depth": 0
+          }
+        },
+        {
+          "name": "RemoveLinkAsync",
+          "start": 136,
+          "end": 142,
+          "codeLines": 7,
+          "parameters": 6,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 137,
+            "depth": 0
+          }
+        },
+        {
+          "name": "GateAsync",
+          "start": 144,
+          "end": 149,
+          "codeLines": 6,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 148
+            }
+          ],
+          "nesting": {
+            "line": 145,
+            "depth": 0
+          }
+        },
+        {
+          "name": "LinkOf",
+          "start": 151,
+          "end": 156,
+          "codeLines": 6,
+          "parameters": 2,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 153
+            },
+            {
+              "kind": "IfStatement",
+              "line": 154
+            }
+          ],
+          "nesting": {
+            "line": 152,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Compile",
+          "start": 158,
+          "end": 162,
+          "codeLines": 5,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 159,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Command",
+          "start": 164,
+          "end": 170,
+          "codeLines": 7,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 168
+            }
+          ],
+          "nesting": {
+            "line": 165,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 30,
+          "length": 123
+        },
+        {
+          "line": 50,
+          "length": 123
+        },
+        {
+          "line": 54,
+          "length": 135
+        },
+        {
+          "line": 63,
+          "length": 154
+        },
+        {
+          "line": 93,
+          "length": 124
+        },
+        {
+          "line": 100,
+          "length": 141
+        },
+        {
+          "line": 128,
+          "length": 147
+        },
+        {
+          "line": 132,
+          "length": 143
+        },
+        {
+          "line": 136,
+          "length": 150
+        },
+        {
+          "line": 140,
+          "length": 146
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/Query.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "Query",
+          "start": 13,
+          "end": 631,
+          "codeLines": 498,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 37,
+          "end": 54,
+          "codeLines": 18,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 38,
+            "depth": 0
+          }
+        },
+        {
+          "name": "IncludingDeleted",
+          "start": 56,
+          "end": 60,
+          "codeLines": 5,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          }
+        },
+        {
+          "name": "LiveTerm",
+          "start": 62,
+          "end": 63,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 63
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "WhereNode",
+          "start": 67,
+          "end": 79,
+          "codeLines": 13,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "LogicalOrExpression",
+              "line": 72
+            },
+            {
+              "kind": "IfStatement",
+              "line": 76
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 78
+            }
+          ],
+          "nesting": {
+            "line": 68,
+            "depth": 0
+          }
+        },
+        {
+          "name": "On",
+          "start": 81,
+          "end": 85,
+          "codeLines": 5,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 82,
+            "depth": 0
+          }
+        },
+        {
+          "name": "On",
+          "start": 87,
+          "end": 91,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 89
+            }
+          ],
+          "nesting": {
+            "line": 88,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CompileUpsert",
+          "start": 93,
+          "end": 99,
+          "codeLines": 7,
+          "parameters": 5,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderUpsert",
+          "start": 101,
+          "end": 110,
+          "codeLines": 10,
+          "parameters": 5,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 107,
+            "depth": 0
+          }
+        },
+        {
+          "name": "UpsertAsync",
+          "start": 112,
+          "end": 123,
+          "codeLines": 12,
+          "parameters": 5,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 122
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 122
+            }
+          ],
+          "nesting": {
+            "line": 119,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CompileUpdateReturning",
+          "start": 125,
+          "end": 126,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderUpdateReturning",
+          "start": 128,
+          "end": 129,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileUpdateReturningCore",
+          "start": 131,
+          "end": 141,
+          "codeLines": 11,
+          "parameters": 1,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 134
+            },
+            {
+              "kind": "IfStatement",
+              "line": 136
+            }
+          ],
+          "nesting": {
+            "line": 132,
+            "depth": 0
+          }
+        },
+        {
+          "name": "UpdateReturningAsync",
+          "start": 143,
+          "end": 146,
+          "codeLines": 4,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileDeleteReturning",
+          "start": 148,
+          "end": 149,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderDeleteReturning",
+          "start": 151,
+          "end": 152,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileDeleteReturningCore",
+          "start": 154,
+          "end": 163,
+          "codeLines": 10,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 157
+            }
+          ],
+          "nesting": {
+            "line": 155,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DeleteReturningAsync",
+          "start": 165,
+          "end": 168,
+          "codeLines": 4,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Where",
+          "start": 170,
+          "end": 174,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 171,
+            "depth": 0
+          }
+        },
+        {
+          "name": "WhereExists",
+          "start": 176,
+          "end": 180,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 177,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Redact",
+          "start": 182,
+          "end": 183,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 183,
+            "depth": 0
+          }
+        },
+        {
+          "name": "RedactWhen",
+          "start": 185,
+          "end": 186,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 186,
+            "depth": 0
+          }
+        },
+        {
+          "name": "OrderBy",
+          "start": 188,
+          "end": 189,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 189,
+            "depth": 0
+          }
+        },
+        {
+          "name": "OrderByDescending",
+          "start": 191,
+          "end": 192,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 192,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ThenBy",
+          "start": 194,
+          "end": 195,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 195,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ThenByDescending",
+          "start": 197,
+          "end": 198,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 198,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Take",
+          "start": 199,
+          "end": 199,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 199,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Skip",
+          "start": 200,
+          "end": 200,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 200,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ForUpdate",
+          "start": 202,
+          "end": 207,
+          "codeLines": 6,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 204,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ForNoKeyUpdate",
+          "start": 209,
+          "end": 215,
+          "codeLines": 7,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 212,
+            "depth": 0
+          }
+        },
+        {
+          "name": "OrderByPredicate",
+          "start": 217,
+          "end": 218,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 218,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ThenByPredicate",
+          "start": 220,
+          "end": 221,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 221,
+            "depth": 0
+          }
+        },
+        {
+          "name": "OrderByMovedFieldNumberOrEpochMillis",
+          "start": 223,
+          "end": 229,
+          "codeLines": 7,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 226,
+            "depth": 0
+          }
+        },
+        {
+          "name": "OrderByJsonKey",
+          "start": 231,
+          "end": 234,
+          "codeLines": 4,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 234,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ThenByJsonKey",
+          "start": 236,
+          "end": 239,
+          "codeLines": 4,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 239,
+            "depth": 0
+          }
+        },
+        {
+          "name": "OrderByJsonKeyOf",
+          "start": 241,
+          "end": 249,
+          "codeLines": 9,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 246,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ThenByJsonKeyOf",
+          "start": 251,
+          "end": 256,
+          "codeLines": 6,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 256,
+            "depth": 0
+          }
+        },
+        {
+          "name": "PredicateTerm",
+          "start": 258,
+          "end": 259,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "ToListAsync",
+          "start": 261,
+          "end": 264,
+          "codeLines": 4,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 262
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "ProjectAsync",
+          "start": 266,
+          "end": 269,
+          "codeLines": 4,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileProject",
+          "start": 271,
+          "end": 272,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderProject",
+          "start": 274,
+          "end": 275,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "BuildProject",
+          "start": 277,
+          "end": 282,
+          "codeLines": 6,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 279
+            }
+          ],
+          "nesting": {
+            "line": 278,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ProjectColumn",
+          "start": 284,
+          "end": 285,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 285,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ProjectPredicate",
+          "start": 287,
+          "end": 288,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 288,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CompileProjection",
+          "start": 290,
+          "end": 290,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderProjection",
+          "start": 292,
+          "end": 292,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "BuildProjection",
+          "start": 294,
+          "end": 300,
+          "codeLines": 7,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 296
+            }
+          ],
+          "nesting": {
+            "line": 295,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ProjectionAsync",
+          "start": 302,
+          "end": 303,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "FirstOrDefaultAsync",
+          "start": 305,
+          "end": 312,
+          "codeLines": 8,
+          "parameters": 0,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 307
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 311
+            }
+          ],
+          "nesting": {
+            "line": 306,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CountAsync",
+          "start": 314,
+          "end": 318,
+          "codeLines": 5,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 315,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CountRowsAsync",
+          "start": 320,
+          "end": 324,
+          "codeLines": 5,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 323
+            }
+          ],
+          "nesting": {
+            "line": 321,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SumAsync",
+          "start": 326,
+          "end": 333,
+          "codeLines": 8,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "CoalesceExpression",
+              "line": 332
+            }
+          ],
+          "nesting": {
+            "line": 327,
+            "depth": 0
+          }
+        },
+        {
+          "name": "BuildScalar",
+          "start": 335,
+          "end": 336,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileScalar",
+          "start": 338,
+          "end": 338,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderScalar",
+          "start": 340,
+          "end": 340,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "ScalarAsync",
+          "start": 342,
+          "end": 346,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 343,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AnyAsync",
+          "start": 348,
+          "end": 352,
+          "codeLines": 5,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 349,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AggregateCount",
+          "start": 354,
+          "end": 355,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 355,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AggregateCountDistinct",
+          "start": 357,
+          "end": 358,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 358,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AggregateSum",
+          "start": 360,
+          "end": 361,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 361,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AggregateMin",
+          "start": 363,
+          "end": 364,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 364,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AggregateMax",
+          "start": 366,
+          "end": 367,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 367,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AggregateAvg",
+          "start": 369,
+          "end": 370,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 370,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AggregateAvgDecimal",
+          "start": 372,
+          "end": 373,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 373,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AggregateCountWhere",
+          "start": 375,
+          "end": 377,
+          "codeLines": 3,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 377,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CompileAggregates",
+          "start": 379,
+          "end": 379,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderAggregates",
+          "start": 381,
+          "end": 381,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "BuildAggregates",
+          "start": 383,
+          "end": 389,
+          "codeLines": 7,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 385
+            }
+          ],
+          "nesting": {
+            "line": 384,
+            "depth": 0
+          }
+        },
+        {
+          "name": "AggregatesAsync",
+          "start": 391,
+          "end": 392,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "GroupBy",
+          "start": 394,
+          "end": 395,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "GroupBy",
+          "start": 397,
+          "end": 400,
+          "codeLines": 4,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "GroupBy",
+          "start": 402,
+          "end": 408,
+          "codeLines": 7,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Host",
+          "start": 410,
+          "end": 415,
+          "codeLines": 6,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 411,
+            "depth": 0
+          }
+        },
+        {
+          "name": "WhereIn",
+          "start": 417,
+          "end": 434,
+          "codeLines": 18,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 427
+            }
+          ],
+          "nesting": {
+            "line": 421,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CompileInsertMany",
+          "start": 436,
+          "end": 437,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderInsertMany",
+          "start": 439,
+          "end": 443,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 440,
+            "depth": 0
+          }
+        },
+        {
+          "name": "InsertManyAsync",
+          "start": 445,
+          "end": 449,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 446,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Set",
+          "start": 451,
+          "end": 452,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 452,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SetNow",
+          "start": 454,
+          "end": 455,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 455,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SetCoalesce",
+          "start": 457,
+          "end": 458,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 458,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SetNowPlusMinutes",
+          "start": 460,
+          "end": 462,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 462,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SetIncrement",
+          "start": 464,
+          "end": 465,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 465,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SetColumn",
+          "start": 467,
+          "end": 468,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 468,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SetPredicate",
+          "start": 470,
+          "end": 471,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 471,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SetJsonMerge",
+          "start": 473,
+          "end": 478,
+          "codeLines": 6,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 475,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SetJsonRemoveThenMerge",
+          "start": 480,
+          "end": 489,
+          "codeLines": 10,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 486,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SetJsonMemberIncrement",
+          "start": 491,
+          "end": 497,
+          "codeLines": 7,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 494,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CompileUpdate",
+          "start": 499,
+          "end": 507,
+          "codeLines": 9,
+          "parameters": 0,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 501
+            },
+            {
+              "kind": "IfStatement",
+              "line": 503
+            }
+          ],
+          "nesting": {
+            "line": 500,
+            "depth": 0
+          }
+        },
+        {
+          "name": "RenderUpdate",
+          "start": 509,
+          "end": 509,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 511,
+          "end": 512,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileDelete",
+          "start": 514,
+          "end": 519,
+          "codeLines": 6,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 516
+            }
+          ],
+          "nesting": {
+            "line": 515,
+            "depth": 0
+          }
+        },
+        {
+          "name": "RenderDelete",
+          "start": 521,
+          "end": 521,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 523,
+          "end": 524,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompilePurge",
+          "start": 526,
+          "end": 532,
+          "codeLines": 7,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 529
+            }
+          ],
+          "nesting": {
+            "line": 528,
+            "depth": 0
+          }
+        },
+        {
+          "name": "RenderPurge",
+          "start": 534,
+          "end": 535,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "PurgeAsync",
+          "start": 537,
+          "end": 539,
+          "codeLines": 3,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompilePurge",
+          "start": 541,
+          "end": 543,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderPurge",
+          "start": 545,
+          "end": 547,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "PurgeAsync",
+          "start": 549,
+          "end": 551,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileRestore",
+          "start": 553,
+          "end": 555,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderRestore",
+          "start": 557,
+          "end": 559,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RestoreAsync",
+          "start": 561,
+          "end": 563,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileWrite",
+          "start": 565,
+          "end": 565,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileQueryWrite",
+          "start": 567,
+          "end": 567,
+          "codeLines": 1,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RefuseClauses",
+          "start": 569,
+          "end": 569,
+          "codeLines": 1,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Bind",
+          "start": 577,
+          "end": 577,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileSelect",
+          "start": 579,
+          "end": 579,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RenderSelect",
+          "start": 581,
+          "end": 581,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Definition",
+          "start": 583,
+          "end": 590,
+          "codeLines": 8,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 584,
+            "depth": 0
+          }
+        },
+        {
+          "name": "BuildView",
+          "start": 598,
+          "end": 599,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "AsView",
+          "start": 601,
+          "end": 606,
+          "codeLines": 6,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 602,
+            "depth": 0
+          }
+        },
+        {
+          "name": "GraphSnapshot",
+          "start": 608,
+          "end": 614,
+          "codeLines": 7,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "GraphFirstSnapshot",
+          "start": 616,
+          "end": 623,
+          "codeLines": 8,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "BuildSelect",
+          "start": 625,
+          "end": 625,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CompileTree",
+          "start": 627,
+          "end": 628,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "SelectedColumns",
+          "start": 630,
+          "end": 630,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/EagerBehavior.cs",
+      "types": [],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/IPolicyOperation.cs",
+      "types": [
+        {
+          "kind": "InterfaceDeclaration",
+          "name": "IPolicyOperation",
+          "start": 3,
+          "end": 10,
+          "codeLines": 8,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "RootsAsync",
+          "start": 6,
+          "end": 6,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Node",
+          "start": 7,
+          "end": 7,
+          "codeLines": 1,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/IPolicySession.cs",
+      "types": [
+        {
+          "kind": "InterfaceDeclaration",
+          "name": "IPolicySession",
+          "start": 3,
+          "end": 9,
+          "codeLines": 7,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Operation",
+          "start": 6,
+          "end": 6,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Seed",
+          "start": 7,
+          "end": 7,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Remember",
+          "start": 8,
+          "end": 8,
+          "codeLines": 1,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/LoadingScope.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "LoadingScope",
+          "start": 6,
+          "end": 111,
+          "codeLines": 92,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 15,
+          "end": 29,
+          "codeLines": 15,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "CatchClause",
+              "line": 26
+            }
+          ],
+          "nesting": {
+            "line": 22,
+            "depth": 1
+          }
+        },
+        {
+          "name": "OpenAsync",
+          "start": 31,
+          "end": 42,
+          "codeLines": 12,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "CatchClause",
+              "line": 41
+            }
+          ],
+          "nesting": {
+            "line": 37,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Bind",
+          "start": 44,
+          "end": 55,
+          "codeLines": 12,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 48
+            }
+          ],
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Bind",
+          "start": 57,
+          "end": 66,
+          "codeLines": 10,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 59,
+            "depth": 0
+          }
+        },
+        {
+          "name": "LoadAsync",
+          "start": 68,
+          "end": 69,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RetryAsync",
+          "start": 71,
+          "end": 72,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "State",
+          "start": 74,
+          "end": 75,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Detach",
+          "start": 77,
+          "end": 77,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "ValidateOptions",
+          "start": 79,
+          "end": 84,
+          "codeLines": 6,
+          "parameters": 2,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 82
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 82
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 82
+            }
+          ],
+          "nesting": {
+            "line": 80,
+            "depth": 0
+          }
+        },
+        {
+          "name": "OnStateChange",
+          "start": 86,
+          "end": 90,
+          "codeLines": 5,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 88
+            }
+          ],
+          "nesting": {
+            "line": 87,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CloseFromOwnerAsync",
+          "start": 92,
+          "end": 92,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "CloseAsync",
+          "start": 94,
+          "end": 97,
+          "codeLines": 4,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 95,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CloseCoreAsync",
+          "start": 99,
+          "end": 108,
+          "codeLines": 10,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 107
+            }
+          ],
+          "nesting": {
+            "line": 100,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DisposeAsync",
+          "start": 110,
+          "end": 110,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/LoadingScopeOptions.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "LoadingScopeOptions",
+          "start": 3,
+          "end": 3,
+          "codeLines": 1,
+          "primaryParameters": 3
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyAttachment.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyAttachment",
+          "start": 3,
+          "end": 25,
+          "codeLines": 21,
+          "primaryParameters": 3
+        }
+      ],
+      "methods": [
+        {
+          "name": "SourceKey",
+          "start": 15,
+          "end": 16,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 15
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "Validate",
+          "start": 18,
+          "end": 24,
+          "codeLines": 7,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 20
+            },
+            {
+              "kind": "IfStatement",
+              "line": 21
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 21
+            }
+          ],
+          "nesting": {
+            "line": 19,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyBoundFirstReader.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyBoundFirstReader",
+          "start": 5,
+          "end": 40,
+          "codeLines": 35,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ReadAsync",
+          "start": 7,
+          "end": 19,
+          "codeLines": 13,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Bind",
+          "start": 21,
+          "end": 39,
+          "codeLines": 19,
+          "parameters": 3,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 24
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 24
+            },
+            {
+              "kind": "IfStatement",
+              "line": 27
+            },
+            {
+              "kind": "IfStatement",
+              "line": 29
+            },
+            {
+              "kind": "IfStatement",
+              "line": 32
+            }
+          ],
+          "nesting": {
+            "line": 28,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyDemand.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyDemand",
+          "start": 3,
+          "end": 7,
+          "codeLines": 5,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyDemandRunner.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyDemandRunner",
+          "start": 3,
+          "end": 20,
+          "codeLines": 18,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "RunAsync",
+          "start": 5,
+          "end": 19,
+          "codeLines": 15,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 12
+            }
+          ],
+          "nesting": {
+            "line": 6,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 14,
+          "length": 121
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyDemandWork.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "PolicyDemandWork",
+          "start": 3,
+          "end": 4,
+          "codeLines": 2,
+          "primaryParameters": 4
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyFrontier.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "PolicyFrontier",
+          "start": 3,
+          "end": 4,
+          "codeLines": 2,
+          "primaryParameters": 4
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyKnownEntity.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyKnownEntity",
+          "start": 3,
+          "end": 14,
+          "codeLines": 11,
+          "primaryParameters": 2
+        }
+      ],
+      "methods": [
+        {
+          "name": "Seed",
+          "start": 9,
+          "end": 13,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 11
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 11
+            }
+          ],
+          "nesting": {
+            "line": 10,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyLifetime.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyLifetime",
+          "start": 3,
+          "end": 28,
+          "codeLines": 22,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Add",
+          "start": 11,
+          "end": 18,
+          "codeLines": 8,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 15
+            }
+          ],
+          "nesting": {
+            "line": 14,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Remove",
+          "start": 20,
+          "end": 20,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 20,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CloseAsync",
+          "start": 22,
+          "end": 27,
+          "codeLines": 6,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 25,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyLimits.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyLimits",
+          "start": 3,
+          "end": 10,
+          "codeLines": 8,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Intersect",
+          "start": 5,
+          "end": 9,
+          "codeLines": 5,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": [
+        {
+          "line": 8,
+          "length": 121
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyMaterializer.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyMaterializer",
+          "start": 6,
+          "end": 27,
+          "codeLines": 21,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "GetAsync",
+          "start": 8,
+          "end": 15,
+          "codeLines": 8,
+          "parameters": 5,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 10,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Linked",
+          "start": 17,
+          "end": 26,
+          "codeLines": 10,
+          "parameters": 4,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 22
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 22
+            }
+          ],
+          "nesting": {
+            "line": 19,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyModel.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyModel",
+          "start": 3,
+          "end": 12,
+          "codeLines": 9,
+          "primaryParameters": 2
+        }
+      ],
+      "methods": [
+        {
+          "name": "Equivalent",
+          "start": 10,
+          "end": 11,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "LogicalAndExpression",
+              "line": 10
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 10
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 11
+            }
+          ],
+          "nesting": null
+        }
+      ],
+      "longLines": [
+        {
+          "line": 3,
+          "length": 123
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyOperation.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyOperation",
+          "start": 3,
+          "end": 15,
+          "codeLines": 11,
+          "primaryParameters": 2
+        }
+      ],
+      "methods": [
+        {
+          "name": "Node",
+          "start": 10,
+          "end": 11,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "RootsAsync",
+          "start": 13,
+          "end": 14,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyOriginWitness.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyOriginWitness",
+          "start": 6,
+          "end": 44,
+          "codeLines": 35,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 13,
+          "end": 18,
+          "codeLines": 6,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 17
+            }
+          ],
+          "nesting": {
+            "line": 14,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Observe",
+          "start": 20,
+          "end": 24,
+          "codeLines": 5,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 22
+            }
+          ],
+          "nesting": {
+            "line": 21,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Require",
+          "start": 26,
+          "end": 41,
+          "codeLines": 16,
+          "parameters": 3,
+          "complexity": 13,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 28
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 28
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 28
+            },
+            {
+              "kind": "IfStatement",
+              "line": 30
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 30
+            },
+            {
+              "kind": "IfStatement",
+              "line": 32
+            },
+            {
+              "kind": "IfStatement",
+              "line": 33
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 33
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 33
+            },
+            {
+              "kind": "IfStatement",
+              "line": 36
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 36
+            },
+            {
+              "kind": "CatchClause",
+              "line": 39
+            }
+          ],
+          "nesting": {
+            "line": 35,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Invalid",
+          "start": 43,
+          "end": 43,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyOrigins.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyOrigins",
+          "start": 6,
+          "end": 30,
+          "codeLines": 23,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Record",
+          "start": 11,
+          "end": 20,
+          "codeLines": 10,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 15
+            }
+          ],
+          "nesting": {
+            "line": 14,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Require",
+          "start": 22,
+          "end": 29,
+          "codeLines": 8,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 26
+            }
+          ],
+          "nesting": {
+            "line": 25,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 26,
+          "length": 123
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyPlainReader.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyPlainReader",
+          "start": 3,
+          "end": 28,
+          "codeLines": 25,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ReadAsync",
+          "start": 5,
+          "end": 12,
+          "codeLines": 8,
+          "parameters": 2,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 7
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 7
+            },
+            {
+              "kind": "IfStatement",
+              "line": 9
+            }
+          ],
+          "nesting": {
+            "line": 6,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ReadBoundAsync",
+          "start": 14,
+          "end": 27,
+          "codeLines": 14,
+          "parameters": 3,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 21
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 22
+            },
+            {
+              "kind": "WhileStatement",
+              "line": 25
+            }
+          ],
+          "nesting": {
+            "line": 16,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyPreflight.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyPreflight",
+          "start": 3,
+          "end": 22,
+          "codeLines": 20,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Validate",
+          "start": 5,
+          "end": 21,
+          "codeLines": 17,
+          "parameters": 2,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "WhileStatement",
+              "line": 10
+            },
+            {
+              "kind": "IfStatement",
+              "line": 12
+            },
+            {
+              "kind": "IfStatement",
+              "line": 14
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 15
+            }
+          ],
+          "nesting": {
+            "line": 16,
+            "depth": 2
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyPublication.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "PolicyPublication",
+          "start": 3,
+          "end": 6,
+          "codeLines": 4,
+          "primaryParameters": 4
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyReadHooks.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyReadHooks",
+          "start": 3,
+          "end": 8,
+          "codeLines": 6,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyReader.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyReader",
+          "start": 3,
+          "end": 55,
+          "codeLines": 49,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "RowsAsync",
+          "start": 5,
+          "end": 6,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "FirstAsync",
+          "start": 8,
+          "end": 12,
+          "codeLines": 5,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 9,
+            "depth": 0
+          }
+        },
+        {
+          "name": "SnapshotAsync",
+          "start": 14,
+          "end": 15,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "ReadAsync",
+          "start": 17,
+          "end": 33,
+          "codeLines": 17,
+          "parameters": 3,
+          "complexity": 9,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 20
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 20
+            },
+            {
+              "kind": "IfStatement",
+              "line": 24
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 24
+            },
+            {
+              "kind": "CoalesceExpression",
+              "line": 25
+            },
+            {
+              "kind": "IfStatement",
+              "line": 26
+            },
+            {
+              "kind": "IfStatement",
+              "line": 27
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 29
+            }
+          ],
+          "nesting": {
+            "line": 19,
+            "depth": 0
+          }
+        },
+        {
+          "name": "InScopeAsync",
+          "start": 35,
+          "end": 54,
+          "codeLines": 20,
+          "parameters": 5,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 45
+            },
+            {
+              "kind": "IfStatement",
+              "line": 49
+            }
+          ],
+          "nesting": {
+            "line": 41,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyRegistryLease.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyRegistryLease",
+          "start": 3,
+          "end": 10,
+          "codeLines": 8,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Dispose",
+          "start": 6,
+          "end": 9,
+          "codeLines": 4,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 8
+            }
+          ],
+          "nesting": {
+            "line": 7,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicySession.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicySession",
+          "start": 3,
+          "end": 18,
+          "codeLines": 12,
+          "primaryParameters": 2
+        }
+      ],
+      "methods": [
+        {
+          "name": "Operation",
+          "start": 9,
+          "end": 10,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Remember",
+          "start": 12,
+          "end": 12,
+          "codeLines": 1,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Seed",
+          "start": 14,
+          "end": 17,
+          "codeLines": 4,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 16
+            }
+          ],
+          "nesting": {
+            "line": 15,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 12,
+          "length": 123
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyTraversal.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyTraversal",
+          "start": 3,
+          "end": 52,
+          "codeLines": 46,
+          "primaryParameters": 1
+        }
+      ],
+      "methods": [
+        {
+          "name": "EagerAsync",
+          "start": 10,
+          "end": 19,
+          "codeLines": 10,
+          "parameters": 2,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "WhileStatement",
+              "line": 13
+            },
+            {
+              "kind": "IfStatement",
+              "line": 16
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 17
+            }
+          ],
+          "nesting": {
+            "line": 14,
+            "depth": 1
+          }
+        },
+        {
+          "name": "EdgeAsync",
+          "start": 21,
+          "end": 34,
+          "codeLines": 14,
+          "parameters": 2,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 24
+            },
+            {
+              "kind": "IfStatement",
+              "line": 26
+            },
+            {
+              "kind": "IfStatement",
+              "line": 28
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 28
+            },
+            {
+              "kind": "IfStatement",
+              "line": 33
+            }
+          ],
+          "nesting": {
+            "line": 22,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Visit",
+          "start": 36,
+          "end": 40,
+          "codeLines": 5,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 38
+            }
+          ],
+          "nesting": {
+            "line": 37,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DemandAsync",
+          "start": 42,
+          "end": 51,
+          "codeLines": 10,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "WhileStatement",
+              "line": 45
+            },
+            {
+              "kind": "IfStatement",
+              "line": 48
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 49
+            }
+          ],
+          "nesting": {
+            "line": 46,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 33,
+          "length": 121
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/RelationLoading/PolicyWork.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "PolicyWork",
+          "start": 3,
+          "end": 41,
+          "codeLines": 35,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 12,
+          "end": 21,
+          "codeLines": 10,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 13,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Stage",
+          "start": 23,
+          "end": 24,
+          "codeLines": 2,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Track",
+          "start": 26,
+          "end": 27,
+          "codeLines": 2,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 27
+            }
+          ],
+          "nesting": {
+            "line": 27,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Publish",
+          "start": 29,
+          "end": 40,
+          "codeLines": 12,
+          "parameters": 1,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 35
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 36
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 37
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 38
+            }
+          ],
+          "nesting": {
+            "line": 32,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationLoadAttribute.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "RelationLoadAttribute",
+          "start": 3,
+          "end": 7,
+          "codeLines": 5,
+          "primaryParameters": 1
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationLoadLimitsAttribute.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "RelationLoadLimitsAttribute",
+          "start": 3,
+          "end": 12,
+          "codeLines": 10,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationLoadMode.cs",
+      "types": [],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationLoadSnapshot.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "RelationLoadSnapshot",
+          "start": 3,
+          "end": 3,
+          "codeLines": 1,
+          "primaryParameters": 2
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationLoadState.cs",
+      "types": [],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationPolicies.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "RelationPolicies",
+          "start": 3,
+          "end": 50,
+          "codeLines": 42,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "Register",
+          "start": 9,
+          "end": 25,
+          "codeLines": 17,
+          "parameters": 2,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 14
+            },
+            {
+              "kind": "IfStatement",
+              "line": 16
+            },
+            {
+              "kind": "IfStatement",
+              "line": 19
+            }
+          ],
+          "nesting": {
+            "line": 15,
+            "depth": 2
+          }
+        },
+        {
+          "name": "Build",
+          "start": 27,
+          "end": 39,
+          "codeLines": 13,
+          "parameters": 2,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 30
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 30
+            },
+            {
+              "kind": "ForEachStatement",
+              "line": 33
+            },
+            {
+              "kind": "IfStatement",
+              "line": 35
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 35
+            }
+          ],
+          "nesting": {
+            "line": 34,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Enter",
+          "start": 41,
+          "end": 42,
+          "codeLines": 2,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 42,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Exit",
+          "start": 44,
+          "end": 44,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 44,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Find",
+          "start": 46,
+          "end": 47,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 47,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Invalid",
+          "start": 49,
+          "end": 49,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationPolicy.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "RelationPolicy",
+          "start": 3,
+          "end": 16,
+          "codeLines": 13,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 5,
+          "end": 5,
+          "codeLines": 1,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 5,
+            "depth": 0
+          }
+        },
+        {
+          "name": "For",
+          "start": 9,
+          "end": 15,
+          "codeLines": 7,
+          "parameters": 2,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 12
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 12
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 12
+            }
+          ],
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationQueryExtensions.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "RelationQueryExtensions",
+          "start": 3,
+          "end": 13,
+          "codeLines": 10,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ToListAsync",
+          "start": 5,
+          "end": 6,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "FirstOrDefaultAsync",
+          "start": 8,
+          "end": 9,
+          "codeLines": 2,
+          "parameters": 3,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "FirstOrDefaultAsync",
+          "start": 10,
+          "end": 12,
+          "codeLines": 3,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": [
+        {
+          "line": 11,
+          "length": 121
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationReadOptions.cs",
+      "types": [
+        {
+          "kind": "RecordDeclaration",
+          "name": "RelationReadOptions",
+          "start": 3,
+          "end": 3,
+          "codeLines": 1,
+          "primaryParameters": 2
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationScopeError.cs",
+      "types": [],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/RelationScopeException.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "RelationScopeException",
+          "start": 3,
+          "end": 11,
+          "codeLines": 8,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 5,
+          "end": 7,
+          "codeLines": 3,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 6
+            }
+          ],
+          "nesting": {
+            "line": 7,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/ScopeAttachments.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "ScopeAttachments",
+          "start": 5,
+          "end": 128,
+          "codeLines": 112,
+          "primaryParameters": 1
+        }
+      ],
+      "methods": [
+        {
+          "name": "Attach",
+          "start": 9,
+          "end": 14,
+          "codeLines": 6,
+          "parameters": 3,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 11
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 11
+            }
+          ],
+          "nesting": {
+            "line": 10,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Get",
+          "start": 16,
+          "end": 17,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 16
+            }
+          ],
+          "nesting": null
+        },
+        {
+          "name": "State",
+          "start": 19,
+          "end": 29,
+          "codeLines": 11,
+          "parameters": 2,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 26
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 27
+            }
+          ],
+          "nesting": {
+            "line": 24,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Detach",
+          "start": 31,
+          "end": 36,
+          "codeLines": 6,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 34,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Invalidate",
+          "start": 38,
+          "end": 42,
+          "codeLines": 5,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 41
+            }
+          ],
+          "nesting": {
+            "line": 41,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Published",
+          "start": 44,
+          "end": 52,
+          "codeLines": 9,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 47
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 50
+            },
+            {
+              "kind": "IfStatement",
+              "line": 51
+            }
+          ],
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Demand",
+          "start": 54,
+          "end": 76,
+          "codeLines": 23,
+          "parameters": 4,
+          "complexity": 6,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 65
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 65
+            },
+            {
+              "kind": "IfStatement",
+              "line": 67
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 67
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 67
+            }
+          ],
+          "nesting": {
+            "line": 61,
+            "depth": 1
+          }
+        },
+        {
+          "name": "RunDemandAsync",
+          "start": 78,
+          "end": 96,
+          "codeLines": 19,
+          "parameters": 3,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "CatchClause",
+              "line": 86
+            },
+            {
+              "kind": "CatchClause",
+              "line": 91
+            }
+          ],
+          "nesting": {
+            "line": 82,
+            "depth": 1
+          }
+        },
+        {
+          "name": "SourceKey",
+          "start": 98,
+          "end": 106,
+          "codeLines": 9,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 102
+            }
+          ],
+          "nesting": {
+            "line": 101,
+            "depth": 1
+          }
+        },
+        {
+          "name": "ValidateKnown",
+          "start": 108,
+          "end": 112,
+          "codeLines": 5,
+          "parameters": 1,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 111
+            }
+          ],
+          "nesting": {
+            "line": 109,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Validate",
+          "start": 114,
+          "end": 119,
+          "codeLines": 6,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 118
+            }
+          ],
+          "nesting": {
+            "line": 115,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Edge",
+          "start": 121,
+          "end": 127,
+          "codeLines": 7,
+          "parameters": 1,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 124
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 124
+            }
+          ],
+          "nesting": {
+            "line": 123,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/ScopeBinding.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "ScopeBinding",
+          "start": 6,
+          "end": 36,
+          "codeLines": 29,
+          "primaryParameters": 4
+        }
+      ],
+      "methods": [
+        {
+          "name": "Validate",
+          "start": 16,
+          "end": 26,
+          "codeLines": 11,
+          "parameters": 0,
+          "complexity": 10,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 20
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 20
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 20
+            },
+            {
+              "kind": "IfStatement",
+              "line": 22
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 22
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 22
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 22
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 22
+            },
+            {
+              "kind": "CatchClause",
+              "line": 25
+            }
+          ],
+          "nesting": {
+            "line": 19,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Match",
+          "start": 28,
+          "end": 35,
+          "codeLines": 8,
+          "parameters": 1,
+          "complexity": 5,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 30
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 30
+            },
+            {
+              "kind": "LogicalAndExpression",
+              "line": 31
+            },
+            {
+              "kind": "LogicalOrExpression",
+              "line": 31
+            }
+          ],
+          "nesting": {
+            "line": 29,
+            "depth": 0
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 22,
+          "length": 153
+        }
+      ]
+    },
+    {
+      "file": "src/Runtime/RelationLoading/ScopeClock.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "ScopeClock",
+          "start": 5,
+          "end": 33,
+          "codeLines": 24,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 12,
+          "end": 17,
+          "codeLines": 6,
+          "parameters": 2,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 13,
+            "depth": 0
+          }
+        },
+        {
+          "name": "Start",
+          "start": 19,
+          "end": 19,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "Tick",
+          "start": 23,
+          "end": 30,
+          "codeLines": 8,
+          "parameters": 1,
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 26
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 27
+            },
+            {
+              "kind": "CatchClause",
+              "line": 29
+            }
+          ],
+          "nesting": {
+            "line": 26,
+            "depth": 1
+          }
+        },
+        {
+          "name": "Dispose",
+          "start": 32,
+          "end": 32,
+          "codeLines": 1,
+          "parameters": 0,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/RelationLoading/ScopeScheduler.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "ScopeScheduler",
+          "start": 3,
+          "end": 61,
+          "codeLines": 53,
+          "primaryParameters": 1
+        }
+      ],
+      "methods": [
+        {
+          "name": "Validate",
+          "start": 14,
+          "end": 19,
+          "codeLines": 6,
+          "parameters": 0,
+          "complexity": 3,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 16
+            },
+            {
+              "kind": "IfStatement",
+              "line": 17
+            }
+          ],
+          "nesting": {
+            "line": 15,
+            "depth": 0
+          }
+        },
+        {
+          "name": "RunAsync",
+          "start": 21,
+          "end": 32,
+          "codeLines": 12,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 27
+            }
+          ],
+          "nesting": {
+            "line": 25,
+            "depth": 1
+          }
+        },
+        {
+          "name": "RunCoreAsync",
+          "start": 34,
+          "end": 52,
+          "codeLines": 19,
+          "parameters": 3,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 48
+            }
+          ],
+          "nesting": {
+            "line": 40,
+            "depth": 1
+          }
+        },
+        {
+          "name": "CloseAsync",
+          "start": 54,
+          "end": 60,
+          "codeLines": 7,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 57,
+            "depth": 1
+          }
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "src/Runtime/UnitOfWork.cs",
+      "types": [
+        {
+          "kind": "ClassDeclaration",
+          "name": "UnitOfWork",
+          "start": 10,
+          "end": 139,
+          "codeLines": 115,
+          "primaryParameters": null
+        }
+      ],
+      "methods": [
+        {
+          "name": "ConstructorDeclaration",
+          "start": 24,
+          "end": 31,
+          "codeLines": 8,
+          "parameters": 4,
+          "complexity": 1,
+          "points": [],
+          "nesting": {
+            "line": 25,
+            "depth": 0
+          }
+        },
+        {
+          "name": "BeginAsync",
+          "start": 33,
+          "end": 50,
+          "codeLines": 18,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "CatchClause",
+              "line": 45
+            }
+          ],
+          "nesting": {
+            "line": 38,
+            "depth": 1
+          }
+        },
+        {
+          "name": "IsOpenOn",
+          "start": 74,
+          "end": 74,
+          "codeLines": 1,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "LockAsync",
+          "start": 76,
+          "end": 77,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "LockSharedAsync",
+          "start": 79,
+          "end": 80,
+          "codeLines": 2,
+          "parameters": 1,
+          "complexity": 1,
+          "points": [],
+          "nesting": null
+        },
+        {
+          "name": "LockCoreAsync",
+          "start": 82,
+          "end": 94,
+          "codeLines": 13,
+          "parameters": 2,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ForEachStatement",
+              "line": 91
+            }
+          ],
+          "nesting": {
+            "line": 83,
+            "depth": 0
+          }
+        },
+        {
+          "name": "CommitAsync",
+          "start": 96,
+          "end": 108,
+          "codeLines": 13,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 99
+            }
+          ],
+          "nesting": {
+            "line": 97,
+            "depth": 0
+          }
+        },
+        {
+          "name": "ReleaseAsync",
+          "start": 110,
+          "end": 114,
+          "codeLines": 5,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 113
+            }
+          ],
+          "nesting": {
+            "line": 111,
+            "depth": 0
+          }
+        },
+        {
+          "name": "DisposeAsync",
+          "start": 116,
+          "end": 138,
+          "codeLines": 23,
+          "parameters": 0,
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 118
+            }
+          ],
+          "nesting": {
+            "line": 130,
+            "depth": 2
+          }
+        }
+      ],
+      "longLines": [
+        {
+          "line": 24,
+          "length": 124
+        }
+      ]
+    }
+  ]
+}
