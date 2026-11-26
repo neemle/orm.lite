@@ -323,7 +323,7 @@ namespace Neemle.OrmLite;
         public async Task<List<TOut>> ProjectionAsync<TOut>(Func<DbDataReader, TOut> map) =>
             await _exec.RowsAsync(CompileProjection(), map);
 
-        public Task<T?> FirstOrDefaultAsync() => OneToOneReadMap.FirstAsync(_exec,
+        public async Task<T?> FirstOrDefaultAsync() => await OneToOneReadMap.FirstAsync(_exec,
             CompileTree(_select.BuildFirst(SelectedColumns(), WhereNode(), lockRows: true)),
             _map, _state.Redactions.Count != 0);
 
