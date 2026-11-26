@@ -1,3 +1,4 @@
+using Neemle.OrmLite.Nodes;
 using Xunit;
 
 namespace Neemle.OrmLite.Tests.ForeignKeys.Sdet;
@@ -6,7 +7,7 @@ internal static class SdetUpdateWitness
 {
     internal static async Task VerifyAsync(ForeignKeyDatabase database)
     {
-        var model = ForeignKeyEnforcement.Model(Nodes.ReferentialAction.SetNull);
+        var model = ForeignKeyEnforcement.Model(ReferentialAction.SetNull);
         await database.Context.MigrateAsync(model.Contributions);
         var first = Guid.NewGuid();
         var second = Guid.NewGuid();
