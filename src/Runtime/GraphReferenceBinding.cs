@@ -16,11 +16,14 @@ public sealed class GraphReferenceBinding<TSource, TTarget, TKey> : GraphNavigat
         Require(!string.IsNullOrWhiteSpace(navigation) && !string.IsNullOrWhiteSpace(sourceForeignKeyColumn));
     }
 
+    internal override object CaptureSourceKey(TSource source) => _key(source);
+
     internal override Type Target => typeof(TTarget);
     internal override string Navigation { get; }
     internal override string SourceColumn { get; }
     internal override string? TargetColumn => null;
     internal override Type SourceKeyType => typeof(TKey);
+
     internal override Type TargetKeyType => typeof(TKey);
 
     internal override bool Equivalent(IGraphNavigationBinding other) =>
@@ -45,8 +48,10 @@ public sealed class GraphReferenceBinding<TSource, TTarget, TKey> : GraphNavigat
         var byKey = rows.Distinct(ReferenceEqualityComparer.Instance).ToDictionary(
             node.Target.Binding.Key, GraphFrontier.Typed<TTarget>, node.Target.Binding.Comparer);
         foreach (var member in memberships)
-            _assign(member.Parent, member.Key.HasValue && byKey.TryGetValue(member.Key.Value, out var target)
-                ? target : null);
+        {
+            var value = member.Key.HasValue && byKey.TryGetValue(member.Key.Value, out var target) ? target : null;
+            context.Assign(member.Parent, this, value, () => _assign(member.Parent, value));
+        }
         return rows.Distinct(ReferenceEqualityComparer.Instance).ToList();
     }
 }

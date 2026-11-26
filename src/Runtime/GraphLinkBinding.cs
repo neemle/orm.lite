@@ -17,11 +17,14 @@ public sealed class GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey> :
             && !string.IsNullOrWhiteSpace(source.SourceColumn) && !string.IsNullOrWhiteSpace(source.TargetColumn));
     }
 
+    internal override object CaptureSourceKey(TSource source) => _sourceKey(source);
+
     internal override Type Target => typeof(TTarget);
     internal override string Navigation { get; }
     internal override string? SourceColumn => null;
     internal override string? TargetColumn => null;
     internal override Type SourceKeyType => typeof(TSourceKey);
+
     internal override Type TargetKeyType => typeof(TTargetKey);
     internal override GraphLinkSource Link { get; }
 
@@ -46,8 +49,11 @@ public sealed class GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey> :
             node.Target.Binding.Key, GraphFrontier.Typed<TTarget>, node.Target.Binding.Comparer);
         var groups = links.ToLookup(p => p.Source, p => p.Target);
         foreach (var source in sources)
-            _assign(source, groups[_sourceKey(source)].Distinct().Where(k => targets.ContainsKey(k))
-                .Select(k => targets[k]).ToList());
+        {
+            var value = groups[_sourceKey(source)].Distinct().Where(k => targets.ContainsKey(k))
+                .Select(k => targets[k]).ToList();
+            context.Assign(source, this, value, () => _assign(source, value));
+        }
         return rows.Distinct(ReferenceEqualityComparer.Instance).ToList();
     }
 }

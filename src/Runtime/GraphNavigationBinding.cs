@@ -10,6 +10,7 @@ public abstract class GraphNavigationBinding<TSource> : IGraphNavigationBinding 
     internal abstract Type SourceKeyType { get; }
     internal abstract Type TargetKeyType { get; }
     internal virtual GraphLinkSource? Link => null;
+    internal abstract object? CaptureSourceKey(TSource source);
     internal abstract bool Equivalent(IGraphNavigationBinding other);
     internal abstract void Validate(IGraphEntityBinding source, IGraphEntityBinding target);
     internal abstract Task<List<object>> LoadAsync(GraphReadContext context,
@@ -23,6 +24,8 @@ public abstract class GraphNavigationBinding<TSource> : IGraphNavigationBinding 
     Type IGraphNavigationBinding.SourceKeyType => SourceKeyType;
     Type IGraphNavigationBinding.TargetKeyType => TargetKeyType;
     GraphLinkSource? IGraphNavigationBinding.Link => Link;
+    object? IGraphNavigationBinding.CaptureSourceKey(object source) =>
+        CaptureSourceKey(GraphFrontier.Typed<TSource>(source));
     bool IGraphNavigationBinding.Equivalent(IGraphNavigationBinding other) => Equivalent(other);
     void IGraphNavigationBinding.Validate(IGraphEntityBinding source, IGraphEntityBinding target) =>
         Validate(source, target);

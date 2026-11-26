@@ -16,6 +16,8 @@ public sealed class UnitOfWork : IAsyncDisposable
     private readonly ISqlProvider _provider;
     private IAsyncDisposable? _release;
     private readonly TransactionTrace? _trace;
+    internal PolicyLifetime PolicyLifetime { get; } = new();
+
     private bool _committed;
     private bool _disposed;
 
@@ -36,6 +38,7 @@ public sealed class UnitOfWork : IAsyncDisposable
         {
             var started = await context.Provider.BeginTransactionAsync(connection, context.DataSource, ct);
             s_open.AddOrUpdate(connection, started);
+            PolicyOrigins.Record(connection, context);
             return new UnitOfWork(connection, started, context.Provider, TransactionTrace.Begin(connection));
         }
         catch
@@ -96,6 +99,7 @@ public sealed class UnitOfWork : IAsyncDisposable
             throw new InvalidOperationException(
                 "this unit of work has already been committed; a second commit would silently succeed "
                 + "against a transaction that no longer exists and hide a double-run of the composition.");
+        await PolicyLifetime.CloseAsync();
         await _transaction.CommitAsync();
         _committed = true;
         _trace?.Commit();
@@ -112,6 +116,7 @@ public sealed class UnitOfWork : IAsyncDisposable
     {
         if (_disposed) return;
         _disposed = true;
+        await PolicyLifetime.CloseAsync();
         try
         {
             _trace?.Dispose();

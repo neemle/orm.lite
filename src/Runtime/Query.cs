@@ -259,7 +259,9 @@ namespace Neemle.OrmLite;
             new Group(_translator.Predicate(selector.Parameters[0], selector.Body));
 
         public async Task<List<T>> ToListAsync() =>
-            await _exec.RowsAsync(CompileSelect(), _map);
+            PolicyReadHooks<T>.Rows is { } policy
+                ? await policy(this, new RelationReadOptions(), default)
+                : await _exec.RowsAsync(CompileSelect(), _map);
 
         public async Task<List<TOut>> ProjectAsync<TOut>(
             IReadOnlyList<Expression<Func<T, object?>>> columns,
@@ -302,6 +304,8 @@ namespace Neemle.OrmLite;
 
         public async Task<T?> FirstOrDefaultAsync()
         {
+            if (PolicyReadHooks<T>.First is { } policy)
+                return await policy(this, new RelationReadOptions(), default);
             var rows = await _exec.RowsAsync(
                 CompileTree(_select.BuildFirst(SelectedColumns(), WhereNode(), lockRows: true)), _map);
             return rows.Count > 0 ? rows[0] : default;
@@ -602,6 +606,15 @@ namespace Neemle.OrmLite;
         }
 
         internal GraphQueryState<T> GraphSnapshot() => new(_db, BuildSelect(), _map)
+        {
+            Connection = _exec.GraphConnection,
+            Transaction = _exec.GraphTransaction,
+            Masks = new Dictionary<string, Node>(_state.Redactions),
+            Unsupported = _projection.Count != 0,
+        };
+
+        internal GraphQueryState<T> GraphFirstSnapshot() => new(_db,
+            _select.BuildFirst(SelectedColumns(), WhereNode(), lockRows: true), _map)
         {
             Connection = _exec.GraphConnection,
             Transaction = _exec.GraphTransaction,

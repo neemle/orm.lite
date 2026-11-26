@@ -12,6 +12,8 @@ namespace Neemle.OrmLite;
     {
         private readonly IReadOnlyList<IAsyncDisposable> _owned;
 
+        internal PolicyLifetime PolicyLifetime { get; } = new();
+
         public DbDataSource DataSource { get; }
         public ISqlProvider Provider { get; }
         internal static OrmContext Detached(ISqlProvider provider) => new(null!, provider, []);
@@ -53,6 +55,7 @@ namespace Neemle.OrmLite;
 
         public async ValueTask DisposeAsync()
         {
+            await PolicyLifetime.CloseAsync();
             foreach (var owned in _owned) await owned.DisposeAsync();
         }
 

@@ -18,11 +18,14 @@ internal static class GraphExecutor
     private static async Task<List<T>> ReadAsync<T>(GraphExecutionPlan<T> plan, GraphReadContext context)
         where T : class
     {
-        var roots = await GraphStatementRunner.ReadAsync(context, plan.RootStatement,
-            reader => GraphFrontier.Typed<T>(context.Identity.Intern(plan.Root.Binding, plan.Query.Map(reader))), true);
+        var roots = await ReadRootsAsync(plan, context);
         if (roots.Count != 0) await ExpandAsync(context, plan.Children, roots.Cast<object>().ToList());
         return roots;
     }
+
+    internal static Task<List<T>> ReadRootsAsync<T>(GraphExecutionPlan<T> plan, GraphReadContext context)
+        where T : class => GraphStatementRunner.ReadAsync(context, plan.RootStatement,
+            reader => GraphFrontier.Typed<T>(context.Identity.Intern(plan.Root.Binding, plan.Query.Map(reader))), true);
 
     private static async Task ExpandAsync(GraphReadContext context, IEnumerable<GraphPlanNode> nodes,
         IReadOnlyList<object> parents)
