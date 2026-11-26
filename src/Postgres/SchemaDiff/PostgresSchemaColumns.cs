@@ -15,7 +15,7 @@ internal static class PostgresSchemaColumns
         LEFT JOIN pg_catalog.pg_attrdef d ON d.adrelid=a.attrelid AND d.adnum=a.attnum
         LEFT JOIN pg_catalog.pg_collation co ON co.oid=a.attcollation
         LEFT JOIN pg_catalog.pg_namespace cn ON cn.oid=co.collnamespace
-        WHERE a.attrelid=@relation AND a.attnum>0 AND NOT a.attisdropped ORDER BY a.attnum
+        WHERE a.attrelid=CAST(@relation AS oid) AND a.attnum>0 AND NOT a.attisdropped ORDER BY a.attnum
         """;
 
     internal static async Task<IReadOnlyList<SchemaObservedColumn>> ReadAsync(

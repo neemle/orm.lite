@@ -1,8 +1,8 @@
-using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace Neemle.OrmLite.Postgres;
 
-internal static partial class PostgresSchemaTypes
+internal static class PostgresSchemaTypes
 {
     private static readonly HashSet<string> Plain = new(StringComparer.Ordinal)
     {
@@ -12,9 +12,18 @@ internal static partial class PostgresSchemaTypes
     internal static SchemaFact<SchemaStorageType> Parse(string native)
     {
         if (Plain.Contains(native)) return SchemaFact<SchemaStorageType>.Known(new(native, null, null));
-        var match = Numeric().Match(native);
-        if (match.Success && int.TryParse(match.Groups[1].Value, out var precision)
-            && int.TryParse(match.Groups[2].Value, out var scale) && precision > 0 && scale >= 0 && scale <= precision)
+        if (native.StartsWith("numeric(", StringComparison.Ordinal) && native.EndsWith(')'))
+            return Numeric(native[8..^1]);
+        return SchemaFact<SchemaStorageType>.Unsupported("native-type-grammar");
+    }
+
+    private static SchemaFact<SchemaStorageType> Numeric(string shape)
+    {
+        var parts = shape.Split(',');
+        if (parts.Length == 2
+            && int.TryParse(parts[0], NumberStyles.None, CultureInfo.InvariantCulture, out var precision)
+            && int.TryParse(parts[1], NumberStyles.None, CultureInfo.InvariantCulture, out var scale)
+            && precision is > 0 and <= 1000 && scale >= 0 && scale <= precision)
             return SchemaFact<SchemaStorageType>.Known(new("numeric", precision, scale));
         return SchemaFact<SchemaStorageType>.Unsupported("native-type-grammar");
     }
@@ -30,6 +39,4 @@ internal static partial class PostgresSchemaTypes
         _ => SchemaFact<SchemaDefault>.Unsupported("default-grammar"),
     };
 
-    [GeneratedRegex(@"\Anumeric\(([1-9][0-9]{0,3}),([0-9]{1,4})\)\z", RegexOptions.CultureInvariant)]
-    private static partial Regex Numeric();
 }

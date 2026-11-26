@@ -22,5 +22,6 @@ internal sealed class SchemaDiffCanonical
 
     internal string Digest() => Hash(_text.ToString());
 
-    internal static string Hash(string value) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
+    internal static string Hash(string value) =>
+        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
 }

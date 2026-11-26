@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Neemle.OrmLite.Postgres;
 
-internal sealed class PostgresSchemaRead(DbConnection connection, DbTransaction transaction, SchemaDiffInspection request)
+internal sealed class PostgresSchemaRead(
+    DbConnection connection, DbTransaction transaction, SchemaDiffInspection request)
 {
     private int _statements;
     private int _objects;
@@ -14,7 +15,8 @@ internal sealed class PostgresSchemaRead(DbConnection connection, DbTransaction 
     internal async Task<IReadOnlyList<object?[]>> RowsAsync(string sql, IReadOnlyList<StatementParameter> parameters,
         int limit, CancellationToken ct)
     {
-        if (++_statements > request.Target.Limits.MaxStatements) throw new SchemaDiffException(SchemaDiffError.LimitExceeded);
+        if (++_statements > request.Target.Limits.MaxStatements)
+            throw new SchemaDiffException(SchemaDiffError.LimitExceeded);
         var resources = new PostgresMetadataResources();
         IReadOnlyList<object?[]>? rows = null;
         Exception? primary = null;
@@ -25,7 +27,8 @@ internal sealed class PostgresSchemaRead(DbConnection connection, DbTransaction 
     }
 
     private async Task<IReadOnlyList<object?[]>> ExecuteAsync(string sql,
-        IReadOnlyList<StatementParameter> parameters, int limit, PostgresMetadataResources resources, CancellationToken ct)
+        IReadOnlyList<StatementParameter> parameters, int limit,
+        PostgresMetadataResources resources, CancellationToken ct)
     {
         var command = connection.CreateCommand();
         resources.Add(command);
@@ -52,7 +55,7 @@ internal sealed class PostgresSchemaRead(DbConnection connection, DbTransaction 
     }
 
     internal static IReadOnlyList<StatementParameter> Parameter(string name, object value) =>
-        [new StatementParameter(0, name, value)];
+        [new StatementParameter(0, name, value is uint oid ? (long)oid : value)];
 
     internal static string Hash(string value) =>
         Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));

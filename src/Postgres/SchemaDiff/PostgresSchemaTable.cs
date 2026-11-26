@@ -14,7 +14,8 @@ internal static class PostgresSchemaTable
         WHERE c.oid=pg_catalog.to_regclass(pg_catalog.quote_ident(@table))
         """;
 
-    internal static async Task<SchemaObservedTable> ReadAsync(PostgresSchemaRead read, string table, CancellationToken ct)
+    internal static async Task<SchemaObservedTable> ReadAsync(
+        PostgresSchemaRead read, string table, CancellationToken ct)
     {
         var parameters = PostgresSchemaRead.Parameter("table", table);
         var resolved = await read.RowsAsync(ResolutionSql, parameters, 1, ct);
@@ -27,7 +28,8 @@ internal static class PostgresSchemaTable
         var columns = await PostgresSchemaColumns.ReadAsync(read, relation, ct);
         var facts = await PostgresSchemaInventory.ReadAsync(read, relation, ct);
         if ((string)row[1]! != "r" || (string)row[2]! != "p" || (bool)row[3]! || (bool)row[4]! || row[5] is not null)
-            facts = facts with { Constraints = SchemaFact<IReadOnlyList<SchemaObjectStamp>>.Unsupported("table-effects") };
+            facts = facts with
+            { Constraints = SchemaFact<IReadOnlyList<SchemaObjectStamp>>.Unsupported("table-effects") };
         return new SchemaObservedTable(table, SchemaFact<bool>.Known(true), columns, facts);
     }
 

@@ -15,7 +15,8 @@ internal static class SchemaFactCopies
         var facts = table.Facts;
         var copied = new SchemaObservedTableFacts(Inventory(facts.Indexes, budget), Inventory(facts.Constraints, budget),
             Inventory(facts.Triggers, budget), Inventory(facts.DependentObjects, budget));
-        if (table.Exists.Knowledge == SchemaKnowledge.Known && !table.Exists.GetKnown() && columns.Count > 0)
+        if (table.Exists.Knowledge == SchemaKnowledge.Known && !table.Exists.GetKnown()
+            && columns.Count > 0)
             throw new SchemaDiffException(SchemaDiffError.InvalidRequest);
         return new SchemaObservedTable(SchemaDiffNames.Required(table.Name), table.Exists.Copy(v => v),
             Array.AsReadOnly(columns.OrderBy(c => c.Name, StringComparer.Ordinal).ToArray()), copied);
@@ -42,7 +43,8 @@ internal static class SchemaFactCopies
                     SchemaDiffNames.Required(value.Name), SchemaDiffNames.Required(value.DefinitionDigest)));
             }
             return Array.AsReadOnly(copied.OrderBy(v => v.Kind, StringComparer.Ordinal)
-                .ThenBy(v => v.Name, StringComparer.Ordinal).ThenBy(v => v.DefinitionDigest, StringComparer.Ordinal).ToArray());
+                .ThenBy(v => v.Name, StringComparer.Ordinal)
+                .ThenBy(v => v.DefinitionDigest, StringComparer.Ordinal).ToArray());
         });
 
     internal static SchemaObservationHistory History(SchemaObservationHistory history, int limit)

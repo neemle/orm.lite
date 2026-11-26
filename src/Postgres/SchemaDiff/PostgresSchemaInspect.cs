@@ -25,7 +25,8 @@ internal static class PostgresSchemaInspect
         var request = read.Request;
         await read.RowsAsync("SET TRANSACTION READ ONLY", [], 1, ct);
         var identity = await read.RowsAsync("SELECT current_database(),current_schema(),"
-            + "current_setting('server_version_num'),(SELECT oid FROM pg_catalog.pg_database WHERE datname=current_database())",
+            + "current_setting('server_version_num'),"
+            + "(SELECT oid FROM pg_catalog.pg_database WHERE datname=current_database())",
             [], 1, ct);
         if (identity.Count != 1 || (string)identity[0][1]! != request.Target.Scope.Namespace)
             throw new SchemaDiffException(SchemaDiffError.ScopeMismatch);
@@ -34,7 +35,8 @@ internal static class PostgresSchemaInspect
             tables.Add(await PostgresSchemaTable.ReadAsync(read, table, ct));
         var history = await HistoryAsync(read, ct);
         var database = PostgresSchemaRead.Hash(connection.DataSource + "|" + string.Join("|", identity[0]));
-        return SchemaDiffObservation.FromFacts(new(database, "postgres:schema-diff-v1", true), tables, history, request);
+        return SchemaDiffObservation.FromFacts(new(database, "postgres:schema-diff-v1", true),
+            tables, history, request);
     }
 
     private static async Task<SchemaObservationHistory> HistoryAsync(PostgresSchemaRead read, CancellationToken ct)
