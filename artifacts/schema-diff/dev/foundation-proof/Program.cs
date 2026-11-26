@@ -2,6 +2,8 @@ using Neemle.OrmLite;
 using FoundationProof;
 
 if (args.Contains("api")) { NativeApiProof.Show(); return; }
+if (args.Contains("strict")) { await StrictProof.RunAsync(); return; }
+if (args.Contains("recipe")) { await RecipeProof.RunAsync(); return; }
 try
 {
 ObservationProof.Run();

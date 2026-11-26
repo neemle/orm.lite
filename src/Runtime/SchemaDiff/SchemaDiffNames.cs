@@ -6,6 +6,12 @@ internal static class SchemaDiffNames
     {
         if (string.IsNullOrWhiteSpace(value) || value.Contains('\0'))
             throw new SchemaDiffException(SchemaDiffError.InvalidRequest);
+        for (var i = 0; i < value.Length; i++)
+        {
+            if (!char.IsSurrogate(value[i])) continue;
+            if (!char.IsHighSurrogate(value[i]) || ++i == value.Length || !char.IsLowSurrogate(value[i]))
+                throw new SchemaDiffException(SchemaDiffError.InvalidRequest);
+        }
         return value;
     }
 

@@ -2,6 +2,7 @@ import datetime
 import json
 import pathlib
 import subprocess
+import sys
 
 
 def run(argv):
@@ -13,7 +14,7 @@ def run(argv):
 
 def main():
     root = pathlib.Path('artifacts/schema-diff/dev')
-    name = 'orml117-dev-c241f07'
+    name = sys.argv[1]
     network = run(['docker', 'network', 'create', '--label', 'orml.task=ORML-117',
                    '--label', 'orml.actor=dev', name])
     argv = ['docker', 'run', '-d', '--name', name + '-pg', '--network', name,
@@ -28,7 +29,7 @@ def main():
         'networkId': network, 'containerId': container, 'argv': argv,
         'inspect': json.loads(run(['docker', 'inspect', container])),
     }
-    (root / 'owned-fixture.json').write_text(json.dumps(record, indent=2))
+    (root / (name + '-fixture.json')).write_text(json.dumps(record, indent=2))
     print(json.dumps({'containerId': container, 'networkId': network}))
 
 
