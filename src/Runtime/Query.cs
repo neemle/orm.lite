@@ -601,6 +601,14 @@ namespace Neemle.OrmLite;
             return new ViewDefinition(OrmMeta.Get(typeof(TView)).Table, projection.Build());
         }
 
+        internal GraphQueryState<T> GraphSnapshot() => new(_db, BuildSelect(), _map)
+        {
+            Connection = _exec.GraphConnection,
+            Transaction = _exec.GraphTransaction,
+            Masks = new Dictionary<string, Node>(_state.Redactions),
+            Unsupported = _projection.Count != 0,
+        };
+
         internal Select BuildSelect() => _select.Build(SelectedColumns(), WhereNode());
 
         private Statement CompileTree(Node tree) =>

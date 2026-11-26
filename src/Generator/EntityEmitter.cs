@@ -55,7 +55,7 @@ internal static class EntityEmitter
         var file = NewFile();
         foreach (var e in entities)
         {
-            file = EntityClassEmitter.EntityClass(file, e, scope);
+            file = EntityClassEmitter.EntityClass(file, e, scope, entities);
             if (e.SoftDeleteColumn is not null) file = PurgeClass(file, e);
         }
         file = SchemaClass(file, entities, asmToken);
@@ -106,6 +106,8 @@ internal static class EntityEmitter
             .Select(e => Cs.Statement(Syn.Static("OrmMeta", "Register")
                 .OfTypes(Cs.Type(e.Full))
                 .Of(Cs.Id(e.Type + "Orm").Dot("Descriptor"))))
+            .Concat(entities.Where(GraphEmitter.Supported).Select(e =>
+                Cs.Statement(Cs.Id(e.Type + "Orm").Dot("RegisterGraph").Of())))
             .ToArray();
         return file.Class("OrmMetaInit").Internal().Static()
             .Method(Cs.Void, "Init").Internal().Static()
