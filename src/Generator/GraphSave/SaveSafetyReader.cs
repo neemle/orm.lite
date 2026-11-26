@@ -11,12 +11,18 @@ internal static class SaveSafetyReader
     internal static SaveSafetyFacts Read(EntityScan scan)
     {
         var properties = PropertiesOf(scan.Type).ToLookup(p => p.Name);
-        var scalars = scan.Props.All(p => Safe(properties[p.Name].SingleOrDefault()));
+        var scalars = scan.Props.All(p => Safe(Unique(properties[p.Name])));
         var references = scan.Navs.Select(n => n.Nav)
-            .Where(n => Safe(properties[n].SingleOrDefault())).ToImmutableArray();
+            .Where(n => Safe(Unique(properties[n]))).ToImmutableArray();
         var lists = scan.Collections.Select(c => c.Nav).Concat(scan.Links.Select(l => l.Nav))
-            .Where(n => SafeList(properties[n].SingleOrDefault())).Distinct().ToImmutableArray();
+            .Where(n => SafeList(Unique(properties[n]))).Distinct().ToImmutableArray();
         return new SaveSafetyFacts(scalars, references, lists);
+    }
+
+    private static IPropertySymbol? Unique(System.Collections.Generic.IEnumerable<IPropertySymbol> properties)
+    {
+        var candidates = properties.Take(2).ToArray();
+        return candidates.Length == 1 ? candidates[0] : null;
     }
 
     private static bool Safe(IPropertySymbol? property) =>
