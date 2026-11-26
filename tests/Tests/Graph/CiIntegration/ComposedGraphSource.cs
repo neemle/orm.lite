@@ -3,7 +3,7 @@ namespace Neemle.OrmLite.Tests.Graph.CiIntegration;
 internal static class ComposedGraphSource
 {
     internal const string Intent = "[ForeignKey(\"fk_compose_parent\", ReferentialAction.SetNull)]";
-    internal static string Text => $$"""
+    internal const string Text = $$"""
         using System.Collections.Generic;
         using System.Linq;
         using System.Threading.Tasks;

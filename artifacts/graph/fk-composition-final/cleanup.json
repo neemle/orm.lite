@@ -1,0 +1,95 @@
+{
+  "generated": "2026-11-26T13:49:30.574195+00:00",
+  "containerId": "0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87",
+  "networkId": "de2eec0e7b1fe8ccdc2ea1a53f9fbf9d6202707767603b6739c3a83b4f43404c",
+  "records": [
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87"
+      ],
+      "exitCode": 0,
+      "stdout": "[\n    {\n        \"Id\": \"0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87\",\n        \"Created\": \"2026-11-26T13:43:23.367663087Z\",\n        \"Path\": \"/usr/local/pgsql/bin/postgres\",\n        \"Args\": [\n            \"--launcher\"\n        ],\n        \"State\": {\n            \"Status\": \"running\",\n            \"Running\": true,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 26668,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-26T13:43:23.691249087Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87/hosts\",\n        \"LogPath\": \"\",\n        \"Name\": \"/condescending_williamson\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlayfs\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"local\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"de2eec0e7b1fe8ccdc2ea1a53f9fbf9d6202707767603b6739c3a83b4f43404c\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": true,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": null,\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": null,\n            \"Tmpfs\": {\n                \"/var/lib/postgresql/data\": \"uid=70,gid=70,mode=0700\"\n            },\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 335544320,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 671088640,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": null,\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"Storage\": {\n            \"RootFS\": {\n                \"Snapshot\": {\n                    \"Name\": \"overlayfs\"\n                }\n            }\n        },\n        \"Mounts\": [],\n        \"Config\": {\n            \"Hostname\": \"0929ba15ce4e\",\n            \"Domainname\": \"\",\n            \"User\": \"70:70\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": false,\n            \"AttachStderr\": false,\n            \"ExposedPorts\": {\n                \"5432/tcp\": {}\n            },\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"POSTGRES_HOST_AUTH_METHOD=trust\",\n                \"POSTGRES_USER=postgres\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"PG_MAJOR=19\",\n                \"PG_VERSION=19.0\",\n                \"PGDATA=/var/lib/postgresql/data\",\n                \"LANG=C.UTF-8\"\n            ],\n            \"Cmd\": null,\n            \"Image\": \"sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117\",\n            \"Volumes\": {\n                \"/var/lib/postgresql/data\": {}\n            },\n            \"WorkingDir\": \"/\",\n            \"Entrypoint\": [\n                \"/usr/local/pgsql/bin/postgres\",\n                \"--launcher\"\n            ],\n            \"Labels\": {\n                \"io.github.neemle.pglite.packed\": \"yes\",\n                \"io.github.neemle.pglite.platform\": \"linux/arm64, static, musl\",\n                \"io.github.neemle.pglite.postgres-major\": \"19\",\n                \"org.opencontainers.image.created\": \"2026-11-21T00:54:51+01:00\",\n                \"org.opencontainers.image.description\": \"PostgreSQL 19.0 as one static executable in a FROM scratch image\",\n                \"org.opencontainers.image.documentation\": \"https://github.com/neemle/pg.lite#configuration-of-the-image\",\n                \"org.opencontainers.image.licenses\": \"PostgreSQL\",\n                \"org.opencontainers.image.revision\": \"1b5badb2c66cb6bf4917efca747e6cd0ad6c81da\",\n                \"org.opencontainers.image.source\": \"https://github.com/neemle/pg.lite\",\n                \"org.opencontainers.image.title\": \"pg.lite\",\n                \"org.opencontainers.image.url\": \"https://github.com/neemle/pg.lite\",\n                \"org.opencontainers.image.version\": \"19.0\",\n                \"orml.actor\": \"graph-fk-c453\",\n                \"orml.task\": \"ORML-108\"\n            },\n            \"StopSignal\": \"SIGINT\"\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"29c4d96c6616b2942a4effe015e7c920ca322e9a415237a228681a73318934d5\",\n            \"SandboxKey\": \"/var/run/docker/netns/29c4d96c6616\",\n            \"Ports\": {\n                \"5432/tcp\": null\n            },\n            \"Networks\": {\n                \"orml108-fk-c453\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": [\n                        \"graph-pg\"\n                    ],\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"de2eec0e7b1fe8ccdc2ea1a53f9fbf9d6202707767603b6739c3a83b4f43404c\",\n                    \"EndpointID\": \"09f134d31e948977d6b8b5aecab43c6246fbdd90553d16e704660e03f6a3645e\",\n                    \"Gateway\": \"172.19.0.1\",\n                    \"IPAddress\": \"172.19.0.2\",\n                    \"MacAddress\": \"72:b7:5e:55:ad:3e\",\n                    \"IPPrefixLen\": 16,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": [\n                        \"condescending_williamson\",\n                        \"graph-pg\",\n                        \"0929ba15ce4e\"\n                    ]\n                }\n            }\n        },\n        \"ImageManifestDescriptor\": {\n            \"mediaType\": \"application/vnd.docker.distribution.manifest.v2+json\",\n            \"digest\": \"sha256:abd4b86fec2f2d940ed3a7b79e925d2ff5286c9fbe819f8730ddbab421aaaae3\",\n            \"size\": 735,\n            \"platform\": {\n                \"architecture\": \"arm64\",\n                \"os\": \"linux\"\n            }\n        }\n    }\n]\n",
+      "stderr": "",
+      "at": "2026-11-26T13:49:30.158435+00:00"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "de2eec0e7b1fe8ccdc2ea1a53f9fbf9d6202707767603b6739c3a83b4f43404c"
+      ],
+      "exitCode": 0,
+      "stdout": "[\n    {\n        \"Name\": \"orml108-fk-c453\",\n        \"Id\": \"de2eec0e7b1fe8ccdc2ea1a53f9fbf9d6202707767603b6739c3a83b4f43404c\",\n        \"Created\": \"2026-11-26T13:43:23.250726004Z\",\n        \"Scope\": \"local\",\n        \"Driver\": \"bridge\",\n        \"EnableIPv4\": true,\n        \"EnableIPv6\": false,\n        \"IPAM\": {\n            \"Driver\": \"default\",\n            \"Options\": {},\n            \"Config\": [\n                {\n                    \"Subnet\": \"172.19.0.0/16\",\n                    \"Gateway\": \"172.19.0.1\"\n                }\n            ]\n        },\n        \"Internal\": false,\n        \"Attachable\": false,\n        \"Ingress\": false,\n        \"ConfigFrom\": {\n            \"Network\": \"\"\n        },\n        \"ConfigOnly\": false,\n        \"Options\": {\n            \"com.docker.network.enable_ipv4\": \"true\",\n            \"com.docker.network.enable_ipv6\": \"false\"\n        },\n        \"Labels\": {\n            \"orml.actor\": \"graph-fk-c453\",\n            \"orml.task\": \"ORML-108\"\n        },\n        \"Containers\": {\n            \"0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87\": {\n                \"Name\": \"condescending_williamson\",\n                \"EndpointID\": \"09f134d31e948977d6b8b5aecab43c6246fbdd90553d16e704660e03f6a3645e\",\n                \"MacAddress\": \"72:b7:5e:55:ad:3e\",\n                \"IPv4Address\": \"172.19.0.2/16\",\n                \"IPv6Address\": \"\"\n            }\n        },\n        \"Status\": {\n            \"IPAM\": {\n                \"Subnets\": {\n                    \"172.19.0.0/16\": {\n                        \"IPsInUse\": 4,\n                        \"DynamicIPsAvailable\": 65532\n                    }\n                }\n            }\n        }\n    }\n]\n",
+      "stderr": "",
+      "at": "2026-11-26T13:49:30.182204+00:00"
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87"
+      ],
+      "exitCode": 0,
+      "stdout": "0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87\n",
+      "stderr": "",
+      "at": "2026-11-26T13:49:30.368015+00:00"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "de2eec0e7b1fe8ccdc2ea1a53f9fbf9d6202707767603b6739c3a83b4f43404c"
+      ],
+      "exitCode": 0,
+      "stdout": "de2eec0e7b1fe8ccdc2ea1a53f9fbf9d6202707767603b6739c3a83b4f43404c\n",
+      "stderr": "",
+      "at": "2026-11-26T13:49:30.483373+00:00"
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 0929ba15ce4e14c76482908ccaf55abaf8125e29901e833be1d4dea18899df87\n",
+      "at": "2026-11-26T13:49:30.532291+00:00"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "de2eec0e7b1fe8ccdc2ea1a53f9fbf9d6202707767603b6739c3a83b4f43404c"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "Error response from daemon: network de2eec0e7b1fe8ccdc2ea1a53f9fbf9d6202707767603b6739c3a83b4f43404c not found\n",
+      "at": "2026-11-26T13:49:30.553338+00:00"
+    },
+    {
+      "argv": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=orml.task=ORML-108",
+        "--filter",
+        "label=orml.actor=graph-fk-c453"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "at": "2026-11-26T13:49:30.573416+00:00"
+    }
+  ],
+  "ownActorRosterEmpty": true,
+  "sqliteScratchAbsent": true,
+  "foreignResourcesUntouched": true
+}

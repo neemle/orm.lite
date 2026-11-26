@@ -7,7 +7,8 @@ namespace Neemle.OrmLite.Tests.Graph.CiIntegration;
 [Collection("Graph")]
 public sealed class GraphForeignKeyCompositionTests
 {
-    [Fact(DisplayName = "[UC-002/003] generated FK normalization composes with typed graph identity and physical SetNull")]
+    [Fact(DisplayName =
+        "[UC-002/003] generated FK normalization composes with typed graph identity and physical SetNull")]
     public async Task Fk_metadata_and_graph_registration_share_the_generated_model()
     {
         var (diagnostics, _, output) = Run(ComposedGraphSource.Text);
@@ -27,7 +28,8 @@ public sealed class GraphForeignKeyCompositionTests
         Assert.True(await read);
     }
 
-    [Fact(DisplayName = "[SEC][UC-002/003] invalid FK intent still withholds the complete baseline beside graph emission")]
+    [Fact(DisplayName =
+        "[SEC][UC-002/003] invalid FK intent still withholds the complete baseline beside graph emission")]
     public void Invalid_fk_does_not_publish_a_partial_generated_schema()
     {
         var source = ComposedGraphSource.Text.Replace("public Guid? ParentId", "public Guid ParentId");
