@@ -1,0 +1,119 @@
+{
+  "scope": "ORML-109 owner-boundary close-fault correction independent proof",
+  "disposition": "PASS three new cases; no whole-item CI/provider/Native/coverage claim",
+  "productCommit": "641fdee3da0a8a1cb3bb7b76fa4f74c55095c92c",
+  "sourceTree": "beaf383fadb60b43fbd630b7cf3e6686eed84fee",
+  "executionTestsBase": "4ad2df453584096cbc255d33c8c067efca18a056",
+  "newTests": {
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerAdmittedWork.cs": "81ab4ad4e1960ff9a21f3110ed508b0b08f4fd407552d86b98dfbb99b2d4cce4",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerAssertions.cs": "7fb697d337018d8e3c6d8e2cc6be9c780a1c820ccac67f57d836391bb6a6893d",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerCleanupTests.cs": "86fc3d4b701fec394a1f92f3e368c6a5d98745af7d5a5df819f084c1cec9b9e7",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerConnection.cs": "08bded47ba2cc192fc34821ec51180387d13a81fc44eadbfaa3f3791b12f87b0",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerFaultPlan.cs": "cf02bb29e97f49c852b74f4e38b4e2739559f8bd9091a94685f6ec39f49802a0",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerModel.cs": "bfa8c24a55d672d47d8cdb08b42afe37dcde93dbfd3184f7a20cf90780a87af4",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerProvider.cs": "dc27fa870ab55c65580788633572074239bf8e023ebaf004f3de825ebad1ede5",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerRelease.cs": "169a73bcaf1edcd375eabaf63db53e4469d2466a9362af1adf32ee57d787ac7d",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerRow.cs": "11222d0c21e21219aa233e316b18770cb308a201aa8541e2dfee83ab430d5169",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerSource.cs": "cfad9d875413b3e0e44d7487f702d2b0ad931b16989d0e7f3a980657a7e276e3",
+    "tests/Tests/RelationLoadingOwnerCleanup/OwnerTransaction.cs": "d40bc91fc2c77f5a1e741b4919cc81da294776ebb18fcefc2c58af0a0985a3cb"
+  },
+  "results": {
+    "fixed": {
+      "counters": {
+        "total": "3",
+        "executed": "3",
+        "passed": "3",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "cases": [
+        {
+          "name": "[UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: False)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "[UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: True)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "[UC-004][AC07/08][SEC] context attempts all owned sources after scope drain/close failure",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    "old-red": {
+      "counters": {
+        "total": "3",
+        "executed": "3",
+        "passed": "0",
+        "failed": "3",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "cases": [
+        {
+          "name": "[UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: False)",
+          "outcome": "Failed"
+        },
+        {
+          "name": "[UC-004][AC07/08] policy close failure drains then attempts every unit resource once(callback: True)",
+          "outcome": "Failed"
+        },
+        {
+          "name": "[UC-004][AC07/08][SEC] context attempts all owned sources after scope drain/close failure",
+          "outcome": "Failed"
+        }
+      ]
+    }
+  },
+  "proof": [
+    "Real UnitOfWork/LoadingScope/Scheduler admitted work drains before all owner teardown even if callback/unsubscribe faults",
+    "Actual PolicyWork stages navigation assignment before closure; publication is rejected after drain and old cached value remains",
+    "Unit tx/connection/release disposal attempted once despite each throwing; s_open removed and repeated Dispose quiet",
+    "Open-owned scope attempts close/dispose; context attempts all8 owned datasource disposals despite close/earlier cleanup faults",
+    "Owner result is SAME cached scope primary, original callback/unsubscribe stack survives; secondaries private weakly retained3/unit and bounded4/context; no exception.Data or secondary payload in primary.ToString",
+    "Later public Load refuses Closed,0SQL and only original single open; no retry/replacement connection or commit"
+  ],
+  "limits": [
+    "Resource-spy failure injection, not a real-provider driver fault observation",
+    "Existing126/eight public outcomes and earlier full unit/current39 remain at original provenance; not rerun",
+    "Old-red local retained Runtime provenance in old-runtime-provenance.json; isolated host differs only Runtime.dll; no old rebuild",
+    "Collection Graph serializes one-time immutable GraphModel registration; operation ordering controlled by entered/release signals, not sleeps/retries"
+  ],
+  "commands": [
+    "compile.json",
+    "fixed.json",
+    "old-red.json"
+  ],
+  "runtimeBridge": {
+    "changedFiles": [
+      "Neemle.OrmLite.Runtime.dll"
+    ],
+    "oldRuntimeSha256": "b3533c370b3577089288cc7669489c8d0ce526fc2f90ba7a8c39f45eb985d11b",
+    "fixedRuntimeSha256": "65dea2be16e8df03bb440a456984a2f8963b4ab55d06094e310d9235e47c5af4"
+  },
+  "cleanup": "cleanup.json",
+  "generated": "2026-11-26T16:44:59.039456+00:00",
+  "checkpointTestsTree": "b8d903cea7e9a0b897096484873eca94ae86234d"
+}
