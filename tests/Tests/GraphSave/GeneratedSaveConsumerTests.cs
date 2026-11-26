@@ -17,6 +17,7 @@ public sealed class GeneratedSaveConsumerTests
         {
             [Key] public Guid Id { get; set; }
             public string Name { get; set; } = "";
+            [Reference(nameof(SaveChild.ParentId))]
             public List<SaveChild> Children { get; set; } = new();
             [ManyToMany("gs112_parent_tags", "parent_id", "tag_id")]
             public List<SaveTag> Tags { get; set; } = new();
