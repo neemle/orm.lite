@@ -33,10 +33,10 @@ internal static class SqliteSchemaInspect
         foreach (var table in read.Request.Target.Scope.OwnedTables)
             tables.Add(await SqliteSchemaTable.ReadAsync(read, table, schema, ct));
         var history = await HistoryAsync(read, schema, ct);
-        var mainFile = databases.Single(d => (string)d[0]! == "main")[1];
-        var identity = SqliteSchemaRead.Hash(read.Connection.DataSource + "|" + mainFile);
-        // A pathname alone cannot certify the opened file incarnation. Keep required provenance incomplete.
-        return SchemaDiffObservation.FromFacts(new(identity, "sqlite:schema-diff-v1", false),
+        var mainFile = (string)databases.Single(d => (string)d[0]! == "main")[1]!;
+        var actual = SqliteFileIdentity.Canonical(Path.GetFullPath(mainFile));
+        var identity = SqliteSchemaRead.Hash("main:" + actual.Length + ":" + actual);
+        return SchemaDiffObservation.FromFacts(new(identity, "sqlite:schema-diff-v1", true),
             tables, history, read.Request);
     }
 

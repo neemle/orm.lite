@@ -10,7 +10,17 @@ internal static class PostgresSchemaInventory
           FROM pg_catalog.pg_constraint c WHERE c.conrelid=CAST(@relation AS oid)
         UNION ALL SELECT 'trigger',t.tgname,pg_catalog.pg_get_triggerdef(t.oid,true)
           FROM pg_catalog.pg_trigger t WHERE t.tgrelid=CAST(@relation AS oid)
-        UNION ALL SELECT 'dependent:'||d.deptype::text,o.type||':'||o.identity,o.identity||':'||d.refobjsubid::text
+        UNION ALL SELECT CASE WHEN
+          (d.classid='pg_catalog.pg_type'::regclass AND EXISTS
+            (SELECT 1 FROM pg_catalog.pg_type t WHERE t.oid=d.objid AND t.typrelid=CAST(@relation AS oid)))
+          OR (d.classid='pg_catalog.pg_constraint'::regclass AND EXISTS
+            (SELECT 1 FROM pg_catalog.pg_constraint c WHERE c.oid=d.objid AND c.conrelid=CAST(@relation AS oid)))
+          OR (d.classid='pg_catalog.pg_class'::regclass AND EXISTS
+            (SELECT 1 FROM pg_catalog.pg_index i WHERE i.indexrelid=d.objid AND i.indrelid=CAST(@relation AS oid)))
+          OR (d.classid='pg_catalog.pg_attrdef'::regclass AND EXISTS
+            (SELECT 1 FROM pg_catalog.pg_attrdef a WHERE a.oid=d.objid AND a.adrelid=CAST(@relation AS oid)))
+          THEN 'dependent-local:'||d.deptype::text ELSE 'dependent-external:'||d.deptype::text END,
+          o.type||':'||o.identity,o.identity||':'||d.refobjsubid::text
           FROM pg_catalog.pg_depend d CROSS JOIN LATERAL
             pg_catalog.pg_identify_object(d.classid,d.objid,d.objsubid) o
           WHERE d.refclassid='pg_catalog.pg_class'::regclass AND d.refobjid=CAST(@relation AS oid)
@@ -23,7 +33,7 @@ internal static class PostgresSchemaInventory
             read.Request.Target.Limits.MaxCatalogObjects, ct);
         foreach (var _ in rows) read.Object();
         return new SchemaObservedTableFacts(Select(rows, "index"), Select(rows, "constraint:"),
-            Select(rows, "trigger"), Select(rows, "dependent:"));
+            Select(rows, "trigger"), Select(rows, "dependent-"));
     }
 
     private static SchemaFact<IReadOnlyList<SchemaObjectStamp>> Select(IReadOnlyList<object?[]> rows, string prefix) =>
