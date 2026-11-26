@@ -33,6 +33,7 @@ public sealed class GraphSaveEntityBinding<T, TKey> : IGraphSaveEntity where T :
     EntityDescriptor IGraphSaveEntity.Original => _original;
     EntityDescriptor IGraphSaveEntity.Descriptor => _descriptor;
     Delegate IGraphSaveEntity.Mapper => _map;
+    bool IGraphSaveEntity.HasReadPolicy => PolicyReadHooks<T>.Snapshot is not null;
     IEqualityComparer<object> IGraphSaveEntity.KeyComparer { get; } = new GraphSaveKeyComparer<TKey>();
     IReadOnlyList<IGraphSaveRelation> IGraphSaveEntity.Relations => _relations;
     object IGraphSaveEntity.Key(object entity) => entity is T typed && _key(typed) is { } key

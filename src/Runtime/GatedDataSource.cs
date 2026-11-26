@@ -139,6 +139,10 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         }
     }
 
+    internal ValueTask<DbConnection> OpenGraphSaveConnectionAsync(CancellationToken ct) =>
+        GraphSaveOpen.LeaseAsync(LaneSource(DbLane.Current).CreateConnection(),
+            connection => StreamLeaseAsync(connection, ct));
+
     private async ValueTask<DbConnection> StreamLeaseAsync(DbConnection inner, CancellationToken ct)
     {
         if (s_leases.TryGetValue(inner, out var prior))

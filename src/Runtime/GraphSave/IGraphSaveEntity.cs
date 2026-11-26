@@ -7,6 +7,7 @@ internal interface IGraphSaveEntity
     EntityDescriptor Original { get; }
     EntityDescriptor Descriptor { get; }
     Delegate Mapper { get; }
+    bool HasReadPolicy { get; }
     IEqualityComparer<object> KeyComparer { get; }
     IReadOnlyList<IGraphSaveRelation> Relations { get; }
     object Key(object entity);

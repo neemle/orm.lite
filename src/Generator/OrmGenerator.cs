@@ -111,6 +111,8 @@ public sealed class OrmGenerator : IIncrementalGenerator
     {
         public PolicyMetadata? LoadingPolicy { get; init; }
 
+        public GraphSave.SaveSafetyFacts? SaveSafety { get; init; }
+
         public EquatableArray<OneToOneIntent> OneToOneIntents { get; init; } = default;
 
         public EquatableArray<OneToOneModel> OneToOnePairs { get; init; } = default;

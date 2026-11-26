@@ -15,13 +15,13 @@ internal static class QueryStreamCapture
         ArgumentNullException.ThrowIfNull(columns);
         ArgumentNullException.ThrowIfNull(map);
         var copied = columns.ToArray();
-        return Capture(query, () => query.CompileProject(copied), map);
+        return Capture(query, () => query.CompileProject(copied), GraphSaveOrigins.Wrap(map, true));
     }
 
     internal static StreamReadSnapshot<TOut> Projection<T, TOut>(Query<T> query, Func<DbDataReader, TOut> map)
     {
         ArgumentNullException.ThrowIfNull(map);
-        return Capture(query, query.CompileProjection, map);
+        return Capture(query, query.CompileProjection, GraphSaveOrigins.Wrap(map, true));
     }
 
     internal static StreamReadSnapshot<TCol> Column<T, TCol>(Query<T> query, Expression<Func<T, object?>> column)

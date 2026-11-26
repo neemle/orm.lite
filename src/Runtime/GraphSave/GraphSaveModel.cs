@@ -18,6 +18,9 @@ public static class GraphSaveModel
                 if (!prior.Equivalent(candidate)) throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
                 return;
             }
+            if (Bindings.Values.Any(b => b.Descriptor.Table == candidate.Descriptor.Table
+                && b.EntityType.AssemblyQualifiedName == candidate.EntityType.AssemblyQualifiedName))
+                throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
             Bindings.Add(typeof(T), candidate);
         }
     }
@@ -50,7 +53,7 @@ public static class GraphSaveModel
 
     private static void ValidateCurrent(IGraphSaveEntity binding)
     {
-        if (!ReferenceEquals(OrmMeta.ReadDescriptor(binding.EntityType), binding.Original)
+        if (binding.HasReadPolicy || !ReferenceEquals(OrmMeta.ReadDescriptor(binding.EntityType), binding.Original)
             || !GraphSaveDescriptors.Same(binding.Descriptor, binding.Original))
             throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
     }

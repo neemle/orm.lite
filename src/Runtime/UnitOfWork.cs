@@ -31,23 +31,30 @@ public sealed class UnitOfWork : IAsyncDisposable
         _provider = provider;
     }
 
-    public static async Task<UnitOfWork> BeginAsync(OrmContext context, CancellationToken ct = default)
+    public static Task<UnitOfWork> BeginAsync(OrmContext context, CancellationToken ct = default) =>
+        BeginCoreAsync(context, ct, false);
+
+    internal static Task<UnitOfWork> BeginGraphSaveAsync(OrmContext context, CancellationToken ct) =>
+        BeginCoreAsync(context, ct, true);
+
+    private static async Task<UnitOfWork> BeginCoreAsync(OrmContext context, CancellationToken ct, bool graphSave)
     {
         ArgumentNullException.ThrowIfNull(context);
-        var connection = await context.DataSource.OpenConnectionAsync(ct);
+        var connection = graphSave ? await GraphSaveOpen.ConnectionAsync(context, ct)
+            : await context.DataSource.OpenConnectionAsync(ct);
+        var acquired = new GraphSaveAcquire(connection, () => s_open.Remove(connection));
         try
         {
             var started = await context.Provider.BeginTransactionAsync(connection, context.DataSource, ct);
+            acquired.Started = started;
             s_open.AddOrUpdate(connection, started);
-            var unit = new UnitOfWork(connection, started, context.Provider, TransactionTrace.Begin(connection));
+            acquired.Trace = TransactionTrace.Begin(connection);
+            var unit = new UnitOfWork(connection, started, context.Provider, acquired.Trace);
+            acquired.Unit = unit;
             PolicyOrigins.Record(connection, context, unit);
             return unit;
         }
-        catch
-        {
-            await connection.DisposeAsync();
-            throw;
-        }
+        catch (Exception primary) { await acquired.FailedAsync(primary); throw; }
     }
 
     public DbConnection Connection

@@ -24,6 +24,8 @@ public sealed class GraphSaveRelationBinding<T, TTarget> : GraphSaveRelationBind
         if (source is not T typed) throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
         var supplied = _targets(typed);
         if (supplied is null) throw GraphSaveRefusal.At(GraphSaveError.InvalidRequest);
+        if (Shape.Kind != GraphSaveRelationKind.Reference && supplied.GetType() != typeof(List<TTarget>))
+            throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
         if (Shape.Kind == GraphSaveRelationKind.Reference)
         {
             countSlot();

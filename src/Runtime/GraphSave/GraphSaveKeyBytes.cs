@@ -21,7 +21,8 @@ internal static class GraphSaveKeyBytes
         DateTime timestamp => Integer(timestamp.Ticks),
         DateOnly date => Integer(date.DayNumber),
         decimal number => Encoding.ASCII.GetBytes(number.ToString("G29", CultureInfo.InvariantCulture)),
-        double number => Integer(BitConverter.DoubleToInt64Bits(double.IsNaN(number) ? double.NaN : number == 0 ? 0 : number)),
+        double number => Integer(BitConverter.DoubleToInt64Bits(
+            double.IsNaN(number) ? double.NaN : number == 0 ? 0 : number)),
         Enum enumeration => Encoding.UTF8.GetBytes(enumeration.ToString()),
         _ => throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping),
     };

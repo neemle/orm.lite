@@ -9,5 +9,6 @@ internal sealed class GraphPlanNode(IGraphNavigationBinding edge, GraphEntitySna
     internal string Path { get; } = path;
     internal List<GraphPlanNode> Children { get; } = [];
     internal Select Shape { get; set; } = null!;
+    internal bool MayBePartial { get; set; }
     internal int ReservedParameters { get; set; }
 }
