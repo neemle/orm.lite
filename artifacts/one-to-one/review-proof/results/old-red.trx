@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="25d410b8-ec01-4f3d-b719-b13e488bc4f5" name="@087fb89a088d 2026-11-26 16:25:20" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-26T16:25:20.7705924+00:00" queuing="2026-11-26T16:25:20.7705924+00:00" start="2026-11-26T16:25:17.1593815+00:00" finish="2026-11-26T16:25:20.7856910+00:00" />
+  <TestSettings name="default" id="c8999d04-d188-4930-9861-ab3977d14d4e">
+    <Deployment runDeploymentRoot="_087fb89a088d_2026-11-26_16_25_20" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="3e54ef2f-c486-45d6-967f-6820be13d031" testId="9c2141a0-63fd-1bb8-a0ea-3112b9da4101" testName="[UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: &quot;uq_shared&quot;)" computerName="087fb89a088d" duration="00:00:00.0581191" startTime="2026-11-26T16:25:20.5449971+00:00" endTime="2026-11-26T16:25:20.5450108+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3e54ef2f-c486-45d6-967f-6820be13d031">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown
+Expected: typeof(Neemle.OrmLite.OneToOneDeclarationException)</Message>
+          <StackTrace>   at Neemle.OrmLite.Tests.OneToOne.OneToOneReviewLinkNameTests.Cross_kind_name_collision_refuses_the_complete_baseline(String linkName) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/OneToOneReviewLinkNameTests.cs:line 30
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8215dfed-a57f-4cda-97fc-0d736d30a257" testId="de2995a9-1c5d-30e1-a41f-45e3e2db4312" testName="[UC-005][R1] distinct pure-link FK and one-to-one unique keep exact physical nodes" computerName="087fb89a088d" duration="00:00:00.0158710" startTime="2026-11-26T16:25:20.5546679+00:00" endTime="2026-11-26T16:25:20.5546680+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8215dfed-a57f-4cda-97fc-0d736d30a257" />
+    <UnitTestResult executionId="4cad6c98-fb58-4591-aee1-9d5decebd2b1" testId="233200d2-8ca7-e22c-bd7d-06a8e97184a4" testName="[UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: &quot;UQ_SHARED&quot;)" computerName="087fb89a088d" duration="00:00:00.0005537" startTime="2026-11-26T16:25:20.5505916+00:00" endTime="2026-11-26T16:25:20.5505917+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4cad6c98-fb58-4591-aee1-9d5decebd2b1">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown
+Expected: typeof(Neemle.OrmLite.OneToOneDeclarationException)</Message>
+          <StackTrace>   at Neemle.OrmLite.Tests.OneToOne.OneToOneReviewLinkNameTests.Cross_kind_name_collision_refuses_the_complete_baseline(String linkName) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/OneToOneReviewLinkNameTests.cs:line 30
+   at InvokeStub_OneToOneReviewLinkNameTests.Cross_kind_name_collision_refuses_the_complete_baseline(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="[UC-005][R1] distinct pure-link FK and one-to-one unique keep exact physical nodes" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/old-host/neemle.ormlite.tests.dll" id="de2995a9-1c5d-30e1-a41f-45e3e2db4312">
+      <Execution id="8215dfed-a57f-4cda-97fc-0d736d30a257" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/old-host/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.OneToOne.OneToOneReviewLinkNameTests" name="Distinct_names_preserve_the_link_and_unique" />
+    </UnitTest>
+    <UnitTest name="[UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: &quot;uq_shared&quot;)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/old-host/neemle.ormlite.tests.dll" id="9c2141a0-63fd-1bb8-a0ea-3112b9da4101">
+      <Execution id="3e54ef2f-c486-45d6-967f-6820be13d031" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/old-host/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.OneToOne.OneToOneReviewLinkNameTests" name="Cross_kind_name_collision_refuses_the_complete_baseline" />
+    </UnitTest>
+    <UnitTest name="[UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: &quot;UQ_SHARED&quot;)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/old-host/neemle.ormlite.tests.dll" id="233200d2-8ca7-e22c-bd7d-06a8e97184a4">
+      <Execution id="4cad6c98-fb58-4591-aee1-9d5decebd2b1" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/old-host/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.OneToOne.OneToOneReviewLinkNameTests" name="Cross_kind_name_collision_refuses_the_complete_baseline" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="9c2141a0-63fd-1bb8-a0ea-3112b9da4101" executionId="3e54ef2f-c486-45d6-967f-6820be13d031" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="de2995a9-1c5d-30e1-a41f-45e3e2db4312" executionId="8215dfed-a57f-4cda-97fc-0d736d30a257" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="233200d2-8ca7-e22c-bd7d-06a8e97184a4" executionId="4cad6c98-fb58-4591-aee1-9d5decebd2b1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="1" failed="2" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.47]   Discovering: Neemle.OrmLite.Tests
+[xUnit.net 00:00:01.64]   Discovered:  Neemle.OrmLite.Tests
+[xUnit.net 00:00:01.71]   Starting:    Neemle.OrmLite.Tests
+[xUnit.net 00:00:01.88]       Assert.Throws() Failure: No exception was thrown
+[xUnit.net 00:00:01.88]       Expected: typeof(Neemle.OrmLite.OneToOneDeclarationException)
+[xUnit.net 00:00:01.89]       Stack Trace:
+[xUnit.net 00:00:01.89]         /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/OneToOneReviewLinkNameTests.cs(30,0): at Neemle.OrmLite.Tests.OneToOne.OneToOneReviewLinkNameTests.Cross_kind_name_collision_refuses_the_complete_baseline(String linkName)
+[xUnit.net 00:00:01.89]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:01.89]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:01.90]       Assert.Throws() Failure: No exception was thrown
+[xUnit.net 00:00:01.90]       Expected: typeof(Neemle.OrmLite.OneToOneDeclarationException)
+[xUnit.net 00:00:01.90]       Stack Trace:
+[xUnit.net 00:00:01.90]         /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/OneToOneReviewLinkNameTests.cs(30,0): at Neemle.OrmLite.Tests.OneToOne.OneToOneReviewLinkNameTests.Cross_kind_name_collision_refuses_the_complete_baseline(String linkName)
+[xUnit.net 00:00:01.90]            at InvokeStub_OneToOneReviewLinkNameTests.Cross_kind_name_collision_refuses_the_complete_baseline(Object, Span`1)
+[xUnit.net 00:00:01.90]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:01.91]   Finished:    Neemle.OrmLite.Tests
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="087fb89a088d" outcome="Error" timestamp="2026-11-26T16:25:20.5363911+00:00">
+        <Text>[xUnit.net 00:00:01.87]     [UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: "uq_shared") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="087fb89a088d" outcome="Error" timestamp="2026-11-26T16:25:20.5471844+00:00">
+        <Text>[xUnit.net 00:00:01.90]     [UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: "UQ_SHARED") [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

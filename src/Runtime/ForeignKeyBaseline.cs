@@ -10,7 +10,10 @@ internal static class ForeignKeyBaseline
     internal static bool HasIntent(IEnumerable<EntityDescriptor> entities) =>
         entities.Any(e => e.ForeignKeys.Count > 0 || e.LinkForeignKeys.Count > 0);
 
-    internal static IReadOnlyList<Node> Create(IReadOnlyList<EntityDescriptor> entities)
+    internal static IReadOnlyList<Node> Create(IReadOnlyList<EntityDescriptor> entities) => Create(entities, null);
+
+    internal static IReadOnlyList<Node> Create(IReadOnlyList<EntityDescriptor> entities,
+        IReadOnlyDictionary<string, List<ForeignKeyDescriptor>>? additional)
     {
         var known = Entities(entities);
         var tables = entities.Where(e => !e.IsView).SelectMany(EntityStatements.CreateTables).Cast<CreateTable>()
@@ -21,7 +24,9 @@ internal static class ForeignKeyBaseline
         var names = new Dictionary<string, (string Table, ForeignKeyDescriptor Key)>(StringComparer.OrdinalIgnoreCase);
         foreach (var owner in entities)
         {
-            foreach (var key in owner.ForeignKeys) Add(owner, key, known, keys, names);
+            var declarations = additional is not null && additional.TryGetValue(owner.Table, out var extra)
+                ? owner.ForeignKeys.Concat(extra) : owner.ForeignKeys;
+            foreach (var key in declarations) Add(owner, key, known, keys, names);
             foreach (var intent in owner.LinkForeignKeys)
             {
                 var key = ForeignKeyValidation.Link(owner, intent, known);
@@ -31,6 +36,8 @@ internal static class ForeignKeyBaseline
         }
         return ForeignKeyOrder.Sort(tables, keys);
     }
+
+    internal static void ValidateEntities(IEnumerable<EntityDescriptor> entities) => _ = Entities(entities);
 
     private static Dictionary<string, EntityDescriptor> Entities(IEnumerable<EntityDescriptor> entities)
     {

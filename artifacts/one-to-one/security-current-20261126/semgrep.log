@@ -1,0 +1,2152 @@
+[01.42][DEBUG](default): Skipping logs for: [networking.http, cohttp.lwt.client, cohttp.lwt.io, conduit_lwt_server, semgrep.engine, semgrep.tainting, semgrep.fixing, semgrep.printing, semgrep.reporting, semgrep.matching, semgrep.parsing, parser_move_on_sui, parser_hack, parser_scala, parser_cpp, semgrep.targeting, semgrep.analyzing, semgrep.prefiltering, ojsonnet.eval, tree-sitter, semgrep.naming, semgrep, parser_javascript, aliengrep, ast_generic, glob, semgrep.spacegrep, lib_parsing, git_wrapper, git.value, git.tree, git.stream, git.blob, paths, process_limits, debug_trace, commons.pcre, commons.textedit, commons, parallelism, telemetry, mirage-crypto-rng.unix, ca-certs, handshake, tls.config, tls.tracing, x509.validation, x509.decoding, mirage-crypto-rng-entropy, cohttp.eio.io, cohttp.eio, cohttp.client, bos]
+[01.43][DEBUG](default): Showing logs for: [application]
+[01.43][DEBUG](default): !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+[01.43][DEBUG](default): 
+If you want to show the logs of a particular library
+(e.g., the semgrep targeting library), you'll need to adjust the
+SEMGREP_LOG_SRCS environment variable as in
+
+  SEMGREP_LOG_SRCS="semgrep.targeting" semgrep ... --debug
+
+or for osemgrep you can use it with any log level as in
+
+  SEMGREP_LOG_SRCS="semgrep.targeting" ./bin/osemgrep ... --verbose
+
+You can see the list of possible libraries above in this log as in
+...
+[00.04][DEBUG](default): Skipping logs for semgrep.targeting
+...
+[00.04][DEBUG](default): Skipping logs for commons.pcre
+...
+For more information, See
+https://www.notion.so/semgrep/Logging-in-semgrep-semgrep-core-osemgrep-67c9046fa53744728d9d725a5a244f64
+
+[01.43][DEBUG](default): !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+[01.43][DEBUG](default): Logging setup for osemgrep: color=Console.Auto level=debug
+[01.43][DEBUG](default): Executed as: osemgrep scan --config p/csharp --config p/security-audit --config p/secrets --metrics off --disable-version-check --no-git-ignore --exclude **/bin/** --exclude **/obj/** --strict --error --time --debug --json --output /out/semgrep.json /src /demo
+semgrep version 1.186.0
+Failed to get project url from 'git ls-remote': Command failed with exit code: 128
+-----
+Command failed with output:
+fatal: No remote configured to list refs from.
+
+
+Failed to run 'git ls-remote --get-url'. Possible reasons:
+
+- the git binary is not available
+- the current working directory is not a git repository
+- the baseline commit is not a parent of the current commit
+    (if you are running through semgrep-app, check if you are setting `SEMGREP_BRANCH` or `SEMGREP_BASELINE_COMMIT` properly)
+- the current working directory is not marked as safe
+    (fix with `git config --global --add safe.directory $(pwd)`)
+
+Try running the command yourself to debug the issue.
+Downloading config from https://semgrep.dev/c/p/csharp
+Downloaded config from https://semgrep.dev/c/p/csharp
+Parsing https://semgrep.dev/... as JSON
+Saved rules to /tmp/semgrep-4w196bd4.json
+RPC completed in: 1.900596s
+[01.13][[34mINFO[0m]: Executed as: /usr/lib/python3.12/site-packages/semgrep/bin/semgrep-core-proprietary -rpc -debug
+[01.13][[34mINFO[0m]: Version: 1.186.0 (e7f7148977)
+[01.13][[32mDEBUG[0m](default): Setting memory policy to balanced
+[01.13][[34mINFO[0m]: Proxy was configured with { Proxy.http_proxy = None;
+                                           https_proxy = None;
+                                           all_proxy = None; no_proxy = None;
+                                           credentials = <opaque> }
+semgrep-core validation response: error=None
+semgrep-core validation succeeded
+RPC validation succeeded
+loaded 1 configs in 2.254211902618408 with 0 errors and 151 missed rules
+Downloading config from https://semgrep.dev/c/p/security-audit
+Downloaded config from https://semgrep.dev/c/p/security-audit
+Parsing https://semgrep.dev/... as JSON
+Saved rules to /tmp/semgrep-tngoexbq.json
+RPC completed in: 1.225752s
+[00.18][[34mINFO[0m]: Executed as: /usr/lib/python3.12/site-packages/semgrep/bin/semgrep-core-proprietary -rpc -debug
+[00.18][[34mINFO[0m]: Version: 1.186.0 (e7f7148977)
+[00.18][[32mDEBUG[0m](default): Setting memory policy to balanced
+[00.18][[34mINFO[0m]: Proxy was configured with { Proxy.http_proxy = None;
+                                           https_proxy = None;
+                                           all_proxy = None; no_proxy = None;
+                                           credentials = <opaque> }
+[00.27][[32mDEBUG[0m](default): Mapping 225 elements across 2 domains (225 chunks of <= 1)
+semgrep-core validation response: error=None
+semgrep-core validation succeeded
+RPC validation succeeded
+loaded 1 configs in 1.3968615531921387 with 0 errors and 0 missed rules
+Downloading config from https://semgrep.dev/c/p/secrets
+Downloaded config from https://semgrep.dev/c/p/secrets
+Parsing https://semgrep.dev/... as JSON
+Saved rules to /tmp/semgrep-g4ijmc4k.json
+RPC completed in: 0.437019s
+[00.19][[34mINFO[0m]: Executed as: /usr/lib/python3.12/site-packages/semgrep/bin/semgrep-core-proprietary -rpc -debug
+[00.19][[34mINFO[0m]: Version: 1.186.0 (e7f7148977)
+[00.19][[32mDEBUG[0m](default): Setting memory policy to balanced
+[00.19][[34mINFO[0m]: Proxy was configured with { Proxy.http_proxy = None;
+                                           https_proxy = None;
+                                           all_proxy = None; no_proxy = None;
+                                           credentials = <opaque> }
+semgrep-core validation response: error=None
+semgrep-core validation succeeded
+RPC validation succeeded
+loaded 1 configs in 0.6051883697509766 with 0 errors and 218 missed rules
+running 299 rules from 3 configs
+Rules:
+<SKIPPED DATA (too many entries; use --max-log-list-entries)>
+get_targets request: ScanningRoots(root_paths=[Fpath(value='/src')], targeting_conf=TargetingConf(exclude=['**/bin/**', '**/obj/**'], max_target_bytes=1000000, respect_gitignore=True, respect_semgrepignore_files=True, always_select_explicit_targets=True, explicit_targets=[], force_novcs_project=True, exclude_minified_files=False, include_=None, extra_gitignore_patterns_to_exclude_git_untracked_files=[], semgrepignore_filename=None, force_project_root=None, include_binary_files=False, baseline_commit=None))
+RPC completed in: 2.520178s
+[00.30][[34mINFO[0m]: Executed as: /usr/lib/python3.12/site-packages/semgrep/bin/semgrep-core-proprietary -rpc -debug
+[00.30][[34mINFO[0m]: Version: 1.186.0 (e7f7148977)
+[00.30][[32mDEBUG[0m](default): Setting memory policy to balanced
+[00.30][[34mINFO[0m]: Proxy was configured with { Proxy.http_proxy = None;
+                                           https_proxy = None;
+                                           all_proxy = None; no_proxy = None;
+                                           credentials = <opaque> }
+get_targets response:
+  - target paths: Fppath(fpath=Fpath(value='/src/.editorconfig'), ppath=Ppath(value='/.editorconfig')), Fppath(fpath=Fpath(value='/src/Core/assets/Neemle.OrmLite.props'), ppath=Ppath(value='/Core/assets/Neemle.OrmLite.props')), Fppath(fpath=Fpath(value='/src/Core/assets/Neemle.OrmLite.targets'), ppath=Ppath(value='/Core/assets/Neemle.OrmLite.targets')), Fppath(fpath=Fpath(value='/src/Directory.Build.props'), ppath=Ppath(value='/Directory.Build.props')), Fppath(fpath=Fpath(value='/src/Generator/AccessRules.cs'), ppath=Ppath(value='/Generator/AccessRules.cs')), Fppath(fpath=Fpath(value='/src/Generator/Buildability.cs'), ppath=Ppath(value='/Generator/Buildability.cs')), Fppath(fpath=Fpath(value='/src/Generator/BuilderCapabilities.cs'), ppath=Ppath(value='/Generator/BuilderCapabilities.cs')), Fppath(fpath=Fpath(value='/src/Generator/CalculatedReader.cs'), ppath=Ppath(value='/Generator/CalculatedReader.cs')), Fppath(fpath=Fpath(value='/src/Generator/CapabilityAnalyzer.cs'), ppath=Ppath(value='/Generator/CapabilityAnalyzer.cs')), Fppath(fpath=Fpath(value='/src/Generator/CapabilityDiagnostics.cs'), ppath=Ppath(value='/Generator/CapabilityDiagnostics.cs')), Fppath(fpath=Fpath(value='/src/Generator/CapabilityManifest.cs'), ppath=Ppath(value='/Generator/CapabilityManifest.cs')), Fppath(fpath=Fpath(value='/src/Generator/ColumnTypes.cs'), ppath=Ppath(value='/Generator/ColumnTypes.cs')), Fppath(fpath=Fpath(value='/src/Generator/DefaultTenants.cs'), ppath=Ppath(value='/Generator/DefaultTenants.cs')), Fppath(fpath=Fpath(value='/src/Generator/DescriptorEmitter.cs'), ppath=Ppath(value='/Generator/DescriptorEmitter.cs')), Fppath(fpath=Fpath(value='/src/Generator/EntityClassEmitter.cs'), ppath=Ppath(value='/Generator/EntityClassEmitter.cs')), Fppath(fpath=Fpath(value='/src/Generator/EntityEmitter.cs'), ppath=Ppath(value='/Generator/EntityEmitter.cs')), Fppath(fpath=Fpath(value='/src/Generator/EntityNaming.cs'), ppath=Ppath(value='/Generator/EntityNaming.cs')), Fppath(fpath=Fpath(value='/src/Generator/EntityOrder.cs'), ppath=Ppath(value='/Generator/EntityOrder.cs')), Fppath(fpath=Fpath(value='/src/Generator/EntityReader.cs'), ppath=Ppath(value='/Generator/EntityReader.cs')), Fppath(fpath=Fpath(value='/src/Generator/EntityReports.cs'), ppath=Ppath(value='/Generator/EntityReports.cs')), Fppath(fpath=Fpath(value='/src/Generator/EntityScan.cs'), ppath=Ppath(value='/Generator/EntityScan.cs')), Fppath(fpath=Fpath(value='/src/Generator/EquatableArray.cs'), ppath=Ppath(value='/Generator/EquatableArray.cs')), Fppath(fpath=Fpath(value='/src/Generator/EquatableArrays.cs'), ppath=Ppath(value='/Generator/EquatableArrays.cs')), Fppath(fpath=Fpath(value='/src/Generator/Findings.cs'), ppath=Ppath(value='/Generator/Findings.cs')), Fppath(fpath=Fpath(value='/src/Generator/ForeignKeyAnalysis.cs'), ppath=Ppath(value='/Generator/ForeignKeyAnalysis.cs')), Fppath(fpath=Fpath(value='/src/Generator/ForeignKeyEmitter.cs'), ppath=Ppath(value='/Generator/ForeignKeyEmitter.cs')), Fppath(fpath=Fpath(value='/src/Generator/ForeignKeyIntent.cs'), ppath=Ppath(value='/Generator/ForeignKeyIntent.cs')), Fppath(fpath=Fpath(value='/src/Generator/ForeignKeyLayout/.editorconfig'), ppath=Ppath(value='/Generator/ForeignKeyLayout/.editorconfig')), Fppath(fpath=Fpath(value='/src/Generator/ForeignKeyModel.cs'), ppath=Ppath(value='/Generator/ForeignKeyModel.cs')), Fppath(fpath=Fpath(value='/src/Generator/ForeignKeyReader.cs'), ppath=Ppath(value='/Generator/ForeignKeyReader.cs')) (and 489 others)
+  - skipped targets: SkippedTarget(path=Fpath(value='/src/PackageAssets/icon.png'), reason=SkipReason(value=Binary()), details='target looks like a binary file (png)', rule_id=None)
+get_targets request: ScanningRoots(root_paths=[Fpath(value='/demo')], targeting_conf=TargetingConf(exclude=['**/bin/**', '**/obj/**'], max_target_bytes=1000000, respect_gitignore=True, respect_semgrepignore_files=True, always_select_explicit_targets=True, explicit_targets=[], force_novcs_project=True, exclude_minified_files=False, include_=None, extra_gitignore_patterns_to_exclude_git_untracked_files=[], semgrepignore_filename=None, force_project_root=None, include_binary_files=False, baseline_commit=None))
+RPC completed in: 0.694767s
+[00.16][[34mINFO[0m]: Executed as: /usr/lib/python3.12/site-packages/semgrep/bin/semgrep-core-proprietary -rpc -debug
+[00.16][[34mINFO[0m]: Version: 1.186.0 (e7f7148977)
+[00.16][[32mDEBUG[0m](default): Setting memory policy to balanced
+[00.16][[34mINFO[0m]: Proxy was configured with { Proxy.http_proxy = None;
+                                           https_proxy = None;
+                                           all_proxy = None; no_proxy = None;
+                                           credentials = <opaque> }
+get_targets response:
+  - target paths: Fppath(fpath=Fpath(value='/demo/ActionCases.cs'), ppath=Ppath(value='/ActionCases.cs')), Fppath(fpath=Fpath(value='/demo/ActionParent.cs'), ppath=Ppath(value='/ActionParent.cs')), Fppath(fpath=Fpath(value='/demo/AdditionalGuardCases.cs'), ppath=Ppath(value='/AdditionalGuardCases.cs')), Fppath(fpath=Fpath(value='/demo/CancellationCases.cs'), ppath=Ppath(value='/CancellationCases.cs')), Fppath(fpath=Fpath(value='/demo/CascadeDependent.cs'), ppath=Ppath(value='/CascadeDependent.cs')), Fppath(fpath=Fpath(value='/demo/CatalogCases.cs'), ppath=Ppath(value='/CatalogCases.cs')), Fppath(fpath=Fpath(value='/demo/CleanupFaults.cs'), ppath=Ppath(value='/CleanupFaults.cs')), Fppath(fpath=Fpath(value='/demo/DeclarationCases.cs'), ppath=Ppath(value='/DeclarationCases.cs')), Fppath(fpath=Fpath(value='/demo/DirectionCases.cs'), ppath=Ppath(value='/DirectionCases.cs')), Fppath(fpath=Fpath(value='/demo/FailureCases.cs'), ppath=Ppath(value='/FailureCases.cs')), Fppath(fpath=Fpath(value='/demo/FaultCommand.cs'), ppath=Ppath(value='/FaultCommand.cs')), Fppath(fpath=Fpath(value='/demo/FaultConnection.cs'), ppath=Ppath(value='/FaultConnection.cs')), Fppath(fpath=Fpath(value='/demo/FaultReader.cs'), ppath=Ppath(value='/FaultReader.cs')), Fppath(fpath=Fpath(value='/demo/Fixture.cs'), ppath=Ppath(value='/Fixture.cs')), Fppath(fpath=Fpath(value='/demo/GuardCases.cs'), ppath=Ppath(value='/GuardCases.cs')), Fppath(fpath=Fpath(value='/demo/IntegrityCases.cs'), ppath=Ppath(value='/IntegrityCases.cs')), Fppath(fpath=Fpath(value='/demo/LegacyCases.cs'), ppath=Ppath(value='/LegacyCases.cs')), Fppath(fpath=Fpath(value='/demo/MappingFaults.cs'), ppath=Ppath(value='/MappingFaults.cs')), Fppath(fpath=Fpath(value='/demo/NuGet.Config'), ppath=Ppath(value='/NuGet.Config')), Fppath(fpath=Fpath(value='/demo/Person.cs'), ppath=Ppath(value='/Person.cs')), Fppath(fpath=Fpath(value='/demo/Profile.cs'), ppath=Ppath(value='/Profile.cs')), Fppath(fpath=Fpath(value='/demo/Program.cs'), ppath=Ppath(value='/Program.cs')), Fppath(fpath=Fpath(value='/demo/README.md'), ppath=Ppath(value='/README.md')), Fppath(fpath=Fpath(value='/demo/RequiredDependent.cs'), ppath=Ppath(value='/RequiredDependent.cs')), Fppath(fpath=Fpath(value='/demo/Results.cs'), ppath=Ppath(value='/Results.cs')), Fppath(fpath=Fpath(value='/demo/SetNullDependent.cs'), ppath=Ppath(value='/SetNullDependent.cs')), Fppath(fpath=Fpath(value='/demo/SoftDependent.cs'), ppath=Ppath(value='/SoftDependent.cs')), Fppath(fpath=Fpath(value='/demo/SoftPrincipal.cs'), ppath=Ppath(value='/SoftPrincipal.cs')), Fppath(fpath=Fpath(value='/demo/SqlCounter.cs'), ppath=Ppath(value='/SqlCounter.cs')), Fppath(fpath=Fpath(value='/demo/UpgradeCases.cs'), ppath=Ppath(value='/UpgradeCases.cs')) (and 3 others)
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 552 files with 299 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      38     552          Community     299                                                                
+  csharp           27     518                                                                                           
+                                                                                                                        
+Passing whole rules directly to semgrep_core
+pyro-caml will not be used for profiling. Reason(s): profile is not enabled.
+Passing rules to semgrep-core in 1 shards
+Running Semgrep engine with command:
+/usr/lib/python3.12/site-packages/semgrep/bin/semgrep-core -json -rules /tmp/tmpfqgggjhe.json -strict -targets /tmp/tmpvcsz670t -timeout 5 -timeout_threshold 3 -max_memory 0 -json_time -fast -debug
+[00.17][[32mDEBUG[0m](default): Skipping logs for: [networking.http, cohttp.lwt.client, cohttp.lwt.io, conduit_lwt_server, semgrep.engine, semgrep.tainting, semgrep.fixing, semgrep.printing, semgrep.reporting, semgrep.matching, semgrep.parsing, parser_move_on_sui, parser_hack, parser_scala, parser_cpp, semgrep.targeting, semgrep.analyzing, semgrep.prefiltering, ojsonnet.eval, tree-sitter, semgrep.naming, semgrep, parser_javascript, aliengrep, ast_generic, glob, semgrep.spacegrep, lib_parsing, git_wrapper, git.value, git.tree, git.stream, git.blob, paths, process_limits, debug_trace, commons.pcre, commons.textedit, commons, parallelism, telemetry, mirage-crypto-rng.unix, ca-certs, handshake, tls.config, tls.tracing, x509.validation, x509.decoding, mirage-crypto-rng-entropy, cohttp.eio.io, cohttp.eio, cohttp.client, bos]
+[00.17][[32mDEBUG[0m](default): Showing logs for: [application]
+[00.17][[32mDEBUG[0m](default): !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+[00.17][[32mDEBUG[0m](default): 
+If you want to show the logs of a particular library
+(e.g., the semgrep targeting library), you'll need to adjust the
+SEMGREP_LOG_SRCS environment variable as in
+
+  SEMGREP_LOG_SRCS="semgrep.targeting" semgrep ... --debug
+
+or for osemgrep you can use it with any log level as in
+
+  SEMGREP_LOG_SRCS="semgrep.targeting" ./bin/osemgrep ... --verbose
+
+You can see the list of possible libraries above in this log as in
+...
+[00.04][DEBUG](default): Skipping logs for semgrep.targeting
+...
+[00.04][DEBUG](default): Skipping logs for commons.pcre
+...
+For more information, See
+https://www.notion.so/semgrep/Logging-in-semgrep-semgrep-core-osemgrep-67c9046fa53744728d9d725a5a244f64
+
+[00.17][[32mDEBUG[0m](default): !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+[00.17][[34mINFO[0m]: Executed as: /usr/lib/python3.12/site-packages/semgrep/bin/semgrep-core -json -rules /tmp/tmpfqgggjhe.json -strict -targets /tmp/tmpvcsz670t -timeout 5 -timeout_threshold 3 -max_memory 0 -json_time -fast -debug
+[00.17][[34mINFO[0m]: Version: 1.186.0 (e7f7148977)
+[00.17][[34mINFO[0m]: Proxy was configured with { Proxy.http_proxy = None;
+                                           https_proxy = None;
+                                           all_proxy = None; no_proxy = None;
+                                           credentials = <opaque> }
+[00.21][[34mINFO[0m]: Parsing rules in /tmp/tmpfqgggjhe.json
+[00.32][[32mDEBUG[0m](default): Mapping 299 elements across 2 domains (299 chunks of <= 1)
+[01.55][[32mDEBUG[0m](default): read targets from file: /tmp/tmpvcsz670t
+[01.69][[32mDEBUG[0m](default): Core_scan.scan_exn { Core_scan_config.rule_source = Rule_files (/tmp/tmpfqgggjhe.json);
+  target_source = (Core_scan_config.Target_file /tmp/tmpvcsz670t);
+  output_format = (Core_scan_config.Json true); report_time = true;
+  matching_explanations = false; strict = true; respect_rule_paths = true;
+  file_match_hook = None; timeout = 5.; timeout_threshold = 3;
+  max_memory_mb = 0; max_match_per_file = 10000;
+  num_jobs = (Core_scan_config.Default 2); filter_irrelevant_rules = true;
+  telemetry = None; symbol_analysis = false; fips_mode = false;
+  use_parmap = false;
+  par_conf =
+  (Parallelism_config.Eio_executor
+     { Parallelism_config.env = <opaque>; base = <opaque> })
+  }
+[01.69][[32mDEBUG[0m](default): core scan: 82 valid rules, 0 invalid rules
+[01.69][[32mDEBUG[0m](default): read targets from file: /tmp/tmpvcsz670t
+[01.84][[32mDEBUG[0m](default): Mapping 82 elements across 2 domains (82 chunks of <= 1)
+[02.03][[34mINFO[0m]: scan: processing 1622 files (skipping 0), with 82 rules (skipping 0 )
+[02.07][[32mDEBUG[0m](default): Mapping 1622 elements across 2 domains (1622 chunks of <= 1)
+[02.07][DEBUG](default): Core_scan analyzing /src/Runtime/ViewAttribute.cs
+[02.07][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaColumns.cs
+[02.10][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteSchemaColumns.cs (with lang C#)
+[02.10][DEBUG](default): Core_scan analyzing /src/Runtime/UpsertSetGuard.cs
+[02.10][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObserve.cs
+[02.18][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFact.cs
+[02.19][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeleteSql.cs
+[02.22][DEBUG](default): Parsing (and naming) /src/Runtime/SoftDeleteSql.cs (with lang C#)
+[02.29][DEBUG](default): Core_scan analyzing /src/Generator/EntityReader.cs
+[02.30][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneModel.cs
+[02.31][DEBUG](default): Parsing (and naming) /src/Generator/EntityReader.cs (with lang C#)
+[02.33][DEBUG](default): Core_scan analyzing /src/Runtime/ConstraintColumns.cs
+[02.33][DEBUG](default): Parsing (and naming) /src/Runtime/ConstraintColumns.cs (with lang C#)
+[02.35][DEBUG](default): Core_scan analyzing /src/Runtime/LinkForeignKeyEnd.cs
+[02.36][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDesiredTable.cs
+[02.36][DEBUG](default): Core_scan analyzing /demo/AdditionalGuardCases.cs
+[02.38][DEBUG](default): Core_scan analyzing /src/Generator/SoftDeleteDiagnostics.cs
+[02.38][DEBUG](default): Parsing (and naming) /demo/AdditionalGuardCases.cs (with lang C#)
+[02.38][DEBUG](default): Parsing (and naming) /src/Generator/SoftDeleteDiagnostics.cs (with lang C#)
+[02.58][DEBUG](default): Core_scan analyzing /src/Generator/EquatableArrays.cs
+[02.60][DEBUG](default): Parsing (and naming) /src/Generator/EquatableArrays.cs (with lang C#)
+[02.69][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffComparison.cs
+[02.70][DEBUG](default): Core_scan analyzing /src/Runtime/ComparisonOperands.cs
+[02.71][DEBUG](default): Core_scan analyzing /src/Generator/UnmappedNote.cs
+[02.71][DEBUG](default): Core_scan analyzing /src/Runtime/GraphModel.cs
+[02.71][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffObservation.cs
+[02.71][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaDiffObservation.cs (with lang C#)
+[02.74][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareKnowledge.cs
+[02.76][DEBUG](default): Core_scan analyzing /demo/CatalogCases.cs
+[02.76][DEBUG](default): Core_scan analyzing /src/Runtime/UpsertSet.cs
+[02.78][DEBUG](default): Parsing (and naming) /demo/CatalogCases.cs (with lang C#)
+[02.78][DEBUG](default): Core_scan analyzing /src/Generator/DescriptorEmitter.cs
+[02.83][DEBUG](default): Parsing (and naming) /src/Generator/DescriptorEmitter.cs (with lang C#)
+[02.87][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaDataLiterals.cs
+[02.88][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteSchemaDataLiterals.cs (with lang C#)
+[02.88][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaRoles.cs
+[02.90][DEBUG](default): Parsing (and naming) /src/Postgres/SchemaDiff/PostgresSchemaRoles.cs (with lang C#)
+[02.93][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationPlanning.cs
+[02.95][DEBUG](default): Parsing (and naming) /src/Runtime/MigrationPlanning.cs (with lang C#)
+[02.99][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyDescriptor.cs
+[03.00][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffCanonical.cs
+[03.01][DEBUG](default): Core_scan analyzing /src/Runtime/KeyAttribute.cs
+[03.01][DEBUG](default): Core_scan analyzing /src/Runtime/GraphFrontier.cs
+[03.02][DEBUG](default): Parsing (and naming) /src/Runtime/GraphFrontier.cs (with lang C#)
+[03.02][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresProvider.SchemaDiff.cs
+[03.02][DEBUG](default): Parsing (and naming) /src/Postgres/SchemaDiff/PostgresProvider.SchemaDiff.cs (with lang C#)
+[03.08][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObjectRef.cs
+[03.12][DEBUG](default): Core_scan analyzing /src/Generator/SymbolFacts.cs
+[03.13][DEBUG](default): Core_scan analyzing /demo/FaultCommand.cs
+[03.14][DEBUG](default): Parsing (and naming) /src/Generator/SymbolFacts.cs (with lang C#)
+[03.16][DEBUG](default): Parsing (and naming) /demo/FaultCommand.cs (with lang C#)
+[03.29][DEBUG](default): Core_scan analyzing /src/Runtime/DbLane.cs
+[03.31][DEBUG](default): Core_scan analyzing /src/Generator/EntityClassEmitter.cs
+[03.31][DEBUG](default): Parsing (and naming) /src/Generator/EntityClassEmitter.cs (with lang C#)
+[03.44][DEBUG](default): Core_scan analyzing /src/Generator/MigrationGenerator.cs
+[03.45][DEBUG](default): Parsing (and naming) /src/Generator/MigrationGenerator.cs (with lang C#)
+[03.67][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffError.cs
+[03.74][DEBUG](default): Core_scan analyzing /src/Sql/StandardSerializer.Ddl.cs
+[03.74][DEBUG](default): Parsing (and naming) /src/Sql/StandardSerializer.Ddl.cs (with lang C#)
+[03.80][DEBUG](default): Core_scan analyzing /src/Runtime/IndexFilter.cs
+[03.86][DEBUG](default): Parsing (and naming) /src/Runtime/IndexFilter.cs (with lang C#)
+[03.92][DEBUG](default): Core_scan analyzing /src/Runtime/Grouping.cs
+[03.93][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneError.cs
+[03.94][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyBaseline.cs
+[03.94][DEBUG](default): Parsing (and naming) /src/Runtime/Grouping.cs (with lang C#)
+[03.96][DEBUG](default): Parsing (and naming) /src/Runtime/ForeignKeyBaseline.cs (with lang C#)
+[04.24][DEBUG](default): Core_scan analyzing /src/Runtime/OrmMeta.cs
+[04.26][DEBUG](default): Parsing (and naming) /src/Runtime/OrmMeta.cs (with lang C#)
+[04.28][DEBUG](default): Core_scan analyzing /src/Runtime/GraphEntityBinding.cs
+[04.29][DEBUG](default): Parsing (and naming) /src/Runtime/GraphEntityBinding.cs (with lang C#)
+[04.65][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffChange.cs
+[04.67][DEBUG](default): Core_scan analyzing /src/Runtime/CorrelatedExists.cs
+[04.68][DEBUG](default): Parsing (and naming) /src/Runtime/CorrelatedExists.cs (with lang C#)
+[04.69][DEBUG](default): Core_scan analyzing /src/Runtime/OrmMigrationRegistry.cs
+[04.72][DEBUG](default): Core_scan analyzing /src/Runtime/LiveOnlyConversionDdl.cs
+[04.78][DEBUG](default): Core_scan analyzing /src/Runtime/StatementCompiler.cs
+[04.82][DEBUG](default): Parsing (and naming) /src/Runtime/LiveOnlyConversionDdl.cs (with lang C#)
+[04.83][DEBUG](default): Parsing (and naming) /src/Runtime/StatementCompiler.cs (with lang C#)
+[04.91][DEBUG](default): Core_scan analyzing /src/Runtime/OrmSchema.cs
+[04.91][DEBUG](default): Parsing (and naming) /src/Runtime/OrmSchema.cs (with lang C#)
+[04.92][DEBUG](default): Core_scan analyzing /src/Runtime/ViewDefinition.cs
+[04.93][DEBUG](default): Parsing (and naming) /src/Runtime/ViewDefinition.cs (with lang C#)
+[04.97][DEBUG](default): Core_scan analyzing /src/Runtime/OrmContext.cs
+[04.99][DEBUG](default): Core_scan analyzing /src/Generator/TenantRules.cs
+[04.99][DEBUG](default): Parsing (and naming) /src/Runtime/OrmContext.cs (with lang C#)
+[05.02][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaInventory.cs
+[05.03][DEBUG](default): Parsing (and naming) /src/Postgres/SchemaDiff/PostgresSchemaInventory.cs (with lang C#)
+[05.04][DEBUG](default): Core_scan analyzing /src/Generator/IndexDiagnostics.cs
+[05.06][DEBUG](default): Parsing (and naming) /src/Generator/IndexDiagnostics.cs (with lang C#)
+[05.18][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFixtureRequest.cs
+[05.19][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.Literals.cs
+[05.22][DEBUG](default): Core_scan analyzing /src/Runtime/EntityStatements.cs
+[05.24][DEBUG](default): Parsing (and naming) /src/Runtime/EntityStatements.cs (with lang C#)
+[05.26][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffScope.cs
+[05.26][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyDeclarationError.cs
+[05.28][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteCatalog.cs
+[05.30][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteCatalog.cs (with lang C#)
+[05.63][DEBUG](default): Core_scan analyzing /src/Runtime/AdvisorySessionLocks.cs
+[05.67][DEBUG](default): Parsing (and naming) /src/Runtime/AdvisorySessionLocks.cs (with lang C#)
+[05.68][DEBUG](default): Core_scan analyzing /src/Runtime/Capability.cs
+[05.69][DEBUG](default): Parsing (and naming) /src/Runtime/Capability.cs (with lang C#)
+[05.77][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresNodes.cs
+[05.82][DEBUG](default): Core_scan analyzing /src/Runtime/IdentifierTooLongException.cs
+[05.82][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresNodes.cs (with lang C#)
+[05.87][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryPlan.cs
+[05.89][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteHistoryPlan.cs (with lang C#)
+[05.97][DEBUG](default): Core_scan analyzing /src/Runtime/JsonClauses.cs
+[05.97][DEBUG](default): Parsing (and naming) /src/Runtime/JsonClauses.cs (with lang C#)
+[06.06][DEBUG](default): Core_scan analyzing /src/Runtime/MovedFieldKey.cs
+[06.08][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSqlText.cs
+[06.10][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPaths.cs
+[06.10][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamOpenFailure.cs
+[06.12][DEBUG](default): Core_scan analyzing /src/Runtime/ViewColumns.cs
+[06.12][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaRecipeValidation.cs
+[06.16][DEBUG](default): Parsing (and naming) /src/Runtime/ViewColumns.cs (with lang C#)
+[06.16][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneTarget.cs
+[06.18][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDefault.cs
+[06.20][DEBUG](default): Core_scan analyzing /src/Generator/EntityScan.cs
+[06.21][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationRunner.cs
+[06.22][DEBUG](default): Parsing (and naming) /src/Runtime/MigrationRunner.cs (with lang C#)
+[06.26][DEBUG](default): Core_scan analyzing /src/Sql/StandardSerializer.History.cs
+[06.27][DEBUG](default): Parsing (and naming) /src/Sql/StandardSerializer.History.cs (with lang C#)
+[06.39][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyActionDdl.cs
+[06.42][DEBUG](default): Parsing (and naming) /src/Runtime/ForeignKeyActionDdl.cs (with lang C#)
+[06.49][DEBUG](default): Core_scan analyzing /src/Runtime/JsonKeyOrdering.cs
+[06.49][DEBUG](default): Core_scan analyzing /src/Generator/CalculatedReader.cs
+[06.49][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.Json.cs
+[06.49][DEBUG](default): Parsing (and naming) /src/Generator/CalculatedReader.cs (with lang C#)
+[06.51][DEBUG](default): Core_scan analyzing /demo/Fixture.cs
+[06.52][DEBUG](default): Parsing (and naming) /demo/Fixture.cs (with lang C#)
+[06.53][DEBUG](default): Core_scan analyzing /src/Runtime/TableConstraints.cs
+[06.53][DEBUG](default): Core_scan analyzing /src/Generator/MapEmitter.cs
+[06.55][DEBUG](default): Parsing (and naming) /src/Generator/MapEmitter.cs (with lang C#)
+[06.73][DEBUG](default): Core_scan analyzing /src/Runtime/SetTerms.cs
+[06.79][DEBUG](default): Core_scan analyzing /src/Runtime/DdlCompiler.cs
+[06.79][DEBUG](default): Parsing (and naming) /src/Runtime/DdlCompiler.cs (with lang C#)
+[06.79][DEBUG](default): Core_scan analyzing /demo/CleanupFaults.cs
+[06.80][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyReader.cs
+[06.80][DEBUG](default): Parsing (and naming) /src/Generator/ForeignKeyReader.cs (with lang C#)
+[06.98][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceFacts.cs
+[06.98][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLiteOptions.Binding.cs
+[07.01][DEBUG](default): Parsing (and naming) /src/Runtime/OrmLiteOptions.Binding.cs (with lang C#)
+[07.01][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaSourceFacts.cs (with lang C#)
+[07.11][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.Ddl.cs
+[07.11][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresSerializer.Ddl.cs (with lang C#)
+[07.23][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/JsonEscapes.cs
+[07.25][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresMetadataResources.cs
+[07.25][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureWorkKind.cs
+[07.29][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyEmitter.cs
+[07.29][DEBUG](default): Core_scan analyzing /src/Generator/GraphEmitter.cs
+[07.32][DEBUG](default): Core_scan analyzing /src/Generator/CapabilityDiagnostics.cs
+[07.32][DEBUG](default): Parsing (and naming) /src/Generator/GraphEmitter.cs (with lang C#)
+[07.32][DEBUG](default): Parsing (and naming) /src/Generator/CapabilityDiagnostics.cs (with lang C#)
+[07.45][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteRebuild.cs
+[07.47][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteRebuild.cs (with lang C#)
+[07.49][DEBUG](default): Core_scan analyzing /src/Runtime/NotAColumnAttribute.cs
+[07.51][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationOps.cs
+[07.53][DEBUG](default): Parsing (and naming) /src/Runtime/MigrationOps.cs (with lang C#)
+[07.54][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaTable.cs
+[07.57][DEBUG](default): Core_scan analyzing /src/Runtime/LikePattern.cs
+[07.57][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffReport.cs
+[07.58][DEBUG](default): Core_scan analyzing /src/Generator/TableNameAudit.cs
+[07.58][DEBUG](default): Core_scan analyzing /demo/GuardCases.cs
+[07.59][DEBUG](default): Parsing (and naming) /src/Generator/TableNameAudit.cs (with lang C#)
+[07.59][DEBUG](default): Core_scan analyzing /src/Runtime/EntityDescriptor.cs
+[07.59][DEBUG](default): Parsing (and naming) /src/Runtime/EntityDescriptor.cs (with lang C#)
+[07.73][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffRecipe.cs
+[07.80][DEBUG](default): Core_scan analyzing /src/Runtime/GraphReadContext.cs
+[07.83][DEBUG](default): Core_scan analyzing /src/Runtime/GraphNavigationBinding.cs
+[07.84][DEBUG](default): Core_scan analyzing /demo/RequiredDependent.cs
+[07.87][DEBUG](default): Core_scan analyzing /src/Runtime/GroupKeyReader.cs
+[07.94][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Leaves.cs
+[07.94][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaAdmission.cs
+[07.96][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneAnalysis.cs
+[07.96][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffLimits.cs
+[07.97][DEBUG](default): Parsing (and naming) /src/Generator/OneToOne/OneToOneAnalysis.cs (with lang C#)
+[07.97][DEBUG](default): Core_scan analyzing /src/Runtime/ISqlProvider.cs
+[07.99][DEBUG](default): Parsing (and naming) /src/Runtime/ISqlProvider.cs (with lang C#)
+[08.02][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureCommands.cs
+[08.02][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaFixtureCommands.cs (with lang C#)
+[08.04][DEBUG](default): Core_scan analyzing /src/Runtime/PredicateTranslator.cs
+[08.05][DEBUG](default): Parsing (and naming) /src/Runtime/PredicateTranslator.cs (with lang C#)
+[08.05][DEBUG](default): Core_scan analyzing /src/Generator/MigrationShape.cs
+[08.07][DEBUG](default): Parsing (and naming) /src/Generator/MigrationShape.cs (with lang C#)
+[08.33][DEBUG](default): Core_scan analyzing /src/Generator/EquatableArray.cs
+[08.33][DEBUG](default): Parsing (and naming) /src/Generator/EquatableArray.cs (with lang C#)
+[08.37][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLinkBinding.cs
+[08.41][DEBUG](default): Parsing (and naming) /src/Runtime/GraphLinkBinding.cs (with lang C#)
+[08.70][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/NodeList.cs
+[08.72][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamError.cs
+[08.72][DEBUG](default): Parsing (and naming) /src/Runtime/Nodes/NodeList.cs (with lang C#)
+[08.75][DEBUG](default): Core_scan analyzing /demo/DirectionCases.cs
+[08.83][DEBUG](default): Core_scan analyzing /src/Runtime/ClosureUnary.cs
+[08.84][DEBUG](default): Parsing (and naming) /src/Runtime/ClosureUnary.cs (with lang C#)
+[08.94][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/ISchemaDiffApplySession.cs
+[08.96][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/ISchemaDiffApplySession.cs (with lang C#)
+[08.96][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaReferences.cs
+[08.97][DEBUG](default): Core_scan analyzing /src/Runtime/Jsonb.cs
+[08.99][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffImpact.cs
+[09.00][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSessionCommands.cs
+[09.02][DEBUG](default): Core_scan analyzing /src/Runtime/StatementCommand.cs
+[09.02][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteSessionCommands.cs (with lang C#)
+[09.05][DEBUG](default): Parsing (and naming) /src/Runtime/StatementCommand.cs (with lang C#)
+[09.11][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresServerVersion.cs
+[09.12][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresServerVersion.cs (with lang C#)
+[09.12][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationAttribute.cs
+[09.16][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/INodeVisitor.Ddl.cs
+[09.17][DEBUG](default): Parsing (and naming) /src/Runtime/Nodes/INodeVisitor.Ddl.cs (with lang C#)
+[09.19][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaTypes.cs
+[09.19][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.Strings.cs
+[09.23][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixturePlan.cs
+[09.23][DEBUG](default): Core_scan analyzing /src/Runtime/Redaction.cs
+[09.25][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaFixturePlan.cs (with lang C#)
+[09.25][DEBUG](default): Parsing (and naming) /src/Runtime/Redaction.cs (with lang C#)
+[09.36][DEBUG](default): Core_scan analyzing /src/Runtime/GraphVisibilityException.cs
+[09.36][DEBUG](default): Core_scan analyzing /src/Generator/AccessRules.cs
+[09.38][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSerializer.SchemaDiff.cs
+[09.39][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaTypes.cs
+[09.42][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteSerializer.SchemaDiff.cs (with lang C#)
+[09.42][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFixtureMode.cs
+[09.44][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaDataLiterals.cs
+[09.44][DEBUG](default): Core_scan analyzing /src/Runtime/GraphKeyBinding.cs
+[09.44][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteProviderFactory.cs
+[09.44][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceTarget.cs
+[09.44][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteProviderFactory.cs (with lang C#)
+[09.44][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaSourceTarget.cs (with lang C#)
+[09.49][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffInspection.cs
+[09.51][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyDeclarationException.cs
+[09.51][DEBUG](default): Core_scan analyzing /src/Generator/MigrationVersions.cs
+[09.51][DEBUG](default): Core_scan analyzing /src/Runtime/SoftRestore.cs
+[09.53][DEBUG](default): Parsing (and naming) /src/Generator/MigrationVersions.cs (with lang C#)
+[09.53][DEBUG](default): Parsing (and naming) /src/Runtime/SoftRestore.cs (with lang C#)
+[09.56][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLimitExceededException.cs
+[09.57][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLite.cs
+[09.57][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyValidation.cs
+[09.58][DEBUG](default): Parsing (and naming) /src/Runtime/OrmLite.cs (with lang C#)
+[09.58][DEBUG](default): Core_scan analyzing /src/Runtime/ScalarValue.cs
+[09.59][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamEnumerator.cs
+[09.60][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaStorageType.cs
+[09.62][DEBUG](default): Core_scan analyzing /src/Generator/ShapeDiagnostics.cs
+[09.62][DEBUG](default): Core_scan analyzing /src/Generator/NavigationFacts.cs
+[09.62][DEBUG](default): Parsing (and naming) /src/Generator/ShapeDiagnostics.cs (with lang C#)
+[09.63][DEBUG](default): Core_scan analyzing /demo/Profile.cs
+[09.64][DEBUG](default): Parsing (and naming) /demo/Profile.cs (with lang C#)
+[09.66][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/SecretLabels.cs
+[09.67][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStream.cs
+[09.68][DEBUG](default): Parsing (and naming) /src/Runtime/Streaming/QueryStream.cs (with lang C#)
+[09.69][DEBUG](default): Core_scan analyzing /src/Runtime/LinkedRead.cs
+[09.70][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneIntent.cs
+[09.70][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Expressions.cs
+[09.70][DEBUG](default): Core_scan analyzing /src/Runtime/GraphReferenceBinding.cs
+[09.70][DEBUG](default): Parsing (and naming) /src/Runtime/Nodes/Expressions.cs (with lang C#)
+[09.71][DEBUG](default): Parsing (and naming) /src/Runtime/GraphReferenceBinding.cs (with lang C#)
+[09.74][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyModel.cs
+[09.74][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresHistoryLayout.cs
+[09.74][DEBUG](default): Core_scan analyzing /src/Runtime/EnumOrdering.cs
+[09.75][DEBUG](default): Core_scan analyzing /src/Generator/IndexTerms.cs
+[09.75][DEBUG](default): Core_scan analyzing /src/Runtime/ConflictGuard.cs
+[09.75][DEBUG](default): Parsing (and naming) /src/Generator/IndexTerms.cs (with lang C#)
+[09.76][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonInput.cs
+[09.76][DEBUG](default): Core_scan analyzing /src/Runtime/OrmEnum.cs
+[09.77][DEBUG](default): Core_scan analyzing /demo/FaultConnection.cs
+[09.78][DEBUG](default): Parsing (and naming) /demo/FaultConnection.cs (with lang C#)
+[09.79][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/InverseOneToOneAttribute.cs
+[09.80][DEBUG](default): Core_scan analyzing /src/Generator/KeyLoss.cs
+[09.80][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffArtifact.cs
+[09.80][DEBUG](default): Core_scan analyzing /src/Runtime/Row.cs
+[09.81][DEBUG](default): Core_scan analyzing /src/Generator/IndexFilters.cs
+[09.81][DEBUG](default): Core_scan analyzing /src/Generator/IdentifierDiagnostics.cs
+[09.81][DEBUG](default): Parsing (and naming) /src/Generator/IndexFilters.cs (with lang C#)
+[09.82][DEBUG](default): Parsing (and naming) /src/Generator/IdentifierDiagnostics.cs (with lang C#)
+[09.88][DEBUG](default): Core_scan analyzing /src/Runtime/GraphBudget.cs
+[09.89][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFailures.cs
+[09.90][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamCursor.cs
+[09.90][DEBUG](default): Parsing (and naming) /src/Runtime/Streaming/StreamCursor.cs (with lang C#)
+[09.90][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffChangeKind.cs
+[09.90][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaDiffChangeKind.cs (with lang C#)
+[09.91][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresActorStamp.cs
+[09.91][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresActorStamp.cs (with lang C#)
+[09.91][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyOrder.cs
+[09.92][DEBUG](default): Parsing (and naming) /src/Runtime/ForeignKeyOrder.cs (with lang C#)
+[09.93][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureChecks.cs
+[09.96][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLinkReader.cs
+[10.00][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffLineage.cs
+[10.00][DEBUG](default): Parsing (and naming) /src/Runtime/GraphLinkReader.cs (with lang C#)
+[10.03][DEBUG](default): Core_scan analyzing /src/Runtime/HistoryScope.cs
+[10.06][DEBUG](default): Core_scan analyzing /src/Runtime/GraphTypedPath.cs
+[10.08][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationRunPlan.cs
+[10.08][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/OrmDiagnostics.cs
+[10.08][DEBUG](default): Parsing (and naming) /src/Runtime/MigrationRunPlan.cs (with lang C#)
+[10.09][DEBUG](default): Parsing (and naming) /src/Runtime/Diagnostics/OrmDiagnostics.cs (with lang C#)
+[10.09][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/WriteRealised.cs
+[10.10][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaResourceCleanup.cs
+[10.11][DEBUG](default): Core_scan analyzing /src/Runtime/InValues.cs
+[10.12][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamNativeLocks.cs
+[10.14][DEBUG](default): Core_scan analyzing /src/Runtime/GroupKeys.cs
+[10.14][DEBUG](default): Parsing (and naming) /src/Runtime/GroupKeys.cs (with lang C#)
+[10.17][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffManifest.cs
+[10.18][DEBUG](default): Core_scan analyzing /src/Runtime/InsertManyChunks.cs
+[10.18][DEBUG](default): Core_scan analyzing /src/Runtime/WriteCompiler.cs
+[10.20][DEBUG](default): Parsing (and naming) /src/Runtime/InsertManyChunks.cs (with lang C#)
+[10.20][DEBUG](default): Parsing (and naming) /src/Runtime/WriteCompiler.cs (with lang C#)
+[10.22][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamCapture.cs
+[10.25][DEBUG](default): Parsing (and naming) /src/Runtime/Streaming/QueryStreamCapture.cs (with lang C#)
+[10.25][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneOwner.cs
+[10.27][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Ddl.cs
+[10.27][DEBUG](default): Parsing (and naming) /src/Runtime/Nodes/Ddl.cs (with lang C#)
+[10.36][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneLookupValidation.cs
+[10.39][DEBUG](default): Parsing (and naming) /src/Runtime/OneToOne/OneToOneLookupValidation.cs (with lang C#)
+[10.43][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaMetadataConnections.cs
+[10.44][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaInspect.cs
+[10.45][DEBUG](default): Core_scan analyzing /src/Generator/IndexInputs.cs
+[10.45][DEBUG](default): Parsing (and naming) /src/Generator/IndexInputs.cs (with lang C#)
+[10.53][DEBUG](default): Core_scan analyzing /src/Runtime/RowHistoryRevert.cs
+[10.54][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureState.cs
+[10.54][DEBUG](default): Parsing (and naming) /src/Runtime/RowHistoryRevert.cs (with lang C#)
+[10.55][DEBUG](default): Core_scan analyzing /src/Runtime/RowHistoryDdl.cs
+[10.58][DEBUG](default): Parsing (and naming) /src/Runtime/RowHistoryDdl.cs (with lang C#)
+[11.05][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamBorrowed.cs
+[11.06][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneDeclarationException.cs
+[11.12][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDatabaseKey.cs
+[11.12][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresDdlDataLiterals.cs
+[11.13][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteDatabaseKey.cs (with lang C#)
+[11.13][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFactCopies.cs
+[11.14][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaFactCopies.cs (with lang C#)
+[11.25][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryDataLiterals.cs
+[11.25][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareAdd.cs
+[11.26][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaCompareAdd.cs (with lang C#)
+[11.27][DEBUG](default): Core_scan analyzing /src/Runtime/GraphBudgetCounter.cs
+[11.28][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffNames.cs
+[11.32][DEBUG](default): Core_scan analyzing /src/Runtime/ColumnAttribute.cs
+[11.32][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneValidation.cs
+[11.33][DEBUG](default): Core_scan analyzing /demo/Person.cs
+[11.33][DEBUG](default): Parsing (and naming) /src/Runtime/OneToOne/OneToOneValidation.cs (with lang C#)
+[11.36][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.History.cs
+[11.42][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresSerializer.History.cs (with lang C#)
+[11.44][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffStatus.cs
+[11.47][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservationDigest.cs
+[11.56][DEBUG](default): Core_scan analyzing /src/Runtime/StringLike.cs
+[11.61][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.HistoryDdl.cs
+[11.62][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteSerializer.HistoryDdl.cs (with lang C#)
+[11.78][DEBUG](default): Core_scan analyzing /src/Runtime/Query.cs
+[11.81][DEBUG](default): Parsing (and naming) /src/Runtime/Query.cs (with lang C#)
+[12.49][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffIdentity.cs
+[12.50][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffReview.cs
+[12.52][DEBUG](default): Core_scan analyzing /src/Runtime/AggregateClauses.cs
+[12.56][DEBUG](default): Parsing (and naming) /src/Runtime/AggregateClauses.cs (with lang C#)
+[12.69][DEBUG](default): Core_scan analyzing /src/Generator/CapabilityManifest.cs
+[12.69][DEBUG](default): Parsing (and naming) /src/Generator/CapabilityManifest.cs (with lang C#)
+[12.75][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.History.cs
+[12.76][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteSerializer.History.cs (with lang C#)
+[12.77][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedColumn.cs
+[12.79][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.cs
+[12.82][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceNames.cs
+[12.86][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamMappingFailure.cs
+[12.87][DEBUG](default): Core_scan analyzing /src/Runtime/GraphExecutor.cs
+[12.91][DEBUG](default): Core_scan analyzing /src/Runtime/GraphKeyComparer.cs
+[12.91][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFreshPhysical.cs
+[12.97][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaFreshPhysical.cs (with lang C#)
+[13.03][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceNodes.cs
+[13.06][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLimits.cs
+[13.06][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaSourceNodes.cs (with lang C#)
+[13.10][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteEngineValues.cs
+[13.25][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/HistoryNodes.cs
+[13.30][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteEngineValues.cs (with lang C#)
+[13.30][DEBUG](default): Parsing (and naming) /src/Runtime/Nodes/HistoryNodes.cs (with lang C#)
+[13.42][DEBUG](default): Core_scan analyzing /src/Runtime/OrmExec.cs
+[13.45][DEBUG](default): Parsing (and naming) /src/Runtime/OrmExec.cs (with lang C#)
+[13.45][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneLookup.cs
+[13.48][DEBUG](default): Core_scan analyzing /demo/Program.cs
+[13.50][DEBUG](default): Core_scan analyzing /src/Sql/SqlWriter.cs
+[13.53][DEBUG](default): Core_scan analyzing /demo/ActionParent.cs
+[13.56][DEBUG](default): Core_scan analyzing /demo/MappingFaults.cs
+[13.57][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareState.cs
+[13.57][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaCompareState.cs (with lang C#)
+[13.58][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffProvenance.cs
+[13.58][DEBUG](default): Core_scan analyzing /demo/IntegrityCases.cs
+[13.59][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSerializer.SchemaDiff.cs
+[13.60][DEBUG](default): Core_scan analyzing /src/Runtime/Db.cs
+[13.60][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/JsonStrings.cs
+[13.60][DEBUG](default): Parsing (and naming) /src/Postgres/SchemaDiff/PostgresSerializer.SchemaDiff.cs (with lang C#)
+[13.61][DEBUG](default): Core_scan analyzing /src/Runtime/RowHistoryRead.cs
+[13.62][DEBUG](default): Parsing (and naming) /src/Runtime/RowHistoryRead.cs (with lang C#)
+[13.64][DEBUG](default): Core_scan analyzing /src/Runtime/Statement.cs
+[13.66][DEBUG](default): Parsing (and naming) /src/Runtime/Statement.cs (with lang C#)
+[13.71][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyAnalysis.cs
+[13.74][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaDefinition.cs
+[13.75][DEBUG](default): Parsing (and naming) /src/Generator/ForeignKeyAnalysis.cs (with lang C#)
+[13.78][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteSchemaDefinition.cs (with lang C#)
+[13.95][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceBuilder.cs
+[14.03][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaSourceBuilder.cs (with lang C#)
+[14.27][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDecimal.cs
+[14.31][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteDecimal.cs (with lang C#)
+[14.38][DEBUG](default): Core_scan analyzing /src/Runtime/IGraphNavigationBinding.cs
+[14.39][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaStatementBudget.cs
+[14.39][DEBUG](default): Core_scan analyzing /src/Runtime/RequiresCapabilityAttribute.cs
+[14.41][DEBUG](default): Core_scan analyzing /src/Generator/OrmGenerator.cs
+[14.41][DEBUG](default): Core_scan analyzing /demo/SoftPrincipal.cs
+[14.42][DEBUG](default): Parsing (and naming) /src/Generator/OrmGenerator.cs (with lang C#)
+[14.42][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPlanNode.cs
+[14.43][DEBUG](default): Parsing (and naming) /src/Runtime/GraphPlanNode.cs (with lang C#)
+[14.50][DEBUG](default): Core_scan analyzing /src/Runtime/GraphStatementRunner.cs
+[14.53][DEBUG](default): Parsing (and naming) /src/Runtime/GraphStatementRunner.cs (with lang C#)
+[14.61][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneCardinalityException.cs
+[14.62][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Enums.cs
+[14.66][DEBUG](default): Core_scan analyzing /src/Runtime/ParamLiterals.cs
+[14.67][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyAttribute.cs
+[14.68][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureWork.cs
+[14.70][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamCompletion.cs
+[14.70][DEBUG](default): Core_scan analyzing /src/Runtime/Migration.cs
+[14.71][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservationIdentity.cs
+[14.71][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamExecution.cs
+[14.73][DEBUG](default): Parsing (and naming) /src/Runtime/Streaming/QueryStreamExecution.cs (with lang C#)
+[14.73][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLiteSettings.cs
+[14.75][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaAfterProjection.cs
+[14.77][DEBUG](default): Core_scan analyzing /src/Runtime/Defaults.cs
+[14.77][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaAfterProjection.cs (with lang C#)
+[14.81][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureMutation.cs
+[14.84][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaFixtureMutation.cs (with lang C#)
+[14.86][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/ProviderRealised.cs
+[14.88][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureSchedule.cs
+[14.89][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaFixtureSchedule.cs (with lang C#)
+[14.90][DEBUG](default): Core_scan analyzing /src/Runtime/GraphKey.cs
+[14.90][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadMap.cs
+[14.90][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneConstraints.cs
+[14.91][DEBUG](default): Core_scan analyzing /src/Runtime/RenderState.cs
+[14.91][DEBUG](default): Parsing (and naming) /src/Runtime/RenderState.cs (with lang C#)
+[14.91][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteRebuildObjects.cs
+[14.93][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteRebuildObjects.cs (with lang C#)
+[15.07][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryEscape.cs
+[15.07][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRequestError.cs
+[15.08][DEBUG](default): Core_scan analyzing /src/Runtime/GraphVisibility.cs
+[15.08][DEBUG](default): Core_scan analyzing /src/Runtime/GraphTypedKeyBinding.cs
+[15.09][DEBUG](default): Core_scan analyzing /demo/SoftDependent.cs
+[15.10][DEBUG](default): Core_scan analyzing /src/Runtime/GraphCollectionBinding.cs
+[15.10][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamReadSnapshot.cs
+[15.11][DEBUG](default): Parsing (and naming) /src/Runtime/GraphCollectionBinding.cs (with lang C#)
+[15.11][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedTableFacts.cs
+[15.11][DEBUG](default): Core_scan analyzing /src/Generator/EntityNaming.cs
+[15.12][DEBUG](default): Parsing (and naming) /src/Generator/EntityNaming.cs (with lang C#)
+[15.22][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaTargetCopies.cs
+[15.23][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaTargetCopies.cs (with lang C#)
+[15.26][DEBUG](default): Core_scan analyzing /src/Generator/EntityOrder.cs
+[15.30][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamBinding.cs
+[15.32][DEBUG](default): Core_scan analyzing /demo/UpgradeCases.cs
+[15.32][DEBUG](default): Parsing (and naming) /demo/UpgradeCases.cs (with lang C#)
+[15.33][DEBUG](default): Core_scan analyzing /src/Generator/GeneratorGuard.cs
+[15.33][DEBUG](default): Parsing (and naming) /src/Generator/GeneratorGuard.cs (with lang C#)
+[15.42][DEBUG](default): Core_scan analyzing /src/Runtime/LinkForeignKeyAttribute.cs
+[15.42][DEBUG](default): Core_scan analyzing /demo/DeclarationCases.cs
+[15.43][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedColumnFacts.cs
+[15.43][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresNames.cs
+[15.46][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteProvider.SchemaDiff.cs
+[15.47][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresNames.cs (with lang C#)
+[15.49][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteProvider.SchemaDiff.cs (with lang C#)
+[15.52][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/ISchemaDiffDdlSerializer.cs
+[15.54][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/ISchemaDiffDdlSerializer.cs (with lang C#)
+[15.54][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamCleanup.cs
+[15.57][DEBUG](default): Core_scan analyzing /src/Runtime/ClauseGuard.cs
+[15.58][DEBUG](default): Parsing (and naming) /src/Runtime/ClauseGuard.cs (with lang C#)
+[15.58][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFixtureRunner.cs
+[15.66][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaDiffFixtureRunner.cs (with lang C#)
+[15.73][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaRead.cs
+[15.74][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaPhysicalTypes.cs
+[15.74][DEBUG](default): Parsing (and naming) /src/Postgres/SchemaDiff/PostgresSchemaRead.cs (with lang C#)
+[15.74][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresDataLiterals.cs
+[15.77][DEBUG](default): Core_scan analyzing /src/Runtime/GraphQueryExtensions.cs
+[15.78][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamParameterValues.cs
+[15.80][DEBUG](default): Parsing (and naming) /src/Runtime/Streaming/StreamParameterValues.cs (with lang C#)
+[15.89][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/LabelWords.cs
+[15.90][DEBUG](default): Core_scan analyzing /src/Generator/Buildability.cs
+[15.91][DEBUG](default): Parsing (and naming) /src/Generator/Buildability.cs (with lang C#)
+[15.91][DEBUG](default): Core_scan analyzing /demo/SqlCounter.cs
+[15.92][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteEngineAggregate.cs
+[15.94][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteEngineAggregate.cs (with lang C#)
+[15.99][DEBUG](default): Core_scan analyzing /src/Generator/CapabilityAnalyzer.cs
+[16.02][DEBUG](default): Core_scan analyzing /src/Runtime/DbActor.cs
+[16.03][DEBUG](default): Parsing (and naming) /src/Generator/CapabilityAnalyzer.cs (with lang C#)
+[16.05][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneBaseline.cs
+[16.08][DEBUG](default): Parsing (and naming) /src/Runtime/OneToOne/OneToOneBaseline.cs (with lang C#)
+[16.21][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedTable.cs
+[16.21][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaInspect.cs
+[16.22][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservationHistory.cs
+[16.22][DEBUG](default): Core_scan analyzing /src/Runtime/JsonMirrorKeys.cs
+[16.22][DEBUG](default): Core_scan analyzing /src/Generator/DefaultTenants.cs
+[16.22][DEBUG](default): Parsing (and naming) /src/Generator/DefaultTenants.cs (with lang C#)
+[16.22][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteSchemaInspect.cs (with lang C#)
+[16.35][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonFunctions.cs
+[16.36][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresProvider.cs
+[16.37][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresProvider.cs (with lang C#)
+[16.38][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffBudget.cs
+[16.39][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceRecipe.cs
+[16.43][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaSourceRecipe.cs (with lang C#)
+[16.44][DEBUG](default): Core_scan analyzing /src/Generator/EntityReports.cs
+[16.45][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteReconcile.cs
+[16.47][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteReconcile.cs (with lang C#)
+[16.48][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresCatalog.cs
+[16.50][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresCatalog.cs (with lang C#)
+[16.61][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPlanner.cs
+[16.61][DEBUG](default): Parsing (and naming) /src/Runtime/GraphPlanner.cs (with lang C#)
+[16.78][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRequestException.cs
+[16.81][DEBUG](default): Core_scan analyzing /src/Sql/DdlKw.cs
+[16.85][DEBUG](default): Parsing (and naming) /src/Sql/DdlKw.cs (with lang C#)
+[16.89][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteConnectionParts.cs
+[16.90][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteConnectionParts.cs (with lang C#)
+[16.91][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteMarkers.cs
+[16.93][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteMarkers.cs (with lang C#)
+[17.03][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeletedConflictException.cs
+[17.03][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamCanceledException.cs
+[17.05][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiff.cs
+[17.06][DEBUG](default): Core_scan analyzing /src/Runtime/RowLockClauses.cs
+[17.08][DEBUG](default): Core_scan analyzing /src/Runtime/CalculatedDescriptor.cs
+[17.09][DEBUG](default): Parsing (and naming) /src/Runtime/RowLockClauses.cs (with lang C#)
+[17.09][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaHistory.cs
+[17.10][DEBUG](default): Parsing (and naming) /src/Postgres/SchemaDiff/PostgresSchemaHistory.cs (with lang C#)
+[17.18][DEBUG](default): Core_scan analyzing /demo/FaultReader.cs
+[17.19][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaTargetIdentity.cs
+[17.20][DEBUG](default): Core_scan analyzing /src/Runtime/IndexAttribute.cs
+[17.20][DEBUG](default): Core_scan analyzing /src/Runtime/HistoryStatements.cs
+[17.21][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadCleanup.cs
+[17.23][DEBUG](default): Parsing (and naming) /src/Runtime/HistoryStatements.cs (with lang C#)
+[17.24][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyIntent.cs
+[17.29][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyTarget.cs
+[17.30][DEBUG](default): Core_scan analyzing /src/Sql/SchemaDiff/StandardSerializer.SchemaDiff.cs
+[17.32][DEBUG](default): Parsing (and naming) /src/Sql/SchemaDiff/StandardSerializer.SchemaDiff.cs (with lang C#)
+[17.35][DEBUG](default): Core_scan analyzing /demo/ActionCases.cs
+[17.38][DEBUG](default): Core_scan analyzing /src/Runtime/CapabilityNotSupportedException.cs
+[17.38][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeleteAttribute.cs
+[17.39][DEBUG](default): Core_scan analyzing /src/Runtime/WriteStatements.cs
+[17.49][DEBUG](default): Parsing (and naming) /src/Runtime/WriteStatements.cs (with lang C#)
+[17.85][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaRead.cs
+[17.88][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteSchemaRead.cs (with lang C#)
+[18.02][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamException.cs
+[18.04][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/IOrmDiagnosticsSink.cs
+[18.06][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteMigrationPlanner.cs
+[18.06][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteMigrationPlanner.cs (with lang C#)
+[18.06][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneReader.cs
+[18.06][DEBUG](default): Parsing (and naming) /src/Generator/OneToOne/OneToOneReader.cs (with lang C#)
+[18.23][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaEntry.cs
+[18.25][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneProvenance.cs
+[18.26][DEBUG](default): Parsing (and naming) /src/Runtime/OneToOne/OneToOneProvenance.cs (with lang C#)
+[18.27][DEBUG](default): Core_scan analyzing /src/Generator/EntityEmitter.cs
+[18.41][DEBUG](default): Parsing (and naming) /src/Generator/EntityEmitter.cs (with lang C#)
+[18.54][DEBUG](default): Core_scan analyzing /src/Runtime/TableBuilder.cs
+[18.59][DEBUG](default): Parsing (and naming) /src/Runtime/TableBuilder.cs (with lang C#)
+[18.62][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresActorStampDataLiterals.cs
+[18.67][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaCatalog.cs
+[18.67][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteMetadataResources.cs
+[18.70][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneVisibilityTag.cs
+[18.73][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDefaultKind.cs
+[18.74][DEBUG](default): Core_scan analyzing /src/Runtime/Reversibility.cs
+[18.75][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteNodes.cs
+[18.76][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteNodes.cs (with lang C#)
+[18.82][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteEngineFunctions.cs
+[18.84][DEBUG](default): Core_scan analyzing /src/Runtime/GraphEntitySnapshot.cs
+[18.84][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteEngineFunctions.cs (with lang C#)
+[18.86][DEBUG](default): Parsing (and naming) /src/Runtime/GraphEntitySnapshot.cs (with lang C#)
+[18.93][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteValueCodec.cs
+[18.97][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneDirection.cs
+[18.97][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneLookupTarget.cs
+[18.98][DEBUG](default): Core_scan analyzing /src/Generator/LoaderEmitter.cs
+[18.98][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/ISchemaDiffProvider.cs
+[18.98][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/ParameterRedactor.cs
+[18.98][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareColumns.cs
+[18.98][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteHistoryLayout.cs
+[19.00][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaInventory.cs
+[19.00][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresHistoryDataLiterals.cs
+[19.00][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteSchemaInventory.cs (with lang C#)
+[19.03][DEBUG](default): Core_scan analyzing /src/Sql/StandardSerializer.cs
+[19.04][DEBUG](default): Parsing (and naming) /src/Sql/StandardSerializer.cs (with lang C#)
+[19.41][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaStrictDdl.cs
+[19.42][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaStrictDdl.cs (with lang C#)
+[19.43][DEBUG](default): Core_scan analyzing /src/Generator/Syn.cs
+[19.43][DEBUG](default): Parsing (and naming) /src/Generator/Syn.cs (with lang C#)
+[19.48][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaEntry.cs
+[19.49][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteProvider.cs
+[19.50][DEBUG](default): Core_scan analyzing /src/Generator/GeneratedSourceLayout/GeneratedSourceLayout.cs
+[19.51][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteProvider.cs (with lang C#)
+[19.51][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaKnowledge.cs
+[19.55][DEBUG](default): Core_scan analyzing /src/Generator/NavigationAudit.cs
+[19.57][DEBUG](default): Parsing (and naming) /src/Generator/NavigationAudit.cs (with lang C#)
+[19.68][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSnapshotCopies.cs
+[19.69][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaSnapshotCopies.cs (with lang C#)
+[19.69][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresMigrationPlanner.cs
+[19.72][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresMigrationPlanner.cs (with lang C#)
+[19.76][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.Ddl.cs
+[19.80][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteSerializer.Ddl.cs (with lang C#)
+[19.86][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDataSourceName.cs
+[19.87][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteDataSourceName.cs (with lang C#)
+[19.96][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresProviderFactory.cs
+[20.02][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresProviderFactory.cs (with lang C#)
+[20.08][DEBUG](default): Core_scan analyzing /src/Runtime/RowWrites.cs
+[20.13][DEBUG](default): Parsing (and naming) /src/Runtime/RowWrites.cs (with lang C#)
+[20.19][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.cs
+[20.22][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffCanceledException.cs
+[20.22][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneDescriptor.cs
+[20.23][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffUnitResult.cs
+[20.23][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadScope.cs
+[20.24][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/OrmLiteDiagnosticsOptions.cs
+[20.24][DEBUG](default): Core_scan analyzing /demo/VisibilityCases.cs
+[20.24][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaUnitExecution.cs
+[20.25][DEBUG](default): Core_scan analyzing /src/Runtime/JsonKey.cs
+[20.34][DEBUG](default): Core_scan analyzing /src/Generator/SoftDeleteReader.cs
+[20.37][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaRecipeIdentity.cs
+[20.38][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCreatedInventory.cs
+[20.41][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaCreatedInventory.cs (with lang C#)
+[20.41][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaRecipeIdentity.cs (with lang C#)
+[20.51][DEBUG](default): Core_scan analyzing /src/Runtime/DdlLiterals.cs
+[20.51][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaColumns.cs
+[20.52][DEBUG](default): Parsing (and naming) /src/Runtime/DdlLiterals.cs (with lang C#)
+[20.52][DEBUG](default): Parsing (and naming) /src/Postgres/SchemaDiff/PostgresSchemaColumns.cs (with lang C#)
+[20.68][DEBUG](default): Core_scan analyzing /src/Runtime/UpsertSetOf.cs
+[20.69][DEBUG](default): Core_scan analyzing /src/Runtime/IGraphEntityBinding.cs
+[20.71][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteFileIdentity.cs
+[20.71][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffSnapshot.cs
+[20.72][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaDiffSnapshot.cs (with lang C#)
+[20.72][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteFileIdentity.cs (with lang C#)
+[20.74][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonDataLiterals.cs
+[20.76][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteWriterGate.cs
+[20.77][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneEmitter.cs
+[20.78][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationBuilder.cs
+[20.82][DEBUG](default): Parsing (and naming) /src/Runtime/MigrationBuilder.cs (with lang C#)
+[20.85][DEBUG](default): Parsing (and naming) /src/Generator/OneToOne/OneToOneEmitter.cs (with lang C#)
+[21.06][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeleteColumnDdl.cs
+[21.06][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneUniqueAttribute.cs
+[21.07][DEBUG](default): Parsing (and naming) /src/Runtime/SoftDeleteColumnDdl.cs (with lang C#)
+[21.07][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistory.cs
+[21.12][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteHistory.cs (with lang C#)
+[21.16][DEBUG](default): Core_scan analyzing /src/Runtime/ISerializer.cs
+[21.19][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareTables.cs
+[21.23][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaCompareTables.cs (with lang C#)
+[21.24][DEBUG](default): Core_scan analyzing /src/Runtime/GraphExecutionPlan.cs
+[21.25][DEBUG](default): Core_scan analyzing /src/Runtime/DeclaredIdentifiers.cs
+[21.25][DEBUG](default): Parsing (and naming) /src/Runtime/DeclaredIdentifiers.cs (with lang C#)
+[21.26][DEBUG](default): Core_scan analyzing /src/Runtime/NumericAttribute.cs
+[21.27][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObjectStamp.cs
+[21.27][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaNodeCopies.cs
+[21.27][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaNodeCopies.cs (with lang C#)
+[21.27][DEBUG](default): Core_scan analyzing /src/Runtime/GraphTraversalLimits.cs
+[21.28][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneRows.cs
+[21.29][DEBUG](default): Parsing (and naming) /src/Runtime/OneToOne/OneToOneRows.cs (with lang C#)
+[21.35][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLiteOptions.cs
+[21.37][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffUnitNodes.cs
+[21.39][DEBUG](default): Core_scan analyzing /src/Runtime/ResolvedRow.cs
+[21.44][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Queries.cs
+[21.48][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaTable.cs
+[21.48][DEBUG](default): Parsing (and naming) /src/Runtime/Nodes/Queries.cs (with lang C#)
+[21.49][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamTokens.cs
+[21.50][DEBUG](default): Core_scan analyzing /src/Runtime/SetClauses.cs
+[21.51][DEBUG](default): Parsing (and naming) /src/Runtime/Streaming/StreamTokens.cs (with lang C#)
+[21.51][DEBUG](default): Core_scan analyzing /src/Runtime/GraphQueryState.cs
+[21.51][DEBUG](default): Parsing (and naming) /src/Runtime/GraphQueryState.cs (with lang C#)
+[21.54][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffTarget.cs
+[21.54][DEBUG](default): Core_scan analyzing /src/Runtime/SelectClauses.cs
+[21.54][DEBUG](default): Parsing (and naming) /src/Runtime/SelectClauses.cs (with lang C#)
+[21.54][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneLoader.cs
+[21.54][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureStatements.cs
+[21.55][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaFixtureStatements.cs (with lang C#)
+[21.57][DEBUG](default): Core_scan analyzing /src/Runtime/RowResolver.cs
+[21.58][DEBUG](default): Core_scan analyzing /src/Runtime/PlainOrder.cs
+[21.59][DEBUG](default): Parsing (and naming) /src/Runtime/RowResolver.cs (with lang C#)
+[21.60][DEBUG](default): Core_scan analyzing /src/Runtime/CalculatedLowerAttribute.cs
+[21.63][DEBUG](default): Core_scan analyzing /demo/Results.cs
+[21.65][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRegistrySnapshot.cs
+[21.66][DEBUG](default): Core_scan analyzing /src/Runtime/ColumnExtremes.cs
+[21.66][DEBUG](default): Core_scan analyzing /demo/LegacyCases.cs
+[21.68][DEBUG](default): Core_scan analyzing /demo/CancellationCases.cs
+[21.68][DEBUG](default): Core_scan analyzing /src/Runtime/OnConflict.cs
+[21.71][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaBudgetCommand.cs
+[21.71][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteFunctions.cs
+[21.71][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaBudgetCommand.cs (with lang C#)
+[21.72][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteFunctions.cs (with lang C#)
+[22.10][DEBUG](default): Core_scan analyzing /src/Runtime/JsonValueOrder.cs
+[22.12][DEBUG](default): Core_scan analyzing /src/Sql/Kw.cs
+[22.16][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/INodeVisitor.History.cs
+[22.17][DEBUG](default): Parsing (and naming) /src/Sql/Kw.cs (with lang C#)
+[22.18][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamResourceChecks.cs
+[22.19][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRequest.cs
+[22.22][DEBUG](default): Core_scan analyzing /src/Generator/BuilderCapabilities.cs
+[22.22][DEBUG](default): Parsing (and naming) /src/Generator/BuilderCapabilities.cs (with lang C#)
+[22.23][DEBUG](default): Core_scan analyzing /src/Runtime/SoftTrashRead.cs
+[22.24][DEBUG](default): Parsing (and naming) /src/Runtime/SoftTrashRead.cs (with lang C#)
+[22.46][DEBUG](default): Core_scan analyzing /src/Generator/IndexReader.cs
+[22.51][DEBUG](default): Parsing (and naming) /src/Generator/IndexReader.cs (with lang C#)
+[22.54][DEBUG](default): Core_scan analyzing /src/Runtime/GraphIdentityMap.cs
+[22.58][DEBUG](default): Core_scan analyzing /src/Generator/GeneratedSourceLayout/GeneratedLineWrap.cs
+[22.63][DEBUG](default): Parsing (and naming) /src/Generator/GeneratedSourceLayout/GeneratedLineWrap.cs (with lang C#)
+[22.68][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaRestoration.cs
+[22.68][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Node.cs
+[22.70][DEBUG](default): Core_scan analyzing /demo/CascadeDependent.cs
+[22.70][DEBUG](default): Core_scan analyzing /src/Runtime/LongSum.cs
+[22.73][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaSession.cs
+[22.73][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaUnitOutcome.cs
+[22.78][DEBUG](default): Parsing (and naming) /src/Postgres/SchemaDiff/PostgresSchemaSession.cs (with lang C#)
+[22.78][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadGuard.cs
+[22.81][DEBUG](default): Parsing (and naming) /src/Runtime/OneToOne/OneToOneReadGuard.cs (with lang C#)
+[22.94][DEBUG](default): Core_scan analyzing /src/Runtime/EntityProjection.cs
+[22.95][DEBUG](default): Parsing (and naming) /src/Runtime/EntityProjection.cs (with lang C#)
+[22.98][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRegistrationLease.cs
+[23.01][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamStopReason.cs
+[23.03][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaLocalRoles.cs
+[23.06][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonModel.cs
+[23.07][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffApplyOutcome.cs
+[23.07][DEBUG](default): Core_scan analyzing /src/Runtime/IndexTerm.cs
+[23.08][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteJsonModel.cs (with lang C#)
+[23.08][DEBUG](default): Core_scan analyzing /src/Runtime/HistoryReads.cs
+[23.14][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Writes.cs
+[23.15][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffApplyResult.cs
+[23.16][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDispositions.cs
+[23.16][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteDispositions.cs (with lang C#)
+[23.17][DEBUG](default): Core_scan analyzing /demo/SetNullDependent.cs
+[23.18][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneAttribute.cs
+[23.19][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaSession.cs
+[23.28][DEBUG](default): Parsing (and naming) /src/Sqlite/SchemaDiff/SqliteSchemaSession.cs (with lang C#)
+[23.35][DEBUG](default): Core_scan analyzing /demo/FailureCases.cs
+[23.44][DEBUG](default): Core_scan analyzing /src/Runtime/ReferenceAttribute.cs
+[23.45][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationContribution.cs
+[23.46][DEBUG](default): Parsing (and naming) /src/Runtime/MigrationContribution.cs (with lang C#)
+[23.48][DEBUG](default): Core_scan analyzing /src/Runtime/TableAttribute.cs
+[23.48][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPath.cs
+[23.49][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/INodeVisitor.cs
+[23.49][DEBUG](default): Core_scan analyzing /src/Generator/MigrationScan.cs
+[23.49][DEBUG](default): Parsing (and naming) /src/Generator/MigrationScan.cs (with lang C#)
+[23.49][DEBUG](default): Parsing (and naming) /src/Runtime/Nodes/INodeVisitor.cs (with lang C#)
+[23.53][DEBUG](default): Core_scan analyzing /src/Runtime/LinkForeignKeyDeclaration.cs
+[23.65][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffException.cs
+[23.70][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresLowering.cs
+[23.70][DEBUG](default): Core_scan analyzing /src/Runtime/DbExtensions.cs
+[23.72][DEBUG](default): Parsing (and naming) /src/Runtime/DbExtensions.cs (with lang C#)
+[23.72][DEBUG](default): Parsing (and naming) /src/Postgres/PostgresLowering.cs (with lang C#)
+[23.75][DEBUG](default): Core_scan analyzing /src/Runtime/ProviderRegistry.cs
+[23.79][DEBUG](default): Parsing (and naming) /src/Runtime/ProviderRegistry.cs (with lang C#)
+[23.89][DEBUG](default): Core_scan analyzing /src/Generator/Findings.cs
+[23.94][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDataSourceProbe.cs
+[23.96][DEBUG](default): Parsing (and naming) /src/Sqlite/SqliteDataSourceProbe.cs (with lang C#)
+[24.00][DEBUG](default): Core_scan analyzing /src/Generator/Singular.cs
+[24.00][DEBUG](default): Core_scan analyzing /src/Runtime/StatementExecutor.cs
+[24.01][DEBUG](default): Parsing (and naming) /src/Runtime/StatementExecutor.cs (with lang C#)
+[24.09][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaBudgetConnection.cs
+[24.10][DEBUG](default): Parsing (and naming) /src/Runtime/SchemaDiff/SchemaBudgetConnection.cs (with lang C#)
+[24.11][DEBUG](default): Core_scan analyzing /src/Generator/ColumnTypes.cs
+[24.13][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryNodes.cs
+[24.15][DEBUG](default): Core_scan analyzing /src/Runtime/ManyToManyAttribute.cs
+[24.17][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLinkSource.cs
+[24.17][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDataLiterals.cs
+[24.18][DEBUG](default): Core_scan analyzing /src/Runtime/GraphWorkLimits.cs
+[24.18][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/BorrowedStreamLease.cs
+[24.19][DEBUG](default): Core_scan analyzing /src/Runtime/GatedDataSource.cs
+[24.19][DEBUG](default): Parsing (and naming) /src/Runtime/Streaming/BorrowedStreamLease.cs (with lang C#)
+[24.20][DEBUG](default): Parsing (and naming) /src/Runtime/GatedDataSource.cs (with lang C#)
+[24.23][DEBUG](default): Core_scan analyzing /src/Runtime/UnitOfWork.cs
+[24.26][DEBUG](default): Parsing (and naming) /src/Runtime/UnitOfWork.cs (with lang C#)
+[24.56][DEBUG](default): Core_scan analyzing /src/Runtime/ViewAttribute.cs
+[24.58][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaColumns.cs
+[24.59][DEBUG](default): Core_scan analyzing /src/Runtime/UpsertSetGuard.cs
+[24.60][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObserve.cs
+[24.62][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFact.cs
+[24.62][DEBUG](default): Core_scan analyzing /src/Generator/EntityReader.cs
+[24.63][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeleteSql.cs
+[24.63][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneModel.cs
+[24.63][DEBUG](default): Core_scan analyzing /src/Runtime/ConstraintColumns.cs
+[24.64][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDesiredTable.cs
+[24.64][DEBUG](default): Core_scan analyzing /src/Runtime/LinkForeignKeyEnd.cs
+[24.67][DEBUG](default): Core_scan analyzing /demo/AdditionalGuardCases.cs
+[24.67][DEBUG](default): Core_scan analyzing /src/Generator/SoftDeleteDiagnostics.cs
+[24.67][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffComparison.cs
+[24.67][DEBUG](default): Core_scan analyzing /src/Generator/EquatableArrays.cs
+[24.68][DEBUG](default): Core_scan analyzing /src/Runtime/ComparisonOperands.cs
+[24.68][DEBUG](default): Core_scan analyzing /src/Generator/UnmappedNote.cs
+[24.68][DEBUG](default): Core_scan analyzing /src/Runtime/GraphModel.cs
+[24.68][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffObservation.cs
+[24.68][DEBUG](default): Core_scan analyzing /demo/CatalogCases.cs
+[24.68][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareKnowledge.cs
+[24.69][DEBUG](default): Core_scan analyzing /src/Generator/DescriptorEmitter.cs
+[24.69][DEBUG](default): Core_scan analyzing /src/Runtime/UpsertSet.cs
+[24.70][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaDataLiterals.cs
+[24.70][DEBUG](default): Core_scan analyzing /src/PackageAssets/README.md
+[24.70][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaRoles.cs
+[24.70][DEBUG](default): Core_scan analyzing /src/Sqlite/assets/Neemle.OrmLite.Sqlite.props
+[24.70][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/.editorconfig
+[24.70][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationPlanning.cs
+[24.70][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyDescriptor.cs
+[24.74][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffCanonical.cs
+[24.77][DEBUG](default): Core_scan analyzing /src/Runtime/KeyAttribute.cs
+[24.79][DEBUG](default): Core_scan analyzing /src/Runtime/GraphFrontier.cs
+[24.80][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresProvider.SchemaDiff.cs
+[24.82][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObjectRef.cs
+[24.82][DEBUG](default): Core_scan analyzing /src/Generator/SymbolFacts.cs
+[24.85][DEBUG](default): Core_scan analyzing /demo/FaultCommand.cs
+[24.85][DEBUG](default): Core_scan analyzing /src/Runtime/DbLane.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Generator/EntityClassEmitter.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Generator/MigrationGenerator.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffError.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Sql/StandardSerializer.Ddl.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Runtime/IndexFilter.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Runtime/Grouping.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneError.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyBaseline.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Runtime/OrmMeta.cs
+[24.86][DEBUG](default): Core_scan analyzing /src/Runtime/GraphEntityBinding.cs
+[24.87][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffChange.cs
+[24.87][DEBUG](default): Core_scan analyzing /src/Runtime/CorrelatedExists.cs
+[24.87][DEBUG](default): Core_scan analyzing /src/Runtime/OrmMigrationRegistry.cs
+[24.87][DEBUG](default): Core_scan analyzing /src/Runtime/LiveOnlyConversionDdl.cs
+[24.87][DEBUG](default): Core_scan analyzing /src/Runtime/StatementCompiler.cs
+[24.87][DEBUG](default): Core_scan analyzing /src/Runtime/OrmSchema.cs
+[24.87][DEBUG](default): Core_scan analyzing /src/Runtime/ViewDefinition.cs
+[24.88][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/.editorconfig
+[24.88][DEBUG](default): Core_scan analyzing /src/Runtime/OrmContext.cs
+[24.88][DEBUG](default): Core_scan analyzing /src/Generator/TenantRules.cs
+[24.88][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaInventory.cs
+[24.88][DEBUG](default): Core_scan analyzing /src/Generator/IndexDiagnostics.cs
+[24.88][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFixtureRequest.cs
+[24.88][DEBUG](default): Core_scan analyzing /src/Sql/SchemaDiff/.editorconfig
+[24.88][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.Literals.cs
+[24.88][DEBUG](default): Core_scan analyzing /src/Runtime/EntityStatements.cs
+[24.88][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffScope.cs
+[24.89][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyDeclarationError.cs
+[24.89][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteCatalog.cs
+[24.89][DEBUG](default): Core_scan analyzing /src/Runtime/AdvisorySessionLocks.cs
+[24.89][DEBUG](default): Core_scan analyzing /src/Runtime/Capability.cs
+[24.91][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresNodes.cs
+[24.91][DEBUG](default): Core_scan analyzing /src/Runtime/IdentifierTooLongException.cs
+[24.92][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryPlan.cs
+[24.92][DEBUG](default): Core_scan analyzing /src/Runtime/JsonClauses.cs
+[24.92][DEBUG](default): Core_scan analyzing /src/Runtime/MovedFieldKey.cs
+[24.93][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSqlText.cs
+[24.93][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPaths.cs
+[24.93][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamOpenFailure.cs
+[24.93][DEBUG](default): Core_scan analyzing /src/Runtime/ViewColumns.cs
+[24.93][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaRecipeValidation.cs
+[24.94][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneTarget.cs
+[24.94][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDefault.cs
+[24.94][DEBUG](default): Core_scan analyzing /src/PackageAssets/mark.svg
+[24.94][DEBUG](default): Core_scan analyzing /src/Generator/EntityScan.cs
+[24.94][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationRunner.cs
+[24.94][DEBUG](default): Core_scan analyzing /src/Sql/StandardSerializer.History.cs
+[24.95][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyActionDdl.cs
+[24.95][DEBUG](default): Core_scan analyzing /src/Generator/CalculatedReader.cs
+[24.97][DEBUG](default): Core_scan analyzing /src/Runtime/JsonKeyOrdering.cs
+[24.97][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.Json.cs
+[24.97][DEBUG](default): Core_scan analyzing /src/Runtime/Runtime.csproj
+[24.97][DEBUG](default): Core_scan analyzing /demo/Fixture.cs
+[24.97][DEBUG](default): Core_scan analyzing /src/Runtime/TableConstraints.cs
+[24.97][DEBUG](default): Core_scan analyzing /src/Generator/MapEmitter.cs
+[24.98][DEBUG](default): Core_scan analyzing /src/Runtime/SetTerms.cs
+[24.98][DEBUG](default): Core_scan analyzing /src/Runtime/DdlCompiler.cs
+[25.01][DEBUG](default): Core_scan analyzing /demo/CleanupFaults.cs
+[25.01][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyReader.cs
+[25.01][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceFacts.cs
+[25.01][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/.editorconfig
+[25.02][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLiteOptions.Binding.cs
+[25.02][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.Ddl.cs
+[25.03][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/JsonEscapes.cs
+[25.03][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresMetadataResources.cs
+[25.04][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureWorkKind.cs
+[25.04][DEBUG](default): Core_scan analyzing /src/Generator/GraphEmitter.cs
+[25.04][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyEmitter.cs
+[25.05][DEBUG](default): Core_scan analyzing /src/Generator/CapabilityDiagnostics.cs
+[25.05][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteRebuild.cs
+[25.05][DEBUG](default): Core_scan analyzing /src/Runtime/NotAColumnAttribute.cs
+[25.05][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationOps.cs
+[25.05][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaTable.cs
+[25.06][DEBUG](default): Core_scan analyzing /src/.editorconfig
+[25.06][DEBUG](default): Core_scan analyzing /src/Runtime/LikePattern.cs
+[25.06][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffReport.cs
+[25.08][DEBUG](default): Core_scan analyzing /src/Generator/TableNameAudit.cs
+[25.10][DEBUG](default): Core_scan analyzing /demo/GuardCases.cs
+[25.11][DEBUG](default): Core_scan analyzing /src/Runtime/EntityDescriptor.cs
+[25.15][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffRecipe.cs
+[25.19][DEBUG](default): Core_scan analyzing /src/Runtime/GraphReadContext.cs
+[25.22][DEBUG](default): Core_scan analyzing /demo/RequiredDependent.cs
+[25.22][DEBUG](default): Core_scan analyzing /src/Runtime/GraphNavigationBinding.cs
+[25.23][DEBUG](default): Core_scan analyzing /src/Runtime/GroupKeyReader.cs
+[25.23][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaAdmission.cs
+[25.23][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Leaves.cs
+[25.23][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneAnalysis.cs
+[25.23][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffLimits.cs
+[25.24][DEBUG](default): Core_scan analyzing /src/Core/Core.csproj
+[25.24][DEBUG](default): Core_scan analyzing /src/Runtime/ISqlProvider.cs
+[25.25][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureCommands.cs
+[25.26][DEBUG](default): Core_scan analyzing /src/Runtime/PredicateTranslator.cs
+[25.27][DEBUG](default): Core_scan analyzing /src/Generator/MigrationShape.cs
+[25.28][DEBUG](default): Core_scan analyzing /src/Generator/EquatableArray.cs
+[25.28][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLinkBinding.cs
+[25.30][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/NodeList.cs
+[25.31][DEBUG](default): Core_scan analyzing /demo/README.md
+[25.31][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamError.cs
+[25.32][DEBUG](default): Core_scan analyzing /demo/DirectionCases.cs
+[25.32][DEBUG](default): Core_scan analyzing /src/Runtime/ClosureUnary.cs
+[25.32][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/ISchemaDiffApplySession.cs
+[25.34][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaReferences.cs
+[25.36][DEBUG](default): Core_scan analyzing /src/Runtime/Jsonb.cs
+[25.39][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffImpact.cs
+[25.39][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSessionCommands.cs
+[25.44][DEBUG](default): Core_scan analyzing /src/Runtime/StatementCommand.cs
+[25.45][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresServerVersion.cs
+[25.46][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationAttribute.cs
+[25.47][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/INodeVisitor.Ddl.cs
+[25.47][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaTypes.cs
+[25.48][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.Strings.cs
+[25.48][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixturePlan.cs
+[25.49][DEBUG](default): Core_scan analyzing /src/Runtime/Redaction.cs
+[25.49][DEBUG](default): Core_scan analyzing /src/Runtime/GraphVisibilityException.cs
+[25.49][DEBUG](default): Core_scan analyzing /src/Generator/AccessRules.cs
+[25.49][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSerializer.SchemaDiff.cs
+[25.49][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaTypes.cs
+[25.49][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFixtureMode.cs
+[25.50][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaDataLiterals.cs
+[25.50][DEBUG](default): Core_scan analyzing /src/Runtime/GraphKeyBinding.cs
+[25.50][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteProviderFactory.cs
+[25.50][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceTarget.cs
+[25.52][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffInspection.cs
+[25.52][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyDeclarationException.cs
+[25.53][DEBUG](default): Core_scan analyzing /src/Generator/MigrationVersions.cs
+[25.54][DEBUG](default): Core_scan analyzing /src/Runtime/SoftRestore.cs
+[25.54][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLimitExceededException.cs
+[25.55][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLite.cs
+[25.55][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyValidation.cs
+[25.55][DEBUG](default): Core_scan analyzing /src/Runtime/ScalarValue.cs
+[25.57][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamEnumerator.cs
+[25.58][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaStorageType.cs
+[25.58][DEBUG](default): Core_scan analyzing /src/Generator/ShapeDiagnostics.cs
+[25.58][DEBUG](default): Core_scan analyzing /src/Generator/NavigationFacts.cs
+[25.58][DEBUG](default): Core_scan analyzing /demo/Profile.cs
+[25.61][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStream.cs
+[25.61][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/SecretLabels.cs
+[25.64][DEBUG](default): Core_scan analyzing /src/Runtime/LinkedRead.cs
+[25.64][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneIntent.cs
+[25.67][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Expressions.cs
+[25.67][DEBUG](default): Core_scan analyzing /src/Runtime/GraphReferenceBinding.cs
+[25.70][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyModel.cs
+[25.71][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresHistoryLayout.cs
+[25.71][DEBUG](default): Core_scan analyzing /src/Runtime/EnumOrdering.cs
+[25.71][DEBUG](default): Core_scan analyzing /src/Generator/IndexTerms.cs
+[25.71][DEBUG](default): Core_scan analyzing /src/Runtime/ConflictGuard.cs
+[25.73][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonInput.cs
+[25.73][DEBUG](default): Core_scan analyzing /src/Runtime/OrmEnum.cs
+[25.73][DEBUG](default): Core_scan analyzing /demo/FaultConnection.cs
+[25.76][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/InverseOneToOneAttribute.cs
+[25.78][DEBUG](default): Core_scan analyzing /src/Generator/KeyLoss.cs
+[25.78][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffArtifact.cs
+[25.78][DEBUG](default): Core_scan analyzing /src/Runtime/Row.cs
+[25.78][DEBUG](default): Core_scan analyzing /src/Generator/IdentifierDiagnostics.cs
+[25.78][DEBUG](default): Core_scan analyzing /src/Generator/IndexFilters.cs
+[25.79][DEBUG](default): Core_scan analyzing /src/Runtime/GraphBudget.cs
+[25.79][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFailures.cs
+[25.79][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamCursor.cs
+[25.79][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/.editorconfig
+[25.79][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffChangeKind.cs
+[25.79][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresActorStamp.cs
+[25.79][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyOrder.cs
+[25.79][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureChecks.cs
+[25.80][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLinkReader.cs
+[25.80][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffLineage.cs
+[25.81][DEBUG](default): Core_scan analyzing /src/Runtime/HistoryScope.cs
+[25.81][DEBUG](default): Core_scan analyzing /src/Runtime/GraphTypedPath.cs
+[25.81][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationRunPlan.cs
+[25.81][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/OrmDiagnostics.cs
+[25.81][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/WriteRealised.cs
+[25.82][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaResourceCleanup.cs
+[25.83][DEBUG](default): Core_scan analyzing /src/Runtime/InValues.cs
+[25.84][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamNativeLocks.cs
+[25.84][DEBUG](default): Core_scan analyzing /src/Runtime/GroupKeys.cs
+[25.84][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffManifest.cs
+[25.84][DEBUG](default): Core_scan analyzing /src/Runtime/InsertManyChunks.cs
+[25.84][DEBUG](default): Core_scan analyzing /src/Runtime/WriteCompiler.cs
+[25.87][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneOwner.cs
+[25.87][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamCapture.cs
+[25.88][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Ddl.cs
+[25.88][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneLookupValidation.cs
+[25.91][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaMetadataConnections.cs
+[25.91][DEBUG](default): Core_scan analyzing /demo/OneToOneDemo.csproj
+[25.92][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaInspect.cs
+[25.92][DEBUG](default): Core_scan analyzing /src/Generator/IndexInputs.cs
+[25.92][DEBUG](default): Core_scan analyzing /src/Runtime/RowHistoryRevert.cs
+[25.93][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureState.cs
+[25.93][DEBUG](default): Core_scan analyzing /src/Runtime/RowHistoryDdl.cs
+[25.93][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamBorrowed.cs
+[25.94][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneDeclarationException.cs
+[25.98][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresDdlDataLiterals.cs
+[25.98][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDatabaseKey.cs
+[26.00][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFactCopies.cs
+[26.01][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryDataLiterals.cs
+[26.01][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareAdd.cs
+[26.08][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffNames.cs
+[26.10][DEBUG](default): Core_scan analyzing /src/Runtime/GraphBudgetCounter.cs
+[26.10][DEBUG](default): Core_scan analyzing /src/Runtime/ColumnAttribute.cs
+[26.11][DEBUG](default): Core_scan analyzing /demo/Person.cs
+[26.11][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.History.cs
+[26.11][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneValidation.cs
+[26.12][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffStatus.cs
+[26.12][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservationDigest.cs
+[26.12][DEBUG](default): Core_scan analyzing /src/Runtime/StringLike.cs
+[26.12][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.HistoryDdl.cs
+[26.13][DEBUG](default): Core_scan analyzing /src/Runtime/Query.cs
+[26.13][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffIdentity.cs
+[26.13][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffReview.cs
+[26.16][DEBUG](default): Core_scan analyzing /src/Runtime/AggregateClauses.cs
+[26.21][DEBUG](default): Core_scan analyzing /src/Generator/CapabilityManifest.cs
+[26.22][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.History.cs
+[26.24][DEBUG](default): Core_scan analyzing /demo/prepare-packages.sh
+[26.24][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedColumn.cs
+[26.27][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceNames.cs
+[26.27][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.cs
+[26.28][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamMappingFailure.cs
+[26.28][DEBUG](default): Core_scan analyzing /src/Runtime/GraphExecutor.cs
+[26.31][DEBUG](default): Core_scan analyzing /src/Runtime/GraphKeyComparer.cs
+[26.31][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFreshPhysical.cs
+[26.31][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLimits.cs
+[26.31][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceNodes.cs
+[26.40][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/HistoryNodes.cs
+[26.40][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteEngineValues.cs
+[26.45][DEBUG](default): Core_scan analyzing /src/Runtime/OrmExec.cs
+[26.59][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneLookup.cs
+[26.59][DEBUG](default): Core_scan analyzing /demo/Program.cs
+[26.66][DEBUG](default): Core_scan analyzing /src/Sql/SqlWriter.cs
+[26.67][DEBUG](default): Core_scan analyzing /demo/ActionParent.cs
+[26.68][DEBUG](default): Core_scan analyzing /demo/MappingFaults.cs
+[26.69][DEBUG](default): Core_scan analyzing /demo/NuGet.Config
+[26.70][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareState.cs
+[26.74][DEBUG](default): Core_scan analyzing /demo/IntegrityCases.cs
+[26.74][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffProvenance.cs
+[26.74][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSerializer.SchemaDiff.cs
+[26.74][DEBUG](default): Core_scan analyzing /src/Runtime/Db.cs
+[26.74][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/JsonStrings.cs
+[26.74][DEBUG](default): Core_scan analyzing /src/Runtime/RowHistoryRead.cs
+[26.74][DEBUG](default): Core_scan analyzing /src/Runtime/Statement.cs
+[26.75][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyAnalysis.cs
+[26.75][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaDefinition.cs
+[26.76][DEBUG](default): Core_scan analyzing /src/PackageAssets/icon.svg
+[26.80][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceBuilder.cs
+[26.81][DEBUG](default): Core_scan analyzing /src/Runtime/IGraphNavigationBinding.cs
+[26.81][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDecimal.cs
+[26.81][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaStatementBudget.cs
+[26.81][DEBUG](default): Core_scan analyzing /src/Runtime/RequiresCapabilityAttribute.cs
+[26.82][DEBUG](default): Core_scan analyzing /src/Generator/OrmGenerator.cs
+[26.82][DEBUG](default): Core_scan analyzing /demo/SoftPrincipal.cs
+[26.82][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPlanNode.cs
+[26.82][DEBUG](default): Core_scan analyzing /src/Runtime/GraphStatementRunner.cs
+[26.82][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneCardinalityException.cs
+[26.82][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Enums.cs
+[26.82][DEBUG](default): Core_scan analyzing /src/Runtime/ParamLiterals.cs
+[26.82][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyAttribute.cs
+[26.82][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureWork.cs
+[26.82][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamCompletion.cs
+[26.83][DEBUG](default): Core_scan analyzing /src/Runtime/Migration.cs
+[26.83][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamExecution.cs
+[26.83][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservationIdentity.cs
+[26.83][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLiteSettings.cs
+[26.83][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaAfterProjection.cs
+[26.83][DEBUG](default): Core_scan analyzing /src/Runtime/Defaults.cs
+[26.84][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureMutation.cs
+[26.88][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/ProviderRealised.cs
+[26.89][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureSchedule.cs
+[26.90][DEBUG](default): Core_scan analyzing /src/Runtime/GraphKey.cs
+[26.91][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadMap.cs
+[26.93][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneConstraints.cs
+[26.95][DEBUG](default): Core_scan analyzing /src/Runtime/RenderState.cs
+[26.95][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteRebuildObjects.cs
+[26.97][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryEscape.cs
+[26.97][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRequestError.cs
+[26.97][DEBUG](default): Core_scan analyzing /src/Runtime/GraphTypedKeyBinding.cs
+[26.97][DEBUG](default): Core_scan analyzing /src/Runtime/GraphVisibility.cs
+[26.98][DEBUG](default): Core_scan analyzing /demo/SoftDependent.cs
+[26.99][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamReadSnapshot.cs
+[26.99][DEBUG](default): Core_scan analyzing /src/Runtime/GraphCollectionBinding.cs
+[26.99][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedTableFacts.cs
+[26.99][DEBUG](default): Core_scan analyzing /src/Generator/EntityNaming.cs
+[27.01][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaTargetCopies.cs
+[27.02][DEBUG](default): Core_scan analyzing /src/Generator/EntityOrder.cs
+[27.02][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamBinding.cs
+[27.02][DEBUG](default): Core_scan analyzing /demo/UpgradeCases.cs
+[27.02][DEBUG](default): Core_scan analyzing /src/Generator/GeneratorGuard.cs
+[27.03][DEBUG](default): Core_scan analyzing /src/Runtime/LinkForeignKeyAttribute.cs
+[27.03][DEBUG](default): Core_scan analyzing /demo/DeclarationCases.cs
+[27.03][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedColumnFacts.cs
+[27.04][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresNames.cs
+[27.04][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteProvider.SchemaDiff.cs
+[27.04][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/ISchemaDiffDdlSerializer.cs
+[27.04][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamCleanup.cs
+[27.04][DEBUG](default): Core_scan analyzing /src/Runtime/ClauseGuard.cs
+[27.04][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFixtureRunner.cs
+[27.04][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/.editorconfig
+[27.05][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaRead.cs
+[27.05][DEBUG](default): Core_scan analyzing /src/Sql/Sql.csproj
+[27.05][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaPhysicalTypes.cs
+[27.05][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresDataLiterals.cs
+[27.05][DEBUG](default): Core_scan analyzing /src/Runtime/GraphQueryExtensions.cs
+[27.06][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamParameterValues.cs
+[27.06][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/LabelWords.cs
+[27.06][DEBUG](default): Core_scan analyzing /src/Generator/Buildability.cs
+[27.06][DEBUG](default): Core_scan analyzing /src/Postgres/assets/ormlite.capabilities.postgres.txt
+[27.06][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/.editorconfig
+[27.06][DEBUG](default): Core_scan analyzing /demo/SqlCounter.cs
+[27.06][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteEngineAggregate.cs
+[27.06][DEBUG](default): Core_scan analyzing /src/Generator/CapabilityAnalyzer.cs
+[27.06][DEBUG](default): Core_scan analyzing /src/Runtime/DbActor.cs
+[27.07][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneBaseline.cs
+[27.07][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedTable.cs
+[27.07][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaInspect.cs
+[27.07][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservationHistory.cs
+[27.09][DEBUG](default): Core_scan analyzing /src/Runtime/JsonMirrorKeys.cs
+[27.15][DEBUG](default): Core_scan analyzing /src/Generator/DefaultTenants.cs
+[27.19][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonFunctions.cs
+[27.21][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresProvider.cs
+[27.22][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffBudget.cs
+[27.22][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceRecipe.cs
+[27.22][DEBUG](default): Core_scan analyzing /src/Generator/EntityReports.cs
+[27.22][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteReconcile.cs
+[27.22][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresCatalog.cs
+[27.22][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPlanner.cs
+[27.24][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRequestException.cs
+[27.24][DEBUG](default): Core_scan analyzing /src/Sql/DdlKw.cs
+[27.24][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteConnectionParts.cs
+[27.25][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteMarkers.cs
+[27.25][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamCanceledException.cs
+[27.25][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeletedConflictException.cs
+[27.26][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiff.cs
+[27.26][DEBUG](default): Core_scan analyzing /src/Runtime/RowLockClauses.cs
+[27.26][DEBUG](default): Core_scan analyzing /src/Runtime/CalculatedDescriptor.cs
+[27.26][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaHistory.cs
+[27.26][DEBUG](default): Core_scan analyzing /demo/FaultReader.cs
+[27.26][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaTargetIdentity.cs
+[27.26][DEBUG](default): Core_scan analyzing /src/Runtime/IndexAttribute.cs
+[27.27][DEBUG](default): Core_scan analyzing /src/Runtime/HistoryStatements.cs
+[27.28][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadCleanup.cs
+[27.28][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyIntent.cs
+[27.28][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyTarget.cs
+[27.28][DEBUG](default): Core_scan analyzing /src/Sql/SchemaDiff/StandardSerializer.SchemaDiff.cs
+[27.30][DEBUG](default): Core_scan analyzing /demo/ActionCases.cs
+[27.30][DEBUG](default): Core_scan analyzing /src/Runtime/CapabilityNotSupportedException.cs
+[27.31][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeleteAttribute.cs
+[27.31][DEBUG](default): Core_scan analyzing /src/Runtime/WriteStatements.cs
+[27.31][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaRead.cs
+[27.38][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamException.cs
+[27.38][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/IOrmDiagnosticsSink.cs
+[27.38][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteMigrationPlanner.cs
+[27.38][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneReader.cs
+[27.39][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaEntry.cs
+[27.41][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneProvenance.cs
+[27.41][DEBUG](default): Core_scan analyzing /src/Generator/EntityEmitter.cs
+[27.43][DEBUG](default): Core_scan analyzing /src/Runtime/TableBuilder.cs
+[27.44][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresActorStampDataLiterals.cs
+[27.44][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteMetadataResources.cs
+[27.44][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaCatalog.cs
+[27.44][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneVisibilityTag.cs
+[27.44][DEBUG](default): Core_scan analyzing /src/Runtime/Reversibility.cs
+[27.45][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteNodes.cs
+[27.45][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDefaultKind.cs
+[27.45][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteEngineFunctions.cs
+[27.45][DEBUG](default): Core_scan analyzing /src/Runtime/GraphEntitySnapshot.cs
+[27.45][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteValueCodec.cs
+[27.45][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneLookupTarget.cs
+[27.48][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneDirection.cs
+[27.50][DEBUG](default): Core_scan analyzing /src/Generator/LoaderEmitter.cs
+[27.50][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/ISchemaDiffProvider.cs
+[27.52][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/ParameterRedactor.cs
+[27.52][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareColumns.cs
+[27.53][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteHistoryLayout.cs
+[27.53][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresHistoryDataLiterals.cs
+[27.54][DEBUG](default): Core_scan analyzing /src/Sql/StandardSerializer.cs
+[27.54][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaInventory.cs
+[27.54][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaStrictDdl.cs
+[27.56][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaEntry.cs
+[27.57][DEBUG](default): Core_scan analyzing /src/Generator/Syn.cs
+[27.58][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteProvider.cs
+[27.58][DEBUG](default): Core_scan analyzing /src/Generator/GeneratedSourceLayout/GeneratedSourceLayout.cs
+[27.60][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaKnowledge.cs
+[27.65][DEBUG](default): Core_scan analyzing /src/Generator/NavigationAudit.cs
+[27.67][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSnapshotCopies.cs
+[27.68][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresMigrationPlanner.cs
+[27.69][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.Ddl.cs
+[27.72][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDataSourceName.cs
+[27.72][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresProviderFactory.cs
+[27.72][DEBUG](default): Core_scan analyzing /src/Packaging.props
+[27.74][DEBUG](default): Core_scan analyzing /src/Runtime/RowWrites.cs
+[27.74][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.cs
+[27.74][DEBUG](default): Core_scan analyzing /src/Postgres/assets/Neemle.OrmLite.Postgres.props
+[27.75][DEBUG](default): Core_scan analyzing /src/PackageAssets/logo-dark.svg
+[27.75][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneDescriptor.cs
+[27.76][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffCanceledException.cs
+[27.76][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffUnitResult.cs
+[27.77][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadScope.cs
+[27.77][DEBUG](default): Core_scan analyzing /demo/VisibilityCases.cs
+[27.78][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/OrmLiteDiagnosticsOptions.cs
+[27.78][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaUnitExecution.cs
+[27.80][DEBUG](default): Core_scan analyzing /src/Runtime/JsonKey.cs
+[27.82][DEBUG](default): Core_scan analyzing /src/Generator/SoftDeleteReader.cs
+[27.82][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaRecipeIdentity.cs
+[27.83][DEBUG](default): Core_scan analyzing /src/Runtime/DdlLiterals.cs
+[27.83][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCreatedInventory.cs
+[27.83][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaColumns.cs
+[27.85][DEBUG](default): Core_scan analyzing /src/Runtime/UpsertSetOf.cs
+[27.85][DEBUG](default): Core_scan analyzing /src/Runtime/IGraphEntityBinding.cs
+[27.88][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteFileIdentity.cs
+[27.88][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffSnapshot.cs
+[27.89][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonDataLiterals.cs
+[27.90][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteWriterGate.cs
+[27.95][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneEmitter.cs
+[27.95][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationBuilder.cs
+[27.98][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeleteColumnDdl.cs
+[27.98][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneUniqueAttribute.cs
+[28.03][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistory.cs
+[28.04][DEBUG](default): Core_scan analyzing /src/Runtime/ISerializer.cs
+[28.04][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareTables.cs
+[28.05][DEBUG](default): Core_scan analyzing /src/Runtime/GraphExecutionPlan.cs
+[28.05][DEBUG](default): Core_scan analyzing /src/Runtime/DeclaredIdentifiers.cs
+[28.05][DEBUG](default): Core_scan analyzing /src/Runtime/NumericAttribute.cs
+[28.05][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaNodeCopies.cs
+[28.05][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObjectStamp.cs
+[28.05][DEBUG](default): Core_scan analyzing /src/Postgres/Postgres.csproj
+[28.06][DEBUG](default): Core_scan analyzing /src/Runtime/GraphTraversalLimits.cs
+[28.06][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneRows.cs
+[28.06][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLiteOptions.cs
+[28.06][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffUnitNodes.cs
+[28.06][DEBUG](default): Core_scan analyzing /src/Runtime/ResolvedRow.cs
+[28.07][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Queries.cs
+[28.07][DEBUG](default): Core_scan analyzing /src/Generator/Generator.csproj
+[28.08][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaTable.cs
+[28.08][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamTokens.cs
+[28.11][DEBUG](default): Core_scan analyzing /src/PackageAssets/logo.svg
+[28.11][DEBUG](default): Core_scan analyzing /src/Runtime/SetClauses.cs
+[28.18][DEBUG](default): Core_scan analyzing /src/Runtime/GraphQueryState.cs
+[28.19][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffTarget.cs
+[28.19][DEBUG](default): Core_scan analyzing /src/Runtime/SelectClauses.cs
+[28.21][DEBUG](default): Core_scan analyzing /src/Core/assets/Neemle.OrmLite.props
+[28.21][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneLoader.cs
+[28.22][DEBUG](default): Core_scan analyzing /src/Runtime/RowResolver.cs
+[28.22][DEBUG](default): Core_scan analyzing /src/Runtime/PlainOrder.cs
+[28.22][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureStatements.cs
+[28.22][DEBUG](default): Core_scan analyzing /src/Runtime/CalculatedLowerAttribute.cs
+[28.22][DEBUG](default): Core_scan analyzing /demo/Results.cs
+[28.23][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRegistrySnapshot.cs
+[28.23][DEBUG](default): Core_scan analyzing /src/Runtime/ColumnExtremes.cs
+[28.26][DEBUG](default): Core_scan analyzing /demo/LegacyCases.cs
+[28.26][DEBUG](default): Core_scan analyzing /demo/CancellationCases.cs
+[28.26][DEBUG](default): Core_scan analyzing /src/Runtime/OnConflict.cs
+[28.26][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaBudgetCommand.cs
+[28.26][DEBUG](default): Core_scan analyzing /src/Sqlite/Sqlite.csproj
+[28.27][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteFunctions.cs
+[28.29][DEBUG](default): Core_scan analyzing /src/Runtime/JsonValueOrder.cs
+[28.29][DEBUG](default): Core_scan analyzing /src/Sql/Kw.cs
+[28.29][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/INodeVisitor.History.cs
+[28.29][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamResourceChecks.cs
+[28.31][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRequest.cs
+[28.32][DEBUG](default): Core_scan analyzing /src/Generator/BuilderCapabilities.cs
+[28.32][DEBUG](default): Core_scan analyzing /src/Runtime/SoftTrashRead.cs
+[28.32][DEBUG](default): Core_scan analyzing /src/Generator/IndexReader.cs
+[28.33][DEBUG](default): Core_scan analyzing /src/Runtime/GraphIdentityMap.cs
+[28.36][DEBUG](default): Core_scan analyzing /src/Generator/GeneratedSourceLayout/GeneratedLineWrap.cs
+[28.36][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Node.cs
+[28.39][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaRestoration.cs
+[28.39][DEBUG](default): Core_scan analyzing /demo/CascadeDependent.cs
+[28.41][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaSession.cs
+[28.41][DEBUG](default): Core_scan analyzing /src/Runtime/LongSum.cs
+[28.44][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaUnitOutcome.cs
+[28.46][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadGuard.cs
+[28.46][DEBUG](default): Core_scan analyzing /src/Runtime/EntityProjection.cs
+[28.50][DEBUG](default): Core_scan analyzing /src/Sqlite/assets/ormlite.capabilities.sqlite.txt
+[28.50][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRegistrationLease.cs
+[28.50][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamStopReason.cs
+[28.50][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaLocalRoles.cs
+[28.51][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonModel.cs
+[28.51][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffApplyOutcome.cs
+[28.51][DEBUG](default): Core_scan analyzing /src/Runtime/IndexTerm.cs
+[28.51][DEBUG](default): Core_scan analyzing /src/Runtime/HistoryReads.cs
+[28.51][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Writes.cs
+[28.51][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffApplyResult.cs
+[28.51][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDispositions.cs
+[28.51][DEBUG](default): Core_scan analyzing /demo/SetNullDependent.cs
+[28.51][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneAttribute.cs
+[28.52][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaSession.cs
+[28.52][DEBUG](default): Core_scan analyzing /src/Core/assets/Neemle.OrmLite.targets
+[28.52][DEBUG](default): Core_scan analyzing /demo/FailureCases.cs
+[28.52][DEBUG](default): Core_scan analyzing /src/Runtime/ReferenceAttribute.cs
+[28.53][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationContribution.cs
+[28.53][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/.editorconfig
+[28.58][DEBUG](default): Core_scan analyzing /src/Runtime/TableAttribute.cs
+[28.58][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPath.cs
+[28.60][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/INodeVisitor.cs
+[28.61][DEBUG](default): Core_scan analyzing /src/Generator/MigrationScan.cs
+[28.62][DEBUG](default): Core_scan analyzing /src/Runtime/LinkForeignKeyDeclaration.cs
+[28.63][DEBUG](default): Core_scan analyzing /src/Directory.Build.props
+[28.66][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffException.cs
+[28.66][DEBUG](default): Core_scan analyzing /src/Runtime/DbExtensions.cs
+[28.71][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresLowering.cs
+[28.71][DEBUG](default): Core_scan analyzing /src/Runtime/ProviderRegistry.cs
+[28.72][DEBUG](default): Core_scan analyzing /src/Generator/Findings.cs
+[28.72][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDataSourceProbe.cs
+[28.73][DEBUG](default): Core_scan analyzing /src/Generator/Singular.cs
+[28.74][DEBUG](default): Core_scan analyzing /src/Runtime/StatementExecutor.cs
+[28.77][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyLayout/.editorconfig
+[28.78][DEBUG](default): Core_scan analyzing /src/Generator/ColumnTypes.cs
+[28.78][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaBudgetConnection.cs
+[28.78][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryNodes.cs
+[28.79][DEBUG](default): Core_scan analyzing /src/Runtime/ManyToManyAttribute.cs
+[28.79][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLinkSource.cs
+[28.79][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDataLiterals.cs
+[28.79][DEBUG](default): Core_scan analyzing /src/Runtime/GraphWorkLimits.cs
+[28.79][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/BorrowedStreamLease.cs
+[28.79][DEBUG](default): Core_scan analyzing /src/PackageReadme/README.md
+[28.79][DEBUG](default): Core_scan analyzing /src/Runtime/GatedDataSource.cs
+[28.79][DEBUG](default): Core_scan analyzing /src/Runtime/UnitOfWork.cs
+[28.80][DEBUG](default): Core_scan analyzing /src/Runtime/ViewAttribute.cs
+[28.80][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaColumns.cs
+[28.80][DEBUG](default): Core_scan analyzing /src/Runtime/UpsertSetGuard.cs
+[28.85][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObserve.cs
+[28.86][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFact.cs
+[28.87][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeleteSql.cs
+[28.93][DEBUG](default): Core_scan analyzing /src/Generator/EntityReader.cs
+[28.93][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneModel.cs
+[28.96][DEBUG](default): Core_scan analyzing /src/Runtime/ConstraintColumns.cs
+[28.97][DEBUG](default): Core_scan analyzing /src/Runtime/LinkForeignKeyEnd.cs
+[28.97][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDesiredTable.cs
+[28.97][DEBUG](default): Core_scan analyzing /demo/AdditionalGuardCases.cs
+[29.02][DEBUG](default): Core_scan analyzing /src/Generator/SoftDeleteDiagnostics.cs
+[29.03][DEBUG](default): Core_scan analyzing /src/Generator/EquatableArrays.cs
+[29.03][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffComparison.cs
+[29.03][DEBUG](default): Core_scan analyzing /src/Runtime/ComparisonOperands.cs
+[29.03][DEBUG](default): Core_scan analyzing /src/Generator/UnmappedNote.cs
+[29.03][DEBUG](default): Core_scan analyzing /src/Runtime/GraphModel.cs
+[29.04][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffObservation.cs
+[29.04][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareKnowledge.cs
+[29.04][DEBUG](default): Core_scan analyzing /demo/CatalogCases.cs
+[29.04][DEBUG](default): Core_scan analyzing /src/Runtime/UpsertSet.cs
+[29.04][DEBUG](default): Core_scan analyzing /src/Generator/DescriptorEmitter.cs
+[29.05][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaDataLiterals.cs
+[29.05][DEBUG](default): Core_scan analyzing /src/PackageAssets/README.md
+[29.05][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaRoles.cs
+[29.05][DEBUG](default): Core_scan analyzing /src/Sqlite/assets/Neemle.OrmLite.Sqlite.props
+[29.06][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/.editorconfig
+[29.06][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationPlanning.cs
+[29.06][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyDescriptor.cs
+[29.06][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffCanonical.cs
+[29.06][DEBUG](default): Core_scan analyzing /src/Runtime/KeyAttribute.cs
+[29.06][DEBUG](default): Core_scan analyzing /src/Runtime/GraphFrontier.cs
+[29.06][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresProvider.SchemaDiff.cs
+[29.07][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObjectRef.cs
+[29.07][DEBUG](default): Core_scan analyzing /demo/FaultCommand.cs
+[29.07][DEBUG](default): Core_scan analyzing /src/Generator/SymbolFacts.cs
+[29.09][DEBUG](default): Core_scan analyzing /src/Runtime/DbLane.cs
+[29.09][DEBUG](default): Core_scan analyzing /src/Generator/EntityClassEmitter.cs
+[29.09][DEBUG](default): Core_scan analyzing /src/Generator/MigrationGenerator.cs
+[29.09][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffError.cs
+[29.10][DEBUG](default): Core_scan analyzing /src/Sql/StandardSerializer.Ddl.cs
+[29.10][DEBUG](default): Core_scan analyzing /src/Runtime/IndexFilter.cs
+[29.10][DEBUG](default): Core_scan analyzing /src/Runtime/Grouping.cs
+[29.10][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneError.cs
+[29.10][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyBaseline.cs
+[29.10][DEBUG](default): Core_scan analyzing /src/Runtime/OrmMeta.cs
+[29.11][DEBUG](default): Core_scan analyzing /src/Runtime/GraphEntityBinding.cs
+[29.11][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffChange.cs
+[29.11][DEBUG](default): Core_scan analyzing /src/Runtime/CorrelatedExists.cs
+[29.11][DEBUG](default): Core_scan analyzing /src/Runtime/OrmMigrationRegistry.cs
+[29.11][DEBUG](default): Core_scan analyzing /src/Runtime/LiveOnlyConversionDdl.cs
+[29.11][DEBUG](default): Core_scan analyzing /src/Runtime/StatementCompiler.cs
+[29.12][DEBUG](default): Core_scan analyzing /src/Runtime/OrmSchema.cs
+[29.12][DEBUG](default): Core_scan analyzing /src/Runtime/ViewDefinition.cs
+[29.12][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/.editorconfig
+[29.12][DEBUG](default): Core_scan analyzing /src/Runtime/OrmContext.cs
+[29.12][DEBUG](default): Core_scan analyzing /src/Generator/TenantRules.cs
+[29.13][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaInventory.cs
+[29.13][DEBUG](default): Core_scan analyzing /src/Generator/IndexDiagnostics.cs
+[29.13][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFixtureRequest.cs
+[29.13][DEBUG](default): Core_scan analyzing /src/Sql/SchemaDiff/.editorconfig
+[29.14][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.Literals.cs
+[29.14][DEBUG](default): Core_scan analyzing /src/Runtime/EntityStatements.cs
+[29.14][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffScope.cs
+[29.14][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyDeclarationError.cs
+[29.14][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteCatalog.cs
+[29.15][DEBUG](default): Core_scan analyzing /src/Runtime/AdvisorySessionLocks.cs
+[29.15][DEBUG](default): Core_scan analyzing /src/Runtime/Capability.cs
+[29.15][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresNodes.cs
+[29.15][DEBUG](default): Core_scan analyzing /src/Runtime/IdentifierTooLongException.cs
+[29.15][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryPlan.cs
+[29.15][DEBUG](default): Core_scan analyzing /src/Runtime/JsonClauses.cs
+[29.16][DEBUG](default): Core_scan analyzing /src/Runtime/MovedFieldKey.cs
+[29.16][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSqlText.cs
+[29.16][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPaths.cs
+[29.19][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamOpenFailure.cs
+[29.19][DEBUG](default): Core_scan analyzing /src/Runtime/ViewColumns.cs
+[29.19][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaRecipeValidation.cs
+[29.20][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneTarget.cs
+[29.22][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDefault.cs
+[29.22][DEBUG](default): Core_scan analyzing /src/PackageAssets/mark.svg
+[29.25][DEBUG](default): Core_scan analyzing /src/Generator/EntityScan.cs
+[29.25][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationRunner.cs
+[29.27][DEBUG](default): Core_scan analyzing /src/Sql/StandardSerializer.History.cs
+[29.28][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyActionDdl.cs
+[29.30][DEBUG](default): Core_scan analyzing /src/Generator/CalculatedReader.cs
+[29.30][DEBUG](default): Core_scan analyzing /src/Runtime/JsonKeyOrdering.cs
+[29.31][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.Json.cs
+[29.31][DEBUG](default): Core_scan analyzing /src/Runtime/Runtime.csproj
+[29.32][DEBUG](default): Core_scan analyzing /demo/Fixture.cs
+[29.32][DEBUG](default): Core_scan analyzing /src/Runtime/TableConstraints.cs
+[29.33][DEBUG](default): Core_scan analyzing /src/Generator/MapEmitter.cs
+[29.33][DEBUG](default): Core_scan analyzing /src/Runtime/SetTerms.cs
+[29.33][DEBUG](default): Core_scan analyzing /src/Runtime/DdlCompiler.cs
+[29.33][DEBUG](default): Core_scan analyzing /demo/CleanupFaults.cs
+[29.34][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyReader.cs
+[29.34][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceFacts.cs
+[29.34][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/.editorconfig
+[29.34][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLiteOptions.Binding.cs
+[29.34][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.Ddl.cs
+[29.36][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/JsonEscapes.cs
+[29.36][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresMetadataResources.cs
+[29.36][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyEmitter.cs
+[29.36][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureWorkKind.cs
+[29.37][DEBUG](default): Core_scan analyzing /src/Generator/CapabilityDiagnostics.cs
+[29.37][DEBUG](default): Core_scan analyzing /src/Generator/GraphEmitter.cs
+[29.38][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteRebuild.cs
+[29.39][DEBUG](default): Core_scan analyzing /src/Runtime/NotAColumnAttribute.cs
+[29.40][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationOps.cs
+[29.40][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaTable.cs
+[29.41][DEBUG](default): Core_scan analyzing /src/.editorconfig
+[29.41][DEBUG](default): Core_scan analyzing /src/Runtime/LikePattern.cs
+[29.41][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffReport.cs
+[29.41][DEBUG](default): Core_scan analyzing /src/Generator/TableNameAudit.cs
+[29.42][DEBUG](default): Core_scan analyzing /demo/GuardCases.cs
+[29.42][DEBUG](default): Core_scan analyzing /src/Runtime/EntityDescriptor.cs
+[29.43][DEBUG](default): Core_scan analyzing /src/Runtime/GraphReadContext.cs
+[29.43][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffRecipe.cs
+[29.44][DEBUG](default): Core_scan analyzing /demo/RequiredDependent.cs
+[29.45][DEBUG](default): Core_scan analyzing /src/Runtime/GraphNavigationBinding.cs
+[29.45][DEBUG](default): Core_scan analyzing /src/Runtime/GroupKeyReader.cs
+[29.56][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaAdmission.cs
+[29.62][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Leaves.cs
+[29.64][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneAnalysis.cs
+[29.64][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffLimits.cs
+[29.68][DEBUG](default): Core_scan analyzing /src/Core/Core.csproj
+[29.68][DEBUG](default): Core_scan analyzing /src/Runtime/ISqlProvider.cs
+[29.68][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureCommands.cs
+[29.69][DEBUG](default): Core_scan analyzing /src/Runtime/PredicateTranslator.cs
+[29.69][DEBUG](default): Core_scan analyzing /src/Generator/MigrationShape.cs
+[29.70][DEBUG](default): Core_scan analyzing /src/Generator/EquatableArray.cs
+[29.73][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/NodeList.cs
+[29.73][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLinkBinding.cs
+[29.75][DEBUG](default): Core_scan analyzing /demo/README.md
+[29.75][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamError.cs
+[29.78][DEBUG](default): Core_scan analyzing /src/Runtime/ClosureUnary.cs
+[29.78][DEBUG](default): Core_scan analyzing /demo/DirectionCases.cs
+[29.81][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/ISchemaDiffApplySession.cs
+[29.81][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaReferences.cs
+[29.83][DEBUG](default): Core_scan analyzing /src/Runtime/Jsonb.cs
+[29.83][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffImpact.cs
+[29.87][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSessionCommands.cs
+[29.87][DEBUG](default): Core_scan analyzing /src/Runtime/StatementCommand.cs
+[29.87][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresServerVersion.cs
+[29.88][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationAttribute.cs
+[29.88][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/INodeVisitor.Ddl.cs
+[29.88][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaTypes.cs
+[29.88][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.Strings.cs
+[29.88][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixturePlan.cs
+[29.89][DEBUG](default): Core_scan analyzing /src/Runtime/Redaction.cs
+[29.89][DEBUG](default): Core_scan analyzing /src/Runtime/GraphVisibilityException.cs
+[29.90][DEBUG](default): Core_scan analyzing /src/Generator/AccessRules.cs
+[29.90][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSerializer.SchemaDiff.cs
+[29.90][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFixtureMode.cs
+[29.90][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaTypes.cs
+[29.90][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaDataLiterals.cs
+[29.90][DEBUG](default): Core_scan analyzing /src/Runtime/GraphKeyBinding.cs
+[29.91][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteProviderFactory.cs
+[29.91][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceTarget.cs
+[29.91][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffInspection.cs
+[29.92][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyDeclarationException.cs
+[29.92][DEBUG](default): Core_scan analyzing /src/Generator/MigrationVersions.cs
+[29.92][DEBUG](default): Core_scan analyzing /src/Runtime/SoftRestore.cs
+[29.92][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLimitExceededException.cs
+[29.92][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLite.cs
+[29.93][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyValidation.cs
+[29.93][DEBUG](default): Core_scan analyzing /src/Runtime/ScalarValue.cs
+[29.93][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamEnumerator.cs
+[29.97][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaStorageType.cs
+[30.00][DEBUG](default): Core_scan analyzing /src/Generator/NavigationFacts.cs
+[30.00][DEBUG](default): Core_scan analyzing /src/Generator/ShapeDiagnostics.cs
+[30.01][DEBUG](default): Core_scan analyzing /demo/Profile.cs
+[30.01][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/SecretLabels.cs
+[30.01][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStream.cs
+[30.01][DEBUG](default): Core_scan analyzing /src/Runtime/LinkedRead.cs
+[30.01][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneIntent.cs
+[30.01][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Expressions.cs
+[30.02][DEBUG](default): Core_scan analyzing /src/Runtime/GraphReferenceBinding.cs
+[30.02][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyModel.cs
+[30.02][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresHistoryLayout.cs
+[30.02][DEBUG](default): Core_scan analyzing /src/Runtime/EnumOrdering.cs
+[30.02][DEBUG](default): Core_scan analyzing /src/Generator/IndexTerms.cs
+[30.03][DEBUG](default): Core_scan analyzing /src/Runtime/ConflictGuard.cs
+[30.03][DEBUG](default): Core_scan analyzing /src/Runtime/OrmEnum.cs
+[30.03][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonInput.cs
+[30.03][DEBUG](default): Core_scan analyzing /demo/FaultConnection.cs
+[30.03][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/InverseOneToOneAttribute.cs
+[30.04][DEBUG](default): Core_scan analyzing /src/Generator/KeyLoss.cs
+[30.04][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffArtifact.cs
+[30.07][DEBUG](default): Core_scan analyzing /src/Runtime/Row.cs
+[30.07][DEBUG](default): Core_scan analyzing /src/Generator/IndexFilters.cs
+[30.08][DEBUG](default): Core_scan analyzing /src/Generator/IdentifierDiagnostics.cs
+[30.08][DEBUG](default): Core_scan analyzing /src/Runtime/GraphBudget.cs
+[30.09][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFailures.cs
+[30.11][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamCursor.cs
+[30.11][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/.editorconfig
+[30.13][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffChangeKind.cs
+[30.14][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresActorStamp.cs
+[30.15][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyOrder.cs
+[30.17][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureChecks.cs
+[30.19][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLinkReader.cs
+[30.20][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffLineage.cs
+[30.21][DEBUG](default): Core_scan analyzing /src/Runtime/HistoryScope.cs
+[30.21][DEBUG](default): Core_scan analyzing /src/Runtime/GraphTypedPath.cs
+[30.21][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationRunPlan.cs
+[30.21][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/OrmDiagnostics.cs
+[30.22][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/WriteRealised.cs
+[30.23][DEBUG](default): Core_scan analyzing /src/Runtime/InValues.cs
+[30.23][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaResourceCleanup.cs
+[30.24][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamNativeLocks.cs
+[30.24][DEBUG](default): Core_scan analyzing /src/Runtime/GroupKeys.cs
+[30.24][DEBUG](default): Core_scan analyzing /src/Runtime/InsertManyChunks.cs
+[30.24][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffManifest.cs
+[30.24][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamCapture.cs
+[30.24][DEBUG](default): Core_scan analyzing /src/Runtime/WriteCompiler.cs
+[30.25][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneOwner.cs
+[30.25][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Ddl.cs
+[30.25][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneLookupValidation.cs
+[30.25][DEBUG](default): Core_scan analyzing /demo/OneToOneDemo.csproj
+[30.26][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaMetadataConnections.cs
+[30.26][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaInspect.cs
+[30.26][DEBUG](default): Core_scan analyzing /src/Generator/IndexInputs.cs
+[30.26][DEBUG](default): Core_scan analyzing /src/Runtime/RowHistoryRevert.cs
+[30.27][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureState.cs
+[30.27][DEBUG](default): Core_scan analyzing /src/Runtime/RowHistoryDdl.cs
+[30.27][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamBorrowed.cs
+[30.27][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneDeclarationException.cs
+[30.28][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresDdlDataLiterals.cs
+[30.28][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDatabaseKey.cs
+[30.28][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFactCopies.cs
+[30.28][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryDataLiterals.cs
+[30.28][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareAdd.cs
+[30.28][DEBUG](default): Core_scan analyzing /src/Runtime/GraphBudgetCounter.cs
+[30.29][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffNames.cs
+[30.29][DEBUG](default): Core_scan analyzing /src/Runtime/ColumnAttribute.cs
+[30.29][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneValidation.cs
+[30.29][DEBUG](default): Core_scan analyzing /demo/Person.cs
+[30.29][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.History.cs
+[30.29][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffStatus.cs
+[30.29][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservationDigest.cs
+[30.29][DEBUG](default): Core_scan analyzing /src/Runtime/StringLike.cs
+[30.30][DEBUG](default): Core_scan analyzing /src/Runtime/Query.cs
+[30.30][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.HistoryDdl.cs
+[30.30][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffIdentity.cs
+[30.30][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffReview.cs
+[30.30][DEBUG](default): Core_scan analyzing /src/Runtime/AggregateClauses.cs
+[30.31][DEBUG](default): Core_scan analyzing /src/Generator/CapabilityManifest.cs
+[30.31][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.History.cs
+[30.31][DEBUG](default): Core_scan analyzing /demo/prepare-packages.sh
+[30.31][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedColumn.cs
+[30.34][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresSerializer.cs
+[30.34][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceNames.cs
+[30.37][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamMappingFailure.cs
+[30.38][DEBUG](default): Core_scan analyzing /src/Runtime/GraphExecutor.cs
+[30.39][DEBUG](default): Core_scan analyzing /src/Runtime/GraphKeyComparer.cs
+[30.40][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFreshPhysical.cs
+[30.41][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceNodes.cs
+[30.41][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLimits.cs
+[30.44][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteEngineValues.cs
+[30.44][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/HistoryNodes.cs
+[30.46][DEBUG](default): Core_scan analyzing /src/Runtime/OrmExec.cs
+[30.46][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneLookup.cs
+[30.48][DEBUG](default): Core_scan analyzing /demo/Program.cs
+[30.48][DEBUG](default): Core_scan analyzing /src/Sql/SqlWriter.cs
+[30.49][DEBUG](default): Core_scan analyzing /demo/ActionParent.cs
+[30.49][DEBUG](default): Core_scan analyzing /demo/MappingFaults.cs
+[30.49][DEBUG](default): Core_scan analyzing /demo/NuGet.Config
+[30.49][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareState.cs
+[30.51][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffProvenance.cs
+[30.51][DEBUG](default): Core_scan analyzing /demo/IntegrityCases.cs
+[30.51][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSerializer.SchemaDiff.cs
+[30.51][DEBUG](default): Core_scan analyzing /src/Runtime/Db.cs
+[30.52][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/JsonStrings.cs
+[30.52][DEBUG](default): Core_scan analyzing /src/Runtime/RowHistoryRead.cs
+[30.52][DEBUG](default): Core_scan analyzing /src/Runtime/Statement.cs
+[30.53][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyAnalysis.cs
+[30.53][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaDefinition.cs
+[30.53][DEBUG](default): Core_scan analyzing /src/PackageAssets/icon.svg
+[30.53][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceBuilder.cs
+[30.54][DEBUG](default): Core_scan analyzing /src/Runtime/IGraphNavigationBinding.cs
+[30.54][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDecimal.cs
+[30.56][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaStatementBudget.cs
+[30.56][DEBUG](default): Core_scan analyzing /src/Runtime/RequiresCapabilityAttribute.cs
+[30.59][DEBUG](default): Core_scan analyzing /demo/SoftPrincipal.cs
+[30.59][DEBUG](default): Core_scan analyzing /src/Generator/OrmGenerator.cs
+[30.61][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPlanNode.cs
+[30.61][DEBUG](default): Core_scan analyzing /src/Runtime/GraphStatementRunner.cs
+[30.64][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Enums.cs
+[30.64][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneCardinalityException.cs
+[30.67][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyAttribute.cs
+[30.67][DEBUG](default): Core_scan analyzing /src/Runtime/ParamLiterals.cs
+[30.70][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamCompletion.cs
+[30.70][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureWork.cs
+[30.71][DEBUG](default): Core_scan analyzing /src/Runtime/Migration.cs
+[30.71][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservationIdentity.cs
+[30.73][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLiteSettings.cs
+[30.73][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamExecution.cs
+[30.74][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaAfterProjection.cs
+[30.74][DEBUG](default): Core_scan analyzing /src/Runtime/Defaults.cs
+[30.74][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureMutation.cs
+[30.74][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/ProviderRealised.cs
+[30.75][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureSchedule.cs
+[30.76][DEBUG](default): Core_scan analyzing /src/Runtime/GraphKey.cs
+[30.78][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadMap.cs
+[30.78][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneConstraints.cs
+[30.78][DEBUG](default): Core_scan analyzing /src/Runtime/RenderState.cs
+[30.78][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteRebuildObjects.cs
+[30.78][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryEscape.cs
+[30.78][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRequestError.cs
+[30.78][DEBUG](default): Core_scan analyzing /src/Runtime/GraphTypedKeyBinding.cs
+[30.79][DEBUG](default): Core_scan analyzing /src/Runtime/GraphVisibility.cs
+[30.79][DEBUG](default): Core_scan analyzing /demo/SoftDependent.cs
+[30.79][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamReadSnapshot.cs
+[30.79][DEBUG](default): Core_scan analyzing /src/Runtime/GraphCollectionBinding.cs
+[30.79][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedTableFacts.cs
+[30.79][DEBUG](default): Core_scan analyzing /src/Generator/EntityNaming.cs
+[30.79][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaTargetCopies.cs
+[30.79][DEBUG](default): Core_scan analyzing /src/Generator/EntityOrder.cs
+[30.79][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamBinding.cs
+[30.80][DEBUG](default): Core_scan analyzing /demo/UpgradeCases.cs
+[30.80][DEBUG](default): Core_scan analyzing /src/Generator/GeneratorGuard.cs
+[30.80][DEBUG](default): Core_scan analyzing /src/Runtime/LinkForeignKeyAttribute.cs
+[30.80][DEBUG](default): Core_scan analyzing /demo/DeclarationCases.cs
+[30.81][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedColumnFacts.cs
+[30.81][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresNames.cs
+[30.83][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteProvider.SchemaDiff.cs
+[30.83][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/ISchemaDiffDdlSerializer.cs
+[30.83][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamCleanup.cs
+[30.83][DEBUG](default): Core_scan analyzing /src/Runtime/ClauseGuard.cs
+[30.83][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffFixtureRunner.cs
+[30.83][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaRead.cs
+[30.83][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/.editorconfig
+[30.84][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaPhysicalTypes.cs
+[30.84][DEBUG](default): Core_scan analyzing /src/Sql/Sql.csproj
+[30.84][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresDataLiterals.cs
+[30.84][DEBUG](default): Core_scan analyzing /src/Runtime/GraphQueryExtensions.cs
+[30.84][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamParameterValues.cs
+[30.84][DEBUG](default): Core_scan analyzing /src/Generator/Buildability.cs
+[30.84][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/LabelWords.cs
+[30.87][DEBUG](default): Core_scan analyzing /src/Postgres/assets/ormlite.capabilities.postgres.txt
+[30.87][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/.editorconfig
+[30.87][DEBUG](default): Core_scan analyzing /demo/SqlCounter.cs
+[30.88][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteEngineAggregate.cs
+[30.88][DEBUG](default): Core_scan analyzing /src/Generator/CapabilityAnalyzer.cs
+[30.88][DEBUG](default): Core_scan analyzing /src/Runtime/DbActor.cs
+[30.88][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneBaseline.cs
+[30.88][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservedTable.cs
+[30.88][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaInspect.cs
+[30.89][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObservationHistory.cs
+[30.89][DEBUG](default): Core_scan analyzing /src/Runtime/JsonMirrorKeys.cs
+[30.89][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonFunctions.cs
+[30.89][DEBUG](default): Core_scan analyzing /src/Generator/DefaultTenants.cs
+[30.90][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresProvider.cs
+[30.90][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffBudget.cs
+[30.94][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSourceRecipe.cs
+[30.94][DEBUG](default): Core_scan analyzing /src/Generator/EntityReports.cs
+[30.94][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteReconcile.cs
+[31.00][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresCatalog.cs
+[31.01][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPlanner.cs
+[31.03][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRequestException.cs
+[31.05][DEBUG](default): Core_scan analyzing /src/Sql/DdlKw.cs
+[31.07][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteConnectionParts.cs
+[31.07][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteMarkers.cs
+[31.09][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeletedConflictException.cs
+[31.09][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamCanceledException.cs
+[31.10][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiff.cs
+[31.10][DEBUG](default): Core_scan analyzing /src/Runtime/RowLockClauses.cs
+[31.10][DEBUG](default): Core_scan analyzing /src/Runtime/CalculatedDescriptor.cs
+[31.10][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaHistory.cs
+[31.10][DEBUG](default): Core_scan analyzing /demo/FaultReader.cs
+[31.10][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaTargetIdentity.cs
+[31.10][DEBUG](default): Core_scan analyzing /src/Runtime/IndexAttribute.cs
+[31.10][DEBUG](default): Core_scan analyzing /src/Runtime/HistoryStatements.cs
+[31.11][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadCleanup.cs
+[31.11][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyIntent.cs
+[31.11][DEBUG](default): Core_scan analyzing /src/Sql/SchemaDiff/StandardSerializer.SchemaDiff.cs
+[31.11][DEBUG](default): Core_scan analyzing /src/Runtime/ForeignKeyTarget.cs
+[31.15][DEBUG](default): Core_scan analyzing /demo/ActionCases.cs
+[31.15][DEBUG](default): Core_scan analyzing /src/Runtime/CapabilityNotSupportedException.cs
+[31.16][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeleteAttribute.cs
+[31.16][DEBUG](default): Core_scan analyzing /src/Runtime/WriteStatements.cs
+[31.17][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaRead.cs
+[31.17][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamException.cs
+[31.17][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteMigrationPlanner.cs
+[31.17][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/IOrmDiagnosticsSink.cs
+[31.17][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaEntry.cs
+[31.17][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneReader.cs
+[31.17][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneProvenance.cs
+[31.19][DEBUG](default): Core_scan analyzing /src/Generator/EntityEmitter.cs
+[31.20][DEBUG](default): Core_scan analyzing /src/Runtime/TableBuilder.cs
+[31.20][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresActorStampDataLiterals.cs
+[31.20][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaCatalog.cs
+[31.20][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteMetadataResources.cs
+[31.21][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneVisibilityTag.cs
+[31.21][DEBUG](default): Core_scan analyzing /src/Runtime/Reversibility.cs
+[31.25][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDefaultKind.cs
+[31.26][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteNodes.cs
+[31.26][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteEngineFunctions.cs
+[31.27][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteValueCodec.cs
+[31.27][DEBUG](default): Core_scan analyzing /src/Runtime/GraphEntitySnapshot.cs
+[31.28][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneDirection.cs
+[31.28][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneLookupTarget.cs
+[31.28][DEBUG](default): Core_scan analyzing /src/Generator/LoaderEmitter.cs
+[31.28][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/ISchemaDiffProvider.cs
+[31.28][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareColumns.cs
+[31.28][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/ParameterRedactor.cs
+[31.29][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteHistoryLayout.cs
+[31.29][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresHistoryDataLiterals.cs
+[31.29][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaInventory.cs
+[31.29][DEBUG](default): Core_scan analyzing /src/Sql/StandardSerializer.cs
+[31.29][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaStrictDdl.cs
+[31.31][DEBUG](default): Core_scan analyzing /src/Generator/Syn.cs
+[31.32][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaEntry.cs
+[31.33][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteProvider.cs
+[31.37][DEBUG](default): Core_scan analyzing /src/Generator/GeneratedSourceLayout/GeneratedSourceLayout.cs
+[31.38][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaKnowledge.cs
+[31.39][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaSnapshotCopies.cs
+[31.39][DEBUG](default): Core_scan analyzing /src/Generator/NavigationAudit.cs
+[31.40][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresMigrationPlanner.cs
+[31.40][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.Ddl.cs
+[31.41][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDataSourceName.cs
+[31.41][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresProviderFactory.cs
+[31.41][DEBUG](default): Core_scan analyzing /src/Packaging.props
+[31.41][DEBUG](default): Core_scan analyzing /src/Runtime/RowWrites.cs
+[31.41][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteSerializer.cs
+[31.41][DEBUG](default): Core_scan analyzing /src/Postgres/assets/Neemle.OrmLite.Postgres.props
+[31.41][DEBUG](default): Core_scan analyzing /src/PackageAssets/logo-dark.svg
+[31.41][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneDescriptor.cs
+[31.42][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffCanceledException.cs
+[31.42][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffUnitResult.cs
+[31.42][DEBUG](default): Core_scan analyzing /demo/VisibilityCases.cs
+[31.42][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadScope.cs
+[31.43][DEBUG](default): Core_scan analyzing /src/Runtime/Diagnostics/OrmLiteDiagnosticsOptions.cs
+[31.44][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaUnitExecution.cs
+[31.44][DEBUG](default): Core_scan analyzing /src/Runtime/JsonKey.cs
+[31.45][DEBUG](default): Core_scan analyzing /src/Generator/SoftDeleteReader.cs
+[31.46][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaRecipeIdentity.cs
+[31.47][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCreatedInventory.cs
+[31.50][DEBUG](default): Core_scan analyzing /src/Runtime/DdlLiterals.cs
+[31.51][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaColumns.cs
+[31.52][DEBUG](default): Core_scan analyzing /src/Runtime/UpsertSetOf.cs
+[31.52][DEBUG](default): Core_scan analyzing /src/Runtime/IGraphEntityBinding.cs
+[31.56][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteFileIdentity.cs
+[31.56][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffSnapshot.cs
+[31.58][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonDataLiterals.cs
+[31.60][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteWriterGate.cs
+[31.60][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneEmitter.cs
+[31.62][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationBuilder.cs
+[31.62][DEBUG](default): Core_scan analyzing /src/Runtime/SoftDeleteColumnDdl.cs
+[31.62][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneUniqueAttribute.cs
+[31.63][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistory.cs
+[31.63][DEBUG](default): Core_scan analyzing /src/Runtime/ISerializer.cs
+[31.63][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaCompareTables.cs
+[31.64][DEBUG](default): Core_scan analyzing /src/Runtime/GraphExecutionPlan.cs
+[31.64][DEBUG](default): Core_scan analyzing /src/Runtime/DeclaredIdentifiers.cs
+[31.64][DEBUG](default): Core_scan analyzing /src/Runtime/NumericAttribute.cs
+[31.66][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaNodeCopies.cs
+[31.66][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaObjectStamp.cs
+[31.66][DEBUG](default): Core_scan analyzing /src/Postgres/Postgres.csproj
+[31.66][DEBUG](default): Core_scan analyzing /src/Runtime/GraphTraversalLimits.cs
+[31.67][DEBUG](default): Core_scan analyzing /src/Runtime/OrmLiteOptions.cs
+[31.67][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneRows.cs
+[31.67][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffUnitNodes.cs
+[31.67][DEBUG](default): Core_scan analyzing /src/Runtime/ResolvedRow.cs
+[31.68][DEBUG](default): Core_scan analyzing /src/Generator/Generator.csproj
+[31.68][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Queries.cs
+[31.68][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamTokens.cs
+[31.69][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaTable.cs
+[31.69][DEBUG](default): Core_scan analyzing /src/PackageAssets/logo.svg
+[31.69][DEBUG](default): Core_scan analyzing /src/Runtime/SetClauses.cs
+[31.69][DEBUG](default): Core_scan analyzing /src/Runtime/GraphQueryState.cs
+[31.69][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffTarget.cs
+[31.70][DEBUG](default): Core_scan analyzing /src/Runtime/SelectClauses.cs
+[31.70][DEBUG](default): Core_scan analyzing /src/Generator/OneToOne/OneToOneLoader.cs
+[31.70][DEBUG](default): Core_scan analyzing /src/Core/assets/Neemle.OrmLite.props
+[31.72][DEBUG](default): Core_scan analyzing /src/Runtime/RowResolver.cs
+[31.73][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaFixtureStatements.cs
+[31.73][DEBUG](default): Core_scan analyzing /src/Runtime/PlainOrder.cs
+[31.74][DEBUG](default): Core_scan analyzing /src/Runtime/CalculatedLowerAttribute.cs
+[31.74][DEBUG](default): Core_scan analyzing /demo/Results.cs
+[31.74][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRegistrySnapshot.cs
+[31.77][DEBUG](default): Core_scan analyzing /src/Runtime/ColumnExtremes.cs
+[31.78][DEBUG](default): Core_scan analyzing /demo/LegacyCases.cs
+[31.79][DEBUG](default): Core_scan analyzing /demo/CancellationCases.cs
+[31.80][DEBUG](default): Core_scan analyzing /src/Runtime/OnConflict.cs
+[31.81][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaBudgetCommand.cs
+[31.82][DEBUG](default): Core_scan analyzing /src/Sqlite/Sqlite.csproj
+[31.83][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteFunctions.cs
+[31.84][DEBUG](default): Core_scan analyzing /src/Runtime/JsonValueOrder.cs
+[31.84][DEBUG](default): Core_scan analyzing /src/Sql/Kw.cs
+[31.84][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/INodeVisitor.History.cs
+[31.84][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/StreamResourceChecks.cs
+[31.84][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRequest.cs
+[31.85][DEBUG](default): Core_scan analyzing /src/Generator/BuilderCapabilities.cs
+[31.85][DEBUG](default): Core_scan analyzing /src/Runtime/SoftTrashRead.cs
+[31.85][DEBUG](default): Core_scan analyzing /src/Generator/IndexReader.cs
+[31.85][DEBUG](default): Core_scan analyzing /src/Generator/GeneratedSourceLayout/GeneratedLineWrap.cs
+[31.85][DEBUG](default): Core_scan analyzing /src/Runtime/GraphIdentityMap.cs
+[31.85][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Node.cs
+[31.85][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaRestoration.cs
+[31.85][DEBUG](default): Core_scan analyzing /demo/CascadeDependent.cs
+[31.85][DEBUG](default): Core_scan analyzing /src/Runtime/LongSum.cs
+[31.86][DEBUG](default): Core_scan analyzing /src/Postgres/SchemaDiff/PostgresSchemaSession.cs
+[31.86][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaUnitOutcome.cs
+[31.86][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneReadGuard.cs
+[31.86][DEBUG](default): Core_scan analyzing /src/Runtime/EntityProjection.cs
+[31.87][DEBUG](default): Core_scan analyzing /src/Sqlite/assets/ormlite.capabilities.sqlite.txt
+[31.87][DEBUG](default): Core_scan analyzing /src/Runtime/GraphRegistrationLease.cs
+[31.87][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/QueryStreamStopReason.cs
+[31.87][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaLocalRoles.cs
+[31.88][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteJsonModel.cs
+[31.88][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffApplyOutcome.cs
+[31.91][DEBUG](default): Core_scan analyzing /src/Runtime/IndexTerm.cs
+[31.91][DEBUG](default): Core_scan analyzing /src/Runtime/HistoryReads.cs
+[31.91][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/Writes.cs
+[31.92][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffApplyResult.cs
+[31.92][DEBUG](default): Core_scan analyzing /demo/SetNullDependent.cs
+[31.92][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDispositions.cs
+[31.93][DEBUG](default): Core_scan analyzing /src/Runtime/OneToOne/OneToOneAttribute.cs
+[31.93][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/SqliteSchemaSession.cs
+[31.93][DEBUG](default): Core_scan analyzing /src/Core/assets/Neemle.OrmLite.targets
+[31.93][DEBUG](default): Core_scan analyzing /demo/FailureCases.cs
+[31.93][DEBUG](default): Core_scan analyzing /src/Runtime/ReferenceAttribute.cs
+[31.93][DEBUG](default): Core_scan analyzing /src/Runtime/MigrationContribution.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Sqlite/SchemaDiff/.editorconfig
+[31.94][DEBUG](default): Core_scan analyzing /src/Runtime/TableAttribute.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Runtime/GraphPath.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Runtime/Nodes/INodeVisitor.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Generator/MigrationScan.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Runtime/LinkForeignKeyDeclaration.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Directory.Build.props
+[31.94][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaDiffException.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Runtime/DbExtensions.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Postgres/PostgresLowering.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Runtime/ProviderRegistry.cs
+[31.94][DEBUG](default): Core_scan analyzing /src/Generator/Findings.cs
+[31.95][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDataSourceProbe.cs
+[31.95][DEBUG](default): Core_scan analyzing /src/Generator/Singular.cs
+[31.95][DEBUG](default): Core_scan analyzing /src/Runtime/StatementExecutor.cs
+[31.97][DEBUG](default): Core_scan analyzing /src/Generator/ForeignKeyLayout/.editorconfig
+[32.00][DEBUG](default): Core_scan analyzing /src/Generator/ColumnTypes.cs
+[32.01][DEBUG](default): Core_scan analyzing /src/Runtime/SchemaDiff/SchemaBudgetConnection.cs
+[32.02][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteHistoryNodes.cs
+[32.02][DEBUG](default): Core_scan analyzing /src/Runtime/ManyToManyAttribute.cs
+[32.02][DEBUG](default): Core_scan analyzing /src/Runtime/GraphLinkSource.cs
+[32.05][DEBUG](default): Core_scan analyzing /src/Sqlite/SqliteDataLiterals.cs
+[32.05][DEBUG](default): Core_scan analyzing /src/Runtime/GraphWorkLimits.cs
+[32.09][DEBUG](default): Core_scan analyzing /src/Runtime/Streaming/BorrowedStreamLease.cs
+[32.09][DEBUG](default): Core_scan analyzing /src/Runtime/GatedDataSource.cs
+[32.09][DEBUG](default): Core_scan analyzing /src/PackageReadme/README.md
+[32.11][DEBUG](default): Core_scan analyzing /src/Runtime/UnitOfWork.cs
+[32.19][[32mDEBUG[0m](default): scan: found 8 matches, 32 errors (scanned 1622 targets, skipped 0)
+[32.57][[32mDEBUG[0m](default): size of returned JSON string: 1410129
+--- semgrep-core stderr ---
+<semgrep-core stderr not captured, should be printed above>
+--- end semgrep-core stderr ---
+match_key = ('', PosixPath('/demo/FaultCommand.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = ea16ba1f37978e3a51c331da25e39c87c65a378b606eb177485697b063aaa827580a59049bb1a32812160cbe8cb3e5f1f86299867de88632d88d761af81d122b_0
+match_key = ('"..."\n (string value)\n inner new CommandText(inner,...)\n inner.CommandText = value;\n value CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('/demo/FaultCommand.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 91665b13f6e68376a0ba5baa7967380cd13c93a0f2189994acdeb3722f0da9899138db15e09b0eae1a86e65a94bbd41ad9107bca1677535b6f60ac3da6e7eb47_0
+match_key = ('"..."\n (string value)\n inner new CommandText(inner,...)\n inner.CommandText = value;\n value CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('/demo/FaultCommand.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 91665b13f6e68376a0ba5baa7967380cd13c93a0f2189994acdeb3722f0da9899138db15e09b0eae1a86e65a94bbd41ad9107bca1677535b6f60ac3da6e7eb47_0
+match_key = ('"..."\n (string value)\n inner new CommandText(inner,...)\n inner.CommandText = value;\n value CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('/demo/FaultCommand.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 91665b13f6e68376a0ba5baa7967380cd13c93a0f2189994acdeb3722f0da9899138db15e09b0eae1a86e65a94bbd41ad9107bca1677535b6f60ac3da6e7eb47_0
+match_key = ('', PosixPath('Postgres/PostgresActorStamp.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = fd048bfe1053fe2a4bcd3fddac43b5f997256abcc404c48fe32644506928b7da2ca45c7f6613be0fdbc0f8cdd6d2bb6f568b9c2189ee43826617b58c684831fd_0
+match_key = ('"..."\n (string Statement)\n command new CommandText(command,...)\n command.CommandText = Statement;\n Statement CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Postgres/PostgresActorStamp.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = f8d9736a561ef96ea60eed0012b56cc754bc341d05dd3ddbffde3af335bd9cb0a42842464e22252a1283c45159f6235e8e56440f698af323e350db828e68e302_0
+match_key = ('"..."\n (string Statement)\n command new CommandText(command,...)\n command.CommandText = Statement;\n Statement CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Postgres/PostgresActorStamp.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = f8d9736a561ef96ea60eed0012b56cc754bc341d05dd3ddbffde3af335bd9cb0a42842464e22252a1283c45159f6235e8e56440f698af323e350db828e68e302_0
+match_key = ('"..."\n (string Statement)\n command new CommandText(command,...)\n command.CommandText = Statement;\n Statement CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Postgres/PostgresActorStamp.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = f8d9736a561ef96ea60eed0012b56cc754bc341d05dd3ddbffde3af335bd9cb0a42842464e22252a1283c45159f6235e8e56440f698af323e350db828e68e302_0
+match_key = ('', PosixPath('Postgres/SchemaDiff/PostgresSchemaRead.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 123691772b34d97588726b1706367ffc33d29c7404fa09d6ffd926fbfe597ce8dcc37d00ee634d7e4ca2a1bae8b351ab0b275b1feb44f2c7c556953410cb3d94_0
+match_key = ('"..."\n (string sql)\n command new CommandText(command,...)\n command.CommandText = sql;\n sql CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Postgres/SchemaDiff/PostgresSchemaRead.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = d94d4d3d985a8748e0acd76187f2681b79e960bd4177bbf6a2cb5c7df63cd74820062edc41bf6791abf587af12e5b85798bc0f266fcacfd9aafe27f57db3866e_0
+match_key = ('"..."\n (string sql)\n command new CommandText(command,...)\n command.CommandText = sql;\n sql CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Postgres/SchemaDiff/PostgresSchemaRead.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = d94d4d3d985a8748e0acd76187f2681b79e960bd4177bbf6a2cb5c7df63cd74820062edc41bf6791abf587af12e5b85798bc0f266fcacfd9aafe27f57db3866e_0
+match_key = ('"..."\n (string sql)\n command new CommandText(command,...)\n command.CommandText = sql;\n sql CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Postgres/SchemaDiff/PostgresSchemaRead.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = d94d4d3d985a8748e0acd76187f2681b79e960bd4177bbf6a2cb5c7df63cd74820062edc41bf6791abf587af12e5b85798bc0f266fcacfd9aafe27f57db3866e_0
+match_key = ('', PosixPath('Runtime/GatedDataSource.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 0515d869b83c55ec3c422ea7a364b6a6dd12319fa63bb65304ea980681fed35a1d7ce8f91f50a9c46d1a86a2e9107262a8859887a5b925d00984481445005a04_0
+match_key = ('"..."\n (string value)\n _inner new CommandText(_inner,...)\n _inner.CommandText = value;\n value CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Runtime/GatedDataSource.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 0a240f48d2218426635c96cdf0e98fdb00bcb7fa430e77b277a3215fa197112db753549740644c835088f1efd08b7cb14ca00239d7dc76bbe6ea6b5e9fa21cfd_0
+match_key = ('"..."\n (string value)\n _inner new CommandText(_inner,...)\n _inner.CommandText = value;\n value CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Runtime/GatedDataSource.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 0a240f48d2218426635c96cdf0e98fdb00bcb7fa430e77b277a3215fa197112db753549740644c835088f1efd08b7cb14ca00239d7dc76bbe6ea6b5e9fa21cfd_0
+match_key = ('"..."\n (string value)\n _inner new CommandText(_inner,...)\n _inner.CommandText = value;\n value CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Runtime/GatedDataSource.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 0a240f48d2218426635c96cdf0e98fdb00bcb7fa430e77b277a3215fa197112db753549740644c835088f1efd08b7cb14ca00239d7dc76bbe6ea6b5e9fa21cfd_0
+match_key = ('', PosixPath('Runtime/SchemaDiff/SchemaBudgetCommand.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 717befcec2aee0e5853b618a0577029b625ed3e9e8f1a917b4854cae891f9c0fb58f744805b75c1ee2c76a49868ead29679381dc2cb346fa332994925cabbd10_0
+match_key = ('"..."\n (string value)\n command new CommandText(command,...)\n command.CommandText = value;\n value CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Runtime/SchemaDiff/SchemaBudgetCommand.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = ac68e3f2bcc62b9a826035ee47face1e5583111793ee9bbd2158330792aa6374648068d47ac03232a8c83fdf7f4cf758d23f55ae40ade7bf52e95dbe2eaf7faf_0
+match_key = ('"..."\n (string value)\n command new CommandText(command,...)\n command.CommandText = value;\n value CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Runtime/SchemaDiff/SchemaBudgetCommand.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = ac68e3f2bcc62b9a826035ee47face1e5583111793ee9bbd2158330792aa6374648068d47ac03232a8c83fdf7f4cf758d23f55ae40ade7bf52e95dbe2eaf7faf_0
+match_key = ('"..."\n (string value)\n command new CommandText(command,...)\n command.CommandText = value;\n value CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Runtime/SchemaDiff/SchemaBudgetCommand.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = ac68e3f2bcc62b9a826035ee47face1e5583111793ee9bbd2158330792aa6374648068d47ac03232a8c83fdf7f4cf758d23f55ae40ade7bf52e95dbe2eaf7faf_0
+match_key = ('', PosixPath('Runtime/UnitOfWork.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 4839016e6a77d569bab138a114d008f222ebb7378f8474c3f84401c531ddd9cb5901442f7379a6711626f6d51c670749860e1a4843f350e3b077d44109f8759b_0
+match_key = ('"..."\n (string key)\n cmd new CommandText(cmd,...)\n cmd.CommandText = statement.Text;\n statement.Text CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Runtime/UnitOfWork.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = e8a2edeb6eaa8cf2ee5330fd795abefcc6633da66d836e3d857375dc0d1e0ae3cb4d86f0dbe3edd7510b4ade0a318b09b40a29446836c1d01bb921c3684cfb21_0
+match_key = ('"..."\n (string key)\n cmd new CommandText(cmd,...)\n cmd.CommandText = statement.Text;\n statement.Text CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Runtime/UnitOfWork.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = e8a2edeb6eaa8cf2ee5330fd795abefcc6633da66d836e3d857375dc0d1e0ae3cb4d86f0dbe3edd7510b4ade0a318b09b40a29446836c1d01bb921c3684cfb21_0
+match_key = ('"..."\n (string key)\n cmd new CommandText(cmd,...)\n cmd.CommandText = statement.Text;\n statement.Text CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Runtime/UnitOfWork.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = e8a2edeb6eaa8cf2ee5330fd795abefcc6633da66d836e3d857375dc0d1e0ae3cb4d86f0dbe3edd7510b4ade0a318b09b40a29446836c1d01bb921c3684cfb21_0
+match_key = ('', PosixPath('Sqlite/SchemaDiff/SqliteSchemaRead.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = efbcd6664c89134f920ab31e15997ec9f8ac0cf9e27b9eab5d66277dd4712eb12df40112c04b74c3215d9563840e45e1b39470728b7850e683999913d0c3c6a6_0
+match_key = ('"..."\n (string sql)\n command new CommandText(command,...)\n command.CommandText = sql;\n sql CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Sqlite/SchemaDiff/SqliteSchemaRead.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = ffbcb7ec885e0d4612868c739a123391b7b758d00d054b01f9ae8347895d50fbef25860ec7918739e5ea7a74c755204251a8ba7ff1d16458cbed1be3bf93ce0f_0
+match_key = ('"..."\n (string sql)\n command new CommandText(command,...)\n command.CommandText = sql;\n sql CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Sqlite/SchemaDiff/SqliteSchemaRead.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = ffbcb7ec885e0d4612868c739a123391b7b758d00d054b01f9ae8347895d50fbef25860ec7918739e5ea7a74c755204251a8ba7ff1d16458cbed1be3bf93ce0f_0
+match_key = ('"..."\n (string sql)\n command new CommandText(command,...)\n command.CommandText = sql;\n sql CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Sqlite/SchemaDiff/SqliteSchemaRead.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = ffbcb7ec885e0d4612868c739a123391b7b758d00d054b01f9ae8347895d50fbef25860ec7918739e5ea7a74c755204251a8ba7ff1d16458cbed1be3bf93ce0f_0
+match_key = ('', PosixPath('Sqlite/SchemaDiff/SqliteSessionCommands.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 29b707fdbfedc17080154e6a4bc7d208671c932fa3edee44ec34ff83b40bc094820a32429e6cc97f95c3f6fb8de50cf5a31b0a88efa43617032acb216d6c430b_0
+match_key = ('"..."\n (string sql)\n command new CommandText(command,...)\n command.CommandText = sql;\n sql CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Sqlite/SchemaDiff/SqliteSessionCommands.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 4c3e72d32c9c37136c011ee2bea98e8bd8424d490de47e710171de64b31607491a8c208cf67aa1785b08b80f86afd62a04da9908e1f4ecdb11f97f58f338c15c_0
+match_key = ('"..."\n (string sql)\n command new CommandText(command,...)\n command.CommandText = sql;\n sql CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Sqlite/SchemaDiff/SqliteSessionCommands.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 4c3e72d32c9c37136c011ee2bea98e8bd8424d490de47e710171de64b31607491a8c208cf67aa1785b08b80f86afd62a04da9908e1f4ecdb11f97f58f338c15c_0
+match_key = ('"..."\n (string sql)\n command new CommandText(command,...)\n command.CommandText = sql;\n sql CommandText ^(SqlCommand|CommandText|OleDbCommand|OdbcCommand|OracleCommand)$', PosixPath('Sqlite/SchemaDiff/SqliteSessionCommands.cs'), 'csharp.lang.security.sqli.csharp-sqli.csharp-sqli') match_id = 4c3e72d32c9c37136c011ee2bea98e8bd8424d490de47e710171de64b31607491a8c208cf67aa1785b08b80f86afd62a04da9908e1f4ecdb11f97f58f338c15c_0
+semgrep ran in 0:00:34.236150 on 552 files
+findings summary: 0 warning, 8 error, 0 info
+SCA findings adjustment: No SCA rules to adjust
+[00.32][[34mINFO[0m]: Executed as: /usr/lib/python3.12/site-packages/semgrep/bin/semgrep-core-proprietary -rpc -debug
+[00.32][[34mINFO[0m]: Version: 1.186.0 (e7f7148977)
+[00.32][[32mDEBUG[0m](default): Setting memory policy to balanced
+[00.32][[34mINFO[0m]: Proxy was configured with { Proxy.http_proxy = None;
+                                           https_proxy = None;
+                                           all_proxy = None; no_proxy = None;
+                                           credentials = <opaque> }
+Getting API token from settings file
+No API token found in settings file
+RPC completed in: 1.001829s
+[00.19][[34mINFO[0m]: Executed as: /usr/lib/python3.12/site-packages/semgrep/bin/semgrep-core-proprietary -rpc -debug
+[00.19][[34mINFO[0m]: Version: 1.186.0 (e7f7148977)
+[00.19][[32mDEBUG[0m](default): Setting memory policy to balanced
+[00.19][[34mINFO[0m]: Proxy was configured with { Proxy.http_proxy = None;
+                                           https_proxy = None;
+                                           all_proxy = None; no_proxy = None;
+                                           credentials = <opaque> }
+
+========================================
+Files skipped:
+========================================
+
+  Always skipped by Semgrep:
+
+   • <none>
+
+  Skipped by .gitignore:
+  (Disabled with --no-git-ignore)
+
+   • <none>
+
+  Skipped by .semgrepignore:
+  - https://semgrep.dev/docs/ignoring-files-folders-code/#understand-semgrep-defaults
+
+   • <none>
+
+  Skipped by --include patterns:
+
+   • <none>
+
+  Skipped by --exclude patterns:
+
+   • <none>
+
+  Files that couldn't be accessed:
+
+   • <none>
+
+  Skipped by limiting to files smaller than 1000000 bytes:
+  (Adjust with the --max-target-bytes flag)
+
+   • <none>
+
+  Partially analyzed due to parsing or internal Semgrep errors
+
+   • <none>
+
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 8 (8 blocking)
+ • Rules run: 65
+ • Targets scanned: 552
+ • Parsed lines: ~100.0%
+ • No ignore information available
+Ran 65 rules on 552 files: 8 findings.
+Not sending pseudonymous metrics since metrics are configured to OFF, registry usage is True, and login status is False

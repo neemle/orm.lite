@@ -58,19 +58,29 @@ public static class OrmExec
     {
         ArgumentNullException.ThrowIfNull(db);
         if (PolicyReadHooks<T>.Snapshot is not null)
+        {
+            RequirePolicyDescriptor(d, map);
             return await PolicyMaterializer.GetAsync(db, null, d, key, map);
+        }
         await using var conn = await db.DataSource.OpenConnectionAsync();
         return await GetAsync(db, conn, d, key, map);
     }
 
-    public static async Task<T?> GetAsync<T>(OrmContext db, DbConnection conn, EntityDescriptor d, object? key, Func<
-            DbDataReader, T> map) where T : class
+    public static async Task<T?> GetAsync<T>(OrmContext db, DbConnection conn, EntityDescriptor d,
+        object? key, Func<DbDataReader, T> map) where T : class
     {
         if (PolicyReadHooks<T>.Snapshot is not null)
+        {
+            RequirePolicyDescriptor(d, map);
             return await PolicyMaterializer.GetAsync(db, conn, d, key, map);
+        }
         await using var cmd = Command(conn, Compile(db, EntityStatements.Get(d, key), StatementKind.Read, d.Table));
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
-        return await r.ReadAsync() ? map(r) : null;
+        if (!await r.ReadAsync()) return null;
+        var entity = map(r);
+        if (ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), d))
+            OneToOneProvenance.MarkIfEligible(entity, map, false);
+        return entity;
     }
 
     public static async Task<int> DeleteAsync(OrmContext db, EntityDescriptor d, object? key)
@@ -110,14 +120,19 @@ public static class OrmExec
     {
         ArgumentNullException.ThrowIfNull(read);
         if (PolicyReadHooks<T>.Snapshot is { } policy)
+        {
+            RequirePolicyDescriptor(read.Target, read.Map, LinkOf(read.Owner, read.Navigation).OtherTable);
             return policy(PolicyMaterializer.Linked(db, conn, read, new RelationReadOptions()),
                 new RelationReadOptions(), default);
+        }
         var link = LinkOf(read.Owner, read.Navigation);
         var tree = EntityStatements.LoadLinked(read.Owner, link, read.Key, read.Target);
         var state = new RenderState(db.Provider, link.OtherTable, read.Target.ColumnOf, []);
         var executor = new StatementExecutor(db.DataSource, state);
         executor.On(conn, null);
-        return executor.RowsAsync(Compile(db, tree, StatementKind.Read, link.OtherTable), read.Map);
+        return executor.RowsAsync(Compile(db, tree, StatementKind.Read, link.OtherTable),
+            ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), read.Target) && link.OtherTable == read.Target.Table
+                ? OneToOneReadMap.Wrap(read.Map, false) : read.Map);
     }
 
     public static Task<List<T>> LoadLinkedAsync<T>(OrmContext db, DbConnection conn, LinkedRead<T> read,
@@ -125,7 +140,17 @@ public static class OrmExec
     {
         ArgumentNullException.ThrowIfNull(read);
         ArgumentNullException.ThrowIfNull(options);
+        RequirePolicyDescriptor(read.Target, read.Map, LinkOf(read.Owner, read.Navigation).OtherTable);
         return PolicyReader<T>.SnapshotAsync(PolicyMaterializer.Linked(db, conn, read, options), options, ct);
+    }
+
+    private static void RequirePolicyDescriptor<T>(EntityDescriptor descriptor, Func<DbDataReader, T> map,
+        string? table = null)
+    {
+        if (OneToOneReadGuard.Eligible(typeof(T), map)
+            && (!ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), descriptor)
+                || table is not null && table != descriptor.Table))
+            throw new GraphRequestException(GraphRequestError.UnsupportedShape);
     }
 
     public static async Task AddLinkAsync(OrmContext db, DbConnection conn, EntityDescriptor d, string navigation,

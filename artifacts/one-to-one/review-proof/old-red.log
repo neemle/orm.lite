@@ -1,0 +1,25 @@
+VSTest version 18.7.1 (arm64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+  Failed [UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: "uq_shared") [58 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(Neemle.OrmLite.OneToOneDeclarationException)
+  Stack Trace:
+     at Neemle.OrmLite.Tests.OneToOne.OneToOneReviewLinkNameTests.Cross_kind_name_collision_refuses_the_complete_baseline(String linkName) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/OneToOneReviewLinkNameTests.cs:line 30
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed [UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: "UQ_SHARED") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(Neemle.OrmLite.OneToOneDeclarationException)
+  Stack Trace:
+     at Neemle.OrmLite.Tests.OneToOne.OneToOneReviewLinkNameTests.Cross_kind_name_collision_refuses_the_complete_baseline(String linkName) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/OneToOneReviewLinkNameTests.cs:line 30
+   at InvokeStub_OneToOneReviewLinkNameTests.Cross_kind_name_collision_refuses_the_complete_baseline(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/results/old-red.trx
+
+Failed!  - Failed:     2, Passed:     1, Skipped:     0, Total:     3, Duration: 67 ms - Neemle.OrmLite.Tests.dll (net10.0)
+[xUnit.net 00:00:01.87]     [UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: "uq_shared") [FAIL]
+[xUnit.net 00:00:01.90]     [UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: "UQ_SHARED") [FAIL]

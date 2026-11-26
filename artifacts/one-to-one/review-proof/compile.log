@@ -1,0 +1,23 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Core/Core.csproj (in 3.58 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Postgres/Postgres.csproj (in 5.65 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Generator/Generator.csproj (in 16.65 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Sqlite/Sqlite.csproj (in 462 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Sql/Sql.csproj (in 8 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/src/Runtime/Runtime.csproj (in 6 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/Tests.csproj (in 15.43 sec).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/ReviewSecurityAssertions.cs(28,22): error xUnit2031: Do not use a Where clause to filter before calling Assert.Single. Use the overload of Assert.Single that accepts a filtering function. (https://xunit.net/xunit.analyzers/rules/xUnit2031) [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/Tests.csproj]
+
+Build FAILED.
+
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/OneToOne/ReviewSecurityAssertions.cs(28,22): error xUnit2031: Do not use a Where clause to filter before calling Assert.Single. Use the overload of Assert.Single that accepts a filtering function. (https://xunit.net/xunit.analyzers/rules/xUnit2031) [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/tests/Tests/Tests.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:03:04.91

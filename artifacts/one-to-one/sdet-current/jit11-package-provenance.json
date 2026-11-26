@@ -1,0 +1,57 @@
+{
+  "productCommit": "25ce031d9ce6216ff38f57f6088021900a68c509",
+  "packageVersion": "0.1.0-dev.g25ce031",
+  "assets": "artifacts/one-to-one/sdet-current/jit11-build/obj/OneToOneDemo/project.assets.json",
+  "assetsSha256": "f8ee040013822a3094b85032cb1f23c5fbef2fdc69f22662418159885acba763",
+  "resolvedLibraries": [
+    "Neemle.OrmLite.Postgres/0.1.0-dev.g25ce031",
+    "Neemle.OrmLite.Sqlite/0.1.0-dev.g25ce031",
+    "Neemle.OrmLite/0.1.0-dev.g25ce031"
+  ],
+  "packages": [
+    {
+      "package": "artifacts/one-to-one/demo/packages/Neemle.OrmLite.0.1.0-dev.g25ce031.nupkg",
+      "sha256": "74af080f462c88b80d797adebb9863c466c3a222ac173f71a7debc140b0a1ff1",
+      "entries": [
+        {
+          "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "resolvedAnalyzer": "artifacts/one-to-one/sdet-current/packages/neemle.ormlite/0.1.0-dev.g25ce031/analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "sha256": "cdaed3964e62186ebc59152f8cee3e5ef4ca69f90f82d88d4d557016375a57bc"
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+          "consumer": "artifacts/one-to-one/sdet-current/jit11-build/bin/OneToOneDemo/release/Neemle.OrmLite.Runtime.dll",
+          "sha256": "2385a2f093d973b64d047921b6a5a2651e2f371f1172f907599d83550ffebac2"
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+          "consumer": "artifacts/one-to-one/sdet-current/jit11-build/bin/OneToOneDemo/release/Neemle.OrmLite.Sql.dll",
+          "sha256": "135e8c6007b182fcafcb778a157b7b39fbf539667021130a30465aa9e16ea48d"
+        }
+      ]
+    },
+    {
+      "package": "artifacts/one-to-one/demo/packages/Neemle.OrmLite.Postgres.0.1.0-dev.g25ce031.nupkg",
+      "sha256": "7d61a12b0e6e891812f894d1255470b4686528605a21ba4abec2d6e1a3eeed7a",
+      "entries": [
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+          "consumer": "artifacts/one-to-one/sdet-current/jit11-build/bin/OneToOneDemo/release/Neemle.OrmLite.Postgres.dll",
+          "sha256": "821c418517fe5d284d7f603ce107d26496ce7144fdb248777d69f96687f129b0"
+        }
+      ]
+    },
+    {
+      "package": "artifacts/one-to-one/demo/packages/Neemle.OrmLite.Sqlite.0.1.0-dev.g25ce031.nupkg",
+      "sha256": "24371e99b50381411bdb4af2e7b87abcad58c416d261fa4922232bd069028c8d",
+      "entries": [
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+          "consumer": "artifacts/one-to-one/sdet-current/jit11-build/bin/OneToOneDemo/release/Neemle.OrmLite.Sqlite.dll",
+          "sha256": "8252ebd6afe6886c88463ba378fcc1837efad1613063e8bdeefc86c8f162baaa"
+        }
+      ]
+    }
+  ],
+  "scope": "Actual private packaged DLL/analyzer bytes consumed by current JIT11; compiled test-library bytes not compared to independently packed DLLs."
+}

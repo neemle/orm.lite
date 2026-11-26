@@ -8,7 +8,8 @@ internal static class QueryPolicyReads<T>
     {
         if (PolicyReadHooks<T>.Rows is { } policy)
             return await policy(query, new RelationReadOptions(), default);
-        return await executor.RowsAsync(query.CompileSelect(), query.StreamMap);
+        return await executor.RowsAsync(query.CompileSelect(),
+            OneToOneReadMap.Wrap(query.StreamMap, query.State.Redactions.Count != 0));
     }
 
     internal static async Task<T?> FirstAsync(Query<T> query, StatementExecutor executor)
@@ -18,8 +19,7 @@ internal static class QueryPolicyReads<T>
         var snapshot = query.GraphFirstSnapshot();
         var statement = StatementCompiler.Compile(snapshot.Root, snapshot.Database.Provider,
             StatementKind.Read, query.SourceTable);
-        var rows = await executor.RowsAsync(statement, snapshot.Map);
-        return rows.Count > 0 ? rows[0] : default;
+        return await OneToOneReadMap.FirstAsync(executor, statement, snapshot.Map, snapshot.Masks.Count != 0);
     }
 
     internal static GraphQueryState<T> FirstSnapshot(GraphQueryState<T> snapshot) =>

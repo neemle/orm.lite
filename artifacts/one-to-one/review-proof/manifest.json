@@ -1,0 +1,144 @@
+{
+  "scope": "ORML-111 TL R1/R2 bounded independent proof only",
+  "productCommit": "51a33fdd1eac52e13c8a24c2f0eca98faceb42b6",
+  "sourceTree": "23fd5062a98728c06045256d7942fa225b5b3033",
+  "testsTreeAtExecution": "b267a57d49550ecc96fdb8ada2ced90f89fc26dd",
+  "newTestInputs": {
+    "tests/Tests/OneToOne/OneToOneReviewLinkNameTests.cs": "5a8e1361a09b03d4b5c7f11370804045ca31d3a6c717ecc432b70469f1e09ca1",
+    "tests/Tests/OneToOne/OneToOneReviewSecurityTests.cs": "21c1e442d01b5861b2d0b14e0a45f1e4551ffd5d0ab8650006ebf53ef51a2e98",
+    "tests/Tests/OneToOne/ReviewPairOperations.cs": "34e4af3205060804e3e5436be84fb2b8ceb205c7eb34ba7f7e1e6b6f38eea060",
+    "tests/Tests/OneToOne/ReviewPairSource.cs": "97db2de52eda91f07d8c39357383506f3efabb998eab5a8da0ec0c8552732b6c",
+    "tests/Tests/OneToOne/ReviewSecurityAssertions.cs": "a46f651526a49268e310d1ac820088cb6eb918136e8cd60a429adbd30d354de2",
+    "tests/Tests/OneToOne/ReviewSecurityDatabase.cs": "7d1a652c2de38de0a5012dc24b8f3628c7826495c8aeed5515cf3edd5a50c60d"
+  },
+  "results": {
+    "old-red": {
+      "counters": {
+        "total": "3",
+        "executed": "3",
+        "passed": "1",
+        "failed": "2",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "cases": [
+        {
+          "name": "[UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: \"uq_shared\")",
+          "outcome": "Failed"
+        },
+        {
+          "name": "[UC-005][R1] distinct pure-link FK and one-to-one unique keep exact physical nodes",
+          "outcome": "Passed"
+        },
+        {
+          "name": "[UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: \"UQ_SHARED\")",
+          "outcome": "Failed"
+        }
+      ]
+    },
+    "fixed-new-cases": {
+      "counters": {
+        "total": "5",
+        "executed": "5",
+        "passed": "4",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "cases": [
+        {
+          "name": "[UC-005][SEC][R2] generated quoted TEXT pair binds private values on the real provider(provider: \"postgres\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "[UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: \"uq_shared\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "[UC-005][SEC][R1] link-FK and one-to-one unique names share one insensitive inventory(linkName: \"UQ_SHARED\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "[UC-005][SEC][R2] generated quoted TEXT pair binds private values on the real provider(provider: \"sqlite\")",
+          "outcome": "Failed"
+        },
+        {
+          "name": "[UC-005][R1] distinct pure-link FK and one-to-one unique keep exact physical nodes",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    "fixed-sqlite": {
+      "counters": {
+        "total": "1",
+        "executed": "1",
+        "passed": "1",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "cases": [
+        {
+          "name": "[UC-005][SEC][R2] generated quoted TEXT pair binds private values on the real provider(provider: \"sqlite\")",
+          "outcome": "Passed"
+        }
+      ]
+    }
+  },
+  "disposition": "PASS for R1/R2 combined; not whole-item/CI acceptance",
+  "limits": [
+    "No replay of retained19/8 matrix; no Native/full-suite/rawcoverage gate",
+    "Old-red swaps only Runtime.dll in isolated fixed-build host; only manual R1 cases selected",
+    "Initial analyzer compile error and SQLite invalid double-gate harness failure retained, not product defects",
+    "Fixed first run proves R1+PG; later harness changes only SQLite raw-source branch; final run executes only failed SQLite case",
+    "Diagnostics fixture observation is not universal native-error sanitization"
+  ],
+  "commands": [
+    "compile.json",
+    "compile-corrected.json",
+    "old-red.json",
+    "fixed-new-cases.json",
+    "compile-sqlite-harness.json",
+    "fixed-sqlite.json"
+  ],
+  "cleanup": "cleanup.json",
+  "generated": "2026-11-26T16:28:58.500749+00:00",
+  "runtimeBridge": {
+    "changedFiles": [
+      "Neemle.OrmLite.Runtime.dll"
+    ],
+    "fixedRuntimeSha256": "43c6c4cd3b1eb1f853b80cef62bb350ebf4b8cb61a7f116d3ebd7b6efba1acac",
+    "oldRuntimeSha256": "2385a2f093d973b64d047921b6a5a2651e2f371f1172f907599d83550ffebac2"
+  },
+  "checkpointTestTree": "6cf05d675289dfbe60662c564d20d6c97baec9c7"
+}

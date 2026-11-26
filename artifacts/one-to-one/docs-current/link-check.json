@@ -1,0 +1,233 @@
+{
+  "scope": "New relative Markdown links and anchors; retained existing headings and unrelated guide text",
+  "baseCommit": "08f91c96592531278a85ce9dfd4687a2024545fd",
+  "workingDirectory": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one",
+  "startedAt": "2026-11-26T15:28:18.539765+00:00",
+  "finishedAt": "2026-11-26T15:28:18.853630+00:00",
+  "pythonVersion": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "exitCode": 0,
+  "newLinkChecks": [
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/ActionCases.cs",
+      "addedOccurrences": 2,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/AdditionalGuardCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/CancellationCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/CatalogCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/DirectionCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/FailureCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/GuardCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/IntegrityCases.cs",
+      "addedOccurrences": 2,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/LegacyCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/Person.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/Profile.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/README.md",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/README.md#choose-the-provider",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/README.md#nativeaot",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/README.md#prepare-and-run",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "../examples/one-to-one/VisibilityCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/relations.md",
+      "target": "migrations.md#one-to-one-integrity-in-fresh-and-existing-databases",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "docs/migrations.md",
+      "target": "../examples/one-to-one/CatalogCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/migrations.md",
+      "target": "../examples/one-to-one/IntegrityCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/migrations.md",
+      "target": "../examples/one-to-one/README.md#declare-one-owner-and-inverse",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "docs/migrations.md",
+      "target": "../examples/one-to-one/README.md#existing-databases-and-unsupported-shapes",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "docs/migrations.md",
+      "target": "../examples/one-to-one/README.md#nativeaot",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "docs/migrations.md",
+      "target": "../examples/one-to-one/README.md#prepare-and-run",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "docs/migrations.md",
+      "target": "../examples/one-to-one/UpgradeCases.cs",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "docs/migrations.md",
+      "target": "relations.md#6-declare-and-load-one-to-one-relations",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "examples/one-to-one/README.md",
+      "target": "../../docs/migrations.md#one-to-one-integrity-in-fresh-and-existing-databases",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "examples/one-to-one/README.md",
+      "target": "../../docs/relations.md#6-declare-and-load-one-to-one-relations",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": true
+    },
+    {
+      "from": "examples/one-to-one/README.md",
+      "target": "OneToOneDemo.csproj",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    },
+    {
+      "from": "examples/one-to-one/README.md",
+      "target": "prepare-packages.sh",
+      "addedOccurrences": 1,
+      "exists": true,
+      "anchorValid": null
+    }
+  ],
+  "checkedLinkOccurrences": 31,
+  "oldGuideSectionsPreserved": true,
+  "inputFiles": {
+    "docs/relations.md": {
+      "sha256": "6eff42e1b49852c8401f19e04d67c2ef300a99a7150bb2911edd464726f01c17",
+      "baseBlob": "e15b94483a5dec8cb87c3eacd4668fa32c179e3a"
+    },
+    "docs/migrations.md": {
+      "sha256": "5bde8ca717ca1b08228e5511a8a7b95f303ca5115a9f6dc555975d7e1ff69624",
+      "baseBlob": "486536c7f409158eba0aeacd6610e0f43d7bcd8a"
+    },
+    "examples/one-to-one/README.md": {
+      "sha256": "36430db9d87c3136ca4dab28637e71c4dda72113dab1db2b8cfdd6e7e7444b4c",
+      "baseBlob": "0b6f99c836dc8115821171d14d23391922bacca5"
+    }
+  },
+  "sourceTree": "f1f92d50105366c2a6f02097b785a9cda2d4d5dd",
+  "testTree": "b267a57d49550ecc96fdb8ada2ced90f89fc26dd",
+  "limits": "Static documentation check only; no build, package, database, demo, NativeAOT or test execution."
+}

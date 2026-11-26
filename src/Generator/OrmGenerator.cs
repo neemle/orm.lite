@@ -111,6 +111,10 @@ public sealed class OrmGenerator : IIncrementalGenerator
     {
         public PolicyMetadata? LoadingPolicy { get; init; }
 
+        public EquatableArray<OneToOneIntent> OneToOneIntents { get; init; } = default;
+
+        public EquatableArray<OneToOneModel> OneToOnePairs { get; init; } = default;
+
         public EquatableArray<ForeignKeyIntent> ForeignKeyIntents { get; init; } = default;
 
         public EquatableArray<ForeignKeyModel> ForeignKeys { get; init; } = default;

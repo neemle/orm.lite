@@ -22,7 +22,8 @@ internal static class PolicyPlainReader
             command.AddParam(parameter.Name, parameter.Value ?? DBNull.Value);
         await using var reader = await command.RunReaderAsync(StatementKind.Read, ct);
         var rows = new List<T>();
-        while (await reader.ReadAsync(ct)) rows.Add(state.Map(reader));
+        var map = OneToOneReadMap.Wrap(state.Map, state.Masks.Count != 0);
+        while (await reader.ReadAsync(ct)) rows.Add(map(reader));
         return rows;
     }
 }

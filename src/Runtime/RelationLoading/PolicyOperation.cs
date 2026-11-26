@@ -11,5 +11,6 @@ internal sealed class PolicyOperation<T>(GraphReadContext context, GraphExecutio
         GraphPlanner.PolicyNode(plan, new GraphEntitySnapshot(source), edge);
 
     public async Task<List<object>> RootsAsync() =>
-        (await GraphExecutor.ReadRootsAsync(plan, Context)).Cast<object>().ToList();
+        (await GraphExecutor.ReadRootsAsync(plan, Context,
+            OneToOneReadMap.Wrap(plan.Query.Map, plan.Query.Masks.Count != 0))).Cast<object>().ToList();
 }

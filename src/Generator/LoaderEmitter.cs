@@ -24,7 +24,8 @@ internal static class LoaderEmitter
     internal static TypeBuilder<FileBuilder> Loaders(
         TypeBuilder<FileBuilder> cls, Entity e, CsType entity, Prop? key, EmitScope scope)
     {
-        foreach (var rel in RelationsOf(e, scope.Refused, scope.Guard)) cls = LoadRelation(cls, entity, rel);
+        foreach (var rel in RelationsOf(e, scope.Refused, scope.Guard)
+            .Where(r => !e.OneToOneIntents.Any(i => i.Navigation == r.Nav))) cls = LoadRelation(cls, entity, rel);
         foreach (var col in CollectionsOf(e, scope.Guard)) cls = LoadCollection(cls, entity, col);
         if (key is null) return cls;
         foreach (var mm in LinksOf(e, scope.Refused, scope.Guard))

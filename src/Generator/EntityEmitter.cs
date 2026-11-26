@@ -25,13 +25,19 @@ internal static class EntityEmitter
         SourceProductionContext spc, ImmutableArray<Entity> all, string asmToken, ProviderSet providers)
     {
         EntityReports.Report(spc, all, providers);
+        var pairs = new OneToOneAnalysis(spc, all, providers);
+        all = pairs.Resolve();
         var blocked = NavigationAudit.Report(spc, all);
         var foreignKeys = new ForeignKeyAnalysis(spc, all, blocked, providers);
         var named = EntityNaming.Disambiguated(foreignKeys.Resolve());
-        PolicyDiagnostics.Report(spc, named, blocked);
+        var policyBlocked = new HashSet<(string Entity, string Nav)>(blocked);
+        policyBlocked.UnionWith(named.SelectMany(e => e.OneToOneIntents.Select(i => (e.Full, i.Navigation))));
+        PolicyDiagnostics.Report(spc, named, policyBlocked);
         var dropped = new HashSet<string>(named.Where(OrmGenerator.Dropped).Select(e => e.Type));
-        var emitted = named.Where(e => !OrmGenerator.Dropped(e));
-        var source = EntitiesSource([.. emitted], asmToken, dropped, blocked, foreignKeys.Valid);
+        var emitted = named.Where(e => !OrmGenerator.Dropped(e)).ToImmutableArray();
+        var source = EntitiesSource(emitted, asmToken, dropped, blocked, foreignKeys.Valid && pairs.Valid);
+        source = PolicySourceEmitter.Augment(source, emitted, policyBlocked);
+        source = OneToOneEmitter.Augment(source, emitted);
         foreach (var (hint, text) in SourceLayout.Entities(source)) spc.AddSource(hint, text);
     }
 
@@ -57,7 +63,7 @@ internal static class EntityEmitter
         }
         if (foreignKeysValid) file = SchemaClass(file, entities, asmToken);
         file = InitializerClass(file, entities);
-        return PolicySourceEmitter.Augment(file.Render(RenderOptions), entities, blocked);
+        return file.Render(RenderOptions);
     }
 
     private static HashSet<(string Type, string Member)> ExcludedPairs(ImmutableArray<Entity> entities)

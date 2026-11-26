@@ -431,3 +431,85 @@ or retained-scope attachment contract. Choose the supported buffered reads above
   [GateOriginCases.cs](../examples/relation-loading/GateOriginCases.cs).
 - [Visibility and captured keys](../examples/relation-loading/README.md#visibility-and-captured-keys):
   [VisibilityCases.cs](../examples/relation-loading/VisibilityCases.cs).
+
+## 6. Declare and load one-to-one relations
+
+A one-to-one pair has one dependent that owns a physical foreign key and one matching inverse single navigation.
+The runnable [one-to-one demo](../examples/one-to-one/README.md) uses an integer-keyed
+[Person](../examples/one-to-one/Person.cs) and a Guid-keyed [Profile](../examples/one-to-one/Profile.cs).
+Profile.PrincipalId is the nullable integer FK; the dependent's own Guid key does not select the principal.
+
+These navigation declarations are excerpts from those models, in namespace OneToOneDemo:
+
+```csharp
+// Profile: owns the mapped int? PrincipalId column.
+[OneToOne(nameof(PrincipalId), nameof(global::OneToOneDemo.Person.Profile))]
+[ForeignKey("fk_oto_profile_person", ReferentialAction.Restrict)]
+[OneToOneUnique("uq_oto_profile_person")]
+public Person? Person { get; set; }
+
+// Person: refers back to that exact owner navigation.
+[InverseOneToOne(nameof(global::OneToOneDemo.Profile.Person))]
+public Profile? Profile { get; set; }
+```
+
+Use Neemle.OrmLite and Neemle.OrmLite.Nodes for these attributes and ReferentialAction. Both endpoints must be
+managed, non-view tables in the same schema contribution, with supported scalar single primary keys. The mapped
+physical FK must match the principal key's type/column shape. Navigation properties have public non-init setters
+and stay nullable, including when the physical FK is required: unloaded or visibility-filtered absence is possible.
+Composite/alternate keys, self/cyclic pairs, external endpoints and ambiguous or dual ownership are unsupported.
+
+### Load either direction explicitly
+
+[DirectionCases.cs](../examples/one-to-one/DirectionCases.cs) reads the source through its generated repository,
+then awaits ProfileOrm.LoadPersonAsync(db, connection, profile) or
+PersonOrm.LoadProfileAsync(db, connection, person). Both also accept an existing UnitOfWork instead of the connection.
+A normal nonnull demand issues one statement and loads only that navigation, including mapped calculated target fields.
+Reading or assigning a navigation property performs no I/O, graph save, eager/lazy traversal or implicit cascade.
+
+A permitted optional null FK clears its navigation without a lookup. An inverse with no dependent returns null;
+a required FK does not require every principal to have a dependent. The
+[required/null and integrity cases](../examples/one-to-one/IntegrityCases.cs) demonstrate multiple unrelated NULL
+FKs and atomic rejection when reassigning to an already occupied principal. The
+[required-FK case](../examples/one-to-one/ActionCases.cs) loads a valid nonnullable reference.
+
+### Physical integrity and explicit actions
+
+A fresh baseline installs one named FK and one plain, unfiltered unique index over exactly its owning FK column.
+A composite, expression or live-only unique index does not provide this guarantee. The
+[catalog case](../examples/one-to-one/CatalogCases.cs) and
+[integrity cases](../examples/one-to-one/IntegrityCases.cs) check actual catalog shape, valid writes, orphan refusal
+and rejection of a second dependent for one nonnull principal. SQLite enforcement must be enabled on the connection.
+
+The action is explicit: NoAction, Restrict, Cascade, or SetNull for a nullable FK. The normal pair above uses Restrict.
+[ActionCases.cs](../examples/one-to-one/ActionCases.cs) exercises physical Cascade/SetNull and NoAction/Restrict
+refusal; deleting a dependent leaves its principal. A soft-delete update does not execute a physical ON DELETE action.
+Existing databases need the [separate upgrade route](migrations.md#one-to-one-integrity-in-fresh-and-existing-databases).
+
+### Source visibility, duplicates and failure
+
+Generated loaders first require an exact registered generated full-row read with known unmasked provenance.
+New objects, raw/custom mapper calls and projections are unknown; any active mask, including a conditional mask,
+refuses traversal. OneToOneReadGuard.Require only checks/refuses: calling it directly or repeatedly cannot grant trust.
+This check precedes cancellation handling, the optional-null shortcut, SQL and navigation assignment.
+[GuardCases.cs](../examples/one-to-one/GuardCases.cs) and
+[AdditionalGuardCases.cs](../examples/one-to-one/AdditionalGuardCases.cs) show those zero-SQL refusals.
+
+An owner-to-principal load retains the target's live-row filter and may return null without an unrestricted
+existence probe. An inverse into a filtered/soft-delete dependent is unsupported and refuses before SQL;
+[VisibilityCases.cs](../examples/one-to-one/VisibilityCases.cs) demonstrates both outcomes. A visible-row count
+does not prove physical integrity.
+
+For a permitted plain inverse, the loader reads at most two rows and stages the result before assignment.
+Two legacy dependents raise OneToOneCardinalityException rather than choosing a first row; the old navigation
+remains unchanged. See [LegacyCases.cs](../examples/one-to-one/LegacyCases.cs), which changes only its disposable fixture.
+
+The caller owns the supplied connection or UnitOfWork, transaction and disposal. The load owns its command/reader,
+adds no replacement connection, hidden transaction or retry, and publishes no navigation on a lookup, mapping,
+cancellation or cleanup failure. [CancellationCases.cs](../examples/one-to-one/CancellationCases.cs) and
+[FailureCases.cs](../examples/one-to-one/FailureCases.cs) show retained caller resources, the original mapper/provider
+failure, independent cleanup attempts and cleanup-only refusal.
+
+Use the demo's [package preparation and JIT commands](../examples/one-to-one/README.md#prepare-and-run),
+[provider selection](../examples/one-to-one/README.md#choose-the-provider) and
+[NativeAOT/.NET 11 commands](../examples/one-to-one/README.md#nativeaot) for the same public cases.
