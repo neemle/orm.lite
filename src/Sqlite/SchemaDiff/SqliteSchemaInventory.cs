@@ -8,7 +8,8 @@ internal static class SqliteSchemaInventory
         var indexes = await IndexesAsync(read, table, schema, ct);
         var constraints = Constraints(definition);
         var triggers = schema.Where(r => (string)r[0]! == "trigger" && (string)r[2]! == table)
-            .Select(r => new SchemaObjectStamp("trigger", (string)r[1]!, SqliteSchemaRead.Hash((string)r[3]!))).ToArray();
+            .Select(r => new SchemaObjectStamp("trigger", (string)r[1]!,
+                SqliteSchemaRead.Hash((string)r[3]!))).ToArray();
         var dependent = await SqliteSchemaReferences.ReadAsync(read, table, schema, ct);
         return new(indexes, constraints, SchemaFact<IReadOnlyList<SchemaObjectStamp>>.Known(triggers), dependent);
     }
@@ -28,7 +29,8 @@ internal static class SqliteSchemaInventory
     private static async Task<SchemaFact<IReadOnlyList<SchemaObjectStamp>>> IndexesAsync(
         SqliteSchemaRead read, string table, IReadOnlyList<object?[]> schema, CancellationToken ct)
     {
-        var indexes = await read.RowsAsync("SELECT name,\"unique\",origin,partial FROM pragma_index_list(@table,'main')",
+        var indexes = await read.RowsAsync("SELECT name,\"unique\",origin,partial "
+            + "FROM pragma_index_list(@table,'main')",
             SqliteSchemaRead.Parameter("table", table), read.Request.Target.Limits.MaxCatalogObjects, ct);
         var stamps = new List<SchemaObjectStamp>();
         foreach (var index in indexes)
@@ -36,7 +38,8 @@ internal static class SqliteSchemaInventory
             var terms = await read.RowsAsync("SELECT seqno,cid,name,desc,coll,\"key\" "
                 + "FROM pragma_index_xinfo(@index,'main')", SqliteSchemaRead.Parameter("index", (string)index[0]!),
                 read.Request.Target.Limits.MaxCatalogObjects, ct);
-            var definition = schema.SingleOrDefault(r => (string)r[0]! == "index" && (string)r[1]! == (string)index[0]!);
+            var definition = schema.SingleOrDefault(r => (string)r[0]! == "index"
+                && (string)r[1]! == (string)index[0]!);
             var text = string.Join("|", index) + ";" + (string?)definition?[3]
                 + ";" + string.Join(";", terms.Select(t => string.Join("|", t)));
             stamps.Add(new("index", (string)index[0]!, SqliteSchemaRead.Hash(text)));

@@ -9,7 +9,8 @@ internal static class SqliteSchemaInspect
         SchemaDiffInspection request, CancellationToken ct)
     {
         ct.ThrowIfCancellationRequested();
-        if (connection is not SqliteConnection native) throw new SchemaDiffException(SchemaDiffError.UnsupportedProvider);
+        if (connection is not SqliteConnection native)
+            throw new SchemaDiffException(SchemaDiffError.UnsupportedProvider);
         var resources = new SqliteMetadataResources();
         var tx = native.BeginTransaction(deferred: true);
         resources.Add(tx);
@@ -26,12 +27,15 @@ internal static class SqliteSchemaInspect
         var databases = await SqliteSchemaAdmission.ValidateAsync(read, ct);
         var schema = await read.RowsAsync("SELECT type,name,tbl_name,sql FROM main.sqlite_schema", [],
             read.Request.Target.Limits.MaxCatalogObjects, ct);
+        foreach (var _ in schema) read.Object();
         var tables = new List<SchemaObservedTable>();
         foreach (var table in read.Request.Target.Scope.OwnedTables)
             tables.Add(await SqliteSchemaTable.ReadAsync(read, table, schema, ct));
         var history = await HistoryAsync(read, schema, ct);
-        var identity = SqliteSchemaRead.Hash(read.Connection.DataSource + "|" + string.Join(";", databases.Select(d => d[1])));
-        return SchemaDiffObservation.FromFacts(new(identity, "sqlite:schema-diff-v1", true), tables, history, read.Request);
+        var identity = SqliteSchemaRead.Hash(read.Connection.DataSource + "|"
+            + string.Join(";", databases.Select(d => d[1])));
+        return SchemaDiffObservation.FromFacts(new(identity, "sqlite:schema-diff-v1", true),
+            tables, history, read.Request);
     }
 
     private static async Task<SchemaObservationHistory> HistoryAsync(SqliteSchemaRead read,

@@ -14,7 +14,8 @@ internal static class SqliteSchemaReferences
             var name = (string)source[1]!;
             var keys = await read.RowsAsync("SELECT * FROM pragma_foreign_key_list(@table,'main')",
                 SqliteSchemaRead.Parameter("table", name), read.Request.Target.Limits.MaxCatalogObjects, ct);
-            foreach (var key in keys.Where(k => string.Equals((string)k[2]!, table, StringComparison.OrdinalIgnoreCase)))
+            foreach (var key in keys.Where(k => string.Equals(
+                (string)k[2]!, table, StringComparison.OrdinalIgnoreCase)))
                 stamps.Add(new("incoming-foreign-key", name + ":" + key[0] + ":" + key[1],
                     SqliteSchemaRead.Hash(string.Join("|", key))));
         }
