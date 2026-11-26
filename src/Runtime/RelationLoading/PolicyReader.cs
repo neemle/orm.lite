@@ -11,6 +11,9 @@ internal static class PolicyReader<T> where T : class
         return rows.FirstOrDefault();
     }
 
+    internal static Task<List<T>> SnapshotAsync(GraphQueryState<T> state, RelationReadOptions options,
+        CancellationToken ct) => ReadAsync(state, options, ct);
+
     private static async Task<List<T>> ReadAsync(GraphQueryState<T> state, RelationReadOptions options,
         CancellationToken ct)
     {

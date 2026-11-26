@@ -27,6 +27,7 @@ public static class RelationPolicies
             Models.Add(typeof(T), model);
             PolicyReadHooks<T>.Rows = PolicyReader<T>.RowsAsync;
             PolicyReadHooks<T>.First = PolicyReader<T>.FirstAsync;
+            PolicyReadHooks<T>.Snapshot = PolicyReader<T>.SnapshotAsync;
         }
     }
 

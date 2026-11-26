@@ -54,12 +54,16 @@ public static class OrmExec
     public static async Task<T?> GetAsync<T>(OrmContext db, EntityDescriptor d, object? key, Func<DbDataReader, T> map) where T : class
     {
         ArgumentNullException.ThrowIfNull(db);
+        if (PolicyReadHooks<T>.Snapshot is not null)
+            return await PolicyMaterializer.GetAsync(db, null, d, key, map);
         await using var conn = await db.DataSource.OpenConnectionAsync();
         return await GetAsync(db, conn, d, key, map);
     }
 
     public static async Task<T?> GetAsync<T>(OrmContext db, DbConnection conn, EntityDescriptor d, object? key, Func<DbDataReader, T> map) where T : class
     {
+        if (PolicyReadHooks<T>.Snapshot is not null)
+            return await PolicyMaterializer.GetAsync(db, conn, d, key, map);
         await using var cmd = Command(conn, Compile(db, EntityStatements.Get(d, key), StatementKind.Read, d.Table));
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
         return await r.ReadAsync() ? map(r) : null;
@@ -89,6 +93,9 @@ public static class OrmExec
         OrmContext db, DbConnection conn, EntityDescriptor d, string navigation, object? thisKey, Func<DbDataReader, T> map)
     {
         var link = LinkOf(d, navigation);
+        if (PolicyReadHooks<T>.Snapshot is { } policy)
+            return await policy(new GraphQueryState<T>(db, (Select)EntityStatements.LoadLinked(d, link, thisKey), map)
+                { Connection = conn }, new RelationReadOptions(), default);
         var list = new List<T>();
         await using var cmd = Command(conn, Compile(db, EntityStatements.LoadLinked(d, link, thisKey), StatementKind.Read, link.OtherTable));
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
@@ -99,12 +106,23 @@ public static class OrmExec
     public static Task<List<T>> LoadLinkedAsync<T>(OrmContext db, DbConnection conn, LinkedRead<T> read)
     {
         ArgumentNullException.ThrowIfNull(read);
+        if (PolicyReadHooks<T>.Snapshot is { } policy)
+            return policy(PolicyMaterializer.Linked(db, conn, read, new RelationReadOptions()),
+                new RelationReadOptions(), default);
         var link = LinkOf(read.Owner, read.Navigation);
         var tree = EntityStatements.LoadLinked(read.Owner, link, read.Key, read.Target);
         var state = new RenderState(db.Provider, link.OtherTable, read.Target.ColumnOf, []);
         var executor = new StatementExecutor(db.DataSource, state);
         executor.On(conn, null);
         return executor.RowsAsync(Compile(db, tree, StatementKind.Read, link.OtherTable), read.Map);
+    }
+
+    public static Task<List<T>> LoadLinkedAsync<T>(OrmContext db, DbConnection conn, LinkedRead<T> read,
+        RelationReadOptions options, System.Threading.CancellationToken ct = default) where T : class
+    {
+        ArgumentNullException.ThrowIfNull(read);
+        ArgumentNullException.ThrowIfNull(options);
+        return PolicyReader<T>.SnapshotAsync(PolicyMaterializer.Linked(db, conn, read, options), options, ct);
     }
 
     public static async Task AddLinkAsync(OrmContext db, DbConnection conn, EntityDescriptor d, string navigation, object? thisId, object? otherId)

@@ -33,6 +33,7 @@ internal static class EntityEmitter
         EntityReports.Report(spc, all, providers);
         var blocked = NavigationAudit.Report(spc, all);
         var named = EntityNaming.Disambiguated(all);
+        PolicyDiagnostics.Report(spc, named, blocked);
         var dropped = new HashSet<string>(named.Where(OrmGenerator.Dropped).Select(e => e.Type));
         var emitted = named.Where(e => !OrmGenerator.Dropped(e));
         GraphSourceLayout.Emit(spc, EntitiesSource([.. emitted], asmToken, dropped, blocked));
@@ -60,7 +61,7 @@ internal static class EntityEmitter
         }
         file = SchemaClass(file, entities, asmToken);
         file = InitializerClass(file, entities);
-        return file.Render(RenderOptions);
+        return PolicySourceEmitter.Augment(file.Render(RenderOptions), entities, blocked);
     }
 
     private static HashSet<(string Type, string Member)> ExcludedPairs(ImmutableArray<Entity> entities)
