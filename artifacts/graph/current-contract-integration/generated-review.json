@@ -1,0 +1,472 @@
+[
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0005.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0005.g.cs.golden",
+    "MapCount": 0,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 0,
+    "Paths": 0,
+    "InitializationExtracted": true
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0005.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0005.g.cs.golden",
+    "MapCount": 0,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 0,
+    "Paths": 0,
+    "InitializationExtracted": true
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0005.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0005.g.cs.golden",
+    "MapCount": 0,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 0,
+    "Paths": 0,
+    "InitializationExtracted": true
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0004.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0004.g.cs.golden",
+    "MapCount": 0,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 0,
+    "Paths": 0,
+    "InitializationExtracted": true
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0003.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0003.g.cs.golden",
+    "MapCount": 0,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 0,
+    "Paths": 0,
+    "InitializationExtracted": true
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0005.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0005.g.cs.golden",
+    "MapCount": 0,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 0,
+    "Paths": 0,
+    "InitializationExtracted": true
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0014.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0014.g.cs.golden",
+    "MapCount": 0,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 0,
+    "Paths": 0,
+    "InitializationExtracted": true
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0029.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0029.g.cs.golden",
+    "MapCount": 0,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 0,
+    "Paths": 0,
+    "InitializationExtracted": true
+  },
+  {
+    "Old": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0005.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/orm/OrmLite.Entities.0005.g.cs.golden",
+    "MapCount": 0,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 0,
+    "Paths": 0,
+    "InitializationExtracted": true
+  },
+  {
+    "Old": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/orm/OrmLite.Entities.0000.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/orm/OrmLite.Entities.0003.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/orm/OrmLite.Entities.0001.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  },
+  {
+    "Old": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden",
+    "New": "artifacts/graph/current-contract-integration/captured/orm/OrmLite.Entities.0002.g.cs.golden",
+    "MapCount": 1,
+    "MapTextUnchanged": true,
+    "LegacyTokensUnchanged": true,
+    "Registrations": 1,
+    "Paths": 1,
+    "InitializationExtracted": false
+  }
+]

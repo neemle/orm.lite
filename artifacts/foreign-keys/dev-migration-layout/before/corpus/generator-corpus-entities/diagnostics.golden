@@ -1,0 +1,1 @@
+ORMLITE017 Warning Migrations.cs:21: [Migration("0200_reversible_without_down")] on 'CorpusEntities.ReversibleWithoutDown' declares Reversibility.Reversible and does not override Down, but its Up holds operations with no automatic inverse: DeleteData, InsertData. Override Down or declare Reversibility.Irreversible.

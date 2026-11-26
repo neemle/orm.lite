@@ -1,0 +1,151 @@
+{
+  "commit": "7a5f94cd597fd82e63eca59051fcc1c2687250db",
+  "sourceTree": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e",
+  "files": [
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OpenWorkOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OpenWorkOrm.g.cs",
+      "sha256": "7565c37998d6964c656dbe94e7103b73dd6ed75464549180e1fd98d48c7ed791"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmLiteDemoSchema.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmLiteDemoSchema.g.cs",
+      "sha256": "cef76cc0d1c0290011e79c28680478094561fad3c8e368e92fc76a5467f4bfd7"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OpenWorkTotalsOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OpenWorkTotalsOrm.g.cs",
+      "sha256": "0818125bef64e37de8a8b2b144a0cd6c5d01548cad70a89aaf6a3720d7127952"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ProjectOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ProjectOrm.g.cs",
+      "sha256": "c6fbaf41d7a2325262f500a9e668aa243dc2b5b72a90312dfe2cf2895961e7da"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.DraftOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.DraftOrm.g.cs",
+      "sha256": "f84a9dce655bbd7f04e12351b2688bea76e5efaf585bc52c5800bd3f6354586f"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NoteOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NoteOrm.g.cs",
+      "sha256": "a48f48b8498484507bb5407f25e3278db6b3c47bb6c12a4e228e85bc92dc3ee2"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.LedgerAccountOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.LedgerAccountOrm.g.cs",
+      "sha256": "564537506c2282397bb61188586166ae2711c42b80794b73659461cfceab4fd3"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.TeamOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.TeamOrm.g.cs",
+      "sha256": "92ae96f8983c56e27431f1cd153c84c1f191a08c4c25eaa223600812f4a55283"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.WorkItemOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.WorkItemOrm.g.cs",
+      "sha256": "aebb2a90d61a75e0596b9bea018b7621c4db2b2494497e4d331c8b1d92acd492"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.CommentOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.CommentOrm.g.cs",
+      "sha256": "6afb63c697c26822939c089ad5053996e75bd232cea803578ea7271f00677bac"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeyParentOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeyParentOrm.g.cs",
+      "sha256": "b2b503d66d3b3737e9a0f03ce67c5eb3c938a47aa55ade5d391de860eb88b9f1"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.LedgerEntryOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.LedgerEntryOrm.g.cs",
+      "sha256": "f3c13901e5858603ac866108363dbf12501d192dbb42a35fe512cca1b523edd7"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.DraftPurge.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.DraftPurge.g.cs",
+      "sha256": "f8dd98f0485b19406348aa80ea7a2ddcb47527cb4b6d328c0892fb407168d7b5"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmMetaInit.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmMetaInit.g.cs",
+      "sha256": "97e5f387bb12ce155c7a5ce796f03cc2ba920b299016e8b4ceb12def9bb636f8"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeyChildOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeyChildOrm.g.cs",
+      "sha256": "208bfcbde7746a1f56ca71ce5a83a65154279b5075a4d73f7fc4c3bd5c14726b"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "sha256": "804eab6ecd124b7a5dca3932f9af042ecb2901395798a48121af9bb57b609829"
+    },
+    {
+      "origin": "artifacts/foreign-keys/demo/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "sha256": "e4f6be1e91c46e6132f933eeada1d515f9fa8c8231b6811aeeec27f7466fe4a6"
+    },
+    {
+      "origin": "artifacts/foreign-keys/dev-generated-repair/native10/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeParentOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeParentOrm.g.cs",
+      "sha256": "ef27316bfe21fc91e6d1a188d8e886ad1b19ee6af4ebf8a35ade6f215ec2dd7c"
+    },
+    {
+      "origin": "artifacts/foreign-keys/dev-generated-repair/native10/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeChildOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeChildOrm.g.cs",
+      "sha256": "1f247ee4aade39f67a7bfdf5fb99bdf9f275f7f05d6f82f3a299b6cf72dac1b7"
+    },
+    {
+      "origin": "artifacts/foreign-keys/dev-generated-repair/native10/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeysAotSchema.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeysAotSchema.g.cs",
+      "sha256": "c73f91fce1c3b200e7ccd000586d991d5bbde527f5a544698e1aec1d22605f49"
+    },
+    {
+      "origin": "artifacts/foreign-keys/dev-generated-repair/native10/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmMetaInit.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmMetaInit.g.cs",
+      "sha256": "8da7c76d2536641b3e1b2b5b9ec3d0dd1e4ae50c89dfe86f81e1ffa2b0c14abd"
+    },
+    {
+      "origin": "artifacts/foreign-keys/dev-generated-repair/native10/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "sha256": "4524696cc781c3543fa7b565a3d3c0d45c218e38ac02b99c48435e4b5e08132c"
+    },
+    {
+      "origin": "artifacts/foreign-keys/dev-generated-repair/native10/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "sha256": "a8f022657d21e72e7d67a4d4679f8fe176d67d0dd8ceb9cb9cc527090613dea9"
+    },
+    {
+      "origin": "artifacts/foreign-keys/sdet-final/native11/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeParentOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeParentOrm.g.cs",
+      "sha256": "ef27316bfe21fc91e6d1a188d8e886ad1b19ee6af4ebf8a35ade6f215ec2dd7c"
+    },
+    {
+      "origin": "artifacts/foreign-keys/sdet-final/native11/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeChildOrm.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeChildOrm.g.cs",
+      "sha256": "1f247ee4aade39f67a7bfdf5fb99bdf9f275f7f05d6f82f3a299b6cf72dac1b7"
+    },
+    {
+      "origin": "artifacts/foreign-keys/sdet-final/native11/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeysAotSchema.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeysAotSchema.g.cs",
+      "sha256": "c73f91fce1c3b200e7ccd000586d991d5bbde527f5a544698e1aec1d22605f49"
+    },
+    {
+      "origin": "artifacts/foreign-keys/sdet-final/native11/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmMetaInit.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmMetaInit.g.cs",
+      "sha256": "8da7c76d2536641b3e1b2b5b9ec3d0dd1e4ae50c89dfe86f81e1ffa2b0c14abd"
+    },
+    {
+      "origin": "artifacts/foreign-keys/sdet-final/native11/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "sha256": "4524696cc781c3543fa7b565a3d3c0d45c218e38ac02b99c48435e4b5e08132c"
+    },
+    {
+      "origin": "artifacts/foreign-keys/sdet-final/native11/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "retained": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "sha256": "a8f022657d21e72e7d67a4d4679f8fe176d67d0dd8ceb9cb9cc527090613dea9"
+    }
+  ]
+}

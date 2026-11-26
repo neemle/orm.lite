@@ -1,0 +1,2112 @@
+[
+  {
+    "path": "artifacts/streaming/dev-generated-repair/after-capture.json",
+    "bytes": 1741,
+    "sha256": "5c3711f730c9e123af1073a5689a4fdecb00c9984f7504331f113096226fdba9"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/after-capture.log",
+    "bytes": 44,
+    "sha256": "fe6a2b5bbb455a56b534593813efa7cf7baffc6d393061c09d116ed11908e6f4"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/INDEX.md",
+    "bytes": 115603,
+    "sha256": "0aafbffe63c020ad2097b037f671e666a05482cdc750d5fd92fec9f4dcda2a27"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/entries.json",
+    "bytes": 730274,
+    "sha256": "8027cac235637c9c2e4c22709694156c0927abe444cb8a160bee036e695e69fa"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/diagnostics.golden",
+    "bytes": 317,
+    "sha256": "94b6f5fbd4214206b19bacfb3431f435e969028278291722b48eb37636e71022"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/executed-schema-contributions-and-registry.golden",
+    "bytes": 60245,
+    "sha256": "c7a0d44309d162162267a13f8ee279faa6c5714967537eac9abc88808af508e1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/migration-runner-fresh-database.golden",
+    "bytes": 38756,
+    "sha256": "59eea691daeae5212228d899a5bc725ebc628b4ba970d31b29bd2e305e311d73"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/migration-runner-partially-applied.golden",
+    "bytes": 34337,
+    "sha256": "cec687e838fe41d6e9157c06f6eb4593cb62ad8c6328a090fd82f735fcda2704"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+    "bytes": 38446,
+    "sha256": "f8861a0f3ee8faa0561c862dd2c3688045246533ad32d59a56559bcc0e7d0e15"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 332,
+    "sha256": "61f97cbbdc6bdaf2a0ef30fb5a92c3cc1e3e9c1bd3b7e155d27691d3261af96f"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+    "bytes": 768,
+    "sha256": "10d0539542df1bf942e7893d10aa90ed7405d7edaa483c843bb30796412fbf7c"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/executed-schema-contributions-and-registry.golden",
+    "bytes": 12931,
+    "sha256": "0a6ca682655317e353bb7ef12ba09548010f36fa703df74a4626c084a1bffb40"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/migration-runner-fresh-database.golden",
+    "bytes": 10890,
+    "sha256": "778f674d3f489b307002177479d531304dba001ed28971e8d8abe66b68294270"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/migration-runner-partially-applied.golden",
+    "bytes": 9925,
+    "sha256": "4dd8d98ba13764b222154822f887349b2bd6f45b1bff4a5a9892e196a362d7f6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.entities.g.cs.golden",
+    "bytes": 5056,
+    "sha256": "d658ddf8ed6236b5bb56b542bad609d4dbce158c7ead79fa50a1c074b70ff24d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 326,
+    "sha256": "51b541df408dbf1fc46553f76c5be5637d0d9d59d0210efaa18254491871650e"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.migrations.g.cs.golden",
+    "bytes": 368,
+    "sha256": "e6b110eed9d1bd3dfb8b7bdd97a00f3e3137c55f1e073b54f5fa584dcefb55d2"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/diagnostics.golden",
+    "bytes": 7227,
+    "sha256": "280906383d9393abd1c483fb42a6a2a3d73b5cd7e2855eb2435257638c595ff0"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+    "bytes": 63900,
+    "sha256": "84b6b117ccf9b06e8d94ff646dd54f422a451f14bcf299f983b6458c668343b4"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 338,
+    "sha256": "53b4296b199cff2c4f46d78f7e37c286b660fe9ba76f0268f65af817edccdf9d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.migrations.g.cs.golden",
+    "bytes": 407,
+    "sha256": "4b940ad1c21f58f7aad9bfb8c57d68d099a4461a2eed854ece388128b4e720d1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/executed-schema-contributions-and-registry.golden",
+    "bytes": 17423,
+    "sha256": "c32c7ae4e7f3ce2cf77b0b6dd9aa92f3082746be065a7f0e40e58ed4cfe37b74"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/migration-runner-fresh-database.golden",
+    "bytes": 13386,
+    "sha256": "96527bb3c54acd3fb99b3571a1e7661b337b1fd3069857d00beda81c27836155"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/migration-runner-partially-applied.golden",
+    "bytes": 12059,
+    "sha256": "685c6c05cc0e74ca0f048898c94d8a72289aed3ab09440d867efb3689eb48484"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.entities.g.cs.golden",
+    "bytes": 8524,
+    "sha256": "d98a44a3032b345dfe72d9d2460d6a7768be380e9a10b0fd3ec6ef2d865121de"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 346,
+    "sha256": "a7f52e8e961ff2f740cd22b8df195cdb3fd5bae606d27b41aa26f5630d414e95"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.migrations.g.cs.golden",
+    "bytes": 378,
+    "sha256": "11e45d76c297fff42591779d0d7f52b8cd79b2737d3d00cc2a6bb00d6ed1492c"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/executed-schema-contributions-and-registry.golden",
+    "bytes": 7016,
+    "sha256": "a5c113a08a179b6e9f945c6bad8eb3408035f58d2aea913344b95118733c66e6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/migration-runner-fresh-database.golden",
+    "bytes": 5160,
+    "sha256": "10a2e6ea0a3313a93385389b2fe140288691dfb466197b6cc3de25e781e1c8a7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/migration-runner-partially-applied.golden",
+    "bytes": 3168,
+    "sha256": "5f4ac50cd5c5340941e07fbc0823a839f5b02ee144f87ab437630f443770ea51"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+    "bytes": 17651,
+    "sha256": "89a0705bb07b50e5d94d20b853ab77121ab471362884b80cbd96a977f5da3c7f"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 346,
+    "sha256": "300e63659479ee2581b2221a8f9c5b92806b80f7a233810226445d402c806c2b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+    "bytes": 277,
+    "sha256": "cc42e39aefcac8b585a7106e32e1def31d0fdfda94d72b0c483c8e33ed0d6333"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/executed-schema-contributions-and-registry.golden",
+    "bytes": 7154,
+    "sha256": "853e48e7574664d8fcd6dd7da0ab9511dd9ffe40013940b063eac1193c314854"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+    "bytes": 9260,
+    "sha256": "345e794cf34a67448e09c93e2a4436f6dd0c7fd362096e242e5e31be930e8bba"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 342,
+    "sha256": "25b296ace57d376be58d0a266b6078618ddc1c0471e2cc33c5327897bebee916"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+    "bytes": 273,
+    "sha256": "6cf5146fe7436b5952f8ac7c5e145c70a5d7ace2a5d05be52fb3498659377ea5"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/diagnostics.golden",
+    "bytes": 241,
+    "sha256": "b73de725899f439a619cf49a72e1c03d98f9cc34ed54b13da41799f45b4b4c41"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/executed-schema-contributions-and-registry.golden",
+    "bytes": 7154,
+    "sha256": "061ff2d0110a11dd8cec0713aecaea9a367a12cd3d0e58f5cc0cd4a8e88633d8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+    "bytes": 9260,
+    "sha256": "5f5faab288b27ec578d1695acfb56f352ea10377634969d2deaa00b381807a73"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 342,
+    "sha256": "7971b8d2acd2d3220c8e3663b5838f9f00304f298c5a7c97dc3ac6068899fd44"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+    "bytes": 273,
+    "sha256": "df80771d8c54c0b43809d8968a9f94a9ad3f4edc653a514f92a54d8a25a25a7a"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/executed-schema-contributions-and-registry.golden",
+    "bytes": 7140,
+    "sha256": "a38d1a587a9cd72bcce64ece322ac44de576aed10dc0f0105b2488a344d4dc82"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+    "bytes": 9255,
+    "sha256": "6bea49062700072434915d163a795fd1e7a2a9e6dfd69ef1a8847412f33d4923"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 338,
+    "sha256": "a33ef98d84e95891e947584bb43970d4bfad2d82ce4d961ebfd618e35f0c3307"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+    "bytes": 269,
+    "sha256": "ea590d040c79632579e795d2ae02cef654de9e7174a6f1162d96f6e96d71fda3"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.Entities.g.cs",
+    "bytes": 5096,
+    "sha256": "7fa06cceb2a8efc33f83d24a26a10dfe6ce07d2bb7e61dd9ef7a78e890c01bcb"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 357,
+    "sha256": "95b3a1624a16015131480efcd451da989b94cbed1832ad2cb56cbc0f8aec7ce5"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.Migrations.g.cs",
+    "bytes": 288,
+    "sha256": "d0d84747f67492f6f7666ae4ca8d8c5456a071cba5c94fb0a6fdc64dcaaa5dfe"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.Entities.g.cs",
+    "bytes": 5096,
+    "sha256": "7fa06cceb2a8efc33f83d24a26a10dfe6ce07d2bb7e61dd9ef7a78e890c01bcb"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 357,
+    "sha256": "95b3a1624a16015131480efcd451da989b94cbed1832ad2cb56cbc0f8aec7ce5"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.Migrations.g.cs",
+    "bytes": 288,
+    "sha256": "d0d84747f67492f6f7666ae4ca8d8c5456a071cba5c94fb0a6fdc64dcaaa5dfe"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-capture-retry.json",
+    "bytes": 1636,
+    "sha256": "4aa0195d401a584a80d214defc934649c519e84daafaecbe4c8f39b944316536"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-capture-retry.log",
+    "bytes": 43,
+    "sha256": "99c2a20f0005b52c9e6b4847cb99ce9978a0dac0f13d617bd6f7ebd5b24c78c1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-capture.json",
+    "bytes": 1331,
+    "sha256": "1d76c4f32e548fa5cb282484d1a1e2cb79f0443aa0f97cd8cc195c4d490e89cc"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-capture.log",
+    "bytes": 3040,
+    "sha256": "1333a07a25bcdee26bed7ece2d7651f36e73bf18445c5e58a924867df58855f6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-generated-files.txt",
+    "bytes": 2743,
+    "sha256": "4787450bd2a93f82c9178dd4d5ec2a7c26d41009fd358b36bcbb67c5c51f9a46"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-generated-metrics-report.json",
+    "bytes": 194380,
+    "sha256": "94bb13901471d579f151dab498fd16348711abe01dfb82c06ab46929f7d9290e"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-generated-metrics.json",
+    "bytes": 1666,
+    "sha256": "11aa375f1bf31a06a7d054dd8ce552c24108b1038d4985eb9769e9d80f26e5ab"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-generated-metrics.log",
+    "bytes": 194395,
+    "sha256": "346cf4c1a0b0d138bf68ac654a4d6f582a58c0e2d9272eac1092f9ee78125260"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-manifest.json",
+    "bytes": 14062,
+    "sha256": "d84cb811b96b363ab120162cf3f9199b5f8312973acfa14eea94d22aae9dfd20"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-test-consumer-capture-retry.json",
+    "bytes": 2038,
+    "sha256": "123504697bc169c1be3fbe1b2d111a34123f242064d8f0afc58f37c0a2a38fdb"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-test-consumer-capture-retry.log",
+    "bytes": 1500,
+    "sha256": "fb1f2b4458d269b79051eb6d0c656edd1b7f53f415e9252f2d228710b5c05408"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-test-consumer-capture.json",
+    "bytes": 2018,
+    "sha256": "6d18160d4db3b329a4f3af4b5922d933a62ad240eeca21293b6b724b2b394d42"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/before-test-consumer-capture.log",
+    "bytes": 4908,
+    "sha256": "b687c39d7ebf3c2abfd721891782861710ace6feb785003ce49a1e8195aaaf48"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/capture/CaseHintProbe.cs",
+    "bytes": 2261,
+    "sha256": "91b1f9a6bede5a56f8ac3ae2a097c6bf1aaefd35b0dda9280710c63e00d7919b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/capture/Program.cs",
+    "bytes": 1640,
+    "sha256": "1fd50f1dc355a27460684b5823ccda17ea7543d8ae92e437ec069ab4f988f975"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/capture/capture.csproj",
+    "bytes": 341,
+    "sha256": "bcd653010c5937555f7366bf228b23cec5968da9cb80d57864e161b691c76ccf"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/capture-test-outputs.log",
+    "bytes": 3863,
+    "sha256": "5d1f56123e96dcaa919dc6ea34c97191d25cb6b607e94b2d34a09f6571f5ce2b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/capture_test_outputs.py",
+    "bytes": 533,
+    "sha256": "2ad7067fc932d368d126acc212c200de60d40d33413548d67d5441092a39745a"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/case-hint-probe.json",
+    "bytes": 1601,
+    "sha256": "8d604bda4f23c19a7242ce5d37d30f78a723865c2de4bd93051017d49422281c"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/case-hint-probe.log",
+    "bytes": 371,
+    "sha256": "60ff27edef4e96fb24afae1c13426747f4b43fdd3cad5bae58982344a06fc767"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/checkpoint-manifest.json",
+    "bytes": 32299,
+    "sha256": "9d040875a3bd6b1b522768048d04c1c4d69814d5040913cd0536512668bbdc88"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/cleanup-final.json",
+    "bytes": 8587,
+    "sha256": "65aa2b362a2238a76bd9475e5d738c9258270648196cd3ee6d89b7d365bd2509"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/cleanup.json",
+    "bytes": 8588,
+    "sha256": "3d8f85beba8401c59df899f5b4c0bea995242b57e31bb4091102529cdb03e3b2"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/control-proposal.patch",
+    "bytes": 372006,
+    "sha256": "b8b114395bea390f9caae94afa9d0c057253a9f97d30c0c9f0e8472ccc05a115"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/manifest.json",
+    "bytes": 27495,
+    "sha256": "1a27166a2edfd986381f54c81de99c66608f1a0e9c57d0979dfeb27db485cfc9"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3785,
+    "sha256": "6e8cfcfa2efe21c5f0dde6417f144916a224d3201a8cc59d3b95fc795339247e"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0001.g.cs.golden",
+    "bytes": 927,
+    "sha256": "74dbc89786cda63ebe8f4b3eebb585a798746fd8fabb2c7843d88ab3b481cf04"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+    "bytes": 6181,
+    "sha256": "f8c439889a37d0cd920a9a29b1887a26f0e8c9bec7dcf899833b6d7137f27df4"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0003.g.cs.golden",
+    "bytes": 927,
+    "sha256": "b7633e8664b3bf95fd2a28f2057252a1ec052264c88da4693bdda7b3c50cc327"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+    "bytes": 4907,
+    "sha256": "d3c5177eac058ce6853fcf3860d64193e70044f60368e9d4ca22d1bfaa090827"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0005.g.cs.golden",
+    "bytes": 932,
+    "sha256": "f9b1d0342d686a414c75ae4b2b406b33bfdbdde2f2c46d19c2ab73619f6d2588"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+    "bytes": 3212,
+    "sha256": "3fa40ba365f6adc146b94d044a1401f5ece62bce44c71b3f1305df383e1a6a05"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+    "bytes": 3502,
+    "sha256": "14dfcd57a67300a37247b0565cc9b53935b637527b4c58e29d2788f85923bd33"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0008.g.cs.golden",
+    "bytes": 922,
+    "sha256": "4c2941143b000f7899b5a3d8927457b21bd6cffadef4fe0872a391cc0a6ad2b7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0009.g.cs.golden",
+    "bytes": 1805,
+    "sha256": "e343fe514a31c5fafc9bee7986f19d8474165b6a8d18f9848ee8cccaeef37a86"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+    "bytes": 7141,
+    "sha256": "62b5e5755ca7ec06e5d96c69b14366e0d641441a83918ce6a625fc8e419bdb20"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0011.g.cs.golden",
+    "bytes": 1711,
+    "sha256": "b2735a0e9ed4ae929264b7f77e471e0b68e946c79da3296de5ce2e7b888c6e78"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+    "bytes": 3342,
+    "sha256": "a6326b37c09f71cfb23776bb800cb3c46858a081153f5ff0667ce43623db466b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0013.g.cs.golden",
+    "bytes": 463,
+    "sha256": "7ff842618c69fbcf1c782a9194756dabf21a8c12b8ceaaffc953751b78df408d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0014.g.cs.golden",
+    "bytes": 980,
+    "sha256": "5d4de9721fc6cf6d8b0845c6c62fca202c2f2afaf45bde01f1260b7172c525ac"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+    "bytes": 812,
+    "sha256": "6f0b57e8db59c9599e05b6b6544c3b9c13435697e088d68f64d6bbed2ca42cc1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+    "bytes": 4000,
+    "sha256": "fb44d03827d8bed31d747f73ce5fe5dc9fac7f79b8af3131afd57e29756ef617"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0001.g.cs.golden",
+    "bytes": 906,
+    "sha256": "4bc9cd3bbcb95b8353c8c5d0738d9f0c1ff8d6a655371948e676d6192a670bc2"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0002.g.cs.golden",
+    "bytes": 239,
+    "sha256": "555d0ed38880590ece2fb2b4e1a13f2a3995b29d3c269ee3c438388b6fbf0cf8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0003.g.cs.golden",
+    "bytes": 295,
+    "sha256": "b3fe2b73678a21129e54b2233d450bbf105812dd37127afb6dd617a6afcd445d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-demo/ormlite.migrations.g.cs.golden",
+    "bytes": 386,
+    "sha256": "ec64219c6e1720afcca0a0ef3076a2f1c2bc2ae971159ff8af86b91435350969"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+    "bytes": 2674,
+    "sha256": "c05b3b318490a61ac1bee5badfd42265c4dfc09cfb4d0129f6029db9d1b2ad95"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+    "bytes": 3438,
+    "sha256": "a876a6edabbe661c606476c7d4836af79299fa951d1ce7c9d180670901eea7b7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3643,
+    "sha256": "71de9c8b16ef1ef5444fa364645739a736b8879698f02217cdb2bc948db65f46"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+    "bytes": 3468,
+    "sha256": "c1d867cb5f0ce17d1f81153f84de0179d13a54d704c6ec83868a972b947c3479"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+    "bytes": 3585,
+    "sha256": "813064470ffc74aa05041589a5f219d3c69d1dc7ad6b6e5e4df90aaca0bc3550"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+    "bytes": 3772,
+    "sha256": "e940d41576548e789b20edcd07a6c9bb58da342efdcf7224316fe42e1eac4c57"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0006.g.cs.golden",
+    "bytes": 992,
+    "sha256": "ebf2af151ecdad6172c7b4ebd020011be4189be86621243f93378bc21b7aa2cf"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+    "bytes": 3664,
+    "sha256": "72b17e0c9e58b6e736d690b588b41287fe7849abf2e9896c59c1b97c65cbff82"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+    "bytes": 3007,
+    "sha256": "02749785d87d57cf2d76361d063fdfadf954b1ea2b366618ff14be5fcb420260"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0009.g.cs.golden",
+    "bytes": 992,
+    "sha256": "590cc772f7b7c9bfb40cebaafc2abbb710e6cf8301460c89a7b1cda471e12397"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+    "bytes": 3781,
+    "sha256": "0a9ccc716c1973063ed4f711a64cb9f21c41b2e2f4dfd3414055ed21a119baa5"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0011.g.cs.golden",
+    "bytes": 1001,
+    "sha256": "5de859fcdee25359a2fd7ad8d144a365e07032dce228264d8f68e08f0bbf7ff8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+    "bytes": 3089,
+    "sha256": "6d2da6251a1592f61da4d2f9c76dda6118bb343e7f6f80601223d3b8abea9af3"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0013.g.cs.golden",
+    "bytes": 1017,
+    "sha256": "ab1c82969a7b7d9c356f05261a8060d8d0d3e842ac084c420863d56f975acf66"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0014.g.cs.golden",
+    "bytes": 1905,
+    "sha256": "987d4ccb1899b5ad791468dfbf16ee5423993b1eb615a6204132d2182305a381"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0015.g.cs.golden",
+    "bytes": 976,
+    "sha256": "5ee3e6f62b86724b3dcdd4f82620447920e1cadc00bd178cc91982a7d999e3ac"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0016.g.cs.golden",
+    "bytes": 2071,
+    "sha256": "407fa675d898cd4fd3468e279ca2dcee4726640507b283f1359a51320a6b7eda"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0017.g.cs.golden",
+    "bytes": 982,
+    "sha256": "0e81d82fbb594b45e5fedf4c2b6da4d0c931f8548920be66494e20821bccb54b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+    "bytes": 2913,
+    "sha256": "803dd97b5e65cd4f28c9e47c51e21ffa8ca9741beae6c501825f6f5675592505"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0019.g.cs.golden",
+    "bytes": 976,
+    "sha256": "37f13bc829b734a9710f895acadc38793a03bcf67f490e47602729ed96908123"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0020.g.cs.golden",
+    "bytes": 3010,
+    "sha256": "2150385e2e72deee28fd33fb658bd8f7dd0afe4e1d0d2ad7a4a03044e0079c50"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0021.g.cs.golden",
+    "bytes": 982,
+    "sha256": "10f3aa6396fad35842f52b455aba0fec3cb22578e068a56c3b4acdb28f1b9836"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+    "bytes": 2999,
+    "sha256": "f5fcd6918aad49aebe795e5239f6c9689bb97a713f3150b9fad929e4d9bee60b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0023.g.cs.golden",
+    "bytes": 987,
+    "sha256": "65ffdbfc0cdfd4274498891c81d1f4cc7ba29f668b58dbdea0b3803b210c6d8b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+    "bytes": 3686,
+    "sha256": "4b47eeb4cd8a71887da61273b74207b27fb04a94bce27ba7770e3a974a148a03"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0025.g.cs.golden",
+    "bytes": 987,
+    "sha256": "1583e27517bb52e38b2d301650248759818137c4435117c57bc2a67bd70d4a84"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+    "bytes": 3737,
+    "sha256": "70614e319aa323a32eb9577f6de6bfc4024363873cbf6e3b236d60d0ca091751"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0027.g.cs.golden",
+    "bytes": 987,
+    "sha256": "2a346143d24aa1feeccdb8b6d0c953a17f32fd8fd0e2c1f5d89355a8513aefea"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0028.g.cs.golden",
+    "bytes": 842,
+    "sha256": "4cecc5c18d74415963c56dfe7ac097c9089e6f5db2e037ecd2ffab07efb3e1d1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0029.g.cs.golden",
+    "bytes": 1987,
+    "sha256": "3aea371d7d9affe485d365622b9b6e790cfe3baec210876139b2fdf0d6e4fab8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.migrations.g.cs.golden",
+    "bytes": 425,
+    "sha256": "c1c264babd9c225cc0d70ee028085ce8e08a2da6c12cc3614618f273d9a84d5e"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3849,
+    "sha256": "d2a6813a8405e69d63af414cb182bec89c6ef3ad7b9d3bba909ee26766068a70"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0001.g.cs.golden",
+    "bytes": 897,
+    "sha256": "0f12c2ee5607d66a270a684fb7e1423887cde8be294bd467d89655553b6e5e44"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3701,
+    "sha256": "3d3c054ccee96e14f02d358664482da2f72cb72a19b25b57da37c49e47d6b551"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0003.g.cs.golden",
+    "bytes": 291,
+    "sha256": "34110a846e84169ce0d9e3941aa221e58c74aac57e1a02a501b1d227a15ad824"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0004.g.cs.golden",
+    "bytes": 349,
+    "sha256": "e3d59edfab306c63932c70ff25422153573d6aa32b0dd6478fef305c27a5de74"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.migrations.g.cs.golden",
+    "bytes": 396,
+    "sha256": "640f68dc2ebff889775b0e506e888478a370829d02f0c078c25872a799dcfc9f"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3535,
+    "sha256": "abe7950b3fc7dd1e671dc053b84cc5e29a52a894d402fb8ae0e3d9f440a64bad"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+    "bytes": 4792,
+    "sha256": "05b9dbf0787c2f25aea2e5ff240331d26b62171bf6375d267772a079e5227031"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+    "bytes": 6034,
+    "sha256": "7302f60126576508642d9b2bf42221ae55af2edf6c8390d225566a3f53206edb"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+    "bytes": 3280,
+    "sha256": "fcee33a4ebb9f71e15141007e96f0c420b5c299b7337b0514936e9f522ee9ed7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0004.g.cs.golden",
+    "bytes": 353,
+    "sha256": "16c2d162f4b840d16434b7f10944da3156a4049d196baa335d0fbbc43f597153"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0005.g.cs.golden",
+    "bytes": 575,
+    "sha256": "d8cc502eacf22cb01a4798780e38cbbfd6c9219833c2b4e1f0597ea618cccc3a"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+    "bytes": 286,
+    "sha256": "696412ed0dc0ba4101b829f27ed4d6f6b5e91d251faf53e8c61d247337e2a67a"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3801,
+    "sha256": "9e6d858e4a4e0757c7158daab3c34b5bb0c6205240d4fe39d2ff4edb0058ab02"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0001.g.cs.golden",
+    "bytes": 908,
+    "sha256": "197e8825af189696a545a237a4d3c6bf119a72d6dab9b85220dd3cdcd0445699"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3659,
+    "sha256": "046e4df9a6663b4deb9089303c8191a04320379008541a1968e46029c01aa282"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0003.g.cs.golden",
+    "bytes": 913,
+    "sha256": "57c4612ac9b1eb8263c3c693a06c389db920343afa698d35ec5b4662b39967e3"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0004.g.cs.golden",
+    "bytes": 285,
+    "sha256": "853562dffdbe6049d7a6534d5da6608072e5515da88507be9bc46def7f0f3e9a"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0005.g.cs.golden",
+    "bytes": 371,
+    "sha256": "4fe7df691b0d8379781401c8eb23e3c469cd02a1af15c6529abfcea92c072619"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+    "bytes": 282,
+    "sha256": "37d20ee33fb46113f40d3ee38ce80d2ab493b8f734c9544d16f233acdae3fb87"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3801,
+    "sha256": "9e6d858e4a4e0757c7158daab3c34b5bb0c6205240d4fe39d2ff4edb0058ab02"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0001.g.cs.golden",
+    "bytes": 908,
+    "sha256": "197e8825af189696a545a237a4d3c6bf119a72d6dab9b85220dd3cdcd0445699"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3659,
+    "sha256": "046e4df9a6663b4deb9089303c8191a04320379008541a1968e46029c01aa282"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0003.g.cs.golden",
+    "bytes": 913,
+    "sha256": "57c4612ac9b1eb8263c3c693a06c389db920343afa698d35ec5b4662b39967e3"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0004.g.cs.golden",
+    "bytes": 285,
+    "sha256": "946ab1c7f4ff8a679f7cb6529548b2c280dc313d8403f953bfe94dde6eb155ed"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0005.g.cs.golden",
+    "bytes": 371,
+    "sha256": "4fe7df691b0d8379781401c8eb23e3c469cd02a1af15c6529abfcea92c072619"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+    "bytes": 282,
+    "sha256": "cf113b4c052fe2dacebe9d51a15d12f3c0b716687061ac2dfc367289fba448b1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3800,
+    "sha256": "ce384ca4a29627dc96418b07e18f73702fa1d60057ce0d9152b3db177b018798"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0001.g.cs.golden",
+    "bytes": 908,
+    "sha256": "197e8825af189696a545a237a4d3c6bf119a72d6dab9b85220dd3cdcd0445699"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3659,
+    "sha256": "046e4df9a6663b4deb9089303c8191a04320379008541a1968e46029c01aa282"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0003.g.cs.golden",
+    "bytes": 913,
+    "sha256": "57c4612ac9b1eb8263c3c693a06c389db920343afa698d35ec5b4662b39967e3"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0004.g.cs.golden",
+    "bytes": 281,
+    "sha256": "74db60f60e4078fd0b37179a38cde6e03b085c6c75c21220b83da479f3ff47b6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0005.g.cs.golden",
+    "bytes": 371,
+    "sha256": "4fe7df691b0d8379781401c8eb23e3c469cd02a1af15c6529abfcea92c072619"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+    "bytes": 278,
+    "sha256": "4d5e6a2b9df52902860d6b695c75b47d3b881cb36a78a371d2da511bda07e422"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/INDEX.md",
+    "bytes": 115613,
+    "sha256": "40a7f29bead2feced8d874969ec7c355e5765053bab844448037b2bda2c822ff"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/Corpus/Support/CorpusSurface.cs",
+    "bytes": 11326,
+    "sha256": "80a680678950c737e9a9a8afe386889b79af200827fa0d9ff56bb1e7aea6b567"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/GeneratorQualityTests.cs",
+    "bytes": 7539,
+    "sha256": "e4ae752517b3bd181545e7faaf1fb1c417d43dfd003769fb52b5183621e5d798"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/QueryIdentifierSurfaceTests.cs",
+    "bytes": 5925,
+    "sha256": "e3be0c339690bdf0c4029222516644dc4e6450d6309eb61bed91b7269e83d4f5"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/QueryTerminalState/TerminalCensus.cs",
+    "bytes": 11120,
+    "sha256": "93dd7d9f94078b082dd800412492dc89ed582bd0715ffdd9cbb37d1b4a9791f6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/control-proposal/tests/Tests/SoftDelete/Reads/RootReadPath.cs",
+    "bytes": 4608,
+    "sha256": "ed944a9fa098219583962525e005977a28a4e8141ebef523b13b98cefef000e2"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-capture.json",
+    "bytes": 1645,
+    "sha256": "5489295e07ce7bb9f35e6b67702ff9fbc5bbb60192a32721a8ff27aecdc8e4a1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-capture.log",
+    "bytes": 44,
+    "sha256": "fe6a2b5bbb455a56b534593813efa7cf7baffc6d393061c09d116ed11908e6f4"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-native10.json",
+    "bytes": 1941,
+    "sha256": "0133f418f0dbde86d3a2fcb28a6d59621b1b2a4134d1558324f6435a4b3cbafc"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-native10.log",
+    "bytes": 2524,
+    "sha256": "2cc97dacab5955ebd520ae35bcc2c45fe8410bf73dff9640b658539ebb2013a2"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-native11.json",
+    "bytes": 1946,
+    "sha256": "9d0642fdf37843e95b8c4a9a2c886907c0cd225d4a2c2f763244466a81231529"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-native11.log",
+    "bytes": 2521,
+    "sha256": "66320bac7bdd44fc19758d8a37d8590e56aa66dd2a90b5a90181982915c1c2ce"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-scoped10.json",
+    "bytes": 2050,
+    "sha256": "345361c0a0eceda3b81b850ccc26e56ddf6a403dfe935794d1eb0699a873b109"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-scoped10.log",
+    "bytes": 2068,
+    "sha256": "043e1e85df11be1bbb367cf8598f21ddf5f81fbf349c631fd4c9863070f7e6da"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-scoped11.json",
+    "bytes": 2056,
+    "sha256": "aedef95840b4127731320e94af7206a4ad255c9a4b7f3efb8dc117b25bb95120"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-scoped11.log",
+    "bytes": 2902,
+    "sha256": "bb11df60e42f535195f9703eb4b71787c6ab15600046faa0ceafe8b453970ba6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-unit.json",
+    "bytes": 1927,
+    "sha256": "c57a7c51d44de690d958b1fecab1cc46dd5fe0680ea73dce33596a887493e9da"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/final-unit.log",
+    "bytes": 2721,
+    "sha256": "2561cc00ab9f40c896e7a4107c9748b04eafb16d1c6cc70ec5f672bb160c487b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/finalize_evidence.py",
+    "bytes": 6002,
+    "sha256": "f39b7a7f84e7046661f8136796c1282db4156d653cc521e27f1eff80e11b28c4"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/frozen-before.targets",
+    "bytes": 555,
+    "sha256": "9cca692ad4a6ee0cb83ba77ff1e23e81152490420ca3951e74e30dcc91da4023"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/generated-files.txt",
+    "bytes": 13745,
+    "sha256": "459546f74f1884b4b30915586738c99b53124e18c0570b8c6e80af42a40b7afb"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/generated-findings.json",
+    "bytes": 2119,
+    "sha256": "7fd1690a05ad8b704e2baa806cd94e17b7aaf62321054a7d7ca086a610610bdd"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/generated-metrics-report.json",
+    "bytes": 193574,
+    "sha256": "f4ab2a2f3f6ca5961e65151e4cbe67851401a34386fc0c26314c0f7bae67dc03"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/generated-metrics.json",
+    "bytes": 1641,
+    "sha256": "8e25411a79d44950537f6b75ba6b5e54a4eb1dbd76f092272b0d52da8fa47a78"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/generated-metrics.log",
+    "bytes": 193589,
+    "sha256": "5ecfc22ea380c22db6fda7d60529aa1c4c7cdbf6ce5be901b738b4421adc3fac"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/history/capture-mount-failure/Program.cs",
+    "bytes": 1124,
+    "sha256": "4579d2d50b4e46109fff933f0c5c12e0154bc9a4d6fb66f22e59cecf839c348e"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/history/capture-mount-failure/capture.csproj",
+    "bytes": 341,
+    "sha256": "bcd653010c5937555f7366bf228b23cec5968da9cb80d57864e161b691c76ccf"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/manifest.json",
+    "bytes": 1495,
+    "sha256": "378c4cad4ffa3fa871a30649e0fc6b7fa4d7b2482bf447d3864eb5f104aaf814"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/EntityEmitter.cs",
+    "bytes": 5723,
+    "sha256": "e5556019f0a4727f398f32db0fd77b353e3b64e0574f7de576598a8b3eba4303"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/GeneratedSourceLayout/GeneratedInitializer.cs",
+    "bytes": 1792,
+    "sha256": "fbd5e59817403122e1f7baff2cb7db34cfe29127e8faddb40de2efe7c9c1bec8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/GeneratedSourceLayout/GeneratedLineWrap.cs",
+    "bytes": 2327,
+    "sha256": "70b7704983d958284cd9c2d600a9129942881751afd73b4a400db38b5aacbc21"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/GeneratedSourceLayout/GeneratedSourceLayout.cs",
+    "bytes": 1169,
+    "sha256": "ddfbb22371a3c8258ae4881b22432bdd25fc1b80be3a64d5e4069d9611861b7c"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/history/namespace-failure/src/Generator/MigrationGenerator.cs",
+    "bytes": 8817,
+    "sha256": "fbe41ccd81fb95e71a8071e7ba90cf63701aad8f7f5c311ae5b52a391635e042"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/legacy-map-loci.json",
+    "bytes": 3742,
+    "sha256": "dbc9fe4740390b2c5ba4dcce687517cd658091e2995ca3975c5cb35cbdd2297b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/native10.json",
+    "bytes": 1935,
+    "sha256": "be1ea8fd0b9d342400d65dcdadb3dea11537c019671d83551497a9aa4b4b01b9"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/native10.log",
+    "bytes": 2522,
+    "sha256": "6a23ed49cb1df65b05e7fa0c8c1e6408d3080ac41070722a6a57bc739a94dd27"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/native11.json",
+    "bytes": 1941,
+    "sha256": "bf7909c5aa9549460782b1e232356d1d13cfe2b2060703e4b6f7814d592cf360"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/native11.log",
+    "bytes": 2521,
+    "sha256": "b72b851711be766f009731c95651cc3988baa8c79a180d64ebcd9625b2938812"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/owned-resources-final.json",
+    "bytes": 167,
+    "sha256": "add71f41d2767bb604798fa26e01dcbfc7d2f7b088ba03b96da28804e8a13919"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/owned-resources.json",
+    "bytes": 166,
+    "sha256": "170718e87bebe451c65b4a8daa0779fe9e1da0aed568adc62d6afd74ea264284"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/prepare_proposals.py",
+    "bytes": 3927,
+    "sha256": "f4db91dcc1006a2e4f2f41c799eed424702e4399255b0c599ce382bf58c50699"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/proof/Program.cs",
+    "bytes": 5375,
+    "sha256": "4831520ba74bcf06c39e1c96736e4f249bb96c93b9e03765d41b5584b797959a"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/proof/proof.csproj",
+    "bytes": 722,
+    "sha256": "4db7917df19119112209f7379557291fd11037a220df5ddac539228b9cf78c9d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/proposal-summary.json",
+    "bytes": 1219,
+    "sha256": "1dd58e9bdf6d4c81778d34d633d985673fdacab420f5e13535c3401cf3f2deb4"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/provider-setup-final.json",
+    "bytes": 2727,
+    "sha256": "b9044c2f49f14b1f626b4a6259654ccf47c57980cbef425a0606b6ab627be798"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/provider-setup.json",
+    "bytes": 2083,
+    "sha256": "6a399fe0e893002b56262a30c8171e21ac0812ff78b6a48db4be4ce535498b7d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/provider_fixture.py",
+    "bytes": 1371,
+    "sha256": "b23e9753b92986b172d22a3fb2d6b76d84f1d0032d8d8c270f2e75e354939154"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/regression/BeforeProbe.cs",
+    "bytes": 2616,
+    "sha256": "97309da815019fe6e2c796699af81308b86590364ccb41f6e23ed7e3ed7944d1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/run_checks.log",
+    "bytes": 7974,
+    "sha256": "9823a1754bea730c24b77be6794111b0edd4da63d7c6680b250e1a5126a78057"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/run_checks.py",
+    "bytes": 1451,
+    "sha256": "edff2a18bf00f8ed22ffa85b07c5770c4961accd62b6dea6e950cd37c4a13310"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/run_checks_final.log",
+    "bytes": 7997,
+    "sha256": "abe32bc912c0ac4a90ac9f6cb98544176fc5ca73e14314cb013e5e989187c7aa"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/run_checks_verified.log",
+    "bytes": 8082,
+    "sha256": "ec19e74525f0fb8d0f787ae049a5d051c694f9cdf3dbd7f3777a5b74a10955c2"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/run_proofs.log",
+    "bytes": 8200,
+    "sha256": "0a6f16b2a67a511553790ad40e4c610388a266c81660973d3b3274672b6c7bd1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/run_proofs.py",
+    "bytes": 1533,
+    "sha256": "0875fcddf97da885ca101cddc84c043efeb29784cb21ce94d36d4c131d7c0b62"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/scoped10-results/scoped10.trx",
+    "bytes": 102210,
+    "sha256": "17a258b13d887006c88e3108daddaf227a1e7f127e224674097656714318934e"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/scoped10.json",
+    "bytes": 2044,
+    "sha256": "e846b7327e091260766802669bdf27be6bbace68c572bea7ca473137ac8e9bb6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/scoped10.log",
+    "bytes": 2720,
+    "sha256": "f0037815758f19a793c34ad07f4957cf61706fe4aaf09d9e8842560b8c105c87"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/scoped11-results/scoped11.trx",
+    "bytes": 102209,
+    "sha256": "0f931bde2594811204f7c387148ef02cd9077f77ea7f0dc478352468677a6996"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/scoped11.json",
+    "bytes": 2050,
+    "sha256": "9e9f782c2646bb11ea940d3453e041fae88dc96eec942ac271dacaf6dbb17596"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/scoped11.log",
+    "bytes": 2723,
+    "sha256": "86d3bd84ca336296cb8bc1ae56fb8260b15b97004e0c54b751783623ecee1751"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/source-files.txt",
+    "bytes": 245,
+    "sha256": "b907bf49eb9991ecd52e2e9893426259ad0ce685565dcc528b3af79e5ab63056"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/source-metrics-report.json",
+    "bytes": 12065,
+    "sha256": "54802ccc0df2d109bcde2bc7d7d5d79cfbc18cd5322ccee69bdf163dd5d9bcaa"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/source-metrics.json",
+    "bytes": 1607,
+    "sha256": "240db0df87bb09bbcf8e2b6be6d9cc7420e5242abc7824e0d0b78c7e23901c58"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/source-metrics.log",
+    "bytes": 12080,
+    "sha256": "58eeb9a8846bb182d2f2e679d83b22d92660b97b719f4c88563045e5e2b69a66"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/test-consumer-capture-retry.json",
+    "bytes": 1823,
+    "sha256": "23e5b695b75f0da0ededab947c1413c396a6e68abb119757f076d5d574f884e2"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/test-consumer-capture-retry.log",
+    "bytes": 1416,
+    "sha256": "49d4d94ee4567e24f3939a8f78f9fbb3d2098518d27cbe392a2882307842d31b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/test-consumer-capture.json",
+    "bytes": 1803,
+    "sha256": "7c6484783c478b925d1ed5e76d734429116d95ccb5f345a41c8c2e3069f1fa16"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/test-consumer-capture.log",
+    "bytes": 1416,
+    "sha256": "8c8a1fe95a1974cee18a0303bba1822e5f9602054ea79b88dc62a9a4d9710f86"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/token-proof-report.json",
+    "bytes": 66424,
+    "sha256": "a1430b15b91f7534134d5671b7fe0f70830dc2d1695e80554878fecf84736cf8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/token-proof.json",
+    "bytes": 1553,
+    "sha256": "304bc2c08141c2963498998534146b04f0873a47057251ac5ed138bc746b540b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/token-proof.log",
+    "bytes": 66424,
+    "sha256": "a1430b15b91f7534134d5671b7fe0f70830dc2d1695e80554878fecf84736cf8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/unit-results/final-unit.trx",
+    "bytes": 65084,
+    "sha256": "e648b3acac18b2873d3deee3dfad3f77760ec0d6808b4620722860c725019412"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/unit-results/unit.trx",
+    "bytes": 65084,
+    "sha256": "1be7b57f6edc4895722b6bd9fa449b774f7176ff1bff7496d6c4a77b092928b0"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/unit-results/verified-unit.trx",
+    "bytes": 65084,
+    "sha256": "2e8e68b71a787383797fbf6435e411207d9679547e8d30898848c2ea8239521b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/unit-retry.json",
+    "bytes": 2025,
+    "sha256": "8aaa59f7de631343d24710251e2a21ad6ca71be1e8b03b75ede80b737544fffc"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/unit-retry.log",
+    "bytes": 1881,
+    "sha256": "be43f20427025500ceb30d80001d5b3a37e5a2170f5d0b13506ade856ebea5ff"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/unit.json",
+    "bytes": 2019,
+    "sha256": "67b3732d157baf34e4957d6ffebdc33a4cacd729dafcc05e5561ee086d132570"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/unit.log",
+    "bytes": 2703,
+    "sha256": "b0fc35a1b89626c4938c2b6c13bc15b238526a5c6b7327afc2068fda7fdb27b2"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/INDEX.md",
+    "bytes": 115613,
+    "sha256": "40a7f29bead2feced8d874969ec7c355e5765053bab844448037b2bda2c822ff"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/entries.json",
+    "bytes": 748368,
+    "sha256": "4e497862372bc6a8b1401dd5aeb90e4aae9fad6d6d33e7d0bbe9d7cead1ae9c7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/diagnostics.golden",
+    "bytes": 317,
+    "sha256": "94b6f5fbd4214206b19bacfb3431f435e969028278291722b48eb37636e71022"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/executed-schema-contributions-and-registry.golden",
+    "bytes": 60245,
+    "sha256": "c7a0d44309d162162267a13f8ee279faa6c5714967537eac9abc88808af508e1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/migration-runner-fresh-database.golden",
+    "bytes": 38756,
+    "sha256": "59eea691daeae5212228d899a5bc725ebc628b4ba970d31b29bd2e305e311d73"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/migration-runner-partially-applied.golden",
+    "bytes": 34337,
+    "sha256": "cec687e838fe41d6e9157c06f6eb4593cb62ad8c6328a090fd82f735fcda2704"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3785,
+    "sha256": "6e8cfcfa2efe21c5f0dde6417f144916a224d3201a8cc59d3b95fc795339247e"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0001.g.cs.golden",
+    "bytes": 927,
+    "sha256": "74dbc89786cda63ebe8f4b3eebb585a798746fd8fabb2c7843d88ab3b481cf04"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+    "bytes": 6181,
+    "sha256": "f8c439889a37d0cd920a9a29b1887a26f0e8c9bec7dcf899833b6d7137f27df4"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0003.g.cs.golden",
+    "bytes": 927,
+    "sha256": "b7633e8664b3bf95fd2a28f2057252a1ec052264c88da4693bdda7b3c50cc327"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+    "bytes": 4907,
+    "sha256": "d3c5177eac058ce6853fcf3860d64193e70044f60368e9d4ca22d1bfaa090827"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0005.g.cs.golden",
+    "bytes": 932,
+    "sha256": "f9b1d0342d686a414c75ae4b2b406b33bfdbdde2f2c46d19c2ab73619f6d2588"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+    "bytes": 3212,
+    "sha256": "3fa40ba365f6adc146b94d044a1401f5ece62bce44c71b3f1305df383e1a6a05"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+    "bytes": 3502,
+    "sha256": "14dfcd57a67300a37247b0565cc9b53935b637527b4c58e29d2788f85923bd33"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0008.g.cs.golden",
+    "bytes": 922,
+    "sha256": "4c2941143b000f7899b5a3d8927457b21bd6cffadef4fe0872a391cc0a6ad2b7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0009.g.cs.golden",
+    "bytes": 1805,
+    "sha256": "e343fe514a31c5fafc9bee7986f19d8474165b6a8d18f9848ee8cccaeef37a86"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+    "bytes": 7141,
+    "sha256": "62b5e5755ca7ec06e5d96c69b14366e0d641441a83918ce6a625fc8e419bdb20"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0011.g.cs.golden",
+    "bytes": 1711,
+    "sha256": "b2735a0e9ed4ae929264b7f77e471e0b68e946c79da3296de5ce2e7b888c6e78"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+    "bytes": 3342,
+    "sha256": "a6326b37c09f71cfb23776bb800cb3c46858a081153f5ff0667ce43623db466b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0013.g.cs.golden",
+    "bytes": 463,
+    "sha256": "7ff842618c69fbcf1c782a9194756dabf21a8c12b8ceaaffc953751b78df408d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0014.g.cs.golden",
+    "bytes": 980,
+    "sha256": "5d4de9721fc6cf6d8b0845c6c62fca202c2f2afaf45bde01f1260b7172c525ac"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 332,
+    "sha256": "61f97cbbdc6bdaf2a0ef30fb5a92c3cc1e3e9c1bd3b7e155d27691d3261af96f"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+    "bytes": 812,
+    "sha256": "6f0b57e8db59c9599e05b6b6544c3b9c13435697e088d68f64d6bbed2ca42cc1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/executed-schema-contributions-and-registry.golden",
+    "bytes": 12931,
+    "sha256": "0a6ca682655317e353bb7ef12ba09548010f36fa703df74a4626c084a1bffb40"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/migration-runner-fresh-database.golden",
+    "bytes": 10890,
+    "sha256": "778f674d3f489b307002177479d531304dba001ed28971e8d8abe66b68294270"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/migration-runner-partially-applied.golden",
+    "bytes": 9925,
+    "sha256": "4dd8d98ba13764b222154822f887349b2bd6f45b1bff4a5a9892e196a362d7f6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.entities.0000.g.cs.golden",
+    "bytes": 4000,
+    "sha256": "fb44d03827d8bed31d747f73ce5fe5dc9fac7f79b8af3131afd57e29756ef617"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.entities.0001.g.cs.golden",
+    "bytes": 906,
+    "sha256": "4bc9cd3bbcb95b8353c8c5d0738d9f0c1ff8d6a655371948e676d6192a670bc2"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.entities.0002.g.cs.golden",
+    "bytes": 239,
+    "sha256": "555d0ed38880590ece2fb2b4e1a13f2a3995b29d3c269ee3c438388b6fbf0cf8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.entities.0003.g.cs.golden",
+    "bytes": 295,
+    "sha256": "b3fe2b73678a21129e54b2233d450bbf105812dd37127afb6dd617a6afcd445d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 326,
+    "sha256": "51b541df408dbf1fc46553f76c5be5637d0d9d59d0210efaa18254491871650e"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.migrations.g.cs.golden",
+    "bytes": 386,
+    "sha256": "ec64219c6e1720afcca0a0ef3076a2f1c2bc2ae971159ff8af86b91435350969"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/diagnostics.golden",
+    "bytes": 7227,
+    "sha256": "280906383d9393abd1c483fb42a6a2a3d73b5cd7e2855eb2435257638c595ff0"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+    "bytes": 2674,
+    "sha256": "c05b3b318490a61ac1bee5badfd42265c4dfc09cfb4d0129f6029db9d1b2ad95"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+    "bytes": 3438,
+    "sha256": "a876a6edabbe661c606476c7d4836af79299fa951d1ce7c9d180670901eea7b7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3643,
+    "sha256": "71de9c8b16ef1ef5444fa364645739a736b8879698f02217cdb2bc948db65f46"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+    "bytes": 3468,
+    "sha256": "c1d867cb5f0ce17d1f81153f84de0179d13a54d704c6ec83868a972b947c3479"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+    "bytes": 3585,
+    "sha256": "813064470ffc74aa05041589a5f219d3c69d1dc7ad6b6e5e4df90aaca0bc3550"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+    "bytes": 3772,
+    "sha256": "e940d41576548e789b20edcd07a6c9bb58da342efdcf7224316fe42e1eac4c57"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0006.g.cs.golden",
+    "bytes": 992,
+    "sha256": "ebf2af151ecdad6172c7b4ebd020011be4189be86621243f93378bc21b7aa2cf"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+    "bytes": 3664,
+    "sha256": "72b17e0c9e58b6e736d690b588b41287fe7849abf2e9896c59c1b97c65cbff82"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+    "bytes": 3007,
+    "sha256": "02749785d87d57cf2d76361d063fdfadf954b1ea2b366618ff14be5fcb420260"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0009.g.cs.golden",
+    "bytes": 992,
+    "sha256": "590cc772f7b7c9bfb40cebaafc2abbb710e6cf8301460c89a7b1cda471e12397"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+    "bytes": 3781,
+    "sha256": "0a9ccc716c1973063ed4f711a64cb9f21c41b2e2f4dfd3414055ed21a119baa5"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0011.g.cs.golden",
+    "bytes": 1001,
+    "sha256": "5de859fcdee25359a2fd7ad8d144a365e07032dce228264d8f68e08f0bbf7ff8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+    "bytes": 3089,
+    "sha256": "6d2da6251a1592f61da4d2f9c76dda6118bb343e7f6f80601223d3b8abea9af3"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0013.g.cs.golden",
+    "bytes": 1017,
+    "sha256": "ab1c82969a7b7d9c356f05261a8060d8d0d3e842ac084c420863d56f975acf66"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0014.g.cs.golden",
+    "bytes": 1905,
+    "sha256": "987d4ccb1899b5ad791468dfbf16ee5423993b1eb615a6204132d2182305a381"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0015.g.cs.golden",
+    "bytes": 976,
+    "sha256": "5ee3e6f62b86724b3dcdd4f82620447920e1cadc00bd178cc91982a7d999e3ac"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0016.g.cs.golden",
+    "bytes": 2071,
+    "sha256": "407fa675d898cd4fd3468e279ca2dcee4726640507b283f1359a51320a6b7eda"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0017.g.cs.golden",
+    "bytes": 982,
+    "sha256": "0e81d82fbb594b45e5fedf4c2b6da4d0c931f8548920be66494e20821bccb54b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+    "bytes": 2913,
+    "sha256": "803dd97b5e65cd4f28c9e47c51e21ffa8ca9741beae6c501825f6f5675592505"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0019.g.cs.golden",
+    "bytes": 976,
+    "sha256": "37f13bc829b734a9710f895acadc38793a03bcf67f490e47602729ed96908123"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0020.g.cs.golden",
+    "bytes": 3010,
+    "sha256": "2150385e2e72deee28fd33fb658bd8f7dd0afe4e1d0d2ad7a4a03044e0079c50"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0021.g.cs.golden",
+    "bytes": 982,
+    "sha256": "10f3aa6396fad35842f52b455aba0fec3cb22578e068a56c3b4acdb28f1b9836"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+    "bytes": 2999,
+    "sha256": "f5fcd6918aad49aebe795e5239f6c9689bb97a713f3150b9fad929e4d9bee60b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0023.g.cs.golden",
+    "bytes": 987,
+    "sha256": "65ffdbfc0cdfd4274498891c81d1f4cc7ba29f668b58dbdea0b3803b210c6d8b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+    "bytes": 3686,
+    "sha256": "4b47eeb4cd8a71887da61273b74207b27fb04a94bce27ba7770e3a974a148a03"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0025.g.cs.golden",
+    "bytes": 987,
+    "sha256": "1583e27517bb52e38b2d301650248759818137c4435117c57bc2a67bd70d4a84"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+    "bytes": 3737,
+    "sha256": "70614e319aa323a32eb9577f6de6bfc4024363873cbf6e3b236d60d0ca091751"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0027.g.cs.golden",
+    "bytes": 987,
+    "sha256": "2a346143d24aa1feeccdb8b6d0c953a17f32fd8fd0e2c1f5d89355a8513aefea"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0028.g.cs.golden",
+    "bytes": 842,
+    "sha256": "4cecc5c18d74415963c56dfe7ac097c9089e6f5db2e037ecd2ffab07efb3e1d1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0029.g.cs.golden",
+    "bytes": 1987,
+    "sha256": "3aea371d7d9affe485d365622b9b6e790cfe3baec210876139b2fdf0d6e4fab8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 338,
+    "sha256": "53b4296b199cff2c4f46d78f7e37c286b660fe9ba76f0268f65af817edccdf9d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.migrations.g.cs.golden",
+    "bytes": 425,
+    "sha256": "c1c264babd9c225cc0d70ee028085ce8e08a2da6c12cc3614618f273d9a84d5e"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/executed-schema-contributions-and-registry.golden",
+    "bytes": 17423,
+    "sha256": "c32c7ae4e7f3ce2cf77b0b6dd9aa92f3082746be065a7f0e40e58ed4cfe37b74"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/migration-runner-fresh-database.golden",
+    "bytes": 13386,
+    "sha256": "96527bb3c54acd3fb99b3571a1e7661b337b1fd3069857d00beda81c27836155"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/migration-runner-partially-applied.golden",
+    "bytes": 12059,
+    "sha256": "685c6c05cc0e74ca0f048898c94d8a72289aed3ab09440d867efb3689eb48484"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3849,
+    "sha256": "d2a6813a8405e69d63af414cb182bec89c6ef3ad7b9d3bba909ee26766068a70"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0001.g.cs.golden",
+    "bytes": 897,
+    "sha256": "0f12c2ee5607d66a270a684fb7e1423887cde8be294bd467d89655553b6e5e44"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3701,
+    "sha256": "3d3c054ccee96e14f02d358664482da2f72cb72a19b25b57da37c49e47d6b551"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0003.g.cs.golden",
+    "bytes": 291,
+    "sha256": "34110a846e84169ce0d9e3941aa221e58c74aac57e1a02a501b1d227a15ad824"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0004.g.cs.golden",
+    "bytes": 349,
+    "sha256": "e3d59edfab306c63932c70ff25422153573d6aa32b0dd6478fef305c27a5de74"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 346,
+    "sha256": "a7f52e8e961ff2f740cd22b8df195cdb3fd5bae606d27b41aa26f5630d414e95"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.migrations.g.cs.golden",
+    "bytes": 396,
+    "sha256": "640f68dc2ebff889775b0e506e888478a370829d02f0c078c25872a799dcfc9f"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/executed-schema-contributions-and-registry.golden",
+    "bytes": 7016,
+    "sha256": "a5c113a08a179b6e9f945c6bad8eb3408035f58d2aea913344b95118733c66e6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/migration-runner-fresh-database.golden",
+    "bytes": 5160,
+    "sha256": "10a2e6ea0a3313a93385389b2fe140288691dfb466197b6cc3de25e781e1c8a7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/migration-runner-partially-applied.golden",
+    "bytes": 3168,
+    "sha256": "5f4ac50cd5c5340941e07fbc0823a839f5b02ee144f87ab437630f443770ea51"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3535,
+    "sha256": "abe7950b3fc7dd1e671dc053b84cc5e29a52a894d402fb8ae0e3d9f440a64bad"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+    "bytes": 4792,
+    "sha256": "05b9dbf0787c2f25aea2e5ff240331d26b62171bf6375d267772a079e5227031"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+    "bytes": 6034,
+    "sha256": "7302f60126576508642d9b2bf42221ae55af2edf6c8390d225566a3f53206edb"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+    "bytes": 3280,
+    "sha256": "fcee33a4ebb9f71e15141007e96f0c420b5c299b7337b0514936e9f522ee9ed7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0004.g.cs.golden",
+    "bytes": 353,
+    "sha256": "16c2d162f4b840d16434b7f10944da3156a4049d196baa335d0fbbc43f597153"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0005.g.cs.golden",
+    "bytes": 575,
+    "sha256": "d8cc502eacf22cb01a4798780e38cbbfd6c9219833c2b4e1f0597ea618cccc3a"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 346,
+    "sha256": "300e63659479ee2581b2221a8f9c5b92806b80f7a233810226445d402c806c2b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+    "bytes": 286,
+    "sha256": "696412ed0dc0ba4101b829f27ed4d6f6b5e91d251faf53e8c61d247337e2a67a"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/executed-schema-contributions-and-registry.golden",
+    "bytes": 7154,
+    "sha256": "853e48e7574664d8fcd6dd7da0ab9511dd9ffe40013940b063eac1193c314854"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3801,
+    "sha256": "9e6d858e4a4e0757c7158daab3c34b5bb0c6205240d4fe39d2ff4edb0058ab02"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0001.g.cs.golden",
+    "bytes": 908,
+    "sha256": "197e8825af189696a545a237a4d3c6bf119a72d6dab9b85220dd3cdcd0445699"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3659,
+    "sha256": "046e4df9a6663b4deb9089303c8191a04320379008541a1968e46029c01aa282"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0003.g.cs.golden",
+    "bytes": 913,
+    "sha256": "57c4612ac9b1eb8263c3c693a06c389db920343afa698d35ec5b4662b39967e3"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0004.g.cs.golden",
+    "bytes": 285,
+    "sha256": "853562dffdbe6049d7a6534d5da6608072e5515da88507be9bc46def7f0f3e9a"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0005.g.cs.golden",
+    "bytes": 371,
+    "sha256": "4fe7df691b0d8379781401c8eb23e3c469cd02a1af15c6529abfcea92c072619"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 342,
+    "sha256": "25b296ace57d376be58d0a266b6078618ddc1c0471e2cc33c5327897bebee916"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+    "bytes": 282,
+    "sha256": "37d20ee33fb46113f40d3ee38ce80d2ab493b8f734c9544d16f233acdae3fb87"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/diagnostics.golden",
+    "bytes": 241,
+    "sha256": "b73de725899f439a619cf49a72e1c03d98f9cc34ed54b13da41799f45b4b4c41"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/executed-schema-contributions-and-registry.golden",
+    "bytes": 7154,
+    "sha256": "061ff2d0110a11dd8cec0713aecaea9a367a12cd3d0e58f5cc0cd4a8e88633d8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3801,
+    "sha256": "9e6d858e4a4e0757c7158daab3c34b5bb0c6205240d4fe39d2ff4edb0058ab02"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0001.g.cs.golden",
+    "bytes": 908,
+    "sha256": "197e8825af189696a545a237a4d3c6bf119a72d6dab9b85220dd3cdcd0445699"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3659,
+    "sha256": "046e4df9a6663b4deb9089303c8191a04320379008541a1968e46029c01aa282"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0003.g.cs.golden",
+    "bytes": 913,
+    "sha256": "57c4612ac9b1eb8263c3c693a06c389db920343afa698d35ec5b4662b39967e3"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0004.g.cs.golden",
+    "bytes": 285,
+    "sha256": "946ab1c7f4ff8a679f7cb6529548b2c280dc313d8403f953bfe94dde6eb155ed"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0005.g.cs.golden",
+    "bytes": 371,
+    "sha256": "4fe7df691b0d8379781401c8eb23e3c469cd02a1af15c6529abfcea92c072619"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 342,
+    "sha256": "7971b8d2acd2d3220c8e3663b5838f9f00304f298c5a7c97dc3ac6068899fd44"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+    "bytes": 282,
+    "sha256": "cf113b4c052fe2dacebe9d51a15d12f3c0b716687061ac2dfc367289fba448b1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/executed-schema-contributions-and-registry.golden",
+    "bytes": 7140,
+    "sha256": "a38d1a587a9cd72bcce64ece322ac44de576aed10dc0f0105b2488a344d4dc82"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+    "bytes": 3800,
+    "sha256": "ce384ca4a29627dc96418b07e18f73702fa1d60057ce0d9152b3db177b018798"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0001.g.cs.golden",
+    "bytes": 908,
+    "sha256": "197e8825af189696a545a237a4d3c6bf119a72d6dab9b85220dd3cdcd0445699"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+    "bytes": 3659,
+    "sha256": "046e4df9a6663b4deb9089303c8191a04320379008541a1968e46029c01aa282"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0003.g.cs.golden",
+    "bytes": 913,
+    "sha256": "57c4612ac9b1eb8263c3c693a06c389db920343afa698d35ec5b4662b39967e3"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0004.g.cs.golden",
+    "bytes": 281,
+    "sha256": "74db60f60e4078fd0b37179a38cde6e03b085c6c75c21220b83da479f3ff47b6"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0005.g.cs.golden",
+    "bytes": 371,
+    "sha256": "4fe7df691b0d8379781401c8eb23e3c469cd02a1af15c6529abfcea92c072619"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 338,
+    "sha256": "a33ef98d84e95891e947584bb43970d4bfad2d82ce4d961ebfd618e35f0c3307"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+    "bytes": 278,
+    "sha256": "4d5e6a2b9df52902860d6b695c75b47d3b881cb36a78a371d2da511bda07e422"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-attestation.json",
+    "bytes": 629,
+    "sha256": "39bc5e2e10a39e9393cd04d64a16ca8d14583f413306b26f192ae9cd09d8101b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-attestation.log",
+    "bytes": 1545,
+    "sha256": "dee81f9cd34ac72551cc73cdeff78e252d0c1238121332e39e5045327453bb6f"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-capture.json",
+    "bytes": 1662,
+    "sha256": "e4298a23697d402264eada9f2e22341eee76f4335ac81d4f1c77b74c594a3900"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-capture.log",
+    "bytes": 44,
+    "sha256": "fe6a2b5bbb455a56b534593813efa7cf7baffc6d393061c09d116ed11908e6f4"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-case-hint-probe.json",
+    "bytes": 1719,
+    "sha256": "3d9ac43d174a44cef4db3db7ae6d11295637947bb3912bd8fc961f9ee358b8a5"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-case-hint-probe.log",
+    "bytes": 586,
+    "sha256": "31b882711e6b407446f23326e01e994573912888517b933e88b8fb3ca4f68138"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-generated-files.txt",
+    "bytes": 13697,
+    "sha256": "f47bae5e753535433797f035d985305789c3d2da7b874e5d407ad60a542c1801"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-generated-metrics-report.json",
+    "bytes": 193526,
+    "sha256": "3c30be2cc5f17a8d6cd950181d35c8124d1b7fe88c0f76cfcdc18e079d7e07e8"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-generated-metrics.json",
+    "bytes": 1620,
+    "sha256": "0fb95623abb3d13ccb45bc18dfe6bc8347bee3f96d5c44b3022da6a0527dd5db"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-generated-metrics.log",
+    "bytes": 193541,
+    "sha256": "d36473109ba29aa4388e958e5b4dc6f3a3ee4a6b0e12d9058d6f4b964aeecf47"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 370,
+    "sha256": "5b63e177588630af23b7eb88371fa61af3f6849f66a81fba50baec4e26b8a282"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+    "bytes": 296,
+    "sha256": "a83ef59b5f8deaf203c81c4c10aefdb540717e6ab85107e3a1fcd2aa08bffa20"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+    "bytes": 3900,
+    "sha256": "fc945fe9d021256a58968af3849dfeed0610821903bed86be0e00162613c7b10"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+    "bytes": 984,
+    "sha256": "04a3f5276aa455f89b194597e1a001958996f11a942362e5c47b426bb76887a1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+    "bytes": 285,
+    "sha256": "506be965994ccb32c40e0e75d93b4a6907960e20e41c8bc5b5f21a9835a95b55"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+    "bytes": 328,
+    "sha256": "5966e1744a4d5bb02260ea7c3328e0ead8e5240d9acc586bb6e254229a66d932"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native10.json",
+    "bytes": 1971,
+    "sha256": "43ce445d5d98fbfbb00c19b7ff2488cedeb330e8f9e23863a68b8fe8f37d4642"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native10.log",
+    "bytes": 2594,
+    "sha256": "e5f93423796df5442e0487054b8aaae66ee267cbe3d70d3bb8fb7f3c3df09f83"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 370,
+    "sha256": "5b63e177588630af23b7eb88371fa61af3f6849f66a81fba50baec4e26b8a282"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+    "bytes": 296,
+    "sha256": "a83ef59b5f8deaf203c81c4c10aefdb540717e6ab85107e3a1fcd2aa08bffa20"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+    "bytes": 3900,
+    "sha256": "fc945fe9d021256a58968af3849dfeed0610821903bed86be0e00162613c7b10"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+    "bytes": 984,
+    "sha256": "04a3f5276aa455f89b194597e1a001958996f11a942362e5c47b426bb76887a1"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+    "bytes": 285,
+    "sha256": "506be965994ccb32c40e0e75d93b4a6907960e20e41c8bc5b5f21a9835a95b55"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+    "bytes": 328,
+    "sha256": "5966e1744a4d5bb02260ea7c3328e0ead8e5240d9acc586bb6e254229a66d932"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native11.json",
+    "bytes": 1977,
+    "sha256": "e532a438674480ca62e157626be980433d899f4bb4475cd6240b88c90318c471"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-native11.log",
+    "bytes": 2593,
+    "sha256": "56af9a495d51b635053161cdac0e95f7b1820bc328b4cff08228d061b9227e80"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-provider-version.json",
+    "bytes": 1727,
+    "sha256": "ff60fe46cb40d4ea3b7b44903af2ab312b304bb79a0c8739202b024f7324ad1b"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-provider-version.log",
+    "bytes": 52,
+    "sha256": "a5295cb85851c2709de715ba8288a1d9c69d47288aeb71f1e4609d3312a19730"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-scoped10-results/scoped10.trx",
+    "bytes": 102210,
+    "sha256": "bc567f5f953cb335025aee4535a8e2a02177e15d5ffd01f7b0f1c32fe01a7720"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-scoped10.json",
+    "bytes": 2062,
+    "sha256": "ead3bb95b7328047c994e930b069b18c44bc9366e64f67c522759b69cf8fc08d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-scoped10.log",
+    "bytes": 1895,
+    "sha256": "c967c205dc27097a8d1bd882239b915833ee9aa2b2a87da1707f25581428b083"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-scoped11-results/scoped11.trx",
+    "bytes": 102209,
+    "sha256": "278aede22fabffea8dcd5a060f3299881846811bb3e58cc1682104484eb01044"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-scoped11.json",
+    "bytes": 2068,
+    "sha256": "100768d59013afa757a5ba5b20ebd22688ef3e1fbebea197a92c70be556d6604"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-scoped11.log",
+    "bytes": 2729,
+    "sha256": "1ce69577d720cc6ca24eec8ad03c0c09e872f42f9865d99c3e12f67e44b1dead"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-source-files.txt",
+    "bytes": 185,
+    "sha256": "ed285179c80b795dbc0113bb4c9b10cf690e3a29b97ab235551e9d1e9da32f57"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-source-metrics-report.json",
+    "bytes": 10789,
+    "sha256": "5b12f60f7f0d78e40e0bfbc728c885354bdd14b3f0a3930704395dcbee0f5b52"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-source-metrics.json",
+    "bytes": 1611,
+    "sha256": "753205180bc43c3191af021ede8a97d47ab410bb97e25f144a653e7145688f5d"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-source-metrics.log",
+    "bytes": 10804,
+    "sha256": "046e9bf4f528adbd299dabb46657d0b096d7176e30a74caac8f605437ac20e53"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-token-proof-report.json",
+    "bytes": 66376,
+    "sha256": "acc8385e8785d626c7c0bb44d55b92da757a27df8fd8c6046925a490fa84dcae"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-token-proof.json",
+    "bytes": 1518,
+    "sha256": "db0094ffb5879df400d01cdbf534af927b579585730120f1ca5904e5015ec0e0"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-token-proof.log",
+    "bytes": 66376,
+    "sha256": "acc8385e8785d626c7c0bb44d55b92da757a27df8fd8c6046925a490fa84dcae"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-unit.json",
+    "bytes": 1939,
+    "sha256": "24e2e501637fc95b00ac71cded7168c941145ed9e48b35c986c5e5530b8f58c7"
+  },
+  {
+    "path": "artifacts/streaming/dev-generated-repair/verified-unit.log",
+    "bytes": 2724,
+    "sha256": "72593cc2ab551ee9b564e5a4d9df5d15821648ad0d6aa22335b3e353a437953c"
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "file": "artifacts/streaming/dev-generated-repair/after/corpus/generator-corpus-entities/ormlite.entities.everythingorm.g.cs.golden",
+    "issues": [
+      [
+        "width",
+        [
+          {
+            "line": 68,
+            "length": 146
+          }
+        ]
+      ],
+      [
+        "method",
+        {
+          "name": "Map",
+          "start": 29,
+          "end": 75,
+          "codeLines": 47,
+          "parameters": 1,
+          "nesting": {
+            "line": 30,
+            "depth": 0
+          },
+          "complexity": 8,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 54
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 56
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 58
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 64
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 66
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 68
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 70
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "file": "artifacts/streaming/dev-generated-repair/after/corpus/generator-golden-fixtures/ormlite.entities.goldenbookorm.g.cs.golden",
+    "issues": [
+      [
+        "method",
+        {
+          "name": "Map",
+          "start": 22,
+          "end": 52,
+          "codeLines": 31,
+          "parameters": 1,
+          "nesting": {
+            "line": 23,
+            "depth": 0
+          },
+          "complexity": 4,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 40
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 49
+            },
+            {
+              "kind": "ConditionalExpression",
+              "line": 50
+            }
+          ]
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "argv": [
+      "docker",
+      "network",
+      "create",
+      "--label",
+      "orml.task=ORML-116",
+      "--label",
+      "orml.actor=dev-generated-repair",
+      "orml116-gen-repair"
+    ],
+    "exitCode": 0,
+    "stdout": "1ea85f7874c12fb5adebfcdb25f60fc28096da5804f06ee2efce8d372b231544\n",
+    "stderr": "",
+    "time": "2026-11-26T05:26:03.790698+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "run",
+      "-d",
+      "--rm",
+      "--name",
+      "orml116-gen-pg",
+      "--network",
+      "1ea85f7874c12fb5adebfcdb25f60fc28096da5804f06ee2efce8d372b231544",
+      "--network-alias",
+      "gen-pg",
+      "--label",
+      "orml.task=ORML-116",
+      "--label",
+      "orml.actor=dev-generated-repair",
+      "--tmpfs",
+      "/var/lib/postgresql/data:uid=70,gid=70,mode=0700",
+      "-e",
+      "POSTGRES_HOST_AUTH_METHOD=trust",
+      "-e",
+      "POSTGRES_USER=postgres",
+      "neemle/pg.lite:19"
+    ],
+    "exitCode": 0,
+    "stdout": "b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c\n",
+    "stderr": "",
+    "time": "2026-11-26T05:26:04.466455+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 1,
+    "stdout": "/tmp:5432 - no response\n",
+    "stderr": "",
+    "time": "2026-11-26T05:26:05.050422+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 1,
+    "stdout": "/tmp:5432 - no response\n",
+    "stderr": "",
+    "time": "2026-11-26T05:26:06.663789+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 0,
+    "stdout": "/tmp:5432 - accepting connections\n",
+    "stderr": "",
+    "time": "2026-11-26T05:26:08.338409+00:00"
+  }
+]

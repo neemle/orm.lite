@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <DemoTfm Condition="'$(DemoTfm)' == ''">net10.0</DemoTfm>
+    <TargetFramework>$(DemoTfm)</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsAotCompatible>true</IsAotCompatible>
+    <NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Runtime/Runtime.csproj" />
+    <ProjectReference Include="../../src/Core/Core.csproj" />
+    <ProjectReference Include="../../src/Sql/Sql.csproj" />
+    <ProjectReference Include="../../src/Postgres/Postgres.csproj" />
+    <ProjectReference Include="../../src/Sqlite/Sqlite.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../Tests/SchemaDiff/SqliteKeyForm.cs" />
+    <Compile Include="../Tests/SchemaDiff/SqliteNullabilityContract.cs" />
+  </ItemGroup>
+</Project>

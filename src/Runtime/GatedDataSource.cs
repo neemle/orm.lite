@@ -87,6 +87,75 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         }
     }
 
+    internal async Task<DbConnection> OpenMetadataConnectionAsync(CancellationToken ct)
+    {
+        var connection = LaneSource(DbLane.Current).CreateConnection();
+        try
+        {
+            DetachMetadataLease(connection);
+            await connection.OpenAsync(ct);
+            AttachMetadataLease(connection);
+            return connection;
+        }
+        catch (Exception primary)
+        {
+            var errors = new List<Exception>();
+            try { await connection.DisposeAsync(); }
+            catch (Exception cleanup) { errors.Add(cleanup); }
+            if (primary is OperationCanceledException && ct.IsCancellationRequested)
+                throw new SchemaDiffCanceledException(primary, ct, errors);
+            throw new SchemaDiffException(SchemaDiffError.ProviderFailure, primary, errors);
+        }
+    }
+
+    private static void DetachMetadataLease(DbConnection connection)
+    {
+        if (s_leases.TryGetValue(connection, out var prior))
+        {
+            connection.StateChange -= prior.OnStateChange;
+            s_leases.Remove(connection);
+        }
+    }
+
+    private void AttachMetadataLease(DbConnection connection)
+    {
+        var lease = new Lease(DbLane.CurrentScope, _diagnostics, this);
+        lease.Acquire();
+        s_leases.Add(connection, lease);
+        connection.StateChange += lease.OnStateChange;
+    }
+
+    internal async ValueTask<DbConnection> OpenStreamConnectionAsync(CancellationToken ct)
+    {
+        var connection = LaneSource(DbLane.Current).CreateConnection();
+        try { return await StreamLeaseAsync(connection, ct); }
+        catch (Exception primary)
+        {
+            var cleanup = new StreamCleanup();
+            await cleanup.Attempt(() => new ValueTask(connection.CloseAsync()));
+            var disposed = await cleanup.Attempt(connection.DisposeAsync);
+            if (disposed) LeaseOf(connection)?.ReleaseStream();
+            throw new StreamOpenFailure(primary, cleanup.Errors);
+        }
+    }
+
+    private async ValueTask<DbConnection> StreamLeaseAsync(DbConnection inner, CancellationToken ct)
+    {
+        if (s_leases.TryGetValue(inner, out var prior))
+        {
+            inner.StateChange -= prior.OnStateChange;
+            s_leases.Remove(inner);
+        }
+        await inner.OpenAsync(ct);
+        var lease = new Lease(DbLane.CurrentScope, _diagnostics, this);
+        lease.Acquire();
+        s_leases.Add(inner, lease);
+        inner.StateChange += lease.OnStateChange;
+        await (DbActor.Current is { } actor
+            ? _provider.StampActorAsync(inner, actor, ct) : _provider.ClearActorAsync(inner, ct));
+        return inner;
+    }
+
     protected override DbCommand CreateDbCommand(string? commandText = null) =>
         new GatedCommand(this, LaneSource(DbLane.Current).CreateConnection(), commandText);
 
@@ -127,6 +196,11 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         internal TransactionTrace? Transaction { get; set; }
 
         public void Acquire() => scope?.Acquire();
+
+        internal void ReleaseStream()
+        {
+            if (Interlocked.Exchange(ref _released, 1) == 0) scope?.Release();
+        }
 
         public void OnStateChange(object sender, StateChangeEventArgs e)
         {

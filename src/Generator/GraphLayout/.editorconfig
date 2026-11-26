@@ -1,3 +1,0 @@
-# This folder groups output layout helpers within the existing Generator namespace.
-[*.cs]
-dotnet_style_namespace_match_folder = false

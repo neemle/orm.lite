@@ -1,0 +1,108 @@
+[
+  {
+    "file": "artifacts/streaming/sdet/scoped10-results/_a8b3a3443e3e_2026-11-26_04_26_35_net10.0.trx",
+    "counts": {
+      "total": "59",
+      "executed": "59",
+      "passed": "58",
+      "failed": "1",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "failures": [
+      {
+        "name": "[UC-010] actual borrowed transaction lock support matches provider and stays caller owned",
+        "message": "Assert.ThrowsAny() Failure: No exception was thrown\nExpected: typeof(System.Exception)",
+        "stack": "   at Neemle.OrmLite.Tests.Streaming.Sdet.SdetProviderTests`1.Locks_use_captured_transaction_and_cleanup_keeps_it_open() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Streaming/Sdet/SdetProviderTests.cs:line 83\n   at Neemle.OrmLite.Tests.Streaming.Sdet.SdetProviderTests`1.Locks_use_captured_transaction_and_cleanup_keeps_it_open() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Streaming/Sdet/SdetProviderTests.cs:line 95\n--- End of stack trace from previous location ---"
+      }
+    ]
+  },
+  {
+    "file": "artifacts/streaming/sdet/scoped10-verified-results/_7f213b74b4bf_2026-11-26_04_28_34_net10.0.trx",
+    "counts": {
+      "total": "67",
+      "executed": "67",
+      "passed": "66",
+      "failed": "1",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "failures": [
+      {
+        "name": "[UC-010] actual borrowed transaction lock support matches provider and stays caller owned",
+        "message": "Assert.Throws() Failure: No exception was thrown\nExpected: typeof(Neemle.OrmLite.QueryStreamException)",
+        "stack": "   at Neemle.OrmLite.Tests.Streaming.Sdet.SdetProviderTests`1.Locks_use_captured_transaction_and_cleanup_keeps_it_open() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Streaming/Sdet/SdetProviderTests.cs:line 83\n   at Neemle.OrmLite.Tests.Streaming.Sdet.SdetProviderTests`1.Locks_use_captured_transaction_and_cleanup_keeps_it_open() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Streaming/Sdet/SdetProviderTests.cs:line 97\n--- End of stack trace from previous location ---"
+      }
+    ]
+  },
+  {
+    "file": "artifacts/streaming/sdet/scoped11-verified-results/_7a9b95ef56f8_2026-11-26_04_28_52_net10.0.trx",
+    "counts": {
+      "total": "67",
+      "executed": "67",
+      "passed": "66",
+      "failed": "1",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "failures": [
+      {
+        "name": "[UC-010] actual borrowed transaction lock support matches provider and stays caller owned",
+        "message": "Assert.Throws() Failure: No exception was thrown\nExpected: typeof(Neemle.OrmLite.QueryStreamException)",
+        "stack": "   at Neemle.OrmLite.Tests.Streaming.Sdet.SdetProviderTests`1.Locks_use_captured_transaction_and_cleanup_keeps_it_open() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Streaming/Sdet/SdetProviderTests.cs:line 83\n   at Neemle.OrmLite.Tests.Streaming.Sdet.SdetProviderTests`1.Locks_use_captured_transaction_and_cleanup_keeps_it_open() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Streaming/Sdet/SdetProviderTests.cs:line 97\n--- End of stack trace from previous location ---"
+      }
+    ]
+  },
+  {
+    "file": "artifacts/streaming/sdet/unit-results/_3c52f8933b67_2026-11-26_04_24_09_net10.0.trx",
+    "counts": {
+      "total": "9",
+      "executed": "9",
+      "passed": "9",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "failures": []
+  }
+]

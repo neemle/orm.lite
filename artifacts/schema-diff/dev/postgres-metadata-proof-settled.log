@@ -1,0 +1,7 @@
+Unhandled exception. System.InvalidOperationException: actual primary constraint
+   at FoundationProof.Check.That(Boolean condition, String category) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/Check.cs:line 7
+   at FoundationProof.PostgresProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs:line 32
+   at FoundationProof.PostgresProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs:line 37
+   at FoundationProof.PostgresProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs:line 37
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/Program.cs:line 5
+   at Program.<Main>(String[] args)

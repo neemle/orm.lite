@@ -1,0 +1,16 @@
+{
+  "generated": "2026-11-26T08:05:57.232645+00:00",
+  "argv": [
+    "docker",
+    "ps",
+    "-a",
+    "--filter",
+    "label=orml.task=ORML-117",
+    "--format",
+    "{{.ID}} {{.Names}} {{.Status}}"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "",
+  "scope": "Final187-file --rm metrics container settled; no remaining ORML117 owned containers. Prior explicitPG/network/16SQLite cleanup in final-owned-cleanup.json remains retained."
+}

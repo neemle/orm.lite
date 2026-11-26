@@ -1,0 +1,402 @@
+{
+  "capture": "Normal existing scripts/CorpusCapture.cs; actual four new cases executed, no unaccounted/stale exclusions.",
+  "entries": 743,
+  "changes": [
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0001.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0003.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0005.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0008.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0009.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0011.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0013.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.0014.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.entities.g.cs.golden",
+      "action": "delete"
+    },
+    {
+      "path": "generator-corpus-entities/ormlite.migrations.g.cs.golden",
+      "action": "modify"
+    },
+    {
+      "path": "generator-demo/ormlite.entities.0000.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-demo/ormlite.entities.0001.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-demo/ormlite.entities.0002.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-demo/ormlite.entities.0003.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-demo/ormlite.entities.g.cs.golden",
+      "action": "delete"
+    },
+    {
+      "path": "generator-demo/ormlite.migrations.g.cs.golden",
+      "action": "modify"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0006.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0009.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0011.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0013.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0014.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0015.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0016.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0017.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0019.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0020.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0021.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0023.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0025.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0027.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0028.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.0029.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.entities.g.cs.golden",
+      "action": "delete"
+    },
+    {
+      "path": "generator-diagnostics/ormlite.migrations.g.cs.golden",
+      "action": "modify"
+    },
+    {
+      "path": "generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-global-namespace/ormlite.entities.0001.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-global-namespace/ormlite.entities.0003.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-global-namespace/ormlite.entities.0004.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-global-namespace/ormlite.entities.g.cs.golden",
+      "action": "delete"
+    },
+    {
+      "path": "generator-global-namespace/ormlite.migrations.g.cs.golden",
+      "action": "modify"
+    },
+    {
+      "path": "generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-golden-fixtures/ormlite.entities.0004.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-golden-fixtures/ormlite.entities.0005.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-golden-fixtures/ormlite.entities.g.cs.golden",
+      "action": "delete"
+    },
+    {
+      "path": "generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+      "action": "modify"
+    },
+    {
+      "path": "generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-default/ormlite.entities.0001.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-default/ormlite.entities.0003.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-default/ormlite.entities.0004.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-default/ormlite.entities.0005.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-default/ormlite.entities.g.cs.golden",
+      "action": "delete"
+    },
+    {
+      "path": "generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+      "action": "modify"
+    },
+    {
+      "path": "generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-invalid/ormlite.entities.0001.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-invalid/ormlite.entities.0003.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-invalid/ormlite.entities.0004.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-invalid/ormlite.entities.0005.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+      "action": "delete"
+    },
+    {
+      "path": "generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+      "action": "modify"
+    },
+    {
+      "path": "generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-scope-id/ormlite.entities.0001.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-scope-id/ormlite.entities.0003.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-scope-id/ormlite.entities.0004.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-scope-id/ormlite.entities.0005.g.cs.golden",
+      "action": "add"
+    },
+    {
+      "path": "generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+      "action": "delete"
+    },
+    {
+      "path": "generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+      "action": "modify"
+    },
+    {
+      "path": "streaming/column-rows.golden",
+      "action": "add"
+    },
+    {
+      "path": "streaming/entity-rows.golden",
+      "action": "add"
+    },
+    {
+      "path": "streaming/project-rows.golden",
+      "action": "add"
+    },
+    {
+      "path": "streaming/projection-rows.golden",
+      "action": "add"
+    }
+  ],
+  "allOldNonGeneratedTranscriptsByteExact": true,
+  "unchangedOldEntries": 653,
+  "semanticOraclesPreserved": "Every old non-generated SQL/parameters, compiled-schema, namespace/registry/Init execution, diagnostics and compiles-with-runtime transcript is byte-exact. Only generated C# layout, four new executed streaming transcripts and derived INDEX changed. No capture/rewrite of production data or product source.",
+  "index": "Derived from actual catalog entries, complete IL member scan, exact registered stream prefix and removal of now-stale DisposeAsync exclusion. No count edits."
+}

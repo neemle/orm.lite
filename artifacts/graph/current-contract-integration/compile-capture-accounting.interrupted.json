@@ -1,0 +1,6 @@
+{
+  "state": "Interrupted by user turn event",
+  "exitCode": null,
+  "observedAt": "2026-11-26T13:15:52.271866+00:00",
+  "evidence": "No final run JSON; no hostprocess or owned buildcontainer remains; log lacks final summary. Fresh DLL existence is not an exit0 claim. Resume only this incomplete compile, no passedbefore gate rerun."
+}

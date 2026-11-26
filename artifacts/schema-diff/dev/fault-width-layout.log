@@ -1,0 +1,3 @@
+artifacts/schema-diff/dev/fault-proof/FaultCommand.cs whitespace-only 0342fc19a26164d93dcda0a70cb4452099ceec96868c3f014bdac770e4bba844
+artifacts/schema-diff/dev/fault-proof/FaultConnection.cs whitespace-only 8ce7f959b9d2e564093a754b9d011815e176959981ee2c495652a9eb9488ece5
+artifacts/schema-diff/dev/fault-proof/FaultProvider.cs whitespace-only 5a2e39e7f0f94608c4cc37b28a511b3b319c7ab9c0a7f815796a43c2fec22303

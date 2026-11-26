@@ -1,0 +1,1 @@
+ORMLITE014 Error no location: The OrmLiteDefaultTenant build property is '1bad', which is not a C# identifier. Set it to the name of the System.Guid property that a [SoftDelete] entity carries as its tenant by default, for example TenantId.

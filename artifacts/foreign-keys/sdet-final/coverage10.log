@@ -1,0 +1,28 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Generator/Generator.csproj (in 2.8 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sql/Sql.csproj (in 2.8 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Runtime/Runtime.csproj (in 2.8 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Core/Core.csproj (in 2.8 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Sqlite/Sqlite.csproj (in 2.8 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/src/Postgres/Postgres.csproj (in 2.8 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/tests/Tests/Tests.csproj (in 2.75 sec).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-sdk10/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-sdk10/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-sdk10/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-sdk10/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-sdk10/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-sdk10/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Tests -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-sdk10/bin/Tests/release/Neemle.OrmLite.Tests.dll
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-sdk10/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.71] Neemle.OrmLite.Tests: Skipping test case with duplicate ID '4e912f230b5a2e1c21953a8b0e5f019c8c74e710' ('[SEC] a string or char holding half of a surrogate pair is refused by InsertData and DeleteData on both providers, and nothing is recorded(value: "a\xd83db")' and '[SEC] a string or char holding half of a surrogate pair is refused by InsertData and DeleteData on both providers, and nothing is recorded(value: "a\xde00b")')
+[xUnit.net 00:00:14.44]     AC2 D3 a bool column read as int, long, decimal and double returns 1 on SQLite [SKIP]
+  Skipped AC2 D3 a bool column read as int, long, decimal and double returns 1 on SQLite [1 ms]
+[xUnit.net 00:01:04.79]     a collation the provider does not have is refused by name with nothing created [SKIP]
+  Skipped a collation the provider does not have is refused by name with nothing created [1 ms]
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-results/coverage.trx
+
+Passed!  - Failed:     0, Passed:  3732, Skipped:     2, Total:  3734, Duration: 3 m - Neemle.OrmLite.Tests.dll (net10.0)
+
+Attachments:
+  /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/sdet-final/coverage-results/7e2ef946-b097-4758-aa11-f709dc78cccd/_10437163e5aa_2026-11-26.04_43_35.cobertura.xml

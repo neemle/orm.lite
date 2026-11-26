@@ -1,0 +1,10 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Runtime/Runtime.csproj (in 6.66 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Sql/Sql.csproj (in 6.66 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Core/Core.csproj (in 348 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/src/Generator/Generator.csproj (in 6.8 sec).
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/pack-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/pack-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/pack-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/pack-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Successfully created package '/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/feed/Neemle.OrmLite.0.1.0-dev.g2ad9d96.nupkg'.

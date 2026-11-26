@@ -1,0 +1,293 @@
+{
+  "generated": "2026-11-26T12:44:15.901383+00:00",
+  "executionCommit": "2ad9d96659bfdf6140f6fec9277ce75bda3206fd",
+  "sourceTree": "97c51c91c61c80ca13dfc492d17216f214cfe94b",
+  "testTree": "a3af303ea224fd4d73d2687efa7f295732746221",
+  "legs": [
+    {
+      "name": "jit10-sqlite",
+      "runtime": "10.0.15",
+      "provider": "sqlite",
+      "mode": "jit",
+      "exitCode": 0,
+      "started": "2026-11-26T12:36:56.945427+00:00",
+      "finished": "2026-11-26T12:37:07.808229+00:00",
+      "result": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\ngraph chapter ok; scratch removed\n",
+      "resultSha256": "3895ac020ded5bf1deabc81103aa04314dba259a1f80c3cacebff051065852ec"
+    },
+    {
+      "name": "jit10-postgres",
+      "runtime": "10.0.15",
+      "provider": "postgres",
+      "mode": "jit",
+      "exitCode": 0,
+      "started": "2026-11-26T12:37:08.025544+00:00",
+      "finished": "2026-11-26T12:37:12.457833+00:00",
+      "result": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\ngraph chapter ok; scratch removed\n",
+      "resultSha256": "3895ac020ded5bf1deabc81103aa04314dba259a1f80c3cacebff051065852ec"
+    },
+    {
+      "name": "native10-sqlite",
+      "runtime": "10.0.15",
+      "provider": "sqlite",
+      "mode": "native",
+      "exitCode": 0,
+      "started": "2026-11-26T12:40:28.614489+00:00",
+      "finished": "2026-11-26T12:40:29.796839+00:00",
+      "result": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\ngraph chapter ok; scratch removed\n",
+      "resultSha256": "3895ac020ded5bf1deabc81103aa04314dba259a1f80c3cacebff051065852ec"
+    },
+    {
+      "name": "native10-postgres",
+      "runtime": "10.0.15",
+      "provider": "postgres",
+      "mode": "native",
+      "exitCode": 0,
+      "started": "2026-11-26T12:40:29.941255+00:00",
+      "finished": "2026-11-26T12:40:30.770738+00:00",
+      "result": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\ngraph chapter ok; scratch removed\n",
+      "resultSha256": "3895ac020ded5bf1deabc81103aa04314dba259a1f80c3cacebff051065852ec"
+    },
+    {
+      "name": "jit11-sqlite",
+      "runtime": "11.0.0",
+      "provider": "sqlite",
+      "mode": "jit",
+      "exitCode": 0,
+      "started": "2026-11-26T12:37:43.765796+00:00",
+      "finished": "2026-11-26T12:37:48.653809+00:00",
+      "result": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\ngraph chapter ok; scratch removed\n",
+      "resultSha256": "3895ac020ded5bf1deabc81103aa04314dba259a1f80c3cacebff051065852ec"
+    },
+    {
+      "name": "jit11-postgres",
+      "runtime": "11.0.0",
+      "provider": "postgres",
+      "mode": "jit",
+      "exitCode": 0,
+      "started": "2026-11-26T12:37:48.847032+00:00",
+      "finished": "2026-11-26T12:37:53.380347+00:00",
+      "result": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\ngraph chapter ok; scratch removed\n",
+      "resultSha256": "3895ac020ded5bf1deabc81103aa04314dba259a1f80c3cacebff051065852ec"
+    },
+    {
+      "name": "native11-sqlite",
+      "runtime": "11.0.0",
+      "provider": "sqlite",
+      "mode": "native",
+      "exitCode": 0,
+      "started": "2026-11-26T12:42:11.433193+00:00",
+      "finished": "2026-11-26T12:42:13.460584+00:00",
+      "result": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\ngraph chapter ok; scratch removed\n",
+      "resultSha256": "3895ac020ded5bf1deabc81103aa04314dba259a1f80c3cacebff051065852ec"
+    },
+    {
+      "name": "native11-postgres",
+      "runtime": "11.0.0",
+      "provider": "postgres",
+      "mode": "native",
+      "exitCode": 0,
+      "started": "2026-11-26T12:42:13.630288+00:00",
+      "finished": "2026-11-26T12:42:14.777211+00:00",
+      "result": "16a. requested graph: ordinary root page True, exact books and tags True\n     ordinary query left navigations empty True\n     shared editor/tag identity True, nullable editor True, unrequested Author untouched True\n     fixture bounds: depth 2, paths 3, nodes 3, roots 2, related rows 20, statements 8\n     row overflow returned no list True, rows cleaned True\ngraph chapter ok; scratch removed\n",
+      "resultSha256": "3895ac020ded5bf1deabc81103aa04314dba259a1f80c3cacebff051065852ec"
+    }
+  ],
+  "normalization": "Remove ONLY first graph chapter runtime= line, retain every remaining byte.",
+  "allEightEquivalent": true,
+  "originalChapterPathsUnchangedFrom": "e32b9fc1816ccee91fa20acc2aac1eef71751d3d",
+  "originalChapterPaths": [
+    "demo/Graph/GraphChapter.cs",
+    "demo/Graph/GraphAuthor.cs",
+    "demo/Graph/GraphBook.cs",
+    "demo/Graph/GraphTag.cs",
+    "demo/Graph/GraphFixture.cs"
+  ],
+  "sourceInputStability": "All15 sourceChangedDuringRun=false and current source bytes match recorder hashes.",
+  "packages": [
+    {
+      "id": "Neemle.OrmLite",
+      "version": "0.1.0-dev.g2ad9d96",
+      "file": "feed/Neemle.OrmLite.0.1.0-dev.g2ad9d96.nupkg",
+      "sha256": "937b2d0bb5d39c4e84e97e77be6457a2b8cd44bee194fddacaef161a76bb3789",
+      "entries": [
+        {
+          "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "sha256": "4e108a977cb07a35e1e853fab145e79b68c13d21ffa2d7d83650cd2934c16628",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.props",
+          "sha256": "bb7836a65d67958406268d885836e0b0c0fbbc44e63250ae899da9a5c5bfe6fa",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.targets",
+          "sha256": "d64d23127dfc3d46d8abcbfabff05fd8b212155cb70cb0ca9addf2038de428b6",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+          "sha256": "7f9743e14721f3f7bd36014df4116d793dfe27df5a1e5a792d8e50e4812758f0",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+          "sha256": "0bdcdc8909ff0d64e6ffcbb17bed4af736d3ae52ed793b292b26eac0776628b9",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "id": "Neemle.OrmLite.Postgres",
+      "version": "0.1.0-dev.g2ad9d96",
+      "file": "feed/Neemle.OrmLite.Postgres.0.1.0-dev.g2ad9d96.nupkg",
+      "sha256": "ad35f51105c504ec89db16fbfc0934424482344dc4d7275174da9b94e9c0ae23",
+      "entries": [
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.Postgres.props",
+          "sha256": "10cfa9a1976f1ca12ba6b11dfcf4528fe16b9d02cd8f4c345e467b45f1d3d3bf",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "buildTransitive/ormlite.capabilities.postgres.txt",
+          "sha256": "b3d3919dd0c276083178e0c843093d8bfa2dc579253a8e758744a22ea9fd4cfb",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+          "sha256": "0bd60efe5c866c47d980ae79eeef3e6b45b9e623e0a289a84904f25adf38a7c4",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "id": "Neemle.OrmLite.Sqlite",
+      "version": "0.1.0-dev.g2ad9d96",
+      "file": "feed/Neemle.OrmLite.Sqlite.0.1.0-dev.g2ad9d96.nupkg",
+      "sha256": "12fe49dc06ce46f3bc8627859609e4aa3f4134b0d5b36e81d95a202c83b7a178",
+      "entries": [
+        {
+          "entry": "buildTransitive/Neemle.OrmLite.Sqlite.props",
+          "sha256": "2e54f6f6eae3e04ba6efdbd869f97d3bfb19c6fde07077e6c4f62356376250dd",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "buildTransitive/ormlite.capabilities.sqlite.txt",
+          "sha256": "c734bfb412300a946145935f1f8f2dd19b7d0693a976865ca9ccf50b8aa34a70",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+          "sha256": "c8b8ddbdf317430869047e2ed65af2c3ecefad14772a4778a212998abb96156c",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "file": "jit10-build/obj/OrmLiteDemo/project.assets.json",
+      "sha256": "a9a5f67628df96186dd82f22dfd79c4c811a026edd65961fdf74e98a6cf95b73",
+      "privatePackages": [
+        "Neemle.OrmLite.Postgres/0.1.0-dev.g2ad9d96",
+        "Neemle.OrmLite.Sqlite/0.1.0-dev.g2ad9d96",
+        "Neemle.OrmLite/0.1.0-dev.g2ad9d96"
+      ],
+      "imports": [
+        "jit10-build/obj/OrmLiteDemo/OrmLiteDemo.csproj.nuget.g.props",
+        "jit10-build/obj/OrmLiteDemo/OrmLiteDemo.csproj.nuget.g.targets"
+      ]
+    },
+    {
+      "file": "jit11-build/obj/OrmLiteDemo/project.assets.json",
+      "sha256": "b18b5bbf77b845bd21e1f319f536c186b5caf2247df0b7153b6cd1bd0ac6b513",
+      "privatePackages": [
+        "Neemle.OrmLite.Postgres/0.1.0-dev.g2ad9d96",
+        "Neemle.OrmLite.Sqlite/0.1.0-dev.g2ad9d96",
+        "Neemle.OrmLite/0.1.0-dev.g2ad9d96"
+      ],
+      "imports": [
+        "jit11-build/obj/OrmLiteDemo/OrmLiteDemo.csproj.nuget.g.props",
+        "jit11-build/obj/OrmLiteDemo/OrmLiteDemo.csproj.nuget.g.targets"
+      ]
+    },
+    {
+      "file": "native10-build/obj/OrmLiteDemo/project.assets.json",
+      "sha256": "0c23d440b72d5b7afb928bcb1d653eef1ec4c9958646f7ad8fe9874d5aae3702",
+      "privatePackages": [
+        "Neemle.OrmLite.Postgres/0.1.0-dev.g2ad9d96",
+        "Neemle.OrmLite.Sqlite/0.1.0-dev.g2ad9d96",
+        "Neemle.OrmLite/0.1.0-dev.g2ad9d96"
+      ],
+      "imports": [
+        "native10-build/obj/OrmLiteDemo/OrmLiteDemo.csproj.nuget.g.props",
+        "native10-build/obj/OrmLiteDemo/OrmLiteDemo.csproj.nuget.g.targets"
+      ]
+    },
+    {
+      "file": "native11-build/obj/OrmLiteDemo/project.assets.json",
+      "sha256": "7345a19b3bad6b9fff1f82ef363b1ca2afeef6e21fd82a22ed48f8b16e14a0c2",
+      "privatePackages": [
+        "Neemle.OrmLite.Postgres/0.1.0-dev.g2ad9d96",
+        "Neemle.OrmLite.Sqlite/0.1.0-dev.g2ad9d96",
+        "Neemle.OrmLite/0.1.0-dev.g2ad9d96"
+      ],
+      "imports": [
+        "native11-build/obj/OrmLiteDemo/OrmLiteDemo.csproj.nuget.g.props",
+        "native11-build/obj/OrmLiteDemo/OrmLiteDemo.csproj.nuget.g.targets"
+      ]
+    }
+  ],
+  "jitOutputLibraryBytesEqualPackages": true,
+  "generatedGraphSources": [
+    {
+      "entity": "GraphAuthor",
+      "sdk": "10",
+      "file": "generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "sha256": "d8bf4e64f82dd69149b1a7929bf77a8dd142d24fa1ebc7046343ad1c6b79c2c7"
+    },
+    {
+      "entity": "GraphBook",
+      "sdk": "10",
+      "file": "generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "sha256": "595fadbe143397bba59455983574b51ac287d974fc081075495ad0f0b9013a5a"
+    },
+    {
+      "entity": "GraphTag",
+      "sdk": "10",
+      "file": "generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "sha256": "d10f9badbf9b56a0e3ca12c5af1024a145ce74be6d32cd838a10a133f60ff492"
+    },
+    {
+      "entity": "GraphAuthor",
+      "sdk": "11",
+      "file": "generated11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "sha256": "d8bf4e64f82dd69149b1a7929bf77a8dd142d24fa1ebc7046343ad1c6b79c2c7"
+    },
+    {
+      "entity": "GraphBook",
+      "sdk": "11",
+      "file": "generated11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "sha256": "595fadbe143397bba59455983574b51ac287d974fc081075495ad0f0b9013a5a"
+    },
+    {
+      "entity": "GraphTag",
+      "sdk": "11",
+      "file": "generated11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "sha256": "d10f9badbf9b56a0e3ca12c5af1024a145ce74be6d32cd838a10a133f60ff492"
+    }
+  ],
+  "binaries": [
+    {
+      "file": "native10-out/OrmLiteDemo",
+      "sha256": "a9038a69b8ed5531f802cd12e2627d6f16f35a5cf8c261fb0a7d539bfde0f654",
+      "bytes": 17184808
+    },
+    {
+      "file": "native11-out/OrmLiteDemo",
+      "sha256": "2210176064f0135ee36983fb0012c38cec6e797c7416b5f4ee081647444d53b0",
+      "bytes": 17253504
+    }
+  ]
+}

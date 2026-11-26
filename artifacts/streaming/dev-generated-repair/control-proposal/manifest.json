@@ -1,0 +1,630 @@
+{
+  "status": "UNAPPLIED / UNAPPROVED",
+  "applied": false,
+  "approved": false,
+  "beforeCorpusEntries": 669,
+  "afterCorpusEntries": 739,
+  "beforeGeneratorEntries": 54,
+  "afterGeneratorEntries": 124,
+  "nonGeneratorEntriesUnchanged": true,
+  "patchFormat": "unified zero context; complete proposed files are primary review copies",
+  "allNonSourceCorpusEntriesUnchanged": 645,
+  "counts": {
+    "modify": 14,
+    "add": 78,
+    "delete": 8
+  },
+  "files": [
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "6e8cfcfa2efe21c5f0dde6417f144916a224d3201a8cc59d3b95fc795339247e"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0001.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "74dbc89786cda63ebe8f4b3eebb585a798746fd8fabb2c7843d88ab3b481cf04"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "f8c439889a37d0cd920a9a29b1887a26f0e8c9bec7dcf899833b6d7137f27df4"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0003.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "b7633e8664b3bf95fd2a28f2057252a1ec052264c88da4693bdda7b3c50cc327"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "d3c5177eac058ce6853fcf3860d64193e70044f60368e9d4ca22d1bfaa090827"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0005.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "f9b1d0342d686a414c75ae4b2b406b33bfdbdde2f2c46d19c2ab73619f6d2588"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "3fa40ba365f6adc146b94d044a1401f5ece62bce44c71b3f1305df383e1a6a05"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "14dfcd57a67300a37247b0565cc9b53935b637527b4c58e29d2788f85923bd33"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0008.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "4c2941143b000f7899b5a3d8927457b21bd6cffadef4fe0872a391cc0a6ad2b7"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0009.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "e343fe514a31c5fafc9bee7986f19d8474165b6a8d18f9848ee8cccaeef37a86"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "62b5e5755ca7ec06e5d96c69b14366e0d641441a83918ce6a625fc8e419bdb20"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0011.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "b2735a0e9ed4ae929264b7f77e471e0b68e946c79da3296de5ce2e7b888c6e78"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "a6326b37c09f71cfb23776bb800cb3c46858a081153f5ff0667ce43623db466b"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0013.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "7ff842618c69fbcf1c782a9194756dabf21a8c12b8ceaaffc953751b78df408d"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.0014.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "5d4de9721fc6cf6d8b0845c6c62fca202c2f2afaf45bde01f1260b7172c525ac"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+      "action": "modify",
+      "baseSha256": "10d0539542df1bf942e7893d10aa90ed7405d7edaa483c843bb30796412fbf7c",
+      "proposedSha256": "6f0b57e8db59c9599e05b6b6544c3b9c13435697e088d68f64d6bbed2ca42cc1"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0000.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "fb44d03827d8bed31d747f73ce5fe5dc9fac7f79b8af3131afd57e29756ef617"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0001.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "4bc9cd3bbcb95b8353c8c5d0738d9f0c1ff8d6a655371948e676d6192a670bc2"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0002.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "555d0ed38880590ece2fb2b4e1a13f2a3995b29d3c269ee3c438388b6fbf0cf8"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.0003.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "b3fe2b73678a21129e54b2233d450bbf105812dd37127afb6dd617a6afcd445d"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-demo/ormlite.migrations.g.cs.golden",
+      "action": "modify",
+      "baseSha256": "e6b110eed9d1bd3dfb8b7bdd97a00f3e3137c55f1e073b54f5fa584dcefb55d2",
+      "proposedSha256": "ec64219c6e1720afcca0a0ef3076a2f1c2bc2ae971159ff8af86b91435350969"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "c05b3b318490a61ac1bee5badfd42265c4dfc09cfb4d0129f6029db9d1b2ad95"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "a876a6edabbe661c606476c7d4836af79299fa951d1ce7c9d180670901eea7b7"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "71de9c8b16ef1ef5444fa364645739a736b8879698f02217cdb2bc948db65f46"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "c1d867cb5f0ce17d1f81153f84de0179d13a54d704c6ec83868a972b947c3479"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "813064470ffc74aa05041589a5f219d3c69d1dc7ad6b6e5e4df90aaca0bc3550"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "e940d41576548e789b20edcd07a6c9bb58da342efdcf7224316fe42e1eac4c57"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0006.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "ebf2af151ecdad6172c7b4ebd020011be4189be86621243f93378bc21b7aa2cf"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "72b17e0c9e58b6e736d690b588b41287fe7849abf2e9896c59c1b97c65cbff82"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "02749785d87d57cf2d76361d063fdfadf954b1ea2b366618ff14be5fcb420260"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0009.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "590cc772f7b7c9bfb40cebaafc2abbb710e6cf8301460c89a7b1cda471e12397"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "0a9ccc716c1973063ed4f711a64cb9f21c41b2e2f4dfd3414055ed21a119baa5"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0011.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "5de859fcdee25359a2fd7ad8d144a365e07032dce228264d8f68e08f0bbf7ff8"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "6d2da6251a1592f61da4d2f9c76dda6118bb343e7f6f80601223d3b8abea9af3"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0013.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "ab1c82969a7b7d9c356f05261a8060d8d0d3e842ac084c420863d56f975acf66"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0014.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "987d4ccb1899b5ad791468dfbf16ee5423993b1eb615a6204132d2182305a381"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0015.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "5ee3e6f62b86724b3dcdd4f82620447920e1cadc00bd178cc91982a7d999e3ac"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0016.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "407fa675d898cd4fd3468e279ca2dcee4726640507b283f1359a51320a6b7eda"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0017.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "0e81d82fbb594b45e5fedf4c2b6da4d0c931f8548920be66494e20821bccb54b"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "803dd97b5e65cd4f28c9e47c51e21ffa8ca9741beae6c501825f6f5675592505"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0019.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "37f13bc829b734a9710f895acadc38793a03bcf67f490e47602729ed96908123"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0020.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "2150385e2e72deee28fd33fb658bd8f7dd0afe4e1d0d2ad7a4a03044e0079c50"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0021.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "10f3aa6396fad35842f52b455aba0fec3cb22578e068a56c3b4acdb28f1b9836"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "f5fcd6918aad49aebe795e5239f6c9689bb97a713f3150b9fad929e4d9bee60b"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0023.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "65ffdbfc0cdfd4274498891c81d1f4cc7ba29f668b58dbdea0b3803b210c6d8b"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "4b47eeb4cd8a71887da61273b74207b27fb04a94bce27ba7770e3a974a148a03"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0025.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "1583e27517bb52e38b2d301650248759818137c4435117c57bc2a67bd70d4a84"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "70614e319aa323a32eb9577f6de6bfc4024363873cbf6e3b236d60d0ca091751"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0027.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "2a346143d24aa1feeccdb8b6d0c953a17f32fd8fd0e2c1f5d89355a8513aefea"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0028.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "4cecc5c18d74415963c56dfe7ac097c9089e6f5db2e037ecd2ffab07efb3e1d1"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.0029.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "3aea371d7d9affe485d365622b9b6e790cfe3baec210876139b2fdf0d6e4fab8"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.migrations.g.cs.golden",
+      "action": "modify",
+      "baseSha256": "4b940ad1c21f58f7aad9bfb8c57d68d099a4461a2eed854ece388128b4e720d1",
+      "proposedSha256": "c1c264babd9c225cc0d70ee028085ce8e08a2da6c12cc3614618f273d9a84d5e"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "d2a6813a8405e69d63af414cb182bec89c6ef3ad7b9d3bba909ee26766068a70"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0001.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "0f12c2ee5607d66a270a684fb7e1423887cde8be294bd467d89655553b6e5e44"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "3d3c054ccee96e14f02d358664482da2f72cb72a19b25b57da37c49e47d6b551"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0003.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "34110a846e84169ce0d9e3941aa221e58c74aac57e1a02a501b1d227a15ad824"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.0004.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "e3d59edfab306c63932c70ff25422153573d6aa32b0dd6478fef305c27a5de74"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.migrations.g.cs.golden",
+      "action": "modify",
+      "baseSha256": "11e45d76c297fff42591779d0d7f52b8cd79b2737d3d00cc2a6bb00d6ed1492c",
+      "proposedSha256": "640f68dc2ebff889775b0e506e888478a370829d02f0c078c25872a799dcfc9f"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "abe7950b3fc7dd1e671dc053b84cc5e29a52a894d402fb8ae0e3d9f440a64bad"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "05b9dbf0787c2f25aea2e5ff240331d26b62171bf6375d267772a079e5227031"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "7302f60126576508642d9b2bf42221ae55af2edf6c8390d225566a3f53206edb"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "fcee33a4ebb9f71e15141007e96f0c420b5c299b7337b0514936e9f522ee9ed7"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0004.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "16c2d162f4b840d16434b7f10944da3156a4049d196baa335d0fbbc43f597153"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.0005.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "d8cc502eacf22cb01a4798780e38cbbfd6c9219833c2b4e1f0597ea618cccc3a"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+      "action": "modify",
+      "baseSha256": "cc42e39aefcac8b585a7106e32e1def31d0fdfda94d72b0c483c8e33ed0d6333",
+      "proposedSha256": "696412ed0dc0ba4101b829f27ed4d6f6b5e91d251faf53e8c61d247337e2a67a"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "9e6d858e4a4e0757c7158daab3c34b5bb0c6205240d4fe39d2ff4edb0058ab02"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0001.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "197e8825af189696a545a237a4d3c6bf119a72d6dab9b85220dd3cdcd0445699"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "046e4df9a6663b4deb9089303c8191a04320379008541a1968e46029c01aa282"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0003.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "57c4612ac9b1eb8263c3c693a06c389db920343afa698d35ec5b4662b39967e3"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0004.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "853562dffdbe6049d7a6534d5da6608072e5515da88507be9bc46def7f0f3e9a"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.0005.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "4fe7df691b0d8379781401c8eb23e3c469cd02a1af15c6529abfcea92c072619"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+      "action": "modify",
+      "baseSha256": "6cf5146fe7436b5952f8ac7c5e145c70a5d7ace2a5d05be52fb3498659377ea5",
+      "proposedSha256": "37d20ee33fb46113f40d3ee38ce80d2ab493b8f734c9544d16f233acdae3fb87"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "9e6d858e4a4e0757c7158daab3c34b5bb0c6205240d4fe39d2ff4edb0058ab02"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0001.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "197e8825af189696a545a237a4d3c6bf119a72d6dab9b85220dd3cdcd0445699"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "046e4df9a6663b4deb9089303c8191a04320379008541a1968e46029c01aa282"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0003.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "57c4612ac9b1eb8263c3c693a06c389db920343afa698d35ec5b4662b39967e3"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0004.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "946ab1c7f4ff8a679f7cb6529548b2c280dc313d8403f953bfe94dde6eb155ed"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.0005.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "4fe7df691b0d8379781401c8eb23e3c469cd02a1af15c6529abfcea92c072619"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+      "action": "modify",
+      "baseSha256": "df80771d8c54c0b43809d8968a9f94a9ad3f4edc653a514f92a54d8a25a25a7a",
+      "proposedSha256": "cf113b4c052fe2dacebe9d51a15d12f3c0b716687061ac2dfc367289fba448b1"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "ce384ca4a29627dc96418b07e18f73702fa1d60057ce0d9152b3db177b018798"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0001.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "197e8825af189696a545a237a4d3c6bf119a72d6dab9b85220dd3cdcd0445699"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "046e4df9a6663b4deb9089303c8191a04320379008541a1968e46029c01aa282"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0003.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "57c4612ac9b1eb8263c3c693a06c389db920343afa698d35ec5b4662b39967e3"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0004.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "74db60f60e4078fd0b37179a38cde6e03b085c6c75c21220b83da479f3ff47b6"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.0005.g.cs.golden",
+      "action": "add",
+      "baseSha256": null,
+      "proposedSha256": "4fe7df691b0d8379781401c8eb23e3c469cd02a1af15c6529abfcea92c072619"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+      "action": "modify",
+      "baseSha256": "ea590d040c79632579e795d2ae02cef654de9e7174a6f1162d96f6e96d71fda3",
+      "proposedSha256": "4d5e6a2b9df52902860d6b695c75b47d3b881cb36a78a371d2da511bda07e422"
+    },
+    {
+      "path": "tests/Tests/Corpus/INDEX.md",
+      "action": "modify",
+      "baseSha256": "495036d563f7171073bc456f0fe4e31dccae020dde8e6926365bb702888f13ac",
+      "proposedSha256": "40a7f29bead2feced8d874969ec7c355e5765053bab844448037b2bda2c822ff"
+    },
+    {
+      "path": "tests/Tests/Corpus/Support/CorpusSurface.cs",
+      "action": "modify",
+      "baseSha256": "872b700492f7567cb5750ecc30ba73873378de5cffbad40b6a8bb241cff823f3",
+      "proposedSha256": "80a680678950c737e9a9a8afe386889b79af200827fa0d9ff56bb1e7aea6b567"
+    },
+    {
+      "path": "tests/Tests/GeneratorQualityTests.cs",
+      "action": "modify",
+      "baseSha256": "5e646575a40d8e06658280cdbaf29ee9fdf750c340a73ed6f6fab6dbd3cfc267",
+      "proposedSha256": "e4ae752517b3bd181545e7faaf1fb1c417d43dfd003769fb52b5183621e5d798"
+    },
+    {
+      "path": "tests/Tests/QueryIdentifierSurfaceTests.cs",
+      "action": "modify",
+      "baseSha256": "bc9a4ce174f8f65ae3574b1fe5fc9401052e2136724532d58ccf3c7435e54037",
+      "proposedSha256": "e3be0c339690bdf0c4029222516644dc4e6450d6309eb61bed91b7269e83d4f5"
+    },
+    {
+      "path": "tests/Tests/QueryTerminalState/TerminalCensus.cs",
+      "action": "modify",
+      "baseSha256": "c09a4e6aa775dc83b8e6c4ac21082eabb825c77a488eb19b3be36c8906cc4a36",
+      "proposedSha256": "93dd7d9f94078b082dd800412492dc89ed582bd0715ffdd9cbb37d1b4a9791f6"
+    },
+    {
+      "path": "tests/Tests/SoftDelete/Reads/RootReadPath.cs",
+      "action": "modify",
+      "baseSha256": "043a70db731a6e32d2e9292334faaf9e4b85f90f53a9276d881ceb7eaeaf4f96",
+      "proposedSha256": "ed944a9fa098219583962525e005977a28a4e8141ebef523b13b98cefef000e2"
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-corpus-entities/ormlite.entities.g.cs.golden",
+      "action": "delete",
+      "baseSha256": "f8861a0f3ee8faa0561c862dd2c3688045246533ad32d59a56559bcc0e7d0e15",
+      "proposedSha256": null
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-demo/ormlite.entities.g.cs.golden",
+      "action": "delete",
+      "baseSha256": "d658ddf8ed6236b5bb56b542bad609d4dbce158c7ead79fa50a1c074b70ff24d",
+      "proposedSha256": null
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-diagnostics/ormlite.entities.g.cs.golden",
+      "action": "delete",
+      "baseSha256": "84b6b117ccf9b06e8d94ff646dd54f422a451f14bcf299f983b6458c668343b4",
+      "proposedSha256": null
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-global-namespace/ormlite.entities.g.cs.golden",
+      "action": "delete",
+      "baseSha256": "d98a44a3032b345dfe72d9d2460d6a7768be380e9a10b0fd3ec6ef2d865121de",
+      "proposedSha256": null
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+      "action": "delete",
+      "baseSha256": "89a0705bb07b50e5d94d20b853ab77121ab471362884b80cbd96a977f5da3c7f",
+      "proposedSha256": null
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+      "action": "delete",
+      "baseSha256": "345e794cf34a67448e09c93e2a4436f6dd0c7fd362096e242e5e31be930e8bba",
+      "proposedSha256": null
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+      "action": "delete",
+      "baseSha256": "5f5faab288b27ec578d1695acfb56f352ea10377634969d2deaa00b381807a73",
+      "proposedSha256": null
+    },
+    {
+      "path": "tests/Tests/Corpus/Goldens/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+      "action": "delete",
+      "baseSha256": "6bea49062700072434915d163a795fd1e7a2a9e6dfd69ef1a8847412f33d4923",
+      "proposedSha256": null
+    }
+  ],
+  "obligations": [
+    "Preserve GeneratorQualityTests assertions; aggregate deterministically partitioned entity hints instead of requiring a single file",
+    "Review regenerated generator golden text and exact hint inventory, no SQL/data/diagnostic semantic substitution",
+    "Retain all five prior streaming-control proposals, including typed get_StreamRowLock classification and derived current INDEX",
+    "Existing source/golden/census/quality files remain readonly; applying this proposal requires root disposition and rightful writer"
+  ],
+  "limits": [
+    "No golden or assertion applied, no baseline approval inferred",
+    "No runtime floor/exclusion/threshold modified",
+    "Old Map full text and ALL class nontrivia tokens independently compared"
+  ]
+}

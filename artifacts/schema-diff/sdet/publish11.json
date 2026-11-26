@@ -1,0 +1,21 @@
+{
+  "cmd": "docker run --rm --ulimit core=0 --name orml117-parity-native11-publish --label orml117.owner=independent-sdet --memory=3g --memory-swap=3g --cpus=2 -e DOTNET_PROCESSOR_COUNT=2 -v \"$PWD:/repo\" -v /Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro -v orml-107-nuget:/root/.nuget/packages -w /repo sha256:617441f9e33eea21c352a4343ee42a50ecd9003fe5fbbe6f0cf035f2e9ff62c6 dotnet publish tests/SchemaDiffAot/SchemaDiffAot.csproj -c Release -r linux-arm64 -p:PublishAot=true -p:IlcMaxParallelism=1 -p:DemoTfm=net11.0 -o artifacts/schema-diff/sdet/native11 --verbosity minimal",
+  "started": {
+    "current_time": "2026-11-26 09:37:54 UTC"
+  },
+  "result": {
+    "chunk_id": "30bf82",
+    "wall_time_seconds": 0.000018792,
+    "exit_code": 0,
+    "original_token_count": 16,
+    "output": "  SchemaDiffAot -> /repo/artifacts/schema-diff/sdet/native11/\n"
+  },
+  "output": "  Determining projects to restore...\n  Restored /repo/src/Sqlite/Sqlite.csproj (in 661 ms).\n  Restored /repo/src/Sql/Sql.csproj (in 596 ms).\n  Restored /repo/src/Runtime/Runtime.csproj (in 6 ms).\n  Restored /repo/tests/SchemaDiffAot/SchemaDiffAot.csproj (in 49 ms).\n  Restored /repo/src/Postgres/Postgres.csproj (in 7 ms).\n  Restored /repo/src/Generator/Generator.csproj (in 16 ms).\n  Restored /repo/src/Core/Core.csproj (in 6 ms).\n  Generator -> /repo/src/Generator/bin/Release/net10.0/Neemle.OrmLite.Generator.dll\n  Runtime -> /repo/src/Runtime/bin/Release/net10.0/Neemle.OrmLite.Runtime.dll\n  Sql -> /repo/src/Sql/bin/Release/net10.0/Neemle.OrmLite.Sql.dll\n  Core -> /repo/src/Core/bin/Release/net10.0/Neemle.OrmLite.Core.dll\n  Postgres -> /repo/src/Postgres/bin/Release/net10.0/Neemle.OrmLite.Postgres.dll\n  Sqlite -> /repo/src/Sqlite/bin/Release/net10.0/Neemle.OrmLite.Sqlite.dll\n  SchemaDiffAot -> /repo/tests/SchemaDiffAot/bin/Release/net11.0/linux-arm64/Neemle.OrmLite.SchemaDiffAot.dll\n  Generating native code\n  SchemaDiffAot -> /repo/artifacts/schema-diff/sdet/native11/\n",
+  "finished": {
+    "current_time": "2026-11-26 09:39:37 UTC"
+  },
+  "executionHead": "2997ae857db3bdbf7b178fab2b3fbd5e804b48aa",
+  "sourceTree": "b87e8065a7c33555d49d7957906d674032f67b90",
+  "demoTree": "aa141220e406f035a082a9bba16add30c6c47057",
+  "fullCommand": "docker run --rm --ulimit core=0 --name orml117-parity-native11-publish --label orml117.owner=independent-sdet --memory=3g --memory-swap=3g --cpus=2 -e DOTNET_PROCESSOR_COUNT=2 -v \"/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff:/repo\" -v /Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro -v orml-107-nuget:/root/.nuget/packages -w /repo sha256:617441f9e33eea21c352a4343ee42a50ecd9003fe5fbbe6f0cf035f2e9ff62c6 dotnet publish tests/SchemaDiffAot/SchemaDiffAot.csproj -c Release -r linux-arm64 -p:PublishAot=true -p:IlcMaxParallelism=1 -p:DemoTfm=net11.0 -o artifacts/schema-diff/sdet/native11 --verbosity minimal"
+}

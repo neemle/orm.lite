@@ -1,0 +1,3612 @@
+{
+  "convention": "McCabe: 1 \u002B if/loops/catch/nondefault cases/conditional expressions and each \u0026\u0026, ||, ?? operand boundary; lambda points belong to containing method",
+  "records": [
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMigrationsInit",
+          "line": 7,
+          "end": 14,
+          "codeLines": 8
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 13,
+          "codeLines": 5,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmLiteDemoMigrations",
+          "line": 7,
+          "end": 27,
+          "codeLines": 21
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ForeignKeyChildOrm",
+          "line": 7,
+          "end": 98,
+          "codeLines": 78
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 17,
+          "end": 25,
+          "codeLines": 9,
+          "parameters": 1,
+          "nesting": {
+            "line": 18,
+            "depth": 0
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "name": "Values",
+          "start": 27,
+          "end": 27,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 29,
+          "end": 29,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 31,
+          "end": 35,
+          "codeLines": 5,
+          "parameters": 1,
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 37,
+          "end": 41,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 39,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 43,
+          "end": 47,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 49,
+          "end": 53,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 55,
+          "end": 59,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 61,
+          "end": 65,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 63,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 67,
+          "end": 72,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 70,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 74,
+          "end": 78,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 76,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 80,
+          "end": 84,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 82,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "LoadParentAsync",
+          "start": 86,
+          "end": 97,
+          "codeLines": 12,
+          "parameters": 3,
+          "nesting": {
+            "line": 90,
+            "depth": 1
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 89
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ForeignKeyParentOrm",
+          "line": 7,
+          "end": 69,
+          "codeLines": 52
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 15,
+          "end": 21,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 16,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 23,
+          "end": 23,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 25,
+          "end": 25,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 27,
+          "end": 31,
+          "codeLines": 5,
+          "parameters": 1,
+          "nesting": {
+            "line": 29,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 33,
+          "end": 37,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 35,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 39,
+          "end": 43,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 41,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 45,
+          "end": 49,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 47,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 51,
+          "end": 55,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 53,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 57,
+          "end": 62,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 60,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 64,
+          "end": 68,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 66,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "LedgerAccountOrm",
+          "line": 7,
+          "end": 86,
+          "codeLines": 67
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 16,
+          "end": 26,
+          "codeLines": 11,
+          "parameters": 1,
+          "nesting": {
+            "line": 17,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 28,
+          "end": 28,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 30,
+          "end": 30,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 32,
+          "end": 36,
+          "codeLines": 5,
+          "parameters": 1,
+          "nesting": {
+            "line": 34,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 38,
+          "end": 42,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 40,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 44,
+          "end": 48,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 46,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 50,
+          "end": 54,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 52,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 56,
+          "end": 60,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 58,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 62,
+          "end": 66,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 64,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 68,
+          "end": 73,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 71,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 75,
+          "end": 79,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 77,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 81,
+          "end": 85,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 83,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "LedgerEntryOrm",
+          "line": 7,
+          "end": 92,
+          "codeLines": 73
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 17,
+          "end": 31,
+          "codeLines": 15,
+          "parameters": 1,
+          "nesting": {
+            "line": 18,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 33,
+          "end": 34,
+          "codeLines": 2,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 36,
+          "end": 36,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 38,
+          "end": 42,
+          "codeLines": 5,
+          "parameters": 1,
+          "nesting": {
+            "line": 40,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 44,
+          "end": 48,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 46,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 50,
+          "end": 54,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 52,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 56,
+          "end": 60,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 58,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 62,
+          "end": 66,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 64,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 68,
+          "end": 72,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 70,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 74,
+          "end": 79,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 77,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 81,
+          "end": 85,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 83,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 87,
+          "end": 91,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 89,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "NoteOrm",
+          "line": 7,
+          "end": 91,
+          "codeLines": 72
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 20,
+          "end": 32,
+          "codeLines": 13,
+          "parameters": 1,
+          "nesting": {
+            "line": 21,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 34,
+          "end": 34,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 36,
+          "end": 36,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 38,
+          "end": 41,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 39,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 43,
+          "end": 47,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 49,
+          "end": 53,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 55,
+          "end": 59,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 61,
+          "end": 65,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 63,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 67,
+          "end": 71,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 69,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 73,
+          "end": 78,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 76,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 80,
+          "end": 84,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 82,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 86,
+          "end": 90,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 88,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "TeamOrm",
+          "line": 7,
+          "end": 85,
+          "codeLines": 66
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 16,
+          "end": 26,
+          "codeLines": 11,
+          "parameters": 1,
+          "nesting": {
+            "line": 17,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 28,
+          "end": 28,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 30,
+          "end": 30,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 32,
+          "end": 35,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 37,
+          "end": 41,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 39,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 43,
+          "end": 47,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 49,
+          "end": 53,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 55,
+          "end": 59,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 61,
+          "end": 65,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 63,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 67,
+          "end": 72,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 70,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 74,
+          "end": 78,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 76,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 80,
+          "end": 84,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 82,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0006.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ProjectOrm",
+          "line": 7,
+          "end": 87,
+          "codeLines": 68
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 16,
+          "end": 28,
+          "codeLines": 13,
+          "parameters": 1,
+          "nesting": {
+            "line": 17,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 30,
+          "end": 30,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 32,
+          "end": 32,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 34,
+          "end": 37,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 35,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 39,
+          "end": 43,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 41,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 45,
+          "end": 49,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 47,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 51,
+          "end": 55,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 53,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 57,
+          "end": 61,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 59,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 63,
+          "end": 67,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 65,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 69,
+          "end": 74,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 72,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 76,
+          "end": 80,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 78,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 82,
+          "end": 86,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 84,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0007.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "WorkItemOrm",
+          "line": 7,
+          "end": 94,
+          "codeLines": 75
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 18,
+          "end": 34,
+          "codeLines": 17,
+          "parameters": 1,
+          "nesting": {
+            "line": 19,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 36,
+          "end": 37,
+          "codeLines": 2,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 39,
+          "end": 39,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 41,
+          "end": 44,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 42,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 46,
+          "end": 50,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 48,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 52,
+          "end": 56,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 54,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 58,
+          "end": 62,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 60,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 64,
+          "end": 68,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 66,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 70,
+          "end": 74,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 72,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 76,
+          "end": 81,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 79,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 83,
+          "end": 87,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 85,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 89,
+          "end": 93,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 91,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0008.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "CommentOrm",
+          "line": 7,
+          "end": 85,
+          "codeLines": 66
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 16,
+          "end": 26,
+          "codeLines": 11,
+          "parameters": 1,
+          "nesting": {
+            "line": 17,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 28,
+          "end": 28,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 30,
+          "end": 30,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 32,
+          "end": 35,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 37,
+          "end": 41,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 39,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 43,
+          "end": 47,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 49,
+          "end": 53,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 55,
+          "end": 59,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 61,
+          "end": 65,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 63,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 67,
+          "end": 72,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 70,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 74,
+          "end": 78,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 76,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 80,
+          "end": 84,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 82,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0009.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "DraftOrm",
+          "line": 7,
+          "end": 93,
+          "codeLines": 74
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 19,
+          "end": 33,
+          "codeLines": 15,
+          "parameters": 1,
+          "nesting": {
+            "line": 20,
+            "depth": 0
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 31
+            }
+          ]
+        },
+        {
+          "name": "Values",
+          "start": 35,
+          "end": 36,
+          "codeLines": 2,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 38,
+          "end": 38,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 40,
+          "end": 43,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 41,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 45,
+          "end": 49,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 47,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 51,
+          "end": 55,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 53,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 57,
+          "end": 61,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 59,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 63,
+          "end": 67,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 65,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 69,
+          "end": 73,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 71,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 75,
+          "end": 80,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 78,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 82,
+          "end": 86,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 84,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 88,
+          "end": 92,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 90,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0010.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "DraftPurge",
+          "line": 7,
+          "end": 23,
+          "codeLines": 16
+        }
+      ],
+      "methods": [
+        {
+          "name": "DeleteWhereAsync",
+          "start": 9,
+          "end": 14,
+          "codeLines": 6,
+          "parameters": 2,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteWhereAsync",
+          "start": 16,
+          "end": 22,
+          "codeLines": 7,
+          "parameters": 3,
+          "nesting": {
+            "line": 19,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0011.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OpenWorkOrm",
+          "line": 7,
+          "end": 63,
+          "codeLines": 50
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 17,
+          "end": 31,
+          "codeLines": 15,
+          "parameters": 1,
+          "nesting": {
+            "line": 18,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 33,
+          "end": 33,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 35,
+          "end": 38,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 36,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 40,
+          "end": 46,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 43,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 48,
+          "end": 54,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 56,
+          "end": 62,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 59,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0012.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OpenWorkTotalsOrm",
+          "line": 7,
+          "end": 56,
+          "codeLines": 43
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 15,
+          "end": 23,
+          "codeLines": 9,
+          "parameters": 1,
+          "nesting": {
+            "line": 16,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 25,
+          "end": 25,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 27,
+          "end": 31,
+          "codeLines": 5,
+          "parameters": 1,
+          "nesting": {
+            "line": 29,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 33,
+          "end": 39,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 36,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 41,
+          "end": 47,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 44,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 49,
+          "end": 55,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 52,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0013.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmLiteDemoSchema",
+          "line": 7,
+          "end": 14,
+          "codeLines": 8
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0014.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMetaInit",
+          "line": 7,
+          "end": 25,
+          "codeLines": 19
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 24,
+          "codeLines": 16,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMigrationsInit",
+          "line": 7,
+          "end": 14,
+          "codeLines": 8
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 13,
+          "codeLines": 5,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ForeignKeysAotMigrations",
+          "line": 7,
+          "end": 11,
+          "codeLines": 5
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "NativeChildOrm",
+          "line": 7,
+          "end": 98,
+          "codeLines": 78
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 17,
+          "end": 25,
+          "codeLines": 9,
+          "parameters": 1,
+          "nesting": {
+            "line": 18,
+            "depth": 0
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "name": "Values",
+          "start": 27,
+          "end": 27,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 29,
+          "end": 29,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 31,
+          "end": 35,
+          "codeLines": 5,
+          "parameters": 1,
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 37,
+          "end": 41,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 39,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 43,
+          "end": 47,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 49,
+          "end": 53,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 55,
+          "end": 59,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 61,
+          "end": 65,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 63,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 67,
+          "end": 72,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 70,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 74,
+          "end": 78,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 76,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 80,
+          "end": 84,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 82,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "LoadNativeParentAsync",
+          "start": 86,
+          "end": 97,
+          "codeLines": 12,
+          "parameters": 3,
+          "nesting": {
+            "line": 90,
+            "depth": 1
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 89
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "NativeParentOrm",
+          "line": 7,
+          "end": 75,
+          "codeLines": 57
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 15,
+          "end": 21,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 16,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 23,
+          "end": 23,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 25,
+          "end": 25,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 27,
+          "end": 31,
+          "codeLines": 5,
+          "parameters": 1,
+          "nesting": {
+            "line": 29,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 33,
+          "end": 37,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 35,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 39,
+          "end": 43,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 41,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 45,
+          "end": 49,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 47,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 51,
+          "end": 55,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 53,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 57,
+          "end": 62,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 60,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 64,
+          "end": 68,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 66,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "LoadChildrenAsync",
+          "start": 70,
+          "end": 74,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 72,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ForeignKeysAotSchema",
+          "line": 7,
+          "end": 11,
+          "codeLines": 5
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMetaInit",
+          "line": 7,
+          "end": 15,
+          "codeLines": 9
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 14,
+          "codeLines": 6,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMigrationsInit",
+          "line": 7,
+          "end": 14,
+          "codeLines": 8
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 13,
+          "codeLines": 5,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ForeignKeysAotMigrations",
+          "line": 7,
+          "end": 11,
+          "codeLines": 5
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "NativeChildOrm",
+          "line": 7,
+          "end": 98,
+          "codeLines": 78
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 17,
+          "end": 25,
+          "codeLines": 9,
+          "parameters": 1,
+          "nesting": {
+            "line": 18,
+            "depth": 0
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "ConditionalExpression",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "name": "Values",
+          "start": 27,
+          "end": 27,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 29,
+          "end": 29,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 31,
+          "end": 35,
+          "codeLines": 5,
+          "parameters": 1,
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 37,
+          "end": 41,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 39,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 43,
+          "end": 47,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 49,
+          "end": 53,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 55,
+          "end": 59,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 61,
+          "end": 65,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 63,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 67,
+          "end": 72,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 70,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 74,
+          "end": 78,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 76,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 80,
+          "end": 84,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 82,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "LoadNativeParentAsync",
+          "start": 86,
+          "end": 97,
+          "codeLines": 12,
+          "parameters": 3,
+          "nesting": {
+            "line": 90,
+            "depth": 1
+          },
+          "complexity": 2,
+          "points": [
+            {
+              "kind": "IfStatement",
+              "line": 89
+            }
+          ]
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "NativeParentOrm",
+          "line": 7,
+          "end": 75,
+          "codeLines": 57
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 15,
+          "end": 21,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 16,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 23,
+          "end": 23,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 25,
+          "end": 25,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 27,
+          "end": 31,
+          "codeLines": 5,
+          "parameters": 1,
+          "nesting": {
+            "line": 29,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 33,
+          "end": 37,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 35,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 39,
+          "end": 43,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 41,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 45,
+          "end": 49,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 47,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 51,
+          "end": 55,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 53,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 57,
+          "end": 62,
+          "codeLines": 6,
+          "parameters": 3,
+          "nesting": {
+            "line": 60,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 64,
+          "end": 68,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 66,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "LoadChildrenAsync",
+          "start": 70,
+          "end": 74,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 72,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "ForeignKeysAotSchema",
+          "line": 7,
+          "end": 11,
+          "codeLines": 5
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMetaInit",
+          "line": 7,
+          "end": 15,
+          "codeLines": 9
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 14,
+          "codeLines": 6,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Entities.0000.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "RowOrm",
+          "line": 7,
+          "end": 89,
+          "codeLines": 69
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 17,
+          "end": 25,
+          "codeLines": 9,
+          "parameters": 1,
+          "nesting": {
+            "line": 18,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 27,
+          "end": 27,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 29,
+          "end": 29,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 31,
+          "end": 34,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 32,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 36,
+          "end": 40,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 38,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 42,
+          "end": 46,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 44,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 48,
+          "end": 52,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 50,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 54,
+          "end": 58,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 56,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 60,
+          "end": 64,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 62,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 66,
+          "end": 70,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 68,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 72,
+          "end": 76,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 74,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 78,
+          "end": 82,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 80,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "LoadParentAsync",
+          "start": 84,
+          "end": 88,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 86,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Entities.0001.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "rowOrm",
+          "line": 7,
+          "end": 66,
+          "codeLines": 49
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 14,
+          "end": 20,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 15,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 22,
+          "end": 22,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 24,
+          "end": 24,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 26,
+          "end": 29,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 27,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 31,
+          "end": 35,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 37,
+          "end": 41,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 39,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 43,
+          "end": 47,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 49,
+          "end": 53,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 55,
+          "end": 59,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 61,
+          "end": 65,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 63,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Entities.0002.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "FkCaseHintProbeSchema",
+          "line": 7,
+          "end": 11,
+          "codeLines": 5
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Entities.0003.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMetaInit",
+          "line": 7,
+          "end": 15,
+          "codeLines": 9
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 14,
+          "codeLines": 6,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.MigrationRegistry.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMigrationsInit",
+          "line": 7,
+          "end": 14,
+          "codeLines": 8
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 13,
+          "codeLines": 5,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Migrations.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "FkCaseHintProbeMigrations",
+          "line": 7,
+          "end": 11,
+          "codeLines": 5
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Entities.0000.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "RowOrm",
+          "line": 7,
+          "end": 89,
+          "codeLines": 69
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 17,
+          "end": 25,
+          "codeLines": 9,
+          "parameters": 1,
+          "nesting": {
+            "line": 18,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 27,
+          "end": 27,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 29,
+          "end": 29,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 31,
+          "end": 34,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 32,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 36,
+          "end": 40,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 38,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 42,
+          "end": 46,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 44,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 48,
+          "end": 52,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 50,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 54,
+          "end": 58,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 56,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 60,
+          "end": 64,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 62,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 66,
+          "end": 70,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 68,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "UpdateAsync",
+          "start": 72,
+          "end": 76,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 74,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 78,
+          "end": 82,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 80,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "LoadParentAsync",
+          "start": 84,
+          "end": 88,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 86,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Entities.0001.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "rowOrm",
+          "line": 7,
+          "end": 66,
+          "codeLines": 49
+        }
+      ],
+      "methods": [
+        {
+          "name": "Map",
+          "start": 14,
+          "end": 20,
+          "codeLines": 7,
+          "parameters": 1,
+          "nesting": {
+            "line": 15,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Values",
+          "start": 22,
+          "end": 22,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Column",
+          "start": 24,
+          "end": 24,
+          "codeLines": 1,
+          "parameters": 1,
+          "nesting": null,
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "Query",
+          "start": 26,
+          "end": 29,
+          "codeLines": 4,
+          "parameters": 1,
+          "nesting": {
+            "line": 27,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 31,
+          "end": 35,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 33,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 37,
+          "end": 41,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 39,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "InsertAsync",
+          "start": 43,
+          "end": 47,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 45,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 49,
+          "end": 53,
+          "codeLines": 5,
+          "parameters": 2,
+          "nesting": {
+            "line": 51,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "GetAsync",
+          "start": 55,
+          "end": 59,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 57,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        },
+        {
+          "name": "DeleteAsync",
+          "start": 61,
+          "end": 65,
+          "codeLines": 5,
+          "parameters": 3,
+          "nesting": {
+            "line": 63,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Entities.0002.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "FkCaseHintProbeSchema",
+          "line": 7,
+          "end": 11,
+          "codeLines": 5
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Entities.0003.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMetaInit",
+          "line": 7,
+          "end": 15,
+          "codeLines": 9
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 14,
+          "codeLines": 6,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.MigrationRegistry.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "OrmMigrationsInit",
+          "line": 7,
+          "end": 14,
+          "codeLines": 8
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "start": 9,
+          "end": 13,
+          "codeLines": 5,
+          "parameters": 0,
+          "nesting": {
+            "line": 11,
+            "depth": 0
+          },
+          "complexity": 1,
+          "points": []
+        }
+      ],
+      "longLines": []
+    },
+    {
+      "file": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Migrations.g.cs",
+      "types": [
+        {
+          "kind": "class",
+          "name": "FkCaseHintProbeMigrations",
+          "line": 7,
+          "end": 11,
+          "codeLines": 5
+        }
+      ],
+      "methods": [],
+      "longLines": []
+    }
+  ]
+}

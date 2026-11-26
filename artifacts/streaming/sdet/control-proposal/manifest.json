@@ -1,0 +1,51 @@
+{
+  "status": "UNAPPLIED / UNAPPROVED; proposal only; existing controls untouched",
+  "generated": "2026-11-26T04:28:33.374441+00:00",
+  "currentHead": "a298dc6951af148f7a5491376e0d4ad0624b1f14",
+  "sourceTree": "a0e928bb2fff240558d8c56334aa53a10b4e1270",
+  "files": [
+    {
+      "path": "tests/Tests/SoftDelete/Reads/RootReadPath.cs",
+      "baseSha256": "043a70db731a6e32d2e9292334faaf9e4b85f90f53a9276d881ceb7eaeaf4f96",
+      "proposedSha256": "ed944a9fa098219583962525e005977a28a4e8141ebef523b13b98cefef000e2"
+    },
+    {
+      "path": "tests/Tests/QueryIdentifierSurfaceTests.cs",
+      "baseSha256": "bc9a4ce174f8f65ae3574b1fe5fc9401052e2136724532d58ccf3c7435e54037",
+      "proposedSha256": "e3be0c339690bdf0c4029222516644dc4e6450d6309eb61bed91b7269e83d4f5"
+    },
+    {
+      "path": "tests/Tests/QueryTerminalState/TerminalCensus.cs",
+      "baseSha256": "c09a4e6aa775dc83b8e6c4ac21082eabb825c77a488eb19b3be36c8906cc4a36",
+      "proposedSha256": "93dd7d9f94078b082dd800412492dc89ed582bd0715ffdd9cbb37d1b4a9791f6"
+    },
+    {
+      "path": "tests/Tests/Corpus/Support/CorpusSurface.cs",
+      "baseSha256": "872b700492f7567cb5750ecc30ba73873378de5cffbad40b6a8bb241cff823f3",
+      "proposedSha256": "df809f86d4bcdc7535e5672475f97c0d336b3c5d368c63215c9317339b7fd33b"
+    },
+    {
+      "path": "tests/Tests/Corpus/INDEX.md",
+      "baseSha256": "495036d563f7171073bc456f0fe4e31dccae020dde8e6926365bb702888f13ac",
+      "proposedSha256": "1efd68f28648dda30f33d2c5a3878bdfcc36ab7d63b9a5d8fc43fbbd30b4c527"
+    }
+  ],
+  "fiveObligations": [
+    "SoftDeleteRootReadCensus: execute all four streams, live and IncludingDeleted",
+    "QueryIdentifierSurface: typed CancellationToken, no string allowance widened",
+    "TerminalCensus: consume all four to clean EOF, existing assertions preserved",
+    "CorpusSurface: four public captures and four internal getters with explicit executed rationale",
+    "CorpusINDEX: derived Query116/95/21 and total242/200/42 plus eight exclusions"
+  ],
+  "limits": [
+    "No existing source/control/golden applied or regenerated",
+    "Proposal not compiled or approved; application needs rightful writer claim",
+    "Old stream row-lock census remains its original four terminals; streaming lock prerequisite independently executed",
+    "Corpus SQL goldens unchanged; exclusions classify shared compiler and non-SQL lifecycle, not behavioral exemption"
+  ],
+  "executedWitnesses": [
+    "SdetSoftReadCensusTests eight real SQLite cases",
+    "SdetProviderTests Stream_terminals_do_not_write_the_query eight actual-provider cases",
+    "Independent scoped provider fixtures and retained typed Completion"
+  ]
+}

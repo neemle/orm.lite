@@ -1,0 +1,5 @@
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/current-contract-integration/build/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/current-contract-integration/results/affected-after.trx
+
+Passed!  - Failed:     0, Passed:   102, Skipped:     0, Total:   102, Duration: 26 s - Neemle.OrmLite.Tests.dll (net10.0)

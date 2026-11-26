@@ -1,0 +1,164 @@
+[
+  {
+    "unit": "generator-corpus-entities:EverythingOrm",
+    "classification": "PREEXISTING OUTSIDE CHANGED MAPPING; FULL MAP TEXT PRESERVED",
+    "beforeFile": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+    "before": {
+      "name": "Map",
+      "start": 503,
+      "end": 549,
+      "codeLines": 47,
+      "parameters": 1,
+      "nesting": {
+        "line": 504,
+        "depth": 0
+      },
+      "complexity": 8,
+      "points": [
+        {
+          "kind": "ConditionalExpression",
+          "line": 528
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 530
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 532
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 538
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 540
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 542
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 544
+        }
+      ]
+    },
+    "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+    "after": {
+      "name": "Map",
+      "start": 29,
+      "end": 75,
+      "codeLines": 47,
+      "parameters": 1,
+      "nesting": {
+        "line": 30,
+        "depth": 0
+      },
+      "complexity": 8,
+      "points": [
+        {
+          "kind": "ConditionalExpression",
+          "line": 54
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 56
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 58
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 64
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 66
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 68
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 70
+        }
+      ]
+    },
+    "longLines": [
+      {
+        "line": 68,
+        "length": 146
+      }
+    ],
+    "issues": [
+      "method length",
+      "line width"
+    ]
+  },
+  {
+    "unit": "generator-golden-fixtures:GoldenBookOrm",
+    "classification": "PREEXISTING OUTSIDE CHANGED MAPPING; FULL MAP TEXT PRESERVED",
+    "beforeFile": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+    "before": {
+      "name": "Map",
+      "start": 169,
+      "end": 199,
+      "codeLines": 31,
+      "parameters": 1,
+      "nesting": {
+        "line": 170,
+        "depth": 0
+      },
+      "complexity": 4,
+      "points": [
+        {
+          "kind": "ConditionalExpression",
+          "line": 187
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 196
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 197
+        }
+      ]
+    },
+    "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+    "after": {
+      "name": "Map",
+      "start": 22,
+      "end": 52,
+      "codeLines": 31,
+      "parameters": 1,
+      "nesting": {
+        "line": 23,
+        "depth": 0
+      },
+      "complexity": 4,
+      "points": [
+        {
+          "kind": "ConditionalExpression",
+          "line": 40
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 49
+        },
+        {
+          "kind": "ConditionalExpression",
+          "line": 50
+        }
+      ]
+    },
+    "longLines": [],
+    "issues": [
+      "method length"
+    ]
+  }
+]

@@ -1,0 +1,180 @@
+[
+  {
+    "argv": [
+      "docker",
+      "network",
+      "create",
+      "--label",
+      "orml.task=ORML-110",
+      "--label",
+      "orml.actor=dev-migration-layout",
+      "orml110-migration-layout"
+    ],
+    "exitCode": 0,
+    "stdout": "11fbfe82bf064ff7229dd54ac0f3a80ac594cf2862a25946fce695fff754f335\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:00.861285+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "run",
+      "-d",
+      "--rm",
+      "--name",
+      "orml110-mig-pg",
+      "--network",
+      "11fbfe82bf064ff7229dd54ac0f3a80ac594cf2862a25946fce695fff754f335",
+      "--network-alias",
+      "mig-pg",
+      "--label",
+      "orml.task=ORML-110",
+      "--label",
+      "orml.actor=dev-migration-layout",
+      "--tmpfs",
+      "/var/lib/postgresql/data:uid=70,gid=70,mode=0700",
+      "-e",
+      "POSTGRES_HOST_AUTH_METHOD=trust",
+      "-e",
+      "POSTGRES_USER=postgres",
+      "neemle/pg.lite:19"
+    ],
+    "exitCode": 0,
+    "stdout": "e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:01.117337+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 1,
+    "stdout": "/tmp:5432 - no response\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:01.877487+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 1,
+    "stdout": "/tmp:5432 - no response\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:03.484159+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 0,
+    "stdout": "/tmp:5432 - accepting connections\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:05.080316+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "e27df4ffef21c59b29a2f69686618fa9825eb4cac4be6d98704c957698908848",
+      "/usr/local/pgsql/bin/postgres",
+      "--version"
+    ],
+    "exitCode": 0,
+    "stdout": "postgres (PostgreSQL) 19.0\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:05.614146+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "run",
+      "-d",
+      "--rm",
+      "--name",
+      "orml110-demo-pg",
+      "--network",
+      "11fbfe82bf064ff7229dd54ac0f3a80ac594cf2862a25946fce695fff754f335",
+      "--network-alias",
+      "demo-pg",
+      "--label",
+      "orml.task=ORML-110",
+      "--label",
+      "orml.actor=dev-migration-layout",
+      "--tmpfs",
+      "/var/lib/postgresql/data:uid=70,gid=70,mode=0700",
+      "-e",
+      "POSTGRES_HOST_AUTH_METHOD=trust",
+      "-e",
+      "POSTGRES_USER=postgres",
+      "neemle/pg.lite:19"
+    ],
+    "exitCode": 0,
+    "stdout": "b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:05.771193+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 1,
+    "stdout": "/tmp:5432 - no response\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:06.313383+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 1,
+    "stdout": "/tmp:5432 - no response\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:07.876220+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 0,
+    "stdout": "/tmp:5432 - accepting connections\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:09.435244+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "b8d1a759a3dc1b6bdda83c1763f7e28c3438e7a5882d47d5bea762d1358ee2b7",
+      "/usr/local/pgsql/bin/postgres",
+      "--version"
+    ],
+    "exitCode": 0,
+    "stdout": "postgres (PostgreSQL) 19.0\n",
+    "stderr": "",
+    "time": "2026-11-26T06:02:09.984331+00:00"
+  }
+]

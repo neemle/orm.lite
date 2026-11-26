@@ -1,0 +1,1297 @@
+[
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Entities.0000.g.cs",
+    "bytes": 3419,
+    "sha256": "27a8f1e0e6a096da8031d2c6e249a523ea1a8588e2eb02c25ad97899e1ec2d68"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Entities.0001.g.cs",
+    "bytes": 2319,
+    "sha256": "50c33e9c534c019da1e85656cd1af40182fab707f203110d9753340904fcccbb"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Entities.0002.g.cs",
+    "bytes": 273,
+    "sha256": "7096f48d75894ddfbc02484a56b87e6fea6486568842f52024016380b7b1e91b"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Entities.0003.g.cs",
+    "bytes": 339,
+    "sha256": "8460efa32b1f38f50603819220deac276a24b03a8af759ad758d1cb42f719e06"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 334,
+    "sha256": "bae6c854d95aa82fa2baaa338ab5817f91d901edac783df1f8811e24167b79c8"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case/OrmLite.Migrations.g.cs",
+    "bytes": 273,
+    "sha256": "12e523be351b5f2439b818bddcfa5b9e3028a0e83d3dd5fc66b3196003b49a9c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-input.json",
+    "bytes": 419,
+    "sha256": "4f09559ea0657cd1373df5b0371c2cc6fc73fcfe2fe281089d01f1ae435c500e"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-proof.json",
+    "bytes": 1241,
+    "sha256": "b024cffa054a77820bb03d6b0a92ce69ef0d0e228387b211a2ebb6d279165b39"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Entities.0000.g.cs",
+    "bytes": 3419,
+    "sha256": "27a8f1e0e6a096da8031d2c6e249a523ea1a8588e2eb02c25ad97899e1ec2d68"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Entities.0001.g.cs",
+    "bytes": 2319,
+    "sha256": "50c33e9c534c019da1e85656cd1af40182fab707f203110d9753340904fcccbb"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Entities.0002.g.cs",
+    "bytes": 273,
+    "sha256": "7096f48d75894ddfbc02484a56b87e6fea6486568842f52024016380b7b1e91b"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Entities.0003.g.cs",
+    "bytes": 339,
+    "sha256": "8460efa32b1f38f50603819220deac276a24b03a8af759ad758d1cb42f719e06"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 334,
+    "sha256": "bae6c854d95aa82fa2baaa338ab5817f91d901edac783df1f8811e24167b79c8"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/case-reversed/OrmLite.Migrations.g.cs",
+    "bytes": 273,
+    "sha256": "12e523be351b5f2439b818bddcfa5b9e3028a0e83d3dd5fc66b3196003b49a9c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/entries.json",
+    "bytes": 730274,
+    "sha256": "8027cac235637c9c2e4c22709694156c0927abe444cb8a160bee036e695e69fa"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-corpus-entities/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-corpus-entities/diagnostics.golden",
+    "bytes": 317,
+    "sha256": "94b6f5fbd4214206b19bacfb3431f435e969028278291722b48eb37636e71022"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-corpus-entities/executed-schema-contributions-and-registry.golden",
+    "bytes": 60245,
+    "sha256": "c7a0d44309d162162267a13f8ee279faa6c5714967537eac9abc88808af508e1"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-corpus-entities/migration-runner-fresh-database.golden",
+    "bytes": 38756,
+    "sha256": "59eea691daeae5212228d899a5bc725ebc628b4ba970d31b29bd2e305e311d73"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-corpus-entities/migration-runner-partially-applied.golden",
+    "bytes": 34337,
+    "sha256": "cec687e838fe41d6e9157c06f6eb4593cb62ad8c6328a090fd82f735fcda2704"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+    "bytes": 38446,
+    "sha256": "f8861a0f3ee8faa0561c862dd2c3688045246533ad32d59a56559bcc0e7d0e15"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-corpus-entities/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 332,
+    "sha256": "61f97cbbdc6bdaf2a0ef30fb5a92c3cc1e3e9c1bd3b7e155d27691d3261af96f"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+    "bytes": 768,
+    "sha256": "10d0539542df1bf942e7893d10aa90ed7405d7edaa483c843bb30796412fbf7c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-demo/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-demo/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-demo/executed-schema-contributions-and-registry.golden",
+    "bytes": 12931,
+    "sha256": "0a6ca682655317e353bb7ef12ba09548010f36fa703df74a4626c084a1bffb40"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-demo/migration-runner-fresh-database.golden",
+    "bytes": 10890,
+    "sha256": "778f674d3f489b307002177479d531304dba001ed28971e8d8abe66b68294270"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-demo/migration-runner-partially-applied.golden",
+    "bytes": 9925,
+    "sha256": "4dd8d98ba13764b222154822f887349b2bd6f45b1bff4a5a9892e196a362d7f6"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-demo/ormlite.entities.g.cs.golden",
+    "bytes": 5056,
+    "sha256": "d658ddf8ed6236b5bb56b542bad609d4dbce158c7ead79fa50a1c074b70ff24d"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-demo/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 326,
+    "sha256": "51b541df408dbf1fc46553f76c5be5637d0d9d59d0210efaa18254491871650e"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-demo/ormlite.migrations.g.cs.golden",
+    "bytes": 368,
+    "sha256": "e6b110eed9d1bd3dfb8b7bdd97a00f3e3137c55f1e073b54f5fa584dcefb55d2"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-diagnostics/diagnostics.golden",
+    "bytes": 7227,
+    "sha256": "280906383d9393abd1c483fb42a6a2a3d73b5cd7e2855eb2435257638c595ff0"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+    "bytes": 63900,
+    "sha256": "84b6b117ccf9b06e8d94ff646dd54f422a451f14bcf299f983b6458c668343b4"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-diagnostics/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 338,
+    "sha256": "53b4296b199cff2c4f46d78f7e37c286b660fe9ba76f0268f65af817edccdf9d"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-diagnostics/ormlite.migrations.g.cs.golden",
+    "bytes": 407,
+    "sha256": "4b940ad1c21f58f7aad9bfb8c57d68d099a4461a2eed854ece388128b4e720d1"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-global-namespace/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-global-namespace/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-global-namespace/executed-schema-contributions-and-registry.golden",
+    "bytes": 17423,
+    "sha256": "c32c7ae4e7f3ce2cf77b0b6dd9aa92f3082746be065a7f0e40e58ed4cfe37b74"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-global-namespace/migration-runner-fresh-database.golden",
+    "bytes": 13386,
+    "sha256": "96527bb3c54acd3fb99b3571a1e7661b337b1fd3069857d00beda81c27836155"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-global-namespace/migration-runner-partially-applied.golden",
+    "bytes": 12059,
+    "sha256": "685c6c05cc0e74ca0f048898c94d8a72289aed3ab09440d867efb3689eb48484"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-global-namespace/ormlite.entities.g.cs.golden",
+    "bytes": 8524,
+    "sha256": "d98a44a3032b345dfe72d9d2460d6a7768be380e9a10b0fd3ec6ef2d865121de"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-global-namespace/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 346,
+    "sha256": "a7f52e8e961ff2f740cd22b8df195cdb3fd5bae606d27b41aa26f5630d414e95"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-global-namespace/ormlite.migrations.g.cs.golden",
+    "bytes": 378,
+    "sha256": "11e45d76c297fff42591779d0d7f52b8cd79b2737d3d00cc2a6bb00d6ed1492c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-golden-fixtures/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-golden-fixtures/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-golden-fixtures/executed-schema-contributions-and-registry.golden",
+    "bytes": 7016,
+    "sha256": "a5c113a08a179b6e9f945c6bad8eb3408035f58d2aea913344b95118733c66e6"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-golden-fixtures/migration-runner-fresh-database.golden",
+    "bytes": 5160,
+    "sha256": "10a2e6ea0a3313a93385389b2fe140288691dfb466197b6cc3de25e781e1c8a7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-golden-fixtures/migration-runner-partially-applied.golden",
+    "bytes": 3168,
+    "sha256": "5f4ac50cd5c5340941e07fbc0823a839f5b02ee144f87ab437630f443770ea51"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+    "bytes": 17651,
+    "sha256": "89a0705bb07b50e5d94d20b853ab77121ab471362884b80cbd96a977f5da3c7f"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-golden-fixtures/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 346,
+    "sha256": "300e63659479ee2581b2221a8f9c5b92806b80f7a233810226445d402c806c2b"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+    "bytes": 277,
+    "sha256": "cc42e39aefcac8b585a7106e32e1def31d0fdfda94d72b0c483c8e33ed0d6333"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-default/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-default/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-default/executed-schema-contributions-and-registry.golden",
+    "bytes": 7154,
+    "sha256": "853e48e7574664d8fcd6dd7da0ab9511dd9ffe40013940b063eac1193c314854"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+    "bytes": 9260,
+    "sha256": "345e794cf34a67448e09c93e2a4436f6dd0c7fd362096e242e5e31be930e8bba"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-default/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 342,
+    "sha256": "25b296ace57d376be58d0a266b6078618ddc1c0471e2cc33c5327897bebee916"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+    "bytes": 273,
+    "sha256": "6cf5146fe7436b5952f8ac7c5e145c70a5d7ace2a5d05be52fb3498659377ea5"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-invalid/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-invalid/diagnostics.golden",
+    "bytes": 241,
+    "sha256": "b73de725899f439a619cf49a72e1c03d98f9cc34ed54b13da41799f45b4b4c41"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-invalid/executed-schema-contributions-and-registry.golden",
+    "bytes": 7154,
+    "sha256": "061ff2d0110a11dd8cec0713aecaea9a367a12cd3d0e58f5cc0cd4a8e88633d8"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+    "bytes": 9260,
+    "sha256": "5f5faab288b27ec578d1695acfb56f352ea10377634969d2deaa00b381807a73"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-invalid/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 342,
+    "sha256": "7971b8d2acd2d3220c8e3663b5838f9f00304f298c5a7c97dc3ac6068899fd44"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+    "bytes": 273,
+    "sha256": "df80771d8c54c0b43809d8968a9f94a9ad3f4edc653a514f92a54d8a25a25a7a"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-scope-id/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-scope-id/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-scope-id/executed-schema-contributions-and-registry.golden",
+    "bytes": 7140,
+    "sha256": "a38d1a587a9cd72bcce64ece322ac44de576aed10dc0f0105b2488a344d4dc82"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+    "bytes": 9255,
+    "sha256": "6bea49062700072434915d163a795fd1e7a2a9e6dfd69ef1a8847412f33d4923"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-scope-id/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 338,
+    "sha256": "a33ef98d84e95891e947584bb43970d4bfad2d82ce4d961ebfd618e35f0c3307"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after/corpus/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+    "bytes": 269,
+    "sha256": "ea590d040c79632579e795d2ae02cef654de9e7174a6f1162d96f6e96d71fda3"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after-capture.json",
+    "bytes": 1674,
+    "sha256": "85e8cb6a87fda92876d976587d0cb0eb2286f6db41be0686570fa533b1f91709"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/after-capture.log",
+    "bytes": 1251,
+    "sha256": "2f6a41c42cf1fd93fb437d67ddd1cc584004aa8eb5e6f78c2cb68c7574121206"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/assertions.json",
+    "bytes": 618,
+    "sha256": "7bb21f93a6f80b77cf407a94df71f228f76377a0e10857de7dfae5916fedd8cf"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/assertions.log",
+    "bytes": 400,
+    "sha256": "fb650f972847432ee12d3fe648adcaac0e5dd3a6333ccbca718bde6e8f7f8e67"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/case/OrmLite.Entities.RowOrm.g.cs",
+    "bytes": 3419,
+    "sha256": "27a8f1e0e6a096da8031d2c6e249a523ea1a8588e2eb02c25ad97899e1ec2d68"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/case/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 334,
+    "sha256": "bae6c854d95aa82fa2baaa338ab5817f91d901edac783df1f8811e24167b79c8"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/case/OrmLite.Migrations.g.cs",
+    "bytes": 265,
+    "sha256": "db7a2fed644302fc3e92eef3195fad575d8bfb2bb4fb99700e14e296a74b1512"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/case-input.json",
+    "bytes": 419,
+    "sha256": "4f09559ea0657cd1373df5b0371c2cc6fc73fcfe2fe281089d01f1ae435c500e"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/case-proof.json",
+    "bytes": 2165,
+    "sha256": "755ce4bb9e7734e7ab73bef79c350330cd4f86361e1ef00281defe18d6fb8e22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/case-reversed/OrmLite.Entities.RowOrm.g.cs",
+    "bytes": 3419,
+    "sha256": "27a8f1e0e6a096da8031d2c6e249a523ea1a8588e2eb02c25ad97899e1ec2d68"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/case-reversed/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 334,
+    "sha256": "bae6c854d95aa82fa2baaa338ab5817f91d901edac783df1f8811e24167b79c8"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/case-reversed/OrmLite.Migrations.g.cs",
+    "bytes": 265,
+    "sha256": "db7a2fed644302fc3e92eef3195fad575d8bfb2bb4fb99700e14e296a74b1512"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/entries.json",
+    "bytes": 730274,
+    "sha256": "8027cac235637c9c2e4c22709694156c0927abe444cb8a160bee036e695e69fa"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-corpus-entities/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-corpus-entities/diagnostics.golden",
+    "bytes": 317,
+    "sha256": "94b6f5fbd4214206b19bacfb3431f435e969028278291722b48eb37636e71022"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-corpus-entities/executed-schema-contributions-and-registry.golden",
+    "bytes": 60245,
+    "sha256": "c7a0d44309d162162267a13f8ee279faa6c5714967537eac9abc88808af508e1"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-corpus-entities/migration-runner-fresh-database.golden",
+    "bytes": 38756,
+    "sha256": "59eea691daeae5212228d899a5bc725ebc628b4ba970d31b29bd2e305e311d73"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-corpus-entities/migration-runner-partially-applied.golden",
+    "bytes": 34337,
+    "sha256": "cec687e838fe41d6e9157c06f6eb4593cb62ad8c6328a090fd82f735fcda2704"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+    "bytes": 38446,
+    "sha256": "f8861a0f3ee8faa0561c862dd2c3688045246533ad32d59a56559bcc0e7d0e15"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-corpus-entities/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 332,
+    "sha256": "61f97cbbdc6bdaf2a0ef30fb5a92c3cc1e3e9c1bd3b7e155d27691d3261af96f"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+    "bytes": 768,
+    "sha256": "10d0539542df1bf942e7893d10aa90ed7405d7edaa483c843bb30796412fbf7c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-demo/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-demo/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-demo/executed-schema-contributions-and-registry.golden",
+    "bytes": 12931,
+    "sha256": "0a6ca682655317e353bb7ef12ba09548010f36fa703df74a4626c084a1bffb40"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-demo/migration-runner-fresh-database.golden",
+    "bytes": 10890,
+    "sha256": "778f674d3f489b307002177479d531304dba001ed28971e8d8abe66b68294270"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-demo/migration-runner-partially-applied.golden",
+    "bytes": 9925,
+    "sha256": "4dd8d98ba13764b222154822f887349b2bd6f45b1bff4a5a9892e196a362d7f6"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-demo/ormlite.entities.g.cs.golden",
+    "bytes": 5056,
+    "sha256": "d658ddf8ed6236b5bb56b542bad609d4dbce158c7ead79fa50a1c074b70ff24d"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-demo/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 326,
+    "sha256": "51b541df408dbf1fc46553f76c5be5637d0d9d59d0210efaa18254491871650e"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-demo/ormlite.migrations.g.cs.golden",
+    "bytes": 368,
+    "sha256": "e6b110eed9d1bd3dfb8b7bdd97a00f3e3137c55f1e073b54f5fa584dcefb55d2"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-diagnostics/diagnostics.golden",
+    "bytes": 7227,
+    "sha256": "280906383d9393abd1c483fb42a6a2a3d73b5cd7e2855eb2435257638c595ff0"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+    "bytes": 63900,
+    "sha256": "84b6b117ccf9b06e8d94ff646dd54f422a451f14bcf299f983b6458c668343b4"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-diagnostics/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 338,
+    "sha256": "53b4296b199cff2c4f46d78f7e37c286b660fe9ba76f0268f65af817edccdf9d"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-diagnostics/ormlite.migrations.g.cs.golden",
+    "bytes": 407,
+    "sha256": "4b940ad1c21f58f7aad9bfb8c57d68d099a4461a2eed854ece388128b4e720d1"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-global-namespace/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-global-namespace/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-global-namespace/executed-schema-contributions-and-registry.golden",
+    "bytes": 17423,
+    "sha256": "c32c7ae4e7f3ce2cf77b0b6dd9aa92f3082746be065a7f0e40e58ed4cfe37b74"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-global-namespace/migration-runner-fresh-database.golden",
+    "bytes": 13386,
+    "sha256": "96527bb3c54acd3fb99b3571a1e7661b337b1fd3069857d00beda81c27836155"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-global-namespace/migration-runner-partially-applied.golden",
+    "bytes": 12059,
+    "sha256": "685c6c05cc0e74ca0f048898c94d8a72289aed3ab09440d867efb3689eb48484"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-global-namespace/ormlite.entities.g.cs.golden",
+    "bytes": 8524,
+    "sha256": "d98a44a3032b345dfe72d9d2460d6a7768be380e9a10b0fd3ec6ef2d865121de"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-global-namespace/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 346,
+    "sha256": "a7f52e8e961ff2f740cd22b8df195cdb3fd5bae606d27b41aa26f5630d414e95"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-global-namespace/ormlite.migrations.g.cs.golden",
+    "bytes": 378,
+    "sha256": "11e45d76c297fff42591779d0d7f52b8cd79b2737d3d00cc2a6bb00d6ed1492c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-golden-fixtures/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-golden-fixtures/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-golden-fixtures/executed-schema-contributions-and-registry.golden",
+    "bytes": 7016,
+    "sha256": "a5c113a08a179b6e9f945c6bad8eb3408035f58d2aea913344b95118733c66e6"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-golden-fixtures/migration-runner-fresh-database.golden",
+    "bytes": 5160,
+    "sha256": "10a2e6ea0a3313a93385389b2fe140288691dfb466197b6cc3de25e781e1c8a7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-golden-fixtures/migration-runner-partially-applied.golden",
+    "bytes": 3168,
+    "sha256": "5f4ac50cd5c5340941e07fbc0823a839f5b02ee144f87ab437630f443770ea51"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+    "bytes": 17651,
+    "sha256": "89a0705bb07b50e5d94d20b853ab77121ab471362884b80cbd96a977f5da3c7f"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-golden-fixtures/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 346,
+    "sha256": "300e63659479ee2581b2221a8f9c5b92806b80f7a233810226445d402c806c2b"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+    "bytes": 277,
+    "sha256": "cc42e39aefcac8b585a7106e32e1def31d0fdfda94d72b0c483c8e33ed0d6333"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-default/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-default/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-default/executed-schema-contributions-and-registry.golden",
+    "bytes": 7154,
+    "sha256": "853e48e7574664d8fcd6dd7da0ab9511dd9ffe40013940b063eac1193c314854"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+    "bytes": 9260,
+    "sha256": "345e794cf34a67448e09c93e2a4436f6dd0c7fd362096e242e5e31be930e8bba"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-default/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 342,
+    "sha256": "25b296ace57d376be58d0a266b6078618ddc1c0471e2cc33c5327897bebee916"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+    "bytes": 273,
+    "sha256": "6cf5146fe7436b5952f8ac7c5e145c70a5d7ace2a5d05be52fb3498659377ea5"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-invalid/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-invalid/diagnostics.golden",
+    "bytes": 241,
+    "sha256": "b73de725899f439a619cf49a72e1c03d98f9cc34ed54b13da41799f45b4b4c41"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-invalid/executed-schema-contributions-and-registry.golden",
+    "bytes": 7154,
+    "sha256": "061ff2d0110a11dd8cec0713aecaea9a367a12cd3d0e58f5cc0cd4a8e88633d8"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+    "bytes": 9260,
+    "sha256": "5f5faab288b27ec578d1695acfb56f352ea10377634969d2deaa00b381807a73"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-invalid/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 342,
+    "sha256": "7971b8d2acd2d3220c8e3663b5838f9f00304f298c5a7c97dc3ac6068899fd44"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+    "bytes": 273,
+    "sha256": "df80771d8c54c0b43809d8968a9f94a9ad3f4edc653a514f92a54d8a25a25a7a"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-scope-id/compiles-with-the-runtime.golden",
+    "bytes": 3,
+    "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-scope-id/diagnostics.golden",
+    "bytes": 5,
+    "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-scope-id/executed-schema-contributions-and-registry.golden",
+    "bytes": 7140,
+    "sha256": "a38d1a587a9cd72bcce64ece322ac44de576aed10dc0f0105b2488a344d4dc82"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+    "bytes": 9255,
+    "sha256": "6bea49062700072434915d163a795fd1e7a2a9e6dfd69ef1a8847412f33d4923"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-scope-id/ormlite.migrationregistry.g.cs.golden",
+    "bytes": 338,
+    "sha256": "a33ef98d84e95891e947584bb43970d4bfad2d82ce4d961ebfd618e35f0c3307"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/corpus/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+    "bytes": 269,
+    "sha256": "ea590d040c79632579e795d2ae02cef654de9e7174a6f1162d96f6e96d71fda3"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 329,
+    "sha256": "e4f6be1e91c46e6132f933eeada1d515f9fa8c8231b6811aeeec27f7466fe4a6"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+    "bytes": 1490,
+    "sha256": "804eab6ecd124b7a5dca3932f9af042ecb2901395798a48121af9bb57b609829"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.CommentOrm.g.cs",
+    "bytes": 3388,
+    "sha256": "6afb63c697c26822939c089ad5053996e75bd232cea803578ea7271f00677bac"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.DraftOrm.g.cs",
+    "bytes": 3873,
+    "sha256": "f84a9dce655bbd7f04e12351b2688bea76e5efaf585bc52c5800bd3f6354586f"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.DraftPurge.g.cs",
+    "bytes": 913,
+    "sha256": "f8dd98f0485b19406348aa80ea7a2ddcb47527cb4b6d328c0892fb407168d7b5"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeyChildOrm.g.cs",
+    "bytes": 4004,
+    "sha256": "208bfcbde7746a1f56ca71ce5a83a65154279b5075a4d73f7fc4c3bd5c14726b"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeyParentOrm.g.cs",
+    "bytes": 2675,
+    "sha256": "b2b503d66d3b3737e9a0f03ce67c5eb3c938a47aa55ade5d391de860eb88b9f1"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.LedgerAccountOrm.g.cs",
+    "bytes": 3479,
+    "sha256": "564537506c2282397bb61188586166ae2711c42b80794b73659461cfceab4fd3"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.LedgerEntryOrm.g.cs",
+    "bytes": 3828,
+    "sha256": "f3c13901e5858603ac866108363dbf12501d192dbb42a35fe512cca1b523edd7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NoteOrm.g.cs",
+    "bytes": 3855,
+    "sha256": "a48f48b8498484507bb5407f25e3278db6b3c47bb6c12a4e228e85bc92dc3ee2"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OpenWorkOrm.g.cs",
+    "bytes": 2765,
+    "sha256": "7565c37998d6964c656dbe94e7103b73dd6ed75464549180e1fd98d48c7ed791"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OpenWorkTotalsOrm.g.cs",
+    "bytes": 2436,
+    "sha256": "0818125bef64e37de8a8b2b144a0cd6c5d01548cad70a89aaf6a3720d7127952"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmLiteDemoSchema.g.cs",
+    "bytes": 558,
+    "sha256": "cef76cc0d1c0290011e79c28680478094561fad3c8e368e92fc76a5467f4bfd7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmMetaInit.g.cs",
+    "bytes": 1218,
+    "sha256": "97e5f387bb12ce155c7a5ce796f03cc2ba920b299016e8b4ceb12def9bb636f8"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ProjectOrm.g.cs",
+    "bytes": 3553,
+    "sha256": "c6fbaf41d7a2325262f500a9e668aa243dc2b5b72a90312dfe2cf2895961e7da"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.TeamOrm.g.cs",
+    "bytes": 3324,
+    "sha256": "92ae96f8983c56e27431f1cd153c84c1f191a08c4c25eaa223600812f4a55283"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/demo/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.WorkItemOrm.g.cs",
+    "bytes": 3908,
+    "sha256": "aebb2a90d61a75e0596b9bea018b7621c4db2b2494497e4d331c8b1d92acd492"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 335,
+    "sha256": "a8f022657d21e72e7d67a4d4679f8fe176d67d0dd8ceb9cb9cc527090613dea9"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+    "bytes": 266,
+    "sha256": "4524696cc781c3543fa7b565a3d3c0d45c218e38ac02b99c48435e4b5e08132c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeysAotSchema.g.cs",
+    "bytes": 291,
+    "sha256": "c73f91fce1c3b200e7ccd000586d991d5bbde527f5a544698e1aec1d22605f49"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeChildOrm.g.cs",
+    "bytes": 4043,
+    "sha256": "1f247ee4aade39f67a7bfdf5fb99bdf9f275f7f05d6f82f3a299b6cf72dac1b7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeParentOrm.g.cs",
+    "bytes": 2939,
+    "sha256": "ef27316bfe21fc91e6d1a188d8e886ad1b19ee6af4ebf8a35ade6f215ec2dd7c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmMetaInit.g.cs",
+    "bytes": 406,
+    "sha256": "8da7c76d2536641b3e1b2b5b9ec3d0dd1e4ae50c89dfe86f81e1ffa2b0c14abd"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 335,
+    "sha256": "a8f022657d21e72e7d67a4d4679f8fe176d67d0dd8ceb9cb9cc527090613dea9"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+    "bytes": 266,
+    "sha256": "4524696cc781c3543fa7b565a3d3c0d45c218e38ac02b99c48435e4b5e08132c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.ForeignKeysAotSchema.g.cs",
+    "bytes": 291,
+    "sha256": "c73f91fce1c3b200e7ccd000586d991d5bbde527f5a544698e1aec1d22605f49"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeChildOrm.g.cs",
+    "bytes": 4043,
+    "sha256": "1f247ee4aade39f67a7bfdf5fb99bdf9f275f7f05d6f82f3a299b6cf72dac1b7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.NativeParentOrm.g.cs",
+    "bytes": 2939,
+    "sha256": "ef27316bfe21fc91e6d1a188d8e886ad1b19ee6af4ebf8a35ade6f215ec2dd7c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before/native11/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.OrmMetaInit.g.cs",
+    "bytes": 406,
+    "sha256": "8da7c76d2536641b3e1b2b5b9ec3d0dd1e4ae50c89dfe86f81e1ffa2b0c14abd"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before-capture.json",
+    "bytes": 1663,
+    "sha256": "3dbe055b56d86c025424a6f2b1afbd26aa9e833be8e961265caecb7b5609b378"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before-capture.log",
+    "bytes": 2175,
+    "sha256": "8437e014f3911ec1f03c3739b16d3e4d8fddb1184284a262d4ec68b00f83111d"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/before-manifest.json",
+    "bytes": 13000,
+    "sha256": "bb8d3d133e391ce5f7db46dc4406fa3b2b65fbca7c96a6d98f059a2ca70b36b9"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/capture/Program.cs",
+    "bytes": 3724,
+    "sha256": "fa243f319a0c892ca971583124189dee526fea72bb1d95a0b2c4b5f93aba140e"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/capture/capture.csproj",
+    "bytes": 341,
+    "sha256": "bcd653010c5937555f7366bf228b23cec5968da9cb80d57864e161b691c76ccf"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/checkpoint-manifest.json",
+    "bytes": 51118,
+    "sha256": "13f363ccdc7ee12f8bf157b6d3ebc6bd2d02b241ffd9ae32eec2b1ee28ea135e"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/cleanup.json",
+    "bytes": 17764,
+    "sha256": "0b82ace2c3ff864216b2e8cb7557a1a0940638ef107fe3d1c408eca81003d4be"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/demo-postgres.json",
+    "bytes": 2730,
+    "sha256": "8ae15467c2d2b3c83582c59fe452554a8dbb854a6f2742256cc5ec71a02e4a43"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/demo-postgres.log",
+    "bytes": 3406,
+    "sha256": "f0b5404bd0cb44fb653687192e6a2362c2f0e17f3fe0c0bc9ba86169e02ed5d9"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/demo-sqlite.json",
+    "bytes": 2470,
+    "sha256": "a8fb6609ad9e20c59456479f1f39fd2fc3b8e3fca8b523bc416526c7413643e7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/demo-sqlite.log",
+    "bytes": 3377,
+    "sha256": "80ed1abb2bc6672f7d374af489b728e387d957812a0a1157689254da362d24ef"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/finalize.py",
+    "bytes": 5122,
+    "sha256": "2575d48c127ab0a727993f9d1ac1245eec90fb2af40508d025d582aeab8f1bc6"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/fixture-setup.json",
+    "bytes": 4438,
+    "sha256": "c1af85e78b07e2ae427294804b338b5cde8544bf20b7b7f7ccaabc5a40684424"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/fixture.py",
+    "bytes": 1410,
+    "sha256": "660c735c3f2163faf8af6a80465f58ebf57813730f12bab7c169e7d62af7a452"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 329,
+    "sha256": "e4f6be1e91c46e6132f933eeada1d515f9fa8c8231b6811aeeec27f7466fe4a6"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+    "bytes": 1627,
+    "sha256": "0f44a07d8d6c5158bf85dbd22b0b2b0e459a69755b49ab698b4a4fc17963810e"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+    "bytes": 4004,
+    "sha256": "208bfcbde7746a1f56ca71ce5a83a65154279b5075a4d73f7fc4c3bd5c14726b"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+    "bytes": 2675,
+    "sha256": "b2b503d66d3b3737e9a0f03ce67c5eb3c938a47aa55ade5d391de860eb88b9f1"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+    "bytes": 3479,
+    "sha256": "564537506c2282397bb61188586166ae2711c42b80794b73659461cfceab4fd3"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+    "bytes": 3828,
+    "sha256": "f3c13901e5858603ac866108363dbf12501d192dbb42a35fe512cca1b523edd7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+    "bytes": 3855,
+    "sha256": "a48f48b8498484507bb5407f25e3278db6b3c47bb6c12a4e228e85bc92dc3ee2"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+    "bytes": 3324,
+    "sha256": "92ae96f8983c56e27431f1cd153c84c1f191a08c4c25eaa223600812f4a55283"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0006.g.cs",
+    "bytes": 3553,
+    "sha256": "c6fbaf41d7a2325262f500a9e668aa243dc2b5b72a90312dfe2cf2895961e7da"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0007.g.cs",
+    "bytes": 3908,
+    "sha256": "aebb2a90d61a75e0596b9bea018b7621c4db2b2494497e4d331c8b1d92acd492"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0008.g.cs",
+    "bytes": 3388,
+    "sha256": "6afb63c697c26822939c089ad5053996e75bd232cea803578ea7271f00677bac"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0009.g.cs",
+    "bytes": 3873,
+    "sha256": "f84a9dce655bbd7f04e12351b2688bea76e5efaf585bc52c5800bd3f6354586f"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0010.g.cs",
+    "bytes": 913,
+    "sha256": "f8dd98f0485b19406348aa80ea7a2ddcb47527cb4b6d328c0892fb407168d7b5"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0011.g.cs",
+    "bytes": 2765,
+    "sha256": "7565c37998d6964c656dbe94e7103b73dd6ed75464549180e1fd98d48c7ed791"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0012.g.cs",
+    "bytes": 2436,
+    "sha256": "0818125bef64e37de8a8b2b144a0cd6c5d01548cad70a89aaf6a3720d7127952"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0013.g.cs",
+    "bytes": 558,
+    "sha256": "cef76cc0d1c0290011e79c28680478094561fad3c8e368e92fc76a5467f4bfd7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0014.g.cs",
+    "bytes": 1218,
+    "sha256": "97e5f387bb12ce155c7a5ce796f03cc2ba920b299016e8b4ceb12def9bb636f8"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated-files.txt",
+    "bytes": 5699,
+    "sha256": "7ee5d0dee4eca6d55b4692cc2b856dc572513a00c782eaa2417625e84bcac969"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated-findings.json",
+    "bytes": 3,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated-metrics-report.json",
+    "bytes": 81665,
+    "sha256": "08955d6de304bf276a5a111d1066d5f46f02959f33d73c0129f1d7ba859c3e99"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated-metrics.json",
+    "bytes": 1633,
+    "sha256": "42e9ad5842836d944c9f4fd8dd3751b84e4396d61d2e5a0e10419b4f2fe3951e"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/generated-metrics.log",
+    "bytes": 81680,
+    "sha256": "9367259d3241a8caeb4a1dcb419a30758f9bac9af34d6dca710d15d1b820219f"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 335,
+    "sha256": "a8f022657d21e72e7d67a4d4679f8fe176d67d0dd8ceb9cb9cc527090613dea9"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+    "bytes": 274,
+    "sha256": "755ec2ca7206a1ed2d6c9a3e112a09e659ffff84f447b66bb6aa662dc1e3dbb5"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+    "bytes": 4043,
+    "sha256": "1f247ee4aade39f67a7bfdf5fb99bdf9f275f7f05d6f82f3a299b6cf72dac1b7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+    "bytes": 2939,
+    "sha256": "ef27316bfe21fc91e6d1a188d8e886ad1b19ee6af4ebf8a35ade6f215ec2dd7c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+    "bytes": 291,
+    "sha256": "c73f91fce1c3b200e7ccd000586d991d5bbde527f5a544698e1aec1d22605f49"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native10-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+    "bytes": 406,
+    "sha256": "8da7c76d2536641b3e1b2b5b9ec3d0dd1e4ae50c89dfe86f81e1ffa2b0c14abd"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native10.json",
+    "bytes": 1691,
+    "sha256": "1ffe998a271100afbbb642091f43800c96f2698f08d030ea6034b323b6eb81be"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native10.log",
+    "bytes": 2249,
+    "sha256": "3f9bcecaa1e44c5d214e3e70e1804c4d320f0aec92668c7bed84dd888f59f470"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+    "bytes": 335,
+    "sha256": "a8f022657d21e72e7d67a4d4679f8fe176d67d0dd8ceb9cb9cc527090613dea9"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+    "bytes": 274,
+    "sha256": "755ec2ca7206a1ed2d6c9a3e112a09e659ffff84f447b66bb6aa662dc1e3dbb5"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+    "bytes": 4043,
+    "sha256": "1f247ee4aade39f67a7bfdf5fb99bdf9f275f7f05d6f82f3a299b6cf72dac1b7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+    "bytes": 2939,
+    "sha256": "ef27316bfe21fc91e6d1a188d8e886ad1b19ee6af4ebf8a35ade6f215ec2dd7c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+    "bytes": 291,
+    "sha256": "c73f91fce1c3b200e7ccd000586d991d5bbde527f5a544698e1aec1d22605f49"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native11-build/generated/ForeignKeysAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+    "bytes": 406,
+    "sha256": "8da7c76d2536641b3e1b2b5b9ec3d0dd1e4ae50c89dfe86f81e1ffa2b0c14abd"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native11.json",
+    "bytes": 1691,
+    "sha256": "2c5865c718698b064a17035a90734582cdc2ac4c3cc2af808513a5ad1516c132"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/native11.log",
+    "bytes": 2248,
+    "sha256": "795d15297e997474b9c9469f5b51d105a91a6f8570a87804b1457b9870198a8b"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/nuget.config",
+    "bytes": 643,
+    "sha256": "578dc3d7cefde489012ecd2c07fa33302f969e2b9da17d9a64b028e4b5c2caf5"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/owned-resources.json",
+    "bytes": 250,
+    "sha256": "368c6d4aec40229629c1dadfc626e0f72a48dee163e971efac10380e77474bca"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/pack-build.json",
+    "bytes": 2050,
+    "sha256": "6be3fca65faa69f24ac460f61bd28f638613aacd80281db876b6dfd13ff882c0"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/pack-build.log",
+    "bytes": 4789,
+    "sha256": "ec275716337dcb0c347d8d1ec773883e9e38cd268e99ef7cd09fe26a50ac8b00"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/pack-build.sh",
+    "bytes": 673,
+    "sha256": "93e9823dded6b0eb94e48c64f004123dc41cd1938ad2be2b447c8dcd7f4ad1ed"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/packed-generator-identity.json",
+    "bytes": 397,
+    "sha256": "0752927cb6f75a4f4adbb803d1ae4ca7a9bbaa5085e12f2253d8a03236da2c7a"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/proof/Program.cs",
+    "bytes": 3708,
+    "sha256": "fc51c0403f090e6b92026f96fb0344a5d7e5b05976e41671790ad5be502fe708"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/proof/proof.csproj",
+    "bytes": 636,
+    "sha256": "3c29826bb3209a737af8c3c9b9c629b8d535d9c4d8043e4bbd5d6b7315ba6836"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/provider-version.json",
+    "bytes": 1733,
+    "sha256": "e94c9ddb223b3826b4e318575430de3f8e4930f2b49d3c3e1fed5048078309ef"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/provider-version.log",
+    "bytes": 38,
+    "sha256": "3917c13426d16be06b0003f8bba0d1babd1f39b43d2a86e739d204759a154f05"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/providers10-results/providers.trx",
+    "bytes": 123617,
+    "sha256": "3ef1007691ad247fb5d838e147179677b35adab6aba0a56ae5188ac2c42b9355"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/providers10.json",
+    "bytes": 2190,
+    "sha256": "44cb2cf52ec48ba994ddef66e9c201af1dfa31196bbed0cfecca02bf1b0d8726"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/providers10.log",
+    "bytes": 562,
+    "sha256": "088002181ef6f82f0a777ca32065e5d9fdee0fed8bf15b5e6dd407597269eb8d"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/providers11-results/providers.trx",
+    "bytes": 123616,
+    "sha256": "e180cf71a45077f4e39a0c887385f7f097e8c9a2121113140d0cdbfb0aedf6ee"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/providers11.json",
+    "bytes": 2178,
+    "sha256": "98911822a667395c58c85ac8670f1f99ded8432fb2d18813fb3b7da9ceed67ff"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/providers11.log",
+    "bytes": 2800,
+    "sha256": "f8f862f7327e4a9eb5002407ee13d6412892633667e86427cd5f4bc432763fb3"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/regression-before/Program.cs",
+    "bytes": 3100,
+    "sha256": "83b7ace7d3692147a84281312032941e52d977e450c3ecd3b9a6a3ad89e834b7"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/regression-before/src/Generator/ForeignKeyLayout/ForeignKeyLineLayout.cs",
+    "bytes": 1972,
+    "sha256": "be9ecb4ba2c427f9eb7948e72e8d68992444c43dce83028053f1ca3dfd14debf"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/regression-before/src/Generator/ForeignKeyLayout/ForeignKeySourceLayout.cs",
+    "bytes": 1055,
+    "sha256": "d281ea24b52dbac7936dc74350c0c4151fbc4eea739f305cd839c097dfbcdcf4"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/regression-before/src/Generator/MigrationGenerator.cs",
+    "bytes": 8761,
+    "sha256": "69afba22effe485dba31aaafd087586d9eff0c2c2e901eebfb9461342165dfee"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/run_demo.log",
+    "bytes": 5202,
+    "sha256": "0868bcea74845231b3fdad595265c8aa279578c7e88b7911c4888b8be28c9366"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/run_demo.py",
+    "bytes": 765,
+    "sha256": "82ea6ed7ca3690d55ba0076e265b2f5a8da5ce874ce4ccd72e7ce9ad377033d1"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/run_gates.log",
+    "bytes": 7754,
+    "sha256": "3abfe5e69fa9b140817ce98d8b235f9d0acd5824505a831253d82a0865b6ea1b"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/run_gates.py",
+    "bytes": 1925,
+    "sha256": "b182a673d8765a62bd1c597cd96c6e66f9be339501318a6b9f474ac406dfb5da"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/run_proofs.log",
+    "bytes": 4906,
+    "sha256": "4c900a35763653ae60202aced475664ef99a85f1358fb1756879fa75dd66f0cb"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/run_proofs.py",
+    "bytes": 1308,
+    "sha256": "0138de389b8670363a5776dbe9a68bc9a6db5b5c3f88f6bfea7bd4d34c695810"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/source-files.txt",
+    "bytes": 208,
+    "sha256": "fd0b49277aa2c3a26cd5755014bd6c3c06c804d3498ba92d8ae61a691dfb87c6"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/source-metrics-report.json",
+    "bytes": 9459,
+    "sha256": "1c4d3d909f42ee43465b396b2a4bbf4793b57231d2f5cf6d6cca2675f6926559"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/source-metrics.json",
+    "bytes": 1654,
+    "sha256": "2530911b165ee9e035315b9b063495b9025f52b32696929ba006ac89ec8dcd05"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/source-metrics.log",
+    "bytes": 9474,
+    "sha256": "80a8e10eef540327637e275bc9645e199ae34f0021b9ac8f668990785ca67542"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/token-proof-report.json",
+    "bytes": 18044,
+    "sha256": "04236da8a2d3e592b9c7310c89ba11ed25b38f1ae46d4522d2fac5bf150d900d"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/token-proof.json",
+    "bytes": 1537,
+    "sha256": "0b89a61fe4ee30f3023da1af4fd93942c53ea6c9fb2d2cff4cc1653c31fc1004"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/token-proof.log",
+    "bytes": 18044,
+    "sha256": "04236da8a2d3e592b9c7310c89ba11ed25b38f1ae46d4522d2fac5bf150d900d"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/unit-current.json",
+    "bytes": 2047,
+    "sha256": "7076917a6e19d94379cced6a7d5ebe4f48042e486df66bbeb509b0ac12801eac"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/unit-current.log",
+    "bytes": 2797,
+    "sha256": "239666f01d5fa994263662a5c61cc9a6153f3277456b38a70eb2fc58cc4c3932"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/unit-final.json",
+    "bytes": 2041,
+    "sha256": "004afc843afde5677057b6bf4d10e0fe966eb05c5523036801d310a9b705deb0"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/unit-final.log",
+    "bytes": 2795,
+    "sha256": "24a9b6b6a0b451d75dd0a8cafa0f6e482791fdb8c225f35a3f31631f6fe3034f"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/unit.json",
+    "bytes": 2188,
+    "sha256": "49c5017e69869fec7849e09e1ee082bf6f8b64dab77a53f458c1f36100e2a28c"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/unit.log",
+    "bytes": 2789,
+    "sha256": "e6e90a0f269e265f772e9ab474ca5c7fdfe942f6656afd4134b5df9cb6eb9412"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/unit10-results/unit-current.trx",
+    "bytes": 99564,
+    "sha256": "e8f7c79f02bc07aa1a9df01e881b5ef75aafce3ac08c17e474b05b1c177043d8"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/unit10-results/unit-final.trx",
+    "bytes": 99564,
+    "sha256": "02add80a71e3c452b8ce7d4dd9f80e8b41625e59ddc70a10b1f1be423b0fcdfd"
+  },
+  {
+    "path": "artifacts/foreign-keys/dev-migration-layout/unit10-results/unit.trx",
+    "bytes": 99564,
+    "sha256": "59f7d2852ba1ef28988513b67859d38199e1c6f918513acb3012f369538e964b"
+  }
+]

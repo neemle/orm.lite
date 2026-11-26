@@ -52,7 +52,10 @@ internal static class EntityReader
             SoftDeleteReader.ReadSoftDeclaration(s, props), EntityNaming.AccessOf(s), scan.View, LocationOf(s),
             found.Issues.ToImmutableArray(), typeIssue, requiredMissing, found.LostKeys.ToImmutableArray(),
             found.Excluded.ToImmutableArray(), s.IsStatic)
-        { Full = FullNameOf(s), NameIssue = EntityNaming.NameIssueOf(s), Calculated = calculated };
+        {
+            Full = FullNameOf(s), NameIssue = EntityNaming.NameIssueOf(s),
+            ForeignKeyIntents = ForeignKeyReader.Read(s), Calculated = calculated,
+        };
     }
 
     /// <summary>Pairs each navigation with its foreign key column; one without a usable key leaves a finding.</summary>

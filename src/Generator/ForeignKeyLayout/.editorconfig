@@ -1,0 +1,3 @@
+# These helpers compose existing Generator output; the folder is an implementation grouping, not a new namespace.
+[*.cs]
+dotnet_style_namespace_match_folder = false

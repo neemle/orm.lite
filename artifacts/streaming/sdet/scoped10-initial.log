@@ -1,0 +1,29 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Runtime/Runtime.csproj (in 307 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Core/Core.csproj (in 307 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Sql/Sql.csproj (in 307 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/Generator.csproj (in 307 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Postgres/Postgres.csproj (in 307 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Sqlite/Sqlite.csproj (in 307 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Tests.csproj (in 319 ms).
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/scoped10-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/scoped10-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/scoped10-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/scoped10-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/scoped10-build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/scoped10-build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Tests -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/scoped10-build/bin/Tests/release/Neemle.OrmLite.Tests.dll
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/scoped10-build/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.92]     [UC-010] actual borrowed transaction lock support matches provider and stays caller owned [FAIL]
+  Failed [UC-010] actual borrowed transaction lock support matches provider and stays caller owned [89 ms]
+  Error Message:
+   Assert.ThrowsAny() Failure: No exception was thrown
+Expected: typeof(System.Exception)
+  Stack Trace:
+     at Neemle.OrmLite.Tests.Streaming.Sdet.SdetProviderTests`1.Locks_use_captured_transaction_and_cleanup_keeps_it_open() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Streaming/Sdet/SdetProviderTests.cs:line 83
+   at Neemle.OrmLite.Tests.Streaming.Sdet.SdetProviderTests`1.Locks_use_captured_transaction_and_cleanup_keeps_it_open() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Streaming/Sdet/SdetProviderTests.cs:line 95
+--- End of stack trace from previous location ---
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/scoped10-results/_a8b3a3443e3e_2026-11-26_04_26_35_net10.0.trx
+
+Failed!  - Failed:     1, Passed:    58, Skipped:     0, Total:    59, Duration: 676 ms - Neemle.OrmLite.Tests.dll (net10.0)

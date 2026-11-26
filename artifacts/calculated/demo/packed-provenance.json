@@ -1,0 +1,54 @@
+{
+  "frozenSourceCommit": "c9fd3ed772eadc68119dab56b66b460fa88d73f2",
+  "packages": [
+    {
+      "package": "artifacts/calculated/demo/packages/Neemle.OrmLite.0.1.0-dev.gc9fd3ed.nupkg",
+      "id": "Neemle.OrmLite",
+      "version": "0.1.0-dev.gc9fd3ed",
+      "sha256": "1c4c0c78a21721893460c3e3ef3e6382da25f35ff1215e8d88ee2ef9c97b0bb4",
+      "dlls": [
+        {
+          "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "sha256": "ede036ee1d76264b8f2a2dcce9cbd994b8774529124e1fd7d8073420c4bac8b2",
+          "cacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+          "sha256": "565b47ce25ffc0fdef72b391c20976e7317bba17e601cb41000bd63a05095f26",
+          "cacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+          "sha256": "e432704135724a090c55386a7ac185333eb23161f89cdc321a5211c99b0f1170",
+          "cacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "package": "artifacts/calculated/demo/packages/Neemle.OrmLite.Postgres.0.1.0-dev.gc9fd3ed.nupkg",
+      "id": "Neemle.OrmLite.Postgres",
+      "version": "0.1.0-dev.gc9fd3ed",
+      "sha256": "4002414b677a1586d749f40d726020fa6e39a13cc9b109a77762ccce498de6d2",
+      "dlls": [
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+          "sha256": "0f73935c9198e7a5ce37c15832939fc928ddce6ef298547add8a26d033ad315a",
+          "cacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "package": "artifacts/calculated/demo/packages/Neemle.OrmLite.Sqlite.0.1.0-dev.gc9fd3ed.nupkg",
+      "id": "Neemle.OrmLite.Sqlite",
+      "version": "0.1.0-dev.gc9fd3ed",
+      "sha256": "8ef5d86cf6bb1dcf08c3d7ddca7bf0061388805620aab7e6e787322f61dd31a9",
+      "dlls": [
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+          "sha256": "6997032a2906b3184cbc5900c28741918c5c19c875d8e01bf4caa0e5d89cc451",
+          "cacheByteEqual": true
+        }
+      ]
+    }
+  ]
+}

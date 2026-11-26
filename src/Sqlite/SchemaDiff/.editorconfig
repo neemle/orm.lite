@@ -1,0 +1,3 @@
+# Schema-diff helpers stay in the existing provider namespace beside SqliteProvider.
+[*.cs]
+dotnet_diagnostic.IDE0130.severity = none

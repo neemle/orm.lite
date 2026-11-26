@@ -1,0 +1,56 @@
+/cache/microsoft.codeanalysis.analyzers/3.3.4/microsoft.codeanalysis.analyzers.nuspec
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/dotnet/roslyn-analyzers" commit="22ea6422f85b05ca0793cc3b76375487be407f5d" />
+/cache/microsoft.codeanalysis.common/4.8.0/microsoft.codeanalysis.common.nuspec
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/dotnet/roslyn" commit="e091728607ca0fc9efca55ccfb3e59259c6b5a0a" />
+/cache/microsoft.codeanalysis.csharp/4.8.0/microsoft.codeanalysis.csharp.nuspec
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/dotnet/roslyn" commit="e091728607ca0fc9efca55ccfb3e59259c6b5a0a" />
+/cache/microsoft.data.sqlite.core/10.0.13/microsoft.data.sqlite.core.nuspec
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/dotnet/dotnet" commit="4099f83977f4d29604a9aeb971fb0a7bc1d5f699" />
+/cache/microsoft.data.sqlite/10.0.13/microsoft.data.sqlite.nuspec
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/dotnet/dotnet" commit="4099f83977f4d29604a9aeb971fb0a7bc1d5f699" />
+/cache/microsoft.extensions.dependencyinjection.abstractions/10.0.0/microsoft.extensions.dependencyinjection.abstractions.nuspec
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/dotnet/dotnet" commit="b0f34d51fccc69fd334253924abd8d6853fad7aa" />
+/cache/microsoft.extensions.logging.abstractions/10.0.0/microsoft.extensions.logging.abstractions.nuspec
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/dotnet/dotnet" commit="b0f34d51fccc69fd334253924abd8d6853fad7aa" />
+/cache/microsoft.net.illink.tasks/10.0.15/microsoft.net.illink.tasks.nuspec
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/dotnet/dotnet" commit="8e0f8ed2312954727f8919d7d1c2f78b483b4ee7" />
+/cache/neemle.csharpcomposer/0.5.0/neemle.csharpcomposer.nuspec
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <repository type="git" url="https://github.com/neemle/cs-composer.git" />
+/cache/npgsql/10.0.3/npgsql.nuspec
+    <license type="expression">PostgreSQL</license>
+    <licenseUrl>https://licenses.nuget.org/PostgreSQL</licenseUrl>
+    <repository type="git" url="https://github.com/npgsql/npgsql" commit="d3768398c17877b3a916c3c4d87e8e11698991fc" />
+/cache/sqlitepclraw.bundle_e_sqlite3/2.1.13/sqlitepclraw.bundle_e_sqlite3.nuspec
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <repository type="git" url="https://github.com/ericsink/SQLitePCL.raw" />
+/cache/sqlitepclraw.core/2.1.13/sqlitepclraw.core.nuspec
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <repository type="git" url="https://github.com/ericsink/SQLitePCL.raw" />
+/cache/sqlitepclraw.lib.e_sqlite3/2.1.13/sqlitepclraw.lib.e_sqlite3.nuspec
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <repository type="git" url="https://github.com/ericsink/SQLitePCL.raw" />
+/cache/sqlitepclraw.provider.e_sqlite3/2.1.13/sqlitepclraw.provider.e_sqlite3.nuspec
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <repository type="git" url="https://github.com/ericsink/SQLitePCL.raw" />

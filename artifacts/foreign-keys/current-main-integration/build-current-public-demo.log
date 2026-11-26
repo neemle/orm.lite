@@ -1,0 +1,9 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/examples/foreign-keys/ForeignKeysDemo.csproj (in 2.58 sec).
+  ForeignKeysDemo -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-110-foreign-keys/artifacts/foreign-keys/current-main-integration/demo-build/bin/ForeignKeysDemo/release/ForeignKeysDemo.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:26.96

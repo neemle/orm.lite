@@ -1,0 +1,219 @@
+{
+  "implementation": "39a20f28b9d93625d07647ff00ba271f4234cd3f",
+  "sourceTree": "c92d6736382f0df00086ea03a1fa6d9f56ff47b1",
+  "project": "examples/foreign-keys/ForeignKeysDemo.csproj",
+  "legs": [
+    {
+      "sdk": 10,
+      "mode": "jit",
+      "provider": "sqlite",
+      "runtime": "10.0.15",
+      "gate": "jit10-sqlite.json",
+      "result": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "resultSha256": "085e657aa20f4aabdcf28fd2282612ab382314f431d36835227075ef582c1475",
+      "logSha256": "d997ea6b26c1be28bb093f38e633647acb1c60d9a2a1351910e918e6a3ca5093",
+      "start": "2026-11-26T11:47:39.089881+00:00",
+      "finish": "2026-11-26T11:48:36.490878+00:00"
+    },
+    {
+      "sdk": 10,
+      "mode": "jit",
+      "provider": "postgres",
+      "runtime": "10.0.15",
+      "gate": "jit10-postgres.json",
+      "result": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "resultSha256": "085e657aa20f4aabdcf28fd2282612ab382314f431d36835227075ef582c1475",
+      "logSha256": "2ca251f739fb184e4a291145add61f9b7cf728c8f59a867ec8e4a3a2dc70dcdc",
+      "start": "2026-11-26T11:48:36.644130+00:00",
+      "finish": "2026-11-26T11:48:47.311177+00:00"
+    },
+    {
+      "sdk": 10,
+      "mode": "aot",
+      "provider": "sqlite",
+      "runtime": "10.0.15",
+      "gate": "native10.json",
+      "result": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "resultSha256": "085e657aa20f4aabdcf28fd2282612ab382314f431d36835227075ef582c1475",
+      "logSha256": "b91c6406a56f8fda050a7ee3532e9fd100e3b0c59bbd70f32f442021c13ae462",
+      "start": "2026-11-26T11:49:48.909056+00:00",
+      "finish": "2026-11-26T11:52:40.503199+00:00"
+    },
+    {
+      "sdk": 10,
+      "mode": "aot",
+      "provider": "postgres",
+      "runtime": "10.0.15",
+      "gate": "native10.json",
+      "result": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "resultSha256": "085e657aa20f4aabdcf28fd2282612ab382314f431d36835227075ef582c1475",
+      "logSha256": "b91c6406a56f8fda050a7ee3532e9fd100e3b0c59bbd70f32f442021c13ae462",
+      "start": "2026-11-26T11:49:48.909056+00:00",
+      "finish": "2026-11-26T11:52:40.503199+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "jit",
+      "provider": "sqlite",
+      "runtime": "11.0.0",
+      "gate": "jit11-sqlite.json",
+      "result": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "resultSha256": "085e657aa20f4aabdcf28fd2282612ab382314f431d36835227075ef582c1475",
+      "logSha256": "fb2d5079b778911f55cba52b42eb1b363baccdcc82e8d9b4917f696c56d5cec8",
+      "start": "2026-11-26T11:48:47.441607+00:00",
+      "finish": "2026-11-26T11:49:05.850113+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "jit",
+      "provider": "postgres",
+      "runtime": "11.0.0",
+      "gate": "jit11-postgres.json",
+      "result": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "resultSha256": "085e657aa20f4aabdcf28fd2282612ab382314f431d36835227075ef582c1475",
+      "logSha256": "bc8fe0f97704dd4ed1b121664d00f1c9bb4689ff819b00720d5009f06a6377f4",
+      "start": "2026-11-26T11:49:05.979738+00:00",
+      "finish": "2026-11-26T11:49:13.688525+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "aot",
+      "provider": "sqlite",
+      "runtime": "11.0.0",
+      "gate": "native11.json",
+      "result": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "resultSha256": "085e657aa20f4aabdcf28fd2282612ab382314f431d36835227075ef582c1475",
+      "logSha256": "cba4cd186d36d9825cd7f5be9ac901d6a008424ec3840228723ed665300074d6",
+      "start": "2026-11-26T11:52:40.655949+00:00",
+      "finish": "2026-11-26T11:56:52.371977+00:00"
+    },
+    {
+      "sdk": 11,
+      "mode": "aot",
+      "provider": "postgres",
+      "runtime": "11.0.0",
+      "gate": "native11.json",
+      "result": "FOREIGN-KEY-DEMO v1\nactions=Cascade=child removed|Restrict=refused|NoAction=refused\ncatalog=7 named exact owner/endpoint/action constraints; inverse deduplicated\nenforcement=enabled; observed native orphan/action enforcement\ngenerated=mixed|reference+inverse|valid+NULL updates|orphan insert+update refused|SetNull\nlinks=tag|both orphans refused|source Restrict|target Cascade removes links\nrefusals=NonNullableSetNull|DependencyCycle:zero-SQL\nrepeat=same catalog and migration history\nsoft-delete=update retained|soft delete keeps child|no implicit save|physical Cascade\nupgrade-boundary=no retrofit|history unchanged|old orphan retained\nassertions=47 PASS",
+      "resultSha256": "085e657aa20f4aabdcf28fd2282612ab382314f431d36835227075ef582c1475",
+      "logSha256": "cba4cd186d36d9825cd7f5be9ac901d6a008424ec3840228723ed665300074d6",
+      "start": "2026-11-26T11:52:40.655949+00:00",
+      "finish": "2026-11-26T11:56:52.371977+00:00"
+    }
+  ],
+  "normalization": "Shared9-case result blocks are byte-identical,47 assertions each. Only separate provider/runtime header, build logs and explicit SQLite-only ForeignKeys=False provider-option line excluded. That option line is retained and verified for both SQLiteJIT/AOT runtimes, never called enforced or silently compared with a nonexistent PG option.",
+  "packages": [
+    {
+      "file": "packages/Neemle.OrmLite.0.1.0-dev.g39a20f2.nupkg",
+      "sha256": "d80cadc88f9daf92d66b555ff83c43b833c94e9e70ff7bf9f5b6f6f6100dafff",
+      "id": "Neemle.OrmLite",
+      "version": "0.1.0-dev.g39a20f2",
+      "dlls": [
+        {
+          "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "sha256": "a452d40af0fed84c30bc0b8e5b0441d8fd87b5e27855bac1d27b39682494ea5d",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+          "sha256": "7e080ef28930729d6ebbee26bc94f0511acf0616a678e3c29f657b7ec1eb1ea2",
+          "consumedCacheByteEqual": true
+        },
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+          "sha256": "216ecb6cfce8bbeb9f2b2d930064f258b208b2f3a415d27aa77621ef012bf720",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "file": "packages/Neemle.OrmLite.Postgres.0.1.0-dev.g39a20f2.nupkg",
+      "sha256": "e3e905eb36ca515ce6e1431045bc048a8ef911c1896b39595872fe7a8f291076",
+      "id": "Neemle.OrmLite.Postgres",
+      "version": "0.1.0-dev.g39a20f2",
+      "dlls": [
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+          "sha256": "9113113401cdce6586cbd10d7e257fa0b26f007d27405c9a69663e23e92825a0",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    },
+    {
+      "file": "packages/Neemle.OrmLite.Sqlite.0.1.0-dev.g39a20f2.nupkg",
+      "sha256": "78325e7fdd6fb17b40f8449934927949080b5afeeb25f0db3006ec6904309cb8",
+      "id": "Neemle.OrmLite.Sqlite",
+      "version": "0.1.0-dev.g39a20f2",
+      "dlls": [
+        {
+          "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+          "sha256": "ffdb3232b5f4cd4457b52e2b2fcf67873955ffb5cb2fd06187041d2defc03ded",
+          "consumedCacheByteEqual": true
+        }
+      ]
+    }
+  ],
+  "binaries": [
+    {
+      "file": "native10-out/ForeignKeysDemo",
+      "bytes": 15715656,
+      "sha256": "1d7bb88e53c1fa2b4b17bc768559f4c58b8387213d8dd066642b0540fd317498"
+    },
+    {
+      "file": "native11-out/ForeignKeysDemo",
+      "bytes": 15784128,
+      "sha256": "ee29310559b29eb1bab1500f240c527f79d9202ef8f6d781ab675955c5152d73"
+    }
+  ],
+  "cleanup": [
+    {
+      "kind": "container",
+      "id": "2a4ba6215b5180d9fcbe675da080ce8960e5d48ee97c56cf0108ccf06a2c6c65",
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "2a4ba6215b5180d9fcbe675da080ce8960e5d48ee97c56cf0108ccf06a2c6c65"
+      ],
+      "exitCode": 0,
+      "stdout": "2a4ba6215b5180d9fcbe675da080ce8960e5d48ee97c56cf0108ccf06a2c6c65\n",
+      "absenceArgv": [
+        "docker",
+        "inspect",
+        "2a4ba6215b5180d9fcbe675da080ce8960e5d48ee97c56cf0108ccf06a2c6c65"
+      ],
+      "absenceExitCode": 1,
+      "absenceStderr": "error: no such object: 2a4ba6215b5180d9fcbe675da080ce8960e5d48ee97c56cf0108ccf06a2c6c65\n",
+      "finished": "2026-11-26T11:58:50.644683+00:00"
+    },
+    {
+      "kind": "network",
+      "id": "9fc218ee2a9f85e5e9725eec5a89953de8707c4ba14d7e1a443703416a539acd",
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "9fc218ee2a9f85e5e9725eec5a89953de8707c4ba14d7e1a443703416a539acd"
+      ],
+      "exitCode": 0,
+      "stdout": "9fc218ee2a9f85e5e9725eec5a89953de8707c4ba14d7e1a443703416a539acd\n",
+      "absenceArgv": [
+        "docker",
+        "network",
+        "inspect",
+        "9fc218ee2a9f85e5e9725eec5a89953de8707c4ba14d7e1a443703416a539acd"
+      ],
+      "absenceExitCode": 1,
+      "absenceStderr": "Error response from daemon: network 9fc218ee2a9f85e5e9725eec5a89953de8707c4ba14d7e1a443703416a539acd not found\n",
+      "finished": "2026-11-26T11:58:50.815437+00:00"
+    }
+  ],
+  "limits": [
+    "Only new publicdemo and currentmergedpackage functionality, not wholeitem/QA/coverage/security/style/merge/release approval.",
+    "All product source/oldtests/AOTconsumer/controls/oldartifacts readonly in this phase. No old89cases or expected-output regeneration.",
+    "No existing golden mismatch assumed or tested; inherited three main golden changes belong separate SDET disposition.",
+    "Sharedscenarios include real combined FK+CalculatedLower keyed/reference and typed linked calculated read.",
+    "Selfcycle/nonnullableSetNull refused; other unsupported shapes remain documented, no new support.",
+    "Explicit SQLiteForeignKeys=False observation is provider-specific and explicitlyunenforced.",
+    "Localcommitonly; no push untilROOT finalintegration disposition."
+  ]
+}

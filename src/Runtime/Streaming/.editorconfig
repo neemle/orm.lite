@@ -1,0 +1,5 @@
+# The authored Query streaming API belongs to Neemle.OrmLite alongside Query and its existing terminals.
+# Streaming is an implementation grouping, not a new public namespace; this follows src/.editorconfig's
+# documented folder-local convention, as used by Runtime/Diagnostics.
+[*.cs]
+dotnet_diagnostic.IDE0130.severity = none

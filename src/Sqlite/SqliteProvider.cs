@@ -4,7 +4,7 @@ using Neemle.OrmLite.Nodes;
 
 namespace Neemle.OrmLite.Sqlite;
 
-public sealed class SqliteProvider(TimeSpan busyTimeout, ISqliteTriggerRegenerator? triggers = null) : ISqlProvider
+public sealed partial class SqliteProvider(TimeSpan busyTimeout, ISqliteTriggerRegenerator? triggers = null) : ISqlProvider, ISchemaDiffProvider
 {
     public const int BindParameterLimit = 32766;
 

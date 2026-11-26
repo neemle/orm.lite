@@ -3,7 +3,8 @@ using Neemle.OrmLite.Sql;
 
 namespace Neemle.OrmLite.Sqlite;
 
-public sealed partial class SqliteSerializer(int maxBindParameters = SqliteProvider.BindParameterLimit) : StandardSerializer
+public sealed partial class SqliteSerializer(int maxBindParameters = SqliteProvider.BindParameterLimit)
+    : StandardSerializer, ISchemaDiffDdlSerializer
 {
     protected override void WritePaging(Limit? limit, Offset? offset)
     {

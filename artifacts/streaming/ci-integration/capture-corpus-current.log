@@ -1,0 +1,2 @@
+surface members neither referenced by a case nor excluded with a reason:
+  stale exclusion OrmContext.DisposeAsync/0
