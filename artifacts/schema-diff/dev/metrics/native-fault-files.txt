@@ -19,6 +19,8 @@ artifacts/schema-diff/dev/fault-proof/FaultWitness.cs
 artifacts/schema-diff/dev/fault-proof/Program.cs
 artifacts/schema-diff/dev/foundation-proof/BridgeActions.cs
 artifacts/schema-diff/dev/foundation-proof/BridgeCase.cs
+artifacts/schema-diff/dev/foundation-proof/BridgeFixture.cs
+artifacts/schema-diff/dev/foundation-proof/BridgeFreshFixtures.cs
 artifacts/schema-diff/dev/foundation-proof/BridgeProof.cs
 artifacts/schema-diff/dev/foundation-proof/BridgeSql.cs
 artifacts/schema-diff/dev/foundation-proof/Check.cs
