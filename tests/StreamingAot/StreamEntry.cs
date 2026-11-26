@@ -3,7 +3,7 @@ using Neemle.OrmLite;
 namespace Neemle.OrmLite.StreamingAot;
 
 [Table("sdet_aot_stream_entries")]
-[SoftDelete]
+[SoftDelete(Tenant = SoftDeleteAttribute.Platform)]
 public sealed class StreamEntry
 {
     [Key] public Guid Id { get; set; }

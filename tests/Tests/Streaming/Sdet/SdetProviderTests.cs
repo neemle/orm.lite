@@ -80,7 +80,7 @@ public abstract class SdetProviderTests<TFixture>(TFixture fixture) : IClassFixt
         await using var unit = await UnitOfWork.BeginAsync(fixture.Context);
         if (fixture.ProviderId == "sqlite")
         {
-            Assert.ThrowsAny<Exception>(() => StreamingProviderChecks.Query(fixture, tenant).On(unit).ForUpdate());
+            Assert.ThrowsAny<Exception>(() => StreamingProviderChecks.Query(fixture, tenant).On(unit).ForUpdate().StreamAsync());
             return;
         }
         var e = StreamingProviderChecks.Query(fixture, tenant).On(unit).ForUpdate().StreamAsync().GetAsyncEnumerator();
