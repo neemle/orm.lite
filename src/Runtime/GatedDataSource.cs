@@ -84,6 +84,37 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         }
     }
 
+    internal async Task<DbConnection> OpenMetadataConnectionAsync(CancellationToken ct)
+    {
+        var connection = LaneSource(DbLane.Current).CreateConnection();
+        try
+        {
+            await connection.OpenAsync(ct);
+            AttachMetadataLease(connection);
+            return connection;
+        }
+        catch (Exception primary)
+        {
+            var errors = new List<Exception>();
+            try { await connection.DisposeAsync(); }
+            catch (Exception cleanup) { errors.Add(cleanup); }
+            throw new SchemaDiffException(SchemaDiffError.ProviderFailure, primary, errors);
+        }
+    }
+
+    private void AttachMetadataLease(DbConnection connection)
+    {
+        if (s_leases.TryGetValue(connection, out var prior))
+        {
+            connection.StateChange -= prior.OnStateChange;
+            s_leases.Remove(connection);
+        }
+        var lease = new Lease(DbLane.CurrentScope, _diagnostics);
+        lease.Acquire();
+        s_leases.Add(connection, lease);
+        connection.StateChange += lease.OnStateChange;
+    }
+
     protected override DbCommand CreateDbCommand(string? commandText = null) =>
         new GatedCommand(this, LaneSource(DbLane.Current).CreateConnection(), commandText);
 
