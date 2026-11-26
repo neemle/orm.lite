@@ -35,7 +35,7 @@ internal sealed class SecurityConnection : DbConnection
 
     protected override DbCommand CreateDbCommand()
     {
-        var command = new SecurityCommand(Inner.CreateCommand(), this, _source);
+        var command = new SecurityCommand(Inner.CreateCommand(), _source);
         _source.Commands.Add(command);
         return command;
     }

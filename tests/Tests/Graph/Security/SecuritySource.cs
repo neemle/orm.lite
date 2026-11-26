@@ -12,9 +12,12 @@ internal sealed class SecuritySource(DbDataSource inner) : DbDataSource
     internal bool FailRelated { get; set; }
     internal TimeoutException Timeout { get; } = new("Injected awaited graph command deadline elapsed.");
 
-    protected override DbConnection CreateDbConnection()
+    protected override DbConnection CreateDbConnection() =>
+        throw new NotSupportedException("The security observer opens through the real gated source asynchronously.");
+
+    protected override async ValueTask<DbConnection> OpenDbConnectionAsync(CancellationToken cancellationToken)
     {
-        var connection = new SecurityConnection(inner.CreateConnection(), this);
+        var connection = new SecurityConnection(await inner.OpenConnectionAsync(cancellationToken), this);
         Connections.Add(connection);
         return connection;
     }

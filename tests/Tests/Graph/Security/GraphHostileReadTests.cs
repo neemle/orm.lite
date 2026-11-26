@@ -27,7 +27,7 @@ public sealed class GraphHostileReadTests
 
     private static async Task VerifyAsync(SecurityDatabase db, bool logParameters)
     {
-        Assert.Contains(SecurityModel.Credential, db.Source.ConnectionString);
+        Assert.Contains(SecurityModel.Credential, db.PrivateConfiguration);
         var request = new GraphRequest<SecurityRoot>(GraphDomain.Limits(),
             SecurityModel.Children.Then(SecurityModel.Parent), SecurityModel.Peers);
         var roots = await SecurityModel.Query(db.Context).ToGraphListAsync(request);

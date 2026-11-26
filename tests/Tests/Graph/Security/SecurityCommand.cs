@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Neemle.OrmLite.Tests.Graph.Security;
 
-internal sealed class SecurityCommand(DbCommand inner, SecurityConnection connection, SecuritySource source) : DbCommand
+internal sealed class SecurityCommand(DbCommand inner, SecuritySource source) : DbCommand
 {
     internal bool WasDisposed { get; private set; }
 
@@ -20,7 +20,7 @@ internal sealed class SecurityCommand(DbCommand inner, SecurityConnection connec
     }
     protected override DbConnection? DbConnection
     {
-        get => connection;
+        get => inner.Connection;
         set => inner.Connection = value is SecurityConnection tracked ? tracked.Inner : value;
     }
     protected override DbTransaction? DbTransaction { get => inner.Transaction; set => inner.Transaction = value; }

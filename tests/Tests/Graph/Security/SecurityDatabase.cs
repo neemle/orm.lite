@@ -13,6 +13,7 @@ internal sealed class SecurityDatabase : IAsyncDisposable
     internal SecuritySink Sink { get; } = new();
     internal SecuritySource Source { get; }
     internal OrmContext Context { get; }
+    internal string PrivateConfiguration { get; private init; } = "";
 
     private SecurityDatabase(DbDataSource raw, ISqlProvider provider, string storage, NpgsqlDataSource? admin,
         bool logParameters)
@@ -20,12 +21,12 @@ internal sealed class SecurityDatabase : IAsyncDisposable
         _raw = raw;
         _admin = admin;
         _storage = storage;
-        Source = new SecuritySource(raw);
         var options = new OrmLiteDiagnosticsOptions { Sink = Sink, StatementLevel = OrmLogLevel.Debug,
             LogParameters = logParameters, ParameterMaxLength = 256 };
         var diagnostics = OrmDiagnostics.Create(provider, options);
-        var gated = new GatedDataSource(provider, Source, Source, Source, diagnostics);
-        Context = new OrmContext(gated, provider);
+        var gated = new GatedDataSource(provider, raw, raw, raw, diagnostics);
+        Source = new SecuritySource(gated);
+        Context = new OrmContext(Source, provider);
         SecurityModel.Register();
         SecurityModel.MappedRoots = 0;
     }
@@ -37,7 +38,7 @@ internal sealed class SecurityDatabase : IAsyncDisposable
         var options = new OrmLiteOptions { Path = Path.Combine(directory, "fixture.db"), Pooling = false };
         var factory = SqliteProviderFactory.Instance;
         var result = new SecurityDatabase(factory.CreateDataSource(options, DbLaneKind.Request),
-            factory.CreateProvider(options), directory, null, logParameters);
+            factory.CreateProvider(options), directory, null, logParameters) { PrivateConfiguration = options.Path! };
         await SecuritySeed.CreateAsync(result._raw);
         return result;
     }
@@ -52,7 +53,8 @@ internal sealed class SecurityDatabase : IAsyncDisposable
         var connection = new NpgsqlConnectionStringBuilder(server)
             { Database = name, Password = SecurityModel.Credential, Pooling = false };
         var result = new SecurityDatabase(NpgsqlDataSource.Create(connection.ConnectionString),
-            PostgresProvider.Instance, name, admin, logParameters);
+            PostgresProvider.Instance, name, admin, logParameters)
+            { PrivateConfiguration = connection.ConnectionString };
         await SecuritySeed.CreateAsync(result._raw);
         return result;
     }
@@ -67,7 +69,6 @@ internal sealed class SecurityDatabase : IAsyncDisposable
     {
         await Context.DisposeAsync();
         await Context.DataSource.DisposeAsync();
-        await Source.DisposeAsync();
         await _raw.DisposeAsync();
         if (_admin is null) { Directory.Delete(_storage, true); return; }
         try
