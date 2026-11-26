@@ -106,7 +106,8 @@ public static class ProjectOrm
     public static async global::System.Threading.Tasks.Task LoadLabelsAsync(global::Neemle.OrmLite.OrmContext db, global
         ::System.Data.Common.DbConnection conn, global::CorpusEntities.Project e)
     {
-        e.Labels = await OrmExec.LoadLinkedAsync(db, conn, Descriptor, "Labels", e.Id, LabelOrm.Map);
+        e.Labels = await OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<global::CorpusEntities.
+            Label>(Descriptor, "Labels", e.Id, LabelOrm.Descriptor, LabelOrm.Map));
     }
 
     public static async global::System.Threading.Tasks.Task AddLabelAsync(global::Neemle.OrmLite.OrmContext db, global::
@@ -124,6 +125,7 @@ public static class ProjectOrm
     public static async global::System.Threading.Tasks.Task LoadMembersAsync(global::Neemle.OrmLite.OrmContext db,
         global::System.Data.Common.DbConnection conn, global::CorpusEntities.Project e)
     {
-        e.Members = await OrmExec.LoadLinkedAsync(db, conn, Descriptor, "Members", e.Id, MemberOrm.Map);
+        e.Members = await OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<global::CorpusEntities
+            .Member>(Descriptor, "Members", e.Id, MemberOrm.Descriptor, MemberOrm.Map));
     }
 }
