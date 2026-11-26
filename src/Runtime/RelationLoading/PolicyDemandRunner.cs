@@ -4,6 +4,7 @@ internal static class PolicyDemandRunner
 {
     internal static async Task<bool> RunAsync(LoadingScope scope, PolicyDemandWork demand, CancellationToken ct)
     {
+        lock (scope.Gate) scope.Attachments.Validate(demand.Entity, demand.Generation);
         using var registry = GraphModel.Enter();
         var limits = PolicyLimits.Intersect(scope.Binding.Options.Limits, demand.Attachment.Session.Limits);
         var model = RelationPolicies.Find(demand.Attachment.Binding.EntityType);

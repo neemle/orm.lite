@@ -13,11 +13,11 @@ internal static class PolicyKeyedEmitter
         foreach (var bound in new[] { false, true })
         {
             var parameter = bound ? "global::System.Data.Common.DbConnection conn, " : "";
-            var on = bound ? ".On(conn)" : "";
+            var arguments = bound ? ", conn, options, ct);" : ", options, ct);";
             yield return "public static " + Task + "<" + entity.Full + "?> GetAsync(" + Runtime
                 + "OrmContext db, " + parameter + key.Cs + " key, " + Options + ") => "
-                + Runtime + "RelationQueryExtensions.FirstOrDefaultAsync(Query(db)" + on + ".Where(e => e."
-                + Identifier(key.Name) + " == key), options, ct);";
+                + Runtime + "RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e."
+                + Identifier(key.Name) + " == key)" + arguments;
         }
     }
 }

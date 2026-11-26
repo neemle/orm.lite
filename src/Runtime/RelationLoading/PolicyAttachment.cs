@@ -12,6 +12,9 @@ internal sealed class PolicyAttachment(object entity, IGraphEntityBinding bindin
     internal bool Attached { get; set; } = true;
     internal long Generation { get; set; }
 
+    internal object? SourceKey(IGraphNavigationBinding edge) => _keys.TryGetValue(edge, out var value) ? value
+        : throw new RelationScopeException(RelationScopeError.UnsupportedNavigation, edge.Navigation);
+
     internal void Validate(object entity)
     {
         if (!Attached) throw new RelationScopeException(RelationScopeError.Detached);

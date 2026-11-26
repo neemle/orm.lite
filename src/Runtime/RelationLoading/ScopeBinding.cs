@@ -19,7 +19,7 @@ internal sealed class ScopeBinding(OrmContext context, DbConnection connection, 
         {
             if (Connection.State != ConnectionState.Open || Transaction is { } tx && tx.Connection != Connection)
                 throw new RelationScopeException(RelationScopeError.InvalidResource);
-            if (Unit is { } unit && (unit.Committed || unit.Connection != Connection || unit.Transaction != Transaction))
+            if (Unit is { } unit && (unit.Committed || unit.PolicyLifetime.IsClosed || unit.Connection != Connection || unit.Transaction != Transaction))
                 throw new RelationScopeException(RelationScopeError.InvalidResource);
         }
         catch (ObjectDisposedException) { throw new RelationScopeException(RelationScopeError.InvalidResource); }

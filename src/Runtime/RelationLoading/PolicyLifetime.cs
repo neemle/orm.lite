@@ -6,6 +6,8 @@ internal sealed class PolicyLifetime
     private readonly HashSet<LoadingScope> _scopes = [];
     private bool _closed;
 
+    internal bool IsClosed { get { lock (_gate) return _closed; } }
+
     internal void Add(LoadingScope scope)
     {
         lock (_gate)

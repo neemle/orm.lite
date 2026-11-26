@@ -5,14 +5,26 @@ namespace Neemle.OrmLite;
 
 internal static class PolicyOrigins
 {
-    private static readonly ConditionalWeakTable<DbConnection, OrmContext> Origins = new();
+    private static readonly object Gate = new();
+    private static readonly ConditionalWeakTable<DbConnection, PolicyOriginWitness> Origins = new();
 
-    internal static void Record(DbConnection connection, OrmContext context) => Origins.AddOrUpdate(connection, context);
-
-    internal static void Require(DbConnection connection, OrmContext context)
+    internal static void Record(DbConnection connection, OrmContext context, UnitOfWork? unit = null)
     {
-        if (!Origins.TryGetValue(connection, out var actual))
+        lock (Gate)
+        {
+            if (Origins.TryGetValue(connection, out var previous)) connection.StateChange -= previous.Observe;
+            var witness = new PolicyOriginWitness(context, unit);
+            Origins.AddOrUpdate(connection, witness);
+            connection.StateChange += witness.Observe;
+        }
+    }
+
+    internal static UnitOfWork? Require(DbConnection connection, OrmContext context, DbTransaction? transaction)
+    {
+        lock (Gate)
+        {
+            if (Origins.TryGetValue(connection, out var witness)) return witness.Require(context, connection, transaction);
             throw new RelationScopeException(RelationScopeError.InvalidResource);
-        if (!ReferenceEquals(actual, context)) throw new RelationScopeException(RelationScopeError.DifferentScope);
+        }
     }
 }

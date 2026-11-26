@@ -41,7 +41,8 @@ public sealed class GraphReferenceBinding<TSource, TTarget, TKey> : GraphNavigat
         GraphPlanNode node, IReadOnlyList<object> parents)
     {
         var sources = parents.Select(GraphFrontier.Typed<TSource>).ToList();
-        var memberships = sources.Select(p => (Parent: p, Key: _key(p))).ToList();
+        var memberships = sources.Select(p =>
+            (Parent: p, Key: context.SourceKey(p, this, () => _key(p)))).ToList();
         var keys = memberships.Where(p => p.Key.HasValue).Select(p => p.Key.Value).Distinct().Cast<object>().ToList();
         Require(keys.All(k => k is TKey));
         var rows = await GraphFrontier.ReadAsync(context, node, node.Target.Binding.KeyColumn, keys);

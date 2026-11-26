@@ -38,8 +38,9 @@ public sealed class UnitOfWork : IAsyncDisposable
         {
             var started = await context.Provider.BeginTransactionAsync(connection, context.DataSource, ct);
             s_open.AddOrUpdate(connection, started);
-            PolicyOrigins.Record(connection, context);
-            return new UnitOfWork(connection, started, context.Provider, TransactionTrace.Begin(connection));
+            var unit = new UnitOfWork(connection, started, context.Provider, TransactionTrace.Begin(connection));
+            PolicyOrigins.Record(connection, context, unit);
+            return unit;
         }
         catch
         {

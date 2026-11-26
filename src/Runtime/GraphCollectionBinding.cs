@@ -43,13 +43,14 @@ public sealed class GraphCollectionBinding<TSource, TTarget, TKey> : GraphNaviga
         GraphPlanNode node, IReadOnlyList<object> parents)
     {
         var sources = parents.Select(GraphFrontier.Typed<TSource>).ToList();
-        var keys = sources.Select(_sourceKey).Distinct().Cast<object>().ToList();
+        var keys = sources.Select(p => context.SourceKey(p, this, () => _sourceKey(p)))
+            .Distinct().Cast<object>().ToList();
         Require(keys.All(k => k is TKey));
         var rows = await GraphFrontier.ReadAsync(context, node, TargetColumn, keys);
         var groups = Group(rows);
         foreach (var source in sources)
         {
-            var value = groups.TryGetValue(_sourceKey(source), out var group) ? new List<TTarget>(group) : [];
+            var value = groups.TryGetValue(context.SourceKey(source, this, () => _sourceKey(source)), out var group) ? new List<TTarget>(group) : [];
             context.Assign(source, this, value, () => _assign(source, value));
         }
         return rows.Distinct(ReferenceEqualityComparer.Instance).ToList();

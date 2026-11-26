@@ -55,6 +55,8 @@ internal sealed class ScopeAttachments(LoadingScope scope)
         where T : class where TTarget : class
     {
         var edge = Edge(navigation);
+        PolicyDemand demand;
+        PolicyDemandWork work;
         lock (scope.Gate)
         {
             scope.Scheduler.Validate();
@@ -65,22 +67,20 @@ internal sealed class ScopeAttachments(LoadingScope scope)
             if (retry && (existing is null || existing.State is not
                 (RelationLoadState.Faulted or RelationLoadState.Cancelled)))
                 throw new RelationScopeException(RelationScopeError.InvalidOptions, edge.Navigation);
-            var demand = new PolicyDemand { State = RelationLoadState.Loading };
+            demand = new PolicyDemand { State = RelationLoadState.Loading };
             item.Demands[edge] = demand;
-            _ = RunDemandAsync(entity, edge, item, demand, ct);
-            return demand.Completion.Task;
+            work = new PolicyDemandWork(entity, edge, item, item.Generation);
         }
+        _ = RunDemandAsync(work, demand, ct);
+        return demand.Completion.Task;
     }
 
-    private async Task RunDemandAsync(object entity, IGraphNavigationBinding edge, PolicyAttachment item,
-        PolicyDemand demand, CancellationToken ct)
+    private async Task RunDemandAsync(PolicyDemandWork work, PolicyDemand demand, CancellationToken ct)
     {
-        var generation = item.Generation;
-        using var linked = CancellationTokenSource.CreateLinkedTokenSource(ct, item.Detached.Token);
+        using var linked = CancellationTokenSource.CreateLinkedTokenSource(ct, work.Attachment.Detached.Token);
         try
         {
-            await scope.Scheduler.RunAsync(token => PolicyDemandRunner.RunAsync(scope,
-                new PolicyDemandWork(entity, edge, item, generation), token), linked.Token);
+            await scope.Scheduler.RunAsync(token => PolicyDemandRunner.RunAsync(scope, work, token), linked.Token);
             demand.Completion.TrySetResult();
         }
         catch (OperationCanceledException error)
@@ -93,6 +93,22 @@ internal sealed class ScopeAttachments(LoadingScope scope)
             lock (scope.Gate) demand.State = RelationLoadState.Faulted;
             demand.Completion.TrySetException(error);
         }
+    }
+
+    internal object? SourceKey(object entity, IGraphNavigationBinding edge)
+    {
+        lock (scope.Gate)
+        {
+            if (!_entities.TryGetValue(entity, out var item)) return edge.CaptureSourceKey(entity);
+            item.Validate(entity);
+            return item.SourceKey(edge);
+        }
+    }
+
+    internal void ValidateKnown(object entity)
+    {
+        lock (scope.Gate)
+            if (_entities.TryGetValue(entity, out var item)) item.Validate(entity);
     }
 
     internal void Validate(object entity, long generation)

@@ -49,7 +49,7 @@ public sealed class LoadingScope : IAsyncDisposable
             throw new RelationScopeException(RelationScopeError.DifferentScope);
         var binding = new ScopeBinding(context, unitOfWork.Connection, unitOfWork.Transaction, options)
             { Unit = unitOfWork };
-        PolicyOrigins.Require(binding.Connection, context);
+        PolicyOrigins.Require(binding.Connection, context, binding.Transaction);
         binding.Validate();
         return new LoadingScope(binding);
     }
@@ -59,8 +59,8 @@ public sealed class LoadingScope : IAsyncDisposable
     {
         ValidateOptions(context, options);
         ArgumentNullException.ThrowIfNull(connection);
-        var binding = new ScopeBinding(context, connection, transaction, options);
-        PolicyOrigins.Require(binding.Connection, context);
+        var unit = PolicyOrigins.Require(connection, context, transaction);
+        var binding = new ScopeBinding(context, connection, transaction, options) { Unit = unit };
         binding.Validate();
         return new LoadingScope(binding);
     }

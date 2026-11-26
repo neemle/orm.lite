@@ -40,7 +40,8 @@ public sealed class GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey> :
         GraphPlanNode node, IReadOnlyList<object> parents)
     {
         var sources = parents.Select(GraphFrontier.Typed<TSource>).ToList();
-        var keys = sources.Select(_sourceKey).Distinct().Cast<object>().ToList();
+        var keys = sources.Select(p => context.SourceKey(p, this, () => _sourceKey(p)))
+            .Distinct().Cast<object>().ToList();
         Require(keys.All(k => k is TSourceKey));
         var links = await GraphLinkReader.ReadAsync<TSource, TSourceKey, TTargetKey>(context, node, keys);
         var targetKeys = links.Select(p => p.Target).Distinct().Cast<object>().ToList();
@@ -50,7 +51,7 @@ public sealed class GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey> :
         var groups = links.ToLookup(p => p.Source, p => p.Target);
         foreach (var source in sources)
         {
-            var value = groups[_sourceKey(source)].Distinct().Where(k => targets.ContainsKey(k))
+            var value = groups[context.SourceKey(source, this, () => _sourceKey(source))].Distinct().Where(k => targets.ContainsKey(k))
                 .Select(k => targets[k]).ToList();
             context.Assign(source, this, value, () => _assign(source, value));
         }

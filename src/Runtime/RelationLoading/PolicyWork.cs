@@ -15,7 +15,7 @@ internal sealed class PolicyWork
         _session = session;
         var binding = scope.Binding;
         Context = new GraphReadContext(binding.Context, binding.Connection, binding.Transaction, limits, ct)
-            { Publication = Stage };
+            { Publication = Stage, SourceKeys = scope.Attachments.SourceKey };
         session.Seed(Context);
         Operation = session.Operation(Context);
     }
