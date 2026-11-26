@@ -44,6 +44,9 @@ public static class CorpusSurface
     public static readonly IReadOnlyDictionary<string, string> Exclusions = new Dictionary<string, string>(StringComparer.Ordinal)
     {
         ["Query.BuildSelect/0"] = "internal tree builder beneath CompileSelect; the corpus pins the text it compiles to and QueryTreeTests pin the tree",
+        ["Query.GraphSnapshot/0"] =
+            "internal graph-state capture beneath ToGraphListAsync; emits no SQL; "
+            + "paging, masks and ownership pinned by GraphReadTests, metadata validation by GraphBindingTests",
         ["Query.BuildProject/1"] = "internal tree builder beneath CompileProject; the corpus pins the text it compiles to and QueryTreeTests pin the tree",
         ["Query.BuildProjection/0"] = "internal tree builder beneath CompileProjection; the corpus pins the text it compiles to and QueryTreeTests pin the tree",
         ["Query.BuildAggregates/0"] = "internal tree builder beneath CompileAggregates; the corpus pins the text it compiles to and QueryTreeTests pin the tree",
