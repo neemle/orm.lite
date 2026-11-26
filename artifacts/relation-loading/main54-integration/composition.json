@@ -1,0 +1,27 @@
+{
+  "headBefore": "0753aa47141b0d31e3e2e0d39af58f6d42521676",
+  "targetMain": "54abe783d1d051a0ea804a13a1b58e7474ff52f4",
+  "mergeBase": "61dffffd3c1a749098fd2aefedf42911b1d6f97e",
+  "mergeArgv": [
+    "git",
+    "-c",
+    "merge.renames=false",
+    "-c",
+    "diff.renames=false",
+    "merge",
+    "--no-commit",
+    "-Xno-renames",
+    "54abe783d1d051a0ea804a13a1b58e7474ff52f4"
+  ],
+  "actualConflicts": [
+    "src/Generator/EntityEmitter.cs",
+    "src/Generator/OrmGenerator.cs"
+  ],
+  "resolutions": [
+    "EntityEmitter retains main ForeignKeyAnalysis.Resolve and SchemaClass withholding; retains109PolicyDiagnostics and PolicySourceEmitter augment; shared main numeric SourceLayout sole formatter.",
+    "OrmGenerator.Entity retains LoadingPolicy plus main ForeignKeyIntents/ForeignKeys.",
+    "Auto-composed metadata/stream Lease constructors receive109required source=this for current positive origin.",
+    "Owned Query policy row/first fallback moved to unconstrained QueryPolicyReads; first snapshot keeps exact selection/order/offset/lock/masks/binding and clamps existing Limit to min(1,Take). No Query generic constraint or new public overload."
+  ],
+  "noProtectedOracleConflict": true
+}
