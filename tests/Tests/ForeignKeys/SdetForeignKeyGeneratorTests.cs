@@ -30,7 +30,7 @@ public sealed class SdetForeignKeyGeneratorTests
     {
         var source = ForeignKeyGeneration.Source("[ForeignKey(\"fk\", ReferentialAction.Restrict)]")
             .Replace("Guid Id", "decimal Id")
-            .Replace("Guid? ParentId", $"[Numeric({precision},{scale})] decimal? ParentId");
+            .Replace("public Guid? ParentId", $"[Numeric({precision},{scale})] public decimal? ParentId");
         var (diagnostics, generated, output) = Run(source);
         Assert.Contains(diagnostics, d => d.Id == "ORMLITE035" && d.GetMessage().Contains("IncompatibleKey"));
         Assert.DoesNotContain("class " + output.AssemblyName + "Schema", generated);
@@ -39,7 +39,7 @@ public sealed class SdetForeignKeyGeneratorTests
     [Fact(DisplayName = "[SEC][UC-003] a same-named unrelated attribute does not install foreign-key intent")]
     public void Attribute_namespace_is_part_of_the_opt_in_contract()
     {
-        var source = ForeignKeyGeneration.Source("[Other.ForeignKey]") + """
+        var source = ForeignKeyGeneration.Source("[Other.ForeignKey]") + "\n" + """
             namespace Other { public sealed class ForeignKeyAttribute : System.Attribute { } }
             """;
         var (diagnostics, _, output) = Run(source);
@@ -54,7 +54,9 @@ public sealed class SdetForeignKeyGeneratorTests
     {
         var source = ForeignKeyGeneration.Source(
                 "[Reference(\"OwnerId\")] [ForeignKey(\"fk_explicit\", ReferentialAction.NoAction)]")
-            .Replace("Guid? ParentId", "Guid? OwnerId");
+            .Replace("Guid? ParentId", "Guid? OwnerId")
+            .Replace("public System.Collections.Generic.List<Child>",
+                "[Reference(\"OwnerId\")] public System.Collections.Generic.List<Child>");
         var (diagnostics, _, output) = Run(source);
         Assert.Empty(diagnostics);
         Assert.Equal("owner_id", Assert.Single(GeneratedModel.Of(output).Descriptor("Child").ForeignKeys).LocalColumn);
