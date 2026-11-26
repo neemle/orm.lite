@@ -1,0 +1,55 @@
+[
+    {
+        "Name": "orml111-dev-1795701430370620000",
+        "Id": "5d4e72a5a54a1eb47ef2df4ff4a8ac51ddcf74e2b4c550c65397fd8d737fb3ed",
+        "Created": "2026-11-26T13:57:10.39583847Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {
+            "orml.actor": "one-to-one-dev",
+            "orml.task": "ORML-111"
+        },
+        "Containers": {
+            "b79256d0f4a4a43280918650f8196ef4f065c8e3d5194be114a92317403fb930": {
+                "Name": "angry_goodall",
+                "EndpointID": "6fe425dd2b5bd4b83a500d39594c904a6f1f8930c77966d10564de1d0c402ab5",
+                "MacAddress": "9a:74:2c:13:d2:1f",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.18.0.0/16": {
+                        "IPsInUse": 4,
+                        "DynamicIPsAvailable": 65532
+                    }
+                }
+            }
+        }
+    }
+]

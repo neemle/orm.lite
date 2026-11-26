@@ -1,0 +1,28 @@
+{
+  "gate": "Static new documentation links and sections",
+  "argv": [
+    "python3",
+    "artifacts/one-to-one/docs-current/check_links.py",
+    "08f91c96592531278a85ce9dfd4687a2024545fd"
+  ],
+  "workingDirectory": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one",
+  "baseCommit": "08f91c96592531278a85ce9dfd4687a2024545fd",
+  "startedAt": "2026-11-26T15:28:18.539765+00:00",
+  "finishedAt": "2026-11-26T15:28:18.853630+00:00",
+  "exitCode": 0,
+  "executionCount": 1,
+  "sourceTree": "f1f92d50105366c2a6f02097b785a9cda2d4d5dd",
+  "testTree": "b267a57d49550ecc96fdb8ada2ced90f89fc26dd",
+  "nativeOutputs": {
+    "stdout.log": {
+      "size": 94,
+      "sha256": "6b57f956a2d00dbac7f383f8c3a1f8683f1c39e4071bac10a81ba0190d0e06d6"
+    },
+    "stderr.log": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "behaviorProvenance": "Existing public case matrix remains at its recorded functional product and package inputs; no new execution or current-doc-commit NativeAOT claim.",
+  "limits": "No builds/tests/package/native/database/review execution; no allocated external resources."
+}

@@ -1,0 +1,7 @@
+{
+  "changedFiles": [
+    "Neemle.OrmLite.Runtime.dll"
+  ],
+  "fixedRuntimeSha256": "43c6c4cd3b1eb1f853b80cef62bb350ebf4b8cb61a7f116d3ebd7b6efba1acac",
+  "oldRuntimeSha256": "2385a2f093d973b64d047921b6a5a2651e2f371f1172f907599d83550ffebac2"
+}

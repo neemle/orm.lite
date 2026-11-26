@@ -1,0 +1,9 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/examples/one-to-one/OneToOneDemo.csproj (in 1.43 sec).
+  OneToOneDemo -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/sdet-current/jit11-build/bin/OneToOneDemo/release/OneToOneDemo.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:16.01

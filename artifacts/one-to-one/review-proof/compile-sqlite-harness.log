@@ -1,0 +1,13 @@
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Tests -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-111-one-to-one/artifacts/one-to-one/review-proof/build/bin/Tests/release/Neemle.OrmLite.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:01:37.30

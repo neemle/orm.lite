@@ -1,0 +1,16 @@
+provider=sqlite runtime=10.0.15
+ONE-TO-ONE-DEMO v1
+actions=required resolves|Cascade|SetNull|NoAction+Restrict refuse|dependent retains principal
+cancellation=cancelled before SQL|old navigation and caller connection retained
+catalog=one FK|one plain owning-FK unique|baseline-only|enabled
+declarations=malformed metadata|name collision|unmapped physical FK:zero SQL
+directions=custom FK|owner and inverse|calculated target|missing|borrowed unit
+failures=generated setter primary retained|both cleanup attempts|cleanup-only refuses publication
+guard-precedence=masked NULL|conditional|raw Map|projection|repeated Require:zero SQL
+guards=unknown null|masked|custom mapper:zero SQL
+integrity=orphan+duplicate refused|multiple NULLs|atomic reassignment|Restrict|null zero-query
+legacy=duplicate refused|old navigation retained|one statement
+provider-failure=native error propagated|old navigation and connection retained
+upgrade=no FK/unique retrofit|duplicates+orphans retained|history+reconcile hash unchanged
+visibility=filtered inverse refused:zero SQL|owner live absence:one SQL|no soft cascade
+assertions=55 PASS

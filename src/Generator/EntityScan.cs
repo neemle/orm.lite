@@ -53,6 +53,7 @@ internal sealed class EntityScan
     /// <summary>Sorts one property into the list that it belongs to, or leaves it out.</summary>
     public void Visit(IPropertySymbol m)
     {
+        if (OneToOneReader.Explicit(m)) { OneToOneReader.Visit(this, m); return; }
         if (HasAttr(m, "Neemle.OrmLite.CalculatedLowerAttribute")) { Calculated.Add(m); return; }
         if (!AccessRules.IsMappable(m)) { Found.Exclude(m, KeyLoss.ReasonOf(m), true); return; }
         if (HasAttr(m, "Neemle.OrmLite.NotAColumnAttribute")) return;
