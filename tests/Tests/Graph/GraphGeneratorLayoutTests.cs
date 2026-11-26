@@ -22,6 +22,9 @@ public sealed class GraphGeneratorLayoutTests
         Assert.NotEmpty(paths);
         foreach (var member in registrations.Cast<Microsoft.CodeAnalysis.SyntaxNode>().Concat(paths))
             foreach (var line in member.ToFullString().Split('\n'))
+            {
                 Assert.True(line.Length <= 120, "generated graph member exceeds 120 columns: " + line);
+                Assert.Equal(line.TrimEnd(' ', '\t', '\r'), line.TrimEnd('\r'));
+            }
     }
 }

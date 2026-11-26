@@ -32,13 +32,21 @@ internal static class GraphEmitter
     {
         var column = 0;
         var replacements = new Dictionary<SyntaxToken, SyntaxToken>();
+        SyntaxToken? previous = null;
         foreach (var token in member.DescendantTokens())
         {
             var next = WrapToken(token, column);
+            if (next != token && previous is { } before)
+            {
+                var trailing = replacements[before].TrailingTrivia
+                    .Where(trivia => !trivia.IsKind(SyntaxKind.WhitespaceTrivia));
+                replacements[before] = replacements[before].WithTrailingTrivia(trailing);
+            }
             var text = next.ToFullString();
             var newline = text.LastIndexOf('\n');
             column = newline < 0 ? column + text.Length : text.Length - newline - 1;
             replacements.Add(token, next);
+            previous = token;
         }
         return member.ReplaceTokens(replacements.Keys, (token, _) => replacements[token]);
     }
