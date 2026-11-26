@@ -38,9 +38,9 @@ to add, and there is no default provider.
 
 ## How to read the demo
 
-The demo prints eighteen numbered lines and then `demo ok`. Each number is a chapter. The source files are commented
-for a reader who has not seen the library: every file starts with what it shows and which library features it uses, and
-the code carries comments on the steps that are not obvious. This section says in what order to read them.
+The demo prints chapters 1 to 18, with the foreign-key chapter 16a between 16 and 17, and then `demo ok`.
+Each number is a chapter. Source comments explain the library features and steps that are not obvious.
+This section gives a reading order for someone who has not seen the library.
 
 ### Order of reading
 
@@ -51,7 +51,9 @@ the code carries comments on the steps that are not obvious. This section says i
 5. **`Tracker/Migrations.cs`**: how the schema changed, version by version, and why the versions run in that order.
 6. **`Tracker/Chapters.cs`**: chapters 8 to 16, each with a heading comment (purpose, what to notice, what it prints,
    what differs between SQLite and PostgreSQL). **`Tracker/Views.cs`** goes with chapter 14.
-7. **`Ledger.cs`** (chapter 17: exact decimals and a transfer in a unit of work) and **`SlowQueryReport.cs`** (chapter 18:
+7. **[ForeignKeys/ForeignKeyChapter.cs](ForeignKeys/ForeignKeyChapter.cs)**: chapter 16a uses an opted-in foreign key;
+   its [parent](ForeignKeys/ForeignKeyParent.cs) and [child](ForeignKeys/ForeignKeyChild.cs) show the declarations.
+8. **`Ledger.cs`** (chapter 17: exact decimals and a transfer in a unit of work) and **`SlowQueryReport.cs`** (chapter 18:
    seeing the SQL the library ran). **`ScratchDatabase.cs`** is housekeeping: it makes and removes the temporary
    SQLite file.
 
@@ -99,6 +101,9 @@ and the compose file makes a new database each time you bring it up.
   cascading foreign keys.
 - **Chapter 16** (`Tracker/Chapters.cs`): `GROUP BY`, `HAVING` and ordering by an aggregate, with typed results,
   including over a filter that is two nested subqueries.
+- **Chapter 16a** ([ForeignKeys/ForeignKeyChapter.cs](ForeignKeys/ForeignKeyChapter.cs)): a named generated FK,
+  nullable updates, orphan insert/update refusal and physical parent deletion with `SetNull`. See
+  [Generated foreign keys](#generated-foreign-keys-chapter-16a) below.
 - **Chapter 17** (`Ledger.cs`): exact decimals, a row lock and a transfer that is all or nothing.
 - **Chapter 18** (`SlowQueryReport.cs`): every statement the library ran reaches a sink you supply, with its text and
   duration, and no parameter values.
@@ -185,6 +190,7 @@ comments.
 | 14 | views: a `[View]` entity defined by a typed query, created by a migration, read like a table, replaced and dropped (`Tracker/Views.cs`) |
 | 15 | `ON DELETE CASCADE` through three foreign keys |
 | 16 | a report in database-side groups: per status with `HAVING` and ordering by the sum, per project, and per status for the teams of a region through two nested subqueries |
+| 16a | a fresh generated FK: exact catalog name/endpoints/action, nullable writes, orphan refusal and physical `SetNull` ([ForeignKeys/ForeignKeyChapter.cs](ForeignKeys/ForeignKeyChapter.cs)) |
 | 17 | a ledger of decimal accounts: a transfer in one unit of work, an overdraft refused (`Ledger.cs`) |
 | 18 | the diagnostics sink (`SlowQueryReport.cs`) prints how many statements reached it and the slowest three |
 
@@ -199,6 +205,34 @@ The tracker chapters (8 to 16) and the migration history behind them are in `Tra
 versions and `Chapters.cs` the chapters. The library does not do materialized views or a type change yet.
 `WelcomeNote` inserts its row as an object with `InsertData<T>(NoteOrm.Descriptor, NoteOrm.Values, note)`; the tracker
 seed does the same.
+
+## Generated foreign keys (chapter 16a)
+
+The [parent](ForeignKeys/ForeignKeyParent.cs) and [child](ForeignKeys/ForeignKeyChild.cs) are managed tables.
+The child's nullable `Guid? ParentId` backs its `Parent` navigation, declared with
+`[Reference(nameof(ParentId))]` and `[ForeignKey(ConstraintName, ReferentialAction.SetNull)]`.
+The explicit constraint name is `fk_demo_child_parent`: `demo_fk_children.parent_id` references
+`demo_fk_parents.id`. The [chapter](ForeignKeys/ForeignKeyChapter.cs) reads the real catalog and checks the single
+constraint's exact name, endpoints and delete action on both providers.
+
+Generated repositories insert a valid parent and child, update the child's `ParentId` to null and restore it, and read
+the values back. Orphan inserts and updates must be refused. The parent has no `[SoftDelete]` annotation, so
+`ForeignKeyParentOrm.DeleteAsync(db, parent.Id)` deletes it physically; the child survives with `ParentId` null.
+The chapter then deletes its child row. Database `SetNull` applies to a physical delete; a soft-delete update
+does not trigger an `ON DELETE` action or introduce an ORM navigation-save policy.
+
+**Check enforcement as well as the catalog.** On SQLite, the chapter reads `PRAGMA foreign_keys` and requires `1`,
+then exercises the orphan refusals and physical `SetNull`. Catalog or DDL presence alone does not establish
+enforcement. The factory enables foreign keys when the connection string omits the setting; an explicit
+`Foreign Keys=False` remains disabled and unenforced. The chapter expects enforcement and does not override that
+choice. PostgreSQL enforces the installed constraint independently of this SQLite setting.
+
+**Use a fresh database.** The opt-in adds the constraint to the generated baseline. An already recorded baseline
+is not replayed when an attribute is added: existing databases need a reviewed explicit migration and validation
+of their existing rows. The tracker's manually owned foreign keys and migrations remain unchanged, and a
+loader-only `[Reference]` declaration adds no database constraint. See the
+[relation guide](../docs/relations.md#3-choose-how-to-create-foreign-keys) and
+[upgrade guidance](../docs/migrations.md#foreign-keys-fresh-baseline-and-existing-databases).
 
 ## Soft delete, restore and history
 
@@ -217,7 +251,8 @@ through another connection cannot update the `drafts` table.
 - the PostgreSQL setting that carries the acting user is `ormlite.actor` (override with the `OrmLiteActorSetting`
   build property, a lowercase `prefix.name`)
 - table and column names are the snake_case of the class and property names
-- the SQLite database is created if it does not exist, with foreign keys enforced and a 30 second busy timeout
+- the SQLite database is created if it does not exist, with foreign keys enabled unless explicitly disabled in the
+  connection string, and a 30 second busy timeout
 
 ## Things that are worth knowing before you copy this
 
