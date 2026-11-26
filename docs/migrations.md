@@ -76,6 +76,11 @@ The runnable demo uses the same cases and assertions on PostgreSQL and SQLite, i
 - [Down and up](../tests/SchemaDiffAot/README.md#down-and-up): exercise the inverse and reapply while retaining original
   data. **Down loses values written to the new field and table after Up**; back up and restore them if they must survive.
 
+SQLite's ordinary `TEXT PRIMARY KEY` and inline `INTEGER PRIMARY KEY DESC` declarations can physically allow NULL.
+`ObserveAsync` retains that nullability, so a required nonnullable target reports `NullabilityChange`/`ManualRequired`
+instead of `NoOp`; see the [seven SQLite key-nullability cases](../tests/SchemaDiffAot/README.md#sqlite-primary-key-nullability).
+Explicit NOT NULL keys and proven INTEGER rowid aliases keep their supported nonnullable behavior.
+
 Follow the demo's [Docker JIT and NativeAOT run instructions](../tests/SchemaDiffAot/README.md#run), using a fresh owned
 SQLite file or disposable PostgreSQL 19 fixture for each invocation. The PostgreSQL demo creates its own named database;
 remove the owned fixture after verification. Comparing, generating or exercising a fixture grants no production
