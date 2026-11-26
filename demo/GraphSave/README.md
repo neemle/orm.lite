@@ -4,6 +4,22 @@ Run the `graph-save` chapter in the existing [demo project](../OrmLiteDemo.cspro
 typed save tokens over projects, teams, tasks and Guid-key tags. The normal demo remains the default when no chapter
 selector is supplied. Both providers use the same cases, models and assertions.
 
+The [entry point](GraphSaveDemo.cs), selected by [Program.cs](../Program.cs), runs every case below. See the
+[relation guide](../../docs/relations.md#7-save-an-explicit-related-graph) for the API's intent, limit and outcome contract.
+
+## Models and explicit intents
+
+[GraphSaveProject](GraphSaveProject.cs) owns a nullable team reference, a task collection and a tag link collection.
+[GraphSaveTeam](GraphSaveTeam.cs), [GraphSaveTask](GraphSaveTask.cs) and [GraphSaveTag](GraphSaveTag.cs) have
+caller-supplied Guid keys. The [fixture](GraphSaveFixture.cs) populates those objects; setting a key or navigation
+never selects a write operation.
+
+Every reached related instance needs an explicit `GraphSaveIntents.With` entry. `Insert` requests a new row,
+`Update` requires an existing row and writes the complete admitted physical payload, and `Unchanged` permits no
+entity mutation. A key's default value does not choose among them. An enabled edge to an Unchanged anchor uses an
+explicit rule, such as `Allow(GraphSaveProjectOrm.SaveRelations.Team, new(GraphSaveActions.None))` in the
+[repeat case](GraphSaveRepeatCase.cs); `GraphSavePermissions.None` by itself enables no edge.
+
 ## Default-off
 
 [GraphSaveDefaultCase](GraphSaveDefaultCase.cs) populates a reference, task collection and tag list, then saves with
@@ -65,6 +81,46 @@ Use your target RID, such as `linux-x64`, for its matching machine. For .NET 11,
 runtime. Every mode runs the same chapter; only the provider/runtime header varies. Exit zero and
 `graph-save chapter ok; scratch removed` require every case and scratch cleanup to succeed.
 
+For example, these are the .NET 11 counterparts, using its SDK and a separate native output:
+
+```sh
+ORMLITE_EXPECT_DOTNET=11 dotnet run --project demo/OrmLiteDemo.csproj -c Release -p:DemoTfm=net11.0 -- graph-save sqlite
+ORMLITE_GRAPH_POSTGRES='Host=localhost;Port=55432;Username=postgres;Database=postgres' ORMLITE_EXPECT_DOTNET=11 \
+  dotnet run --project demo/OrmLiteDemo.csproj -c Release -p:DemoTfm=net11.0 -- graph-save postgres
+dotnet publish demo/OrmLiteDemo.csproj -c Release -r linux-arm64 -p:DemoTfm=net11.0 -p:PublishAot=true -o artifacts/graph-save-native11
+ORMLITE_EXPECT_DOTNET=11 artifacts/graph-save-native11/OrmLiteDemo graph-save sqlite
+ORMLITE_GRAPH_POSTGRES='Host=localhost;Port=55432;Username=postgres;Database=postgres' ORMLITE_EXPECT_DOTNET=11 \
+  artifacts/graph-save-native11/OrmLiteDemo graph-save postgres
+```
+
+The same public cases have executed successfully in all eight combinations: JIT/NativeAOT, PostgreSQL/SQLite and
+.NET 10/11. The rollback and refusal assertions run in each combination. These commands select that same case;
+publishing alone does not execute its checks.
+
+## Limits and database work
+
+The [request helper](GraphSaveChecks.cs) constructs `GraphSaveRequest<T>` with explicit root intent and a
+`GraphSavePlan` containing related intents, permissions and all six positive finite limits:
+
+| Group | Limit | Fixture value | What counts |
+| --- | --- | --- | --- |
+| Traversal | `MaxDepth` | 3 | Relation depth, with the root at zero. |
+| Traversal | `MaxNodes` | 20 | Encountered object instances before persistent-identity deduplication. |
+| Traversal | `MaxEdges` | 20 | Examined allowed relation slots, including duplicate list entries. |
+| Work | `MaxEntityWrites` | 10 | Unique Insert/Update nodes. |
+| Work | `MaxLinkAdds` | 10 | Unique proposed link pairs. |
+| Work | `MaxStatements` | 30 | Planned entity writes, link additions and targeted anchor checks. |
+
+These are fixture budgets, not production defaults. Choose limits for your supplied graph's fan-out and work.
+The planner freezes admitted scalar values, collection membership and final FK buffers before opening the transaction;
+an exceeded limit refuses with `NotStarted`, rather than committing a truncated prefix. Shared identities are written
+once only when their intent and final buffers agree; conflicting payloads, FK ownership or mutation cycles refuse.
+
+An Unchanged relation/link anchor uses a targeted key existence check on the same transaction; it does not fetch a
+graph to discover children. Missing anchors and missing Update rows fail. Link additions deduplicate the exact pair;
+other constraint conflicts still fail the transaction. A save therefore performs bounded multiple statements, not a
+single joined write. Startup and transaction control traffic are separate from the planned-statement budget.
+
 ## Outcome and ownership boundaries
 
 This chapter requests only `Owned` execution: one library-owned connection and transaction. `CallerJoined` and bare
@@ -78,3 +134,10 @@ are sensitive programmatic diagnostics; the example prints safe case results ins
 
 Traversal is finite, explicit and limited to supplied safe auto-properties/concrete Lists. No lazy graph discovery,
 implicit upsert/delete/schema repair, hidden retry, stronger isolation or tenant/owner-policy bypass is promised.
+
+The supported save shape is a generated managed, non-view model with one supported caller-supplied scalar key;
+pure managed many-to-many links require Guid endpoint keys and the known exact pair key. Generated/composite keys,
+custom or payload-bearing joins, unsafe getters/custom collections and unsupported policy-specialized shapes refuse.
+Projected or masked inputs with known partial provenance also refuse before a transaction. Constructing or copying an
+object does not establish authorization or completeness: the host must admit the context, keys and full payload.
+Serialize caller edits during capture; later edits are not automatically reverted, tracked or reread by execution.
