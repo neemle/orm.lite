@@ -73,7 +73,8 @@ internal static class BridgeProof
             + (shape.Created ? "Create" : "Add") + "BridgeFactory";
         var artifact = SchemaDiff.Emit(report, new(shape.Prefix, "GeneratedBridge117", name));
         Directory.CreateDirectory("artifacts/schema-diff/dev/bridge-generated");
-        await File.WriteAllTextAsync("artifacts/schema-diff/dev/bridge-generated/" + name + ".cs", artifact.CSharpSource);
+        await File.WriteAllTextAsync("artifacts/schema-diff/dev/bridge-generated/" + name + ".cs",
+             artifact.CSharpSource);
         return artifact;
     }
 }
