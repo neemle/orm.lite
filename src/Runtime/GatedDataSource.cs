@@ -84,6 +84,44 @@ public sealed class GatedDataSource(ISqlProvider provider, DbDataSource request,
         }
     }
 
+    internal async Task<DbConnection> OpenMetadataConnectionAsync(CancellationToken ct)
+    {
+        var connection = LaneSource(DbLane.Current).CreateConnection();
+        try
+        {
+            DetachMetadataLease(connection);
+            await connection.OpenAsync(ct);
+            AttachMetadataLease(connection);
+            return connection;
+        }
+        catch (Exception primary)
+        {
+            var errors = new List<Exception>();
+            try { await connection.DisposeAsync(); }
+            catch (Exception cleanup) { errors.Add(cleanup); }
+            if (primary is OperationCanceledException && ct.IsCancellationRequested)
+                throw new SchemaDiffCanceledException(primary, ct, errors);
+            throw new SchemaDiffException(SchemaDiffError.ProviderFailure, primary, errors);
+        }
+    }
+
+    private static void DetachMetadataLease(DbConnection connection)
+    {
+        if (s_leases.TryGetValue(connection, out var prior))
+        {
+            connection.StateChange -= prior.OnStateChange;
+            s_leases.Remove(connection);
+        }
+    }
+
+    private void AttachMetadataLease(DbConnection connection)
+    {
+        var lease = new Lease(DbLane.CurrentScope, _diagnostics);
+        lease.Acquire();
+        s_leases.Add(connection, lease);
+        connection.StateChange += lease.OnStateChange;
+    }
+
     internal async ValueTask<DbConnection> OpenStreamConnectionAsync(CancellationToken ct)
     {
         var connection = LaneSource(DbLane.Current).CreateConnection();

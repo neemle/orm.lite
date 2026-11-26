@@ -1,0 +1,4 @@
+Void SetProvider(SQLitePCL.ISQLite3Provider)
+Void FreezeProvider(Boolean)
+System.String GetNativeLibraryName()
+handle base=System.Runtime.InteropServices.SafeHandle

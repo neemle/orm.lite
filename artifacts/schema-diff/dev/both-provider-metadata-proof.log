@@ -1,0 +1,7 @@
+POSTGRES_METADATA_PROOF_PASS profile=postgres:schema-diff-v1
+Unhandled exception. System.InvalidOperationException: SQLite stable physical inventory
+   at FoundationProof.Check.That(Boolean condition, String category) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/Check.cs:line 7
+   at FoundationProof.SqliteProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/SqliteProof.cs:line 23
+   at FoundationProof.SqliteProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/SqliteProof.cs:line 34
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/Program.cs:line 6
+   at Program.<Main>(String[] args)

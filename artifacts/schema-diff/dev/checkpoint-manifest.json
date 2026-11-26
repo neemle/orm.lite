@@ -1,0 +1,608 @@
+{
+  "producerCheckpoint": "U1\u2013U4 PARTIAL, not feature delivery or whole-item PASS",
+  "commit": "1b5be45fe098d4148f6328eaa465ca11cc346d44",
+  "sourceTree": "3f7ac7428e7c9ca5803fba41a7516c15a73974c3",
+  "testTree": "1f2da00d26b9a06a0b637a2e64ec5be940e3739c",
+  "base": "b510d801b48881bde5501c8771a4294b15997c34",
+  "generated": "2026-11-26T05:44:48.314125+00:00",
+  "changedInputHashes": [
+    {
+      "path": "artifacts/schema-diff/dev/actual-compare-proof.json",
+      "sha256": "771dc2e98d6c66bded2f2aeca313aa656a521f6342518b20a0ba1415f554bb9d"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/actual-compare-proof.log",
+      "sha256": "d7e9e4d047921abb9ab369e84bded7caed52a47ae20ffd2cfc7cb7953d9bef3b"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/both-provider-metadata-proof-native.json",
+      "sha256": "5c77f2781e00986d71868ffb285c0977a5cab9571ee13b8c0d35404ef864904b"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/both-provider-metadata-proof-native.log",
+      "sha256": "977ba3689b3d01b46ca54290f562f1edf4282031ca8173d28d0a62a22eadb5e2"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/both-provider-metadata-proof.json",
+      "sha256": "c77584fdb1dd6ad66bf42faff8420bdeab279c1e5337c1f89fdcd6bd3127f450"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/both-provider-metadata-proof.log",
+      "sha256": "a893f5a76051d7f9f4db5fd2fa929fd6677e11b71873588e6de9c204fc315da8"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/checkpoint-metrics-analysis.json",
+      "sha256": "65e04431f224127de088eb286b7f1f1a6517f339f95d78748e1b8e395d835c98"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/checkpoint-metrics.json",
+      "sha256": "f628e871d0158edb9727c76038b370a00cef14a191ceb25df3099ac4be0913cc"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/checkpoint-metrics.log",
+      "sha256": "268ce18c53febcd3e2ec7d0899730b8761b09c9dc2447a0cd437a0bb0da2819d"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/checkpoint-sdk10.json",
+      "sha256": "f6919a7524c408a974e10cf1df29f2a4ecb7e7f53b37b74132be270380a41a11"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/checkpoint-sdk10.log",
+      "sha256": "f076ee53c9200bf3e5a8b5716909fec2e476438a9ed5f6c24f19012ecdab507a"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/checkpoint-sdk11.json",
+      "sha256": "53aa2fb2e1983f426c6b5ffd1425f903ae335558fc3f5fd2061211d33375bf06"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/checkpoint-sdk11.log",
+      "sha256": "a16cc67a57df1365e91b66fcbfd19b2e942cb1e40e4c625d8f7c77fd7818392e"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/comparer-producer-build.json",
+      "sha256": "3c52a4efbdea55e36b577103a362bcd78ffac66e9c1273fb21a92be2dc000284"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/comparer-producer-build.log",
+      "sha256": "92951b88b5329afac2e7b258a8605c4025fb65b72dc2a83aa07a0c98550d3f26"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/create_fixture.py",
+      "sha256": "2bbb32cfd7bd734edc176c145aa2d2314f08e8e90dc23739608ac793de914697"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-build-47b49bd.json",
+      "sha256": "09dc8c99453e63a66060e340b6ea73d1601b8d57af7fd65ab5827431b2f1a250"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-build-47b49bd.log",
+      "sha256": "3bc58b7b46cf321850d0c7224ff21c17753d7a7aa2f9e54865f3039820e73223"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof-current.json",
+      "sha256": "70ad48f6784dfabb8f2580c1455265e69277cd73bfa3750a05ce1229dec42f35"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof-current.log",
+      "sha256": "5ff6df374c6bcaf8a70871d90842c64f7b01db22ae2191aa8b22a39974c4d6e5"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/Check.cs",
+      "sha256": "2b27a3e3e846abc2dd77462c00a9c5b6eb424b17c5f635d48e800699712390e8"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/FoundationProof.csproj",
+      "sha256": "08e80c7ae50197e7a4799f750963a522a477bdaf68c180e5a03966fe691eefb6"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/MetadataProof.cs",
+      "sha256": "c376e83bc395a9b015aed9f5092235fd71612a41cccf5c11fc1ef8e535f1ea7c"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/NativeApiProof.cs",
+      "sha256": "e76a67552ba0e6b4ab20e8c75a183b8bd7ab82ac2a86bcacc2195721cdfd576f"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/ObservationProof.cs",
+      "sha256": "ce65a3b074f6d9f9abb23a6085dda86d6490f2fc84257eda44a186b781e4b0d0"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs",
+      "sha256": "0fc0f48790e75540b079d9d7d19af4c81f01deb65c60cd4ef0cbfbb22d12f3d8"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/Probe.cs",
+      "sha256": "574b18dcb7cdd0319a2f742c7ccb776a3d4c92af122fb9adf1af3eabf537c9ef"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/ProbeConnection.cs",
+      "sha256": "5b6461d4524ef5c77cc94272acaba37e3bf2e43970c4b875928fac29ffa972dc"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/ProbeProvider.cs",
+      "sha256": "4423cc2aea8dc194bfae427d5743de385016724566fed7b7fd91626d8b5451e4"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/ProbeSource.cs",
+      "sha256": "758e8f746d28eb2f56ff8f11fd77d6dca7d5a93791d73f9f9391372268fb79fc"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/Program.cs",
+      "sha256": "e2f31832e70c44543854496ea561077d9a1b182c2e0f09ee28c462279f1e6892"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/SqliteProof.cs",
+      "sha256": "dae650b09b6f3863b347dc8720a38827f636847fb78a1114c206f964eff344a9"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/foundation-proof/TargetProof.cs",
+      "sha256": "6f6ea0e2e96f36cd28cb6c755d0f671edace21cacfe352efce9baa8f20ce036a"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/initial-authoring-command.txt",
+      "sha256": "1b9e1eabc316f939e8884b2b60c5a1238ff7daf47b7ce20dd2bd3fb9ca7fdd19"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/metrics/CodeCounts.cs",
+      "sha256": "6f283f3d8f001470766f4867ae26e6616b989e755ef4023eade3cfd27ac328c7"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/metrics/Complexity.cs",
+      "sha256": "a9a4b5776564e2aa3f08d07b601ee9954ae8786924703c1ea0b4e3808c72c713"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/metrics/MetricScan.cs",
+      "sha256": "ba2be58915acaab6639b8b41949d1bcd9f252273fe39c6819b70721bb2e6d97e"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/metrics/Metrics.csproj",
+      "sha256": "c3a08bc433dedcdd6bf9759674d7b0b50aac2333617a01f5d881edeb61a270c9"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/metrics/Program.cs",
+      "sha256": "8e54f804ff1b6849ae15d783dbd4bb844b1b4349dc9e0230cfbe0e16fa0d6de1"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/metrics/files.txt",
+      "sha256": "307fddacc59bdce852954b8091b89319468c85b53cf2c27093a7da74e9e7ad36"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/native-sqlite-cleanup-diagnostic.json",
+      "sha256": "63993af1b4b38bfbb2244cabc038f18e3a068b3c2e8dfdbb4176bb081b372508"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/native-sqlite-cleanup-diagnostic.log",
+      "sha256": "99dd86f45bbddb09d9f1e235910bc08959b98a37364715d60627661ebe3f7df7"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/nullable-column-compare-proof-settled.json",
+      "sha256": "e654a50cb0e27d4fd89f1c66f2fe529cfc26c7494e18e61b285a9920a5d1048c"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/nullable-column-compare-proof-settled.log",
+      "sha256": "f076ee53c9200bf3e5a8b5716909fec2e476438a9ed5f6c24f19012ecdab507a"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/nullable-column-compare-proof.json",
+      "sha256": "fb602796ec04342745bb79fc9f3493d6d43fedc3eaaeabf9dec3b836c8276e27"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/nullable-column-compare-proof.log",
+      "sha256": "80b4e3401666db38b98b2782b529033612c17a34dd19041e398e1c0f5be1eb17"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/nullable-column-plan-diagnostic.json",
+      "sha256": "d14ad949fe7a9c60dde3998650508101cc088bc7d85d1c3fcd6aae28675b6a65"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/nullable-column-plan-diagnostic.log",
+      "sha256": "177b398cf8acd11946973dd08ce16240c191634c28c34d47ba72da67a6840aff"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/owned-fixture.json",
+      "sha256": "83d8158bd4ff5e83ec8a6b2abc93d440ae001cc53ed34046e94296232483ec84"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-metadata-proof-corrected.json",
+      "sha256": "45ecef6c8f8040e135527716c749ee8156e2260c3e5290e151d9cd4a7cff9794"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-metadata-proof-corrected.log",
+      "sha256": "9c8322cb0e2db4e303b0d2b6ca1156870a4a6474a8c1b857d5ebb8d12823dc3d"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-metadata-proof-pg19.json",
+      "sha256": "0074f06a9589bb7de4e0b49085077a3b215d7889a3fe8403d628d54f86bd6702"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-metadata-proof-pg19.log",
+      "sha256": "44f0f74233f868517dbe197b19b57e297409b4ac585f15c1b893c2be2eb07aec"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-metadata-proof-settled.json",
+      "sha256": "7dded868498533dc49a0d391cb0f007ded8c6c0b20dd0ffce20bd9e9ff63535b"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-metadata-proof-settled.log",
+      "sha256": "e85dc3ba9d27c986f41f953a2efea6d6af75cf267a9c4867c2109d58b84c4cf0"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-metadata-proof.json",
+      "sha256": "2a362deb8974371715b23a97531827bb0ba21aa03372709a8579bb90dd90879e"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-metadata-proof.log",
+      "sha256": "b6b426e369103b1304b21a77bb4f087316a1aaa723d0fadc723f0036a53604b9"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-producer-build.json",
+      "sha256": "6491ba04f2eb351a5ef3af804a017cf35450f110d888d47081f9b635401a16a1"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/postgres-producer-build.log",
+      "sha256": "2355abbfab8fdf639556dfab2d61f50f1bd0613800edd57c03f9d4ecb1974bf2"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/run_gate.py",
+      "sha256": "e53b15731712c7b73b1819f1f0be48515920185cb1c209fec84c95932adbb2ce"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/source-metrics-comparer.json",
+      "sha256": "b4003c63029200d4db23757c36e661222b1cf7abbd265114d80b74dc674bf480"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/source-metrics-comparer.log",
+      "sha256": "6e95b7ca7a9352af475e88cb37b54db97d1e74a1802772b991be990646da0687"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/source-metrics.json",
+      "sha256": "b8961bf44a021474c1435ada48b916f24b6f13d49bba5039a0c4073532c6efa4"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/source-metrics.log",
+      "sha256": "d4a0413572ccdfe5f8c9ec17970de9cb3a47f874a616d9f698af6797cbc8d0e0"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/sqlite-native-api-inspection.json",
+      "sha256": "9078d653615f2a34fece24d0cc0a17e71814996d7daf75a9270e30a8e50ec655"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/sqlite-native-api-inspection.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/sqlite-native-binding-inspection.json",
+      "sha256": "9ee04808687c03e612a39512fd3154b0908b58b98c3d904feec4934dd38a0477"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/sqlite-native-binding-inspection.log",
+      "sha256": "a60b1097b0a473f3d896243fd5d5d14b067b3e659dc6378cda799de325b8c362"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/sqlite-producer-build.json",
+      "sha256": "5cc05b2fb92a15c8bf67f2c8b050f0f20232b3b271f1975f4d72aa95b043df9e"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/sqlite-producer-build.log",
+      "sha256": "e4fdfc46b249ffdb4ea2712e7076016931c4e87c4fdf2ee4f81e0d723060e692"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/tracked-native-factory-proof.json",
+      "sha256": "e9b399199b9c821762e5724122e087d27e6e8b3f18aca9231e6bda7588c4a9b8"
+    },
+    {
+      "path": "artifacts/schema-diff/dev/tracked-native-factory-proof.log",
+      "sha256": "d7e9e4d047921abb9ab369e84bded7caed52a47ae20ffd2cfc7cb7953d9bef3b"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/.editorconfig",
+      "sha256": "8e7ecdb79f05c8669c1108121955f4039fdeb20f9b1585f60b040a0989497f59"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/PostgresMetadataResources.cs",
+      "sha256": "01d13244d0791c80e06f2d832129f8614abceea88526b6a2f7947f386c1cf1c7"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/PostgresSchemaColumns.cs",
+      "sha256": "50361c35db9424c2aaaaf92a7391d7902006b1b45008677e9a924787d36b2e9e"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/PostgresSchemaHistory.cs",
+      "sha256": "a8c03714a23c7682694ab8c851be2571d61a81eff87a9584f2abd09e31a22032"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/PostgresSchemaInspect.cs",
+      "sha256": "823188348f97425a676c79d93fcbc2f31103c0164fd99ad0b5422c09b03b016c"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/PostgresSchemaInventory.cs",
+      "sha256": "1cea4219a33d99789c02caea0adbe342ba3c329b4cc08a2dccb6a49d457613f1"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/PostgresSchemaRead.cs",
+      "sha256": "df86e17808710aaceeb43d8b70a4472927bee9ef6e295be15469f92bd25ec793"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/PostgresSchemaTable.cs",
+      "sha256": "348d295abc64e85a13bd8619cd1ac23cdb9dd9208038188a27f8d47bf5acee67"
+    },
+    {
+      "path": "src/Postgres/SchemaDiff/PostgresSchemaTypes.cs",
+      "sha256": "58f827984d8f0868895a0e39079aa90a437f92278dd04f1a80a5f157c18c9629"
+    },
+    {
+      "path": "src/Runtime/GatedDataSource.cs",
+      "sha256": "fcbfe6500c8a8a028a018a1fe813a6cf2565051f17f84e5f2cac1729c9be7d8b"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/.editorconfig",
+      "sha256": "cde14ad739541f94f39f183d1bb72255f05ade30747fef5dfef655bfcd166785"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaCompareAdd.cs",
+      "sha256": "9d9f15d6a6c490b27b4ee2d382b337580ff90cc3f21b34a8d2cbec547e64a714"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaCompareColumns.cs",
+      "sha256": "f1b1a8a2deadfdc67d1d0e730f9f5458152c56f59b94223433d10d46a56c041e"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaCompareKnowledge.cs",
+      "sha256": "ae690f1919ac0006ebd8bc7201216b4a61f8c57f0aebce01752ee937d2d2cc28"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaCompareState.cs",
+      "sha256": "6c8575efedee0d19ca85cbfd4e546b659ec7c1518f7c42e735ea3d69e22b52cc"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaCompareTables.cs",
+      "sha256": "57206b548871602d2ff4004fdc1e8409942b09d1d98f08ea139388bc4b75e8f5"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDefault.cs",
+      "sha256": "fa3f9aa19cfd7abb9962a285cf6c9efbf1ef9e48d62d449573b481e4aed74af1"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDefaultKind.cs",
+      "sha256": "3f093fca5bc2efd461d7d95d055e3e89c266e468314dc53eb23d74e0ea5b89f6"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDesiredTable.cs",
+      "sha256": "64ee884ee8c561999037ab9aa616b65a8fa946163a2a41f361cf215f2a0dab30"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiff.cs",
+      "sha256": "97a3c19ddddd29aeb74a93c6957325d5aed41dcd0c169d0efda30bf7b2045ac4"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffApplyOutcome.cs",
+      "sha256": "feba53b15129cf702a85f3d5bb84354a0df895b2573795740a9ca8a6773112dd"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffApplyResult.cs",
+      "sha256": "1157b97a9d10fc0ff3d5dfdb73b6213b84700eecab0d083245bc3f65a894219f"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffBudget.cs",
+      "sha256": "03d359f724c9bdb0bc48518c59132625b711978ceb89ad24401b18009a7d3bef"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffCanceledException.cs",
+      "sha256": "52bb9a6b688b3761b9085d3324ff454d64feb2f63851e6aab2e0097200548127"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffCanonical.cs",
+      "sha256": "51a2d1bd65cdd4a67c60dd177c7614c85d75db97d689a74ded29bbc80c92acc8"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffChange.cs",
+      "sha256": "8c5791f7e298a157bf3cd6b926023bc1b794eeeb92ed1126d6001b3fa92824fa"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffChangeKind.cs",
+      "sha256": "83e434a5f4688bd993a508969e8671524c952e89ba277f61f774b9da8b12a8f6"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffComparison.cs",
+      "sha256": "bbad145389d5b7fd295e3b4661729f875b676fdb43ff5efe0e6d146015f11a7f"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffError.cs",
+      "sha256": "e43837dcfbf0ab6b54afb76b0d2ef86d9a33aece6a8e97a2adaf8c7ceac46ab0"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffException.cs",
+      "sha256": "c314f0136a7bb1d4997ca2e3fedcd2d609f6eb8f8f17ff7c3fb20bc066f0cd07"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffImpact.cs",
+      "sha256": "f2d7c3db2722bad156eff5aa150626f25bd3563c01afdb53a8d77d6e1bfec744"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffInspection.cs",
+      "sha256": "9d03a4ce0469868c94beadd5848cfbba3552d2465ba3214294e3aed5ae251811"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffLimits.cs",
+      "sha256": "66f8b7be304f11f76c2d3407999f5f6feb0507be5e6b8e0b11ef57ed20a9c7e1"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffNames.cs",
+      "sha256": "b89294675858fbe213a5054bb1df9dfaf2980da7755117ed460073fbfd144111"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffObservation.cs",
+      "sha256": "793349e23f8127b1766f66ced82a2e5bf5abf775f3de1c07f7227658f150db16"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffReport.cs",
+      "sha256": "c99eedbdfb8fcd36b0bbdf00d8d5637355b42602a50ee48cab399a7f31e1ff1b"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffScope.cs",
+      "sha256": "1054c0cd51ede024ae7d31812ddb74fcad63c4ebe1d07f67230c89c3ca001243"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffSnapshot.cs",
+      "sha256": "8ff3bbd0df99b18f60e5526076f2f8ddc34a27e3c1c29a02fe9a84cc2d0d3a4c"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffStatus.cs",
+      "sha256": "edb342ee6385d5abf79d1f34022f0dcc7e34b1d4a19742885c2086195e8e31fd"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffTarget.cs",
+      "sha256": "9ab87971136d6b0f04b3246e1e99525c7e0fdb54668eae886524d87ff9f80f59"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaDiffUnitResult.cs",
+      "sha256": "22444b9cabd6ee99a9b85c675185b375fc6a7d41d05ce0811b52421271ae7883"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaFact.cs",
+      "sha256": "071f3e5399bf8163d5ce1b019eccd7a52286b92d554e0319e352234205228290"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaFactCopies.cs",
+      "sha256": "211c44c0a4312a6cb0e55f29d9b210730c7112885d71f8e7d5b817ba8b9f4550"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaKnowledge.cs",
+      "sha256": "3b60139c556ed756fd6db5e2781ecbf71b2589ab3549d96fafd6455f0f190d6e"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaMetadataConnections.cs",
+      "sha256": "2e3d2e75c71b2cf31144a5ada97b455ed95ce949a3a7161090050a99387a9b28"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaObjectRef.cs",
+      "sha256": "512807b5080e1162026d0aa5a91d1fd668387bde1f0b790a2c7fe738bcdbcc4e"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaObjectStamp.cs",
+      "sha256": "8f3d849feee751a804f2cd604ede7a28fec59156e934f21f393398111acab6e8"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaObservationDigest.cs",
+      "sha256": "4e311809a242bd3907917781ad0b2a350a311387a5892873a1694b66c13c9eae"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaObservationHistory.cs",
+      "sha256": "f6ffb7dcdcad8945e9710152db1923d7ce639ef48ffb13d331b01dcb5f4bce95"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaObservationIdentity.cs",
+      "sha256": "589cf9ab1cb81bad2a291e42abf00afed0f4945bd51f08a8fd80794d6724ff27"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaObservedColumn.cs",
+      "sha256": "4fe46f0683b5b0b3c36b3d1fcae86911e66c52c69248c3c6a2c85625480a7e3c"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaObservedColumnFacts.cs",
+      "sha256": "bf24b543b6c931e6401f2a49a2d50351fe4751c181179b4703b268631d3d0fe2"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaObservedTable.cs",
+      "sha256": "b1b9758c2d1824f32a07e62a171aa6748eccc81d5975aa2520f28980a6be1a3c"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaObservedTableFacts.cs",
+      "sha256": "d089f64d40b03aa440e5557e2e680dbcf071a7ef7052d4f9bfdcffd6a2344f35"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaPhysicalTypes.cs",
+      "sha256": "e5714f726696b86f47ff2888078872a067963ddeb75e8dc8853e56e0f3d87bf7"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaRestoration.cs",
+      "sha256": "d2c7151781173df3fb0ce43ed3fea38a4769ae3c2373ac2d18387b2d8864d644"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaStorageType.cs",
+      "sha256": "655cd435f0cdda076625a962a4ed99372f3d8c6691043a152ead38c902e08bf1"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaTargetIdentity.cs",
+      "sha256": "8a80a41da61502d254acdd7f59254993c1b7f3ea85e49242df91a734710e3f23"
+    },
+    {
+      "path": "src/Runtime/SchemaDiff/SchemaUnitOutcome.cs",
+      "sha256": "43558af6a33445639d6ac6cbefcdc8d04885468e40aa684252bd01929206256f"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/.editorconfig",
+      "sha256": "e6134d7a4fa9544da73662270cac8cd6d985e8a7e19dd306ec29810439025054"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteMetadataResources.cs",
+      "sha256": "f1a5e2ef38e27de9a104ad88d78076b14f329afdfbc179fc95f097c66e8f3278"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaAdmission.cs",
+      "sha256": "91f7f58646e32758464294ed3c976ca054325f5eda6ccf3133ec4742bb88c156"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaColumns.cs",
+      "sha256": "b7f6980e76e7e66d6e319f26cde1d29a95ceb8c0a1aca70c5b691657a3951761"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaDefinition.cs",
+      "sha256": "4e52b91bba9bd67e6b2e1c6ceb3aa64376cf74324637c6aa184bfde8072e1262"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaInspect.cs",
+      "sha256": "0a34f91def8c9ad0a253020d3d392ed0fcfac48b47401e682b9e740f9400b865"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaInventory.cs",
+      "sha256": "dd945a6fa3148740e8ede190fe2cbe25f1158d0d3934ba145d6292a4281ca34d"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaRead.cs",
+      "sha256": "65d322dd0f1dcf7e428cca934670571cbbdc3c8bbf657095557ecd998d75b0b5"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaReferences.cs",
+      "sha256": "9a0e0ce677b0b21154ab5dcc26e012c6768e508d604b7a9786f8812965a58657"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaTable.cs",
+      "sha256": "d2b80f7152fa15e892d1ec9781a1f82bcd59d61028fbd43e8806f91b76e45e73"
+    },
+    {
+      "path": "src/Sqlite/SchemaDiff/SqliteSchemaTypes.cs",
+      "sha256": "8359e93c14d6d5eb636a781a98d1c502b00d2ee6469ad6fe7e057f5c11614136"
+    },
+    {
+      "path": "src/Sqlite/SqliteConnectionParts.cs",
+      "sha256": "a0ef7dbb8fa22f973747cd47ea7aaa16c85887c4b9e46a7e80651f7f2cb04770"
+    }
+  ],
+  "currentGateFiles": [
+    "final-producer-sdk10.json",
+    "final-producer-sdk11.json",
+    "final-metrics.json",
+    "final-metrics-analysis.json",
+    "python-tooling-metrics.json",
+    "cleanup.json"
+  ],
+  "proofScope": "Actual complete simple scoped no-op, missing table and nullable-column typed plans; actual ordinary baseline setup; comparison physical/history0mutation; fake gate actor0/primarycleanup and immutable/knowledge/ownership probes; RLS history Unknown and SQLite case-alias refusal. DEV producer proofs, not independent SDET/full acceptance.",
+  "notImplemented": [
+    "Public Observe/provider opt-in port integration",
+    "Immutable recipe/neutralVersion/CoverageVersion/escaped static factory and actual compile/run",
+    "Optional strict serializer/create preflight",
+    "Guarded upgrade/fresh/repeat/revert/write transactions, truthful mutation/restoration/cleanup outcomes",
+    "Actual generated apply/UpDownUp/unaffected data/new-data-loss proof",
+    "Generated NativeAOT path"
+  ],
+  "openGates": [
+    "All12 AC/security criteria incomplete overall",
+    "Full regression/API/source-binary/Ports/timezone/skip gate",
+    "Raw no-exclusion coverage",
+    "Security/dependency/memory audits",
+    "Generated-code301/docs/demo/decomposition/applicability/closure"
+  ],
+  "identityConsultation": "Readback c62a7e7a: canonical actual main filename+scope/profile/coherent snapshot; no file-incarnation promise/new native dependency; empty/memory/attached/shadow remain refused",
+  "cleanup": "cleanup.json exact owned PG/network removed; no foreign mutation"
+}

@@ -1,0 +1,2 @@
+POSTGRES_METADATA_PROOF_PASS profile=postgres:schema-diff-v1
+Unhandled exception. Schema diff CleanupFailure; cleanupErrors=1

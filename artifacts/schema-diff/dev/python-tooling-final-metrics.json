@@ -1,0 +1,117 @@
+{
+  "route": "Read-only standard-library Python AST, no product build/test execution; functions include comprehensions/boolean branches; exact current source hashes and loci. No class/control nesting exceeds4 on source read.",
+  "records": [
+    {
+      "file": "artifacts/schema-diff/dev/create_fixture.py",
+      "sha256": "611b51ab1dd8e3b003765cbe6a0df30fbd93f336c376d1615e0c5e02e1917d41",
+      "widths": [],
+      "functions": [
+        {
+          "name": "run",
+          "line": 8,
+          "end": 12,
+          "codeLines": 5,
+          "parameters": 1,
+          "cyclomatic": 2,
+          "decisionLoci": [
+            10
+          ]
+        },
+        {
+          "name": "main",
+          "line": 15,
+          "end": 33,
+          "codeLines": 19,
+          "parameters": 0,
+          "cyclomatic": 1,
+          "decisionLoci": []
+        }
+      ]
+    },
+    {
+      "file": "artifacts/schema-diff/dev/run_gate.py",
+      "sha256": "813a24c9df528eceefbdc4aa19ad875b67211567d43ffd0c9376b1af586bca09",
+      "widths": [],
+      "functions": [
+        {
+          "name": "git",
+          "line": 9,
+          "end": 10,
+          "codeLines": 2,
+          "parameters": 1,
+          "cyclomatic": 1,
+          "decisionLoci": []
+        },
+        {
+          "name": "source_digest",
+          "line": 13,
+          "end": 21,
+          "codeLines": 9,
+          "parameters": 0,
+          "cyclomatic": 4,
+          "decisionLoci": [
+            16,
+            17,
+            19
+          ]
+        },
+        {
+          "name": "proof_digest",
+          "line": 24,
+          "end": 29,
+          "codeLines": 6,
+          "parameters": 0,
+          "cyclomatic": 3,
+          "decisionLoci": [
+            26,
+            27
+          ]
+        },
+        {
+          "name": "metadata",
+          "line": 32,
+          "end": 46,
+          "codeLines": 15,
+          "parameters": 2,
+          "cyclomatic": 1,
+          "decisionLoci": []
+        },
+        {
+          "name": "native_inputs",
+          "line": 49,
+          "end": 53,
+          "codeLines": 5,
+          "parameters": 0,
+          "cyclomatic": 4,
+          "decisionLoci": [
+            52,
+            52,
+            53
+          ]
+        },
+        {
+          "name": "fault_inputs",
+          "line": 56,
+          "end": 60,
+          "codeLines": 5,
+          "parameters": 0,
+          "cyclomatic": 4,
+          "decisionLoci": [
+            59,
+            59,
+            60
+          ]
+        },
+        {
+          "name": "main",
+          "line": 63,
+          "end": 77,
+          "codeLines": 15,
+          "parameters": 0,
+          "cyclomatic": 1,
+          "decisionLoci": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+tests/SchemaDiffAot/DemoChecks.cs
+tests/SchemaDiffAot/DemoDatabase.cs
+tests/SchemaDiffAot/DemoModel.cs
+tests/SchemaDiffAot/DemoScenario.cs
+tests/SchemaDiffAot/Program.cs
+tests/Tests/SchemaDiff/ContractFacts.cs
+tests/Tests/SchemaDiff/UnknownContractTests.cs
+tests/Tests/SchemaDiff/WholeArtifactContractTests.cs

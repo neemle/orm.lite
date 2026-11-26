@@ -1,0 +1,5 @@
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/literal-gate-build/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/literal-gate-results/literal-pinned.trx
+
+Passed!  - Failed:     0, Passed:    19, Skipped:     0, Total:    19, Duration: 738 ms - Neemle.OrmLite.Tests.dll (net10.0)

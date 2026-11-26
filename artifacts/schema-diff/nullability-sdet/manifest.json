@@ -1,0 +1,145 @@
+{
+  "agentRunId": "cfd48b4f-b4ae-4e4e-9209-df95c7b17036",
+  "item": "ORML-117",
+  "claim": "97d6053c-86e2-413e-8bba-5bd4a469b9cd",
+  "guarantee": "Actual SQLite primary-key storage and observed physical nullability agree; nullable live keys cannot become NoOp against a nonnullable target. All seven cases run through the same permanent test contract and public demo, with isolated fixture cleanup.",
+  "cases": [
+    "NullableText: actual NULL retained, Nullable=true, NullabilityChange/ManualRequired, Emit refuses",
+    "ExplicitNotNullText: NULL rejected, Nullable=false, NoOp",
+    "IntegerAlias: NULL assigned a rowid, Nullable=false, NoOp",
+    "InlineIntegerDescending: actual NULL retained, Nullable=true, NullabilityChange/ManualRequired, Emit refuses",
+    "TableIntegerDescending: NULL assigned a rowid, Nullable=false, NoOp",
+    "StrictText: NULL rejected, Nullable=false, existing ManualRequired boundary retained",
+    "WithoutRowidText: NULL rejected, Nullable=false, existing ManualRequired boundary retained"
+  ],
+  "sourceCommit": "d5d097f69d05947a9640a6d98e689c9be563a371",
+  "frozenProductCommit": "8d8ad048dfa5db513cdea751ba3974c32e4b22f3",
+  "review": "d302fb07-697a-461f-ab7c-6e468511ce2a",
+  "developerFixCarrier": "cddd0e3f-a402-4614-a85b-0bba1324ced7",
+  "focused": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "duration": "126ms",
+    "trx": "results/sqlite-nullability.trx"
+  },
+  "affectedMatrix": [
+    "JIT10/SQLite",
+    "JIT11/SQLite",
+    "NativeAOT10/SQLite",
+    "NativeAOT11/SQLite"
+  ],
+  "allAffectedRunsExitZero": true,
+  "allAffectedOutputsByteEqualOriginalPg": true,
+  "canonicalOutput": "PARITY version=0050_parity_dea6dae6f78e85ecfd8df96a0f89f604eecd4d18387fd28bb04ae22bc1a26da1\nPARITY schema=items(id,original,added);new_items(id,value)\nPARITY data=old:original-value;added:NULL;new_rows:0\nPARITY history=0000_baseline_parity117|0001_orm_indexes_parity117|0050_parity_dea6dae6f78e85ecfd8df96a0f89f604eecd4d18387fd28bb04ae22bc1a26da1|9900_orm_index_reconcile_parity117_cbf29ce484222325\nPARITY outcomes=Changes,Applied,NoOp,AlreadyApplied,Reverted,Applied,NoOp\nPARITY PASS\n",
+  "reusedPostgres": {
+    "carrier": "d619943c-09fb-4764-975e-921014e36764",
+    "evidence": "artifacts/schema-diff/sdet/final-jit10-postgres.json and original parity manifest",
+    "originalExecutionHead": "815d700afbcb1de618318b37b893cc9fb50e3cb6 + exact new source bytes subsequently committed as 2997ae857db3bdbf7b178fab2b3fbd5e804b48aa",
+    "rerun": false,
+    "reason": "Product delta is SQLite-only; new demo checks are gated to SQLite and have no global migration registration. Existing PostgreSQL branch, positive scenario and output are unchanged."
+  },
+  "native": [
+    {
+      "runtime": "10.0.15",
+      "ilc": "10.0.15",
+      "image": "sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27",
+      "file": "native10/Neemle.OrmLite.SchemaDiffAot",
+      "format": "ELF64 AArch64 PIE",
+      "bytes": 14986456,
+      "sha256": "a32a0891ed42b73949b7f3ce60756c296b626b44cdee98e077b0328a370d675c"
+    },
+    {
+      "runtime": "11.0.0",
+      "ilc": "11.0.0",
+      "image": "sha256:617441f9e33eea21c352a4343ee42a50ecd9003fe5fbbe6f0cf035f2e9ff62c6",
+      "file": "native11/Neemle.OrmLite.SchemaDiffAot",
+      "format": "ELF64 AArch64 PIE",
+      "bytes": 14989416,
+      "sha256": "5cbd230399e567eab45e148ca7956b864e3bdc6d4d327b376e80c541414a8e96"
+    }
+  ],
+  "resources": {
+    "focusedTestCap": "1800MiB/2CPU",
+    "jitBuildCap": "1200MiB/2CPU",
+    "nativePublishCap": "3GiB/no swap/2CPU/ILCparallelism1; publications serial",
+    "executionCap": "400MiB/1CPU; network=none",
+    "allBuildOutputs": "artifacts/schema-diff/nullability-sdet/ only",
+    "postgreSqlResourcesCreated": 0,
+    "fixtureCleanup": "Each of seven unique temporary directories is removed in awaited finally; four positive-demo SQLite files removed after execution. All owned Docker containers auto-removed; label roster empty.",
+    "cleanup": {
+      "cmd": "cat artifacts/schema-diff/nullability-sdet/jit10.cid artifacts/schema-diff/nullability-sdet/jit11.cid artifacts/schema-diff/nullability-sdet/publish10.cid artifacts/schema-diff/nullability-sdet/publish11.cid artifacts/schema-diff/nullability-sdet/aot10.cid artifacts/schema-diff/nullability-sdet/aot11.cid && docker ps -a --filter label=orml117.owner=nullability-sdet --format '{{.ID}} {{.Names}}' && ls -l artifacts/schema-diff/nullability-sdet/jit10.sqlite artifacts/schema-diff/nullability-sdet/jit11.sqlite artifacts/schema-diff/nullability-sdet/aot10.sqlite artifacts/schema-diff/nullability-sdet/aot11.sqlite && rm -- artifacts/schema-diff/nullability-sdet/jit10.sqlite artifacts/schema-diff/nullability-sdet/jit11.sqlite artifacts/schema-diff/nullability-sdet/aot10.sqlite artifacts/schema-diff/nullability-sdet/aot11.sqlite",
+      "result": {
+        "chunk_id": "704283",
+        "wall_time_seconds": 0.000015833,
+        "exit_code": 0,
+        "original_token_count": 194,
+        "output": "78251de2b9aa8fbcee49136c22c2c54fb5d7906cedbb23909f2d0e00e40bf94b33ce220a8c4c0e0a4d9feea4031ea38546e42d9f604c8f9b97bd8138265f92ade1f6296dc0ea9d92f621644b69320d8c5bf39fc86ebf10f97de09b6f3b1c1c065026543e35cbfcfb75915b0f720c7d3516ef7dc51accbf5d7316f7c78836611ffc4631ef63490aa6087dd32f61a78e85fb83beaf36001a4ac74ef2bc232939fa407ad505e4df691ef5370ac1d5f9e4dd4037f85e7bf1dc47f1388481e369f358-rw-r--r--  1 para  staff  28672 Nov 26 11:44 artifacts/schema-diff/nullability-sdet/aot10.sqlite\n-rw-r--r--  1 para  staff  28672 Nov 26 11:46 artifacts/schema-diff/nullability-sdet/aot11.sqlite\n-rw-r--r--  1 para  staff  28672 Nov 26 11:42 artifacts/schema-diff/nullability-sdet/jit10.sqlite\n-rw-r--r--  1 para  staff  28672 Nov 26 11:42 artifacts/schema-diff/nullability-sdet/jit11.sqlite\n"
+      },
+      "at": {
+        "current_time": "2026-11-26 10:46:51 UTC"
+      },
+      "containerIds": [
+        "78251de2b9aa8fbcee49136c22c2c54fb5d7906cedbb23909f2d0e00e40bf94b",
+        "33ce220a8c4c0e0a4d9feea4031ea38546e42d9f604c8f9b97bd8138265f92ad",
+        "e1f6296dc0ea9d92f621644b69320d8c5bf39fc86ebf10f97de09b6f3b1c1c06",
+        "5026543e35cbfcfb75915b0f720c7d3516ef7dc51accbf5d7316f7c78836611f",
+        "fc4631ef63490aa6087dd32f61a78e85fb83beaf36001a4ac74ef2bc232939fa",
+        "407ad505e4df691ef5370ac1d5f9e4dd4037f85e7bf1dc47f1388481e369f358"
+      ]
+    }
+  },
+  "readmeCase": "tests/SchemaDiffAot/README.md#sqlite-primary-key-nullability",
+  "limits": "No production schema/application execution, product changes, PostgreSQL rerun, full-regression/coverage/census/golden replay, old artifact mutation, or whole-criterion acceptance claim. Quiet key checks add no provider-specific output normalization. No new defect observed.",
+  "commands": [
+    {
+      "name": "null-focused",
+      "exitCode": 0,
+      "evidence": "null-focused.json"
+    },
+    {
+      "name": "null-build10",
+      "exitCode": 0,
+      "evidence": "null-build10.json"
+    },
+    {
+      "name": "null-build11",
+      "exitCode": 0,
+      "evidence": "null-build11.json"
+    },
+    {
+      "name": "null-jit10",
+      "exitCode": 0,
+      "evidence": "null-jit10.json"
+    },
+    {
+      "name": "null-jit11",
+      "exitCode": 0,
+      "evidence": "null-jit11.json"
+    },
+    {
+      "name": "null-publish10",
+      "exitCode": 0,
+      "evidence": "null-publish10.json"
+    },
+    {
+      "name": "null-publish11",
+      "exitCode": 0,
+      "evidence": "null-publish11.json"
+    },
+    {
+      "name": "null-aot10",
+      "exitCode": 0,
+      "evidence": "null-aot10.json"
+    },
+    {
+      "name": "null-aot11",
+      "exitCode": 0,
+      "evidence": "null-aot11.json"
+    }
+  ],
+  "generated": {
+    "current_time": "2026-11-26 10:47:55 UTC"
+  }
+}

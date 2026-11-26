@@ -1,0 +1,21 @@
+{
+  "gate": "injected-fault-sdk10",
+  "scope": "Injected provider/session orchestration; no actual driver failures claimed",
+  "inputs": {
+    "artifacts/schema-diff/dev/fault-proof/FaultCommand.cs": "a1d763a4cb7004aaac4cc27918c8128ea80274ec021f83a27e338a1ca5f4f594",
+    "artifacts/schema-diff/dev/fault-proof/FaultConnection.cs": "b8906715d08fc7a9e9bdf1d758dc9fdc3659952175370cf33d9b613a10fb515c",
+    "artifacts/schema-diff/dev/fault-proof/FaultControl.cs": "ef9da8c60bba23bade5f3e684f1ec35ef988f00a4c39165cf0e43b6e18e98fa6",
+    "artifacts/schema-diff/dev/fault-proof/FaultKind.cs": "da94cb7675ba76384883a68e6c3f7b2f3636834edd40c1d0228f7837c7dc1577",
+    "artifacts/schema-diff/dev/fault-proof/FaultPlanner.cs": "8f0ac726982cd77d1e0b93730e50165eb70c1a3fe0a9313a4e16449941edb875",
+    "artifacts/schema-diff/dev/fault-proof/FaultProof.csproj": "bbd74361904fc7c9baca65ca3e3dcc41bdc70b4ac1f967d954e71163b279216c",
+    "artifacts/schema-diff/dev/fault-proof/FaultProvider.cs": "97600794610cd55534c0d883566068fd44f2d2381555457693c6b556bfe0342e",
+    "artifacts/schema-diff/dev/fault-proof/FaultRelease.cs": "22c872f3be283fc2d64dc47cbdaf9866c139f1f3aa4f8edc608065142dd5e1f7",
+    "artifacts/schema-diff/dev/fault-proof/FaultSession.cs": "3ff6ed92861d050418437f7fab02137b19359a7c41f5c0640b4c068c0650097a",
+    "artifacts/schema-diff/dev/fault-proof/FaultSource.cs": "d6b53ada51afb860366854441c76aa59e4d771f5fc558fd919821f3bc5f458f5",
+    "artifacts/schema-diff/dev/fault-proof/FaultTransaction.cs": "f3ee24fc434f1d53ce56cc4bcad0a5d2e3e2f51b2107b6da12c99951b359946c",
+    "artifacts/schema-diff/dev/fault-proof/FaultUnit.cs": "c2190c9408270a4d1882298bd789cb7d4796b704f381db6a3b5cb0619c5c2e09",
+    "artifacts/schema-diff/dev/fault-proof/FaultWitness.cs": "74dda6168c78fd2bd39727986588a3a069aa9dccfbd9d09e90686b9b46b2984c",
+    "artifacts/schema-diff/dev/fault-proof/Program.cs": "85e371c96e75ed93e192a4086a6e527e747e7bb64638dfcf8f042d296e541a37"
+  },
+  "attribution": "Harness inputs retained immediately after first execution before any formatting; ignored artifact source was absent from git status. Product source pinned415/b87; canonical source and compiled controls unchanged."
+}

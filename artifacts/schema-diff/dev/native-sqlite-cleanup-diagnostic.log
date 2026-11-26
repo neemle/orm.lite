@@ -1,0 +1,3 @@
+POSTGRES_METADATA_PROOF_PASS profile=postgres:schema-diff-v1
+FIXTURE_DIAGNOSTIC CleanupFailure InvalidOperationException:Execute requires the command to have a transaction object when the connection assigned to the command is in a pending local transaction.  The Transaction property of the command has not been initialized.
+Unhandled exception. Schema diff CleanupFailure; cleanupErrors=1
