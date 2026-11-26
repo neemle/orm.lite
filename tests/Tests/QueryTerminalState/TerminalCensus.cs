@@ -254,7 +254,6 @@ public static class TerminalCensus
         return string.Join("\n", lines);
     }
 
-    // Record native PostgreSQL row locks; streaming entries additionally borrow an actual transaction.
     internal static readonly string[] LockedNames =
         ["ToListAsync", "CompileSelect and RenderSelect", "ProjectAsync", "FirstOrDefaultAsync",
             "StreamAsync", "StreamProjectAsync", "StreamProjectionAsync", "StreamColumnAsync"];

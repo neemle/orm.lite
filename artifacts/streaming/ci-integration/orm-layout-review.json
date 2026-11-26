@@ -1,0 +1,38 @@
+{
+  "operation": "Fresh actual current-generator expected-layout capture, NOT a passing oracle test. Existing normal byte-equality test will run with regeneration unset.",
+  "oldIntent": "Pin every emitted byte of non-soft fixture generation, including namespace/schema/Init registration.",
+  "newCorrectProperty": "Six deterministic per-type sources pin the same complete fixture output with added stream methods; no obsolete monolith assumption.",
+  "referenceOnly": "Prior unapplied/unapproved candidate is provenance, not authority or blind application; all6freshcaptures independently match it. Existing compiled schema/registry corpus transcripts must remain exact in separate corpus review.",
+  "files": [
+    {
+      "file": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden",
+      "freshCaptureMatchesPriorCandidate": true,
+      "sha256": "abe7950b3fc7dd1e671dc053b84cc5e29a52a894d402fb8ae0e3d9f440a64bad"
+    },
+    {
+      "file": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden",
+      "freshCaptureMatchesPriorCandidate": true,
+      "sha256": "05b9dbf0787c2f25aea2e5ff240331d26b62171bf6375d267772a079e5227031"
+    },
+    {
+      "file": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden",
+      "freshCaptureMatchesPriorCandidate": true,
+      "sha256": "7302f60126576508642d9b2bf42221ae55af2edf6c8390d225566a3f53206edb"
+    },
+    {
+      "file": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden",
+      "freshCaptureMatchesPriorCandidate": true,
+      "sha256": "fcee33a4ebb9f71e15141007e96f0c420b5c299b7337b0514936e9f522ee9ed7"
+    },
+    {
+      "file": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0004.g.cs.golden",
+      "freshCaptureMatchesPriorCandidate": true,
+      "sha256": "16c2d162f4b840d16434b7f10944da3156a4049d196baa335d0fbbc43f597153"
+    },
+    {
+      "file": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0005.g.cs.golden",
+      "freshCaptureMatchesPriorCandidate": true,
+      "sha256": "d8cc502eacf22cb01a4798780e38cbbfd6c9219833c2b4e1f0597ea618cccc3a"
+    }
+  ]
+}

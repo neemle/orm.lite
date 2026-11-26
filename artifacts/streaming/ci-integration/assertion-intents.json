@@ -1,0 +1,81 @@
+{
+  "scope": "Minimal integration of actual eight hosted CI failures; no skips/exclusions/floor changes, product or workflow changes.",
+  "userPolicyComments": [
+    "3f86576d-db9f-4c28-8cc5-cac50d279380",
+    "eaf7fc4a-f74a-4963-95b5-2d29aee6969a"
+  ],
+  "unchangedDemoEvidence": "artifacts/streaming/demo/final/mode-provider-equivalence.json + delivery-manifest.json; eight actual same-project JIT/AOT x PG/SQLite x runtime10/11 executions are reused, not rerun.",
+  "contracts": [
+    {
+      "contract": "QueryIdentifierSurfaceTests",
+      "oldIntent": "Every public Query parameter type is reviewed and no unreviewed string identifier surface appears.",
+      "newProperty": "Keep exact reflected set comparison and string roster; add only CancellationToken for the four neutral streaming entry points.",
+      "witness": [
+        "examples/streaming/CancellationExport.cs",
+        "tests/Tests/Streaming/StreamingCancellationTests.cs"
+      ]
+    },
+    {
+      "contract": "GeneratedTextHygieneTests",
+      "oldIntent": "Every emitted file has only one generated header, no other comments or tracker cites, and no SQL text.",
+      "newProperty": "Pin exact six fixture hint names and one header per file; retain whole-output no-comment/no-tracker/no-SQL assertions.",
+      "witness": [
+        "tests/Tests/GeneratedTextHygieneTests.cs",
+        "tests/Tests/Streaming/CiIntegration/StreamRootReadPaths.cs"
+      ]
+    },
+    {
+      "contract": "GeneratorQualityTests",
+      "oldIntent": "Entity generation is deterministic under syntax-tree reordering and uses ordinal entity order.",
+      "newProperty": "Compare the complete ordered hint/text tuple arrays; pin exact four hints and Alpha/Beta isolation/order rather than selecting a nonexistent monolith.",
+      "witness": [
+        "tests/Tests/GeneratorQualityTests.cs"
+      ]
+    },
+    {
+      "contract": "TerminalCensus/TerminalCensusTests",
+      "oldIntent": "Every statement terminal actually executes and preserves query rendering/state, including supported row locks.",
+      "newProperty": "Add all four stream entries to real execution rows, drain to EOF and require typed Completion cleanup via existing collector. Locked streams borrow a real UnitOfWork; all four join the native PG lock rows. No new exclusion.",
+      "witness": [
+        "tests/Tests/Streaming/StreamingProviderChecks.cs",
+        "tests/Tests/QueryTerminalState/TerminalCensus.cs",
+        "examples/streaming/BorrowedExport.cs"
+      ]
+    },
+    {
+      "contract": "SoftDeleteRootReadCensusTests",
+      "oldIntent": "Every public root-read path executes both live-only and IncludingDeleted visibility cases.",
+      "newProperty": "Compose all old paths with four typed stream paths; same exact reflected-name equality, ordered expected live/deleted ranks and Completion checks remain.",
+      "witness": [
+        "tests/Tests/Streaming/CiIntegration/StreamRootReadPaths.cs",
+        "tests/Tests/Streaming/Sdet/SdetSoftReadCensusTests.cs",
+        "examples/streaming/NoteExport.cs"
+      ]
+    },
+    {
+      "contract": "Corpus statement surface",
+      "oldIntent": "Every surveyed statement-producing method has an actual case; stale exclusions fail.",
+      "newProperty": "Register four executed stream transcript cases with nonempty exact row expectations, parameterized SQL, cold no-command assertion and Completion checks. Direct capture-getter assertions cover exact source/provider/map/borrowed/lock metadata; no exclusions added.",
+      "witness": [
+        "tests/Tests/Streaming/CiIntegration/StreamCorpusCases.cs",
+        "examples/streaming/ProjectionExport.cs"
+      ]
+    },
+    {
+      "contract": "OrmLiteGolden/CorpusGoldenTests/INDEX",
+      "oldIntent": "Byte-exact generated/SQL/semantic transcripts, complete hint set, no orphan goldens and deterministic capture.",
+      "newProperty": "Fresh capture pins complete per-type generated files. Only generated C# layout outputs, newly executed streaming transcripts and derived INDEX may differ; every old nongenerated SQL/schema/registry/Init execution transcript must stay byte-exact. Existing normal comparison/determinism tests remain intact and regeneration is unset for verification.",
+      "witness": [
+        "tests/Tests/OrmLiteGolden/OrmLiteGoldenTests.cs",
+        "tests/Tests/Corpus/CorpusGoldenTests.cs",
+        "tests/Tests/Corpus/Cases/GeneratorCases.cs"
+      ]
+    }
+  ],
+  "staleExclusionRemoval": {
+    "member": "OrmContext.DisposeAsync/0",
+    "oldIntent": "Exclude a non-statement cleanup API while no registered corpus case calls it.",
+    "newCorrectProperty": "New registered streaming cases actually await context disposal. Remove the now-stale exclusion, preserving the existing guard that forbids exclusions for referenced members.",
+    "observedGuard": "First normal capture exit3 explicitly named stale exclusion; no case/namespace filters were weakened."
+  }
+}
