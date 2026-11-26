@@ -1,0 +1,80 @@
+.NET SDK:
+ Version:           10.0.404
+ Commit:            2ab2854867
+ Workload version:  10.0.400-manifests.ad9f6d83
+ MSBuild version:   18.9.15+2ab285486
+
+Runtime Environment:
+ OS Name:     ubuntu
+ OS Version:  24.04
+ OS Platform: Linux
+ RID:         linux-arm64
+ Base Path:   /usr/share/dotnet/sdk/10.0.404/
+
+.NET workloads installed:
+There are no installed workloads to display.
+Configured to use workload sets when installing new manifests.
+No workload sets are installed. Run "dotnet workload restore" to install a workload set.
+
+Host:
+  Version:      10.0.15
+  Architecture: arm64
+  Commit:       8e0f8ed231
+
+.NET SDKs installed:
+  10.0.404 [/usr/share/dotnet/sdk]
+
+.NET runtimes installed:
+  Microsoft.AspNetCore.App 10.0.15 [/usr/share/dotnet/shared/Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 10.0.15 [/usr/share/dotnet/shared/Microsoft.NETCore.App]
+
+Other architectures found:
+  None
+
+Environment variables:
+  DOTNET_CLI_HOME                          [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/home]
+  DOTNET_CLI_TELEMETRY_OPTOUT              [1]
+  DOTNET_GENERATE_ASPNET_CERTIFICATE       [false]
+  DOTNET_NOLOGO                            [1]
+  DOTNET_RUNNING_IN_CONTAINER              [true]
+  DOTNET_SDK_VERSION                       [10.0.404]
+  DOTNET_USE_POLLING_FILE_WATCHER          [true]
+  DOTNET_VERSION                           [10.0.15]
+
+global.json file:
+  Not found
+
+Learn more:
+  https://aka.ms/dotnet/info
+
+Download .NET:
+  https://aka.ms/dotnet/download
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Runtime/Runtime.csproj (in 561 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Sqlite/Sqlite.csproj (in 29 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Sql/Sql.csproj (in 4 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/Tests.csproj (in 651 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Generator/Generator.csproj (in 4 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Postgres/Postgres.csproj (in 5 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Core/Core.csproj (in 5 ms).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  Tests -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll
+Test run for /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:01.56]     [UC-006][AC-112-01/02/05/06] generated external save consumer compiles and resolves exact tokens [FAIL]
+  Failed [UC-006][AC-112-01/02/05/06] generated external save consumer compiles and resolves exact tokens [1 s]
+  Error Message:
+   Assert.Empty() Failure: Collection was not empty
+Collection: [(5,21): error ORMLITE026: Navigation 'SaveParent.Children' cannot be loaded: the inverse key 'SaveParentId' is not a mapped property of 'SaveChild'. Add that property to 'SaveChild', name the key with [Reference("...")] on the collection, or mark the collection [NotAColumn]. No LoadChildrenAsync is generated for it.]
+  Stack Trace:
+     at Neemle.OrmLite.Tests.GraphSave.GeneratedSaveConsumerTests.Generated_consumer_compiles_loads_and_constructs_request() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/GeneratedSaveConsumerTests.cs:line 64
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/results/generated-consumer.trx
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 1 s - Neemle.OrmLite.Tests.dll (net10.0)

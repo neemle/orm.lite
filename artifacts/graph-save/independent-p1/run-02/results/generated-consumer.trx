@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="2b52dc91-7c2c-4fee-b102-56780fee49e3" name="@20f44858e0e8 2026-11-26 21:16:05" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-26T21:16:05.8643443+00:00" queuing="2026-11-26T21:16:05.8643444+00:00" start="2026-11-26T21:16:03.9225277+00:00" finish="2026-11-26T21:16:05.8675693+00:00" />
+  <TestSettings name="default" id="2c64f1bb-0e2f-4536-8c16-15bf91dade1a">
+    <Deployment runDeploymentRoot="_20f44858e0e8_2026-11-26_21_16_05" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="968527d2-e955-4abc-bc8a-e36ffb609c29" testId="9678ebf3-ca79-40b3-915e-2a446e82a0aa" testName="[UC-006][AC-112-01/02/05/06] generated external save consumer compiles and resolves exact tokens" computerName="20f44858e0e8" duration="00:00:01.0382480" startTime="2026-11-26T21:16:05.8137859+00:00" endTime="2026-11-26T21:16:05.8137940+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="968527d2-e955-4abc-bc8a-e36ffb609c29">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Empty() Failure: Collection was not empty
+Collection: [(5,21): error ORMLITE026: Navigation 'SaveParent.Children' cannot be loaded: the inverse key 'SaveParentId' is not a mapped property of 'SaveChild'. Add that property to 'SaveChild', name the key with [Reference("...")] on the collection, or mark the collection [NotAColumn]. No LoadChildrenAsync is generated for it.]</Message>
+          <StackTrace>   at Neemle.OrmLite.Tests.GraphSave.GeneratedSaveConsumerTests.Generated_consumer_compiles_loads_and_constructs_request() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/GeneratedSaveConsumerTests.cs:line 64
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="[UC-006][AC-112-01/02/05/06] generated external save consumer compiles and resolves exact tokens" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/tests/release/neemle.ormlite.tests.dll" id="9678ebf3-ca79-40b3-915e-2a446e82a0aa">
+      <Execution id="968527d2-e955-4abc-bc8a-e36ffb609c29" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.GraphSave.GeneratedSaveConsumerTests" name="Generated_consumer_compiles_loads_and_constructs_request" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="9678ebf3-ca79-40b3-915e-2a446e82a0aa" executionId="968527d2-e955-4abc-bc8a-e36ffb609c29" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.13]   Discovering: Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.48]   Discovered:  Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.49]   Starting:    Neemle.OrmLite.Tests
+[xUnit.net 00:00:01.56]       Assert.Empty() Failure: Collection was not empty
+[xUnit.net 00:00:01.56]       Collection: [(5,21): error ORMLITE026: Navigation 'SaveParent.Children' cannot be loaded: the inverse key 'SaveParentId' is not a mapped property of 'SaveChild'. Add that property to 'SaveChild', name the key with [Reference("...")] on the collection, or mark the collection [NotAColumn]. No LoadChildrenAsync is generated for it.]
+[xUnit.net 00:00:01.56]       Stack Trace:
+[xUnit.net 00:00:01.56]         /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/tests/Tests/GraphSave/GeneratedSaveConsumerTests.cs(64,0): at Neemle.OrmLite.Tests.GraphSave.GeneratedSaveConsumerTests.Generated_consumer_compiles_loads_and_constructs_request()
+[xUnit.net 00:00:01.56]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:01.56]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:01.56]   Finished:    Neemle.OrmLite.Tests
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="20f44858e0e8" outcome="Error" timestamp="2026-11-26T21:16:05.8129606+00:00">
+        <Text>[xUnit.net 00:00:01.56]     [UC-006][AC-112-01/02/05/06] generated external save consumer compiles and resolves exact tokens [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

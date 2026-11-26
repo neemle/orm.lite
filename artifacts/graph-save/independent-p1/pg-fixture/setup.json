@@ -1,0 +1,526 @@
+{
+  "start": "2026-11-26T21:26:55.110986+00:00",
+  "authorization": "64b68c45-5fcd-4be5-abee-fc8d85d12d24",
+  "operations": [
+    {
+      "argv": [
+        "docker",
+        "container",
+        "inspect",
+        "orml112-sdet-pg-20261126"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "Error response from daemon: No such container: orml112-sdet-pg-20261126\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "orml112-sdet-net-20261126"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "Error response from daemon: network orml112-sdet-net-20261126 not found\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--internal",
+        "--label",
+        "orml.task=ORML-112",
+        "--label",
+        "orml.claim=d3fb9340-8b01-488d-b58f-5cac3a6fa86a",
+        "orml112-sdet-net-20261126"
+      ],
+      "exitCode": 0,
+      "stdout": "ced093c9dc42f4dfee9c0efdf7403618e5212cd39a262abcbf570ba4a593e63b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--rm",
+        "--name",
+        "orml112-sdet-pg-20261126",
+        "--label",
+        "orml.task=ORML-112",
+        "--label",
+        "orml.claim=d3fb9340-8b01-488d-b58f-5cac3a6fa86a",
+        "--memory=1g",
+        "--cpus=1",
+        "--network",
+        "orml112-sdet-net-20261126",
+        "--tmpfs",
+        "/var/lib/postgresql:rw,size=512m",
+        "--cidfile",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/pg-fixture/pg.cid",
+        "-e",
+        "POSTGRES_HOST_AUTH_METHOD=trust",
+        "-e",
+        "POSTGRES_USER=postgres",
+        "-e",
+        "POSTGRES_DB=postgres",
+        "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117"
+      ],
+      "exitCode": 0,
+      "stdout": "8c63edc7d8ffdd9e54dd786341ff9ee6f655ece36035b7369dfe74275e99ecbd\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "exec",
+        "orml112-sdet-pg-20261126",
+        "pg_isready",
+        "-U",
+        "postgres",
+        "-d",
+        "postgres"
+      ],
+      "exitCode": 127,
+      "stdout": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"pg_isready\": executable file not found in $PATH\n",
+      "stderr": ""
+    }
+  ]
+}

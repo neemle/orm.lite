@@ -1,0 +1,192 @@
+{
+  "schema": "ORML-112 independent first-stage checkpoint v1",
+  "generated": "2026-11-26T21:32:11.455366+00:00",
+  "sourceTree": "ba146f90d716d85e2eaa2dbfe740f669078ca7ba",
+  "observedPasses": {
+    "run-03-generated-consumer": 1,
+    "run-04-preflight": 27,
+    "run-05-real-providers": 10
+  },
+  "retainedFailures": {
+    "run-01": "private TMPDIR missing before project execution",
+    "run-02": "fixture inverse convention ORMLITE026; corrected explicit declaration without changing assertion",
+    "pg-fixture/setup.json": "readiness helper absent in minimal pinned image, native server ready; readiness.json corrected observation"
+  },
+  "files": [
+    {
+      "path": "artifacts/graph-save/independent-p1/run-01/run.cid",
+      "bytes": 64,
+      "sha256": "b59cf33061130dcd876c302b0fc68bbca7ca6c09477e3d2da8ab1247b5a22581"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-01/run.json",
+      "bytes": 2664,
+      "sha256": "3d83443c909667f236e94a945a0019ea03b4a6ee006e12d1d504ebc52e851bf0"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-01/run.log",
+      "bytes": 3101,
+      "sha256": "e6fde4a42ba61793f1fce19d555ef5aeacdc85fb5b31c8d70e87e33fe0e80ab0"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-01/run.sh",
+      "bytes": 319,
+      "sha256": "df9060f9d664a5ba86b969ee5ce44cbd647dd4d8216d46cd25ce1eed6c23760b"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-01/start.json",
+      "bytes": 2247,
+      "sha256": "7d925ae53ee637392381fd1c724d4b4dd21731554efc0bb898f8c74787ca61eb"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-02/run.cid",
+      "bytes": 64,
+      "sha256": "ab088f1867cf780f7d4c6d345a9de8a492bc0de11485d74b17b6f76b8d2c15b5"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-02/run.json",
+      "bytes": 2705,
+      "sha256": "0d0e72f127efb80455bd3242592fd32b6967c0c1b91c895e6e754b3fe57b37bc"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-02/run.log",
+      "bytes": 5429,
+      "sha256": "34ab5b1dbe18a1e144e092c1ad48095d61c98275f0e2dc2d75b1b92541e1b4c8"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-02/run.sh",
+      "bytes": 319,
+      "sha256": "df9060f9d664a5ba86b969ee5ce44cbd647dd4d8216d46cd25ce1eed6c23760b"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-02/start.json",
+      "bytes": 2288,
+      "sha256": "0bb4c3ce0844cd9fb1b4271ea271bdf9bccf00c29449a221621652f64dd9a74f"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-02/results/generated-consumer.trx",
+      "bytes": 5386,
+      "sha256": "05b8decf686e537dbcde87130ab7c6956f52df23f9b92daf4abfd2f2598636a9"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-03/run.cid",
+      "bytes": 64,
+      "sha256": "415550976f297a99b22a7b0a3ed0631568b6d756e56860d45675323e2140056d"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-03/run.json",
+      "bytes": 3236,
+      "sha256": "58541f8efd306736305fc82ccb6470a6d2ece352794c59a69c5d2df602a889f5"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-03/run.log",
+      "bytes": 2750,
+      "sha256": "6a13e68cc8191be4c9293c70a1220606c68633304e8cd3e98337ca0d4bd139d7"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-03/run.sh",
+      "bytes": 299,
+      "sha256": "108e716aba35ca408c65befb1b11f4078d5026f13b52faf5663dbe74e618efd1"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-03/start.json",
+      "bytes": 2819,
+      "sha256": "022910c1650f079d9690d8a26ffe54cb91dee5b41f20428429aec5eb68f28662"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-03/results/generated-consumer.trx",
+      "bytes": 3068,
+      "sha256": "87d6831edafbdee818c8c081e9a8bb999b0fae56d2cc402c64a9992320f0e220"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-04/run.cid",
+      "bytes": 64,
+      "sha256": "3c18eca32e0618352b91c3b4edf2774532295d4f022c9ed12938a52895587e39"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-04/run.json",
+      "bytes": 3185,
+      "sha256": "6539c16f5e9fa9227e8d617faeb1963054f695affe2948bdfb19c2367821b366"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-04/run.log",
+      "bytes": 2740,
+      "sha256": "b1a8c3c16e3a57c0a524d4ffce99e8061c80415450bc11b71900d4524a3840ea"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-04/run.sh",
+      "bytes": 312,
+      "sha256": "ffc1d673469d38a50a62e7d3f0791b1829a4d484cbccd5ec843e19e79f87b538"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-04/start.json",
+      "bytes": 2768,
+      "sha256": "620f6c9f49d6efea0ce8281299614f614f0a587a9e30efe125dbbb7c00188058"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-04/results/preflight.trx",
+      "bytes": 43666,
+      "sha256": "04ceee25e86c3759ffbbc18cc61882a13866106b77739fadf01722efb13ad4ff"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-05/run.cid",
+      "bytes": 64,
+      "sha256": "a7a832ab73f22942a435addd4ea32919150cf1b9220cb7f972f1ae92e3d32102"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-05/run.json",
+      "bytes": 3492,
+      "sha256": "ed50f33ae4bc1fa36d3db864e32789ff03d3d1b488f415703ca73dde77bec3a9"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-05/run.log",
+      "bytes": 1825,
+      "sha256": "8ab23275f1b4d2f66204555421e97cc57b3a1aac935e2b06e3b275c733b9d7b7"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-05/run.sh",
+      "bytes": 291,
+      "sha256": "33611b2d8d997afdfcea37913589c1c4a871e887c1e832ea9fac5e7f41cce3f7"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-05/start.json",
+      "bytes": 3075,
+      "sha256": "a121cbb75813dd001a3c167b9c7d8c179aa69b5f2e58a9d031b7beeb7d23704d"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/run-05/results/providers.trx",
+      "bytes": 17666,
+      "sha256": "1872467e869acbbfcc1404a7c986485bc80bbba8bb73c6ea141935f9e200e0d7"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/pg-fixture/cleanup.json",
+      "bytes": 6818,
+      "sha256": "79161223f4d2f84ed321fba8ed3db73e1fa2d5e16415f4844ca75c8774715abd"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/pg-fixture/pg.cid",
+      "bytes": 64,
+      "sha256": "c79e718f5b379235ae7d02f58a1d4bce43cef8e4c9e7cad6024eb3e5d4abeb89"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/pg-fixture/readiness.json",
+      "bytes": 2706,
+      "sha256": "9f6039042646c61c0d61c1c4e934f51b193384d7cb7d32dedec3a884fe1bf0d6"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/pg-fixture/server.log",
+      "bytes": 4914,
+      "sha256": "b12a16c8404a593133c6e42516255320d2b0a152347a34470cf79c19b8e329a9"
+    },
+    {
+      "path": "artifacts/graph-save/independent-p1/pg-fixture/setup.json",
+      "bytes": 13738,
+      "sha256": "c20e7e57f276d455f0f07b623f53ccf4743daf37dd905bfb15563900592dd6a8"
+    }
+  ],
+  "limits": [
+    "No full S6/publicdemo/Native/QA/security/coverage pass",
+    "Remaining critical fault/materializer tests continue under same SDET claim",
+    "No application-source changes"
+  ]
+}
