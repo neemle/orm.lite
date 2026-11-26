@@ -51,7 +51,7 @@ internal static class EntityEmitter
         var file = NewFile();
         foreach (var e in entities)
         {
-            file = EntityClassEmitter.EntityClass(file, e, scope);
+            file = EntityClassEmitter.EntityClass(file, e, scope, entities);
             if (e.SoftDeleteColumn is not null) file = PurgeClass(file, e);
         }
         if (foreignKeysValid) file = SchemaClass(file, entities, asmToken);
@@ -103,10 +103,15 @@ internal static class EntityEmitter
                 .OfTypes(Cs.Type(e.Full))
                 .Of(Cs.Id(e.Type + "Orm").Dot("Descriptor"))))
             .ToArray();
+        var graphs = entities.Where(GraphEmitter.Supported)
+            .Select(e => Cs.Statement(Cs.Id(e.Type + "Orm").Dot("RegisterGraph").Of())).ToArray();
         return file.Class("OrmMetaInit").Internal().Static()
             .Method(Cs.Void, "Init").Internal().Static()
                 .Attribute(Cs.Attribute(Syn.Sys("Runtime.CompilerServices.ModuleInitializer")))
-                .Body(registrations).End()
+                .Body(Cs.Statement(Cs.Id("RegisterEntities").Of()),
+                    Cs.Statement(Cs.Id("RegisterGraphs").Of())).End()
+            .Method(Cs.Void, "RegisterEntities").Private().Static().Body(registrations).End()
+            .Method(Cs.Void, "RegisterGraphs").Private().Static().Body(graphs).End()
             .End();
     }
 }

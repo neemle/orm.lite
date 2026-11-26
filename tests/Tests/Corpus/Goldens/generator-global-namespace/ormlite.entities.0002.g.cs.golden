@@ -37,6 +37,21 @@ public static class TreeOrm
         return new global::Neemle.OrmLite.Query<global::Tree>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::Tree>(new global::Neemle.OrmLite.GraphEntityBinding<global::Tree>(Descriptor, Map,
+            new global::Neemle.OrmLite.GraphKeyBinding<global::Tree, global::System.Guid>("id", (e) => e.Id), new global
+            ::Neemle.OrmLite.GraphReferenceBinding<global::Tree, global::Orchard, global::System.Guid>("Orchard",
+            "orchard_id", (e) => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(true, e.OrchardId), (e, @value
+            ) => e.Orchard = @value)));
+    }
+
+    public static class Paths
+    {
+        public static global::Neemle.OrmLite.GraphPath<global::Tree, global::Orchard> Orchard => GraphPaths.Edge<global
+            ::Tree, global::Orchard>("Orchard");
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         Tree e)
     {

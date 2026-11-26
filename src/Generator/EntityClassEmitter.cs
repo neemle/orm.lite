@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Neemle.CSharpComposer;
 using Neemle.CSharpComposer.Builders;
@@ -17,12 +18,13 @@ namespace Neemle.OrmLite.Generator;
 /// </summary>
 internal static class EntityClassEmitter
 {
-    internal static FileBuilder EntityClass(FileBuilder file, Entity e, EmitScope scope)
+    internal static FileBuilder EntityClass(FileBuilder file, Entity e, EmitScope scope, ImmutableArray<Entity> entities)
     {
         var entity = Cs.Type(e.Full);
         var key = OrmGenerator.KeyedApiWithheld(e) ? null : OrmGenerator.FirstKey(e);
         var cls = EntityEmitter.Access(file.Class(e.Type + "Orm"), e.Access).Static();
         cls = ReadMembers(cls, e, entity, scope.AllTables);
+        cls = GraphEmitter.Members(cls, e, entities, scope);
         if (e.IsView) return ReadOnly(cls, e).End();
 
         cls = WriteMembers(cls, e, entity, key);

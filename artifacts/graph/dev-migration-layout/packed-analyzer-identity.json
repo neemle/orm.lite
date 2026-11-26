@@ -1,0 +1,33 @@
+{
+  "generatorSha256": "ab4a9d6a9de35c4ca79cc4fa97d2e429848486c4c58b846c43c8badb2be0cb50",
+  "selectedConsumerAnalyzer": {
+    "path": "artifacts/graph/dev-migration-layout/packages/neemle.ormlite/0.1.0-dev.gbadb470/analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+    "sha256": "ab4a9d6a9de35c4ca79cc4fa97d2e429848486c4c58b846c43c8badb2be0cb50"
+  },
+  "packages": [
+    {
+      "path": "artifacts/graph/dev-migration-layout/feed/Neemle.OrmLite.0.1.0-dev.gbadb470.nupkg",
+      "sha256": "4b84cbaa66c72f32b0b663fb2e6f2ef03110934b49bd198b1c89d8e81483b016",
+      "size": 487332,
+      "analyzers": [
+        {
+          "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+          "sha256": "ab4a9d6a9de35c4ca79cc4fa97d2e429848486c4c58b846c43c8badb2be0cb50",
+          "equalsCurrentGenerator": true
+        }
+      ]
+    },
+    {
+      "path": "artifacts/graph/dev-migration-layout/feed/Neemle.OrmLite.Postgres.0.1.0-dev.gbadb470.nupkg",
+      "sha256": "344fbca9bac03363316d8a34eaff9af6ef75b4f9627fc3057171d7b55079678c",
+      "size": 76518,
+      "analyzers": []
+    },
+    {
+      "path": "artifacts/graph/dev-migration-layout/feed/Neemle.OrmLite.Sqlite.0.1.0-dev.gbadb470.nupkg",
+      "sha256": "94554c06af3310f3807b74b493555805c2d3273c9c256811ddc959e924390f32",
+      "size": 131141,
+      "analyzers": []
+    }
+  ]
+}

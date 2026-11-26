@@ -33,6 +33,17 @@ public static class SoftKeyNotGuidOrm
         return new global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftKeyNotGuid>(db, Map);
     }
 
+    internal static void RegisterGraph()
+    {
+        GraphModel.Register<global::CorpusDiagnostics.SoftKeyNotGuid>(new global::Neemle.OrmLite.GraphEntityBinding<
+            global::CorpusDiagnostics.SoftKeyNotGuid>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global
+            ::CorpusDiagnostics.SoftKeyNotGuid, int>("id", (e) => e.Id)));
+    }
+
+    public static class Paths
+    {
+    }
+
     public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
         CorpusDiagnostics.SoftKeyNotGuid e)
     {

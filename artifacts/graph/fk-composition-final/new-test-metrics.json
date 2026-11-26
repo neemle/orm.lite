@@ -1,0 +1,20 @@
+{
+  "generated": "2026-11-26T13:52:48.677777+00:00",
+  "widthCommand": "python3: for each of the two named files, max(len(line) for line in Path(file).read_text().splitlines()); assert <=120",
+  "files": [
+    {
+      "file": "tests/Tests/Graph/CiIntegration/ComposedGraphSource.cs",
+      "maxWidth": 111,
+      "nonemptyLines": 45,
+      "sha256": "a683fadee81816f53d56fbdfe64e94c5184bf7636a76225e02598d34c0135f9f"
+    },
+    {
+      "file": "tests/Tests/Graph/CiIntegration/GraphForeignKeyCompositionTests.cs",
+      "maxWidth": 112,
+      "nonemptyLines": 52,
+      "sha256": "970f00458128edef751bc19a38b26be489c57a74f5e686c9d25fef0b07883f33"
+    }
+  ],
+  "review": "One bound class/file (lines3 and8); fixture Text is constant string data; embedded fixture declarations are data. Test method bodies lines12-29/33-41/44-55:18/9/12 nonempty lines, zero parameters, maximum nesting1. CC convention1+control/short-circuit/null-coalescing decisions:1,2 (&&),2 (??). Each class under500 lines. No product changes.",
+  "finalRepresentation": "Two wrapped attributes preserve tokens. Text expression-bodied getter replaced by const string containing identical template data; final compile exit0. The10 executed tests remain attributed to60e8d911, not relabeled as a second execution."
+}

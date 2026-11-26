@@ -1,0 +1,5 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/demo/OrmLiteDemo.csproj (in 37.07 sec).
+  OrmLiteDemo -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/native10-build/bin/OrmLiteDemo/release_linux-arm64/OrmLiteDemo.dll
+  Generating native code
+  OrmLiteDemo -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/native10-out/

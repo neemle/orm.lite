@@ -1,0 +1,29 @@
+[
+  {
+    "Type": "GraphAuthorOrm",
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+    "Current": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/fk-composition-final/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+    "TokensEqual": true,
+    "MapTextEqual": true,
+    "OldSha256": "d8bf4e64f82dd69149b1a7929bf77a8dd142d24fa1ebc7046343ad1c6b79c2c7",
+    "CurrentSha256": "d8bf4e64f82dd69149b1a7929bf77a8dd142d24fa1ebc7046343ad1c6b79c2c7"
+  },
+  {
+    "Type": "GraphBookOrm",
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+    "Current": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/fk-composition-final/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+    "TokensEqual": true,
+    "MapTextEqual": true,
+    "OldSha256": "595fadbe143397bba59455983574b51ac287d974fc081075495ad0f0b9013a5a",
+    "CurrentSha256": "595fadbe143397bba59455983574b51ac287d974fc081075495ad0f0b9013a5a"
+  },
+  {
+    "Type": "GraphTagOrm",
+    "Old": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/demo-current/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+    "Current": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/fk-composition-final/generated/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0004.g.cs",
+    "TokensEqual": true,
+    "MapTextEqual": true,
+    "OldSha256": "d10f9badbf9b56a0e3ca12c5af1024a145ce74be6d32cd838a10a133f60ff492",
+    "CurrentSha256": "d10f9badbf9b56a0e3ca12c5af1024a145ce74be6d32cd838a10a133f60ff492"
+  }
+]

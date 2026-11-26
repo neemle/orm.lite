@@ -1,0 +1,23 @@
+[
+  {
+    "argv": [
+      "docker",
+      "inspect",
+      "f904d67e8e0dc722576ca1d5bc3af083b30cd412f690d6d7c472a25955b30f92"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "error: no such object: f904d67e8e0dc722576ca1d5bc3af083b30cd412f690d6d7c472a25955b30f92\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "network",
+      "inspect",
+      "1f60ecd0c27b99b7067042859d17ad43a040069aa0f82cf3a199dfc9ea443a6b"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: network 1f60ecd0c27b99b7067042859d17ad43a040069aa0f82cf3a199dfc9ea443a6b not found\n"
+  }
+]

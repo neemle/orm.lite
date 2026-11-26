@@ -1,0 +1,85 @@
+{
+  "gate": "ReadmeCheck source",
+  "command": [
+    "dotnet",
+    "run",
+    "scripts/ReadmeCheck.cs",
+    "--",
+    "source"
+  ],
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--name",
+    "orml108-readme-f6e18656",
+    "--cidfile",
+    "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs/artifacts/graph/readme-boundary-fix/container.cid",
+    "--mount",
+    "type=bind,source=/Users/para/work/tskr/libs/orm.lite,target=/Users/para/work/tskr/libs/orm.lite,readonly",
+    "--workdir",
+    "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs",
+    "--env",
+    "DOTNET_CLI_TELEMETRY_OPTOUT=1",
+    "--env",
+    "DOTNET_NOLOGO=1",
+    "--env",
+    "DOTNET_CLI_HOME=/tmp/dotnet",
+    "--env",
+    "NUGET_PACKAGES=/tmp/nuget",
+    "--env",
+    "XDG_CACHE_HOME=/tmp/cache",
+    "sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27",
+    "dotnet",
+    "run",
+    "scripts/ReadmeCheck.cs",
+    "--",
+    "source"
+  ],
+  "workingDirectory": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-108-graphs",
+  "environment": {
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+    "DOTNET_NOLOGO": "1",
+    "DOTNET_CLI_HOME": "/tmp/dotnet",
+    "NUGET_PACKAGES": "/tmp/nuget",
+    "XDG_CACHE_HOME": "/tmp/cache"
+  },
+  "imageId": "sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27",
+  "sourceCommit": "8059e1b3fe6818d0e37ad7337d75d5ba54707fe8",
+  "sourceTree": "c057c69bbb8e874acae0b263836f5afc25ca8322",
+  "testTree": "4f686711574cd7461a6866ff4b7e86d6bbec6a0f",
+  "startedAt": "2026-11-26T14:09:56.959323+00:00",
+  "finishedAt": "2026-11-26T14:10:08.935816+00:00",
+  "exitCode": 0,
+  "runPosition": "after one explanatory sentence correction, before commit",
+  "inputDelta": {
+    "path": "artifacts/graph/dev-migration-layout/README.md",
+    "beforeBlob": "f9bd1f5a386cb485c05dc3a73f958daa24069c24",
+    "afterBlob": "21e5cdf0e3d3beebb07071f0271a25017d3ee482",
+    "beforeSha256": "196b426fa2726964f9bc625a7f6b398f9625b0b6889d1b9ea2f8a0b3b83cb70d",
+    "afterSha256": "eccb7d91872f312be683d1281aed360f0fb002e9780cedbb0413efa1876238d2",
+    "dirtyDiffSha256": "a13e929f7410946be4b93700bf51fd2c62a1c5456415c03bcbeef98a5ab00319",
+    "description": "One canonical-record sentence generalized; every other README byte retained."
+  },
+  "historicalManifest": {
+    "path": "artifacts/graph/dev-migration-layout/evidence-file-manifest.json",
+    "entry": {
+      "path": "artifacts/graph/dev-migration-layout/README.md",
+      "size": 1635,
+      "sha256": "196b426fa2726964f9bc625a7f6b398f9625b0b6889d1b9ea2f8a0b3b83cb70d"
+    },
+    "sha256": "2f05ad5d174e53345f7a13f490af7fd21428f016b033b29a63294f126c15e8e6",
+    "disposition": "Unchanged historical snapshot; its README hash describes the original prose, not the corrected README."
+  },
+  "nativeOutputs": {
+    "stdout.log": {
+      "size": 79,
+      "sha256": "5c9539c52fd53b15c09c613f372f9a4a7dff35513df844f4772405043a85cbd6"
+    },
+    "stderr.log": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "limits": "Only the previously failing public-source documentation guard was executed. No library/demo/native/test replay or historical proof rewrite."
+}

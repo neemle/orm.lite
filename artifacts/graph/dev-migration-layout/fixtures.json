@@ -1,0 +1,58 @@
+[
+  {
+    "argv": [
+      "docker",
+      "network",
+      "create",
+      "--label",
+      "orml.task=ORML-108",
+      "--label",
+      "orml.actor=dev108-migration-layout",
+      "orml108-migration-layout"
+    ],
+    "exitCode": 0,
+    "stdout": "1f60ecd0c27b99b7067042859d17ad43a040069aa0f82cf3a199dfc9ea443a6b\n",
+    "stderr": "",
+    "time": "2026-11-26T06:23:36.389474+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "run",
+      "-d",
+      "--rm",
+      "--network",
+      "orml108-migration-layout",
+      "--network-alias",
+      "pg",
+      "--label",
+      "orml.task=ORML-108",
+      "--label",
+      "orml.actor=dev108-migration-layout",
+      "--tmpfs",
+      "/var/lib/postgresql/data:uid=70,gid=70,mode=0700",
+      "-e",
+      "POSTGRES_HOST_AUTH_METHOD=trust",
+      "-e",
+      "POSTGRES_USER=postgres",
+      "neemle/pg.lite:19"
+    ],
+    "exitCode": 0,
+    "stdout": "f904d67e8e0dc722576ca1d5bc3af083b30cd412f690d6d7c472a25955b30f92\n",
+    "stderr": "",
+    "time": "2026-11-26T06:23:37.100980+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "f904d67e8e0dc722576ca1d5bc3af083b30cd412f690d6d7c472a25955b30f92",
+      "/usr/local/pgsql/bin/postgres",
+      "--version"
+    ],
+    "exitCode": 0,
+    "stdout": "postgres (PostgreSQL) 19.0\n",
+    "stderr": "",
+    "time": "2026-11-26T06:23:44.878986+00:00"
+  }
+]
