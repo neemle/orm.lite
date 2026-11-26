@@ -1,0 +1,428 @@
+{
+  "schema": "ORML108-current-public-graph-chapter-v1",
+  "generated": "2026-11-26T12:45:23.558554+00:00",
+  "run": "3e46b32c-1a9d-41ef-a1df-198bee21750e",
+  "claim": "63ce4360-9bdd-46eb-ab53-83a5c9b3c752",
+  "executionCommit": "2ad9d96659bfdf6140f6fec9277ce75bda3206fd",
+  "sourceTree": "97c51c91c61c80ca13dfc492d17216f214cfe94b",
+  "testTree": "a3af303ea224fd4d73d2687efa7f295732746221",
+  "approvedIntegration": "e32b9fc1816ccee91fa20acc2aac1eef71751d3d",
+  "frozenMainBase": "4bc10d9fdaaa000dc848edaf159ba0dc5f04a4cb",
+  "originalProducerCarrier": "ae964379-3069-468a-aebb-5a6a1c3cf2e0",
+  "gateScope": "PASS same existing demo/OrmLiteDemo.csproj graph chapter,8runtime outcomes JIT/Native10/11 x PostgreSQL19/SQLite. Three private packs,twoJITbuilds,twoNativepublications,8actualruns:15commands exit0; no replay.",
+  "gates": {
+    "build-jit10": {
+      "native": "build-jit10.json",
+      "log": "build-jit10.log",
+      "cid": "build-jit10.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:36:22.724119+00:00",
+      "finished": "2026-11-26T12:36:36.842267+00:00"
+    },
+    "publish-native10": {
+      "native": "publish-native10.json",
+      "log": "publish-native10.log",
+      "cid": "publish-native10.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:37:53.541606+00:00",
+      "finished": "2026-11-26T12:40:28.417569+00:00"
+    },
+    "pack-Postgres": {
+      "native": "pack-Postgres.json",
+      "log": "pack-Postgres.log",
+      "cid": "pack-Postgres.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:36:01.929095+00:00",
+      "finished": "2026-11-26T12:36:22.546587+00:00"
+    },
+    "native11-sqlite": {
+      "native": "native11-sqlite.json",
+      "log": "native11-sqlite.log",
+      "cid": "native11-sqlite.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:42:11.433193+00:00",
+      "finished": "2026-11-26T12:42:13.460584+00:00"
+    },
+    "jit10-sqlite": {
+      "native": "jit10-sqlite.json",
+      "log": "jit10-sqlite.log",
+      "cid": "jit10-sqlite.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:36:56.945427+00:00",
+      "finished": "2026-11-26T12:37:07.808229+00:00"
+    },
+    "publish-native11": {
+      "native": "publish-native11.json",
+      "log": "publish-native11.log",
+      "cid": "publish-native11.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:40:30.916368+00:00",
+      "finished": "2026-11-26T12:42:11.194760+00:00"
+    },
+    "jit10-postgres": {
+      "native": "jit10-postgres.json",
+      "log": "jit10-postgres.log",
+      "cid": "jit10-postgres.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:37:08.025544+00:00",
+      "finished": "2026-11-26T12:37:12.457833+00:00"
+    },
+    "build-jit11": {
+      "native": "build-jit11.json",
+      "log": "build-jit11.log",
+      "cid": "build-jit11.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:37:12.613262+00:00",
+      "finished": "2026-11-26T12:37:43.522269+00:00"
+    },
+    "native11-postgres": {
+      "native": "native11-postgres.json",
+      "log": "native11-postgres.log",
+      "cid": "native11-postgres.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:42:13.630288+00:00",
+      "finished": "2026-11-26T12:42:14.777211+00:00"
+    },
+    "jit11-sqlite": {
+      "native": "jit11-sqlite.json",
+      "log": "jit11-sqlite.log",
+      "cid": "jit11-sqlite.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:37:43.765796+00:00",
+      "finished": "2026-11-26T12:37:48.653809+00:00"
+    },
+    "native10-sqlite": {
+      "native": "native10-sqlite.json",
+      "log": "native10-sqlite.log",
+      "cid": "native10-sqlite.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:40:28.614489+00:00",
+      "finished": "2026-11-26T12:40:29.796839+00:00"
+    },
+    "native10-postgres": {
+      "native": "native10-postgres.json",
+      "log": "native10-postgres.log",
+      "cid": "native10-postgres.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:40:29.941255+00:00",
+      "finished": "2026-11-26T12:40:30.770738+00:00"
+    },
+    "pack-Sqlite": {
+      "native": "pack-Sqlite.json",
+      "log": "pack-Sqlite.log",
+      "cid": "pack-Sqlite.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:35:23.815878+00:00",
+      "finished": "2026-11-26T12:36:01.735132+00:00"
+    },
+    "jit11-postgres": {
+      "native": "jit11-postgres.json",
+      "log": "jit11-postgres.log",
+      "cid": "jit11-postgres.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:37:48.847032+00:00",
+      "finished": "2026-11-26T12:37:53.380347+00:00"
+    },
+    "pack-Core": {
+      "native": "pack-Core.json",
+      "log": "pack-Core.log",
+      "cid": "pack-Core.cid",
+      "exitCode": 0,
+      "started": "2026-11-26T12:33:52.860101+00:00",
+      "finished": "2026-11-26T12:35:23.629841+00:00"
+    }
+  },
+  "parityProvenance": "parity-provenance.json",
+  "cleanup": "cleanup.json",
+  "limits": [
+    "Only first runtime= line removed; every remaining stdout byte retained and equal.",
+    "Original chapter/models/fixture unchanged; ordinary page/exact membership/shared identity/null reference/unrequested path/row overflow/no-list/cleanup original oracles preserved.",
+    "No new fullunit/coverage/census/security/project gate. Prior security/74case/native/rawcoverage records retain original source provenance, not relabelled current.",
+    "Finite same-demo PASS only. Source contracts/current hostedCI/main117 currency/review/security/merge remain root-owned future units.",
+    "Session40013 not portable across agents; original matrix process ended, all15 per-command records and job CID absence authoritative; no restart."
+  ],
+  "evidence": [
+    {
+      "file": "build-jit10.cid",
+      "bytes": 64,
+      "sha256": "58c16d9e3cee31c8a1199a27eb29efe1e470d6e0272c3e2b87ae4d6f4105a48e"
+    },
+    {
+      "file": "build-jit10.json",
+      "bytes": 3803,
+      "sha256": "e3fb257635ef1c6dc006c874b046f280a6a48a2b011ccd737b709c95c53553b2"
+    },
+    {
+      "file": "build-jit10.log",
+      "bytes": 406,
+      "sha256": "39ffe94efc9d3b364cc2b530ee62756543915c6b5ab37df962c39125b3b0fc59"
+    },
+    {
+      "file": "build-jit11.cid",
+      "bytes": 64,
+      "sha256": "2ecbeb94ca150627a7716be5653c51dfe51545c76ed31ea0ec0b11793e9910db"
+    },
+    {
+      "file": "build-jit11.json",
+      "bytes": 3829,
+      "sha256": "f5c96369c56c5d03723e9ac9c62e3ab5318ea157fb1095a465a35e0a1ef83890"
+    },
+    {
+      "file": "build-jit11.log",
+      "bytes": 407,
+      "sha256": "22fb08ccaf5cf957fb4ab68e24126a2b93ad21152f75573360dc0477bbaf5a69"
+    },
+    {
+      "file": "cleanup.json",
+      "bytes": 20359,
+      "sha256": "fa2bf54788fcee15bc7660df7a598f86a3d98dae51c3478b933d1d7d58dd7238"
+    },
+    {
+      "file": "cleanup.py",
+      "bytes": 2517,
+      "sha256": "a3d60cf868f210eaef269779271f81e8a8e14a6eac402996350bd700398338d1"
+    },
+    {
+      "file": "docker-base.json",
+      "bytes": 1367,
+      "sha256": "6af7fb05f61dbddc9764d03059962cb401c30d494076205b449735e7ad175894"
+    },
+    {
+      "file": "finalize.py",
+      "bytes": 6269,
+      "sha256": "7b92d6aebd1532fc4465c13d9d17e94e1ef569a1f7891c15f6694e5bd9e8cf49"
+    },
+    {
+      "file": "fixture.json",
+      "bytes": 15264,
+      "sha256": "3cd838aff6daf6bf10d706bdc96e6e1c822d2ee435efffa1985eb2bd51c272ba"
+    },
+    {
+      "file": "fixture.py",
+      "bytes": 1398,
+      "sha256": "2f50f43cfa2d64edbe90997104ff306fa631afac1f3f920ff8ecbef44df8033e"
+    },
+    {
+      "file": "jit10-postgres.cid",
+      "bytes": 64,
+      "sha256": "3bec5e5ff7ce0f89c22eb46b4ebd1cc182b8d4d1f4c4d261c3bf4a3d1b4b5764"
+    },
+    {
+      "file": "jit10-postgres.json",
+      "bytes": 3477,
+      "sha256": "3d786a2567c6b65376085e156aad97e6d4bb6460366f29205aa06c4c8863781b"
+    },
+    {
+      "file": "jit10-postgres.log",
+      "bytes": 425,
+      "sha256": "b69e763aacd9014e771c108616a1bcd3d251f26f47aa38b136f7642980f58320"
+    },
+    {
+      "file": "jit10-sqlite.cid",
+      "bytes": 64,
+      "sha256": "2b87d579841d3897f8ecde64e66655624fd90c51a93b04fb35d3c9ad93f06731"
+    },
+    {
+      "file": "jit10-sqlite.json",
+      "bytes": 3290,
+      "sha256": "63aa742e320c4768f5beb0a9d8143165c399d160b4e4f31fdbfa2745e47e46c0"
+    },
+    {
+      "file": "jit10-sqlite.log",
+      "bytes": 425,
+      "sha256": "b69e763aacd9014e771c108616a1bcd3d251f26f47aa38b136f7642980f58320"
+    },
+    {
+      "file": "jit11-postgres.cid",
+      "bytes": 64,
+      "sha256": "f04f62b56851fa76e831e607147814ba3ddc51c9d4c9fbe58db58aa3453abadc"
+    },
+    {
+      "file": "jit11-postgres.json",
+      "bytes": 3477,
+      "sha256": "4b380b0a267da9fab0237ef7b7133401d64743ed0dfd519b7051e17108b3373d"
+    },
+    {
+      "file": "jit11-postgres.log",
+      "bytes": 424,
+      "sha256": "ec9d6c57217d3ba4d7ca48feb61f168cfc941af65d6f22b9b1b26c4d8b2a9500"
+    },
+    {
+      "file": "jit11-sqlite.cid",
+      "bytes": 64,
+      "sha256": "bffeb8662b13185749885563d5896bab1d2692ac421f757ba86caa2cf2cd1ea9"
+    },
+    {
+      "file": "jit11-sqlite.json",
+      "bytes": 3290,
+      "sha256": "4284c2ad83f1e9e7a2664d66c1427d173a45f7d6d9bef47740f7dbef6805755c"
+    },
+    {
+      "file": "jit11-sqlite.log",
+      "bytes": 424,
+      "sha256": "ec9d6c57217d3ba4d7ca48feb61f168cfc941af65d6f22b9b1b26c4d8b2a9500"
+    },
+    {
+      "file": "matrix.py",
+      "bytes": 2168,
+      "sha256": "67131942e3c8bcc7007633b9d39a67248e3eb7f12a71b2b4958a82eddd873e55"
+    },
+    {
+      "file": "native10-postgres.cid",
+      "bytes": 64,
+      "sha256": "e92a6ad587b88272d3fe9151968c53cb04711fe74040008eeefb156a2f5424a3"
+    },
+    {
+      "file": "native10-postgres.json",
+      "bytes": 3445,
+      "sha256": "3a6cd0415db9567034e6ff77fddf8b81ed722254f390aee47fc588fd194ec919"
+    },
+    {
+      "file": "native10-postgres.log",
+      "bytes": 425,
+      "sha256": "b69e763aacd9014e771c108616a1bcd3d251f26f47aa38b136f7642980f58320"
+    },
+    {
+      "file": "native10-sqlite.cid",
+      "bytes": 64,
+      "sha256": "4b5015eedd7ba9b55489ada9518c0c35a8086b49fbb8fdde703b9c1d0714411a"
+    },
+    {
+      "file": "native10-sqlite.json",
+      "bytes": 3258,
+      "sha256": "2243ef71e4feea5f3934e15049992993415e2523e82f7878346ba916a6b80e27"
+    },
+    {
+      "file": "native10-sqlite.log",
+      "bytes": 425,
+      "sha256": "b69e763aacd9014e771c108616a1bcd3d251f26f47aa38b136f7642980f58320"
+    },
+    {
+      "file": "native11-postgres.cid",
+      "bytes": 64,
+      "sha256": "a036584079cf237bc91f73ae27f3a1c6404e6aed0b2dce985426a5da102b173d"
+    },
+    {
+      "file": "native11-postgres.json",
+      "bytes": 3445,
+      "sha256": "024244ec9808773616a1b4b2ef56e364d04aff07dbe512758b6956d4c656473b"
+    },
+    {
+      "file": "native11-postgres.log",
+      "bytes": 424,
+      "sha256": "ec9d6c57217d3ba4d7ca48feb61f168cfc941af65d6f22b9b1b26c4d8b2a9500"
+    },
+    {
+      "file": "native11-sqlite.cid",
+      "bytes": 64,
+      "sha256": "3eecfa90b89da26e1404ba6d04095d4afa60b94e80482e3b4b5c8177aff33698"
+    },
+    {
+      "file": "native11-sqlite.json",
+      "bytes": 3258,
+      "sha256": "446c059edaa766852ed6c75ccaca1c960fbe75838d6d77b49ce6e2dc2860c5d5"
+    },
+    {
+      "file": "native11-sqlite.log",
+      "bytes": 424,
+      "sha256": "ec9d6c57217d3ba4d7ca48feb61f168cfc941af65d6f22b9b1b26c4d8b2a9500"
+    },
+    {
+      "file": "nuget.config",
+      "bytes": 613,
+      "sha256": "6a72bcdae7a9869cb011278903e50dc297f4fc5740fcb8684018aea6910cbc99"
+    },
+    {
+      "file": "pack-Core.cid",
+      "bytes": 64,
+      "sha256": "99297a5bdeb039655a9d3d198615f672c3c78e11c4bfa01de0e65a0255a7e3d9"
+    },
+    {
+      "file": "pack-Core.json",
+      "bytes": 3717,
+      "sha256": "7645dddf0c57ad438ce61b78411c08320e75282acc24ee3e739562e984884820"
+    },
+    {
+      "file": "pack-Core.log",
+      "bytes": 1386,
+      "sha256": "1c125f7a74c57786fc7b04be278085f07c80f9904b0d9ab5de17906928ced29c"
+    },
+    {
+      "file": "pack-Postgres.cid",
+      "bytes": 64,
+      "sha256": "8d0c9127d50933787359e1feb1a6aec332718ab8382d4dab4aef304fcd5a3748"
+    },
+    {
+      "file": "pack-Postgres.json",
+      "bytes": 3737,
+      "sha256": "eef33bf1f39fb2c2a95a69fe1e70b7afd8f269f99e22a83e21def0c82c62d1e3"
+    },
+    {
+      "file": "pack-Postgres.log",
+      "bytes": 1254,
+      "sha256": "d6d1fdf243d456aec7a67c027f6f141d5f9bb7bebaacb2ad1b23bb9018d7e814"
+    },
+    {
+      "file": "pack-Sqlite.cid",
+      "bytes": 64,
+      "sha256": "a2b6e0c08db601ef15780a109d800cd0d6383156fb4ef46d572c027e48238e01"
+    },
+    {
+      "file": "pack-Sqlite.json",
+      "bytes": 3727,
+      "sha256": "df9f6857c3cb0f580850e60784980bbd182913da42580030b79942cf2c62b1e4"
+    },
+    {
+      "file": "pack-Sqlite.log",
+      "bytes": 1242,
+      "sha256": "7c53f6cef9d75568f1b4a0f4789d71e609658cc74991ca4929bf4f22cf9a5de1"
+    },
+    {
+      "file": "parity-provenance.json",
+      "bytes": 14162,
+      "sha256": "0ba0e56b12cf47a1919821a49c12e616306c681ec702b93cb8b67fc9d29cfbf8"
+    },
+    {
+      "file": "prepare.py",
+      "bytes": 2250,
+      "sha256": "8ebe41415955beee27db69b126ca753c1a47a3b6c93b42b2ec01327beae7d4c7"
+    },
+    {
+      "file": "publish-native10.cid",
+      "bytes": 64,
+      "sha256": "9727c89d906ce4968d394b3996f7399a853a01b1467091dab848f0268f321b8c"
+    },
+    {
+      "file": "publish-native10.json",
+      "bytes": 3909,
+      "sha256": "0e2e87273bfdda0a393137d32cc5639af2d9acf460213418d0500544ba910ef9"
+    },
+    {
+      "file": "publish-native10.log",
+      "bytes": 505,
+      "sha256": "0a6e78250ea069b7e074b0e657ea995773fec63d7f0af65c07033ca2206f774d"
+    },
+    {
+      "file": "publish-native11.cid",
+      "bytes": 64,
+      "sha256": "69ab7528930a10bb04fb4648ba84636be063f9764b920aa47e83a2782a16acc7"
+    },
+    {
+      "file": "publish-native11.json",
+      "bytes": 3909,
+      "sha256": "e8e354ffc0b8f2b534c9902bae4cfe3391d4ce416eab935ebef2e0282d91af3c"
+    },
+    {
+      "file": "publish-native11.log",
+      "bytes": 505,
+      "sha256": "e7739369b0a54234f5669da4eb0a0672bf0ee481def0667b0f5fa01ad8cff178"
+    },
+    {
+      "file": "run.py",
+      "bytes": 1139,
+      "sha256": "2dd2030e12abac7300fc03bf3f802c52afb6f52715fc6b60a49f405da708c39d"
+    }
+  ],
+  "canonicalCarrier": "85de623e-fe52-4629-be70-9c22c489aac5",
+  "canonicalReadback": "full15533chars uncapped"
+}
