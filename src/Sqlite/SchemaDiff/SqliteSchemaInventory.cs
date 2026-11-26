@@ -41,8 +41,21 @@ internal static class SqliteSchemaInventory
             var definition = schema.SingleOrDefault(r => (string)r[0]! == "index"
                 && (string)r[1]! == (string)index[0]!);
             var values = index.Concat(new object?[] { definition?[3], terms.Count }).Concat(terms.SelectMany(t => t));
-            stamps.Add(new("index:" + (string)index[2]!, (string)index[0]!, SqliteSchemaRead.Fingerprint(values)));
+            stamps.Add(new("index:" + (string)index[2]!, (string)index[0]!,
+                PrimaryFingerprint(index, terms, definition, values)));
         }
         return SchemaFact<IReadOnlyList<SchemaObjectStamp>>.Known(stamps);
     }
+    private static string PrimaryFingerprint(object?[] index, IReadOnlyList<object?[]> terms,
+        object?[]? definition, IEnumerable<object?> values)
+    {
+        var keys = terms.Where(t => Convert.ToInt32(t[5], System.Globalization.CultureInfo.InvariantCulture) == 1)
+            .ToArray();
+        if ((string)index[2]! == "pk" && definition?[3] is null && keys.Length == 1
+            && Convert.ToInt32(keys[0][3], System.Globalization.CultureInfo.InvariantCulture) == 0
+            && (string?)keys[0][4] == "BINARY" && keys[0][2] is string column)
+            return SqliteSchemaRead.Fingerprint(new object?[] { "sqlite-primary-index-v1", column });
+        return SqliteSchemaRead.Fingerprint(values);
+    }
+
 }

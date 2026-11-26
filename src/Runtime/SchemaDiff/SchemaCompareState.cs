@@ -42,6 +42,12 @@ internal sealed class SchemaCompareState(SchemaDiffSnapshot target, SchemaDiffOb
         var status = Incomplete ? SchemaDiffStatus.Incomplete : Manual ? SchemaDiffStatus.ManualRequired
             : Up.Count == 0 ? SchemaDiffStatus.NoOp : SchemaDiffStatus.Changes;
         return new(status, Changes, Diagnostics,
-            new(target, observation, Array.AsReadOnly(Up.ToArray())));
+            new(target, observation, Array.AsReadOnly(Up.OrderBy(Table, StringComparer.Ordinal)
+                .ThenBy(Column, StringComparer.Ordinal).ToArray())));
     }
+
+    private static string Table(Node node) => node switch
+    { CreateTable table => table.Table, AddColumn add => add.Table, _ => "" };
+
+    private static string Column(Node node) => node is AddColumn add ? add.Column.Column : "";
 }

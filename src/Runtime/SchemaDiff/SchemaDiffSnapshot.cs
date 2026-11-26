@@ -35,7 +35,8 @@ internal sealed class SchemaDiffSnapshot
         var entities = SchemaDiffNames.Limited(target.Schema.Entities.Where(e => e.Managed), target.Limits.MaxTables);
         foreach (var entity in entities) SchemaDiffNames.Unique(entity.Columns.Select(c => c.Column));
         var budget = new SchemaDiffBudget(target.Limits);
-        foreach (var column in entities.SelectMany(e => e.Columns)) budget.Column();
+        foreach (var column in entities.SelectMany(e => e.Columns))
+        { SchemaDiffNames.Required(column.Property); budget.Column(); }
         var managed = entities.Select(e => e.Table).Order(StringComparer.Ordinal);
         if (!managed.SequenceEqual(tables.Order(StringComparer.Ordinal)))
             throw new SchemaDiffException(SchemaDiffError.Ownership);

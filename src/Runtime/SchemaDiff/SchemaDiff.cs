@@ -21,6 +21,20 @@ public static class SchemaDiff
         return state.Report();
     }
 
+    public static SchemaDiffArtifact Emit(SchemaDiffReport report, SchemaDiffIdentity identity)
+    {
+        ArgumentNullException.ThrowIfNull(report);
+        if (report.Status != SchemaDiffStatus.Changes)
+            throw new SchemaDiffException(SchemaDiffError.UnsupportedDifference);
+        var before = report.Comparison.Before;
+        var manifest = new SchemaDiffManifest(identity, before.Target.Scope,
+            new(before.Target.ModelVersion, SchemaRecipeIdentity.Target(before.Target), before.Digest,
+                before.ProviderProfile), before.Target.SchemaToken);
+        var up = SchemaNodeCopies.Up(report.Comparison.Up, before.Target.Limits.MaxOperations);
+        return SchemaDiffArtifact.FromRecipe(new(manifest, new(up, SchemaNodeCopies.Down(up)), before,
+            SchemaAfterProjection.Expected(before, up)));
+    }
+
     private static void ValidateTarget(SchemaDiffSnapshot current, SchemaDiffSnapshot observed)
     {
         if (current.SchemaToken != observed.SchemaToken || current.ModelVersion != observed.ModelVersion

@@ -34,13 +34,15 @@ internal static class SchemaSourceFacts
             type.Precision is { } precision ? SchemaSourceTarget.Number(precision) : "null",
             type.Scale is { } scale ? SchemaSourceTarget.Number(scale) : "null");
         return w.Call("R.SchemaObservedColumn", "new R.SchemaObservedColumn", w.Text(column.Name),
-            Fact(w, "R.SchemaStorageType", storage), Fact(w, "bool", SchemaSourceTarget.Boolean(column.Nullable.GetKnown())),
+            Fact(w, "R.SchemaStorageType", storage),
+            Fact(w, "bool", SchemaSourceTarget.Boolean(column.Nullable.GetKnown())),
             Fact(w, "int", SchemaSourceTarget.Number(column.KeyPosition.GetKnown())), ColumnFacts(w, column.Facts));
     }
 
     private static string ColumnFacts(SchemaSourceBuilder w, SchemaObservedColumnFacts facts) =>
         w.Call("R.SchemaObservedColumnFacts", "new R.SchemaObservedColumnFacts",
-            Fact(w, "R.SchemaDefault", "new R.SchemaDefault(R.SchemaDefaultKind." + facts.Default.GetKnown().Kind + ")"),
+            Fact(w, "R.SchemaDefault",
+                "new R.SchemaDefault(R.SchemaDefaultKind." + facts.Default.GetKnown().Kind + ")"),
             Fact(w, "bool", SchemaSourceTarget.Boolean(facts.Generated.GetKnown())),
             Fact(w, "bool", SchemaSourceTarget.Boolean(facts.Identity.GetKnown())),
             Fact(w, "string?", w.Text(facts.Collation.GetKnown())));

@@ -21,7 +21,8 @@ internal static class SchemaSourceRecipe
             w.Call("R.SchemaDiffIdentity", "new R.SchemaDiffIdentity", w.Text(id.VersionPrefix),
                 w.Text(id.CSharpNamespace), w.Text(id.CSharpTypeName)), SchemaSourceTarget.Scope(w, manifest.Scope),
             w.Call("R.SchemaDiffProvenance", "new R.SchemaDiffProvenance", w.Text(provenance.ModelVersion),
-                w.Text(provenance.TargetDigest), w.Text(provenance.ObservationDigest), w.Text(provenance.ProviderProfile)),
+                w.Text(provenance.TargetDigest), w.Text(provenance.ObservationDigest),
+                w.Text(provenance.ProviderProfile)),
             w.Text(manifest.SchemaToken));
     }
 }

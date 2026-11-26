@@ -26,7 +26,7 @@ internal static class PostgresSchemaTable
         var row = rows[0];
         var relation = Convert.ToUInt32(row[0], CultureInfo.InvariantCulture);
         var columns = await PostgresSchemaColumns.ReadAsync(read, relation, ct);
-        var facts = await PostgresSchemaInventory.ReadAsync(read, relation, ct);
+        var facts = await PostgresSchemaInventory.ReadAsync(read, relation, table, ct);
         if ((string)row[1]! != "r" || (string)row[2]! != "p" || (bool)row[3]! || (bool)row[4]! || row[5] is not null)
             facts = facts with
             { Constraints = SchemaFact<IReadOnlyList<SchemaObjectStamp>>.Unsupported("table-effects") };

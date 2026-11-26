@@ -28,6 +28,8 @@ internal static class PostgresSchemaInspect
             + "current_setting('server_version_num'),"
             + "(SELECT oid FROM pg_catalog.pg_database WHERE datname=current_database())",
             [], 1, ct);
+        if (identity.Count == 1 && (!int.TryParse((string)identity[0][2]!, out var version)
+            || version is < 190000 or >= 200000)) throw new SchemaDiffException(SchemaDiffError.UnsupportedProvider);
         if (identity.Count != 1 || (string)identity[0][1]! != request.Target.Scope.Namespace)
             throw new SchemaDiffException(SchemaDiffError.ScopeMismatch);
         var tables = new List<SchemaObservedTable>();

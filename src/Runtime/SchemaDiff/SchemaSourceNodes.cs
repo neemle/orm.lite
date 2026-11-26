@@ -13,6 +13,11 @@ internal static class SchemaSourceNodes
         DropColumn drop => w.Call("N.DropColumn", "new N.DropColumn", w.Text(drop.Table), w.Text(drop.Column), "false"),
         ColumnDef column => Column(w, column),
         TypeRef type => w.Call("N.TypeRef", "new N.TypeRef", "N.ColumnType." + type.Kind),
+        _ => Default(node),
+    };
+
+    private static string Default(Node node) => node switch
+    {
         IntLit => "new N.IntLit(0)", BoolLit => "new N.BoolLit(false)",
         StringLit => "new N.StringLit(\"\")", ClockNow => "new N.ClockNow()",
         _ => throw new SchemaDiffException(SchemaDiffError.InvalidArtifact),

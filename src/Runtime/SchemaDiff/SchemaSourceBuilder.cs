@@ -29,7 +29,7 @@ internal sealed class SchemaSourceBuilder
         var lines = new List<string>(); var current = prefix;
         foreach (var value in values)
         {
-            if (current.Length + value.Length + 2 > 100) { lines.Add(current); current = "    "; }
+            if (current.Length + value.Length + 2 > 100) { lines.Add(current.TrimEnd()); current = "    "; }
             current += value + ", ";
         }
         if (current.EndsWith(", ", StringComparison.Ordinal)) current = current[..^2];
@@ -57,7 +57,11 @@ internal sealed class SchemaSourceBuilder
         var name = string.Join(".", identity.CSharpNamespace.Split('.').Select(p => "@" + p));
         var text = "#nullable enable\nusing R = global::Neemle.OrmLite;\nusing N = global::Neemle.OrmLite.Nodes;\n"
             + "using G = global::System.Collections.Generic;\n\nnamespace "
-            + name + ";\n\npublic static class @" + identity.CSharpTypeName + "\n{\n"
+            + name + ";\n\n"
+            + "// Down drops newly added columns/tables and loses post-Up data. Backup is required to retain that data.\n"
+            + "// DownProofRequired is an obligation: establish actual Up/Down/Up fixture evidence before acceptance.\n"
+            + "// Comparison proves supported physical schema facts, not historical logical-domain intent.\n"
+            + "public static class @" + identity.CSharpTypeName + "\n{\n"
             + "    public static R.SchemaDiffArtifact Create() => R.SchemaDiffArtifact.FromRecipe(" + recipe + ");\n\n"
             + string.Join("\n", _methods) + "}\n";
         var lines = text.Split('\n');

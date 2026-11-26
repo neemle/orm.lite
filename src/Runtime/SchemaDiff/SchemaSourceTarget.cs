@@ -23,7 +23,8 @@ internal static class SchemaSourceTarget
 
     private static string Entity(SchemaSourceBuilder w, SchemaDesiredTable table)
     {
-        var entity = w.Call("R.EntityDescriptor", "R.EntityDescriptor.Of", w.Text(table.Name), w.Text(table.Name), "true");
+        var entity = w.Call("R.EntityDescriptor", "R.EntityDescriptor.Of", w.Text(table.Name),
+            w.Text(table.Name), "true");
         foreach (var column in table.Columns)
             entity = w.Call("R.EntityDescriptor", entity + ".Property", w.Text(column.Property), w.Text(column.Column),
                 "N.ColumnType." + column.Type, Boolean(column.Nullable), Boolean(column.Key),

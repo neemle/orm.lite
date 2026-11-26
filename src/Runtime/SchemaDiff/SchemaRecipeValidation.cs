@@ -22,22 +22,34 @@ internal static class SchemaRecipeValidation
 
     private static void Validate(SchemaDiffRecipe recipe)
     {
-        var before = recipe.Before; var after = recipe.After; var manifest = recipe.Manifest;
+        var before = recipe.Before; var manifest = recipe.Manifest;
         var target = SchemaSnapshotCopies.Target(before.Target);
         var report = SchemaDiff.Compare(target, before);
-        if (report.Status != SchemaDiffStatus.Changes || !report.Comparison.Up.SequenceEqual(recipe.Nodes.Up)
-            || SchemaDiff.Compare(target, after).Status != SchemaDiffStatus.NoOp
-            || before.Identity != after.Identity || before.HistoryDigest != after.HistoryDigest
-            || SchemaAfterProjection.Existing(before, recipe.Nodes.Up).Digest != after.Digest)
-            throw new SchemaDiffException(SchemaDiffError.InvalidArtifact);
-        if (manifest.SchemaToken != before.Target.SchemaToken || !Scope(manifest.Scope, before.Target.Scope)
-            || manifest.Provenance != new SchemaDiffProvenance(before.Target.ModelVersion,
-                SchemaRecipeIdentity.Target(before.Target), before.Digest, before.ProviderProfile))
-            throw new SchemaDiffException(SchemaDiffError.InvalidArtifact);
+        ValidatePhysical(recipe, report, target);
+        ValidateManifest(manifest, before);
         SchemaSourceNames.Validate(manifest.Identity);
         var versions = before.History.AppliedVersions.GetKnown();
         if (versions.Any(v => !Reserved(v) && StringComparer.Ordinal.Compare(v, manifest.Identity.VersionPrefix) >= 0))
             throw new SchemaDiffException(SchemaDiffError.HistoryMismatch);
+    }
+
+    private static void ValidatePhysical(SchemaDiffRecipe recipe, SchemaDiffReport report, SchemaDiffTarget target)
+    {
+        var before = recipe.Before; var after = recipe.After;
+        if (report.Status != SchemaDiffStatus.Changes || !report.Comparison.Up.SequenceEqual(recipe.Nodes.Up)
+            || SchemaDiff.Compare(target, after).Status != SchemaDiffStatus.NoOp)
+            throw new SchemaDiffException(SchemaDiffError.InvalidArtifact);
+        if (before.Identity != after.Identity || before.HistoryDigest != after.HistoryDigest
+            || SchemaAfterProjection.Expected(before, recipe.Nodes.Up).Digest != after.Digest)
+            throw new SchemaDiffException(SchemaDiffError.InvalidArtifact);
+    }
+
+    private static void ValidateManifest(SchemaDiffManifest manifest, SchemaDiffObservation before)
+    {
+        var expected = new SchemaDiffProvenance(before.Target.ModelVersion,
+            SchemaRecipeIdentity.Target(before.Target), before.Digest, before.ProviderProfile);
+        if (manifest.SchemaToken != before.Target.SchemaToken || !Scope(manifest.Scope, before.Target.Scope)
+            || manifest.Provenance != expected) throw new SchemaDiffException(SchemaDiffError.InvalidArtifact);
     }
 
     private static bool Reserved(string value) => value.StartsWith("0000_", StringComparison.Ordinal)
@@ -45,5 +57,6 @@ internal static class SchemaRecipeValidation
 
     internal static bool Scope(SchemaDiffScope left, SchemaDiffScope right) =>
         left.DatabaseScopeId == right.DatabaseScopeId && left.Namespace == right.Namespace
-        && left.OwnedTables.Order(StringComparer.Ordinal).SequenceEqual(right.OwnedTables.Order(StringComparer.Ordinal));
+        && left.OwnedTables.Order(StringComparer.Ordinal)
+            .SequenceEqual(right.OwnedTables.Order(StringComparer.Ordinal));
 }

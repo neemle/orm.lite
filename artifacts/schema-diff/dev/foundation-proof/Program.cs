@@ -4,6 +4,14 @@ using FoundationProof;
 if (args.Contains("api")) { NativeApiProof.Show(); return; }
 if (args.Contains("strict")) { await StrictProof.RunAsync(); return; }
 if (args.Contains("recipe")) { await RecipeProof.RunAsync(); return; }
+if (args.Contains("catalog")) { await RawCatalogProof.RunAsync(); return; }
+if (args.Contains("emit")) { await EmissionProof.RunAsync(); return; }
+if (args.Contains("u5"))
+{
+    await RecipeProof.RunAsync();
+    await EmissionProof.RunAsync();
+    return;
+}
 try
 {
 ObservationProof.Run();

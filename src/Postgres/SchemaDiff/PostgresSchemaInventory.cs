@@ -29,13 +29,17 @@ internal static class PostgresSchemaInventory
         """;
 
     internal static async Task<SchemaObservedTableFacts> ReadAsync(PostgresSchemaRead read,
-        uint relation, CancellationToken ct)
+        uint relation, string table, CancellationToken ct)
     {
         var rows = await read.RowsAsync(Sql, PostgresSchemaRead.Parameter("relation", relation),
             read.Request.Target.Limits.MaxCatalogObjects, ct);
         foreach (var _ in rows) read.Object();
+        var roles = await PostgresSchemaRoles.ReadAsync(read, relation, ct);
+        rows = PostgresSchemaRoles.Normalize(rows, roles, table);
         return new SchemaObservedTableFacts(Select(rows, "index"), Select(rows, "constraint:"),
-            Select(rows, "trigger"), Select(rows, "dependent-"));
+            Select(rows, "trigger"), roles.Any(r => (string)r[2]! == "toast-unsupported")
+                ? SchemaFact<IReadOnlyList<SchemaObjectStamp>>.Unsupported("toast-options")
+                : Select(rows, "dependent-"));
     }
 
     private static SchemaFact<IReadOnlyList<SchemaObjectStamp>> Select(IReadOnlyList<object?[]> rows, string prefix) =>

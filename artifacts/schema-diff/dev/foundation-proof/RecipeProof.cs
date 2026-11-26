@@ -43,13 +43,14 @@ internal static class RecipeProof
         var before = await ObserveAsync(connection, request);
         var report = SchemaDiff.Compare(target, before);
         Check.That(report.Status == SchemaDiffStatus.Changes, "recipe additive report");
-        foreach (var statement in DdlCompiler.Compile(report.Comparison.Up, provider))
+        foreach (var statement in report.Comparison.Up.SelectMany(node => DdlCompiler.Compile(node, provider)))
             await ExecuteAsync(connection, statement.Text);
         var after = await ObserveAsync(connection, request);
         var artifact = Artifact(report, after);
         Directory.CreateDirectory("artifacts/schema-diff/dev/generated");
         var name = profile.StartsWith("postgres", StringComparison.Ordinal) ? "Postgres" : "Sqlite";
-        await File.WriteAllTextAsync("artifacts/schema-diff/dev/generated/" + name + "Factory.cs", artifact.CSharpSource);
+        await File.WriteAllTextAsync("artifacts/schema-diff/dev/generated/" + name + "Factory.cs",
+            artifact.CSharpSource);
         Console.WriteLine("RECIPE_PROVIDER_PASS " + name + " version=" + artifact.Version
             + " review=" + artifact.ReviewDigest);
         return artifact;
