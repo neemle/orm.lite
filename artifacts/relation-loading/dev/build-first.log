@@ -1,0 +1,15 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj (in 266 ms).
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/GraphLinkBinding.cs(27,30): error CS0111: Type 'GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey>' already defines a member called 'CaptureSourceKey' with the same parameter types [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/GraphCollectionBinding.cs(28,30): error CS0111: Type 'GraphCollectionBinding<TSource, TTarget, TKey>' already defines a member called 'CaptureSourceKey' with the same parameter types [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/GraphReferenceBinding.cs(26,30): error CS0111: Type 'GraphReferenceBinding<TSource, TTarget, TKey>' already defines a member called 'CaptureSourceKey' with the same parameter types [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj]
+
+Build FAILED.
+
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/GraphLinkBinding.cs(27,30): error CS0111: Type 'GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey>' already defines a member called 'CaptureSourceKey' with the same parameter types [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/GraphCollectionBinding.cs(28,30): error CS0111: Type 'GraphCollectionBinding<TSource, TTarget, TKey>' already defines a member called 'CaptureSourceKey' with the same parameter types [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/GraphReferenceBinding.cs(26,30): error CS0111: Type 'GraphReferenceBinding<TSource, TTarget, TKey>' already defines a member called 'CaptureSourceKey' with the same parameter types [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-109-relation-loading/src/Runtime/Runtime.csproj]
+    0 Warning(s)
+    3 Error(s)
+
+Time Elapsed 00:00:03.60
