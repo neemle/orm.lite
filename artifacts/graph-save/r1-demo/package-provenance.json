@@ -1,0 +1,123 @@
+[
+  {
+    "path": "artifacts/graph-save/r1-demo/feed/Neemle.OrmLite.0.1.0-dev.gfffc5b9.nupkg",
+    "sha256": "4aace1d2e572cd618ce4db08c58aa18b6cf417065052b358cfa3d032aadd133b",
+    "sha512": "5Z7BbhqMhKOCJKONmx9a+L9dUHdpmserptOSwq9GfpfX5kFHo2RNpwBZg0DMUvdsvy93CSW56gASiOns9lgmHA==",
+    "id": "Neemle.OrmLite",
+    "version": "0.1.0-dev.gfffc5b9",
+    "binaries": [
+      {
+        "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+        "sha256": "0d5d9b99a823ba72718370eff50dadad30b0fc574eea5db12ff80f1017f10ea8",
+        "resolvedCachePath": "artifacts/graph-save/r1-demo/packages/neemle.ormlite/0.1.0-dev.gfffc5b9/analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+        "resolvedCacheSha256": "0d5d9b99a823ba72718370eff50dadad30b0fc574eea5db12ff80f1017f10ea8"
+      },
+      {
+        "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+        "sha256": "94a9e2e5d4f9561d5667fd10f615f374e180f7b1d8f648bb9454cad08c689da9",
+        "resolvedCachePath": "artifacts/graph-save/r1-demo/packages/neemle.ormlite/0.1.0-dev.gfffc5b9/lib/net10.0/Neemle.OrmLite.Runtime.dll",
+        "resolvedCacheSha256": "94a9e2e5d4f9561d5667fd10f615f374e180f7b1d8f648bb9454cad08c689da9",
+        "consumerOutputPath": "artifacts/graph-save/r1-demo/jit10-build/bin/OrmLiteDemo/release/Neemle.OrmLite.Runtime.dll",
+        "consumerOutputSha256": "94a9e2e5d4f9561d5667fd10f615f374e180f7b1d8f648bb9454cad08c689da9"
+      },
+      {
+        "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+        "sha256": "33d43f778c85620f4784cfe571496ad1905a6784429c53a2f7ceef288c0c3d51",
+        "resolvedCachePath": "artifacts/graph-save/r1-demo/packages/neemle.ormlite/0.1.0-dev.gfffc5b9/lib/net10.0/Neemle.OrmLite.Sql.dll",
+        "resolvedCacheSha256": "33d43f778c85620f4784cfe571496ad1905a6784429c53a2f7ceef288c0c3d51",
+        "consumerOutputPath": "artifacts/graph-save/r1-demo/jit10-build/bin/OrmLiteDemo/release/Neemle.OrmLite.Sql.dll",
+        "consumerOutputSha256": "33d43f778c85620f4784cfe571496ad1905a6784429c53a2f7ceef288c0c3d51"
+      }
+    ],
+    "resolvedAssets": {
+      "sha512": "5Z7BbhqMhKOCJKONmx9a+L9dUHdpmserptOSwq9GfpfX5kFHo2RNpwBZg0DMUvdsvy93CSW56gASiOns9lgmHA==",
+      "type": "package",
+      "path": "neemle.ormlite/0.1.0-dev.gfffc5b9",
+      "files": [
+        ".nupkg.metadata",
+        "LICENSE",
+        "Neemle.OrmLite.nuspec",
+        "README.md",
+        "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+        "buildTransitive/Neemle.OrmLite.props",
+        "buildTransitive/Neemle.OrmLite.targets",
+        "icon.png",
+        "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+        "lib/net10.0/Neemle.OrmLite.Sql.dll",
+        "neemle.ormlite.0.1.0-dev.gfffc5b9.nupkg.sha512"
+      ]
+    },
+    "privateCachePath": "artifacts/graph-save/r1-demo/packages/neemle.ormlite/0.1.0-dev.gfffc5b9",
+    "cachePackageSha512": "5Z7BbhqMhKOCJKONmx9a+L9dUHdpmserptOSwq9GfpfX5kFHo2RNpwBZg0DMUvdsvy93CSW56gASiOns9lgmHA=="
+  },
+  {
+    "path": "artifacts/graph-save/r1-demo/feed/Neemle.OrmLite.Postgres.0.1.0-dev.gfffc5b9.nupkg",
+    "sha256": "7adcc2c54757b37d215cc72d0fead0bb0c9895d830f04b4b27b2f80998c2f56c",
+    "sha512": "ega60BYHOgouOSPQKSOU2JTe6Ag1dLq7avyaIbIs5CfZDmrp0TOreC+HNpqM52VZWqDWOoGmBI9KvzMRHHuqww==",
+    "id": "Neemle.OrmLite.Postgres",
+    "version": "0.1.0-dev.gfffc5b9",
+    "binaries": [
+      {
+        "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+        "sha256": "32f24d6fd690c8d7ad2d0cb5f755a191ad39ee9751e6ee1d14efe08792a1d1f5",
+        "resolvedCachePath": "artifacts/graph-save/r1-demo/packages/neemle.ormlite.postgres/0.1.0-dev.gfffc5b9/lib/net10.0/Neemle.OrmLite.Postgres.dll",
+        "resolvedCacheSha256": "32f24d6fd690c8d7ad2d0cb5f755a191ad39ee9751e6ee1d14efe08792a1d1f5",
+        "consumerOutputPath": "artifacts/graph-save/r1-demo/jit10-build/bin/OrmLiteDemo/release/Neemle.OrmLite.Postgres.dll",
+        "consumerOutputSha256": "32f24d6fd690c8d7ad2d0cb5f755a191ad39ee9751e6ee1d14efe08792a1d1f5"
+      }
+    ],
+    "resolvedAssets": {
+      "sha512": "ega60BYHOgouOSPQKSOU2JTe6Ag1dLq7avyaIbIs5CfZDmrp0TOreC+HNpqM52VZWqDWOoGmBI9KvzMRHHuqww==",
+      "type": "package",
+      "path": "neemle.ormlite.postgres/0.1.0-dev.gfffc5b9",
+      "files": [
+        ".nupkg.metadata",
+        "LICENSE",
+        "Neemle.OrmLite.Postgres.nuspec",
+        "README.md",
+        "buildTransitive/Neemle.OrmLite.Postgres.props",
+        "buildTransitive/ormlite.capabilities.postgres.txt",
+        "icon.png",
+        "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+        "neemle.ormlite.postgres.0.1.0-dev.gfffc5b9.nupkg.sha512"
+      ]
+    },
+    "privateCachePath": "artifacts/graph-save/r1-demo/packages/neemle.ormlite.postgres/0.1.0-dev.gfffc5b9",
+    "cachePackageSha512": "ega60BYHOgouOSPQKSOU2JTe6Ag1dLq7avyaIbIs5CfZDmrp0TOreC+HNpqM52VZWqDWOoGmBI9KvzMRHHuqww=="
+  },
+  {
+    "path": "artifacts/graph-save/r1-demo/feed/Neemle.OrmLite.Sqlite.0.1.0-dev.gfffc5b9.nupkg",
+    "sha256": "94e8600fb35f1ae1bdbd77ae8f60d19ffdc717989d10264b1c1bc34ea451ce52",
+    "sha512": "0/cEORYGS1/QoLHShZdy11+l/4OuA7mJlKDWZFhOsx092PZYPGGT2ZTGKwUB2NoQSubLmDgil7xawkDSgqKGdw==",
+    "id": "Neemle.OrmLite.Sqlite",
+    "version": "0.1.0-dev.gfffc5b9",
+    "binaries": [
+      {
+        "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+        "sha256": "e35511b6197a412072e71e6d53a923b72f666b56dc07e723c2365af2f3fadbda",
+        "resolvedCachePath": "artifacts/graph-save/r1-demo/packages/neemle.ormlite.sqlite/0.1.0-dev.gfffc5b9/lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+        "resolvedCacheSha256": "e35511b6197a412072e71e6d53a923b72f666b56dc07e723c2365af2f3fadbda",
+        "consumerOutputPath": "artifacts/graph-save/r1-demo/jit10-build/bin/OrmLiteDemo/release/Neemle.OrmLite.Sqlite.dll",
+        "consumerOutputSha256": "e35511b6197a412072e71e6d53a923b72f666b56dc07e723c2365af2f3fadbda"
+      }
+    ],
+    "resolvedAssets": {
+      "sha512": "0/cEORYGS1/QoLHShZdy11+l/4OuA7mJlKDWZFhOsx092PZYPGGT2ZTGKwUB2NoQSubLmDgil7xawkDSgqKGdw==",
+      "type": "package",
+      "path": "neemle.ormlite.sqlite/0.1.0-dev.gfffc5b9",
+      "files": [
+        ".nupkg.metadata",
+        "LICENSE",
+        "Neemle.OrmLite.Sqlite.nuspec",
+        "README.md",
+        "buildTransitive/Neemle.OrmLite.Sqlite.props",
+        "buildTransitive/ormlite.capabilities.sqlite.txt",
+        "icon.png",
+        "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+        "neemle.ormlite.sqlite.0.1.0-dev.gfffc5b9.nupkg.sha512"
+      ]
+    },
+    "privateCachePath": "artifacts/graph-save/r1-demo/packages/neemle.ormlite.sqlite/0.1.0-dev.gfffc5b9",
+    "cachePackageSha512": "0/cEORYGS1/QoLHShZdy11+l/4OuA7mJlKDWZFhOsx092PZYPGGT2ZTGKwUB2NoQSubLmDgil7xawkDSgqKGdw=="
+  }
+]

@@ -1,0 +1,234 @@
+{
+  "frozenCommit": "fffc5b9fa19bf250d76d21d71a86b6607ea6b81f",
+  "sourceTree": "7d481f0250ab9351deb479de519049e2b7213a41",
+  "runtimeTree": "3971e838e7d7e990b9e8d7303aaf9ca9f2410726",
+  "generatorTree": "b1e02a86aefd185deb63f02706080a3e6d896908",
+  "demoTree": "59b7ef29f66da9ce268774f5d976e7b69448a859",
+  "testsTree": "38148cb2901afa390b036d5207fd65db4504a8eb",
+  "profile": "Unchanged existing demo/OrmLiteDemo.csproj, default Compile glob; no include/exclude or project edits. All tracked demo C# inputs listed; SDK-generated assembly inputs remain in build outputs.",
+  "projectConfigInputs": [
+    {
+      "path": "demo/OrmLiteDemo.csproj",
+      "gitBlob": "af2d66a5fe39492adebce56d16a1b32e2966b13f",
+      "sha256": "a24c1a2ea19e9113ee514a446c48e5bcb2f6b7bc729bd80b7e60b899300a5f10"
+    },
+    {
+      "path": "demo/Directory.Build.props",
+      "gitBlob": "b53f832185fc64447333e5fb783dd3a8eaff7ea4",
+      "sha256": "b5893e079554020cd4932f4bc47c6b08099f70284a2511558825bdfc4496873c"
+    },
+    {
+      "path": "demo/Directory.Build.targets",
+      "gitBlob": "64010ba0331cc4191b3979647a3025d2c0cdd2b9",
+      "sha256": "486f5a037b2b8267530dae988d950d33ced99ecff94abc7bb122bd52028fb660"
+    },
+    {
+      "path": "Directory.Build.props",
+      "gitBlob": "080d2e2463e2469ab18855a7914e47c5fc6ff5a8",
+      "sha256": "e7c45c2aa883c2ca1d3c379fd1e1fdae2475c81c73c5d00f13a7d2145919168a"
+    },
+    {
+      "path": "Directory.Build.targets",
+      "gitBlob": "c33067ad4aa5fd9d017c5a87b8c51d02500fbbfd",
+      "sha256": "8396ab20f4f36f3b59d36f7b905fac96b8bb4606d8ff9eaba45e7e90d4354ddd"
+    },
+    {
+      "path": "nuget.config",
+      "gitBlob": "d54e8b4ffe0dd0463174160c0fcf29a570ae6478",
+      "sha256": "6ee9520d319818b83ab4a23a7d102b9e9359acc86abacc71e9b6e63b8e356772"
+    }
+  ],
+  "defaultProfileTrackedCSharp": [
+    {
+      "path": "demo/ForeignKeys/ForeignKeyChapter.cs",
+      "gitBlob": "c5b1214e31da91c3fdf4052677121d519ca939fa",
+      "sha256": "3af503c75728a6ad67eaced720060ecefc10dc5817dcd1141a4d18baac1103a2"
+    },
+    {
+      "path": "demo/ForeignKeys/ForeignKeyChild.cs",
+      "gitBlob": "db98bb6e0d1acce042bc8729b47df918a108b2ac",
+      "sha256": "8956cf2aa9698d850eac64546ee4e3f6e96d9c182f43b406ddcdc3d6e3107483"
+    },
+    {
+      "path": "demo/ForeignKeys/ForeignKeyParent.cs",
+      "gitBlob": "9383f3a3888314c1bbd7a1c3fc107a875c6a43fe",
+      "sha256": "d6a01fcccacc0a6a8a4009ccdecf6abe295c91934a29be8b585c4196260de9cb"
+    },
+    {
+      "path": "demo/Graph/GraphAuthor.cs",
+      "gitBlob": "cd639e78c5aa839e17e826b0666b39e2eb9fee12",
+      "sha256": "fb37755dfb9aeaefce9e11809e6f67b659568cf80b3870871046b3dbd0931232"
+    },
+    {
+      "path": "demo/Graph/GraphBook.cs",
+      "gitBlob": "3e06db525b3a638dd4537a10d662557925a76a9d",
+      "sha256": "7384b0fd183a957e9c36992d3858fb5191d4065f435aa7e753b910f17fc077e7"
+    },
+    {
+      "path": "demo/Graph/GraphChapter.cs",
+      "gitBlob": "5bbbd29a05a900308dbd834bfa7ef7a52c3982ee",
+      "sha256": "e0a9d9b6e1239ebfa9d32916f06f9a67ffc5140131105c0e7c8ffed865a965b7"
+    },
+    {
+      "path": "demo/Graph/GraphDemo.cs",
+      "gitBlob": "58b12648543e20f2b6aff02bb41ac7e6d17f7f6c",
+      "sha256": "4f26fffbd20d4f6bc3cce2932ce2d0c2879c80af8c0d8a41f60628477af453a9"
+    },
+    {
+      "path": "demo/Graph/GraphDemoDatabase.cs",
+      "gitBlob": "cbd5fab4fb5cf98dbd2c2d1b199c5c5e609bb9f9",
+      "sha256": "65532548a4420a3e4eced20ddc1356b7d3a49dfd635bec2abf7c24c76359ca1c"
+    },
+    {
+      "path": "demo/Graph/GraphFixture.cs",
+      "gitBlob": "f729d19fa9bb1e470e238fae462578b32b6ac0d6",
+      "sha256": "c18846aa76a54a1c5cc9a01ad221d4958ce2d29157eab793e77efc543ea7cb2a"
+    },
+    {
+      "path": "demo/Graph/GraphTag.cs",
+      "gitBlob": "48444783375c293f7514a18588b848e0f7870163",
+      "sha256": "2acf75009d9fdbbb658c428aa5c08220b34cc403c114953ce54d87533666c978"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveChecks.cs",
+      "gitBlob": "76b7f97534364a52013967eb61ecc6d3497b8ce9",
+      "sha256": "3f063b4a4a9d739e86cd643ec5f18d811a7b5a7816f347ee0bce5983429d6e95"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveCommandCounter.cs",
+      "gitBlob": "6438b2685a940737e3d344526b77f9c5c81314df",
+      "sha256": "6735abd40ed3928c5cc2bc0f342f2b167e51065845aa053aa82e68b10809c862"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveDefaultCase.cs",
+      "gitBlob": "2551c76d60182c661fcbfca5b3e4588c66fb8846",
+      "sha256": "3025a31fa9e64e2017469fc09e7b7d5d7e0ba5c21959e156a17edb307fc7a584"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveDemo.cs",
+      "gitBlob": "2226e361bf7af2939c5997c657c59221dee74776",
+      "sha256": "2db96b0ac80dd4441f4bd1bc95eef0a7b9d4b9962f99380705f4073b763cf3a0"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveFixture.cs",
+      "gitBlob": "063221fc110de8b72b7fa56b2705abba76c0dab8",
+      "sha256": "d7d069d27e67df8b5dd04a11ec21d50778ef5edd865b5b3b343f91cafd9d72f1"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveInsertCase.cs",
+      "gitBlob": "4521aebbf697e32341e56a724aafe1f6b7cdfe20",
+      "sha256": "7b055411afe83c12dfc7240084372710c1500f9ada20fdbb5eb526bddac03bd8"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveProject.cs",
+      "gitBlob": "690b040ad518393ffd6dba7e51694ffc5db0bd4f",
+      "sha256": "384b7a84243fbc648e622ccd311abb5c85f1edd33d382e5f7b30bde22e41fb94"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveRefusalCase.cs",
+      "gitBlob": "fe1565b41d4b3244b8e65938736e4c55951dcf04",
+      "sha256": "62af7604e3f3ea05e562afb09b2863eb5f56f0c23e5034f2c61f4565366813ce"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveRepeatCase.cs",
+      "gitBlob": "a4ce279b5d05149192c7db7ca3d7ee0174d8741a",
+      "sha256": "fab3d8cd917b4b241f01cc7a75478460eff13144520236743e1a82817b65a0eb"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveRollbackCase.cs",
+      "gitBlob": "a0421cf299bc14f5c5b91ca991c4a5a9cfe31c58",
+      "sha256": "3270a66a6e02c9977728fd532d07058241ec6b417fff210a7935672eb3533657"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveTag.cs",
+      "gitBlob": "e1f5e333d444e937c0de33518086ee126f946262",
+      "sha256": "81570f01650b97f7e76239f432faba0f0bee4531539100732279f436046a7957"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveTask.cs",
+      "gitBlob": "9bc766f4928f55c7806997ca3f05ddf4b139b8a1",
+      "sha256": "600a35ca9fad5c41e68ef02bd040dd2a522a8178233c8765de7ee70d2a33dbda"
+    },
+    {
+      "path": "demo/GraphSave/GraphSaveTeam.cs",
+      "gitBlob": "7ecbd8e9363c387a6fdd7e7f78caa3ea32751d95",
+      "sha256": "f48070ee089756d004c5a07af8e871856e06bacb7d7cbb7374e0cbb03276e5a0"
+    },
+    {
+      "path": "demo/Ledger.cs",
+      "gitBlob": "4349c42fc2171da8f52e8ad6f2d0efa0c6ee1ebb",
+      "sha256": "a38ee3ebac54023608928ae055d3fcb08f3c51e4fde73692eaf3f4ac14f0f1d9"
+    },
+    {
+      "path": "demo/Note.cs",
+      "gitBlob": "2f908ca2c345cc07be0880423b8568f8dc1c522c",
+      "sha256": "010e04520655999318288f9e138ce4a54d5ea0ef62cbe87ec89eadfb981eaad1"
+    },
+    {
+      "path": "demo/Program.cs",
+      "gitBlob": "c0d43828bace41075e9026d70b575a3cbf196597",
+      "sha256": "3227f8ad50cf37922686688d34df3820b18f5d26e1ab3aac265da7c91299f928"
+    },
+    {
+      "path": "demo/ScratchDatabase.cs",
+      "gitBlob": "787fa3d114bc4bc082e9709e7fc07f8bdc907050",
+      "sha256": "9c0a29c639776bceff393d6c457863cf8aaf1c8f06c40fd3314f4de5c8b0837b"
+    },
+    {
+      "path": "demo/SlowQueryReport.cs",
+      "gitBlob": "a7dbc5f503ae73c0f79ab3b32b2fd516351609ae",
+      "sha256": "9b76fdf1875b23a031492f5cf71e88444b072192a89bffc794bb6397f7233128"
+    },
+    {
+      "path": "demo/Tracker/Chapters.cs",
+      "gitBlob": "f19c0870a8b0c6eb41e035fc78bfe4fadeef7cc8",
+      "sha256": "a4a353f362ea9adee50b79cc0ad7729584b8cd99eb3ac89c7a93dd06a645cb1f"
+    },
+    {
+      "path": "demo/Tracker/Entities.cs",
+      "gitBlob": "e4148ba568358cecc81916050c91a7372eb1e413",
+      "sha256": "3d1b3e3bb564e6f4b347bc1cba337472cd9109cb1d73909df27428dad1d88702"
+    },
+    {
+      "path": "demo/Tracker/Migrations.cs",
+      "gitBlob": "369c7065719f6306fd41bbab3fbd6cf6cca222ed",
+      "sha256": "53a3f5ba572604fa28c1255513141ced0cb6080ea2f5da4d4ae579555f5c5be8"
+    },
+    {
+      "path": "demo/Tracker/Views.cs",
+      "gitBlob": "9c79ed5c53839279897a5928edc95f87077ee049",
+      "sha256": "7ef6af516a8ba66a41587d15499e93c5b3bbf48672c3d962af008dc3f125dc3d"
+    },
+    {
+      "path": "demo/Trash.cs",
+      "gitBlob": "b90b5e55d792839bfde220709bbd2ae27d61f6a3",
+      "sha256": "684bfe018f40eb61eb59ddd5cc5a039c6e6e93a66bf7c1deb9d8ab6b73dbaa18"
+    }
+  ],
+  "newGeneratedModelOutputs": [
+    {
+      "path": "artifacts/graph-save/r1-demo/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0008.g.cs",
+      "sha256": "96f6ef12dbb6aab06e2870611e2ed15f065634d93a4af9b9918b3d49d634b968"
+    },
+    {
+      "path": "artifacts/graph-save/r1-demo/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0005.g.cs",
+      "sha256": "1e0ac59cc6d4213cd032507ddb2f6e17269931493278fcaf2ff1313c5214deae"
+    },
+    {
+      "path": "artifacts/graph-save/r1-demo/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0006.g.cs",
+      "sha256": "0c02abfa564374312eee5de17796f134e340357f53a77de18ae575f223027f90"
+    },
+    {
+      "path": "artifacts/graph-save/r1-demo/generated10/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0007.g.cs",
+      "sha256": "5f0a12181ba7aeef8d91787789cf0a6ce49f87be75cfabb1a421ac57cbf4b1ef"
+    }
+  ],
+  "consumer": {
+    "path": "artifacts/graph-save/r1-demo/jit10-build/bin/OrmLiteDemo/release/OrmLiteDemo.dll",
+    "sha256": "33cb4d7c5ae89ce90c813f19e5b5360d0201401c5dc26ab91fa82fa469011a27",
+    "depsJsonSha256": "f9682f5115f4da4a87f2364a5b4c0e23fbd5495b70e351db4e4841d35c79b1f9",
+    "runtimeconfigSha256": "9950d4583cfc9a106857c0d5b8a75b53e8774852b57b80bc3823a74d44a4d87f",
+    "assetsPath": "artifacts/graph-save/r1-demo/jit10-build/obj/OrmLiteDemo/project.assets.json",
+    "assetsSha256": "6e82e63f8d355ab0610510ac85c0e79fd297297b31699bf12dc0463a1526c9ae"
+  }
+}

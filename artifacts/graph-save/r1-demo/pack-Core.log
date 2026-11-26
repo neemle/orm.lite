@@ -1,0 +1,10 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Core/Core.csproj (in 1.9 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Sql/Sql.csproj (in 548 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Runtime/Runtime.csproj (in 5 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Generator/Generator.csproj (in 4.49 sec).
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/r1-demo/pack-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/r1-demo/pack-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/r1-demo/pack-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/r1-demo/pack-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Successfully created package '/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/r1-demo/feed/Neemle.OrmLite.0.1.0-dev.gfffc5b9.nupkg'.
