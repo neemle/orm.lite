@@ -27,11 +27,16 @@ internal static class GraphExecutor
     private static async Task ExpandAsync(GraphReadContext context, IEnumerable<GraphPlanNode> nodes,
         IReadOnlyList<object> parents)
     {
-        foreach (var node in nodes)
+        var frontiers = new Queue<(IEnumerable<GraphPlanNode> Nodes, IReadOnlyList<object> Parents)>();
+        frontiers.Enqueue((nodes, parents));
+        while (frontiers.TryDequeue(out var frontier))
         {
-            var children = await node.Edge.LoadAsync(context, node, parents);
-            if (children.Count != 0 && node.Children.Count != 0)
-                await ExpandAsync(context, node.Children, children);
+            foreach (var node in frontier.Nodes)
+            {
+                var children = await node.Edge.LoadAsync(context, node, frontier.Parents);
+                if (children.Count != 0 && node.Children.Count != 0)
+                    frontiers.Enqueue((node.Children, children));
+            }
         }
     }
 }

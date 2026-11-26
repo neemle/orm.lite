@@ -36,7 +36,6 @@ internal static class GraphPlanner
         GraphRegistrySnapshot registry) where T : class
     {
         var complete = new HashSet<GraphPlanNode>();
-        var count = 0;
         foreach (var path in paths)
         {
             if (path.Edges.Count == 0) throw new GraphRequestException(GraphRequestError.InvalidPath);
@@ -51,10 +50,8 @@ internal static class GraphPlanner
                 source = last.Target;
             }
             complete.Add(last!);
+            Bound(complete.Count, plan.Limits.MaxPaths, GraphBudget.Paths);
         }
-        count = Count(plan.Children);
-        Bound(count, plan.Limits.MaxNodes, GraphBudget.Nodes);
-        Bound(complete.Count, plan.Limits.MaxPaths, GraphBudget.Paths);
     }
 
     private static GraphPlanNode AddNode<T>(GraphExecutionPlan<T> plan, List<GraphPlanNode> children,
@@ -64,6 +61,7 @@ internal static class GraphPlanner
             throw new GraphRequestException(GraphRequestError.InvalidPath);
         var existing = children.Find(n => ReferenceEquals(n.Edge, edge));
         if (existing is not null) return existing;
+        Bound(++plan.NodeCount, plan.Limits.MaxNodes, GraphBudget.Nodes);
         var target = registry.Get(edge.Target);
         edge.Validate(source.Binding, target.Binding);
         var node = new GraphPlanNode(edge, target, edge.Navigation);
@@ -90,7 +88,6 @@ internal static class GraphPlanner
             GraphVisibility.Require(node.Target, targetColumn, node.Path, plan.Query.Masks);
     }
 
-    private static int Count(IEnumerable<GraphPlanNode> nodes) => nodes.Sum(n => 1 + Count(n.Children));
     private static void Bound(long value, long limit, GraphBudget budget)
     { if (value > limit) throw new GraphLimitExceededException(budget, limit); }
     private static void CheckCapacity(int count, int capacity)
