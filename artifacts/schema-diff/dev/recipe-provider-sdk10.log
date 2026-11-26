@@ -1,0 +1,4 @@
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/RecipeProof.cs(44,55): error CS1503: Argument 1: cannot convert from 'System.Collections.Generic.IReadOnlyList<Neemle.OrmLite.Nodes.Node>' to 'Neemle.OrmLite.Nodes.Node' [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/FoundationProof.csproj]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/RecipeProof.cs(70,15): error CS0117: 'Check' does not contain a definition for 'Throws' [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/FoundationProof.csproj]
+
+The build failed. Fix the build errors and run again.

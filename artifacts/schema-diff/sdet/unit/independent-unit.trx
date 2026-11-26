@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="3db235dd-c8c4-4cec-a2ef-3de79afb97a2" name="@cd52b094503c 2026-11-26 09:31:34" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-26T09:31:34.8778607+00:00" queuing="2026-11-26T09:31:34.8778610+00:00" start="2026-11-26T09:31:29.7485962+00:00" finish="2026-11-26T09:31:35.0747667+00:00" />
+  <TestSettings name="default" id="112ff103-7840-4506-ab96-7f1e1b13f4b7">
+    <Deployment runDeploymentRoot="_cd52b094503c_2026-11-26_09_31_34" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="a84d9262-f097-47a7-8236-0143a0626bff" testId="ce9bbef2-f62d-654e-c1fd-b9648101940c" testName="[SEC][UC-011] Scope cannot adopt history or ambiguous case ownership" computerName="cd52b094503c" duration="00:00:00.0075977" startTime="2026-11-26T09:31:34.7867508+00:00" endTime="2026-11-26T09:31:34.7867508+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a84d9262-f097-47a7-8236-0143a0626bff" />
+    <UnitTestResult executionId="9757160e-e844-44cc-87ff-d0eae3ae32ec" testId="84185116-48f0-2db6-ab27-ab04647fd5db" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 6)" computerName="cd52b094503c" duration="00:00:00.0009790" startTime="2026-11-26T09:31:34.7867783+00:00" endTime="2026-11-26T09:31:34.7867783+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9757160e-e844-44cc-87ff-d0eae3ae32ec" />
+    <UnitTestResult executionId="a00226c6-eebc-4651-b02e-47df6f55a288" testId="8b0f2acb-810f-ef94-6236-7051dde80937" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 2)" computerName="cd52b094503c" duration="00:00:00.0006745" startTime="2026-11-26T09:31:34.7866457+00:00" endTime="2026-11-26T09:31:34.7866458+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a00226c6-eebc-4651-b02e-47df6f55a288" />
+    <UnitTestResult executionId="1687eead-1e29-4403-8b76-d6ee9cebf476" testId="5414ec2c-75b1-9ec1-93bd-c9a0061a039c" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 3)" computerName="cd52b094503c" duration="00:00:00.0055465" startTime="2026-11-26T09:31:34.7865863+00:00" endTime="2026-11-26T09:31:34.7865864+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1687eead-1e29-4403-8b76-d6ee9cebf476" />
+    <UnitTestResult executionId="411f76c2-9987-4124-abf3-7d0c47439138" testId="9e647c57-4402-715e-02c3-47773b00b1f5" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_inventory_blocks_a_safe_create_prefix(fact: 2)" computerName="cd52b094503c" duration="00:00:00.0016340" startTime="2026-11-26T09:31:34.7738890+00:00" endTime="2026-11-26T09:31:34.7738891+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="411f76c2-9987-4124-abf3-7d0c47439138" />
+    <UnitTestResult executionId="6b9987ef-3971-4d90-a24c-5b69c3978108" testId="d6035b40-4f0d-8cdb-6a9f-6db0503b43cc" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_inventory_blocks_a_safe_create_prefix(fact: 0)" computerName="cd52b094503c" duration="00:00:00.1453309" startTime="2026-11-26T09:31:34.7546480+00:00" endTime="2026-11-26T09:31:34.7546735+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b9987ef-3971-4d90-a24c-5b69c3978108" />
+    <UnitTestResult executionId="2eaea7c0-58f7-4026-9738-58ba47406dfd" testId="fdea60f2-1bff-16ef-7715-c92dae69cccd" testName="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests.Individual_risks_block_the_entire_safe_create_proposal(risk: 1, expected: TypeChange)" computerName="cd52b094503c" duration="00:00:00.0003613" startTime="2026-11-26T09:31:34.7751461+00:00" endTime="2026-11-26T09:31:34.7751462+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2eaea7c0-58f7-4026-9738-58ba47406dfd" />
+    <UnitTestResult executionId="a620e0e2-07f6-4fb9-ab68-ee445c07ca27" testId="f0f461ba-9461-77a1-b771-9ff791f615ca" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 4)" computerName="cd52b094503c" duration="00:00:00.0002169" startTime="2026-11-26T09:31:34.7867013+00:00" endTime="2026-11-26T09:31:34.7867013+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a620e0e2-07f6-4fb9-ab68-ee445c07ca27" />
+    <UnitTestResult executionId="3fe0eb33-0d56-4431-8532-c8cf16b8fa7d" testId="5b5519b1-f719-e588-5db0-6093cfad67f5" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_inventory_blocks_a_safe_create_prefix(fact: 1)" computerName="cd52b094503c" duration="00:00:00.0002891" startTime="2026-11-26T09:31:34.7744085+00:00" endTime="2026-11-26T09:31:34.7744085+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3fe0eb33-0d56-4431-8532-c8cf16b8fa7d" />
+    <UnitTestResult executionId="18da565f-55b8-4591-91f4-96cb3cf10ebd" testId="033e691c-0327-2e3f-dc64-b4a0abbf410f" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Complete_known_equality_is_noop_but_unknown_existence_is_not_absence" computerName="cd52b094503c" duration="00:00:00.0086771" startTime="2026-11-26T09:31:34.7869114+00:00" endTime="2026-11-26T09:31:34.7869114+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18da565f-55b8-4591-91f4-96cb3cf10ebd" />
+    <UnitTestResult executionId="c3a5778e-47c1-4039-a163-0558155d516d" testId="5947533d-cbb2-5ec4-284c-5abc38f802a1" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_inventory_blocks_a_safe_create_prefix(fact: 3)" computerName="cd52b094503c" duration="00:00:00.0005343" startTime="2026-11-26T09:31:34.7744684+00:00" endTime="2026-11-26T09:31:34.7744684+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c3a5778e-47c1-4039-a163-0558155d516d" />
+    <UnitTestResult executionId="29e48cb6-91d7-40ad-a684-6e55728419f8" testId="38ecec75-eef7-e2c4-ab21-70e86d5eb4e2" testName="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests.Individual_risks_block_the_entire_safe_create_proposal(risk: 3, expected: DefaultChange)" computerName="cd52b094503c" duration="00:00:00.0008817" startTime="2026-11-26T09:31:34.7750762+00:00" endTime="2026-11-26T09:31:34.7750763+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="29e48cb6-91d7-40ad-a684-6e55728419f8" />
+    <UnitTestResult executionId="82e0dac8-e2b8-4bb9-b625-d218b0076f20" testId="40635090-19b4-d94e-eb3c-6c0f32c28ad7" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 5)" computerName="cd52b094503c" duration="00:00:00.0001707" startTime="2026-11-26T09:31:34.7867287+00:00" endTime="2026-11-26T09:31:34.7867287+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="82e0dac8-e2b8-4bb9-b625-d218b0076f20" />
+    <UnitTestResult executionId="8874b551-84db-4520-b86d-4319617ae0f7" testId="f855193f-01c7-5556-309d-8cfe24133e6f" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 1)" computerName="cd52b094503c" duration="00:00:00.0004204" startTime="2026-11-26T09:31:34.7866750+00:00" endTime="2026-11-26T09:31:34.7866750+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8874b551-84db-4520-b86d-4319617ae0f7" />
+    <UnitTestResult executionId="2d2bf11e-e871-432c-aad9-6160bfb86a9b" testId="54befc2a-664e-f166-c5d7-8eb696fa62dc" testName="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 0)" computerName="cd52b094503c" duration="00:00:00.0002690" startTime="2026-11-26T09:31:34.7868227+00:00" endTime="2026-11-26T09:31:34.7868227+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2d2bf11e-e871-432c-aad9-6160bfb86a9b" />
+    <UnitTestResult executionId="5270a61c-57ef-4366-9518-05ad446c5370" testId="6942989b-6643-7654-9201-40f854c8c048" testName="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests.Individual_risks_block_the_entire_safe_create_proposal(risk: 0, expected: DropColumn)" computerName="cd52b094503c" duration="00:00:00.0002663" startTime="2026-11-26T09:31:34.7751933+00:00" endTime="2026-11-26T09:31:34.7751934+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5270a61c-57ef-4366-9518-05ad446c5370" />
+    <UnitTestResult executionId="097d1a7b-a9b2-4a3b-9210-325f40946bfa" testId="f41aa024-d897-5258-ff5d-a513a377fe14" testName="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests.Individual_risks_block_the_entire_safe_create_proposal(risk: 2, expected: NullabilityChange)" computerName="cd52b094503c" duration="00:00:00.1529986" startTime="2026-11-26T09:31:34.7746277+00:00" endTime="2026-11-26T09:31:34.7746277+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="097d1a7b-a9b2-4a3b-9210-325f40946bfa" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_inventory_blocks_a_safe_create_prefix(fact: 3)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="5947533d-cbb2-5ec4-284c-5abc38f802a1">
+      <Execution id="c3a5778e-47c1-4039-a163-0558155d516d" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_inventory_blocks_a_safe_create_prefix" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_inventory_blocks_a_safe_create_prefix(fact: 0)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="d6035b40-4f0d-8cdb-6a9f-6db0503b43cc">
+      <Execution id="6b9987ef-3971-4d90-a24c-5b69c3978108" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_inventory_blocks_a_safe_create_prefix" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 4)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="f0f461ba-9461-77a1-b771-9ff791f615ca">
+      <Execution id="a620e0e2-07f6-4fb9-ab68-ee445c07ca27" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_column_fact_blocks_equality_and_emission" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests.Individual_risks_block_the_entire_safe_create_proposal(risk: 0, expected: DropColumn)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="6942989b-6643-7654-9201-40f854c8c048">
+      <Execution id="5270a61c-57ef-4366-9518-05ad446c5370" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests" name="Individual_risks_block_the_entire_safe_create_proposal" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests.Individual_risks_block_the_entire_safe_create_proposal(risk: 1, expected: TypeChange)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="fdea60f2-1bff-16ef-7715-c92dae69cccd">
+      <Execution id="2eaea7c0-58f7-4026-9738-58ba47406dfd" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests" name="Individual_risks_block_the_entire_safe_create_proposal" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Complete_known_equality_is_noop_but_unknown_existence_is_not_absence" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="033e691c-0327-2e3f-dc64-b4a0abbf410f">
+      <Execution id="18da565f-55b8-4591-91f4-96cb3cf10ebd" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Complete_known_equality_is_noop_but_unknown_existence_is_not_absence" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 3)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="5414ec2c-75b1-9ec1-93bd-c9a0061a039c">
+      <Execution id="1687eead-1e29-4403-8b76-d6ee9cebf476" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_column_fact_blocks_equality_and_emission" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 0)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="54befc2a-664e-f166-c5d7-8eb696fa62dc">
+      <Execution id="2d2bf11e-e871-432c-aad9-6160bfb86a9b" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_column_fact_blocks_equality_and_emission" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_inventory_blocks_a_safe_create_prefix(fact: 1)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="5b5519b1-f719-e588-5db0-6093cfad67f5">
+      <Execution id="3fe0eb33-0d56-4431-8532-c8cf16b8fa7d" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_inventory_blocks_a_safe_create_prefix" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 6)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="84185116-48f0-2db6-ab27-ab04647fd5db">
+      <Execution id="9757160e-e844-44cc-87ff-d0eae3ae32ec" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_column_fact_blocks_equality_and_emission" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests.Individual_risks_block_the_entire_safe_create_proposal(risk: 3, expected: DefaultChange)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="38ecec75-eef7-e2c4-ab21-70e86d5eb4e2">
+      <Execution id="29e48cb6-91d7-40ad-a684-6e55728419f8" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests" name="Individual_risks_block_the_entire_safe_create_proposal" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 2)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="8b0f2acb-810f-ef94-6236-7051dde80937">
+      <Execution id="a00226c6-eebc-4651-b02e-47df6f55a288" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_column_fact_blocks_equality_and_emission" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests.Individual_risks_block_the_entire_safe_create_proposal(risk: 2, expected: NullabilityChange)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="f41aa024-d897-5258-ff5d-a513a377fe14">
+      <Execution id="097d1a7b-a9b2-4a3b-9210-325f40946bfa" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests" name="Individual_risks_block_the_entire_safe_create_proposal" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 1)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="f855193f-01c7-5556-309d-8cfe24133e6f">
+      <Execution id="8874b551-84db-4520-b86d-4319617ae0f7" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_column_fact_blocks_equality_and_emission" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_inventory_blocks_a_safe_create_prefix(fact: 2)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="9e647c57-4402-715e-02c3-47773b00b1f5">
+      <Execution id="411f76c2-9987-4124-abf3-7d0c47439138" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_inventory_blocks_a_safe_create_prefix" />
+    </UnitTest>
+    <UnitTest name="[SEC][UC-011] Scope cannot adopt history or ambiguous case ownership" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="ce9bbef2-f62d-654e-c1fd-b9648101940c">
+      <Execution id="a84d9262-f097-47a7-8236-0143a0626bff" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.WholeArtifactContractTests" name="Library_and_ambiguous_ownership_refuse" />
+    </UnitTest>
+    <UnitTest name="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests.Every_unknown_column_fact_blocks_equality_and_emission(fact: 5)" storage="/repo/tests/tests/bin/release/net10.0/neemle.ormlite.tests.dll" id="40635090-19b4-d94e-eb3c-6c0f32c28ad7">
+      <Execution id="82e0dac8-e2b8-4bb9-b625-d218b0076f20" />
+      <TestMethod codeBase="/repo/tests/Tests/bin/Release/net10.0/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.UnknownContractTests" name="Every_unknown_column_fact_blocks_equality_and_emission" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="ce9bbef2-f62d-654e-c1fd-b9648101940c" executionId="a84d9262-f097-47a7-8236-0143a0626bff" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="84185116-48f0-2db6-ab27-ab04647fd5db" executionId="9757160e-e844-44cc-87ff-d0eae3ae32ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8b0f2acb-810f-ef94-6236-7051dde80937" executionId="a00226c6-eebc-4651-b02e-47df6f55a288" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5414ec2c-75b1-9ec1-93bd-c9a0061a039c" executionId="1687eead-1e29-4403-8b76-d6ee9cebf476" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9e647c57-4402-715e-02c3-47773b00b1f5" executionId="411f76c2-9987-4124-abf3-7d0c47439138" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d6035b40-4f0d-8cdb-6a9f-6db0503b43cc" executionId="6b9987ef-3971-4d90-a24c-5b69c3978108" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fdea60f2-1bff-16ef-7715-c92dae69cccd" executionId="2eaea7c0-58f7-4026-9738-58ba47406dfd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f0f461ba-9461-77a1-b771-9ff791f615ca" executionId="a620e0e2-07f6-4fb9-ab68-ee445c07ca27" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5b5519b1-f719-e588-5db0-6093cfad67f5" executionId="3fe0eb33-0d56-4431-8532-c8cf16b8fa7d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="033e691c-0327-2e3f-dc64-b4a0abbf410f" executionId="18da565f-55b8-4591-91f4-96cb3cf10ebd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5947533d-cbb2-5ec4-284c-5abc38f802a1" executionId="c3a5778e-47c1-4039-a163-0558155d516d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="38ecec75-eef7-e2c4-ab21-70e86d5eb4e2" executionId="29e48cb6-91d7-40ad-a684-6e55728419f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="40635090-19b4-d94e-eb3c-6c0f32c28ad7" executionId="82e0dac8-e2b8-4bb9-b625-d218b0076f20" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f855193f-01c7-5556-309d-8cfe24133e6f" executionId="8874b551-84db-4520-b86d-4319617ae0f7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="54befc2a-664e-f166-c5d7-8eb696fa62dc" executionId="2d2bf11e-e871-432c-aad9-6160bfb86a9b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6942989b-6643-7654-9201-40f854c8c048" executionId="5270a61c-57ef-4366-9518-05ad446c5370" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f41aa024-d897-5258-ff5d-a513a377fe14" executionId="097d1a7b-a9b2-4a3b-9210-325f40946bfa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="17" executed="17" passed="17" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.35]   Discovering: Neemle.OrmLite.Tests
+[xUnit.net 00:00:02.67]   Discovered:  Neemle.OrmLite.Tests
+[xUnit.net 00:00:02.80]   Starting:    Neemle.OrmLite.Tests
+[xUnit.net 00:00:03.17]   Finished:    Neemle.OrmLite.Tests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

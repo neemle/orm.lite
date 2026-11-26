@@ -1,0 +1,133 @@
+{
+  "authority": {
+    "speck": "b2e4ec8e-0a45-4e49-80d1-d8d89cf23883",
+    "version": "22f346d5-b13c-4ad5-a9af-f59cafb6a7ad",
+    "adr": "c65b7a6e-cfa6-41c5-bb0c-008535bd1a65",
+    "adrVersion": "b2e7564e-bd55-49fc-80d8-4a62e048923d",
+    "useCase": "UC-011",
+    "latestScope": "Same runnable demo must behave identically across JIT/AOT and PostgreSQL/SQLite, with documentation linking cases; no repeat checks of unchanged passed work."
+  },
+  "source": {
+    "commit": "2997ae857db3bdbf7b178fab2b3fbd5e804b48aa",
+    "libraryTree": "b87e8065a7c33555d49d7957906d674032f67b90",
+    "demoTree": "aa141220e406f035a082a9bba16add30c6c47057",
+    "newTestsTree": "a1ea095fba00b387857795f233f076db5de68e21",
+    "libraryChanged": false,
+    "existingTestsChanged": false
+  },
+  "claims": {
+    "guarantee": "One combined missing-simple-table and nullable-no-default-column scenario proves public Observe/Compare/Emit/explicit Upgrade/re-diff NoOp/repeat/Down/Up using real physical facts, original data and history. Its eight complete result transcripts are byte-identical without normalization.",
+    "limits": "This is bounded demo parity and 17 independent new contract cases, not a declaration that all original AC/SEC/NFR/fault/coverage requirements have been independently proved. Prior producer results are reused for unchanged work. No new raw-coverage or full-regression run was requested after scope steering."
+  },
+  "matrix": [
+    {
+      "run": "final-jit10-sqlite",
+      "exitCode": 0,
+      "evidence": "final-jit10-sqlite.json"
+    },
+    {
+      "run": "final-jit10-postgres",
+      "exitCode": 0,
+      "evidence": "final-jit10-postgres.json"
+    },
+    {
+      "run": "final-jit11-sqlite",
+      "exitCode": 0,
+      "evidence": "final-jit11-sqlite.json"
+    },
+    {
+      "run": "final-jit11-postgres",
+      "exitCode": 0,
+      "evidence": "final-jit11-postgres.json"
+    },
+    {
+      "run": "final-aot10-sqlite",
+      "exitCode": 0,
+      "evidence": "final-aot10-sqlite.json"
+    },
+    {
+      "run": "final-aot10-postgres",
+      "exitCode": 0,
+      "evidence": "final-aot10-postgres.json"
+    },
+    {
+      "run": "final-aot11-sqlite",
+      "exitCode": 0,
+      "evidence": "final-aot11-sqlite.json"
+    },
+    {
+      "run": "final-aot11-postgres",
+      "exitCode": 0,
+      "evidence": "final-aot11-postgres.json"
+    }
+  ],
+  "allEightByteIdentical": true,
+  "canonicalOutput": "PARITY version=0050_parity_dea6dae6f78e85ecfd8df96a0f89f604eecd4d18387fd28bb04ae22bc1a26da1\nPARITY schema=items(id,original,added);new_items(id,value)\nPARITY data=old:original-value;added:NULL;new_rows:0\nPARITY history=0000_baseline_parity117|0001_orm_indexes_parity117|0050_parity_dea6dae6f78e85ecfd8df96a0f89f604eecd4d18387fd28bb04ae22bc1a26da1|9900_orm_index_reconcile_parity117_cbf29ce484222325\nPARITY outcomes=Changes,Applied,NoOp,AlreadyApplied,Reverted,Applied,NoOp\nPARITY PASS\n",
+  "native": [
+    {
+      "runtime": "10.0.15",
+      "path": "artifacts/schema-diff/sdet/native10/Neemle.OrmLite.SchemaDiffAot",
+      "sha256": "a4ed2e545743fb4bd70c5497fb6ce3910d0e5603b52a52212e80b062a701519d",
+      "bytes": 14919912,
+      "format": "ELF64 ARM aarch64 PIE",
+      "ilc": "10.0.15",
+      "image": "sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27"
+    },
+    {
+      "runtime": "11.0.0",
+      "path": "artifacts/schema-diff/sdet/native11/Neemle.OrmLite.SchemaDiffAot",
+      "sha256": "3c3cd37506ec6a52ccc8d8b17621a1094907f1301e19542d616f7d5c0c987f1f",
+      "bytes": 14988408,
+      "format": "ELF64 ARM aarch64 PIE",
+      "ilc": "11.0.0",
+      "image": "sha256:617441f9e33eea21c352a4343ee42a50ecd9003fe5fbbe6f0cf035f2e9ff62c6"
+    }
+  ],
+  "unit": {
+    "total": 17,
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "testDuration": "177ms",
+    "trxStart": "2026-11-26T09:31:29.7485962Z",
+    "trxFinish": "2026-11-26T09:31:35.0747667Z",
+    "evidence": "unit/independent-unit.trx"
+  },
+  "metrics": {
+    "files": 8,
+    "boundTypes": 7,
+    "methods": 34,
+    "violations": 0,
+    "maxFunctionCodeLines": 27,
+    "source": "source-metrics.json",
+    "command": "source-metrics-command.json"
+  },
+  "attribution": "JIT and unit/metrics ran on HEAD815d700 plus exact new source bytes later committed as2997ae8. Native publications/executions ran on clean committed2997ae8. No passed scenarios were rerun solely to change their commit label. Review precommit JIT attribution explicitly; do not describe its historical execution HEAD as2997ae8.",
+  "resources": {
+    "nativeBuildCaps": "3GiB RAM, no swap,2CPUs,DOTNET_PROCESSOR_COUNT=2,ILCparallelism1; serial publications",
+    "native10ObservedSample": "1.012GiB; final peak not captured",
+    "native11CgroupPeakAtLateCompile": 1991139328,
+    "native11ObservedLaterSample": "1.963GiB; final peak not captured",
+    "runtimeCaps": "400MiB,1CPU each",
+    "postgresCaps": "320MiB,1CPU,ephemeral tmpfs; PG19 digest790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117"
+  },
+  "cleanup": {
+    "containerId": "6ccfb1b15aa94d0a5b9acf5b5e67ea246de342fe45c81225b6ea8c35ae383659",
+    "networkId": "cf4537d0e5086a7d0339621b31d1993b7ce56ba789fee65ecb69725d8cbe4147",
+    "postgresRemoved": true,
+    "networkRemoved": true,
+    "ownedContainerAndNetworkLabelQueries": "empty",
+    "sqliteCommand": "rm -- artifacts/schema-diff/sdet/jit10.sqlite artifacts/schema-diff/sdet/jit10-final.sqlite artifacts/schema-diff/sdet/jit11-final.sqlite artifacts/schema-diff/sdet/aot10-final.sqlite artifacts/schema-diff/sdet/aot11-final.sqlite",
+    "sqliteExitCode": 0,
+    "sqliteFilesRemoved": 5
+  },
+  "setupCorrections": [
+    "Initial unit build could not resolve worktree .git pointer; rerun with actual Git common-directory mount passed.",
+    "Initial demo build preceded database-create helper edit; its PostgreSQL run refused nonexistent owned fixture database. Rebuilt the changed harness.",
+    "Initial SQL NULL formatter treated DBNull as empty text; corrected harness formatter before final JIT/AOT matrix.",
+    "First metrics invocation named absent binary; built existing read-only scanner into owned output directory, then completed own-file measurements."
+  ],
+  "generated": {
+    "current_time": "2026-11-26 09:41:47 UTC"
+  }
+}

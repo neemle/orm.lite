@@ -53,7 +53,7 @@ migration whose operations are all reversible gets its
 `Down` derived. Raw statement text exists only as the provider-scoped `MigrationBuilder.Raw(providerId, text)`
 escape hatch.
 Because the baseline is one recorded version, a table for an entity added after the first run is not created by
-re-running: write a `[Migration]` with `CreateTable` for it.
+re-running. Write a `[Migration]` with `CreateTable` for it, or review the supported schema-diff fixture workflow below.
 
 `MigrationRunner.RunAsync` refuses a list that carries one version twice, applied or not, by name, before it touches
 the database and before any provider refusal. On PostgreSQL it takes the advisory lock before it creates the history
@@ -95,6 +95,31 @@ show the separate fresh-schema path and unchanged history/constraint counts on r
 [ConfigurationCases.cs](../examples/foreign-keys/ConfigurationCases.cs) explicitly opens SQLite with
 `Foreign Keys=False`, observes `PRAGMA=0` and demonstrates an **unenforced** orphan write; this is a
 SQLite-specific connection option, not PostgreSQL behavior.
+
+## Review schema differences in an isolated fixture
+
+Schema diff supports complete-known missing simple managed tables and new nullable nonkey columns without defaults.
+Unknown metadata or unsupported/destructive differences block executable artifact emission; other changes still need
+explicit manual migrations.
+
+The runnable demo uses the same cases and assertions on PostgreSQL and SQLite, in JIT and NativeAOT:
+
+- [Compare and review](../tests/SchemaDiffAot/README.md#compare-and-review): public observation, comparison and emission
+  identify the supported changes without changing the original row or migration history.
+- [Apply and repeat](../tests/SchemaDiffAot/README.md#apply-and-repeat): explicitly apply the reviewed artifact to an
+  owned isolated fixture, re-diff to `NoOp`, then repeat without a new migration unit or history entry.
+- [Down and up](../tests/SchemaDiffAot/README.md#down-and-up): exercise the inverse and reapply while retaining original
+  data. **Down loses values written to the new field and table after Up**; back up and restore them if they must survive.
+
+SQLite's ordinary `TEXT PRIMARY KEY` and inline `INTEGER PRIMARY KEY DESC` declarations can physically allow NULL.
+`ObserveAsync` retains that nullability, so a required nonnullable target reports `NullabilityChange`/`ManualRequired`
+instead of `NoOp`; see the [seven SQLite key-nullability cases](../tests/SchemaDiffAot/README.md#sqlite-primary-key-nullability).
+Explicit NOT NULL keys and proven INTEGER rowid aliases keep their supported nonnullable behavior.
+
+Follow the demo's [Docker JIT and NativeAOT run instructions](../tests/SchemaDiffAot/README.md#run), using a fresh owned
+SQLite file or disposable PostgreSQL 19 fixture for each invocation. The PostgreSQL demo creates its own named database;
+remove the owned fixture after verification. Comparing, generating or exercising a fixture grants no production
+execution authority; deployed destructive changes require their own explicit authorization and recovery plan.
 
 ## Migration operations and rollback
 

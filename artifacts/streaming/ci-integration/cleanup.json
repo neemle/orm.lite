@@ -1,0 +1,67 @@
+{
+  "started": "2026-11-26T10:46:57.764603+00:00",
+  "resources": [
+    {
+      "kind": "container",
+      "id": "c6f32e5743d87e6a7c5307de0f2e577c6efb8e34b7a5cb5e8945d648f295e2dd",
+      "labels": {
+        "io.github.neemle.pglite.packed": "yes",
+        "io.github.neemle.pglite.platform": "linux/arm64, static, musl",
+        "io.github.neemle.pglite.postgres-major": "19",
+        "org.opencontainers.image.created": "2026-11-21T00:54:51+01:00",
+        "org.opencontainers.image.description": "PostgreSQL 19.0 as one static executable in a FROM scratch image",
+        "org.opencontainers.image.documentation": "https://github.com/neemle/pg.lite#configuration-of-the-image",
+        "org.opencontainers.image.licenses": "PostgreSQL",
+        "org.opencontainers.image.revision": "1b5badb2c66cb6bf4917efca747e6cd0ad6c81da",
+        "org.opencontainers.image.source": "https://github.com/neemle/pg.lite",
+        "org.opencontainers.image.title": "pg.lite",
+        "org.opencontainers.image.url": "https://github.com/neemle/pg.lite",
+        "org.opencontainers.image.version": "19.0",
+        "orml.actor": "sdet-ci-integration",
+        "orml.task": "ORML-116"
+      },
+      "image": "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117",
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "c6f32e5743d87e6a7c5307de0f2e577c6efb8e34b7a5cb5e8945d648f295e2dd"
+      ],
+      "exitCode": 0,
+      "stdout": "c6f32e5743d87e6a7c5307de0f2e577c6efb8e34b7a5cb5e8945d648f295e2dd\n",
+      "afterInspectArgv": [
+        "docker",
+        "inspect",
+        "c6f32e5743d87e6a7c5307de0f2e577c6efb8e34b7a5cb5e8945d648f295e2dd"
+      ],
+      "afterInspectExit": 1
+    },
+    {
+      "kind": "network",
+      "id": "c1b64c9a36c36191ba362f0917242766c891f0edc5d605a765fcc17822fad73e",
+      "labels": {
+        "orml.actor": "sdet-ci-integration",
+        "orml.task": "ORML-116"
+      },
+      "image": null,
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "c1b64c9a36c36191ba362f0917242766c891f0edc5d605a765fcc17822fad73e"
+      ],
+      "exitCode": 0,
+      "stdout": "c1b64c9a36c36191ba362f0917242766c891f0edc5d605a765fcc17822fad73e\n",
+      "afterInspectArgv": [
+        "docker",
+        "network",
+        "inspect",
+        "c1b64c9a36c36191ba362f0917242766c891f0edc5d605a765fcc17822fad73e"
+      ],
+      "afterInspectExit": 1
+    }
+  ],
+  "foreignResourcesTouched": false,
+  "finished": "2026-11-26T10:46:58.342592+00:00",
+  "sqliteFixtures": "All test SQLite databases were inside finished --rm SDK containers; no persistent host SQLite fixture created."
+}

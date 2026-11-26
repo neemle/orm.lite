@@ -118,6 +118,13 @@ internal sealed class OrmSqliteConnection(string connectionString, Version minim
         return transaction;
     }
 
+    internal SqliteTransaction BeginMetadataTransaction()
+    {
+        var transaction = BeginTransaction(deferred: true);
+        Track(transaction);
+        return transaction;
+    }
+
     internal SqliteTransaction BeginWriteTransaction()
     {
         var transaction = BeginTransaction(deferred: false);

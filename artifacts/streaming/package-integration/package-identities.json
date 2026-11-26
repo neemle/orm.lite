@@ -1,0 +1,17 @@
+[
+  {
+    "file": "Neemle.OrmLite.0.1.0-dev.gba790a5.nupkg",
+    "sha256": "1547f54d4fed5de027d822b0314fc1e63eed46387c700c34ba20f07d78e504cb",
+    "bytes": 473421
+  },
+  {
+    "file": "Neemle.OrmLite.Postgres.0.1.0-dev.gba790a5.nupkg",
+    "sha256": "24690de75dc001ea358a67af215d7b8d00ed8b52f99af12a34f0cbc6a83a220f",
+    "bytes": 76603
+  },
+  {
+    "file": "Neemle.OrmLite.Sqlite.0.1.0-dev.gba790a5.nupkg",
+    "sha256": "a5f62963bbadeca9dfe6efd8ab53190460e9ba91f748b5fbf2226927de104547",
+    "bytes": 131206
+  }
+]

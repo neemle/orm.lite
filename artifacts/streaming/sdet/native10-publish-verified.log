@@ -1,0 +1,17 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/StreamingAot/StreamingAot.csproj (in 350 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Core/Core.csproj (in 659 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Sql/Sql.csproj (in 659 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Postgres/Postgres.csproj (in 663 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Runtime/Runtime.csproj (in 661 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/Generator.csproj (in 711 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Sqlite/Sqlite.csproj (in 661 ms).
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/native10-publish-verified-build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/native10-publish-verified-build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/native10-publish-verified-build/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/native10-publish-verified-build/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/native10-publish-verified-build/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/native10-publish-verified-build/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+  StreamingAot -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/native10-publish-verified-build/bin/StreamingAot/release_linux-arm64/Neemle.OrmLite.StreamingAot.dll
+  Generating native code
+  StreamingAot -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/sdet/native10-out/

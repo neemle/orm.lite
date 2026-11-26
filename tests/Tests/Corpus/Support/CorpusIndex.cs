@@ -8,7 +8,9 @@ public static class CorpusIndex
 
     public static string Build(IReadOnlyList<CorpusEntry> entries)
     {
-        var referenced = IlReferences.Scan(typeof(CorpusIndex).Assembly, "Neemle.OrmLite.Tests.Corpus.Cases", "Neemle.OrmLite.Tests.Corpus.CorpusRun");
+        var referenced = IlReferences.Scan(typeof(CorpusIndex).Assembly,
+            "Neemle.OrmLite.Tests.Corpus.Cases", "Neemle.OrmLite.Tests.Corpus.CorpusRun",
+            "Neemle.OrmLite.Tests.Streaming.CiIntegration.StreamCorpusCases");
         var surface = CorpusSurface.Members();
         var exclusions = CorpusSurface.Exclusions;
         var unaccounted = surface.Where(m => !referenced.Contains(m.Key) && !exclusions.ContainsKey(m.Key)).ToList();
@@ -53,7 +55,9 @@ public static class CorpusIndex
 
         sb.Append("## Coverage of the statement-producing surface (derived by `CorpusIndex`)\n\n");
         sb.Append("Method: the surface is every public method (and, for the types marked internal below, every internal method) of the surveyed Runtime types, plus the getters of `Query<T>` and public static getters. ");
-        sb.Append("A member counts as referenced when the IL of the code under `Cases/` calls it, constructs it or takes its token (the `Db.*` markers appear as tokens inside expression trees). ");
+        sb.Append("A member counts as referenced when the IL of the code under `Cases/` or the registered ")
+            .Append("`Streaming/CiIntegration/StreamCorpusCases` calls it, constructs it or takes its token ")
+            .Append("(the `Db.*` markers appear as tokens inside expression trees). ");
         sb.Append("A member that no case references and no exclusion explains makes the capture fail, so the table cannot silently shrink.\n\n");
         sb.Append("| type | members | referenced | excluded |\n| --- | --- | --- | --- |\n");
         foreach (var group in surface.GroupBy(m => m.Type).OrderBy(g => g.Key, StringComparer.Ordinal))

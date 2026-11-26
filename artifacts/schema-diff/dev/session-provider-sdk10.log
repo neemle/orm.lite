@@ -1,0 +1,10 @@
+Unhandled exception. System.InvalidOperationException: budget sees native catalog/cleanup
+   at FoundationProof.Check.That(Boolean condition, String category) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/Check.cs:line 7
+   at FoundationProof.SessionProof.VerifyAsync(OrmContext context, String ns, Nullable`1 original) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/SessionProof.cs:line 52
+   at FoundationProof.SessionProof.VerifyAsync(OrmContext context, String ns, Nullable`1 original) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/SessionProof.cs:line 53
+   at FoundationProof.SessionProof.VerifyAsync(OrmContext context, String ns, Nullable`1 original) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/SessionProof.cs:line 53
+   at FoundationProof.SessionProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/SessionProof.cs:line 18
+   at FoundationProof.SessionProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/SessionProof.cs:line 24
+   at FoundationProof.SessionProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/SessionProof.cs:line 24
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/Program.cs:line 4
+   at Program.<Main>(String[] args)

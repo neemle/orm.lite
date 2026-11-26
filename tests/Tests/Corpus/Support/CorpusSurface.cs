@@ -64,7 +64,6 @@ public static class CorpusSurface
         ["Query.get_Translator/0"] = "internal accessor read only by ViewColumns; the predicates it translates are pinned by ddl-builder/view-over-a-join-and-an-aggregate",
         ["Query.get_WhereTerms/0"] = "node-tree accessor beside WhereClauses; the terms it exposes are the ones WhereClauses renders, pinned by query-read/select-render-is-repeatable-and-exposes-the-where-terms",
         ["ConstraintColumns..ctor/2"] = "record constructor of the result type; the type emits no text, ConstraintColumns.ForAsync is pinned by the executed/constraint-columns-* transcripts",
-        ["OrmContext.DisposeAsync/0"] = "releases the data sources an options-built context owns; it emits no text",
         ["OrmContext.MigrateAsync/1"] = "applies the contributions the generated assemblies registered through MigrationRunner.RunAsync, whose transcripts are the generator-*/migration-runner-* entries; MigrateAsyncTests apply them",
         ["OrmContext.MigrateAsync/2"] = "forwards explicit contributions to MigrationRunner.RunAsync, whose transcripts are the generator-*/migration-runner-* entries; MigrateAsyncTests apply them",
         ["InsertManyChunks.RunAsync/5"] = "internal runner reached only through Query.InsertManyAsync; its transcripts are the executed/insert-many-* entries",

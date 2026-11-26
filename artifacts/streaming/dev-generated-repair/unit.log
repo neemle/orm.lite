@@ -1,0 +1,13 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Runtime/Runtime.csproj (in 325 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Core/Core.csproj (in 326 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Sql/Sql.csproj (in 326 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Postgres/Postgres.csproj (in 326 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/Generator.csproj (in 326 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Sqlite/Sqlite.csproj (in 326 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Tests.csproj (in 330 ms).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/sdk10/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/dev-generated-repair/sdk10/bin/Sql/release/Neemle.OrmLite.Sql.dll
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/GeneratedSourceLayout/GeneratedInitializer.cs(6,11): error IDE0130: Namespace "Neemle.OrmLite.Generator" does not match folder structure, expected "Neemle.OrmLite.Generator.GeneratedSourceLayout" (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0130) [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/Generator.csproj]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/GeneratedSourceLayout/GeneratedLineWrap.cs(9,11): error IDE0130: Namespace "Neemle.OrmLite.Generator" does not match folder structure, expected "Neemle.OrmLite.Generator.GeneratedSourceLayout" (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0130) [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/Generator.csproj]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/GeneratedSourceLayout/GeneratedSourceLayout.cs(7,11): error IDE0130: Namespace "Neemle.OrmLite.Generator" does not match folder structure, expected "Neemle.OrmLite.Generator.GeneratedSourceLayout" (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0130) [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/src/Generator/Generator.csproj]

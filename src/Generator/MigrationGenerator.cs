@@ -1,3 +1,4 @@
+using SourceLayout = Neemle.OrmLite.Generator.GeneratedSourceLayout.GeneratedSourceLayout;
 using System;
 using System.Collections.Immutable;
 using System.Linq;
@@ -42,13 +43,12 @@ public sealed class MigrationGenerator : IIncrementalGenerator
         IncrementalValueProvider<ImmutableArray<Mig>> migrations)
     {
         var asmToken = context.CompilationProvider.Select(static (c, _) => OrmGenerator.AsmToken(c));
-        var inputs = migrations.Combine(asmToken).Combine(ForeignKeyMigrationLayout.Enabled(context));
-        context.RegisterSourceOutput(inputs, static (spc, pair) => GeneratorGuard.Run(
-            spc, nameof(MigrationGenerator), () => Emit(spc, pair.Left.Left, pair.Left.Right, pair.Right)));
+        context.RegisterSourceOutput(migrations.Combine(asmToken), static (spc, pair) => GeneratorGuard.Run(
+            spc, nameof(MigrationGenerator), () => Emit(spc, pair.Left, pair.Right)));
     }
 
     private static void Emit(
-        SourceProductionContext spc, ImmutableArray<Mig> migs, string asmToken, bool hasForeignKeys)
+        SourceProductionContext spc, ImmutableArray<Mig> migs, string asmToken)
     {
         foreach (var m in migs.Where(m => m.Reversibility is null))
             spc.ReportDiagnostic(Diagnostic.Create(UnnamedReversibility, m.Location, m.Type, m.Version, m.Unnamed));
@@ -67,9 +67,8 @@ public sealed class MigrationGenerator : IIncrementalGenerator
             .ThenBy(m => m.Type, StringComparer.Ordinal)
             .ToArray();
 
-        spc.AddSource(MigrationsHint,
-            ForeignKeyMigrationLayout.Format(MigrationsSource(ordered, asmToken), hasForeignKeys));
-        spc.AddSource(RegistrationHint, ForeignKeyMigrationLayout.Format(RegistrationSource(asmToken), hasForeignKeys));
+        spc.AddSource(MigrationsHint, SourceLayout.Wrap(MigrationsSource(ordered, asmToken)));
+        spc.AddSource(RegistrationHint, SourceLayout.Wrap(RegistrationSource(asmToken)));
     }
 
     public const string MigrationsStep = "OrmLiteMigrations";

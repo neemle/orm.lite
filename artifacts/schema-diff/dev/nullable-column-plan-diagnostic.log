@@ -1,0 +1,11 @@
+PLAN_DIAGNOSTIC ManualRequired KeyOrConstraintChange:unsupported-add-effects physical-schema-only; historical logical-domain intent is not observed
+DEPENDENCIES dependent-external:i:toast table:pg_toast.pg_toast_16509;dependent-local:a:table constraint:"proof quoted_id_not_null" on public."proof qu;dependent-local:a:table constraint:"proof quoted_pkey" on public."proof quoted";dependent-local:i:type:public."proof quoted"
+Unhandled exception. System.InvalidOperationException: supported nullable-column plan
+   at FoundationProof.Check.That(Boolean condition, String category) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/Check.cs:line 7
+   at FoundationProof.TargetProof.AddPlan(SchemaDiffTarget target, SchemaDiffObservation observation) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/TargetProof.cs:line 30
+   at FoundationProof.PostgresProof.MissingAndAddAsync(NpgsqlDataSource source, NpgsqlConnection connection, SchemaDiffInspection request) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs:line 54
+   at FoundationProof.PostgresProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs:line 22
+   at FoundationProof.PostgresProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs:line 23
+   at FoundationProof.PostgresProof.RunAsync() in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs:line 23
+   at Program.<Main>$(String[] args) in /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/foundation-proof/Program.cs:line 9
+   at Program.<Main>(String[] args)

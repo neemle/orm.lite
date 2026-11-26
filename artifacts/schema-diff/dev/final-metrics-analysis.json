@@ -1,0 +1,6575 @@
+{
+  "convention": "CC1+if/loops/catch/conditional/nondefault switch arm/case/+ each && || ??; lambda decisions belong to containing method, local functions separately",
+  "newAndAddedUnits": [
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/Check.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "Check",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 20,
+          "CodeLines": 17,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "That",
+          "Line": 5,
+          "End": 8,
+          "CodeLines": 4,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 6,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 7,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Refuses",
+          "Line": 10,
+          "End": 19,
+          "CodeLines": 10,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 12,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 13,
+              "Kind": "CatchClause"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/MetadataProof.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "MetadataProof",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 31,
+          "CodeLines": 27,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "RunAsync",
+          "Line": 7,
+          "End": 30,
+          "CodeLines": 24,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 21,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 22,
+              "Kind": "CatchClause"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/NativeApiProof.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "NativeApiProof",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 15,
+          "CodeLines": 11,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Show",
+          "Line": 7,
+          "End": 14,
+          "CodeLines": 8,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 8,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 9,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 10,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/ObservationProof.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "ObservationProof",
+          "Kind": "ClassDeclaration",
+          "Line": 6,
+          "End": 42,
+          "CodeLines": 36,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Run",
+          "Line": 8,
+          "End": 34,
+          "CodeLines": 27,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 9,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Missing",
+          "Line": 36,
+          "End": 41,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 37,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresProof",
+          "Kind": "ClassDeclaration",
+          "Line": 8,
+          "End": 89,
+          "CodeLines": 77,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "RunAsync",
+          "Line": 10,
+          "End": 25,
+          "CodeLines": 16,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 11,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 12,
+              "Kind": "CoalesceExpression"
+            }
+          ]
+        },
+        {
+          "Name": "ExistingAsync",
+          "Line": 27,
+          "End": 42,
+          "CodeLines": 16,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 28,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "MissingAndAddAsync",
+          "Line": 44,
+          "End": 59,
+          "CodeLines": 16,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 46,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 57,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "HistoryPolicyAsync",
+          "Line": 61,
+          "End": 71,
+          "CodeLines": 11,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 62,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Request",
+          "Line": 73,
+          "End": 81,
+          "CodeLines": 9,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 74,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteAsync",
+          "Line": 83,
+          "End": 88,
+          "CodeLines": 6,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 84,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/Probe.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "Probe",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 7,
+          "CodeLines": 5,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/ProbeConnection.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "ProbeConnection",
+          "Kind": "ClassDeclaration",
+          "Line": 7,
+          "End": 39,
+          "CodeLines": 33,
+          "PrimaryParameters": 1
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "get",
+          "Line": 10,
+          "End": 10,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 10,
+          "End": 10,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Database",
+          "Line": 11,
+          "End": 11,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "DataSource",
+          "Line": 12,
+          "End": 12,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ServerVersion",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "State",
+          "Line": 14,
+          "End": 14,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ChangeDatabase",
+          "Line": 15,
+          "End": 15,
+          "CodeLines": 1,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Open",
+          "Line": 16,
+          "End": 16,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "OpenAsync",
+          "Line": 17,
+          "End": 24,
+          "CodeLines": 8,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 18,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 21,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Close",
+          "Line": 25,
+          "End": 29,
+          "CodeLines": 5,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 26,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "BeginDbTransaction",
+          "Line": 30,
+          "End": 31,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateDbCommand",
+          "Line": 32,
+          "End": 32,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "DisposeAsync",
+          "Line": 33,
+          "End": 38,
+          "CodeLines": 6,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 34,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 37,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/ProbeProvider.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "ProbeProvider",
+          "Kind": "ClassDeclaration",
+          "Line": 7,
+          "End": 19,
+          "CodeLines": 13,
+          "PrimaryParameters": 1
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Id",
+          "Line": 9,
+          "End": 9,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Capabilities",
+          "Line": 10,
+          "End": 10,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateSerializer",
+          "Line": 11,
+          "End": 11,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ClearActorAsync",
+          "Line": 12,
+          "End": 16,
+          "CodeLines": 5,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 13,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "StampActorAsync",
+          "Line": 17,
+          "End": 18,
+          "CodeLines": 2,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/ProbeSource.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "ProbeSource",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 9,
+          "CodeLines": 5,
+          "PrimaryParameters": 1
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ConnectionString",
+          "Line": 7,
+          "End": 7,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateDbConnection",
+          "Line": 8,
+          "End": 8,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/Program.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/SqliteProof.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteProof",
+          "Kind": "ClassDeclaration",
+          "Line": 8,
+          "End": 85,
+          "CodeLines": 73,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "RunAsync",
+          "Line": 10,
+          "End": 30,
+          "CodeLines": 21,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 11,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 26,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "ExistingAsync",
+          "Line": 32,
+          "End": 43,
+          "CodeLines": 12,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 33,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "MissingAsync",
+          "Line": 45,
+          "End": 58,
+          "CodeLines": 14,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 46,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "HistoryAliasAsync",
+          "Line": 60,
+          "End": 67,
+          "CodeLines": 8,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 64,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 65,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "Request",
+          "Line": 69,
+          "End": 77,
+          "CodeLines": 9,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 70,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteAsync",
+          "Line": 79,
+          "End": 84,
+          "CodeLines": 6,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 80,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/foundation-proof/TargetProof.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "TargetProof",
+          "Kind": "ClassDeclaration",
+          "Line": 6,
+          "End": 34,
+          "CodeLines": 28,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Next",
+          "Line": 8,
+          "End": 17,
+          "CodeLines": 10,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 9,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 12,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        },
+        {
+          "Name": "AddPlan",
+          "Line": 19,
+          "End": 33,
+          "CodeLines": 15,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 23,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 22,
+              "Kind": "IfStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/metrics/CodeCounts.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "CodeCounts",
+          "Kind": "ClassDeclaration",
+          "Line": 7,
+          "End": 39,
+          "CodeLines": 29,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Lines",
+          "Line": 9,
+          "End": 14,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 10,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Bound",
+          "Line": 16,
+          "End": 17,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Functions",
+          "Line": 19,
+          "End": 21,
+          "CodeLines": 3,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 20,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Name",
+          "Line": 23,
+          "End": 31,
+          "CodeLines": 9,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 25,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 26,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 27,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 28,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 29,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        },
+        {
+          "Name": "Parameters",
+          "Line": 33,
+          "End": 38,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 35,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 36,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/metrics/Complexity.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "Complexity",
+          "Kind": "ClassDeclaration",
+          "Line": 7,
+          "End": 31,
+          "CodeLines": 23,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Decisions",
+          "Line": 9,
+          "End": 10,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 10,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Decision",
+          "Line": 12,
+          "End": 20,
+          "CodeLines": 9,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 14,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 16,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 17,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        },
+        {
+          "Name": "Nesting",
+          "Line": 22,
+          "End": 30,
+          "CodeLines": 9,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 23,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 29,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/metrics/MetricScan.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "MetricScan",
+          "Kind": "ClassDeclaration",
+          "Line": 7,
+          "End": 47,
+          "CodeLines": 38,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "File",
+          "Line": 9,
+          "End": 26,
+          "CodeLines": 18,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 10,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Method",
+          "Line": 28,
+          "End": 36,
+          "CodeLines": 9,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "PrimaryParameters",
+          "Line": 38,
+          "End": 43,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 40,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 40,
+              "Kind": "CoalesceExpression"
+            },
+            {
+              "Line": 41,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 41,
+              "Kind": "CoalesceExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Start",
+          "Line": 45,
+          "End": 45,
+          "CodeLines": 1,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "End",
+          "Line": 46,
+          "End": 46,
+          "CodeLines": 1,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "artifacts/schema-diff/dev/metrics/Program.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Postgres/SchemaDiff/PostgresMetadataResources.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresMetadataResources",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 41,
+          "CodeLines": 34,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Add",
+          "Line": 9,
+          "End": 9,
+          "CodeLines": 1,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "FinishAsync",
+          "Line": 11,
+          "End": 25,
+          "CodeLines": 15,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 16,
+            "Depth": 2
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 14,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 17,
+              "Kind": "CatchClause"
+            },
+            {
+              "Line": 19,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 21,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Failure",
+          "Line": 27,
+          "End": 40,
+          "CodeLines": 14,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 28,
+            "Depth": 0
+          },
+          "Cyclomatic": 8,
+          "Decisions": [
+            {
+              "Line": 29,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 30,
+              "Kind": "CoalesceExpression"
+            },
+            {
+              "Line": 32,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 33,
+              "Kind": "CoalesceExpression"
+            },
+            {
+              "Line": 35,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 35,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 37,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Postgres/SchemaDiff/PostgresSchemaColumns.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresSchemaColumns",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 35,
+          "CodeLines": 29,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ReadAsync",
+          "Line": 21,
+          "End": 27,
+          "CodeLines": 7,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 23,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Column",
+          "Line": 29,
+          "End": 34,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Postgres/SchemaDiff/PostgresSchemaHistory.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresSchemaHistory",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 24,
+          "CodeLines": 22,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ReadAsync",
+          "Line": 5,
+          "End": 23,
+          "CodeLines": 19,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 6,
+            "Depth": 0
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 10,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 12,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 14,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 16,
+              "Kind": "IfStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Postgres/SchemaDiff/PostgresSchemaInspect.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresSchemaInspect",
+          "Kind": "ClassDeclaration",
+          "Line": 6,
+          "End": 42,
+          "CodeLines": 35,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "InspectAsync",
+          "Line": 8,
+          "End": 20,
+          "CodeLines": 13,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 16,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 17,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "CoreAsync",
+          "Line": 22,
+          "End": 40,
+          "CodeLines": 19,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 23,
+            "Depth": 0
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 31,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 31,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 34,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Postgres/SchemaDiff/PostgresSchemaInventory.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresSchemaInventory",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 45,
+          "CodeLines": 41,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ReadAsync",
+          "Line": 31,
+          "End": 39,
+          "CodeLines": 9,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 33,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 36,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Select",
+          "Line": 41,
+          "End": 44,
+          "CodeLines": 4,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Postgres/SchemaDiff/PostgresSchemaRead.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresSchemaRead",
+          "Kind": "ClassDeclaration",
+          "Line": 7,
+          "End": 75,
+          "CodeLines": 63,
+          "PrimaryParameters": 3
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Connection",
+          "Line": 12,
+          "End": 12,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Request",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "RowsAsync",
+          "Line": 15,
+          "End": 27,
+          "CodeLines": 13,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 23,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 18,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 24,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "ExecuteAsync",
+          "Line": 29,
+          "End": 49,
+          "CodeLines": 21,
+          "Parameters": 5,
+          "Nesting": {
+            "Line": 42,
+            "Depth": 1
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 37,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 41,
+              "Kind": "WhileStatement"
+            },
+            {
+              "Line": 43,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 45,
+              "Kind": "ForStatement"
+            },
+            {
+              "Line": 45,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Object",
+          "Line": 51,
+          "End": 55,
+          "CodeLines": 5,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 52,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 53,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Parameter",
+          "Line": 57,
+          "End": 58,
+          "CodeLines": 2,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 58,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Fingerprint",
+          "Line": 60,
+          "End": 71,
+          "CodeLines": 12,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 64,
+            "Depth": 1
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 63,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 65,
+              "Kind": "ConditionalExpression"
+            },
+            {
+              "Line": 67,
+              "Kind": "CoalesceExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Hash",
+          "Line": 73,
+          "End": 74,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Postgres/SchemaDiff/PostgresSchemaTable.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresSchemaTable",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 42,
+          "CodeLines": 36,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ReadAsync",
+          "Line": 17,
+          "End": 34,
+          "CodeLines": 18,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 19,
+            "Depth": 0
+          },
+          "Cyclomatic": 9,
+          "Decisions": [
+            {
+              "Line": 22,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 22,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 25,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 30,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 30,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 30,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 30,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 30,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Missing",
+          "Line": 36,
+          "End": 41,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 37,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Postgres/SchemaDiff/PostgresSchemaTypes.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "PostgresSchemaTypes",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 42,
+          "CodeLines": 34,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Parse",
+          "Line": 12,
+          "End": 18,
+          "CodeLines": 7,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 13,
+            "Depth": 0
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 14,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 15,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 15,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Numeric",
+          "Line": 20,
+          "End": 29,
+          "CodeLines": 10,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 21,
+            "Depth": 0
+          },
+          "Cyclomatic": 7,
+          "Decisions": [
+            {
+              "Line": 23,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 23,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 23,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 23,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 23,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 23,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Default",
+          "Line": 31,
+          "End": 40,
+          "CodeLines": 10,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 33,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 34,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 36,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 37,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 38,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/GatedDataSource.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [
+        {
+          "Name": "OpenMetadataConnectionAsync",
+          "Line": 87,
+          "End": 106,
+          "CodeLines": 20,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 100,
+            "Depth": 2
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 97,
+              "Kind": "CatchClause"
+            },
+            {
+              "Line": 101,
+              "Kind": "CatchClause"
+            },
+            {
+              "Line": 102,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 102,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "DetachMetadataLease",
+          "Line": 108,
+          "End": 115,
+          "CodeLines": 8,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 111,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 110,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "AttachMetadataLease",
+          "Line": 117,
+          "End": 123,
+          "CodeLines": 7,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 118,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaCompareAdd.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaCompareAdd",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 34,
+          "CodeLines": 29,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Column",
+          "Line": 7,
+          "End": 22,
+          "CodeLines": 16,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 15,
+            "Depth": 1
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 13,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 13,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 13,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 13,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 13,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Effects",
+          "Line": 24,
+          "End": 33,
+          "CodeLines": 10,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 25,
+            "Depth": 0
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 28,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 28,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 28,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 32,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaCompareColumns.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaCompareColumns",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 35,
+          "CodeLines": 32,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Existing",
+          "Line": 5,
+          "End": 18,
+          "CodeLines": 14,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 11,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 10,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 15,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Semantics",
+          "Line": 20,
+          "End": 34,
+          "CodeLines": 15,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 22,
+            "Depth": 0
+          },
+          "Cyclomatic": 9,
+          "Decisions": [
+            {
+              "Line": 23,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 23,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 26,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 26,
+              "Kind": "ConditionalExpression"
+            },
+            {
+              "Line": 28,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 30,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 30,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 30,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaCompareKnowledge.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaCompareKnowledge",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 29,
+          "CodeLines": 26,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Table",
+          "Line": 5,
+          "End": 15,
+          "CodeLines": 11,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 6,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 13,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Column",
+          "Line": 17,
+          "End": 28,
+          "CodeLines": 12,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 18,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaCompareState.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaCompareState",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 47,
+          "CodeLines": 39,
+          "PrimaryParameters": 2
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Target",
+          "Line": 7,
+          "End": 7,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Observation",
+          "Line": 8,
+          "End": 8,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 9,
+          "End": 9,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 10,
+          "End": 10,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 12,
+          "End": 12,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 14,
+          "End": 14,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 14,
+          "End": 14,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Change",
+          "Line": 16,
+          "End": 21,
+          "CodeLines": 6,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 17,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 19,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 20,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Known",
+          "Line": 23,
+          "End": 29,
+          "CodeLines": 7,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 24,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 25,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 26,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Operation",
+          "Line": 31,
+          "End": 38,
+          "CodeLines": 8,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 34,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 33,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Report",
+          "Line": 40,
+          "End": 46,
+          "CodeLines": 7,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 41,
+            "Depth": 0
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 42,
+              "Kind": "ConditionalExpression"
+            },
+            {
+              "Line": 42,
+              "Kind": "ConditionalExpression"
+            },
+            {
+              "Line": 43,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaCompareTables.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaCompareTables",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 49,
+          "CodeLines": 43,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Compare",
+          "Line": 7,
+          "End": 19,
+          "CodeLines": 13,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 12,
+            "Depth": 1
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 9,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 11,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 11,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 11,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 17,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Missing",
+          "Line": 21,
+          "End": 35,
+          "CodeLines": 15,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 28,
+            "Depth": 1
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 25,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 25,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 25,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 25,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 25,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Existing",
+          "Line": 37,
+          "End": 48,
+          "CodeLines": 12,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 40,
+            "Depth": 1
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 39,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 42,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 45,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDefault.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDefault",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 3,
+          "CodeLines": 1,
+          "PrimaryParameters": 1
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDefaultKind.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDesiredTable.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDesiredTable",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 4,
+          "CodeLines": 2,
+          "PrimaryParameters": 4
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiff.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiff",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 47,
+          "CodeLines": 43,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Compare",
+          "Line": 5,
+          "End": 22,
+          "CodeLines": 18,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 12,
+            "Depth": 1
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 11,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 13,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 18,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        },
+        {
+          "Name": "ValidateTarget",
+          "Line": 24,
+          "End": 32,
+          "CodeLines": 9,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 25,
+            "Depth": 0
+          },
+          "Cyclomatic": 7,
+          "Decisions": [
+            {
+              "Line": 26,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 26,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 26,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 26,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 26,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 26,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Lineage",
+          "Line": 34,
+          "End": 46,
+          "CodeLines": 13,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 43,
+            "Depth": 1
+          },
+          "Cyclomatic": 8,
+          "Decisions": [
+            {
+              "Line": 36,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 36,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 36,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 39,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 39,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 41,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 41,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffApplyOutcome.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffApplyResult.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffApplyResult",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 20,
+          "CodeLines": 17,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "SchemaDiffApplyResult",
+          "Line": 5,
+          "End": 13,
+          "CodeLines": 9,
+          "Parameters": 5,
+          "Nesting": {
+            "Line": 7,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 15,
+          "End": 15,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 16,
+          "End": 16,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 17,
+          "End": 17,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 18,
+          "End": 18,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 19,
+          "End": 19,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffBudget.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffBudget",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 26,
+          "CodeLines": 21,
+          "PrimaryParameters": 1
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Validate",
+          "Line": 9,
+          "End": 15,
+          "CodeLines": 7,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 10,
+            "Depth": 0
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 12,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 12,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 12,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 12,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 12,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Column",
+          "Line": 17,
+          "End": 17,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Object",
+          "Line": 18,
+          "End": 18,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Statement",
+          "Line": 19,
+          "End": 19,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Increment",
+          "Line": 21,
+          "End": 25,
+          "CodeLines": 5,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 22,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 23,
+              "Kind": "IfStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffCanceledException.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffCanceledException",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 16,
+          "CodeLines": 13,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "SchemaDiffCanceledException",
+          "Line": 5,
+          "End": 11,
+          "CodeLines": 7,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 8,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 10,
+              "Kind": "CoalesceExpression"
+            }
+          ]
+        },
+        {
+          "Name": "get",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 14,
+          "End": 14,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ToString",
+          "Line": 15,
+          "End": 15,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffCanonical.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffCanonical",
+          "Kind": "ClassDeclaration",
+          "Line": 6,
+          "End": 27,
+          "CodeLines": 18,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Add",
+          "Line": 10,
+          "End": 14,
+          "CodeLines": 5,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 12,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 12,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Fact",
+          "Line": 16,
+          "End": 21,
+          "CodeLines": 6,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 17,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 19,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Digest",
+          "Line": 23,
+          "End": 23,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Hash",
+          "Line": 25,
+          "End": 26,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffChange.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffChange",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 4,
+          "CodeLines": 2,
+          "PrimaryParameters": 4
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffChangeKind.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffComparison.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffComparison",
+          "Kind": "RecordDeclaration",
+          "Line": 5,
+          "End": 6,
+          "CodeLines": 2,
+          "PrimaryParameters": 3
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffError.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffException.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffException",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 18,
+          "CodeLines": 15,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "SchemaDiffException",
+          "Line": 5,
+          "End": 12,
+          "CodeLines": 8,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 8,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 11,
+              "Kind": "CoalesceExpression"
+            }
+          ]
+        },
+        {
+          "Name": "get",
+          "Line": 14,
+          "End": 14,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 15,
+          "End": 15,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 16,
+          "End": 16,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ToString",
+          "Line": 17,
+          "End": 17,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffImpact.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffInspection.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffInspection",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 3,
+          "CodeLines": 1,
+          "PrimaryParameters": 2
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffLimits.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffLimits",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 4,
+          "CodeLines": 2,
+          "PrimaryParameters": 5
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffNames.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffNames",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 30,
+          "CodeLines": 26,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Required",
+          "Line": 5,
+          "End": 10,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 6,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 7,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 7,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Limited",
+          "Line": 12,
+          "End": 22,
+          "CodeLines": 11,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 17,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 16,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 18,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Unique",
+          "Line": 24,
+          "End": 29,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 25,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 27,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 28,
+              "Kind": "IfStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffObservation.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffObservation",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 42,
+          "CodeLines": 38,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "SchemaDiffObservation",
+          "Line": 5,
+          "End": 14,
+          "CodeLines": 10,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 7,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 16,
+          "End": 16,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ProviderProfile",
+          "Line": 17,
+          "End": 17,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 18,
+          "End": 18,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 19,
+          "End": 19,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 20,
+          "End": 20,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 21,
+          "End": 21,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 22,
+          "End": 22,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "FromFacts",
+          "Line": 24,
+          "End": 41,
+          "CodeLines": 18,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 26,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 30,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 37,
+              "Kind": "IfStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffReport.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffReport",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 19,
+          "CodeLines": 16,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "SchemaDiffReport",
+          "Line": 5,
+          "End": 13,
+          "CodeLines": 9,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 7,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 15,
+          "End": 15,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 16,
+          "End": 16,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 17,
+          "End": 17,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 18,
+          "End": 18,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffScope.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffScope",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 3,
+          "CodeLines": 1,
+          "PrimaryParameters": 3
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffSnapshot.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffSnapshot",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 48,
+          "CodeLines": 42,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "SchemaDiffSnapshot",
+          "Line": 7,
+          "End": 17,
+          "CodeLines": 11,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 9,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 19,
+          "End": 19,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 20,
+          "End": 20,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 21,
+          "End": 21,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 22,
+          "End": 22,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 23,
+          "End": 23,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 24,
+          "End": 24,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Capture",
+          "Line": 26,
+          "End": 47,
+          "CodeLines": 22,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 27,
+            "Depth": 0
+          },
+          "Cyclomatic": 7,
+          "Decisions": [
+            {
+              "Line": 34,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 36,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 38,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 40,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 45,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 45,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffStatus.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffTarget.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffTarget",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 4,
+          "CodeLines": 2,
+          "PrimaryParameters": 4
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaDiffUnitResult.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaDiffUnitResult",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 3,
+          "CodeLines": 1,
+          "PrimaryParameters": 3
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaFact.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaFact",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 35,
+          "CodeLines": 26,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "SchemaFact",
+          "Line": 7,
+          "End": 12,
+          "CodeLines": 6,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 8,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 14,
+          "End": 14,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 15,
+          "End": 15,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "GetKnown",
+          "Line": 17,
+          "End": 18,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 17,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Known",
+          "Line": 20,
+          "End": 20,
+          "CodeLines": 1,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Unknown",
+          "Line": 22,
+          "End": 23,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Unsupported",
+          "Line": 25,
+          "End": 26,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Copy",
+          "Line": 28,
+          "End": 34,
+          "CodeLines": 7,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 30,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 31,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 32,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaFactCopies.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaFactCopies",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 64,
+          "CodeLines": 59,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Table",
+          "Line": 5,
+          "End": 24,
+          "CodeLines": 20,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 10,
+            "Depth": 1
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 9,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 19,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 19,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 19,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Column",
+          "Line": 26,
+          "End": 34,
+          "CodeLines": 9,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 27,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Inventory",
+          "Line": 36,
+          "End": 49,
+          "CodeLines": 14,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 41,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 40,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        },
+        {
+          "Name": "History",
+          "Line": 51,
+          "End": 63,
+          "CodeLines": 13,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 54,
+            "Depth": 1
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 59,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 59,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 59,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 59,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaKnowledge.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaMetadataConnections.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaMetadataConnections",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 13,
+          "CodeLines": 9,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "OpenAsync",
+          "Line": 7,
+          "End": 12,
+          "CodeLines": 6,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 8,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 10,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaObjectRef.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaObjectRef",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 3,
+          "CodeLines": 1,
+          "PrimaryParameters": 2
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaObjectStamp.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaObjectStamp",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 3,
+          "CodeLines": 1,
+          "PrimaryParameters": 3
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaObservationDigest.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaObservationDigest",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 55,
+          "CodeLines": 48,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Physical",
+          "Line": 7,
+          "End": 23,
+          "CodeLines": 17,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 15,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 14,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 18,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        },
+        {
+          "Name": "History",
+          "Line": 25,
+          "End": 31,
+          "CodeLines": 7,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 29,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 29,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Column",
+          "Line": 33,
+          "End": 47,
+          "CodeLines": 15,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 37,
+            "Depth": 1
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Inventory",
+          "Line": 49,
+          "End": 54,
+          "CodeLines": 6,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 53,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 53,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaObservationHistory.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaObservationHistory",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 4,
+          "CodeLines": 2,
+          "PrimaryParameters": 2
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaObservationIdentity.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaObservationIdentity",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 3,
+          "CodeLines": 1,
+          "PrimaryParameters": 3
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaObservedColumn.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaObservedColumn",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 5,
+          "CodeLines": 3,
+          "PrimaryParameters": 5
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaObservedColumnFacts.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaObservedColumnFacts",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 5,
+          "CodeLines": 3,
+          "PrimaryParameters": 4
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaObservedTable.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaObservedTable",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 4,
+          "CodeLines": 2,
+          "PrimaryParameters": 4
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaObservedTableFacts.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaObservedTableFacts",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 6,
+          "CodeLines": 4,
+          "PrimaryParameters": 4
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaPhysicalTypes.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaPhysicalTypes",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 45,
+          "CodeLines": 37,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Supported",
+          "Line": 7,
+          "End": 7,
+          "CodeLines": 1,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Target",
+          "Line": 9,
+          "End": 14,
+          "CodeLines": 6,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 11,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 12,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        },
+        {
+          "Name": "Postgres",
+          "Line": 16,
+          "End": 23,
+          "CodeLines": 8,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 9,
+          "Decisions": [
+            {
+              "Line": 18,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 18,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 19,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 19,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 20,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 20,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 21,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 21,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        },
+        {
+          "Name": "Sqlite",
+          "Line": 25,
+          "End": 31,
+          "CodeLines": 7,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 27,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 28,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 29,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        },
+        {
+          "Name": "Default",
+          "Line": 33,
+          "End": 44,
+          "CodeLines": 12,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 34,
+            "Depth": 0
+          },
+          "Cyclomatic": 7,
+          "Decisions": [
+            {
+              "Line": 35,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 35,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 38,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 39,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 40,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 41,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaRestoration.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaStorageType.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaStorageType",
+          "Kind": "RecordDeclaration",
+          "Line": 3,
+          "End": 3,
+          "CodeLines": 1,
+          "PrimaryParameters": 3
+        }
+      ],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaTargetIdentity.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SchemaTargetIdentity",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 17,
+          "CodeLines": 15,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Same",
+          "Line": 5,
+          "End": 16,
+          "CodeLines": 12,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 9,
+            "Depth": 1
+          },
+          "Cyclomatic": 7,
+          "Decisions": [
+            {
+              "Line": 7,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 8,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 11,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 11,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 11,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 11,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Runtime/SchemaDiff/SchemaUnitOutcome.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteMetadataResources.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteMetadataResources",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 41,
+          "CodeLines": 34,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Add",
+          "Line": 9,
+          "End": 9,
+          "CodeLines": 1,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "FinishAsync",
+          "Line": 11,
+          "End": 25,
+          "CodeLines": 15,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 16,
+            "Depth": 2
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 14,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 17,
+              "Kind": "CatchClause"
+            },
+            {
+              "Line": 19,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 21,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Failure",
+          "Line": 27,
+          "End": 40,
+          "CodeLines": 14,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 28,
+            "Depth": 0
+          },
+          "Cyclomatic": 8,
+          "Decisions": [
+            {
+              "Line": 29,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 30,
+              "Kind": "CoalesceExpression"
+            },
+            {
+              "Line": 32,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 33,
+              "Kind": "CoalesceExpression"
+            },
+            {
+              "Line": 35,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 35,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 37,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteSchemaAdmission.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteSchemaAdmission",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 22,
+          "CodeLines": 20,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ValidateAsync",
+          "Line": 5,
+          "End": 21,
+          "CodeLines": 17,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 6,
+            "Depth": 0
+          },
+          "Cyclomatic": 8,
+          "Decisions": [
+            {
+              "Line": 7,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 10,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 10,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 11,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 15,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 15,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 19,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteSchemaColumns.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteSchemaColumns",
+          "Kind": "ClassDeclaration",
+          "Line": 5,
+          "End": 28,
+          "CodeLines": 23,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ReadAsync",
+          "Line": 7,
+          "End": 14,
+          "CodeLines": 8,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 9,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Column",
+          "Line": 16,
+          "End": 27,
+          "CodeLines": 12,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 17,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 19,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 25,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteSchemaDefinition.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteSchemaDefinition",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 34,
+          "CodeLines": 28,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "IsVirtual",
+          "Line": 5,
+          "End": 6,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 5,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Parse",
+          "Line": 8,
+          "End": 13,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 11,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 10,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 12,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "Collation",
+          "Line": 15,
+          "End": 26,
+          "CodeLines": 12,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 16,
+            "Depth": 0
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 17,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 20,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 21,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 21,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 24,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Stamp",
+          "Line": 28,
+          "End": 29,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Identity",
+          "Line": 31,
+          "End": 33,
+          "CodeLines": 3,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 31,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteSchemaInspect.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteSchemaInspect",
+          "Kind": "ClassDeclaration",
+          "Line": 6,
+          "End": 58,
+          "CodeLines": 51,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "InspectAsync",
+          "Line": 8,
+          "End": 24,
+          "CodeLines": 17,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 20,
+            "Depth": 1
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 12,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 15,
+              "Kind": "ConditionalExpression"
+            },
+            {
+              "Line": 21,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "CoreAsync",
+          "Line": 26,
+          "End": 41,
+          "CodeLines": 16,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 27,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 31,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 33,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        },
+        {
+          "Name": "HistoryAsync",
+          "Line": 43,
+          "End": 57,
+          "CodeLines": 15,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 45,
+            "Depth": 0
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 48,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 49,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 50,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 50,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteSchemaInventory.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteSchemaInventory",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 48,
+          "CodeLines": 44,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ReadAsync",
+          "Line": 5,
+          "End": 15,
+          "CodeLines": 11,
+          "Parameters": 5,
+          "Nesting": {
+            "Line": 7,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 10,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Constraints",
+          "Line": 17,
+          "End": 27,
+          "CodeLines": 11,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 18,
+            "Depth": 0
+          },
+          "Cyclomatic": 7,
+          "Decisions": [
+            {
+              "Line": 19,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 20,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 22,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 23,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 23,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 24,
+              "Kind": "CoalesceExpression"
+            }
+          ]
+        },
+        {
+          "Name": "IndexesAsync",
+          "Line": 29,
+          "End": 47,
+          "CodeLines": 19,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 37,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 36,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 41,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteSchemaRead.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteSchemaRead",
+          "Kind": "ClassDeclaration",
+          "Line": 7,
+          "End": 75,
+          "CodeLines": 63,
+          "PrimaryParameters": 3
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Connection",
+          "Line": 12,
+          "End": 12,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Request",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "RowsAsync",
+          "Line": 15,
+          "End": 27,
+          "CodeLines": 13,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 23,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 18,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 24,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "ExecuteAsync",
+          "Line": 29,
+          "End": 49,
+          "CodeLines": 21,
+          "Parameters": 5,
+          "Nesting": {
+            "Line": 42,
+            "Depth": 1
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 37,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 41,
+              "Kind": "WhileStatement"
+            },
+            {
+              "Line": 43,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 45,
+              "Kind": "ForStatement"
+            },
+            {
+              "Line": 45,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Object",
+          "Line": 51,
+          "End": 55,
+          "CodeLines": 5,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 52,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 53,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Parameter",
+          "Line": 57,
+          "End": 58,
+          "CodeLines": 2,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 58,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Fingerprint",
+          "Line": 60,
+          "End": 71,
+          "CodeLines": 12,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 64,
+            "Depth": 1
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 63,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 65,
+              "Kind": "ConditionalExpression"
+            },
+            {
+              "Line": 67,
+              "Kind": "CoalesceExpression"
+            }
+          ]
+        },
+        {
+          "Name": "Hash",
+          "Line": 73,
+          "End": 74,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteSchemaReferences.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteSchemaReferences",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 24,
+          "CodeLines": 22,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ReadAsync",
+          "Line": 5,
+          "End": 23,
+          "CodeLines": 19,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 13,
+            "Depth": 1
+          },
+          "Cyclomatic": 7,
+          "Decisions": [
+            {
+              "Line": 8,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 8,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 8,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 9,
+              "Kind": "LogicalAndExpression"
+            },
+            {
+              "Line": 12,
+              "Kind": "ForEachStatement"
+            },
+            {
+              "Line": 17,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteSchemaTable.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteSchemaTable",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 30,
+          "CodeLines": 27,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "ReadAsync",
+          "Line": 5,
+          "End": 21,
+          "CodeLines": 17,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 7,
+            "Depth": 0
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 11,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 12,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 12,
+              "Kind": "LogicalOrExpression"
+            },
+            {
+              "Line": 18,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 18,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "MissingAsync",
+          "Line": 23,
+          "End": 29,
+          "CodeLines": 7,
+          "Parameters": 4,
+          "Nesting": {
+            "Line": 25,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SchemaDiff/SqliteSchemaTypes.cs",
+      "Widths": [],
+      "Types": [
+        {
+          "Name": "SqliteSchemaTypes",
+          "Kind": "ClassDeclaration",
+          "Line": 3,
+          "End": 22,
+          "CodeLines": 19,
+          "PrimaryParameters": 0
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "Parse",
+          "Line": 5,
+          "End": 11,
+          "CodeLines": 7,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 7,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 8,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 9,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        },
+        {
+          "Name": "Default",
+          "Line": 13,
+          "End": 21,
+          "CodeLines": 9,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 6,
+          "Decisions": [
+            {
+              "Line": 15,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 16,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 17,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 18,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 19,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SqliteConnectionParts.cs",
+      "Widths": [],
+      "Types": [],
+      "Methods": [
+        {
+          "Name": "BeginMetadataTransaction",
+          "Line": 121,
+          "End": 126,
+          "CodeLines": 6,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 122,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    }
+  ],
+  "preExistingOutsideAddedHelpers": [
+    {
+      "File": "src/Runtime/GatedDataSource.cs",
+      "Widths": [
+        {
+          "Line": 12,
+          "Width": 138
+        },
+        {
+          "Line": 22,
+          "Width": 144
+        },
+        {
+          "Line": 73,
+          "Width": 121
+        },
+        {
+          "Line": 135,
+          "Width": 132
+        },
+        {
+          "Line": 138,
+          "Width": 121
+        },
+        {
+          "Line": 166,
+          "Width": 144
+        },
+        {
+          "Line": 228,
+          "Width": 139
+        },
+        {
+          "Line": 234,
+          "Width": 140
+        }
+      ],
+      "Types": [
+        {
+          "Name": "GatedDataSource",
+          "Kind": "ClassDeclaration",
+          "Line": 12,
+          "End": 311,
+          "CodeLines": 252,
+          "PrimaryParameters": 4
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "GatedDataSource",
+          "Line": 22,
+          "End": 23,
+          "CodeLines": 2,
+          "Parameters": 5,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Provider",
+          "Line": 25,
+          "End": 25,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ConnectionString",
+          "Line": 27,
+          "End": 27,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Checked",
+          "Line": 29,
+          "End": 35,
+          "CodeLines": 7,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 30,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 31,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 32,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "LaneSource",
+          "Line": 37,
+          "End": 43,
+          "CodeLines": 7,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 39,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 40,
+              "Kind": "SwitchExpressionArm"
+            },
+            {
+              "Line": 41,
+              "Kind": "SwitchExpressionArm"
+            }
+          ]
+        },
+        {
+          "Name": "LeaseAsync",
+          "Line": 45,
+          "End": 71,
+          "CodeLines": 25,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 48,
+            "Depth": 1
+          },
+          "Cyclomatic": 4,
+          "Decisions": [
+            {
+              "Line": 47,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 61,
+              "Kind": "ConditionalExpression"
+            },
+            {
+              "Line": 65,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "OpenDbConnectionAsync",
+          "Line": 73,
+          "End": 85,
+          "CodeLines": 13,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 77,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 80,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "OpenMetadataConnectionAsync",
+          "Line": 87,
+          "End": 106,
+          "CodeLines": 20,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 100,
+            "Depth": 2
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 97,
+              "Kind": "CatchClause"
+            },
+            {
+              "Line": 101,
+              "Kind": "CatchClause"
+            },
+            {
+              "Line": 102,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 102,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "DetachMetadataLease",
+          "Line": 108,
+          "End": 115,
+          "CodeLines": 8,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 111,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 110,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "AttachMetadataLease",
+          "Line": 117,
+          "End": 123,
+          "CodeLines": 7,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 118,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateDbCommand",
+          "Line": 125,
+          "End": 126,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateDbConnection",
+          "Line": 128,
+          "End": 129,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "OpenDbConnection",
+          "Line": 131,
+          "End": 132,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateDbBatch",
+          "Line": 134,
+          "End": 135,
+          "CodeLines": 2,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Refused",
+          "Line": 137,
+          "End": 138,
+          "CodeLines": 2,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "LeaseOf",
+          "Line": 140,
+          "End": 141,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 141,
+              "Kind": "ConditionalExpression"
+            },
+            {
+              "Line": 141,
+              "Kind": "LogicalAndExpression"
+            }
+          ]
+        },
+        {
+          "Name": "get",
+          "Line": 147,
+          "End": 147,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 149,
+          "End": 149,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 151,
+          "End": 151,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 151,
+          "End": 151,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Acquire",
+          "Line": 153,
+          "End": 153,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "OnStateChange",
+          "Line": 155,
+          "End": 167,
+          "CodeLines": 12,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 158,
+            "Depth": 1
+          },
+          "Cyclomatic": 5,
+          "Decisions": [
+            {
+              "Line": 157,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 159,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 163,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 163,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "get",
+          "Line": 172,
+          "End": 172,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 172,
+          "End": 172,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "GatedCommand",
+          "Line": 178,
+          "End": 192,
+          "CodeLines": 15,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 183,
+            "Depth": 1
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 185,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 187,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "get",
+          "Line": 197,
+          "End": 197,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 198,
+          "End": 198,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 203,
+          "End": 203,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 204,
+          "End": 204,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 209,
+          "End": 209,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 210,
+          "End": 210,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 215,
+          "End": 215,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 216,
+          "End": 216,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 221,
+          "End": 221,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 222,
+          "End": 222,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 227,
+          "End": 227,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 228,
+          "End": 228,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "get",
+          "Line": 233,
+          "End": 233,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 234,
+          "End": 234,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "DbParameterCollection",
+          "Line": 237,
+          "End": 237,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateDbParameter",
+          "Line": 239,
+          "End": 239,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Cancel",
+          "Line": 241,
+          "End": 241,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Prepare",
+          "Line": 243,
+          "End": 243,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteNonQuery",
+          "Line": 245,
+          "End": 245,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteScalar",
+          "Line": 247,
+          "End": 247,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteDbDataReader",
+          "Line": 249,
+          "End": 250,
+          "CodeLines": 2,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteNonQueryAsync",
+          "Line": 252,
+          "End": 263,
+          "CodeLines": 12,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 256,
+            "Depth": 1
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteScalarAsync",
+          "Line": 265,
+          "End": 276,
+          "CodeLines": 12,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 269,
+            "Depth": 1
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteDbDataReaderAsync",
+          "Line": 278,
+          "End": 291,
+          "CodeLines": 14,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 283,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 286,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "Dispose",
+          "Line": 293,
+          "End": 301,
+          "CodeLines": 9,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 296,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 295,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "DisposeAsync",
+          "Line": 303,
+          "End": 309,
+          "CodeLines": 7,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 304,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    },
+    {
+      "File": "src/Sqlite/SqliteConnectionParts.cs",
+      "Widths": [
+        {
+          "Line": 172,
+          "Width": 123
+        },
+        {
+          "Line": 173,
+          "Width": 122
+        },
+        {
+          "Line": 178,
+          "Width": 135
+        }
+      ],
+      "Types": [
+        {
+          "Name": "OrmSqliteParameter",
+          "Kind": "ClassDeclaration",
+          "Line": 9,
+          "End": 16,
+          "CodeLines": 8,
+          "PrimaryParameters": 0
+        },
+        {
+          "Name": "OrmSqliteCommand",
+          "Kind": "ClassDeclaration",
+          "Line": 18,
+          "End": 44,
+          "CodeLines": 23,
+          "PrimaryParameters": 0
+        },
+        {
+          "Name": "OrmSqliteConnection",
+          "Kind": "ClassDeclaration",
+          "Line": 46,
+          "End": 183,
+          "CodeLines": 116,
+          "PrimaryParameters": 2
+        },
+        {
+          "Name": "SqliteVersionGuard",
+          "Kind": "ClassDeclaration",
+          "Line": 185,
+          "End": 194,
+          "CodeLines": 10,
+          "PrimaryParameters": 0
+        },
+        {
+          "Name": "SqliteDataSource",
+          "Kind": "ClassDeclaration",
+          "Line": 196,
+          "End": 210,
+          "CodeLines": 12,
+          "PrimaryParameters": 2
+        }
+      ],
+      "Methods": [
+        {
+          "Name": "get",
+          "Line": 13,
+          "End": 13,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 14,
+          "End": 14,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateParameter",
+          "Line": 20,
+          "End": 20,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteNonQuery",
+          "Line": 22,
+          "End": 26,
+          "CodeLines": 5,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 23,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteScalar",
+          "Line": 28,
+          "End": 32,
+          "CodeLines": 5,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 29,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "ExecuteDbDataReader",
+          "Line": 34,
+          "End": 38,
+          "CodeLines": 5,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 35,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "BeginStatement",
+          "Line": 40,
+          "End": 43,
+          "CodeLines": 4,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 41,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 42,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "get",
+          "Line": 60,
+          "End": 60,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "set",
+          "Line": 60,
+          "End": 60,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CurrentId",
+          "Line": 62,
+          "End": 62,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 62,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "CurrentAt",
+          "Line": 64,
+          "End": 64,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 64,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "InTransaction",
+          "Line": 66,
+          "End": 66,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "BeginStatement",
+          "Line": 68,
+          "End": 73,
+          "CodeLines": 6,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 69,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 70,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Open",
+          "Line": 75,
+          "End": 87,
+          "CodeLines": 13,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 79,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 82,
+              "Kind": "CatchClause"
+            }
+          ]
+        },
+        {
+          "Name": "Close",
+          "Line": 89,
+          "End": 94,
+          "CodeLines": 6,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 90,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 91,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "ForgetIdentity",
+          "Line": 96,
+          "End": 104,
+          "CodeLines": 9,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 97,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateCommand",
+          "Line": 106,
+          "End": 112,
+          "CodeLines": 7,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 111,
+              "Kind": "ConditionalExpression"
+            }
+          ]
+        },
+        {
+          "Name": "BeginDbTransaction",
+          "Line": 114,
+          "End": 119,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 115,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "BeginMetadataTransaction",
+          "Line": 121,
+          "End": 126,
+          "CodeLines": 6,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 122,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "BeginWriteTransaction",
+          "Line": 128,
+          "End": 133,
+          "CodeLines": 6,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 129,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Track",
+          "Line": 135,
+          "End": 140,
+          "CodeLines": 6,
+          "Parameters": 1,
+          "Nesting": {
+            "Line": 136,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "Prepare",
+          "Line": 142,
+          "End": 155,
+          "CodeLines": 14,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 143,
+            "Depth": 0
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 145,
+              "Kind": "CoalesceExpression"
+            }
+          ]
+        },
+        {
+          "Name": "RegisterHistoryFunctions",
+          "Line": 157,
+          "End": 167,
+          "CodeLines": 11,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 161,
+            "Depth": 1
+          },
+          "Cyclomatic": 2,
+          "Decisions": [
+            {
+              "Line": 162,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "ForgetHistoryFunctions",
+          "Line": 169,
+          "End": 174,
+          "CodeLines": 6,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 170,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 171,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 172,
+              "Kind": "ForEachStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Register",
+          "Line": 176,
+          "End": 182,
+          "CodeLines": 7,
+          "Parameters": 3,
+          "Nesting": {
+            "Line": 177,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 178,
+              "Kind": "CoalesceExpression"
+            },
+            {
+              "Line": 180,
+              "Kind": "IfStatement"
+            }
+          ]
+        },
+        {
+          "Name": "Require",
+          "Line": 187,
+          "End": 193,
+          "CodeLines": 7,
+          "Parameters": 2,
+          "Nesting": {
+            "Line": 188,
+            "Depth": 0
+          },
+          "Cyclomatic": 3,
+          "Decisions": [
+            {
+              "Line": 189,
+              "Kind": "IfStatement"
+            },
+            {
+              "Line": 189,
+              "Kind": "LogicalOrExpression"
+            }
+          ]
+        },
+        {
+          "Name": "ConnectionString",
+          "Line": 200,
+          "End": 200,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "CreateDbConnection",
+          "Line": 202,
+          "End": 202,
+          "CodeLines": 1,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 0,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        },
+        {
+          "Name": "DisposeAsyncCore",
+          "Line": 204,
+          "End": 209,
+          "CodeLines": 6,
+          "Parameters": 0,
+          "Nesting": {
+            "Line": 205,
+            "Depth": 0
+          },
+          "Cyclomatic": 1,
+          "Decisions": []
+        }
+      ],
+      "SyntaxErrors": []
+    }
+  ],
+  "newViolations": [],
+  "scope": "Measured C# source and scratch tooling only. Legacy widths and four bound types in SqliteConnectionParts retained, no blanket301/source-binary/coverage discharge."
+}

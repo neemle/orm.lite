@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="31308531-1d4e-4d3f-825d-d2511fcadc6f" name="@427d883d0b1d 2026-11-26 10:40:49" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-26T10:40:49.1665910+00:00" queuing="2026-11-26T10:40:49.1665910+00:00" start="2026-11-26T10:40:48.1877603+00:00" finish="2026-11-26T10:40:49.1691247+00:00" />
+  <TestSettings name="default" id="5ed3732b-b87d-455f-84d3-c195bae1157e">
+    <Deployment runDeploymentRoot="_427d883d0b1d_2026-11-26_10_40_49" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="3f03168b-fcd6-4fa4-8ebe-eee292cad059" testId="e48e462a-e06c-7215-f202-00405daf53b8" testName="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: StrictText)" computerName="427d883d0b1d" duration="00:00:00.0106118" startTime="2026-11-26T10:40:49.0592021+00:00" endTime="2026-11-26T10:40:49.0592022+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3f03168b-fcd6-4fa4-8ebe-eee292cad059" />
+    <UnitTestResult executionId="31cbe751-a67b-4678-b0a8-32d41908e8ec" testId="84e8cde3-510b-4e8b-3bbf-d7f73228b035" testName="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: InlineIntegerDescending)" computerName="427d883d0b1d" duration="00:00:00.0111062" startTime="2026-11-26T10:40:49.0369525+00:00" endTime="2026-11-26T10:40:49.0369526+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31cbe751-a67b-4678-b0a8-32d41908e8ec" />
+    <UnitTestResult executionId="5974dde8-266e-40a0-b00a-12401be739e8" testId="62e5d622-77ef-5923-5325-7f68ced2c4fc" testName="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: ExplicitNotNullText)" computerName="427d883d0b1d" duration="00:00:00.0678604" startTime="2026-11-26T10:40:49.0267712+00:00" endTime="2026-11-26T10:40:49.0267869+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5974dde8-266e-40a0-b00a-12401be739e8" />
+    <UnitTestResult executionId="983b3521-2b74-4711-8e5b-04a7d13d5559" testId="c48d1f2f-63a8-2769-9533-73e258e97db2" testName="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: IntegerAlias)" computerName="427d883d0b1d" duration="00:00:00.0075210" startTime="2026-11-26T10:40:49.0768988+00:00" endTime="2026-11-26T10:40:49.0768989+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="983b3521-2b74-4711-8e5b-04a7d13d5559" />
+    <UnitTestResult executionId="7aed021e-6c9f-4613-8176-58e1d7ae25fa" testId="d62b6392-f7f5-64ac-9415-3e84aa9877a7" testName="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: NullableText)" computerName="427d883d0b1d" duration="00:00:00.0099635" startTime="2026-11-26T10:40:49.0693062+00:00" endTime="2026-11-26T10:40:49.0693063+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7aed021e-6c9f-4613-8176-58e1d7ae25fa" />
+    <UnitTestResult executionId="09a0989f-5cde-4b04-b450-5ecc855c5685" testId="20946433-ff23-2dd4-ab3d-fd2c145a0f6e" testName="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: TableIntegerDescending)" computerName="427d883d0b1d" duration="00:00:00.0115333" startTime="2026-11-26T10:40:49.0485374+00:00" endTime="2026-11-26T10:40:49.0485375+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="09a0989f-5cde-4b04-b450-5ecc855c5685" />
+    <UnitTestResult executionId="828042d6-de75-4160-a0ca-e9b0131ce947" testId="9cd9111d-50b8-e0df-858f-a15c6d1a776f" testName="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: WithoutRowidText)" computerName="427d883d0b1d" duration="00:00:00.0081949" startTime="2026-11-26T10:40:49.0851787+00:00" endTime="2026-11-26T10:40:49.0851787+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="828042d6-de75-4160-a0ca-e9b0131ce947" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: InlineIntegerDescending)" storage="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/tests/release/neemle.ormlite.tests.dll" id="84e8cde3-510b-4e8b-3bbf-d7f73228b035">
+      <Execution id="31cbe751-a67b-4678-b0a8-32d41908e8ec" />
+      <TestMethod codeBase="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.SqlitePrimaryKeyNullabilityTests" name="Actual_storage_and_metadata_agree_before_noop_or_refusal" />
+    </UnitTest>
+    <UnitTest name="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: NullableText)" storage="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/tests/release/neemle.ormlite.tests.dll" id="d62b6392-f7f5-64ac-9415-3e84aa9877a7">
+      <Execution id="7aed021e-6c9f-4613-8176-58e1d7ae25fa" />
+      <TestMethod codeBase="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.SqlitePrimaryKeyNullabilityTests" name="Actual_storage_and_metadata_agree_before_noop_or_refusal" />
+    </UnitTest>
+    <UnitTest name="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: StrictText)" storage="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/tests/release/neemle.ormlite.tests.dll" id="e48e462a-e06c-7215-f202-00405daf53b8">
+      <Execution id="3f03168b-fcd6-4fa4-8ebe-eee292cad059" />
+      <TestMethod codeBase="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.SqlitePrimaryKeyNullabilityTests" name="Actual_storage_and_metadata_agree_before_noop_or_refusal" />
+    </UnitTest>
+    <UnitTest name="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: WithoutRowidText)" storage="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/tests/release/neemle.ormlite.tests.dll" id="9cd9111d-50b8-e0df-858f-a15c6d1a776f">
+      <Execution id="828042d6-de75-4160-a0ca-e9b0131ce947" />
+      <TestMethod codeBase="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.SqlitePrimaryKeyNullabilityTests" name="Actual_storage_and_metadata_agree_before_noop_or_refusal" />
+    </UnitTest>
+    <UnitTest name="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: IntegerAlias)" storage="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/tests/release/neemle.ormlite.tests.dll" id="c48d1f2f-63a8-2769-9533-73e258e97db2">
+      <Execution id="983b3521-2b74-4711-8e5b-04a7d13d5559" />
+      <TestMethod codeBase="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.SqlitePrimaryKeyNullabilityTests" name="Actual_storage_and_metadata_agree_before_noop_or_refusal" />
+    </UnitTest>
+    <UnitTest name="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: ExplicitNotNullText)" storage="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/tests/release/neemle.ormlite.tests.dll" id="62e5d622-77ef-5923-5325-7f68ced2c4fc">
+      <Execution id="5974dde8-266e-40a0-b00a-12401be739e8" />
+      <TestMethod codeBase="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.SqlitePrimaryKeyNullabilityTests" name="Actual_storage_and_metadata_agree_before_noop_or_refusal" />
+    </UnitTest>
+    <UnitTest name="[SEC][UC-011] physical SQLite key nullability cannot hide a tightening difference(form: TableIntegerDescending)" storage="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/tests/release/neemle.ormlite.tests.dll" id="20946433-ff23-2dd4-ab3d-fd2c145a0f6e">
+      <Execution id="09a0989f-5cde-4b04-b450-5ecc855c5685" />
+      <TestMethod codeBase="/repo/artifacts/schema-diff/nullability-sdet/build10/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.SchemaDiff.SqlitePrimaryKeyNullabilityTests" name="Actual_storage_and_metadata_agree_before_noop_or_refusal" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e48e462a-e06c-7215-f202-00405daf53b8" executionId="3f03168b-fcd6-4fa4-8ebe-eee292cad059" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="84e8cde3-510b-4e8b-3bbf-d7f73228b035" executionId="31cbe751-a67b-4678-b0a8-32d41908e8ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="62e5d622-77ef-5923-5325-7f68ced2c4fc" executionId="5974dde8-266e-40a0-b00a-12401be739e8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c48d1f2f-63a8-2769-9533-73e258e97db2" executionId="983b3521-2b74-4711-8e5b-04a7d13d5559" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d62b6392-f7f5-64ac-9415-3e84aa9877a7" executionId="7aed021e-6c9f-4613-8176-58e1d7ae25fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="20946433-ff23-2dd4-ab3d-fd2c145a0f6e" executionId="09a0989f-5cde-4b04-b450-5ecc855c5685" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9cd9111d-50b8-e0df-858f-a15c6d1a776f" executionId="828042d6-de75-4160-a0ca-e9b0131ce947" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="7" executed="7" passed="7" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.14]   Discovering: Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.41]   Discovered:  Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.42]   Starting:    Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.58]   Finished:    Neemle.OrmLite.Tests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

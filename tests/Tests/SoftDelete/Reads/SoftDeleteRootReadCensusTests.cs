@@ -1,4 +1,5 @@
 using System.Reflection;
+using Neemle.OrmLite.Tests.Streaming.CiIntegration;
 using Neemle.OrmLite.Tests.SoftDelete.Fixtures;
 using Neemle.OrmLite;
 using Xunit;
@@ -15,13 +16,16 @@ public sealed class SoftDeleteRootReadCensusTests(SoftDeleteDb db) : IClassFixtu
         "RenderRestore", "RestoreAsync",
     ];
 
-    public static TheoryData<string> PathNames => new(RootReadPath.Census.Select(p => p.Name));
+    private static readonly IReadOnlyList<RootReadPath> Paths =
+        [.. RootReadPath.Census, .. StreamRootReadPaths.Census];
+
+    public static TheoryData<string> PathNames => new(Paths.Select(p => p.Name));
 
     [Theory(DisplayName = "AC1: a soft root read path executes without the soft-deleted row")]
     [MemberData(nameof(PathNames))]
     public async Task A_root_read_path_excludes_the_soft_deleted_row(string path)
     {
-        var read = RootReadPath.Named(path);
+        var read = Paths.Single(p => p.Name == path);
 
         Assert.Equal(read.Live, await read.Run(db.Roots()));
     }
@@ -30,7 +34,7 @@ public sealed class SoftDeleteRootReadCensusTests(SoftDeleteDb db) : IClassFixtu
     [MemberData(nameof(PathNames))]
     public async Task IncludingDeleted_returns_the_soft_deleted_row_on_a_root_read_path(string path)
     {
-        var read = RootReadPath.Named(path);
+        var read = Paths.Single(p => p.Name == path);
 
         Assert.Equal(read.AllRows, await read.Run(db.Roots().IncludingDeleted()));
     }
@@ -46,7 +50,7 @@ public sealed class SoftDeleteRootReadCensusTests(SoftDeleteDb db) : IClassFixtu
             .Order(StringComparer.Ordinal)
             .ToArray();
 
-        var named = RootReadPath.Census.SelectMany(p => p.Members).Order(StringComparer.Ordinal).ToArray();
+        var named = Paths.SelectMany(p => p.Members).Order(StringComparer.Ordinal).ToArray();
 
         Assert.Equal(published, named);
     }

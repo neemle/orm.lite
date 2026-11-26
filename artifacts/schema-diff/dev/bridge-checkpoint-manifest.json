@@ -1,0 +1,560 @@
+{
+  "kind": "ORML-117 bounded coherent guarded bridge producer checkpoint; not whole acceptance",
+  "generated": "2026-11-26T07:29:58.797087+00:00",
+  "sourceCommit": "41569b26543b65800a713c3bf5ae800ba2f38b03",
+  "sourceTree": "b87e8065a7c33555d49d7957906d674032f67b90",
+  "testTree": "1f2da00d26b9a06a0b637a2e64ec5be940e3739c",
+  "gates": [
+    {
+      "gate": "bridge-pinned-sdk10",
+      "argv": [
+        "docker",
+        "run",
+        "--memory=1536m",
+        "--cpus=2",
+        "--rm",
+        "--name",
+        "orml117-dev-bridge-pinned10",
+        "--network",
+        "orml117-dev-u5-f18cb0",
+        "--label",
+        "orml.task=ORML-117",
+        "--label",
+        "orml.actor=dev",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+        "-v",
+        "orml-107-nuget:/root/.nuget/packages",
+        "-w",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+        "-e",
+        "GIT_CONFIG_COUNT=1",
+        "-e",
+        "GIT_CONFIG_KEY_0=safe.directory",
+        "-e",
+        "GIT_CONFIG_VALUE_0=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+        "-e",
+        "ORMLITE_TEST_POSTGRES=Host=schema-pg;Username=postgres;Database=postgres",
+        "-e",
+        "DOTNET_ROLL_FORWARD=Minor",
+        "orml108-graph-native-sdk10:verified",
+        "dotnet",
+        "run",
+        "--project",
+        "artifacts/schema-diff/dev/foundation-proof/FoundationProof.csproj",
+        "-c",
+        "Release",
+        "--artifacts-path",
+        "artifacts/schema-diff/dev/recipe-proof10b-build",
+        "--",
+        "bridge"
+      ],
+      "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+      "commit": "41569b26543b65800a713c3bf5ae800ba2f38b03",
+      "sourceTree": "b87e8065a7c33555d49d7957906d674032f67b90",
+      "testTree": "1f2da00d26b9a06a0b637a2e64ec5be940e3739c",
+      "sourceDigest": "e172e1be38570d99528ed053859d306fc7e5769e940d52304728bb2efc315f27",
+      "proofDigest": "d3135a2613174d3552d54cafc1c9b3c237159f269cd6fc923c7a095d88710a82",
+      "worktreeStatus": "",
+      "started": "2026-11-26T07:26:36.171638+00:00",
+      "exitCode": 0,
+      "sourceChangedDuringRun": false,
+      "proofChangedDuringRun": false,
+      "finished": "2026-11-26T07:27:01.321005+00:00"
+    },
+    {
+      "gate": "bridge-pinned-metrics",
+      "argv": [
+        "docker",
+        "run",
+        "--memory=512m",
+        "--cpus=1",
+        "--rm",
+        "--name",
+        "orml117-dev-bridge-pinned-metrics",
+        "--label",
+        "orml.task=ORML-117",
+        "--label",
+        "orml.actor=dev",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+        "-v",
+        "orml-107-nuget:/root/.nuget/packages",
+        "-w",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+        "-e",
+        "GIT_CONFIG_COUNT=1",
+        "-e",
+        "GIT_CONFIG_KEY_0=safe.directory",
+        "-e",
+        "GIT_CONFIG_VALUE_0=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+        "orml108-graph-native-sdk10:verified",
+        "dotnet",
+        "artifacts/schema-diff/dev/final-metrics-build/bin/Metrics/debug/Metrics.dll",
+        "artifacts/schema-diff/dev/metrics/bridge-files.txt"
+      ],
+      "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+      "commit": "41569b26543b65800a713c3bf5ae800ba2f38b03",
+      "sourceTree": "b87e8065a7c33555d49d7957906d674032f67b90",
+      "testTree": "1f2da00d26b9a06a0b637a2e64ec5be940e3739c",
+      "sourceDigest": "e172e1be38570d99528ed053859d306fc7e5769e940d52304728bb2efc315f27",
+      "proofDigest": "d3135a2613174d3552d54cafc1c9b3c237159f269cd6fc923c7a095d88710a82",
+      "worktreeStatus": "",
+      "started": "2026-11-26T07:26:37.239537+00:00",
+      "exitCode": 0,
+      "sourceChangedDuringRun": false,
+      "proofChangedDuringRun": false,
+      "finished": "2026-11-26T07:26:39.873925+00:00"
+    },
+    {
+      "gate": "literal-pinned-sdk10",
+      "argv": [
+        "docker",
+        "run",
+        "--memory=512m",
+        "--cpus=1",
+        "--rm",
+        "--name",
+        "orml117-dev-literal-pinned10",
+        "--label",
+        "orml.task=ORML-117",
+        "--label",
+        "orml.actor=dev",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+        "-v",
+        "orml-107-nuget:/root/.nuget/packages",
+        "-w",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+        "-e",
+        "GIT_CONFIG_COUNT=1",
+        "-e",
+        "GIT_CONFIG_KEY_0=safe.directory",
+        "-e",
+        "GIT_CONFIG_VALUE_0=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+        "orml108-graph-native-sdk10:verified",
+        "dotnet",
+        "test",
+        "tests/Tests/Tests.csproj",
+        "-c",
+        "Release",
+        "--artifacts-path",
+        "artifacts/schema-diff/dev/literal-gate-build",
+        "--no-build",
+        "--filter",
+        "FullyQualifiedName~ProviderLiteralShapeGateTests|FullyQualifiedName~NoSqlTokenGateTests",
+        "--logger",
+        "trx;LogFileName=literal-pinned.trx",
+        "--results-directory",
+        "artifacts/schema-diff/dev/literal-gate-results"
+      ],
+      "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff",
+      "commit": "41569b26543b65800a713c3bf5ae800ba2f38b03",
+      "sourceTree": "b87e8065a7c33555d49d7957906d674032f67b90",
+      "testTree": "1f2da00d26b9a06a0b637a2e64ec5be940e3739c",
+      "sourceDigest": "e172e1be38570d99528ed053859d306fc7e5769e940d52304728bb2efc315f27",
+      "proofDigest": "d3135a2613174d3552d54cafc1c9b3c237159f269cd6fc923c7a095d88710a82",
+      "worktreeStatus": "",
+      "started": "2026-11-26T07:29:57.796862+00:00",
+      "exitCode": 0,
+      "sourceChangedDuringRun": false,
+      "proofChangedDuringRun": false,
+      "finished": "2026-11-26T07:30:00.992473+00:00"
+    }
+  ],
+  "sourceAndProducerHashes": {
+    "src/Postgres/PostgresProvider.cs": "7e31abddce8677809f223f0693bbd7b339fcf2b21b124020c9cb01d3dfb4cbc5",
+    "src/Postgres/PostgresSerializer.cs": "3fc4eccde984c78569288f03357f1c99f71351f0de719075a07b75df21bd9049",
+    "src/Postgres/SchemaDiff/.editorconfig": "8e7ecdb79f05c8669c1108121955f4039fdeb20f9b1585f60b040a0989497f59",
+    "src/Postgres/SchemaDiff/PostgresHistoryLayout.cs": "0938afdaf6dce2c1fa52e8f68f2d438113981e77321901edc3b77852dd87ca3c",
+    "src/Postgres/SchemaDiff/PostgresMetadataResources.cs": "01d13244d0791c80e06f2d832129f8614abceea88526b6a2f7947f386c1cf1c7",
+    "src/Postgres/SchemaDiff/PostgresProvider.SchemaDiff.cs": "c41ceb1d9bd17feb365cf033faa59de65c17a4ec00f900b507b62f7e4f0e5ddf",
+    "src/Postgres/SchemaDiff/PostgresSchemaColumns.cs": "9f91942892d277ad0d2e9e569b783dba5461ed135882ae1150e529543a14c09e",
+    "src/Postgres/SchemaDiff/PostgresSchemaDataLiterals.cs": "8af3a1c6dd1db1fd44e6845829501561df19524dcfb78582b4be33fc4c30cc5d",
+    "src/Postgres/SchemaDiff/PostgresSchemaEntry.cs": "6793750b8cd167c994a7747e58007ec88d074a4fbe51db931628fa54f529b9e2",
+    "src/Postgres/SchemaDiff/PostgresSchemaHistory.cs": "2747e931846c9047e92d6fe8ddf517864bbc86e8d8c53d6208b40bded59c0caf",
+    "src/Postgres/SchemaDiff/PostgresSchemaInspect.cs": "6aaeee92dd27817ec45b09cd52d59036ed466529aa277c7cf687980c47305dd6",
+    "src/Postgres/SchemaDiff/PostgresSchemaInventory.cs": "e9f2b80573d64c35dae9bd6380ca0c11e6695333fd6f1be1839c2bda623e7b4a",
+    "src/Postgres/SchemaDiff/PostgresSchemaRead.cs": "df86e17808710aaceeb43d8b70a4472927bee9ef6e295be15469f92bd25ec793",
+    "src/Postgres/SchemaDiff/PostgresSchemaRoles.cs": "66402d844391f656d1d1fbbb0c534d22493c46559d948eec58efd1451288cdba",
+    "src/Postgres/SchemaDiff/PostgresSchemaSession.cs": "e7e11b0e6e486abb202a84f40fce9357f0991e7ccbc895eae2b12bfefe30c143",
+    "src/Postgres/SchemaDiff/PostgresSchemaTable.cs": "47b63a05b35bc4b83c10e9b088f536fda0dd3f2e21c7e1724c14d5ffff9148e5",
+    "src/Postgres/SchemaDiff/PostgresSchemaTypes.cs": "ba67c145c6ba307f123787af17d0b3368cdee2b023a769a0bf745af94d26ca65",
+    "src/Postgres/SchemaDiff/PostgresSerializer.SchemaDiff.cs": "897dd89216cf06f8ca851d01cd7db9f3ce5d2204458cdd6047f8e8e045b4f605",
+    "src/Runtime/GatedDataSource.cs": "fcbfe6500c8a8a028a018a1fe813a6cf2565051f17f84e5f2cac1729c9be7d8b",
+    "src/Runtime/SchemaDiff/.editorconfig": "cde14ad739541f94f39f183d1bb72255f05ade30747fef5dfef655bfcd166785",
+    "src/Runtime/SchemaDiff/ISchemaDiffApplySession.cs": "95e5acdc8c6630da956976132c0365f0b9b983a838550406621a761aebe62fe9",
+    "src/Runtime/SchemaDiff/ISchemaDiffDdlSerializer.cs": "fe0c18a30d9259d8e65e944a2417263e9661a91061b3521fbe91778161932017",
+    "src/Runtime/SchemaDiff/ISchemaDiffProvider.cs": "d66a090c46c22c98771d836628095ee4b88d2d2a2804a43affed89e4784d787c",
+    "src/Runtime/SchemaDiff/SchemaAfterProjection.cs": "44c42247f070896ace5129355430e06405ff6e408d6ae12a4604f2d3536d90bd",
+    "src/Runtime/SchemaDiff/SchemaBudgetCommand.cs": "ecbec502b9b854591acb38739f052fadf17d42bb450da2a76952db50a74c58b6",
+    "src/Runtime/SchemaDiff/SchemaBudgetConnection.cs": "257aeb5fe554b324bb6a7f3d66e6d50d85b3810aaf8673fa95f8d65ce338a659",
+    "src/Runtime/SchemaDiff/SchemaCompareAdd.cs": "9d9f15d6a6c490b27b4ee2d382b337580ff90cc3f21b34a8d2cbec547e64a714",
+    "src/Runtime/SchemaDiff/SchemaCompareColumns.cs": "f1b1a8a2deadfdc67d1d0e730f9f5458152c56f59b94223433d10d46a56c041e",
+    "src/Runtime/SchemaDiff/SchemaCompareKnowledge.cs": "ae690f1919ac0006ebd8bc7201216b4a61f8c57f0aebce01752ee937d2d2cc28",
+    "src/Runtime/SchemaDiff/SchemaCompareState.cs": "d5f80a8450ab0bf37d36584b974b76ee6238bf660b0d27f7b842d38a3fc568bc",
+    "src/Runtime/SchemaDiff/SchemaCompareTables.cs": "57206b548871602d2ff4004fdc1e8409942b09d1d98f08ea139388bc4b75e8f5",
+    "src/Runtime/SchemaDiff/SchemaCreatedInventory.cs": "652b3bf9288655241a9ccb18e349630a4945aa076a52ee908edc7eb255dbc8ce",
+    "src/Runtime/SchemaDiff/SchemaDefault.cs": "fa3f9aa19cfd7abb9962a285cf6c9efbf1ef9e48d62d449573b481e4aed74af1",
+    "src/Runtime/SchemaDiff/SchemaDefaultKind.cs": "3f093fca5bc2efd461d7d95d055e3e89c266e468314dc53eb23d74e0ea5b89f6",
+    "src/Runtime/SchemaDiff/SchemaDesiredTable.cs": "64ee884ee8c561999037ab9aa616b65a8fa946163a2a41f361cf215f2a0dab30",
+    "src/Runtime/SchemaDiff/SchemaDiff.cs": "182072d11cf449cfe95fa1b6dc5fbb3c7ae40819ae1addfc614b6418ccac01fe",
+    "src/Runtime/SchemaDiff/SchemaDiffApplyOutcome.cs": "feba53b15129cf702a85f3d5bb84354a0df895b2573795740a9ca8a6773112dd",
+    "src/Runtime/SchemaDiff/SchemaDiffApplyResult.cs": "1157b97a9d10fc0ff3d5dfdb73b6213b84700eecab0d083245bc3f65a894219f",
+    "src/Runtime/SchemaDiff/SchemaDiffArtifact.cs": "afaed04d6d429baf71e84c155cbe28d31248e79dc7714f444e1e29c0f3b78bc5",
+    "src/Runtime/SchemaDiff/SchemaDiffBudget.cs": "03d359f724c9bdb0bc48518c59132625b711978ceb89ad24401b18009a7d3bef",
+    "src/Runtime/SchemaDiff/SchemaDiffCanceledException.cs": "52bb9a6b688b3761b9085d3324ff454d64feb2f63851e6aab2e0097200548127",
+    "src/Runtime/SchemaDiff/SchemaDiffCanonical.cs": "51a2d1bd65cdd4a67c60dd177c7614c85d75db97d689a74ded29bbc80c92acc8",
+    "src/Runtime/SchemaDiff/SchemaDiffChange.cs": "8c5791f7e298a157bf3cd6b926023bc1b794eeeb92ed1126d6001b3fa92824fa",
+    "src/Runtime/SchemaDiff/SchemaDiffChangeKind.cs": "83e434a5f4688bd993a508969e8671524c952e89ba277f61f774b9da8b12a8f6",
+    "src/Runtime/SchemaDiff/SchemaDiffComparison.cs": "bbad145389d5b7fd295e3b4661729f875b676fdb43ff5efe0e6d146015f11a7f",
+    "src/Runtime/SchemaDiff/SchemaDiffError.cs": "e43837dcfbf0ab6b54afb76b0d2ef86d9a33aece6a8e97a2adaf8c7ceac46ab0",
+    "src/Runtime/SchemaDiff/SchemaDiffException.cs": "c314f0136a7bb1d4997ca2e3fedcd2d609f6eb8f8f17ff7c3fb20bc066f0cd07",
+    "src/Runtime/SchemaDiff/SchemaDiffFailures.cs": "7a30d6097af130ad3db09f1473786874cd280407551e21b03f4096321192b1a1",
+    "src/Runtime/SchemaDiff/SchemaDiffFixtureMode.cs": "b09bad1901680609671d798b7084df8ca665e4142b1f63eb8c15f842cdd3c135",
+    "src/Runtime/SchemaDiff/SchemaDiffFixtureRequest.cs": "7aea84581d7797e56282421c6a5b4e712fde516abbca18a6c476fd5a133ee54f",
+    "src/Runtime/SchemaDiff/SchemaDiffFixtureRunner.cs": "748841a34da343cba8eb0f1a644e64241145cddaa50bc597848ae01aafc9cf71",
+    "src/Runtime/SchemaDiff/SchemaDiffIdentity.cs": "073ac9511e1356912e7e7b2eb54a0bd3e5112e55f1b353a800f813ef8f227c6e",
+    "src/Runtime/SchemaDiff/SchemaDiffImpact.cs": "f2d7c3db2722bad156eff5aa150626f25bd3563c01afdb53a8d77d6e1bfec744",
+    "src/Runtime/SchemaDiff/SchemaDiffInspection.cs": "9d03a4ce0469868c94beadd5848cfbba3552d2465ba3214294e3aed5ae251811",
+    "src/Runtime/SchemaDiff/SchemaDiffLimits.cs": "66f8b7be304f11f76c2d3407999f5f6feb0507be5e6b8e0b11ef57ed20a9c7e1",
+    "src/Runtime/SchemaDiff/SchemaDiffLineage.cs": "e433d41549f95617bd3f82c83d0cd8da8898c54e47ff7c5a01029061c8a37ac9",
+    "src/Runtime/SchemaDiff/SchemaDiffManifest.cs": "0490a002844d64502a3eaf6248b2f5a8d5bdb34296900444128266e1da8d68b0",
+    "src/Runtime/SchemaDiff/SchemaDiffNames.cs": "39400f62af909bd68e51ee5b0601183b99f27a43795536d79b5b8476bd63bb45",
+    "src/Runtime/SchemaDiff/SchemaDiffObservation.cs": "793349e23f8127b1766f66ced82a2e5bf5abf775f3de1c07f7227658f150db16",
+    "src/Runtime/SchemaDiff/SchemaDiffProvenance.cs": "89bc6e1afbd744202419b7730ecc7ce0bbf98b3887f1a9dcbb29fcffe1c10022",
+    "src/Runtime/SchemaDiff/SchemaDiffRecipe.cs": "37b9cad53ed029cc51f6c1fb34ec9f970c016cae4ae8f2c1d59180fade56f61b",
+    "src/Runtime/SchemaDiff/SchemaDiffReport.cs": "c99eedbdfb8fcd36b0bbdf00d8d5637355b42602a50ee48cab399a7f31e1ff1b",
+    "src/Runtime/SchemaDiff/SchemaDiffReview.cs": "0890e904f865f9b7542aacba43d61a777c2acc59547e692d6127655a8d5e8f2d",
+    "src/Runtime/SchemaDiff/SchemaDiffScope.cs": "1054c0cd51ede024ae7d31812ddb74fcad63c4ebe1d07f67230c89c3ca001243",
+    "src/Runtime/SchemaDiff/SchemaDiffSnapshot.cs": "a603c43f0272b1e00ef902e40e156d4cc6a4febbb2a16fa1d210fc285cebd849",
+    "src/Runtime/SchemaDiff/SchemaDiffStatus.cs": "edb342ee6385d5abf79d1f34022f0dcc7e34b1d4a19742885c2086195e8e31fd",
+    "src/Runtime/SchemaDiff/SchemaDiffTarget.cs": "9ab87971136d6b0f04b3246e1e99525c7e0fdb54668eae886524d87ff9f80f59",
+    "src/Runtime/SchemaDiff/SchemaDiffUnitNodes.cs": "66acdcafaeecc3cab3c20e31b265b9f2dcbde3707380f508d59cc67d26000b48",
+    "src/Runtime/SchemaDiff/SchemaDiffUnitResult.cs": "22444b9cabd6ee99a9b85c675185b375fc6a7d41d05ce0811b52421271ae7883",
+    "src/Runtime/SchemaDiff/SchemaFact.cs": "071f3e5399bf8163d5ce1b019eccd7a52286b92d554e0319e352234205228290",
+    "src/Runtime/SchemaDiff/SchemaFactCopies.cs": "211c44c0a4312a6cb0e55f29d9b210730c7112885d71f8e7d5b817ba8b9f4550",
+    "src/Runtime/SchemaDiff/SchemaFixtureChecks.cs": "6939c8fa40c46e17e39c31ab8c156be5e5061873b9c85e5789d696fad027dd74",
+    "src/Runtime/SchemaDiff/SchemaFixtureCommands.cs": "9d6b7a9ea4977f04ca65a5ad0b408ccf930c21b317ffa6d8396209954cb39c5c",
+    "src/Runtime/SchemaDiff/SchemaFixtureMutation.cs": "3df621435b93733769edf900882c3636c68b8bb2ddcd122fd8f1dd236445fdc8",
+    "src/Runtime/SchemaDiff/SchemaFixturePlan.cs": "be96c168e2517e337da619e8f32ea4575903f8824955bd5cfa49d62e5404b940",
+    "src/Runtime/SchemaDiff/SchemaFixtureSchedule.cs": "834e35f2a95d126dc2f73b77caded1df3ebc5f103bce0ab3768f9cefcd0fedb2",
+    "src/Runtime/SchemaDiff/SchemaFixtureState.cs": "2b13e8587882ad18dd3767b60ed07f72f12c1ef126ebe4dac8fdb051f175273f",
+    "src/Runtime/SchemaDiff/SchemaFixtureStatements.cs": "f3df462037cceab4d2dc7bed1f7a7962fc9876d37afdd16c882e3a2ea03dea80",
+    "src/Runtime/SchemaDiff/SchemaFixtureWork.cs": "887e145dac23cbbed938604253f8dfba8db4d14c905e5966c82730f454319e1b",
+    "src/Runtime/SchemaDiff/SchemaFixtureWorkKind.cs": "50f258d2a589ec91dbad6d64362559a3da5218d8bdca5f1418ea158206686639",
+    "src/Runtime/SchemaDiff/SchemaFreshPhysical.cs": "b339e10aece5fd39750f98a5bd34f9b3c7c89535ac3735b9303908770c75142d",
+    "src/Runtime/SchemaDiff/SchemaKnowledge.cs": "3b60139c556ed756fd6db5e2781ecbf71b2589ab3549d96fafd6455f0f190d6e",
+    "src/Runtime/SchemaDiff/SchemaLocalRoles.cs": "5547babdd2013c5703dadc09b46c5d974c5a2a21355a1e511118e5d98daa68ea",
+    "src/Runtime/SchemaDiff/SchemaMetadataConnections.cs": "2e3d2e75c71b2cf31144a5ada97b455ed95ce949a3a7161090050a99387a9b28",
+    "src/Runtime/SchemaDiff/SchemaNodeCopies.cs": "9fd2a379019dac001f2d9f365456356deab9b9a42fa426957bca4da21665b491",
+    "src/Runtime/SchemaDiff/SchemaObjectRef.cs": "512807b5080e1162026d0aa5a91d1fd668387bde1f0b790a2c7fe738bcdbcc4e",
+    "src/Runtime/SchemaDiff/SchemaObjectStamp.cs": "8f3d849feee751a804f2cd604ede7a28fec59156e934f21f393398111acab6e8",
+    "src/Runtime/SchemaDiff/SchemaObservationDigest.cs": "4e311809a242bd3907917781ad0b2a350a311387a5892873a1694b66c13c9eae",
+    "src/Runtime/SchemaDiff/SchemaObservationHistory.cs": "f6ffb7dcdcad8945e9710152db1923d7ce639ef48ffb13d331b01dcb5f4bce95",
+    "src/Runtime/SchemaDiff/SchemaObservationIdentity.cs": "589cf9ab1cb81bad2a291e42abf00afed0f4945bd51f08a8fd80794d6724ff27",
+    "src/Runtime/SchemaDiff/SchemaObserve.cs": "85d9351f892721143044ccee0739dad11e2db13f1ab5014e8e60618036de297c",
+    "src/Runtime/SchemaDiff/SchemaObservedColumn.cs": "4fe46f0683b5b0b3c36b3d1fcae86911e66c52c69248c3c6a2c85625480a7e3c",
+    "src/Runtime/SchemaDiff/SchemaObservedColumnFacts.cs": "bf24b543b6c931e6401f2a49a2d50351fe4751c181179b4703b268631d3d0fe2",
+    "src/Runtime/SchemaDiff/SchemaObservedTable.cs": "b1b9758c2d1824f32a07e62a171aa6748eccc81d5975aa2520f28980a6be1a3c",
+    "src/Runtime/SchemaDiff/SchemaObservedTableFacts.cs": "d089f64d40b03aa440e5557e2e680dbcf071a7ef7052d4f9bfdcffd6a2344f35",
+    "src/Runtime/SchemaDiff/SchemaPhysicalTypes.cs": "e5714f726696b86f47ff2888078872a067963ddeb75e8dc8853e56e0f3d87bf7",
+    "src/Runtime/SchemaDiff/SchemaRecipeIdentity.cs": "027fbc2984d3098c4c98d84c99a26dfa54ff99322a77137ef532261589f3b423",
+    "src/Runtime/SchemaDiff/SchemaRecipeValidation.cs": "f24cd35e9b86e062b680e263b3c6275ba75f7814ba588f28aa4e8c4624bb9ce4",
+    "src/Runtime/SchemaDiff/SchemaResourceCleanup.cs": "f87b885ac068c43cf20f8e214295e31bbb66d979bffd725d177e84b24f4f89c2",
+    "src/Runtime/SchemaDiff/SchemaRestoration.cs": "d2c7151781173df3fb0ce43ed3fea38a4769ae3c2373ac2d18387b2d8864d644",
+    "src/Runtime/SchemaDiff/SchemaSnapshotCopies.cs": "b7b02227ed6ac6a505b5f139a190a56e0c29971a5d6031d7250bab1bf23a1b4f",
+    "src/Runtime/SchemaDiff/SchemaSourceBuilder.cs": "b9175f1d10d56c50e42377ce02cff4c7a5c031c70d11aa6accd167faef37704d",
+    "src/Runtime/SchemaDiff/SchemaSourceFacts.cs": "651191fa3992df37736fcfe40083444388aa503f5adfd3378ca0e0a51069fb0d",
+    "src/Runtime/SchemaDiff/SchemaSourceNames.cs": "37c9a85eec1b740d4d4859e711992fba5d7565e4787aeb508d7295c725516c2e",
+    "src/Runtime/SchemaDiff/SchemaSourceNodes.cs": "a7602e8f2dd8ca0b06b9f47a41f01d1d93c5cd200dc7297f35de12e15c0301c7",
+    "src/Runtime/SchemaDiff/SchemaSourceRecipe.cs": "f1f6ea48d7087b6cd1d90b40f28ddb9258498c9680325c2e5629724a817504a1",
+    "src/Runtime/SchemaDiff/SchemaSourceTarget.cs": "9d0278c239b775dc94aa6ce2803b93bedcc4bf051e4085511285ae6d829658f3",
+    "src/Runtime/SchemaDiff/SchemaStatementBudget.cs": "c830e83e27ea94ffbfae2ab435e11489b53a0a9171a4fa6e9c06e8b3fd7afae4",
+    "src/Runtime/SchemaDiff/SchemaStorageType.cs": "655cd435f0cdda076625a962a4ed99372f3d8c6691043a152ead38c902e08bf1",
+    "src/Runtime/SchemaDiff/SchemaStrictDdl.cs": "ebec8d9b51a803fc689508f160f284e6f907ce7cecd88910a6a0a5c76f0499ad",
+    "src/Runtime/SchemaDiff/SchemaTargetCopies.cs": "cdd4e3acb918867f0866e8ee688b8984a49141e032f0152b7b9f0528eb308636",
+    "src/Runtime/SchemaDiff/SchemaTargetIdentity.cs": "8a80a41da61502d254acdd7f59254993c1b7f3ea85e49242df91a734710e3f23",
+    "src/Runtime/SchemaDiff/SchemaUnitExecution.cs": "ba0261a92ab4cfcaf567deb8ee3985fc506a5f66cce9f740605e67724dfd1b85",
+    "src/Runtime/SchemaDiff/SchemaUnitOutcome.cs": "43558af6a33445639d6ac6cbefcdc8d04885468e40aa684252bd01929206256f",
+    "src/Sql/SchemaDiff/.editorconfig": "6b3f13283c066cb58c46949642bf8f901e940217ffa93ebb07b58e56b1a479a6",
+    "src/Sql/SchemaDiff/StandardSerializer.SchemaDiff.cs": "e77890fa09aba8a727b11019c81cbf2db836777a7c365950ee2ab37df464ed85",
+    "src/Sql/StandardSerializer.Ddl.cs": "26acd2ccad35356e9624c92b741b4ef5a3dba39e479624ecaec19ca92caeab22",
+    "src/Sqlite/SchemaDiff/.editorconfig": "e6134d7a4fa9544da73662270cac8cd6d985e8a7e19dd306ec29810439025054",
+    "src/Sqlite/SchemaDiff/SqliteHistoryLayout.cs": "a0d69626a566760059aa3689e2b5369f6f423cb30a85bc54bb5cacfa4fc719ad",
+    "src/Sqlite/SchemaDiff/SqliteMetadataResources.cs": "f1a5e2ef38e27de9a104ad88d78076b14f329afdfbc179fc95f097c66e8f3278",
+    "src/Sqlite/SchemaDiff/SqliteProvider.SchemaDiff.cs": "0a99d51c2cdf09b412a62413ab48cbb4b4fd68efe802d61d51a14e220b73ff65",
+    "src/Sqlite/SchemaDiff/SqliteSchemaAdmission.cs": "66609acc358106dd5cbc781580ba6628a98dd1fb62c78ff17da9d0d3ee9d09bd",
+    "src/Sqlite/SchemaDiff/SqliteSchemaColumns.cs": "b981c2094e63531562929e3c7e8a970c9be98e42b5851fc8c700d268d97e04d2",
+    "src/Sqlite/SchemaDiff/SqliteSchemaDataLiterals.cs": "30c5ae83b01de92c79f09e865ff0cbd2caea02878073acf5f5b105a2970c71e6",
+    "src/Sqlite/SchemaDiff/SqliteSchemaDefinition.cs": "4e52b91bba9bd67e6b2e1c6ceb3aa64376cf74324637c6aa184bfde8072e1262",
+    "src/Sqlite/SchemaDiff/SqliteSchemaEntry.cs": "d3013a2ed258363e221cff7184949ab638ffb48892150e92331385d86e457787",
+    "src/Sqlite/SchemaDiff/SqliteSchemaInspect.cs": "18f02acddaffa207e0ae1124be64427033144079a7ece9171738ff9970da09fd",
+    "src/Sqlite/SchemaDiff/SqliteSchemaInventory.cs": "aded0a111112f646f6240b706dc23aa256fb7e57e44d4e5d8c8522b009a2913e",
+    "src/Sqlite/SchemaDiff/SqliteSchemaRead.cs": "65d322dd0f1dcf7e428cca934670571cbbdc3c8bbf657095557ecd998d75b0b5",
+    "src/Sqlite/SchemaDiff/SqliteSchemaReferences.cs": "7a11dca454375496e5fde1a23d51eaf4db19fbd325c34f7f174d4fa7536a8b69",
+    "src/Sqlite/SchemaDiff/SqliteSchemaSession.cs": "6a56142003bd7d0d7bd6ee91d3a025b909a424e845b6f021f0b9d2b6d1c457ec",
+    "src/Sqlite/SchemaDiff/SqliteSchemaTable.cs": "d2b80f7152fa15e892d1ec9781a1f82bcd59d61028fbd43e8806f91b76e45e73",
+    "src/Sqlite/SchemaDiff/SqliteSchemaTypes.cs": "28c0addc93eea83583b44aefb75ef622d6fb21a002af913303ee4c9233019494",
+    "src/Sqlite/SchemaDiff/SqliteSerializer.SchemaDiff.cs": "10003a0469238866a642dd3bca81725b193b12139259af1a46c4e01fa0d80979",
+    "src/Sqlite/SchemaDiff/SqliteSessionCommands.cs": "9da243052f639284195e8d77fe12d5f13b1b6644f5291274cd109cf703b439f9",
+    "src/Sqlite/SqliteConnectionParts.cs": "a0ef7dbb8fa22f973747cd47ea7aaa16c85887c4b9e46a7e80651f7f2cb04770",
+    "src/Sqlite/SqliteProvider.cs": "74b99dbd466f51f405105484ba4eff8871bbd4af90e1f3e16d4d6d32ec1367ec",
+    "src/Sqlite/SqliteSerializer.cs": "972ac4bdad0a891f0dade26afbb24e6e893dfa23b721b6e4c61becbbd096da9b",
+    "artifacts/schema-diff/dev/foundation-proof/BridgeCase.cs": "e1651d0acbf94aebdd959cf2184179743525121d672d532ec784c5a475b75d39",
+    "artifacts/schema-diff/dev/foundation-proof/BridgeProof.cs": "eef30092336ea8a43dd1b295fea9fcedaf361d6313950d308106b567eeb6794a",
+    "artifacts/schema-diff/dev/foundation-proof/TargetProof.cs": "6f6ea0e2e96f36cd28cb6c755d0f671edace21cacfe352efce9baa8f20ce036a",
+    "artifacts/schema-diff/dev/foundation-proof/BridgeActions.cs": "4b99046251ec435a10670c8b344050fecf94445b4534c5f70b13ef0970f8e009",
+    "artifacts/schema-diff/dev/foundation-proof/ProbeSource.cs": "758e8f746d28eb2f56ff8f11fd77d6dca7d5a93791d73f9f9391372268fb79fc",
+    "artifacts/schema-diff/dev/foundation-proof/Check.cs": "2b27a3e3e846abc2dd77462c00a9c5b6eb424b17c5f635d48e800699712390e8",
+    "artifacts/schema-diff/dev/foundation-proof/ProbeConnection.cs": "5b6461d4524ef5c77cc94272acaba37e3bf2e43970c4b875928fac29ffa972dc",
+    "artifacts/schema-diff/dev/foundation-proof/EmissionProof.cs": "db29b47357c27d899e41cb3623a9f183b7cdaa3f6093a6e1b48391c57d7afb04",
+    "artifacts/schema-diff/dev/foundation-proof/SqliteProof.cs": "dae650b09b6f3863b347dc8720a38827f636847fb78a1114c206f964eff344a9",
+    "artifacts/schema-diff/dev/foundation-proof/SessionProof.cs": "1f42593b4bccadec6b0b14c8c04ecbd9bdb7c945f757aa3a62d0fb8ed4649e00",
+    "artifacts/schema-diff/dev/foundation-proof/MetadataProof.cs": "c376e83bc395a9b015aed9f5092235fd71612a41cccf5c11fc1ef8e535f1ea7c",
+    "artifacts/schema-diff/dev/foundation-proof/ProbeProvider.cs": "4423cc2aea8dc194bfae427d5743de385016724566fed7b7fd91626d8b5451e4",
+    "artifacts/schema-diff/dev/foundation-proof/FoundationProof.csproj": "08e80c7ae50197e7a4799f750963a522a477bdaf68c180e5a03966fe691eefb6",
+    "artifacts/schema-diff/dev/foundation-proof/RawCatalogProof.cs": "e673d2fb84bfadfc91b499a40e7997df5e6ce4518d02dfe37a3af83938223b68",
+    "artifacts/schema-diff/dev/foundation-proof/NativeApiProof.cs": "e76a67552ba0e6b4ab20e8c75a183b8bd7ab82ac2a86bcacc2195721cdfd576f",
+    "artifacts/schema-diff/dev/foundation-proof/StrictProof.cs": "ef639b8776ef0c7ad741c658eb555ca4e8fb7d7dabb761b47c652d2ea3d83e4a",
+    "artifacts/schema-diff/dev/foundation-proof/ObservationProof.cs": "ce65a3b074f6d9f9abb23a6085dda86d6490f2fc84257eda44a186b781e4b0d0",
+    "artifacts/schema-diff/dev/foundation-proof/PostgresProof.cs": "0fc0f48790e75540b079d9d7d19af4c81f01deb65c60cd4ef0cbfbb22d12f3d8",
+    "artifacts/schema-diff/dev/foundation-proof/Probe.cs": "574b18dcb7cdd0319a2f742c7ccb776a3d4c92af122fb9adf1af3eabf537c9ef",
+    "artifacts/schema-diff/dev/foundation-proof/RecipeProof.cs": "ecb6b674cd64ee9255086df6cfa2af59edcaa0ae60828636b037e15946f9f2be",
+    "artifacts/schema-diff/dev/foundation-proof/BridgeSql.cs": "7712a0364c6490c69c5af5e906cfcf3ebb683392f9eb586d1ab79ba53f9469fd",
+    "artifacts/schema-diff/dev/foundation-proof/Program.cs": "f712c2cc9c87862d4d5f187fda2667d73ddf8d5815c82dd4864d82d5868575c5",
+    "artifacts/schema-diff/dev/literal-layout/WidthLayout.cs": "adcd74827466b03cee47246ec248f24b38ea83136f45b89af019dda3f403c39d",
+    "artifacts/schema-diff/dev/literal-layout/LiteralLayout.csproj": "9cc2bc32bda98c22c32a323398ca7b27db582ad68d6fbe7dfd25fc168b8385cb",
+    "artifacts/schema-diff/dev/literal-layout/Program.cs": "c4950c7e469059b707f1d47f1b5abfe82c0b9c5087b956260cb038b2133442aa"
+  },
+  "sourceLayout": "bridge-width-layout-c.log records syntax-token-equivalent whitespace edits; earlier clause/helper extraction is covered by fresh clean415 native probe, not relabeled71. literal-quality-sdk10 at earlier exact input digest is retained; current415 source scan is separate literal-pinned-sdk10 carrier. Old tests remain byte unchanged.",
+  "metrics": {
+    "raw": "bridge-pinned-metrics.log",
+    "files": 166,
+    "newAndGeneratedFiles": 159,
+    "methodsInNewAndGeneratedFiles": 771,
+    "violations": [],
+    "legacyFiles": [
+      {
+        "file": "src/Postgres/PostgresProvider.cs",
+        "widths": [],
+        "overLimitMethods": [],
+        "boundTypeCount": 1
+      },
+      {
+        "file": "src/Postgres/PostgresSerializer.cs",
+        "widths": [],
+        "overLimitMethods": [],
+        "boundTypeCount": 1
+      },
+      {
+        "file": "src/Runtime/GatedDataSource.cs",
+        "widths": [
+          {
+            "Line": 12,
+            "Width": 138
+          },
+          {
+            "Line": 22,
+            "Width": 144
+          },
+          {
+            "Line": 73,
+            "Width": 121
+          },
+          {
+            "Line": 135,
+            "Width": 132
+          },
+          {
+            "Line": 138,
+            "Width": 121
+          },
+          {
+            "Line": 166,
+            "Width": 144
+          },
+          {
+            "Line": 228,
+            "Width": 139
+          },
+          {
+            "Line": 234,
+            "Width": 140
+          }
+        ],
+        "overLimitMethods": [],
+        "boundTypeCount": 1
+      },
+      {
+        "file": "src/Sql/StandardSerializer.Ddl.cs",
+        "widths": [
+          {
+            "Line": 32,
+            "Width": 122
+          },
+          {
+            "Line": 46,
+            "Width": 137
+          },
+          {
+            "Line": 50,
+            "Width": 154
+          },
+          {
+            "Line": 141,
+            "Width": 137
+          },
+          {
+            "Line": 287,
+            "Width": 144
+          }
+        ],
+        "overLimitMethods": [
+          {
+            "Name": "WriteForeignKeyClause",
+            "Line": 49,
+            "End": 66,
+            "CodeLines": 18,
+            "Parameters": 6,
+            "Nesting": {
+              "Line": 57,
+              "Depth": 1
+            },
+            "Cyclomatic": 3,
+            "Decisions": [
+              {
+                "Line": 56,
+                "Kind": "IfStatement"
+              },
+              {
+                "Line": 61,
+                "Kind": "IfStatement"
+              }
+            ]
+          },
+          {
+            "Name": "Visit",
+            "Line": 68,
+            "End": 99,
+            "CodeLines": 32,
+            "Parameters": 1,
+            "Nesting": {
+              "Line": 69,
+              "Depth": 0
+            },
+            "Cyclomatic": 8,
+            "Decisions": [
+              {
+                "Line": 72,
+                "Kind": "CaseSwitchLabel"
+              },
+              {
+                "Line": 75,
+                "Kind": "CaseSwitchLabel"
+              },
+              {
+                "Line": 78,
+                "Kind": "CaseSwitchLabel"
+              },
+              {
+                "Line": 81,
+                "Kind": "CaseSwitchLabel"
+              },
+              {
+                "Line": 84,
+                "Kind": "CaseSwitchLabel"
+              },
+              {
+                "Line": 87,
+                "Kind": "CaseSwitchLabel"
+              },
+              {
+                "Line": 93,
+                "Kind": "CaseSwitchLabel"
+              }
+            ]
+          }
+        ],
+        "boundTypeCount": 1
+      },
+      {
+        "file": "src/Sqlite/SqliteConnectionParts.cs",
+        "widths": [
+          {
+            "Line": 172,
+            "Width": 123
+          },
+          {
+            "Line": 173,
+            "Width": 122
+          },
+          {
+            "Line": 178,
+            "Width": 135
+          }
+        ],
+        "overLimitMethods": [],
+        "boundTypeCount": 5
+      },
+      {
+        "file": "src/Sqlite/SqliteProvider.cs",
+        "widths": [
+          {
+            "Line": 7,
+            "Width": 144
+          }
+        ],
+        "overLimitMethods": [],
+        "boundTypeCount": 1
+      },
+      {
+        "file": "src/Sqlite/SqliteSerializer.cs",
+        "widths": [
+          {
+            "Line": 96,
+            "Width": 163
+          },
+          {
+            "Line": 103,
+            "Width": 156
+          },
+          {
+            "Line": 104,
+            "Width": 145
+          }
+        ],
+        "overLimitMethods": [],
+        "boundTypeCount": 1
+      }
+    ],
+    "legacyDisposition": "OPEN; source helper additions are bounded, no blanket whole-file301 acceptance"
+  },
+  "scope": [
+    "actual owned public Observe and provider writer/relation guards",
+    "both providers: missing table AND nullable add",
+    "upgrade + repeat0 mutation units + Down/Up",
+    "unaffected old rows preserved; new post-Up data loss demonstrated",
+    "separate fresh DB/file: contributions each unit, only CoverageVersion, repeat0units, covered baseline cannot revert",
+    "safe per-unit outcome/rollback/cleanup implementation; broader injected faults pending"
+  ],
+  "resources": {
+    "pg": "af6c99ee2331f7a01c99d162f1f32333b1b9667bcc5a2df0418506ae3cc2f51b",
+    "network": "a3895f09e548437caa70ca9850bb8fcd77de9207b27d18ba37d454043171946a",
+    "state": "ACTIVE owned fixture; fresh DBs/files exist for continuing native work; final cleanup NOT claimed"
+  },
+  "remaining": [
+    "compiled generated NativeAOT consumer publish AND run10/11",
+    "current runtime11 + meaningful fault/security/unknown cases",
+    "full matrix/raw no-exclusion coverage/dependencies/security/docs/independentSDET/full301 legacy disposition",
+    "ordinary decompositionOPEN; no release/status/ledger/acceptance"
+  ],
+  "literalGateAttribution": "19 old source-scanning tests passed against exact415 clean source; --no-build reuses unchanged precompiled test assertions, which read current source files. No claim this source-scan is a full binary regression.",
+  "sqliteRetirementApi": "https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.sqlite.sqliteconnection.clearpool?view=msdata-sqlite-10.0.0 ; associated owned connection pool only, never ClearAllPools; unknown restoration retires before owned close. Broader failure-path witnesses remain pending."
+}

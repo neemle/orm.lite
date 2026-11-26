@@ -25,6 +25,9 @@ namespace Neemle.OrmLite;
             _tx = transaction;
         }
 
+        internal StreamBorrowed? StreamScope(UnitOfWork? unit) =>
+            _conn is null ? null : new StreamBorrowed(_conn, _tx, unit);
+
         internal async Task<List<TOut>> RowsAsync<TOut>(Statement statement, Func<DbDataReader, TOut> map)
         {
             await using var cmd = Cmd(statement);

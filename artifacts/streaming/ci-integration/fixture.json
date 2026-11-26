@@ -1,0 +1,63 @@
+{
+  "started": "2026-11-26T10:29:05.530129+00:00",
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--label",
+        "orml.task=ORML-116",
+        "--label",
+        "orml.actor=sdet-ci-integration",
+        "orml116-ci-ae263738"
+      ],
+      "exitCode": 0,
+      "stdout": "c1b64c9a36c36191ba362f0917242766c891f0edc5d605a765fcc17822fad73e\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--rm",
+        "--name",
+        "orml116-ci-ae263738-pg",
+        "--network",
+        "c1b64c9a36c36191ba362f0917242766c891f0edc5d605a765fcc17822fad73e",
+        "--network-alias",
+        "ci-pg",
+        "--label",
+        "orml.task=ORML-116",
+        "--label",
+        "orml.actor=sdet-ci-integration",
+        "--tmpfs",
+        "/var/lib/postgresql/data:uid=70,gid=70,mode=0700",
+        "-e",
+        "POSTGRES_HOST_AUTH_METHOD=trust",
+        "-e",
+        "POSTGRES_USER=postgres",
+        "neemle/pg.lite:19"
+      ],
+      "exitCode": 0,
+      "stdout": "c6f32e5743d87e6a7c5307de0f2e577c6efb8e34b7a5cb5e8945d648f295e2dd\n",
+      "stderr": ""
+    }
+  ],
+  "network": "c1b64c9a36c36191ba362f0917242766c891f0edc5d605a765fcc17822fad73e",
+  "container": "c6f32e5743d87e6a7c5307de0f2e577c6efb8e34b7a5cb5e8945d648f295e2dd",
+  "readiness": {
+    "argv": [
+      "docker",
+      "exec",
+      "c6f32e5743d87e6a7c5307de0f2e577c6efb8e34b7a5cb5e8945d648f295e2dd",
+      "/usr/local/pgsql/bin/postgres",
+      "--healthcheck"
+    ],
+    "exitCode": 0,
+    "stdout": "/tmp:5432 - accepting connections\n",
+    "stderr": "",
+    "at": "2026-11-26T10:30:46.676818+00:00"
+  }
+}

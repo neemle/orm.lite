@@ -1,0 +1,9 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/src/Generator/Generator.csproj (in 1000 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/bridge-generated/BridgeNative.csproj (in 1 sec).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/src/Sqlite/Sqlite.csproj (in 55 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/src/Core/Core.csproj (in 56 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/src/Sql/Sql.csproj (in 41 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/src/Runtime/Runtime.csproj (in 24 ms).
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/src/Postgres/Postgres.csproj (in 23 ms).
+/usr/share/dotnet/sdk/11.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets(266,5): error NETSDK1005: Assets file '/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/native11-build/obj/BridgeNative/project.assets.json' doesn't have a target for 'net11.0'. Ensure that restore has run and that you have included 'net11.0' in the TargetFrameworks for your project. [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-117-schema-diff/artifacts/schema-diff/dev/bridge-generated/BridgeNative.csproj]

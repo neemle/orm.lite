@@ -4,7 +4,7 @@ using Neemle.OrmLite.Nodes;
 
 namespace Neemle.OrmLite.Postgres;
 
-public sealed class PostgresProvider : ISqlProvider
+public sealed partial class PostgresProvider : ISqlProvider, ISchemaDiffProvider
 {
     public static readonly PostgresProvider Instance = new();
 
