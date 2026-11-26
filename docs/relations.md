@@ -126,6 +126,22 @@ produces one constraint; conflicting declarations are refused.
 Soft delete updates a row and does not invoke `ON DELETE`. Setting a navigation property also does not save
 its entities: call the generated insert/update methods for each row you intend to write.
 
+### Runnable foreign-key cases
+
+The [public demo's prepare/JIT instructions](../examples/foreign-keys/README.md#prepare-and-run) and
+[NativeAOT instructions](../examples/foreign-keys/README.md#nativeaot) run one application on SQLite and
+PostgreSQL using private packages from this checkout.
+
+- [Parent.cs](../examples/foreign-keys/Parent.cs) and
+  [CatalogCases.cs](../examples/foreign-keys/CatalogCases.cs): explicit reference/inverse/link intent,
+  quoted names and exact catalog ownership/actions.
+- [GeneratedCases.cs](../examples/foreign-keys/GeneratedCases.cs) and
+  [LinkCases.cs](../examples/foreign-keys/LinkCases.cs): generated writes and reads, nullable/orphan behavior,
+  `CalculatedLower` on an FK-declared model, and calculated values through typed linked reads.
+- [ActionCases.cs](../examples/foreign-keys/ActionCases.cs) and
+  [SoftDeleteCases.cs](../examples/foreign-keys/SoftDeleteCases.cs): physical actions, soft-delete behavior
+  and absence of implicit graph saves.
+
 ### Supported relation shapes
 
 These rules apply on both PostgreSQL and SQLite; SQLite must also have enforcement enabled on the connection.

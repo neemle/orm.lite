@@ -88,6 +88,14 @@ Foreign-key delete actions concern physical deletes, not soft-delete updates or 
 also check [effective connection enforcement](relations.md#check-sqlite-enforcement); explicit
 `Foreign Keys=False` leaves constraints unenforced even when they appear in the catalog.
 
+The executable [upgrade-boundary case](../examples/foreign-keys/UpgradeCases.cs) stores an orphan under an
+already-recorded baseline, then confirms that later FK metadata leaves its catalog, data and history unchanged.
+The [fresh/repeated migration cases](../examples/foreign-keys/README.md#fresh-baseline-and-existing-databases)
+show the separate fresh-schema path and unchanged history/constraint counts on repetition.
+[ConfigurationCases.cs](../examples/foreign-keys/ConfigurationCases.cs) explicitly opens SQLite with
+`Foreign Keys=False`, observes `PRAGMA=0` and demonstrates an **unenforced** orphan write; this is a
+SQLite-specific connection option, not PostgreSQL behavior.
+
 ## Migration operations and rollback
 
 A migration body is written with the typed
