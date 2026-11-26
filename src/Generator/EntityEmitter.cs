@@ -13,11 +13,6 @@ using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
 
 namespace Neemle.OrmLite.Generator;
 
-/// <summary>
-/// Emits one generated file per bound declaration: reports what is wrong, then writes the static Orm class of each
-/// entity, the purge class of each soft-delete entity, the schema class and the module initializer that registers the
-/// descriptors.
-/// </summary>
 internal static class EntityEmitter
 {
     internal const string GeneratedNamespace = "Neemle.OrmLite.Generated";

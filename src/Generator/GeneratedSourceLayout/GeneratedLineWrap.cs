@@ -7,7 +7,6 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Neemle.OrmLite.Generator.GeneratedSourceLayout;
 
-/// <summary>Wraps only trivia between tokens, retaining unrelated mapper text verbatim.</summary>
 internal static class GeneratedLineWrap
 {
     private const int Width = 120;

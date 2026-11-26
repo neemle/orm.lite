@@ -219,7 +219,7 @@ public sealed class QueryStreamEnumerator<T> : IAsyncEnumerator<T>
         if (advance is not null)
         {
             try { await advance; }
-            catch (Exception) { /* Completion retains the already-observed advance failure. */ }
+            catch (Exception) { }
         }
         if (_runner is { } runner) await runner;
         if (_completion.Task.IsCompleted) return;

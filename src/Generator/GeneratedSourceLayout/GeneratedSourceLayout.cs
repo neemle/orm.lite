@@ -7,7 +7,6 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Neemle.OrmLite.Generator.GeneratedSourceLayout;
 
-/// <summary>Partitions generated entity declarations without changing their namespace or token order.</summary>
 internal static class GeneratedSourceLayout
 {
     internal static IEnumerable<(string Hint, string Text)> Entities(string source)
