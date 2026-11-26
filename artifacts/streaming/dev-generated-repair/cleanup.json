@@ -1,0 +1,289 @@
+{
+  "time": "2026-11-26T05:29:35.080243+00:00",
+  "container": {
+    "Id": "b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c",
+    "Created": "2026-11-26T05:26:03.835739554Z",
+    "Path": "/usr/local/pgsql/bin/postgres",
+    "Args": [
+      "--launcher"
+    ],
+    "State": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 35370,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-26T05:26:04.030035262Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "Image": "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117",
+    "ResolvConfPath": "/var/lib/docker/containers/b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c/resolv.conf",
+    "HostnamePath": "/var/lib/docker/containers/b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c/hostname",
+    "HostsPath": "/var/lib/docker/containers/b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c/hosts",
+    "LogPath": "",
+    "Name": "/orml116-gen-pg",
+    "RestartCount": 0,
+    "Driver": "overlayfs",
+    "Platform": "linux",
+    "MountLabel": "",
+    "ProcessLabel": "",
+    "AppArmorProfile": "",
+    "ExecIDs": null,
+    "HostConfig": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "local",
+        "Config": {}
+      },
+      "NetworkMode": "1ea85f7874c12fb5adebfcdb25f60fc28096da5804f06ee2efce8d372b231544",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": true,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": null,
+      "CgroupnsMode": "private",
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": false,
+      "SecurityOpt": null,
+      "Tmpfs": {
+        "/var/lib/postgresql/data": "uid=70,gid=70,mode=0700"
+      },
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 0,
+      "NanoCpus": 0,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 0,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": null,
+      "Ulimits": null,
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ]
+    },
+    "Storage": {
+      "RootFS": {
+        "Snapshot": {
+          "Name": "overlayfs"
+        }
+      }
+    },
+    "Mounts": [],
+    "Config": {
+      "Hostname": "b4334d9d8762",
+      "Domainname": "",
+      "User": "70:70",
+      "AttachStdin": false,
+      "AttachStdout": false,
+      "AttachStderr": false,
+      "ExposedPorts": {
+        "5432/tcp": {}
+      },
+      "Tty": false,
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Env": [
+        "POSTGRES_HOST_AUTH_METHOD=trust",
+        "POSTGRES_USER=postgres",
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "PG_MAJOR=19",
+        "PG_VERSION=19.0",
+        "PGDATA=/var/lib/postgresql/data",
+        "LANG=C.UTF-8"
+      ],
+      "Cmd": null,
+      "Image": "neemle/pg.lite:19",
+      "Volumes": {
+        "/var/lib/postgresql/data": {}
+      },
+      "WorkingDir": "/",
+      "Entrypoint": [
+        "/usr/local/pgsql/bin/postgres",
+        "--launcher"
+      ],
+      "Labels": {
+        "io.github.neemle.pglite.packed": "yes",
+        "io.github.neemle.pglite.platform": "linux/arm64, static, musl",
+        "io.github.neemle.pglite.postgres-major": "19",
+        "org.opencontainers.image.created": "2026-11-21T00:54:51+01:00",
+        "org.opencontainers.image.description": "PostgreSQL 19.0 as one static executable in a FROM scratch image",
+        "org.opencontainers.image.documentation": "https://github.com/neemle/pg.lite#configuration-of-the-image",
+        "org.opencontainers.image.licenses": "PostgreSQL",
+        "org.opencontainers.image.revision": "1b5badb2c66cb6bf4917efca747e6cd0ad6c81da",
+        "org.opencontainers.image.source": "https://github.com/neemle/pg.lite",
+        "org.opencontainers.image.title": "pg.lite",
+        "org.opencontainers.image.url": "https://github.com/neemle/pg.lite",
+        "org.opencontainers.image.version": "19.0",
+        "orml.actor": "dev-generated-repair",
+        "orml.task": "ORML-116"
+      },
+      "StopSignal": "SIGINT"
+    },
+    "NetworkSettings": {
+      "SandboxID": "68918ee97b1f3a0be4ef2ab89a8a3c54000139ba9d1bdf33cce17514844255fc",
+      "SandboxKey": "/var/run/docker/netns/68918ee97b1f",
+      "Ports": {
+        "5432/tcp": null
+      },
+      "Networks": {
+        "orml116-gen-repair": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": [
+            "gen-pg"
+          ],
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "1ea85f7874c12fb5adebfcdb25f60fc28096da5804f06ee2efce8d372b231544",
+          "EndpointID": "c85e4a28a34baa676accd4d1bcdacafc4a46d02d8d1b8ff043e69e2dc33abfed",
+          "Gateway": "172.18.0.1",
+          "IPAddress": "172.18.0.2",
+          "MacAddress": "1e:01:fb:b6:2e:7d",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "orml116-gen-pg",
+            "gen-pg",
+            "b4334d9d8762"
+          ]
+        }
+      }
+    },
+    "ImageManifestDescriptor": {
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "digest": "sha256:abd4b86fec2f2d940ed3a7b79e925d2ff5286c9fbe819f8730ddbab421aaaae3",
+      "size": 735,
+      "platform": {
+        "architecture": "arm64",
+        "os": "linux"
+      }
+    }
+  },
+  "network": {
+    "Name": "orml116-gen-repair",
+    "Id": "1ea85f7874c12fb5adebfcdb25f60fc28096da5804f06ee2efce8d372b231544",
+    "Created": "2026-11-26T05:26:03.732888012Z",
+    "Scope": "local",
+    "Driver": "bridge",
+    "EnableIPv4": true,
+    "EnableIPv6": false,
+    "IPAM": {
+      "Driver": "default",
+      "Options": {},
+      "Config": [
+        {
+          "Subnet": "172.18.0.0/16",
+          "Gateway": "172.18.0.1"
+        }
+      ]
+    },
+    "Internal": false,
+    "Attachable": false,
+    "Ingress": false,
+    "ConfigFrom": {
+      "Network": ""
+    },
+    "ConfigOnly": false,
+    "Options": {
+      "com.docker.network.enable_ipv4": "true",
+      "com.docker.network.enable_ipv6": "false"
+    },
+    "Labels": {
+      "orml.actor": "dev-generated-repair",
+      "orml.task": "ORML-116"
+    },
+    "Containers": {
+      "b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c": {
+        "Name": "orml116-gen-pg",
+        "EndpointID": "c85e4a28a34baa676accd4d1bcdacafc4a46d02d8d1b8ff043e69e2dc33abfed",
+        "MacAddress": "1e:01:fb:b6:2e:7d",
+        "IPv4Address": "172.18.0.2/16",
+        "IPv6Address": ""
+      }
+    },
+    "Status": {
+      "IPAM": {
+        "Subnets": {
+          "172.18.0.0/16": {
+            "IPsInUse": 4,
+            "DynamicIPsAvailable": 65532
+          }
+        }
+      }
+    }
+  },
+  "removedContainer": "b4334d9d87625344ec4a07ab6627d53d77d060afb3437ff5dc905640666bb50c",
+  "removedNetwork": "1ea85f7874c12fb5adebfcdb25f60fc28096da5804f06ee2efce8d372b231544",
+  "containerAbsent": true,
+  "networkAbsent": true
+}

@@ -1,0 +1,11 @@
+<Project>
+  <!-- Proof-only replay of the pinned pre-layout analyzer; never imported by a product project. -->
+  <Target Name="ReplayPinnedGenerator" BeforeTargets="CoreCompile">
+    <ItemGroup>
+      <_PinnedGenerator Include="@(Analyzer)" Condition="'%(Analyzer.Filename)' == 'Neemle.OrmLite.Generator'" />
+      <Analyzer Remove="@(_PinnedGenerator)" />
+      <Analyzer Include="$(MSBuildThisFileDirectory)before-generator/Neemle.OrmLite.Generator.dll"
+                Condition="'@(_PinnedGenerator)' != ''" />
+    </ItemGroup>
+  </Target>
+</Project>

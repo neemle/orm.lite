@@ -1,0 +1,9 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/ci-integration/build10/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+  Sql -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/ci-integration/build10/bin/Sql/release/Neemle.OrmLite.Sql.dll
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/ci-integration/build10/bin/Generator/release/Neemle.OrmLite.Generator.dll
+  Core -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/ci-integration/build10/bin/Core/release/Neemle.OrmLite.Core.dll
+  Postgres -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/ci-integration/build10/bin/Postgres/release/Neemle.OrmLite.Postgres.dll
+  Sqlite -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/artifacts/streaming/ci-integration/build10/bin/Sqlite/release/Neemle.OrmLite.Sqlite.dll
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Streaming/CiIntegration/StreamCorpusCases.cs(5,11): error IDE0130: Namespace "Neemle.OrmLite.Tests.Corpus.Cases" does not match folder structure, expected "Neemle.OrmLite.Tests.Streaming.CiIntegration" (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0130) [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming/tests/Tests/Tests.csproj]

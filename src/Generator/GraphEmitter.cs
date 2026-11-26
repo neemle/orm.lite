@@ -1,9 +1,7 @@
+using SourceLayout = Neemle.OrmLite.Generator.GeneratedSourceLayout.GeneratedSourceLayout;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Neemle.CSharpComposer;
 using Neemle.CSharpComposer.Builders;
 using Neemle.CSharpComposer.Model;
@@ -18,45 +16,7 @@ namespace Neemle.OrmLite.Generator;
 
 internal static class GraphEmitter
 {
-    internal static string WrapMembers(string source)
-    {
-        var root = CSharpSyntaxTree.ParseText(source).GetRoot();
-        var members = root.DescendantNodes().Where(node =>
-            node is BaseMethodDeclarationSyntax or FieldDeclarationSyntax or PropertyDeclarationSyntax).ToArray();
-        return root.ReplaceNodes(members, (node, _) => WrapMember(node)).ToFullString();
-    }
-
-    private static SyntaxNode WrapMember(SyntaxNode member)
-    {
-        var column = 0;
-        var replacements = new Dictionary<SyntaxToken, SyntaxToken>();
-        SyntaxToken? previous = null;
-        foreach (var token in member.DescendantTokens())
-        {
-            var next = WrapToken(token, column);
-            if (next != token && previous is { } before)
-            {
-                var trailing = replacements[before].TrailingTrivia
-                    .Where(trivia => !trivia.IsKind(SyntaxKind.WhitespaceTrivia));
-                replacements[before] = replacements[before].WithTrailingTrivia(trailing);
-            }
-            var text = next.ToFullString();
-            var newline = text.LastIndexOf('\n');
-            column = newline < 0 ? column + text.Length : text.Length - newline - 1;
-            replacements.Add(token, next);
-            previous = token;
-        }
-        return member.ReplaceTokens(replacements.Keys, (token, _) => replacements[token]);
-    }
-
-    private static SyntaxToken WrapToken(SyntaxToken token, int column)
-    {
-        var leading = token.LeadingTrivia.ToFullString();
-        if (leading.Contains("\n") || column + leading.Length + token.Text.Length <= 120) return token;
-        var kept = token.LeadingTrivia.Where(trivia => !trivia.IsKind(SyntaxKind.WhitespaceTrivia));
-        var prefix = SyntaxFactory.TriviaList(SyntaxFactory.LineFeed, SyntaxFactory.Whitespace("            "));
-        return token.WithLeadingTrivia(prefix.AddRange(kept));
-    }
+    internal static string WrapMembers(string source) => SourceLayout.Wrap(source);
 
     internal static bool Supported(Entity entity) => !entity.IsView && !OrmGenerator.KeyedApiWithheld(entity)
         && !Buildability.IsUnbuildable(entity) && OrmGenerator.FirstKey(entity) is { Nullable: false };

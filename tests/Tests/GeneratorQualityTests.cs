@@ -41,13 +41,14 @@ public sealed class GeneratorQualityTests
     private static IEnumerable<IncrementalStepRunReason> Reasons(GeneratorDriver driver, string step) =>
         driver.GetRunResult().Results[0].TrackedSteps[step].SelectMany(s => s.Outputs).Select(o => o.Reason);
 
-    private static string EntitiesText(params (string Path, string Text)[] files)
+    private static (string Hint, string Text)[] EntitiesText(params (string Path, string Text)[] files)
     {
         var result = CSharpGeneratorDriver.Create(
                 [new OrmGenerator().AsSourceGenerator()], null, null, GeneratorOptions.Pinned())
             .RunGenerators(CompileAs("QualityOrderFixture", files)).GetRunResult();
         return result.Results.SelectMany(r => r.GeneratedSources)
-            .Single(s => s.HintName == "OrmLite.Entities.g.cs").SourceText.ToString();
+            .OrderBy(s => s.HintName, StringComparer.Ordinal)
+            .Select(s => (s.HintName, s.SourceText.ToString())).ToArray();
     }
 
     [Fact(DisplayName = "ORML-22 an edit in an unrelated file leaves the entity and migration steps unchanged")]
@@ -92,8 +93,12 @@ public sealed class GeneratorQualityTests
         var backward = EntitiesText(beta, alpha);
 
         Assert.Equal(forward, backward);
-        Assert.True(forward.IndexOf("AlphaOrm", StringComparison.Ordinal)
-            < forward.IndexOf("BetaOrm", StringComparison.Ordinal));
+        Assert.Equal(new[] { "OrmLite.Entities.0000.g.cs", "OrmLite.Entities.0001.g.cs",
+            "OrmLite.Entities.0002.g.cs", "OrmLite.Entities.0003.g.cs" }, forward.Select(s => s.Hint));
+        Assert.Contains("class AlphaOrm", forward[0].Text, StringComparison.Ordinal);
+        Assert.DoesNotContain("class BetaOrm", forward[0].Text, StringComparison.Ordinal);
+        Assert.Contains("class BetaOrm", forward[1].Text, StringComparison.Ordinal);
+        Assert.DoesNotContain("class AlphaOrm", forward[1].Text, StringComparison.Ordinal);
     }
 
     [Fact(DisplayName = "ORML-22 a many-to-many list names its Add and Remove methods with a sensible singular")]

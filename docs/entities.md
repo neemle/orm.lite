@@ -59,6 +59,20 @@ public static class NoteExample
   physical-column translation refuses it. Raw/custom readers must supply the computed value and alias
   expected by the mapper. Stored generated columns, raw SQL expressions and chained calculations are unsupported.
 
+### Runnable calculated-field cases
+
+The [public demo](../examples/calculated/README.md#build-private-packages) builds private packages from this
+checkout. Its instructions run the same cases with [JIT](../examples/calculated/README.md#run-with-jit) or
+[NativeAOT](../examples/calculated/README.md#run-the-same-cases-with-nativeaot) on SQLite and PostgreSQL.
+
+- [ReadCases.cs](../examples/calculated/ReadCases.cs): full and keyed reads, nullable/empty text, and valid
+  physical-column filtering, ordering and custom projection.
+- [RelationCases.cs](../examples/calculated/RelationCases.cs): reference, collection and many-to-many reads.
+- [BoundaryCases.cs](../examples/calculated/BoundaryCases.cs): ignored caller-assigned values and exclusion
+  from physical metadata, generated DDL and the actual database schema.
+- [RefusalCases.cs](../examples/calculated/RefusalCases.cs): calculated-property filter/order/projection
+  refusals and direct/conditional source redaction, with no SQL execution.
+
 ## Generated API
 
 | Generated type | What it contains |

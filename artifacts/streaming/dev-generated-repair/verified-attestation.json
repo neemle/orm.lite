@@ -1,0 +1,16 @@
+{
+  "gate": "VERIFIED_CHECKPOINT_ASSERTIONS",
+  "argv": [
+    "python3",
+    "artifacts/streaming/dev-generated-repair/finalize_evidence.py"
+  ],
+  "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-116-streaming",
+  "commit": "f8fd2593b83b10b42b67d2fd34bb132663880613",
+  "worktreeStatus": "",
+  "sourceDigest": "832f31f962b0a20d3e8b24cd22ab894104b7e2dc3670fc17e9e16d9992eec0b2",
+  "started": "2026-11-26T05:45:06.028679+00:00",
+  "exitCode": 0,
+  "finished": "2026-11-26T05:45:06.142968+00:00",
+  "sourceChangedDuringRun": false,
+  "log": "artifacts/streaming/dev-generated-repair/verified-attestation.log"
+}

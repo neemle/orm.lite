@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Data.Common;
 using Neemle.OrmLite.Nodes;
 
@@ -22,6 +23,7 @@ namespace Neemle.OrmLite;
         private readonly OrmContext _db;
         private readonly RenderState _state;
         private readonly StatementExecutor _exec;
+        private UnitOfWork? _streamUnit;
         private readonly PredicateTranslator _translator;
         private readonly SetClauses _setClauses;
         private readonly SetTerms _set;
@@ -81,13 +83,16 @@ namespace Neemle.OrmLite;
         public Query<T> On(DbConnection connection, DbTransaction? transaction = null)
         {
             _exec.On(connection, transaction);
+            _streamUnit = null;
             return this;
         }
 
         public Query<T> On(UnitOfWork unitOfWork)
         {
             if (unitOfWork is null) throw new ArgumentNullException(nameof(unitOfWork));
-            return On(unitOfWork.Connection, unitOfWork.Transaction);
+            On(unitOfWork.Connection, unitOfWork.Transaction);
+            _streamUnit = unitOfWork;
+            return this;
         }
 
         public Statement CompileUpsert(
@@ -257,6 +262,24 @@ namespace Neemle.OrmLite;
 
         private Node PredicateTerm(Expression<Func<T, bool>> selector) =>
             new Group(_translator.Predicate(selector.Parameters[0], selector.Body));
+
+        public QueryStream<T> StreamAsync(CancellationToken ct = default) =>
+            new(QueryStreamCapture.Entities(this), ct);
+
+        public QueryStream<TOut> StreamProjectAsync<TOut>(IReadOnlyList<Expression<Func<T, object?>>> columns,
+            Func<DbDataReader, TOut> map, CancellationToken ct = default) =>
+            new(QueryStreamCapture.Project(this, columns, map), ct);
+
+        public QueryStream<TOut> StreamProjectionAsync<TOut>(Func<DbDataReader, TOut> map,
+            CancellationToken ct = default) => new(QueryStreamCapture.Projection(this, map), ct);
+
+        public QueryStream<TCol> StreamColumnAsync<TCol>(Expression<Func<T, object?>> column,
+            CancellationToken ct = default) => new(QueryStreamCapture.Column<T, TCol>(this, column), ct);
+
+        internal Func<DbDataReader, T> StreamMap => _map;
+        internal StreamBinding StreamBinding => new(_db.DataSource, _db.Provider);
+        internal StreamBorrowed? StreamBorrowed => _exec.StreamScope(_streamUnit);
+        internal RowLock? StreamRowLock => _select.Build([], null).Lock;
 
         public async Task<List<T>> ToListAsync() =>
             await _exec.RowsAsync(CompileSelect(), _map);

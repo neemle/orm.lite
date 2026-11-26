@@ -34,6 +34,9 @@ public sealed class TerminalCensusTests(SqliteFixture fixture) : IClassFixture<S
     {
         var context = TestContext.Of(new RecordingDataSource(new RecordingLog(), "census-lock"), PostgresProvider.Instance);
         var query = TerminalCensus.NewQuery(context, paged: true).ForUpdate();
+        await using var unit = name.StartsWith("Stream", StringComparison.Ordinal)
+            ? await UnitOfWork.BeginAsync(context) : null;
+        if (unit is not null) query.On(unit);
         var before = TerminalCensus.Snapshot(query, paged: true);
 
         await TerminalCensus.Entry(name).Run(query);

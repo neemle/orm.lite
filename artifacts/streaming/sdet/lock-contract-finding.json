@@ -1,0 +1,65 @@
+{
+  "disposition": "NON-SUCCESS required AC-116-09 SQLite lock-refusal witness fails; owning ARCH interpretation/root custody required",
+  "revision": {
+    "head": "a298dc6951af148f7a5491376e0d4ad0624b1f14",
+    "sourceTree": "a0e928bb2fff240558d8c56334aa53a10b4e1270",
+    "testsTree": "3c0eae027bee12a914364e20657ebb8ca513aa57",
+    "sdetTestTree": "fe9e1c82819683bf9d614bfac989ef0f52ca2c75",
+    "nativeInputTree": "51d33b80b577f2248e0e39d91e768adc5f97513e"
+  },
+  "authorities": {
+    "adrId": "54fb396c-af08-4f7b-a65e-120bb8293a82",
+    "adrVersion": 1,
+    "speckId": "b3e25766-9e24-4389-8722-ac51e5fc8c34",
+    "speckVersion": 1,
+    "adrClause": "SQLite continues existing RowLock refusal, no invented equivalent lock.",
+    "speckScopeClause": "SQLite existing refusal, no fake equivalent.",
+    "speckAc09": "lock stream needs valid caller tx, SQLite capability refusal"
+  },
+  "facts": [
+    {
+      "path": "src/Sqlite/SqliteProvider.cs",
+      "sha256": "bd0005fc764207df0692e3198ab2c89d0a9bffe8fdf31b847aa80266ae46620d",
+      "mainBaseSha256": "bd0005fc764207df0692e3198ab2c89d0a9bffe8fdf31b847aa80266ae46620d",
+      "byteIdenticalToMainBase": true
+    },
+    {
+      "path": "src/Sqlite/SqliteSerializer.cs",
+      "sha256": "182624bcd01f28e9706268bfff02f14c2bd655d1773ea1dab71d8b2a3b4dbd44",
+      "mainBaseSha256": "182624bcd01f28e9706268bfff02f14c2bd655d1773ea1dab71d8b2a3b4dbd44",
+      "byteIdenticalToMainBase": true
+    },
+    {
+      "path": "src/Runtime/Streaming/QueryStreamCapture.cs",
+      "sha256": "2257bc2a0e2ffae21d27b6b28ebf43bd4c2f5049b8a178cd28940e031b4494f5",
+      "mainBaseSha256": null,
+      "byteIdenticalToMainBase": false
+    },
+    {
+      "path": "src/Runtime/RowLockClauses.cs",
+      "sha256": "2de72dcd79ab0e916afc9a3c0daa434f00db50314fd38b7aadad40cdf1713a61",
+      "mainBaseSha256": "2de72dcd79ab0e916afc9a3c0daa434f00db50314fd38b7aadad40cdf1713a61",
+      "byteIdenticalToMainBase": true
+    },
+    {
+      "path": "tests/Tests/Streaming/Sdet/SdetProviderTests.cs",
+      "sha256": "0ab1baed8400d63b18ea300553fcdac5a2cf8bf29ad53f76f9fb0cf203c8b73b",
+      "mainBaseSha256": null,
+      "byteIdenticalToMainBase": false
+    }
+  ],
+  "loci": [
+    "src/Sqlite/SqliteProvider.cs:21-22: inherited RowLock and KeyPreservingRowLock Support.Emulated",
+    "src/Sqlite/SqliteSerializer.cs:52-54: inherited empty RowLock visitor",
+    "src/Runtime/Streaming/QueryStreamCapture.cs:40-47: compiles then validates borrowed transaction, no explicit native provider lock guard",
+    "tests/Tests/Streaming/Sdet/SdetProviderTests.cs:81-85: actual SQLite ForUpdate().StreamAsync capture accepts instead of refusal"
+  ],
+  "reproducer": "Own real SqliteFixture; seed BehaveNote; begin UnitOfWork; Query.On(unit).ForUpdate().StreamAsync(); Assert.Throws<QueryStreamException> fails because no exception",
+  "limits": [
+    "Specific required refusal is unestablished; do not infer newly introduced legacy lock regression",
+    "Witness does not execute MoveNext on disputed SQLite lock stream",
+    "No product edit, assertion weakening, provider capability change or source guard added",
+    "Expected InvalidRequest category is a harness categorization; observed absence of ANY refusal is the material failure"
+  ],
+  "scopedResults": "Both actual .NET10.0.15 and11.0.0: 67 total/66pass/1fail/0skip; same refusal witness only"
+}

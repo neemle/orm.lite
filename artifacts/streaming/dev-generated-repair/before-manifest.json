@@ -1,0 +1,255 @@
+{
+  "commit": "ed2d62aadb714d22e43b7ca69ca628c9a7ab1468",
+  "sourceTree": "74c8c4910c21fd32391d760ab42821c8bb8af733",
+  "testsTree": "3c0eae027bee12a914364e20657ebb8ca513aa57",
+  "files": [
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/INDEX.md",
+      "sha256": "0aafbffe63c020ad2097b037f671e666a05482cdc750d5fd92fec9f4dcda2a27"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/entries.json",
+      "sha256": "8027cac235637c9c2e4c22709694156c0927abe444cb8a160bee036e695e69fa"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/compiles-with-the-runtime.golden",
+      "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/diagnostics.golden",
+      "sha256": "94b6f5fbd4214206b19bacfb3431f435e969028278291722b48eb37636e71022"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/executed-schema-contributions-and-registry.golden",
+      "sha256": "c7a0d44309d162162267a13f8ee279faa6c5714967537eac9abc88808af508e1"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/migration-runner-fresh-database.golden",
+      "sha256": "59eea691daeae5212228d899a5bc725ebc628b4ba970d31b29bd2e305e311d73"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/migration-runner-partially-applied.golden",
+      "sha256": "cec687e838fe41d6e9157c06f6eb4593cb62ad8c6328a090fd82f735fcda2704"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+      "sha256": "f8861a0f3ee8faa0561c862dd2c3688045246533ad32d59a56559bcc0e7d0e15"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.migrationregistry.g.cs.golden",
+      "sha256": "61f97cbbdc6bdaf2a0ef30fb5a92c3cc1e3e9c1bd3b7e155d27691d3261af96f"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+      "sha256": "10d0539542df1bf942e7893d10aa90ed7405d7edaa483c843bb30796412fbf7c"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/compiles-with-the-runtime.golden",
+      "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/diagnostics.golden",
+      "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/executed-schema-contributions-and-registry.golden",
+      "sha256": "0a6ca682655317e353bb7ef12ba09548010f36fa703df74a4626c084a1bffb40"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/migration-runner-fresh-database.golden",
+      "sha256": "778f674d3f489b307002177479d531304dba001ed28971e8d8abe66b68294270"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/migration-runner-partially-applied.golden",
+      "sha256": "4dd8d98ba13764b222154822f887349b2bd6f45b1bff4a5a9892e196a362d7f6"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.entities.g.cs.golden",
+      "sha256": "d658ddf8ed6236b5bb56b542bad609d4dbce158c7ead79fa50a1c074b70ff24d"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.migrationregistry.g.cs.golden",
+      "sha256": "51b541df408dbf1fc46553f76c5be5637d0d9d59d0210efaa18254491871650e"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.migrations.g.cs.golden",
+      "sha256": "e6b110eed9d1bd3dfb8b7bdd97a00f3e3137c55f1e073b54f5fa584dcefb55d2"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/diagnostics.golden",
+      "sha256": "280906383d9393abd1c483fb42a6a2a3d73b5cd7e2855eb2435257638c595ff0"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+      "sha256": "84b6b117ccf9b06e8d94ff646dd54f422a451f14bcf299f983b6458c668343b4"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.migrationregistry.g.cs.golden",
+      "sha256": "53b4296b199cff2c4f46d78f7e37c286b660fe9ba76f0268f65af817edccdf9d"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.migrations.g.cs.golden",
+      "sha256": "4b940ad1c21f58f7aad9bfb8c57d68d099a4461a2eed854ece388128b4e720d1"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/compiles-with-the-runtime.golden",
+      "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/diagnostics.golden",
+      "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/executed-schema-contributions-and-registry.golden",
+      "sha256": "c32c7ae4e7f3ce2cf77b0b6dd9aa92f3082746be065a7f0e40e58ed4cfe37b74"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/migration-runner-fresh-database.golden",
+      "sha256": "96527bb3c54acd3fb99b3571a1e7661b337b1fd3069857d00beda81c27836155"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/migration-runner-partially-applied.golden",
+      "sha256": "685c6c05cc0e74ca0f048898c94d8a72289aed3ab09440d867efb3689eb48484"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.entities.g.cs.golden",
+      "sha256": "d98a44a3032b345dfe72d9d2460d6a7768be380e9a10b0fd3ec6ef2d865121de"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.migrationregistry.g.cs.golden",
+      "sha256": "a7f52e8e961ff2f740cd22b8df195cdb3fd5bae606d27b41aa26f5630d414e95"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.migrations.g.cs.golden",
+      "sha256": "11e45d76c297fff42591779d0d7f52b8cd79b2737d3d00cc2a6bb00d6ed1492c"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/compiles-with-the-runtime.golden",
+      "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/diagnostics.golden",
+      "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/executed-schema-contributions-and-registry.golden",
+      "sha256": "a5c113a08a179b6e9f945c6bad8eb3408035f58d2aea913344b95118733c66e6"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/migration-runner-fresh-database.golden",
+      "sha256": "10a2e6ea0a3313a93385389b2fe140288691dfb466197b6cc3de25e781e1c8a7"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/migration-runner-partially-applied.golden",
+      "sha256": "5f4ac50cd5c5340941e07fbc0823a839f5b02ee144f87ab437630f443770ea51"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+      "sha256": "89a0705bb07b50e5d94d20b853ab77121ab471362884b80cbd96a977f5da3c7f"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.migrationregistry.g.cs.golden",
+      "sha256": "300e63659479ee2581b2221a8f9c5b92806b80f7a233810226445d402c806c2b"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+      "sha256": "cc42e39aefcac8b585a7106e32e1def31d0fdfda94d72b0c483c8e33ed0d6333"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/compiles-with-the-runtime.golden",
+      "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/diagnostics.golden",
+      "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/executed-schema-contributions-and-registry.golden",
+      "sha256": "853e48e7574664d8fcd6dd7da0ab9511dd9ffe40013940b063eac1193c314854"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+      "sha256": "345e794cf34a67448e09c93e2a4436f6dd0c7fd362096e242e5e31be930e8bba"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.migrationregistry.g.cs.golden",
+      "sha256": "25b296ace57d376be58d0a266b6078618ddc1c0471e2cc33c5327897bebee916"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+      "sha256": "6cf5146fe7436b5952f8ac7c5e145c70a5d7ace2a5d05be52fb3498659377ea5"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/compiles-with-the-runtime.golden",
+      "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/diagnostics.golden",
+      "sha256": "b73de725899f439a619cf49a72e1c03d98f9cc34ed54b13da41799f45b4b4c41"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/executed-schema-contributions-and-registry.golden",
+      "sha256": "061ff2d0110a11dd8cec0713aecaea9a367a12cd3d0e58f5cc0cd4a8e88633d8"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+      "sha256": "5f5faab288b27ec578d1695acfb56f352ea10377634969d2deaa00b381807a73"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.migrationregistry.g.cs.golden",
+      "sha256": "7971b8d2acd2d3220c8e3663b5838f9f00304f298c5a7c97dc3ac6068899fd44"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+      "sha256": "df80771d8c54c0b43809d8968a9f94a9ad3f4edc653a514f92a54d8a25a25a7a"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/compiles-with-the-runtime.golden",
+      "sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/diagnostics.golden",
+      "sha256": "fcf33dfbe13c2354bf0e1b063f9fb422747a46cee00b7420bceff2b81457b345"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/executed-schema-contributions-and-registry.golden",
+      "sha256": "a38d1a587a9cd72bcce64ece322ac44de576aed10dc0f0105b2488a344d4dc82"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+      "sha256": "6bea49062700072434915d163a795fd1e7a2a9e6dfd69ef1a8847412f33d4923"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.migrationregistry.g.cs.golden",
+      "sha256": "a33ef98d84e95891e947584bb43970d4bfad2d82ce4d961ebfd618e35f0c3307"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+      "sha256": "ea590d040c79632579e795d2ae02cef654de9e7174a6f1162d96f6e96d71fda3"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.Entities.g.cs",
+      "sha256": "7fa06cceb2a8efc33f83d24a26a10dfe6ce07d2bb7e61dd9ef7a78e890c01bcb"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.MigrationRegistry.g.cs",
+      "sha256": "95b3a1624a16015131480efcd451da989b94cbed1832ad2cb56cbc0f8aec7ce5"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.Migrations.g.cs",
+      "sha256": "d0d84747f67492f6f7666ae4ca8d8c5456a071cba5c94fb0a6fdc64dcaaa5dfe"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.Entities.g.cs",
+      "sha256": "7fa06cceb2a8efc33f83d24a26a10dfe6ce07d2bb7e61dd9ef7a78e890c01bcb"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.MigrationRegistry.g.cs",
+      "sha256": "95b3a1624a16015131480efcd451da989b94cbed1832ad2cb56cbc0f8aec7ce5"
+    },
+    {
+      "path": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.Migrations.g.cs",
+      "sha256": "d0d84747f67492f6f7666ae4ca8d8c5456a071cba5c94fb0a6fdc64dcaaa5dfe"
+    }
+  ]
+}

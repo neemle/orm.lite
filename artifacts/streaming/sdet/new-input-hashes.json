@@ -1,0 +1,67 @@
+[
+  {
+    "path": "tests/StreamingAot/Program.cs",
+    "sha256": "3348a54ea50c4f4feb7944084f2df158f966b19dae316151ba20f9f14dce414f",
+    "bytes": 913
+  },
+  {
+    "path": "tests/StreamingAot/StreamEntry.cs",
+    "sha256": "8bf70d7e311eca93517ef1d93f46734b89a8635c786d51b5b0b3bda2aa00368f",
+    "bytes": 348
+  },
+  {
+    "path": "tests/StreamingAot/StreamNativeChecks.cs",
+    "sha256": "e4075a26cd722d67565802179a82537b2aab5c5cf8ae208593a92d11ec6e2d11",
+    "bytes": 3614
+  },
+  {
+    "path": "tests/StreamingAot/StreamingAot.csproj",
+    "sha256": "a8a0fb250c420293bfadb9f5cdbf946355cb8d4394eaa567f1a6c28fefd1ac04",
+    "bytes": 1287
+  },
+  {
+    "path": "tests/Tests/Streaming/Sdet/SdetBorrowedBoundaryTests.cs",
+    "sha256": "0b2c4c17142f805c1a11b9167cccfde128729ccd42f5217b44292504d67fbcac",
+    "bytes": 3475
+  },
+  {
+    "path": "tests/Tests/Streaming/Sdet/SdetPostgresTests.cs",
+    "sha256": "fbdef3763e740f3368b6b5cfebb629d473e66e21e72832f5636c97751de796fb",
+    "bytes": 197
+  },
+  {
+    "path": "tests/Tests/Streaming/Sdet/SdetPrimaryCleanupTests.cs",
+    "sha256": "bf65c8ee38b6b6d88381059ca7a3e163218b907519d63a0d16687bc3347c3e75",
+    "bytes": 3086
+  },
+  {
+    "path": "tests/Tests/Streaming/Sdet/SdetProviderTests.cs",
+    "sha256": "0ab1baed8400d63b18ea300553fcdac5a2cf8bf29ad53f76f9fb0cf203c8b73b",
+    "bytes": 6655
+  },
+  {
+    "path": "tests/Tests/Streaming/Sdet/SdetSettlementTests.cs",
+    "sha256": "5a4f18d3d21671da711ca85880e81d85c8378c4cb30468cc4b0ddee8c1a93e06",
+    "bytes": 2992
+  },
+  {
+    "path": "tests/Tests/Streaming/Sdet/SdetSoftReadCensusTests.cs",
+    "sha256": "9e0a57aef6d6f1b19371eb6d9f92c88e547335cbd70d66a439427a7c2a89fd62",
+    "bytes": 1567
+  },
+  {
+    "path": "tests/Tests/Streaming/Sdet/SdetSqliteTests.cs",
+    "sha256": "6febdc9313489e9853fdedd5cb503eb94bea0cb5f415948d134ee9586b7da26c",
+    "bytes": 191
+  },
+  {
+    "path": "tests/Tests/Streaming/Sdet/SdetStatementSink.cs",
+    "sha256": "5b54c2b097472f177a07a548bbc1751f8d547cd26613a01bcbce97f21449d2fb",
+    "bytes": 416
+  },
+  {
+    "path": "tests/Tests/Streaming/Sdet/SdetStreamView.cs",
+    "sha256": "cf5a039362444c5eca47f561db1d2978518c1aa6aaee18c37337d1c21dd18c49",
+    "bytes": 96
+  }
+]

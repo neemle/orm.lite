@@ -1,0 +1,28 @@
+{
+  "status": "UNAPPLIED / UNAPPROVED",
+  "applied": false,
+  "approved": false,
+  "beforeCorpusEntries": 669,
+  "afterCorpusEntries": 739,
+  "beforeGeneratorEntries": 54,
+  "afterGeneratorEntries": 124,
+  "nonGeneratorEntriesUnchanged": true,
+  "patchFormat": "unified zero context; complete proposed files are primary review copies",
+  "allNonSourceCorpusEntriesUnchanged": 645,
+  "counts": {
+    "modify": 14,
+    "add": 78,
+    "delete": 8
+  },
+  "obligations": [
+    "Preserve GeneratorQualityTests assertions; aggregate deterministically partitioned entity hints instead of requiring a single file",
+    "Review regenerated generator golden text and exact hint inventory, no SQL/data/diagnostic semantic substitution",
+    "Retain all five prior streaming-control proposals, including typed get_StreamRowLock classification and derived current INDEX",
+    "Existing source/golden/census/quality files remain readonly; applying this proposal requires root disposition and rightful writer"
+  ],
+  "limits": [
+    "No golden or assertion applied, no baseline approval inferred",
+    "No runtime floor/exclusion/threshold modified",
+    "Old Map full text and ALL class nontrivia tokens independently compared"
+  ]
+}

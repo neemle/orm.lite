@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <DemoTfm Condition="'$(DemoTfm)' == ''">net10.0</DemoTfm>
+    <TargetFramework>$(DemoTfm)</TargetFramework>
+    <OutputType>Exe</OutputType><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings>
+    <PublishAot Condition="'$(DemoNative)' == 'true'">true</PublishAot>
+    <OrmLiteUsesPackedPackages>true</OrmLiteUsesPackedPackages>
+    <RestoreConfigFile>$(MSBuildThisFileDirectory)NuGet.Config</RestoreConfigFile>
+    <RestorePackagesPath>$(MSBuildThisFileDirectory)../../artifacts/calculated/demo/nuget</RestorePackagesPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Neemle.OrmLite" Version="[$(OrmLiteVersion)]" />
+    <PackageReference Include="Neemle.OrmLite.Sqlite" Version="[$(OrmLiteVersion)]" />
+    <PackageReference Include="Neemle.OrmLite.Postgres" Version="[$(OrmLiteVersion)]" />
+  </ItemGroup>
+</Project>

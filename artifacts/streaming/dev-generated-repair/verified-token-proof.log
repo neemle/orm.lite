@@ -1,0 +1,1238 @@
+[
+  {
+    "name": "generator-tenant-option-default",
+    "beforeFiles": 3,
+    "afterFiles": 8,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.NoteOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0000.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "9416d65bbbfcf7b45ffda16ce5e45e569a926aadec0b1e2801c47f6568c3d44e"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NotePurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+        "beforeLine": 79,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0001.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "dd7c19795805d006cab6c240a91e542bb1aa781f9da3e1fe14107c5ccb51dc21"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NamedOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+        "beforeLine": 94,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0002.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "1c3885549f12fb7d6f518474bfb56ad7192e9de63828d9ed59209a699e7be6d2"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NamedPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+        "beforeLine": 164,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0003.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "904f56a64fa4e6ae75b297a5239d3f59e95aada0a760a37b917673e3344101b5"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.TenantOptionDefaultSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+        "beforeLine": 179,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0004.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "b358321e1b7cc0c19ffab62c7d60f861166b1b7796333a2a029801918c2f84b4"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.entities.g.cs.golden",
+        "beforeLine": 184,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.entities.0005.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "3bbe8a58cdc15996b4e7693736b4a0c029e9783ebb42fbd7fb5c3702e67f79af"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.migrationregistry.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.migrationregistry.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "2b54a3416be242da826b7b7148392729e69efb02928d7d7cd109069eb3d79331"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.TenantOptionDefaultMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-default/ormlite.migrations.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "913d9233202121b16912f54bcb7a4b5c11184a1f4cc33fd46f3a5acdd685a8d8"
+      }
+    ]
+  },
+  {
+    "name": "generator-tenant-option-invalid",
+    "beforeFiles": 3,
+    "afterFiles": 8,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.NoteOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0000.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "9416d65bbbfcf7b45ffda16ce5e45e569a926aadec0b1e2801c47f6568c3d44e"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NotePurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+        "beforeLine": 79,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0001.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "dd7c19795805d006cab6c240a91e542bb1aa781f9da3e1fe14107c5ccb51dc21"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NamedOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+        "beforeLine": 94,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0002.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "1c3885549f12fb7d6f518474bfb56ad7192e9de63828d9ed59209a699e7be6d2"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NamedPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+        "beforeLine": 164,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0003.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "904f56a64fa4e6ae75b297a5239d3f59e95aada0a760a37b917673e3344101b5"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.TenantOptionInvalidSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+        "beforeLine": 179,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0004.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "8526abeee0ca517afbab9492a5c90aad667e4544b577f807bf2b74c64936b651"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.entities.g.cs.golden",
+        "beforeLine": 184,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.entities.0005.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "3bbe8a58cdc15996b4e7693736b4a0c029e9783ebb42fbd7fb5c3702e67f79af"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.migrationregistry.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.migrationregistry.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "c2f0575f63ac0a9b4689446e1f9a2eccf4e25c3b9eae93e471176511bb698921"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.TenantOptionInvalidMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-invalid/ormlite.migrations.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "5b3f64866ad094fd5fa0114c508004def080e51def94bf1ee1d05444b28f4ebc"
+      }
+    ]
+  },
+  {
+    "name": "generator-golden-fixtures",
+    "beforeFiles": 3,
+    "afterFiles": 8,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.FixtureNoteOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0000.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "55bdf9680e364e7575cbbcb3b887c777cb719e848b06c62f1d54c300366652f9"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.GoldenAuthorOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+        "beforeLine": 75,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0001.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "93328822bd2347d577cf91e42289e9980e2e7866f6964f67dd4c41c2c4931210"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.GoldenBookOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+        "beforeLine": 163,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0002.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "5b4c05cae8f06d77ffc7eb282f0bdede7a72b8a0028feb9c457cccf2e8aba113"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.GoldenTagOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+        "beforeLine": 268,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0003.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "72e28da1a2eb9543ce0550ea634ad34bff96667ee5f457ab9fb53d14272924f4"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmLiteGoldenFixturesSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+        "beforeLine": 334,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0004.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "268df3a5e9cff7fc2bd39cca6c34da917685a6176e388d80f76a06037a3de509"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.entities.g.cs.golden",
+        "beforeLine": 339,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.entities.0005.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "d596d39ae4fcae0079a472545246becabcc2bed2de9945f301f8c098e81f43b5"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.migrationregistry.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.migrationregistry.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "58b1a74201b110071a884d072dd11c6bf96ced671a6b132407613af40b50c809"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmLiteGoldenFixturesMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-golden-fixtures/ormlite.migrations.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "f1592b40e9e908f76a405298bcd22b82e31184b93f6f919c5853e83f339ea66c"
+      }
+    ]
+  },
+  {
+    "name": "generator-global-namespace",
+    "beforeFiles": 3,
+    "afterFiles": 7,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.OrchardOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.entities.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0000.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "51f7ae2de0a9667fa3ece7dc9509feab255f9e1f491d9a2a21c45c686c025446"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrchardPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.entities.g.cs.golden",
+        "beforeLine": 82,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0001.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "ae8d3915ad4343497098d951a8477cc2794b4e5032fa9272df26428b363f3221"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.TreeOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.entities.g.cs.golden",
+        "beforeLine": 97,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0002.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "24393b40ef5074dc943b8f43adefdf69facb5a74b7d37ce88dd2c557b99fa773"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.CorpusGlobalNamespaceSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.entities.g.cs.golden",
+        "beforeLine": 172,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0003.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "3e439b4303e0adad5f92fc8351e8292dd2cfe7fa30f5d7959bef4e7f135071ff"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.entities.g.cs.golden",
+        "beforeLine": 177,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.entities.0004.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "f04967e4e18c8cd7e7359e2c12fcd595ee6672e0665d8e76aecdd9d671b6ba63"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.migrationregistry.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.migrationregistry.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "cb625204375789e305082bd34612824d09afd033be7444ca98e10f8cd340bee5"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.CorpusGlobalNamespaceMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-global-namespace/ormlite.migrations.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-global-namespace/ormlite.migrations.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "4181389a8b510712e1352e0b32ecff6f381c6dc09fc0333ab8b211adf0f42fd0"
+      }
+    ]
+  },
+  {
+    "name": "generator-demo",
+    "beforeFiles": 3,
+    "afterFiles": 6,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.NoteOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.entities.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.entities.0000.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "bd57629df56fa203ca1d8040fd36ae31182ecdbc26bbb78404789f793c182c72"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NotePurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.entities.g.cs.golden",
+        "beforeLine": 81,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.entities.0001.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "3b7112687fb57c061bbbdcf09bf3b3ffd8924a83b1dbe9c9404fdcd4aceaa02a"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmLiteDemoSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.entities.g.cs.golden",
+        "beforeLine": 96,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.entities.0002.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "414fbc5f293c382b7a916596052c8bf0aa9edf099e4bf2a5dd09c66cf920384d"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.entities.g.cs.golden",
+        "beforeLine": 101,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.entities.0003.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "fa8ce14aa3097ecf6bef524d33ceebbd15e3d8375607104d1cc614bfa1003f00"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.migrationregistry.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.migrationregistry.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "75bbe08c5791699d13eda28bb61fdb35a03964e5e90f940d5c82d060b4f0061a"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmLiteDemoMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-demo/ormlite.migrations.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-demo/ormlite.migrations.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "0909aa6091e1372a64208d369cfae99bce49c535c4b6a52666339799dba999c6"
+      }
+    ]
+  },
+  {
+    "name": "generator-tenant-option-scope-id",
+    "beforeFiles": 3,
+    "afterFiles": 8,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.NoteOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0000.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "86474d9c56dd44fbb8ff20570811cdac323666767197eb53f3abab3f9e059eb9"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NotePurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+        "beforeLine": 79,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0001.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "dd7c19795805d006cab6c240a91e542bb1aa781f9da3e1fe14107c5ccb51dc21"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NamedOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+        "beforeLine": 94,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0002.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "1c3885549f12fb7d6f518474bfb56ad7192e9de63828d9ed59209a699e7be6d2"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NamedPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+        "beforeLine": 164,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0003.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "904f56a64fa4e6ae75b297a5239d3f59e95aada0a760a37b917673e3344101b5"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.TenantOptionScopeSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+        "beforeLine": 179,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0004.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "608035848e58e9e5bced8c12aafacec26609948b5a6cca5147e6b5692f0c8296"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.entities.g.cs.golden",
+        "beforeLine": 184,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.entities.0005.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "3bbe8a58cdc15996b4e7693736b4a0c029e9783ebb42fbd7fb5c3702e67f79af"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.migrationregistry.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.migrationregistry.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "32406ebd4bba58a2f9e8ceda909692f6cd3b9e75891dbcc79b6e91a5f5f67c83"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.TenantOptionScopeMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-tenant-option-scope-id/ormlite.migrations.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "23293e5dc1399434551761a5167421ce8b892cfba5a5294d85ff44afff22fbf5"
+      }
+    ]
+  },
+  {
+    "name": "generator-corpus-entities",
+    "beforeFiles": 3,
+    "afterFiles": 17,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.AccountOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0000.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "ccf21933b83c244bd01c22b772a0913847715738f6bfe6033bd91d12a7ba0df5"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.AccountPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 77,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0001.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "a48a8f2fe85a9e68c17009027972d4c578bba6acc691b49524de8eec528818a4"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.ProjectOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 92,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0002.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "bb4b211975821fe6eebaf4202dfb34ee668abfe8bac4238ec387f1e0235ae19c"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.ProjectPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 191,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0003.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "0175f1a8d7698904eb3151e4e46bc070011c5b33449f6ced5c4790e1edbafbf0"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.WorkItemOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 206,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0004.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "b62978fd3e91b9c05a28e4a06ff3a1e0aabf69ab195adf510d5efe88096952f7"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.WorkItemPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 297,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0005.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "fc8156a0b442918728c463e56531bbb3634a47349cfa98ec992e4ac61305ddeb"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.LabelOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 312,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0006.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "ff6d4b2e210888b10decf60f6490c8657a620f75926def33d221477f7a6830e0"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.MemberOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 378,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0007.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "80b38bc4f3559386cf76abfd441773a13e4f24c5b4a82c2575a673ef876c6e60"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.MemberPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 446,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0008.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "06dd8389e9c20945c71714b2851700abf6e49a8c6c757b746d3ed738d2043a3b"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.ProjectMemberOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 461,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0009.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "25b8acb6352e91668e0a70b4eb0299c1db5fae87650e1e1a5c35fcc107bf3902"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.EverythingOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 497,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0010.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "64c883523dfd8f6eba5c66567ded6167cd9138979c04f86d7193264cab87a2ad"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.KeylessOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 601,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0011.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "dd77262f2b786125b8e8df856791f7324c4d9d58ed8add03c78aba81dd423a82"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.InternalEntityOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 637,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0012.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "6ccc2a902f7925113a6fcf8fce27def3d25dc5b5ef6b7a9df06a768246c5dc16"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.CorpusEntitiesSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 703,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0013.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "7851847d5349be26cb2f4f8f0225f27e88f62ca779daf41d5f5cc30bca6322be"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.entities.g.cs.golden",
+        "beforeLine": 708,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.entities.0014.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "320717ff619e5229019c1ad0ea291834f3d56db8dd2d275b4c4db493c3e50adc"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.migrationregistry.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.migrationregistry.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "e43905437aa9a01eb515ef181d24282681cc15afbf99f3f102b52e11015b88b2"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.CorpusEntitiesMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-corpus-entities/ormlite.migrations.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "adfab801d43c88b13fd5db8e302914a35e38f003a1e63a9c7ab5be58fdffc193"
+      }
+    ]
+  },
+  {
+    "name": "generator-diagnostics",
+    "beforeFiles": 3,
+    "afterFiles": 32,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.UnmappedTypeOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0000.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "479588380bc47f85574effa6ba60897d840dafaacad27f1f18c2019283a024b3"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftColumnMissingOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 61,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0001.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "d67a1bd542861d1fd8ba6ec61683091b633d91ff853645ff60d994c62f71136c"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftColumnWrongTypeOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 127,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0002.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "95e09c9335842a38284941ca23903842253c2189e93d9416fe9dcf334eab4a9e"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftColumnNotMappedOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 195,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0003.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "7eeaf118fb45810c2d62bfe866c45b0d4d9fee91e07e1e3e5653373cb2d1ab8a"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.LiveOnlyOnPlainEntityOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 261,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0004.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "4435919c5dade171c7ddbfdf810cd91856c078beaa4f17ad39f0e0c108ffea4c"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.LiveOnlyNotUniqueOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 327,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0005.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "547bc6ae16a1bade3409465057fb87f4df217d31239f2f0ccb06208b461d9fd9"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.LiveOnlyNotUniquePurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 395,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0006.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "3735e33b75c9fd72bcf271278f41463592b1860d119b5b2b908e7ea26bbb794e"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.DuplicateIndexNameOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 410,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0007.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "09a081c6eddd8fba9efff4fc00ca399384ad76d86951ad1000ba9e81c3909a27"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftWithoutTenantOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 478,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0008.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "1e768dfedea1be48d3ed2070b8310a1510c6e752314c10defda64ef082190cf8"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftWithoutTenantPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 534,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0009.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "1068b1650b07b5cd0fc05713ccfc777cfa0c96174c5609e21a07c45a37698ce8"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftTenantWrongTypeOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 549,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0010.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "ff5a3e5bc350184469839051bda75341f8210402eab040a43d39ab979aa17bac"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftTenantWrongTypePurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 617,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0011.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "8d47a580c080ff1d0cd786c9bea8bf5502eb5cdd23d107adc3a87675d785f9cf"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftNamedTenantMissingOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 632,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0012.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "3a900b2bde17ff8c48077ef9a647d9d085977bec7c2c807785ae7e3af8f16819"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftNamedTenantMissingPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 688,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0013.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "cc2c83720547589da57db4850b32933fac3b69d90d93d16ef46198e47e358717"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftWithoutKeyOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 703,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0014.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "9dd512b9a78a36010043ab11cb776b7a0b66b7763ef72c3a4e0bf80f58fa9627"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftWithoutKeyPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 739,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0015.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "548dca104ee4c2bdcd79ef2d1b4aceabad180141b893b923af0a030da08b9686"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftWithTwoKeysOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 754,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0016.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "4770ce6a606d18d01489df9a61729930b8d2364bfce66e42d6e2e399a51e6f24"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftWithTwoKeysPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 792,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0017.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "8a44742cf9034048bba4f8ab171d3c81b120159500ccee783219112aae52796d"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftKeyNotGuidOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 807,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0018.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "8e7f0cfac95aed1ea85228bd669f53f217ea54f90de10e26085b223e915a3a07"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftKeyNotGuidPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 863,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0019.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "5666ea5d167bc529d7652e80489bb1992f8fb6753e0b2560a172abcb22d4866e"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftNullableKeyOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 878,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0020.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "866329a56e78041c9a9b35d9f79a3d1b4bab7329a2265d85c49b8c25a54c7269"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftNullableKeyPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 934,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0021.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "19cd5f4c9925f56290b7906b361e5a416dba081f6255896ab59ebb212b52d582"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftUnknownNamesOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 949,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0022.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "042e057d799fc9e53834e4fe988e13694b6456590c1a1d24765065423d95e438"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftUnknownNamesPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 1005,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0023.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "39aa7c686e94ecf8faadf7de88f72a79d6e4b099371926b9d687a9fcdfa0f328"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftLabelNotTextOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 1020,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0024.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "feb50e9a73f4f9b85b1fe976962b22bdb9b59cdbbb573ade9c5633a640ddc46a"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftLabelNotTextPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 1088,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0025.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "1beb922af5c60493bc516ee909fd4e29c55cf5d4cf15d4f5b62caea0051edb27"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftStatusPinnedOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 1103,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0026.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "d6ad387fa1577381f2aab8c549aff48af09e0fef64b6fb7727c2b50ec53e7c76"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.SoftStatusPinnedPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 1171,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0027.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "6152af14982486046ffb7b39379a596017ca4fe991fd15a6524f6668f3c30f41"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.CorpusDiagnosticsSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 1186,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0028.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "7af18d2bf35d4871d30b3a00df5ef5c7cd094be8278234dedd8640934f97ceb5"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.entities.g.cs.golden",
+        "beforeLine": 1191,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.entities.0029.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "bc10ddd6745b49360b6302dfe511fed9c2ba408cbb42ec6ef48960f5270716bc"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.migrationregistry.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.migrationregistry.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "907c29f3deca97201a92dc2f50e01195903528cadcc4e8b9c9429c22b1b34c96"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.CorpusDiagnosticsMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/corpus/generator-diagnostics/ormlite.migrations.g.cs.golden",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-after/corpus/generator-diagnostics/ormlite.migrations.g.cs.golden",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "51f89037b13e93cdf51c285a3bd452568fa7d20de7463b66b383cae9db5877c5"
+      }
+    ]
+  },
+  {
+    "name": "native10",
+    "beforeFiles": 3,
+    "afterFiles": 6,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.NeemleOrmLiteStreamingAotMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.Migrations.g.cs",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "efb317c9b7380ad45b862b5e0fec16e7823f1c7f39e5f9d050ef69b540e41f81"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.MigrationRegistry.g.cs",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "60930b946e0a69b07809619c26b61d31f7bfa1fbf5f32a4af8594cc57305c3ef"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.StreamEntryOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.Entities.g.cs",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "b931ef4eb2494f2870b9b9f5f33301b7ac341647c3bb5a159ef9043ed3690f27"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.StreamEntryPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.Entities.g.cs",
+        "beforeLine": 77,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "8aef4781be6188044ea59c3a8b3a5f90269caa271ad1511ede2447520186299b"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NeemleOrmLiteStreamingAotSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.Entities.g.cs",
+        "beforeLine": 92,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "521b581367e9f7b7b67a40bfefdd1b6cb2307d89b0efe319d2150009d0fc7c3d"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/native10/OrmLite.Entities.g.cs",
+        "beforeLine": 97,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native10-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "f71323e1c07c5c6bb250b139cc575064ed2302edac2f747c260d2bea22b834eb"
+      }
+    ]
+  },
+  {
+    "name": "native11",
+    "beforeFiles": 3,
+    "afterFiles": 6,
+    "facts": [
+      {
+        "type": "Neemle.OrmLite.Generated.NeemleOrmLiteStreamingAotMigrations",
+        "File": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.Migrations.g.cs",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.Migrations.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "efb317c9b7380ad45b862b5e0fec16e7823f1c7f39e5f9d050ef69b540e41f81"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMigrationsInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.MigrationRegistry.g.cs",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.MigrationGenerator/OrmLite.MigrationRegistry.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "60930b946e0a69b07809619c26b61d31f7bfa1fbf5f32a4af8594cc57305c3ef"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.StreamEntryOrm",
+        "File": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.Entities.g.cs",
+        "beforeLine": 7,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0000.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "b931ef4eb2494f2870b9b9f5f33301b7ac341647c3bb5a159ef9043ed3690f27"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.StreamEntryPurge",
+        "File": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.Entities.g.cs",
+        "beforeLine": 77,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0001.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "8aef4781be6188044ea59c3a8b3a5f90269caa271ad1511ede2447520186299b"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.NeemleOrmLiteStreamingAotSchema",
+        "File": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.Entities.g.cs",
+        "beforeLine": 92,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0002.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "521b581367e9f7b7b67a40bfefdd1b6cb2307d89b0efe319d2150009d0fc7c3d"
+      },
+      {
+        "type": "Neemle.OrmLite.Generated.OrmMetaInit",
+        "File": "artifacts/streaming/dev-generated-repair/before/native11/OrmLite.Entities.g.cs",
+        "beforeLine": 97,
+        "afterFile": "artifacts/streaming/dev-generated-repair/verified-native11-build/generated/StreamingAot/Neemle.OrmLite.Generator/Neemle.OrmLite.Generator.OrmGenerator/OrmLite.Entities.0003.g.cs",
+        "afterLine": 7,
+        "nonTriviaTokensEqual": true,
+        "initializerFlattenedEqual": false,
+        "mapFullTextEqual": true,
+        "oldTokenHash": "f71323e1c07c5c6bb250b139cc575064ed2302edac2f747c260d2bea22b834eb"
+      }
+    ]
+  }
+]

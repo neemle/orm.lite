@@ -1,0 +1,68 @@
+{
+  "sourceCommit": "f8fd2593b83b10b42b67d2fd34bb132663880613",
+  "sourceTree": "6c0663bb62e3b74a5ab6dc43985c9ff03c02da16",
+  "testTree": "3c0eae027bee12a914364e20657ebb8ca513aa57",
+  "generatedFiles": 106,
+  "legacyMaps": 2,
+  "proposalCounts": {
+    "modify": 14,
+    "add": 78,
+    "delete": 8
+  },
+  "tests": {
+    "unit": {
+      "total": "42",
+      "executed": "42",
+      "passed": "42",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "runtime10": {
+      "total": "67",
+      "executed": "67",
+      "passed": "67",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "runtime11": {
+      "total": "67",
+      "executed": "67",
+      "passed": "67",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    }
+  }
+}
