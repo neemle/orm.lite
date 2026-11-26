@@ -51,11 +51,13 @@ internal sealed class ScopeScheduler(LoadingScope owner)
         }
     }
 
-    internal Task CloseAsync(RelationScopeError error)
+    internal async Task CloseAsync(RelationScopeError error)
     {
         Task[] operations;
         lock (owner.Gate) { _closed ??= error; operations = _operations.ToArray(); }
-        _stop.Cancel();
-        return Task.WhenAll(operations);
+        var cleanup = new PolicyCleanupSteps();
+        cleanup.Run(() => _stop.Cancel());
+        await cleanup.RunAsync(() => Task.WhenAll(operations));
+        cleanup.ThrowIfFailed();
     }
 }

@@ -8,9 +8,25 @@ internal sealed class ScopeAttachments(LoadingScope scope)
 
     internal void Attach(object entity, IGraphEntityBinding binding, IPolicySession session)
     {
-        if (_entities.TryGetValue(entity, out var prior) && prior.Attached) return;
+        if (_entities.TryGetValue(entity, out var prior)) { prior.Validate(entity); return; }
         _entities.AddOrUpdate(entity, new PolicyAttachment(entity, binding, session));
         session.Remember(entity, binding);
+    }
+
+    internal PolicyParticipant Capture(object entity)
+    {
+        _entities.TryGetValue(entity, out var item);
+        item?.Validate(entity);
+        return new PolicyParticipant(entity, item, item?.Generation ?? 0);
+    }
+
+    internal void Validate(PolicyParticipant participant)
+    {
+        _entities.TryGetValue(participant.Entity, out var current);
+        if (!ReferenceEquals(current, participant.Attachment)
+            || current is not null && current.Generation != participant.Generation)
+            throw new RelationScopeException(RelationScopeError.Detached);
+        current?.Validate(participant.Entity);
     }
 
     private PolicyAttachment Get(object entity) => _entities.TryGetValue(entity, out var item) ? item

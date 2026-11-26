@@ -23,7 +23,13 @@ public sealed class LoadingScope : IAsyncDisposable
             binding.Context.PolicyLifetime.Add(this);
             binding.Unit?.PolicyLifetime.Add(this);
         }
-        catch { binding.Context.PolicyLifetime.Remove(this); Clock.Dispose(); throw; }
+        catch (Exception primary)
+        {
+            var cleanup = new PolicyCleanupSteps(primary);
+            cleanup.Run(() => binding.Context.PolicyLifetime.Remove(this));
+            cleanup.Run(Clock.Dispose);
+            throw;
+        }
         binding.Connection.StateChange += OnStateChange;
         Clock.Start();
     }
@@ -38,7 +44,7 @@ public sealed class LoadingScope : IAsyncDisposable
             PolicyOrigins.Record(connection, context);
             return new LoadingScope(new ScopeBinding(context, connection, null, options) { OwnsConnection = true });
         }
-        catch { await connection.DisposeAsync(); throw; }
+        catch (Exception primary) { await PolicyCleanup.DisposeConnectionAsync(connection, primary); throw; }
     }
 
     public static LoadingScope Bind(OrmContext context, UnitOfWork unitOfWork, LoadingScopeOptions options)
@@ -98,13 +104,16 @@ public sealed class LoadingScope : IAsyncDisposable
 
     private async Task CloseCoreAsync(RelationScopeError error)
     {
-        await Scheduler.CloseAsync(error);
-        Attachments.Invalidate();
-        Clock.Dispose();
-        Binding.Connection.StateChange -= OnStateChange;
-        Binding.Context.PolicyLifetime.Remove(this);
-        Binding.Unit?.PolicyLifetime.Remove(this);
-        if (Binding.OwnsConnection) await Binding.Connection.DisposeAsync();
+        var cleanup = new PolicyCleanupSteps();
+        await cleanup.RunAsync(() => Scheduler.CloseAsync(error));
+        cleanup.Run(Attachments.Invalidate);
+        cleanup.Run(Clock.Dispose);
+        cleanup.Run(() => Binding.Connection.StateChange -= OnStateChange);
+        cleanup.Run(() => Binding.Context.PolicyLifetime.Remove(this));
+        cleanup.Run(() => Binding.Unit?.PolicyLifetime.Remove(this));
+        if (Binding.OwnsConnection)
+            await cleanup.RunAsync(() => PolicyCleanup.DisposeConnectionAsync(Binding.Connection, null).AsTask());
+        cleanup.ThrowIfFailed();
     }
 
     public ValueTask DisposeAsync() => new(CloseAsync(RelationScopeError.Closed));

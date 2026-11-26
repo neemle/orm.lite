@@ -30,7 +30,7 @@ dotnet publish examples/relation-loading/RelationLoadingDemo.csproj -c Release \
 /tmp/relation-loading-demo/PolicySmoke postgres
 ```
 
-Each run ends with `policy smoke <provider> assertions=109 PASS` when the runtime assertion above is
+Each run ends with `policy smoke <provider> assertions=<count> PASS` when the runtime assertion above is
 enabled. Any failed scenario throws and exits unsuccessfully. The provider argument changes only the
 fixture; [Program.cs](Program.cs) invokes the same cases in every mode. The project can target .NET 11
 with `-p:PolicySmokeTfm=net11.0`; set `ORMLITE_EXPECT_DOTNET=11` for that run.
@@ -57,6 +57,21 @@ waiter cancellation, initiating cancellation, explicit retry and detach during I
 [QueueCases.cs](QueueCases.cs), [LimitCases.cs](LimitCases.cs) and [LifetimeCases.cs](LifetimeCases.cs)
 exercise finite queues, all six graph budgets, expiry and cancellation/draining on scope, context or
 unit-of-work shutdown. No demand retries implicitly.
+
+## Publication fences and cleanup failures
+
+[NestedDetachCases.cs](NestedDetachCases.cs) pauses the final author read in
+`Book10.Editor → Author2.Books → Book12.Author`, then detaches Book12 after its key was captured.
+The demand refuses before publication: Book12 stays detached, its original navigation remains unchanged,
+and the initiating navigation is not partially assigned.
+
+[CleanupCases.cs](CleanupCases.cs) uses generated mapping over real database rows while a connection wrapper
+injects close/dispose failures. It checks that the original mapper exception object and stack survive,
+that both cleanup operations are attempted, that failed scope registration keeps its original error,
+and that a cleanup-only failure is still propagated. Secondary cleanup failures stay private.
+
+Run either focused case with `sqlite publication-fence` or `sqlite cleanup` after the normal JIT command's
+`--`; `postgres` selects the other provider. The default command includes both cases and all earlier cases.
 
 ## Transactions and connection origins
 

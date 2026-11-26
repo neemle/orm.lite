@@ -26,10 +26,13 @@ internal static class PolicyReader<T> where T : class
         if (model is not null) limits = PolicyLimits.Intersect(limits, model.Limits);
         if (options.Scope is { } scope) return await InScopeAsync(state, options, scope, limits, ct);
         var scopeOptions = new LoadingScopeOptions(limits, 1, TimeSpan.MaxValue);
-        await using var owned = state.Connection is { } connection
+        var owned = state.Connection is { } connection
             ? LoadingScope.Bind(state.Database, connection, state.Transaction, scopeOptions)
             : await LoadingScope.OpenAsync(state.Database, scopeOptions, ct);
-        return await InScopeAsync(state, options, owned, limits, ct);
+        Exception? primary = null;
+        try { return await InScopeAsync(state, options, owned, limits, ct); }
+        catch (Exception error) { primary = error; throw; }
+        finally { await PolicyCleanup.DisposeAsync(owned, primary); }
     }
 
     private static Task<List<T>> InScopeAsync(GraphQueryState<T> state, RelationReadOptions options,

@@ -1,4 +1,5 @@
 using Neemle.OrmLite;
+using System.Runtime.CompilerServices;
 
 namespace PolicySmoke;
 
@@ -8,7 +9,14 @@ namespace PolicySmoke;
 public sealed class Author
 {
     [Key] public int Id { get; set; }
-    public string? Name { get; set; }
+    private string? _name;
+    internal static Exception? MappingFailure { get; set; }
+    public string? Name
+    {
+        get => _name;
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        set { if (MappingFailure is { } error) throw error; _name = value; }
+    }
     [RelationLoad(RelationLoadMode.Eager)] public List<Book> Books { get; set; } = [];
     [ManyToMany("policy_author_tags", "author_id", "tag_id")]
     [RelationLoad(RelationLoadMode.Lazy)] public List<Tag> Tags { get; set; } = [];
