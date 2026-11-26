@@ -14,16 +14,30 @@ internal sealed class PostgresSchemaRead(DbConnection connection, DbTransaction 
     internal async Task<IReadOnlyList<object?[]>> RowsAsync(string sql, IReadOnlyList<StatementParameter> parameters,
         int limit, CancellationToken ct)
     {
-        if (++_statements > request.Target.Limits.MaxStatements) throw new InvalidOperationException("metadata limit");
-        await using var command = connection.CreateCommand();
+        if (++_statements > request.Target.Limits.MaxStatements) throw new SchemaDiffException(SchemaDiffError.LimitExceeded);
+        var resources = new PostgresMetadataResources();
+        IReadOnlyList<object?[]>? rows = null;
+        Exception? primary = null;
+        try { rows = await ExecuteAsync(sql, parameters, limit, resources, ct); }
+        catch (Exception error) { primary = error; }
+        await resources.FinishAsync(primary, ct);
+        return rows!;
+    }
+
+    private async Task<IReadOnlyList<object?[]>> ExecuteAsync(string sql,
+        IReadOnlyList<StatementParameter> parameters, int limit, PostgresMetadataResources resources, CancellationToken ct)
+    {
+        var command = connection.CreateCommand();
+        resources.Add(command);
         command.Transaction = transaction;
         command.CommandText = sql;
         foreach (var p in parameters) command.AddParam(p.Name, p.Value);
-        await using var reader = await command.ExecuteReaderAsync(ct);
+        var reader = await command.ExecuteReaderAsync(ct);
+        resources.Add(reader);
         var rows = new List<object?[]>();
         while (await reader.ReadAsync(ct))
         {
-            if (rows.Count >= limit) throw new InvalidOperationException("metadata limit");
+            if (rows.Count >= limit) throw new SchemaDiffException(SchemaDiffError.LimitExceeded);
             var row = new object?[reader.FieldCount];
             for (var i = 0; i < row.Length; i++) row[i] = reader.IsDBNull(i) ? null : reader.GetValue(i);
             rows.Add(row);
@@ -34,7 +48,7 @@ internal sealed class PostgresSchemaRead(DbConnection connection, DbTransaction 
     internal void Object()
     {
         if (++_objects > request.Target.Limits.MaxCatalogObjects)
-            throw new InvalidOperationException("metadata limit");
+            throw new SchemaDiffException(SchemaDiffError.LimitExceeded);
     }
 
     internal static IReadOnlyList<StatementParameter> Parameter(string name, object value) =>

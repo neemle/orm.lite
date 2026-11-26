@@ -2,7 +2,7 @@ namespace Neemle.OrmLite;
 
 public sealed class SchemaDiffException : Exception
 {
-    internal SchemaDiffException(SchemaDiffError error, Exception? cause = null,
+    public SchemaDiffException(SchemaDiffError error, Exception? cause = null,
         IReadOnlyList<Exception>? cleanup = null, SchemaDiffApplyResult? result = null)
         : base("Schema diff " + error, cause)
     {

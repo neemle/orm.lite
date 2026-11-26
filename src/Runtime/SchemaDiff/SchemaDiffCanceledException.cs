@@ -2,7 +2,7 @@ namespace Neemle.OrmLite;
 
 public sealed class SchemaDiffCanceledException : OperationCanceledException
 {
-    internal SchemaDiffCanceledException(Exception cause, CancellationToken ct,
+    public SchemaDiffCanceledException(Exception cause, CancellationToken ct,
         IReadOnlyList<Exception>? cleanup = null, SchemaDiffApplyResult? result = null)
         : base("Schema diff canceled", cause, ct)
     {

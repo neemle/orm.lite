@@ -19,7 +19,7 @@ internal static class PostgresSchemaTable
         var parameters = PostgresSchemaRead.Parameter("table", table);
         var resolved = await read.RowsAsync(ResolutionSql, parameters, 1, ct);
         if (resolved.Count > 0 && (string)resolved[0][0]! != read.Request.Target.Scope.Namespace)
-            throw new InvalidOperationException("metadata shadow");
+            throw new SchemaDiffException(SchemaDiffError.Ownership);
         var rows = await read.RowsAsync(RelationSql, parameters, 1, ct);
         if (rows.Count == 0) return Missing(table);
         var row = rows[0];
