@@ -22,9 +22,7 @@ internal static class GraphEmitter
     {
         var root = CSharpSyntaxTree.ParseText(source).GetRoot();
         var members = root.DescendantNodes().Where(node =>
-            node is MethodDeclarationSyntax { Identifier.ValueText: "RegisterGraph" }
-            || node is PropertyDeclarationSyntax
-                { Parent: ClassDeclarationSyntax { Identifier.ValueText: "Paths" } }).ToArray();
+            node is BaseMethodDeclarationSyntax or FieldDeclarationSyntax or PropertyDeclarationSyntax).ToArray();
         return root.ReplaceNodes(members, (node, _) => WrapMember(node)).ToFullString();
     }
 
