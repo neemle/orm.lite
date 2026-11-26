@@ -34,7 +34,8 @@ internal sealed class PostgresMetadataResources
                 known.CleanupErrors.Concat(errors).ToArray(), known.ApplyResult);
         if (primary is OperationCanceledException && ct.IsCancellationRequested)
             return new SchemaDiffCanceledException(primary, ct, errors);
-        return new SchemaDiffException(primary is null ? SchemaDiffError.CleanupFailure : SchemaDiffError.ProviderFailure,
+        var error = primary is null ? SchemaDiffError.CleanupFailure : SchemaDiffError.ProviderFailure;
+        return new SchemaDiffException(error,
             primary, errors);
     }
 }

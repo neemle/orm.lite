@@ -34,7 +34,7 @@ internal static class PostgresSchemaInspect
         foreach (var table in request.Target.Scope.OwnedTables)
             tables.Add(await PostgresSchemaTable.ReadAsync(read, table, ct));
         var history = await PostgresSchemaHistory.ReadAsync(read, ct);
-        var database = PostgresSchemaRead.Hash(connection.DataSource + "|" + string.Join("|", identity[0]));
+        var database = PostgresSchemaRead.Fingerprint(new object?[] { connection.DataSource }.Concat(identity[0]));
         return SchemaDiffObservation.FromFacts(new(database, "postgres:schema-diff-v1", true),
             tables, history, request);
     }

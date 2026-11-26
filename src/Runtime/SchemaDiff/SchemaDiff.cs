@@ -8,7 +8,8 @@ public static class SchemaDiff
         var snapshot = SchemaDiffSnapshot.Capture(target);
         ValidateTarget(snapshot, observation.Target);
         var state = new SchemaCompareState(snapshot, observation);
-        if (!observation.Identity.Consistent) { state.Incomplete = true; state.Diagnostics.Add("inconsistent-observation"); }
+        if (!observation.Identity.Consistent)
+        { state.Incomplete = true; state.Diagnostics.Add("inconsistent-observation"); }
         if (!SchemaPhysicalTypes.Supported(observation.ProviderProfile))
         { state.Incomplete = true; state.Diagnostics.Add("unsupported-provider-profile"); }
         var history = new SchemaObjectRef("schema_migrations", null);

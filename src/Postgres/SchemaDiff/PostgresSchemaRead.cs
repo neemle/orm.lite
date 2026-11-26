@@ -57,6 +57,19 @@ internal sealed class PostgresSchemaRead(
     internal static IReadOnlyList<StatementParameter> Parameter(string name, object value) =>
         [new StatementParameter(0, name, value is uint oid ? (long)oid : value)];
 
+    internal static string Fingerprint(IEnumerable<object?> values)
+    {
+        var framed = new StringBuilder();
+        foreach (var value in values)
+        {
+            var text = value is IFormattable form
+                ? form.ToString(null, System.Globalization.CultureInfo.InvariantCulture) : value?.ToString();
+            framed.Append(text?.Length.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "-1")
+                .Append(':').Append(text);
+        }
+        return Hash(framed.ToString());
+    }
+
     internal static string Hash(string value) =>
         Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
 }

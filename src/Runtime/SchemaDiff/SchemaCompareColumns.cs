@@ -14,8 +14,15 @@ internal static class SchemaCompareColumns
         }
         if (type != actual.Type.GetKnown())
             state.Change(SchemaDiffChangeKind.TypeChange, item, SchemaDiffImpact.CompatibilityRisk, "physical-type");
+        Semantics(state, item, desired, actual);
+    }
+
+    private static void Semantics(SchemaCompareState state, SchemaObjectRef item,
+        ColumnDescriptor desired, SchemaObservedColumn actual)
+    {
         if ((desired.Nullable && !desired.Key) != actual.Nullable.GetKnown())
-            state.Change(SchemaDiffChangeKind.NullabilityChange, item, SchemaDiffImpact.CompatibilityRisk, "nullability");
+            state.Change(SchemaDiffChangeKind.NullabilityChange, item,
+                SchemaDiffImpact.CompatibilityRisk, "nullability");
         if ((desired.Key ? 1 : 0) != actual.KeyPosition.GetKnown())
             state.Change(SchemaDiffChangeKind.KeyOrConstraintChange, item, SchemaDiffImpact.CompatibilityRisk, "key");
         if (SchemaPhysicalTypes.Default(desired) != actual.Facts.Default.GetKnown().Kind)

@@ -7,7 +7,8 @@ internal sealed class SchemaCompareState(SchemaDiffSnapshot target, SchemaDiffOb
     internal SchemaDiffSnapshot Target => target;
     internal SchemaDiffObservation Observation => observation;
     internal List<SchemaDiffChange> Changes { get; } = [];
-    internal List<string> Diagnostics { get; } = ["physical-schema-only; historical logical-domain intent is not observed"];
+    internal List<string> Diagnostics { get; } =
+        ["physical-schema-only; historical logical-domain intent is not observed"];
     internal List<Node> Up { get; } = [];
     internal bool Incomplete { get; set; }
     internal bool Manual { get; set; }

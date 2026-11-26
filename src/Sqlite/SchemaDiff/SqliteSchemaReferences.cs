@@ -17,7 +17,7 @@ internal static class SqliteSchemaReferences
             foreach (var key in keys.Where(k => string.Equals(
                 (string)k[2]!, table, StringComparison.OrdinalIgnoreCase)))
                 stamps.Add(new("incoming-foreign-key", name + ":" + key[0] + ":" + key[1],
-                    SqliteSchemaRead.Hash(string.Join("|", key))));
+                    SqliteSchemaRead.Fingerprint(key)));
         }
         return SchemaFact<IReadOnlyList<SchemaObjectStamp>>.Known(stamps);
     }

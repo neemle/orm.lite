@@ -40,9 +40,8 @@ internal static class SqliteSchemaInventory
                 read.Request.Target.Limits.MaxCatalogObjects, ct);
             var definition = schema.SingleOrDefault(r => (string)r[0]! == "index"
                 && (string)r[1]! == (string)index[0]!);
-            var text = string.Join("|", index) + ";" + (string?)definition?[3]
-                + ";" + string.Join(";", terms.Select(t => string.Join("|", t)));
-            stamps.Add(new("index:" + (string)index[2]!, (string)index[0]!, SqliteSchemaRead.Hash(text)));
+            var values = index.Concat(new object?[] { definition?[3], terms.Count }).Concat(terms.SelectMany(t => t));
+            stamps.Add(new("index:" + (string)index[2]!, (string)index[0]!, SqliteSchemaRead.Fingerprint(values)));
         }
         return SchemaFact<IReadOnlyList<SchemaObjectStamp>>.Known(stamps);
     }

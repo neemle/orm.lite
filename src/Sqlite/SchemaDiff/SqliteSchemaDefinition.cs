@@ -26,7 +26,7 @@ internal static class SqliteSchemaDefinition
     }
 
     internal static string Stamp(TableDefinition definition) =>
-        SqliteSchemaRead.Hash(string.Join("|", definition.Tokens.Select(t => t.Kind + ":" + t.Value)));
+        SqliteSchemaRead.Fingerprint(definition.Tokens.SelectMany(t => new object?[] { t.Kind, t.Value }));
 
     internal static SchemaFact<bool> Identity(TableDefinition? definition) => definition is null
         ? SchemaFact<bool>.Unknown("column-definition")
