@@ -1,0 +1,108 @@
+{
+  "branch": "codex/orml-110-foreign-keys",
+  "testCommit": "7e35646a0f55f4f331f827cf68ebe07403a2778c",
+  "sourceTree": "a1e2a3184ff5c6c97e430aaebb067a7ffbbb5b2e",
+  "testTree": "13306f57f2988ba7d1b03a4de866db224dd10830",
+  "sourceBase": "2975315d166824635efdd86a4bb82e1615e0d29c",
+  "ownTestFiles": [
+    {
+      "path": "tests/Tests/ForeignKeys/Sdet/SdetDependencyGeneratorTests.cs",
+      "sha256": "e62a4c838b1f9b2e2a8dd75ed6004970b7a18fcf84deb1b55918f3e2001dfeb5"
+    },
+    {
+      "path": "tests/Tests/ForeignKeys/Sdet/SdetDiagnosticPrivacyTests.cs",
+      "sha256": "c5ffe3ae157524a05e4edf83843dd7a4fe54a4b20cc47036a74e203a1d58b6cc"
+    },
+    {
+      "path": "tests/Tests/ForeignKeys/Sdet/SdetExistingBaseline.cs",
+      "sha256": "06bff2d0ffe612d9482eeccd801d4ff915ec6f561fc7afc8f5f4302b1c8960bd"
+    },
+    {
+      "path": "tests/Tests/ForeignKeys/Sdet/SdetGeneratedWrites.cs",
+      "sha256": "57779fa94ab27d407933ec84b89ec5961c2e28089386a1c5a3d8bfc1c7af5be9"
+    },
+    {
+      "path": "tests/Tests/ForeignKeys/Sdet/SdetHostileIdentifiers.cs",
+      "sha256": "4297e9320188d8c9daa13c4822623720c26cd554a66a228ad94ec80d083cac07"
+    },
+    {
+      "path": "tests/Tests/ForeignKeys/Sdet/SdetPostgresMatrixTests.cs",
+      "sha256": "b611aa9e505065582f78e875e15c4b64d7b8d63be32a4516b8a4a91303b76471"
+    },
+    {
+      "path": "tests/Tests/ForeignKeys/Sdet/SdetSoftComposition.cs",
+      "sha256": "0bddeccb5d69f0b26ec64a840bf7dac381dce4559410eb4c4949c7061f24810b"
+    },
+    {
+      "path": "tests/Tests/ForeignKeys/Sdet/SdetSqliteMatrixTests.cs",
+      "sha256": "b2aabdfb7448cb535e98c97cac3c5a7f00e5c364daba74a3adb3b5672c81b361"
+    },
+    {
+      "path": "tests/Tests/ForeignKeys/Sdet/SdetUpdateWitness.cs",
+      "sha256": "92a43bc42ce46d2a26f32bdadcb0ede11e458a1e165a7121591b4e126b9da665"
+    }
+  ],
+  "scope": "Only new Sdet tests and sdet-final artifacts; source/old tests/ForeignKeysAot/projects/goldens/census readonly",
+  "sqlite": "Explicit ForeignKeys=false remains PRAGMA0/unenforced; enabled fixtures PRAGMA1+actual DML. Readonly Native Program omits ForeignKeys and actual NativeProbe requires effective PRAGMA1. No default-disabled assertion.",
+  "requirements": {
+    "ADR": "5d9cbf93-81b1-44c2-8558-58515ba4e1a4",
+    "ADRversion": 2,
+    "ADRimmutable": "fa78b166-5385-4d76-bd37-fb0c510c568f",
+    "Speck": "bd2b56c9-6d19-4c81-a3ce-dee320e99360",
+    "Speckversion": 2,
+    "Speckimmutable": "69018a3a-d88b-4c82-ac79-b4a7dc30ff62",
+    "useCase": "UC-003",
+    "previousGapCarrier": "e99e24ad-7106-4586-974f-4984f85a3a44"
+  },
+  "criterionMapping": {
+    "AC03": "SdetUpdateWitness real valid->other-parent->NULL->parent UPDATEs both providers plus unchanged existing orphan refusal",
+    "AC04/SEC02": "SdetSoftComposition generated Insert/Update/Delete, physical Cascade FK does not cascade soft-delete; unsaved navigation parent is not inserted",
+    "AC06/08": "SdetDependencyGeneratorTests generated self/cycle refusal and reversed/repeated discovery plan equality",
+    "AC07": "SdetExistingBaseline PostgreSQL exact history+orphan preservation and still-unconstrained writes after metadata opt-in",
+    "SEC01": "SdetHostileIdentifiers real quoted table/column endpoints+sentinel+orphan refusal both providers; SdetDiagnosticPrivacyTests invalid controls never echo payload/default",
+    "AC09/SEC02": "Actual readonly NativeAOT11 publish AND execute, enabled native PRAGMA/DML; existing explicit-disabled config test green both runtime scopes"
+  },
+  "limits": "Current bounded SDET witnesses/native11 PASS, full raw-floor FAIL; no overall QA/stage/802/security/docs/decomposition/review/merge/release pass.",
+  "coverage": {
+    "counters": {
+      "total": "3734",
+      "executed": "3732",
+      "passed": "3732",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "rawTotals": {
+      "functions": 312,
+      "coveredFunctions": 263,
+      "linePoints": 888,
+      "coveredLinePoints": 815,
+      "branches": 738,
+      "coveredBranches": 669,
+      "classes": 57,
+      "coveredClasses": 55
+    },
+    "incompleteMethods": 57,
+    "floor": "FAIL 100% raw changed-unit floor",
+    "scope": "All new FK files, complete modified generator/helper files and OrmSchema; modified OrmGenerator.Entity record and EntityDescriptor FK/new initialization units; no synthetic exclusion",
+    "limitations": [
+      "Broad whole-file scope includes unchanged helper methods, conservatively.",
+      "Per-method instrumentation linepoints are not unique physical source lines.",
+      "Dynamic generated-consumer source has no instrumented PDB; separate execution is not fabricated coverage."
+    ]
+  },
+  "cleanup": "2026-11-26T04:44:23.524294+00:00",
+  "ownedContainerAbsent": true,
+  "ownedNetworkAbsent": true,
+  "oldControlsUnchanged": true
+}

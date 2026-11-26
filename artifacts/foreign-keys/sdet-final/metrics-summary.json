@@ -1,0 +1,10 @@
+{
+  "files": 9,
+  "methods": 23,
+  "maxMethodLines": 24,
+  "maxCC": 2,
+  "maxParams": 5,
+  "maxTypeLines": 58,
+  "maxNesting": 0,
+  "longLines": 0
+}

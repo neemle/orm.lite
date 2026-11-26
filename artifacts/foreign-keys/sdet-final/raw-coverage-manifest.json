@@ -1,0 +1,8 @@
+{
+  "original": "artifacts/foreign-keys/sdet-final/coverage-results/7e2ef946-b097-4758-aa11-f709dc78cccd/_10437163e5aa_2026-11-26.04_43_35.cobertura.xml",
+  "sha256": "4792e28ba1f3a52e77cb071c2fe507fd61705a6e128b31f63304acea4df54b1d",
+  "bytes": 2588263,
+  "compressedBytes": 104932,
+  "collector": "Code Coverage;Format=Cobertura",
+  "exclusions": "NONE; Runtime+Generator module include scope only; original report broad changed-helper selection retained"
+}

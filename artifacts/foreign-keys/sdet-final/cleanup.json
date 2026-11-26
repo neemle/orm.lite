@@ -1,0 +1,343 @@
+{
+  "started": "2026-11-26T04:44:23.146036+00:00",
+  "verifiedContainer": {
+    "Id": "9aecfa6b201346dcc050fb2d5ef1492d90cc6fa9d2f2ddfa4e994d081569e1f3",
+    "Created": "2026-11-26T04:37:51.401638425Z",
+    "Path": "/usr/local/pgsql/bin/postgres",
+    "Args": [
+      "--launcher"
+    ],
+    "State": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 32562,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-26T04:37:51.4488958Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "unhealthy",
+        "FailingStreak": 192,
+        "Log": [
+          {
+            "Start": "2026-11-26T04:44:14.277336255Z",
+            "End": "2026-11-26T04:44:14.293212338Z",
+            "ExitCode": -1,
+            "Output": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"/bin/sh\": stat /bin/sh: no such file or directory"
+          },
+          {
+            "Start": "2026-11-26T04:44:16.29356388Z",
+            "End": "2026-11-26T04:44:16.314603172Z",
+            "ExitCode": -1,
+            "Output": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"/bin/sh\": stat /bin/sh: no such file or directory"
+          },
+          {
+            "Start": "2026-11-26T04:44:18.315793423Z",
+            "End": "2026-11-26T04:44:18.339883465Z",
+            "ExitCode": -1,
+            "Output": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"/bin/sh\": stat /bin/sh: no such file or directory"
+          },
+          {
+            "Start": "2026-11-26T04:44:20.340336924Z",
+            "End": "2026-11-26T04:44:20.355712716Z",
+            "ExitCode": -1,
+            "Output": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"/bin/sh\": stat /bin/sh: no such file or directory"
+          },
+          {
+            "Start": "2026-11-26T04:44:22.35602205Z",
+            "End": "2026-11-26T04:44:22.370330342Z",
+            "ExitCode": -1,
+            "Output": "OCI runtime exec failed: exec failed: unable to start container process: exec: \"/bin/sh\": stat /bin/sh: no such file or directory"
+          }
+        ]
+      }
+    },
+    "Image": "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117",
+    "ResolvConfPath": "/var/lib/docker/containers/9aecfa6b201346dcc050fb2d5ef1492d90cc6fa9d2f2ddfa4e994d081569e1f3/resolv.conf",
+    "HostnamePath": "/var/lib/docker/containers/9aecfa6b201346dcc050fb2d5ef1492d90cc6fa9d2f2ddfa4e994d081569e1f3/hostname",
+    "HostsPath": "/var/lib/docker/containers/9aecfa6b201346dcc050fb2d5ef1492d90cc6fa9d2f2ddfa4e994d081569e1f3/hosts",
+    "LogPath": "",
+    "Name": "/orml110-sdet-final-pg",
+    "RestartCount": 0,
+    "Driver": "overlayfs",
+    "Platform": "linux",
+    "MountLabel": "",
+    "ProcessLabel": "",
+    "AppArmorProfile": "",
+    "ExecIDs": null,
+    "HostConfig": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "local",
+        "Config": {}
+      },
+      "NetworkMode": "orml110-sdet-final",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": false,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": null,
+      "CgroupnsMode": "private",
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": false,
+      "SecurityOpt": null,
+      "Tmpfs": {
+        "/var/lib/postgresql/data": "uid=70,gid=70,mode=0700"
+      },
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 0,
+      "NanoCpus": 0,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 0,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": null,
+      "Ulimits": null,
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ]
+    },
+    "Storage": {
+      "RootFS": {
+        "Snapshot": {
+          "Name": "overlayfs"
+        }
+      }
+    },
+    "Mounts": [],
+    "Config": {
+      "Hostname": "9aecfa6b2013",
+      "Domainname": "",
+      "User": "70:70",
+      "AttachStdin": false,
+      "AttachStdout": false,
+      "AttachStderr": false,
+      "ExposedPorts": {
+        "5432/tcp": {}
+      },
+      "Tty": false,
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Env": [
+        "POSTGRES_HOST_AUTH_METHOD=trust",
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "PG_MAJOR=19",
+        "PG_VERSION=19.0",
+        "PGDATA=/var/lib/postgresql/data",
+        "LANG=C.UTF-8"
+      ],
+      "Cmd": null,
+      "Healthcheck": {
+        "Test": [
+          "CMD-SHELL",
+          "/usr/local/pgsql/bin/postgres --healthcheck"
+        ],
+        "Interval": 2000000000,
+        "Timeout": 5000000000,
+        "Retries": 30
+      },
+      "Image": "neemle/pg.lite:19",
+      "Volumes": {
+        "/var/lib/postgresql/data": {}
+      },
+      "WorkingDir": "/",
+      "Entrypoint": [
+        "/usr/local/pgsql/bin/postgres",
+        "--launcher"
+      ],
+      "Labels": {
+        "io.github.neemle.pglite.packed": "yes",
+        "io.github.neemle.pglite.platform": "linux/arm64, static, musl",
+        "io.github.neemle.pglite.postgres-major": "19",
+        "org.opencontainers.image.created": "2026-11-21T00:54:51+01:00",
+        "org.opencontainers.image.description": "PostgreSQL 19.0 as one static executable in a FROM scratch image",
+        "org.opencontainers.image.documentation": "https://github.com/neemle/pg.lite#configuration-of-the-image",
+        "org.opencontainers.image.licenses": "PostgreSQL",
+        "org.opencontainers.image.revision": "1b5badb2c66cb6bf4917efca747e6cd0ad6c81da",
+        "org.opencontainers.image.source": "https://github.com/neemle/pg.lite",
+        "org.opencontainers.image.title": "pg.lite",
+        "org.opencontainers.image.url": "https://github.com/neemle/pg.lite",
+        "org.opencontainers.image.version": "19.0",
+        "orml.owner": "cf33bbc4-sdet-final",
+        "orml.task": "ORML-110"
+      },
+      "StopSignal": "SIGINT"
+    },
+    "NetworkSettings": {
+      "SandboxID": "52d23c5b52c9ccb31cbfd5274702b2f8ff1c654c0a95fc251902b6f3c1aff091",
+      "SandboxKey": "/var/run/docker/netns/52d23c5b52c9",
+      "Ports": {
+        "5432/tcp": null
+      },
+      "Networks": {
+        "orml110-sdet-final": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "507694a86cdb6b6eeb3c25707321294f69023c910fb03d00f27cc220664386b9",
+          "EndpointID": "0f1014274db770cd854a6824875a9010efdef4e08f8cc9eab786ff75ddbf07f8",
+          "Gateway": "172.19.0.1",
+          "IPAddress": "172.19.0.2",
+          "MacAddress": "8a:6a:27:4d:8f:6d",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "orml110-sdet-final-pg",
+            "9aecfa6b2013"
+          ]
+        }
+      }
+    },
+    "ImageManifestDescriptor": {
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "digest": "sha256:abd4b86fec2f2d940ed3a7b79e925d2ff5286c9fbe819f8730ddbab421aaaae3",
+      "size": 735,
+      "platform": {
+        "architecture": "arm64",
+        "os": "linux"
+      }
+    }
+  },
+  "verifiedNetwork": {
+    "Name": "orml110-sdet-final",
+    "Id": "507694a86cdb6b6eeb3c25707321294f69023c910fb03d00f27cc220664386b9",
+    "Created": "2026-11-26T04:37:51.362503633Z",
+    "Scope": "local",
+    "Driver": "bridge",
+    "EnableIPv4": true,
+    "EnableIPv6": false,
+    "IPAM": {
+      "Driver": "default",
+      "Options": {},
+      "Config": [
+        {
+          "Subnet": "172.19.0.0/16",
+          "Gateway": "172.19.0.1"
+        }
+      ]
+    },
+    "Internal": false,
+    "Attachable": false,
+    "Ingress": false,
+    "ConfigFrom": {
+      "Network": ""
+    },
+    "ConfigOnly": false,
+    "Options": {
+      "com.docker.network.enable_ipv4": "true",
+      "com.docker.network.enable_ipv6": "false"
+    },
+    "Labels": {
+      "orml.owner": "cf33bbc4-sdet-final",
+      "orml.task": "ORML-110"
+    },
+    "Containers": {
+      "9aecfa6b201346dcc050fb2d5ef1492d90cc6fa9d2f2ddfa4e994d081569e1f3": {
+        "Name": "orml110-sdet-final-pg",
+        "EndpointID": "0f1014274db770cd854a6824875a9010efdef4e08f8cc9eab786ff75ddbf07f8",
+        "MacAddress": "8a:6a:27:4d:8f:6d",
+        "IPv4Address": "172.19.0.2/16",
+        "IPv6Address": ""
+      }
+    },
+    "Status": {
+      "IPAM": {
+        "Subnets": {
+          "172.19.0.0/16": {
+            "IPsInUse": 4,
+            "DynamicIPsAvailable": 65532
+          }
+        }
+      }
+    }
+  },
+  "argv": [
+    [
+      "docker",
+      "rm",
+      "-f",
+      "9aecfa6b201346dcc050fb2d5ef1492d90cc6fa9d2f2ddfa4e994d081569e1f3"
+    ],
+    [
+      "docker",
+      "network",
+      "rm",
+      "507694a86cdb6b6eeb3c25707321294f69023c910fb03d00f27cc220664386b9"
+    ]
+  ],
+  "containerAbsent": true,
+  "networkAbsent": true,
+  "finished": "2026-11-26T04:44:23.524294+00:00"
+}
