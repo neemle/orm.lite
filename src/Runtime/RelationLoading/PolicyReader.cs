@@ -40,6 +40,7 @@ internal static class PolicyReader<T> where T : class
         return scope.Scheduler.RunAsync(async token =>
         {
             using var registry = GraphModel.Enter();
+            using var policies = RelationPolicies.Enter();
             var work = new PolicyWork(scope, session, limits, token);
             if (options.Eager == EagerBehavior.UseModel)
                 PolicyPreflight.Validate(session.Operation(work.Context), work.Operation.RootBinding);

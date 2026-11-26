@@ -21,7 +21,8 @@ public sealed class UnitOfWork : IAsyncDisposable
     private bool _committed;
     private bool _disposed;
 
-    private UnitOfWork(DbConnection connection, ProviderTransaction started, ISqlProvider provider, TransactionTrace? trace)
+    private UnitOfWork(DbConnection connection, ProviderTransaction started, ISqlProvider provider, TransactionTrace?
+            trace)
     {
         _trace = trace;
         _connection = connection;

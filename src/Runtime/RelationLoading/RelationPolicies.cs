@@ -4,8 +4,27 @@ public static class RelationPolicies
 {
     private static readonly object Gate = new();
     private static readonly Dictionary<Type, PolicyModel> Models = [];
+    private static int _active;
 
     public static void Register<T>(GraphLimits limits, params RelationPolicy<T>[] policies) where T : class
+    {
+        var model = Build(limits, policies);
+        lock (Gate)
+        {
+            if (Models.TryGetValue(typeof(T), out var old))
+            {
+                if (old.Equivalent(model)) return;
+                throw Invalid();
+            }
+            if (_active != 0) throw Invalid();
+            Models.Add(typeof(T), model);
+            PolicyReadHooks<T>.Rows = PolicyReader<T>.RowsAsync;
+            PolicyReadHooks<T>.First = PolicyReader<T>.FirstAsync;
+            PolicyReadHooks<T>.Snapshot = PolicyReader<T>.SnapshotAsync;
+        }
+    }
+
+    private static PolicyModel Build<T>(GraphLimits limits, RelationPolicy<T>[] policies) where T : class
     {
         ArgumentNullException.ThrowIfNull(limits);
         if (policies is null || policies.Any(p => p is null)) throw Invalid();
@@ -16,20 +35,13 @@ public static class RelationPolicies
             if (!binding.Navigations.Contains(policy.Edge) || !modes.TryAdd(policy.Edge, policy.Mode)) throw Invalid();
             policy.Edge.Validate(binding, GraphModel.Find(policy.Edge.Target));
         }
-        var model = new PolicyModel(limits, modes);
-        lock (Gate)
-        {
-            if (Models.TryGetValue(typeof(T), out var old))
-            {
-                if (old.Equivalent(model)) return;
-                throw Invalid();
-            }
-            Models.Add(typeof(T), model);
-            PolicyReadHooks<T>.Rows = PolicyReader<T>.RowsAsync;
-            PolicyReadHooks<T>.First = PolicyReader<T>.FirstAsync;
-            PolicyReadHooks<T>.Snapshot = PolicyReader<T>.SnapshotAsync;
-        }
+        return new PolicyModel(limits, modes);
     }
+
+    internal static PolicyRegistryLease Enter()
+    { lock (Gate) { _active++; return new PolicyRegistryLease(); } }
+
+    internal static void Exit() { lock (Gate) _active--; }
 
     internal static PolicyModel? Find(Type type)
     { lock (Gate) return Models.GetValueOrDefault(type); }

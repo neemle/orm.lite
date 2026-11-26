@@ -27,7 +27,8 @@ public static class OrmExec
 
     private static async Task InsertCoreAsync(OrmContext db, DbConnection conn, EntityDescriptor d, object?[] values)
     {
-        await using var cmd = Command(conn, Compile(db, EntityStatements.Insert(d, values), StatementKind.Write, d.Table));
+        await using var cmd = Command(conn, Compile(db, EntityStatements.Insert(d, values), StatementKind.Write, d.Table
+            ));
         await cmd.RunNonQueryAsync(StatementKind.Write);
     }
 
@@ -47,11 +48,13 @@ public static class OrmExec
 
     private static async Task UpdateCoreAsync(OrmContext db, DbConnection conn, EntityDescriptor d, object?[] values)
     {
-        await using var cmd = Command(conn, Compile(db, EntityStatements.Update(d, values), StatementKind.Write, d.Table));
+        await using var cmd = Command(conn, Compile(db, EntityStatements.Update(d, values), StatementKind.Write, d.Table
+            ));
         await cmd.RunNonQueryAsync(StatementKind.Write);
     }
 
-    public static async Task<T?> GetAsync<T>(OrmContext db, EntityDescriptor d, object? key, Func<DbDataReader, T> map) where T : class
+    public static async Task<T?> GetAsync<T>(OrmContext db, EntityDescriptor d, object? key, Func<DbDataReader, T> map)
+            where T : class
     {
         ArgumentNullException.ThrowIfNull(db);
         if (PolicyReadHooks<T>.Snapshot is not null)
@@ -60,7 +63,8 @@ public static class OrmExec
         return await GetAsync(db, conn, d, key, map);
     }
 
-    public static async Task<T?> GetAsync<T>(OrmContext db, DbConnection conn, EntityDescriptor d, object? key, Func<DbDataReader, T> map) where T : class
+    public static async Task<T?> GetAsync<T>(OrmContext db, DbConnection conn, EntityDescriptor d, object? key, Func<
+            DbDataReader, T> map) where T : class
     {
         if (PolicyReadHooks<T>.Snapshot is not null)
             return await PolicyMaterializer.GetAsync(db, conn, d, key, map);
@@ -90,14 +94,13 @@ public static class OrmExec
     }
 
     public static async Task<List<T>> LoadLinkedAsync<T>(
-        OrmContext db, DbConnection conn, EntityDescriptor d, string navigation, object? thisKey, Func<DbDataReader, T> map)
+        OrmContext db, DbConnection conn, EntityDescriptor d, string navigation, object? thisKey, Func<DbDataReader, T>
+            map)
     {
         var link = LinkOf(d, navigation);
-        if (PolicyReadHooks<T>.Snapshot is { } policy)
-            return await policy(new GraphQueryState<T>(db, (Select)EntityStatements.LoadLinked(d, link, thisKey), map)
-                { Connection = conn }, new RelationReadOptions(), default);
         var list = new List<T>();
-        await using var cmd = Command(conn, Compile(db, EntityStatements.LoadLinked(d, link, thisKey), StatementKind.Read, link.OtherTable));
+        await using var cmd = Command(conn, Compile(db, EntityStatements.LoadLinked(d, link, thisKey), StatementKind.
+            Read, link.OtherTable));
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
         while (await r.ReadAsync()) list.Add(map(r));
         return list;
@@ -125,19 +128,23 @@ public static class OrmExec
         return PolicyReader<T>.SnapshotAsync(PolicyMaterializer.Linked(db, conn, read, options), options, ct);
     }
 
-    public static async Task AddLinkAsync(OrmContext db, DbConnection conn, EntityDescriptor d, string navigation, object? thisId, object? otherId)
+    public static async Task AddLinkAsync(OrmContext db, DbConnection conn, EntityDescriptor d, string navigation,
+            object? thisId, object? otherId)
     {
         var link = LinkOf(d, navigation);
         await using var writer = await GateAsync(db, conn);
-        await using var cmd = Command(conn, Compile(db, EntityStatements.AddLink(link, thisId, otherId), StatementKind.Write, link.JoinTable));
+        await using var cmd = Command(conn, Compile(db, EntityStatements.AddLink(link, thisId, otherId), StatementKind.
+            Write, link.JoinTable));
         await cmd.RunNonQueryAsync(StatementKind.Write);
     }
 
-    public static async Task RemoveLinkAsync(OrmContext db, DbConnection conn, EntityDescriptor d, string navigation, object? thisId, object? otherId)
+    public static async Task RemoveLinkAsync(OrmContext db, DbConnection conn, EntityDescriptor d, string navigation,
+            object? thisId, object? otherId)
     {
         var link = LinkOf(d, navigation);
         await using var writer = await GateAsync(db, conn);
-        await using var cmd = Command(conn, Compile(db, EntityStatements.RemoveLink(link, thisId, otherId), StatementKind.Write, link.JoinTable));
+        await using var cmd = Command(conn, Compile(db, EntityStatements.RemoveLink(link, thisId, otherId),
+            StatementKind.Write, link.JoinTable));
         await cmd.RunNonQueryAsync(StatementKind.Write);
     }
 

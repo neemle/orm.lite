@@ -17,7 +17,8 @@ internal static class PolicyRegistrationEmitter
             + string.Join(",", values.Take(3)) + "), new " + Runtime + "GraphWorkLimits("
             + string.Join(",", values.Skip(3)) + "))";
         var policies = policy.Declarations.Select(d => Runtime + "RelationPolicy<" + entity.Full + ">.For(Paths."
-            + Identifier(d.Navigation) + ", " + Runtime + "RelationLoadMode." + new[] { "Explicit", "Eager", "Lazy" }[d.Mode]);
+            + Identifier(d.Navigation) + ", " + Runtime + "RelationLoadMode." + new[] { "Explicit", "Eager", "Lazy" }[d.
+            Mode]);
         return "internal static void RegisterPolicies() { " + Runtime + "RelationPolicies.Register<" + entity.Full
             + ">(" + limits + string.Concat(policies.Select(call => ", " + call + ")")) + "); }";
     }

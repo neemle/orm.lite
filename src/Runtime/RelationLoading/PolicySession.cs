@@ -9,7 +9,8 @@ internal sealed class PolicySession<T>(GraphQueryState<T> state, GraphLimits lim
     public IPolicyOperation Operation(GraphReadContext context) => new PolicyOperation<T>(context,
         GraphPlanner.Build(state, new GraphRequest<T>(context.Limits)));
 
-    public void Remember(object entity, IGraphEntityBinding binding) => _known.Add(new PolicyKnownEntity(entity, binding));
+    public void Remember(object entity, IGraphEntityBinding binding) => _known.Add(new PolicyKnownEntity(entity, binding
+            ));
 
     public void Seed(GraphReadContext context)
     {

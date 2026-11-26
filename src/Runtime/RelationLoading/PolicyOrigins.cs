@@ -23,7 +23,8 @@ internal static class PolicyOrigins
     {
         lock (Gate)
         {
-            if (Origins.TryGetValue(connection, out var witness)) return witness.Require(context, connection, transaction);
+            if (Origins.TryGetValue(connection, out var witness)) return witness.Require(context, connection,
+            transaction);
             throw new RelationScopeException(RelationScopeError.InvalidResource);
         }
     }

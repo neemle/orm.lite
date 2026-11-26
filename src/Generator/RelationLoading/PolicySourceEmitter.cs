@@ -29,7 +29,8 @@ internal static class PolicySourceEmitter
         ImmutableArray<Entity> entities)
     {
         var existing = type.Members.OfType<MethodDeclarationSyntax>().Select(m => m.Identifier.ValueText).ToHashSet();
-        var members = PolicyKeyedEmitter.Members(entity).Concat(PolicyLoaderEmitter.Members(entity, existing, entities)).ToList();
+        var members = PolicyKeyedEmitter.Members(entity).Concat(PolicyLoaderEmitter.Members(entity, existing, entities))
+            .ToList();
         if (PolicyRegistrationEmitter.Member(entity) is { } registration) members.Add(registration);
         return type.AddMembers(members.Select(Parse).ToArray());
     }
@@ -44,7 +45,8 @@ internal static class PolicySourceEmitter
         var init = initializer.Members.OfType<MethodDeclarationSyntax>().Single(m => m.Identifier.ValueText == "Init");
         var modified = initializer.ReplaceNode(init, init.WithBody(init.Body!.AddStatements(
             SyntaxFactory.ParseStatement("RegisterPolicies();"))));
-        modified = modified.AddMembers(Parse("private static void RegisterPolicies() { " + string.Join(" ", calls) + " }"));
+        modified = modified.AddMembers(Parse("private static void RegisterPolicies() { " + string.Join(" ", calls) +
+            " }"));
         return root.ReplaceNode(initializer, modified);
     }
 

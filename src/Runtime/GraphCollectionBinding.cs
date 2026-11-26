@@ -50,7 +50,8 @@ public sealed class GraphCollectionBinding<TSource, TTarget, TKey> : GraphNaviga
         var groups = Group(rows);
         foreach (var source in sources)
         {
-            var value = groups.TryGetValue(context.SourceKey(source, this, () => _sourceKey(source)), out var group) ? new List<TTarget>(group) : [];
+            var value = groups.TryGetValue(context.SourceKey(source, this, () => _sourceKey(source)), out var group) ?
+            new List<TTarget>(group) : [];
             context.Assign(source, this, value, () => _assign(source, value));
         }
         return rows.Distinct(ReferenceEqualityComparer.Instance).ToList();

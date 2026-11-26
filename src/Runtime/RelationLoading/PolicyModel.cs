@@ -1,6 +1,7 @@
 namespace Neemle.OrmLite;
 
-internal sealed class PolicyModel(GraphLimits limits, IReadOnlyDictionary<IGraphNavigationBinding, RelationLoadMode> modes)
+internal sealed class PolicyModel(GraphLimits limits,
+    IReadOnlyDictionary<IGraphNavigationBinding, RelationLoadMode> modes)
 {
     internal GraphLimits Limits { get; } = limits;
     internal IReadOnlyDictionary<IGraphNavigationBinding, RelationLoadMode> Modes { get; } = modes;

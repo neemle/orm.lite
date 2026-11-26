@@ -51,7 +51,8 @@ public sealed class GraphLinkBinding<TSource, TTarget, TSourceKey, TTargetKey> :
         var groups = links.ToLookup(p => p.Source, p => p.Target);
         foreach (var source in sources)
         {
-            var value = groups[context.SourceKey(source, this, () => _sourceKey(source))].Distinct().Where(k => targets.ContainsKey(k))
+            var value = groups[context.SourceKey(source, this, () => _sourceKey(source))].Distinct().Where(k => targets.
+            ContainsKey(k))
                 .Select(k => targets[k]).ToList();
             context.Assign(source, this, value, () => _assign(source, value));
         }

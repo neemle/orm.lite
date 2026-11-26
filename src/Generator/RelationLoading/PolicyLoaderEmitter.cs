@@ -9,6 +9,10 @@ namespace Neemle.OrmLite.Generator;
 internal static class PolicyLoaderEmitter
 {
     internal static IEnumerable<string> Members(Entity entity, HashSet<string> existing,
+        ImmutableArray<Entity> entities) => References(entity, existing, entities)
+            .Concat(Collections(entity, existing, entities)).Concat(Links(entity, existing, entities));
+
+    private static IEnumerable<string> References(Entity entity, HashSet<string> existing,
         ImmutableArray<Entity> entities)
     {
         foreach (var relation in entity.Relations.Where(r => existing.Contains("Load" + r.Nav + "Async")
@@ -22,11 +26,22 @@ internal static class PolicyLoaderEmitter
                 + " = null; else " + assign;
             yield return Header(entity, relation.Nav, true) + " { ct.ThrowIfCancellationRequested(); " + assign + " }";
         }
+    }
+
+    private static IEnumerable<string> Collections(Entity entity, HashSet<string> existing,
+        ImmutableArray<Entity> entities)
+    {
         foreach (var collection in entity.Collections.Where(c => existing.Contains("Load" + c.Nav + "Async")
             && entities.Any(e => e.Full == c.ChildFull && GraphEmitter.Supported(e))))
             yield return Header(entity, collection.Nav, false) + " { e." + Identifier(collection.Nav) + " = await "
-                + Runtime + "RelationQueryExtensions.ToListAsync(" + collection.ChildType + "Orm.Query(db).Where(c => c."
+                + Runtime + "RelationQueryExtensions.ToListAsync(" + collection.ChildType +
+            "Orm.Query(db).Where(c => c."
                 + Identifier(collection.InverseFk) + " == e." + Identifier(collection.ParentKey) + "), options, ct); }";
+    }
+
+    private static IEnumerable<string> Links(Entity entity, HashSet<string> existing,
+        ImmutableArray<Entity> entities)
+    {
         foreach (var link in entity.ManyToMany.Where(m => existing.Contains("Load" + m.Nav + "Async")
             && entities.Any(e => e.Full == m.OtherFull && GraphEmitter.Supported(e))))
             yield return Linked(entity, link);

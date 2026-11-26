@@ -25,10 +25,20 @@ internal sealed class PolicyOriginWitness
 
     internal UnitOfWork? Require(OrmContext context, DbConnection connection, DbTransaction? transaction)
     {
+        RequireSource(context);
+        return RequireUnit(connection, transaction);
+    }
+
+    private void RequireSource(OrmContext context)
+    {
         if (Volatile.Read(ref _closed) != 0 || !_source.TryGetTarget(out var source)
             || !_provider.TryGetTarget(out var provider)) throw Invalid();
         if (!ReferenceEquals(source, context.DataSource) || !ReferenceEquals(provider, context.Provider))
             throw new RelationScopeException(RelationScopeError.DifferentScope);
+    }
+
+    private UnitOfWork? RequireUnit(DbConnection connection, DbTransaction? transaction)
+    {
         if (_unit is null) return null;
         if (!_unit.TryGetTarget(out var unit) || unit.Committed || unit.PolicyLifetime.IsClosed) throw Invalid();
         try

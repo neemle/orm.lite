@@ -33,7 +33,8 @@ internal static class RelationPolicyReader
         if (attributes.Length == 0) return;
         var mode = attributes[0].ConstructorArguments.FirstOrDefault().Value;
         if (attributes.Length != 1 || mode is not int value || value < 0 || value > 2)
-            issues.Add(new PolicyIssue(property.Name, "invalid or conflicting relation load mode", LocationOf(property)));
+            issues.Add(new PolicyIssue(property.Name, "invalid or conflicting relation load mode", LocationOf(property))
+            );
         else declarations.Add(new PolicyDeclaration(property.Name, value, LocationOf(property)));
     }
 

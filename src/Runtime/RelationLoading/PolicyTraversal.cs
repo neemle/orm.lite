@@ -30,7 +30,8 @@ internal sealed class PolicyTraversal(PolicyWork work)
         var node = work.Operation.Node(frontier.Binding, edge);
         var rows = await edge.LoadAsync(work.Context, node, parents);
         work.Track(rows, node.Target.Binding);
-        if (rows.Count != 0) _frontiers.Enqueue(new PolicyFrontier(node.Target.Binding, rows, frontier.Depth + 1, path));
+        if (rows.Count != 0) _frontiers.Enqueue(new PolicyFrontier(node.Target.Binding, rows, frontier.Depth + 1, path))
+            ;
     }
 
     private bool Visit(object parent, IGraphNavigationBinding edge)
