@@ -1,6 +1,5 @@
 using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Neemle.OrmLite.Generator;
 
@@ -15,7 +14,7 @@ internal static class ForeignKeyMigrationLayout
     private static IncrementalValueProvider<ImmutableArray<bool>> Intents(
         IncrementalGeneratorInitializationContext context, string name) =>
         context.SyntaxProvider.ForAttributeWithMetadataName(name,
-            static (node, _) => node is PropertyDeclarationSyntax, static (_, _) => true).Collect();
+            static (_, _) => true, static (_, _) => true).Collect();
 
     internal static string Format(string source, bool hasForeignKeys) =>
         hasForeignKeys ? new ForeignKeyLineLayout().Format(source) : source;
