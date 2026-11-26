@@ -100,26 +100,8 @@ public sealed class CalculatedFieldTests
         {
             await MigrationRunner.RunAsync(db.DataSource, db.Provider, Model.Contributions);
             Model.RunModuleInitializer();
-            var id = Guid.NewGuid();
-            await Assert.IsAssignableFrom<Task>(Call("Add", db, id, "MiXeD"));
-            Assert.Equal("mixed", await Assert.IsAssignableFrom<Task<string?>>(Call("Key", db, id)));
-            var list = await Assert.IsAssignableFrom<Task<string?[]>>(Call("List", db));
-            Assert.Equal(new string?[] { "mixed" }, list);
-            var relations = await Assert.IsAssignableFrom<Task<string?[]>>(Call("Relations", db, id));
-            Assert.Equal(new string?[] { "mixed", "child", "tag" }, relations);
-            await Assert.IsAssignableFrom<Task>(Call("Change", db, id));
-            Assert.Equal("changed", await Assert.IsAssignableFrom<Task<string?>>(Call("Key", db, id)));
-            await Assert.IsAssignableFrom<Task>(Call("Add", db, Guid.NewGuid(), null));
-            var nullable = await Assert.IsAssignableFrom<Task<string?[]>>(Call("List", db));
-            Assert.Contains(nullable, value => value is null);
-            Assert.Null(await Assert.IsAssignableFrom<Task<string?>>(Call("Key", db, Guid.NewGuid())));
-            await using var conn = await db.DataSource.OpenConnectionAsync();
-            await using var command = conn.CreateCommand();
-            command.CommandText = "SELECT name FROM pragma_table_info('calculated_notes')";
-            await using var reader = await command.ExecuteReaderAsync();
-            var columns = new List<string>();
-            while (await reader.ReadAsync()) columns.Add(reader.GetString(0));
-            Assert.Equal(["id", "label"], columns);
+            await CalculatedRoundTrip.VerifyAsync(db);
+            await AssertSqliteSchemaAsync(db);
         }
         finally
         {
@@ -127,6 +109,17 @@ public sealed class CalculatedFieldTests
             SqliteConnection.ClearAllPools();
             Directory.Delete(directory, true);
         }
+    }
+
+    private static async Task AssertSqliteSchemaAsync(OrmContext db)
+    {
+        await using var conn = await db.DataSource.OpenConnectionAsync();
+        await using var command = conn.CreateCommand();
+        command.CommandText = "SELECT name FROM pragma_table_info('calculated_notes')";
+        await using var reader = await command.ExecuteReaderAsync();
+        var columns = new List<string>();
+        while (await reader.ReadAsync()) columns.Add(reader.GetString(0));
+        Assert.Equal(["id", "label"], columns);
     }
 
     [Theory(DisplayName = "[SEC][UC-001] calculated values cannot bypass source redaction")]

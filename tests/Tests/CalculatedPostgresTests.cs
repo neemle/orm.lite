@@ -23,18 +23,7 @@ public sealed class CalculatedPostgresTests
             var model = CalculatedFieldTests.Model;
             model.RunModuleInitializer();
             await MigrationRunner.RunAsync(source, db.Provider, model.Contributions);
-            var id = Guid.NewGuid();
-            await Assert.IsAssignableFrom<Task>(CalculatedFieldTests.Call("Add", db, id, "MiXeD"));
-            Assert.Equal("mixed", await Assert.IsAssignableFrom<Task<string?>>(CalculatedFieldTests.Call("Key", db, id)));
-            var list = await Assert.IsAssignableFrom<Task<string?[]>>(CalculatedFieldTests.Call("List", db));
-            Assert.Equal(new string?[] { "mixed" }, list);
-            var graph = await Assert.IsAssignableFrom<Task<string?[]>>(CalculatedFieldTests.Call("Relations", db, id));
-            Assert.Equal(new string?[] { "mixed", "child", "tag" }, graph);
-            await Assert.IsAssignableFrom<Task>(CalculatedFieldTests.Call("Change", db, id));
-            Assert.Equal("changed", await Assert.IsAssignableFrom<Task<string?>>(CalculatedFieldTests.Call("Key", db, id)));
-            await Assert.IsAssignableFrom<Task>(CalculatedFieldTests.Call("Add", db, Guid.NewGuid(), null));
-            var nullable = await Assert.IsAssignableFrom<Task<string?[]>>(CalculatedFieldTests.Call("List", db));
-            Assert.Contains(nullable, value => value is null);
+            await CalculatedRoundTrip.VerifyAsync(db);
             await using var columns = source.CreateCommand(
                 "SELECT count(*) FROM information_schema.columns "
                 + "WHERE table_name = 'calculated_notes' AND column_name = 'lower_label'");
