@@ -31,7 +31,7 @@ internal static class GraphFrontier
         var terms = shape.Where?.Terms.ToList() ?? [];
         terms.Add(new InList(new ColumnRef(column), NodeList.Of(values)));
         return shape with { Where = new Where(NodeList.Of(terms)),
-            Limit = new Limit((int)Math.Min(int.MaxValue, remaining + 1)) };
+            Limit = remaining >= int.MaxValue ? null : new Limit((int)(remaining + 1)) };
     }
 
     private static int NextOrdinal(Node node)

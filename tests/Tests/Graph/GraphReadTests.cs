@@ -66,7 +66,7 @@ public sealed class GraphReadTests
         Assert.Empty(db.Statements);
     }
 
-    [Fact(DisplayName = "[UC-002 G3/G4] root, relation-row and statement bounds fail without partial return")]
+    [Fact(DisplayName = "[UC-002 G3/G4] root, row and statement bounds fail without partial return")]
     public async Task Work_budgets_refuse_at_the_boundary()
     {
         await using var db = await GraphDatabase.OpenAsync();

@@ -21,7 +21,8 @@ public sealed class GraphRequestTests
         var request = new GraphRequest<GraphAuthor>(GraphDomain.Limits(), paths);
         paths[0] = GraphDomain.AuthorTags;
         Assert.Same(GraphDomain.AuthorBooks.Edges[0], request.Paths[0].Edges[0]);
-        Assert.Throws<NotSupportedException>(() => ((IList<GraphPath<GraphAuthor>>)request.Paths).Clear());
+        Assert.Throws<NotSupportedException>(() =>
+            Assert.IsAssignableFrom<IList<GraphPath<GraphAuthor>>>(request.Paths).Clear());
     }
 
     [Fact(DisplayName = "[SEC-108-01] hostile path names are refused without echoing request text")]
@@ -79,5 +80,7 @@ public sealed class GraphRequestTests
             db.Authors().ToGraphListAsync(request, new CancellationToken(true)));
         Assert.Empty(db.Statements);
         Assert.Equal(3, (await db.Authors().ToGraphListAsync(request)).Count);
+        Assert.All(db.Statements, statement =>
+            Assert.DoesNotContain("LIMIT", statement.Text, StringComparison.OrdinalIgnoreCase));
     }
 }

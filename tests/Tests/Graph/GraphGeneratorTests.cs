@@ -7,7 +7,7 @@ namespace Neemle.OrmLite.Tests.Graph;
 [Collection("Graph")]
 public sealed class GraphGeneratorTests
 {
-    private const string Source = """
+    internal const string Source = """
         using System.Collections.Generic;
         using System.Linq;
         using System.Threading.Tasks;
@@ -64,7 +64,7 @@ public sealed class GraphGeneratorTests
         model.RunModuleInitializer();
         await using var db = await GraphDatabase.OpenAsync();
         var operations = model.Class("AuthorOrm").Assembly.GetType("Fixture.GraphOps", true)!;
-        var task = (Task<string>)operations.GetMethod("Read")!.Invoke(null, [db.Context])!;
+        var task = Assert.IsAssignableFrom<Task<string>>(operations.GetMethod("Read")!.Invoke(null, [db.Context]));
         Assert.Equal("1:2:2;2:2:1:same-editor=True", await task);
         Assert.Equal(5, db.Statements.Count);
     }

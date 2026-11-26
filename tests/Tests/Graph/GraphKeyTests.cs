@@ -7,7 +7,7 @@ namespace Neemle.OrmLite.Tests.Graph;
 [Collection("Graph")]
 public sealed class GraphKeyTests
 {
-    [Fact(DisplayName = "[AC-108-03/06] typed string, Guid, long and enum link keys preserve equality in finite cycles")]
+    [Fact(DisplayName = "[AC-108-03/06] string, Guid, long and enum keys retain equality in finite cycles")]
     public async Task Link_storage_values_are_read_as_the_registered_key_type()
     {
         await using var db = await GraphDatabase.OpenAsync();

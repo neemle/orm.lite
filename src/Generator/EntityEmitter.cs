@@ -60,7 +60,7 @@ internal static class EntityEmitter
         }
         file = SchemaClass(file, entities, asmToken);
         file = InitializerClass(file, entities);
-        return file.Render(RenderOptions);
+        return GraphEmitter.WrapMembers(file.Render(RenderOptions));
     }
 
     private static HashSet<(string Type, string Member)> ExcludedPairs(ImmutableArray<Entity> entities)
