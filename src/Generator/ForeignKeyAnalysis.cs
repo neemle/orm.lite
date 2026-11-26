@@ -190,7 +190,8 @@ internal sealed class ForeignKeyAnalysis
     {
         if (owner.Full == target.Full) return "DependencyCycle";
         if (intent.Action == 3) return "NonNullableSetNull";
-        return !ValidName(link.JoinTable) || !ValidName(link.ThisKey) || !ValidName(link.OtherKey) ? "InvalidName" : null;
+        return !ValidName(link.JoinTable) || !ValidName(link.ThisKey) || !ValidName(link.OtherKey)
+            ? "InvalidName" : null;
     }
 
     private void Add(string table, ForeignKeyModel key, Entity declaration, ForeignKeyIntent intent)
