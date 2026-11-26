@@ -1,4 +1,5 @@
 using Neemle.OrmLite.Postgres;
+using Neemle.OrmLite.Tests.Nodes;
 using Npgsql;
 using Xunit;
 
