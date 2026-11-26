@@ -53,6 +53,12 @@ public sealed class EntityDescriptor
 
     private readonly List<ManyToManyDescriptor> _manyToMany = [];
 
+    private readonly List<ForeignKeyDescriptor> _foreignKeys = [];
+
+    private readonly List<LinkIntent> _linkForeignKeys = [];
+
+    internal sealed record LinkIntent(string Navigation, LinkForeignKeyEnd End, LinkForeignKeyDeclaration Declaration);
+
     private EntityDescriptor(string clrType, string table, bool managed)
     {
         ClrType = clrType;
@@ -75,6 +81,25 @@ public sealed class EntityDescriptor
     public IReadOnlyList<ManyToManyDescriptor> ManyToMany => _manyToMany;
 
     public SoftDeletion? Soft { get; private set; }
+
+    public IReadOnlyList<ForeignKeyDescriptor> ForeignKeys => _foreignKeys;
+
+    internal IReadOnlyList<LinkIntent> LinkForeignKeys => _linkForeignKeys;
+
+    public EntityDescriptor ForeignKey(ForeignKeyDescriptor definition)
+    {
+        ArgumentNullException.ThrowIfNull(definition);
+        _foreignKeys.Add(definition);
+        return this;
+    }
+
+    public EntityDescriptor LinkForeignKey(string navigation, LinkForeignKeyEnd end,
+        LinkForeignKeyDeclaration declaration)
+    {
+        ArgumentNullException.ThrowIfNull(declaration);
+        _linkForeignKeys.Add(new LinkIntent(navigation, end, declaration));
+        return this;
+    }
 
     public static EntityDescriptor Of(string clrType, string table, bool managed) =>
         new(clrType ?? throw new ArgumentNullException(nameof(clrType)), table ?? throw new ArgumentNullException(nameof(table)), managed);

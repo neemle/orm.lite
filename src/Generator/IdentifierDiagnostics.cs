@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Entity = Neemle.OrmLite.Generator.OrmGenerator.Entity;
@@ -39,5 +40,11 @@ internal static class IdentifierDiagnostics
         foreach (var p in e.Props) yield return ("column", p.Column, at);
         foreach (var ix in e.Indexes) yield return ("index", ix.Name, ix.Location ?? at);
         foreach (var mm in e.ManyToMany) yield return ("join table", mm.JoinTable, at);
+        foreach (var key in e.ForeignKeyIntents.Where(k => ForeignKeyAnalysis.ValidName(k.Name)))
+            yield return ("constraint", key.Name, key.Location);
     }
+
+    internal static bool ForeignKeyNamesFit(Entity entity, ProviderSet providers) =>
+        providers.Providers.All(p => providers.Find(p)?.MaxIdentifierBytes is not { } limit
+            || entity.ForeignKeyIntents.All(k => Encoding.UTF8.GetByteCount(k.Name) <= limit));
 }
