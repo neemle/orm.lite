@@ -102,7 +102,7 @@
     "No build, executable test, provider, NativeAOT or coverage run in this documentation-only task.",
     "Reused model excerpts come from the already compiled consumer; the new Markdown was not compiled as an application.",
     "Existing tutorial fenced blocks preserved without new execution; their existing package version commands are unchanged and do not assert availability of this feature in that package.",
-    "Full raw coverage floor remains FAIL with 57 incomplete classes in the cited SDET record; no overall QA, GO_TO_MARKET, release or item PASS.",
+    "Full raw coverage floor remains FAIL with 57 incomplete methods; 55/57 classes covered in the cited SDET record; no overall QA, GO_TO_MARKET, release or item PASS.",
     "Runnable application demo is separate work.",
     "Subscription SaaS GUIDED pathway is inapplicable to this library guide; no telemetry or analytics integration."
   ]
