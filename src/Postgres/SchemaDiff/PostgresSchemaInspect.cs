@@ -31,7 +31,8 @@ internal static class PostgresSchemaInspect
             + "WHERE n.nspname=current_schema() AND c.relname='schema_migrations' AND c.relkind='r')", [], 1, ct);
         if (!(bool)exists[0][0]!) return new(SchemaFact<bool>.Known(false),
             SchemaFact<IReadOnlyList<string>>.Known([]));
-        var versions = await read.RowsAsync("SELECT version FROM schema_migrations", [],
+        var ns = read.Request.Target.Scope.Namespace.Replace("\"", "\"\"", StringComparison.Ordinal);
+        var versions = await read.RowsAsync("SELECT version FROM \"" + ns + "\".\"schema_migrations\"", [],
             read.Request.Target.Limits.MaxCatalogObjects, ct);
         return new(SchemaFact<bool>.Known(true),
             SchemaFact<IReadOnlyList<string>>.Known(versions.Select(r => (string)r[0]!).ToArray()));

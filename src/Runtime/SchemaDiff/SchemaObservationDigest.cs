@@ -10,9 +10,11 @@ internal static class SchemaObservationDigest
         var w = new SchemaDiffCanonical();
         w.Add("schema-physical-v1"); w.Add(identity.DatabaseIdentityDigest); w.Add(identity.ProviderProfile);
         w.Add(identity.Consistent.ToString()); w.Add(target.Scope.DatabaseScopeId); w.Add(target.Scope.Namespace);
+        w.Add(tables.Count.ToString(CultureInfo.InvariantCulture));
         foreach (var table in tables)
         {
-            w.Add(table.Name); w.Fact(table.Exists, v => w.Add(v.ToString()));
+            w.Add("table"); w.Add(table.Name); w.Fact(table.Exists, v => w.Add(v.ToString()));
+            w.Add(table.Columns.Count.ToString(CultureInfo.InvariantCulture));
             foreach (var column in table.Columns) Column(w, column);
             Inventory(w, table.Facts.Indexes); Inventory(w, table.Facts.Constraints);
             Inventory(w, table.Facts.Triggers); Inventory(w, table.Facts.DependentObjects);
@@ -30,7 +32,7 @@ internal static class SchemaObservationDigest
 
     private static void Column(SchemaDiffCanonical w, SchemaObservedColumn column)
     {
-        w.Add(column.Name);
+        w.Add("column"); w.Add(column.Name);
         w.Fact(column.Type, v =>
         {
             w.Add(v.CanonicalStorage); w.Add(v.Precision?.ToString(CultureInfo.InvariantCulture));
