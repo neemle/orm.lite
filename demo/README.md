@@ -208,6 +208,33 @@ seed does the same.
 
 ## Requested graphs (chapter 16a)
 
+### Run this chapter with JIT or NativeAOT
+
+Use the same project and [GraphChapter](Graph/GraphChapter.cs) checks directly after packing the current packages
+as shown in [Run it](#run-it):
+
+```sh
+dotnet run --project demo/OrmLiteDemo.csproj -c Release -- graph sqlite
+export ORMLITE_GRAPH_POSTGRES='Host=localhost;Username=postgres;Database=postgres'
+dotnet run --project demo/OrmLiteDemo.csproj -c Release -- graph postgres
+```
+
+The graph route creates and removes its own scratch SQLite folder or uniquely named `graph_chapter_*` PostgreSQL
+database. Use only a disposable PostgreSQL server where the account may create and drop databases. Credentials are
+never printed. The default invocation without `graph` runs the full numbered demo.
+
+With the NativeAOT prerequisites installed, publish the same project for the machine that will run the binary:
+
+```sh
+dotnet publish demo/OrmLiteDemo.csproj -c Release -r linux-arm64 -p:PublishAot=true -o artifacts/graph-native
+artifacts/graph-native/OrmLiteDemo graph sqlite
+artifacts/graph-native/OrmLiteDemo graph postgres
+```
+
+For .NET 11 use its SDK and `-p:DemoTfm=net11.0`, with a separate output directory. The chapter prints the actual
+runtime, its existing membership/page/identity/overflow checks and `graph chapter ok; scratch removed` on success.
+JIT and native executions use the same chapter, models and assertions described below.
+
 [GraphAuthor](Graph/GraphAuthor.cs), [GraphBook](Graph/GraphBook.cs) and [GraphTag](Graph/GraphTag.cs) declare
 collection, reference and many-to-many navigations. The [fixture](Graph/GraphFixture.cs) seeds four authors,
 three books and two tags, then removes its rows and links when the chapter finishes.

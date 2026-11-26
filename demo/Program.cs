@@ -46,6 +46,8 @@ using Neemle.OrmLite;
 using Neemle.OrmLite.Generated;
 using OrmLiteDemo;
 
+if (args.FirstOrDefault() == "graph") return await GraphDemo.RunAsync(args.Skip(1).ToArray());
+
 // The settings: provider and credentials come from appsettings.json (next to the program) and OrmLite__* environment
 // variables, never from code.
 var options = OrmLiteOptions.Load();
