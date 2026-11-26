@@ -272,3 +272,22 @@ Graph request and visibility errors carry identifier context rather than row or 
 [SQL diagnostics](diagnostics.md#parameter-values-and-redaction) still apply: parameter logging is off by
 default, and enabling it does not make heuristic secret redaction complete. Keep values disabled when that
 privacy boundary is required.
+
+## 6. Try model-based eager and asynchronous lazy loading
+
+The [runnable relation-loading demo](../examples/relation-loading/README.md#run) contains commands for
+JIT and NativeAOT on SQLite and PostgreSQL. It runs the same scenarios in every mode. Navigation getters
+perform no I/O; lazy relations load through an explicit asynchronous demand on a retained `LoadingScope`.
+
+- [Eager reads and per-call suppression](../examples/relation-loading/README.md#eager-reads-and-suppression):
+  [ReadCases.cs](../examples/relation-loading/ReadCases.cs).
+- [Lazy demand, cached state and detach](../examples/relation-loading/README.md#explicit-lazy-demand):
+  [LazyCases.cs](../examples/relation-loading/LazyCases.cs).
+- [Cancellation, retry and bounded lifetime](../examples/relation-loading/README.md#cancellation-faults-and-bounded-work):
+  [ConcurrencyCases.cs](../examples/relation-loading/ConcurrencyCases.cs) and
+  [LifetimeCases.cs](../examples/relation-loading/LifetimeCases.cs).
+- [Transactions and connection origins](../examples/relation-loading/README.md#transactions-and-connection-origins):
+  [BindingCases.cs](../examples/relation-loading/BindingCases.cs) and
+  [GateOriginCases.cs](../examples/relation-loading/GateOriginCases.cs).
+- [Visibility and captured keys](../examples/relation-loading/README.md#visibility-and-captured-keys):
+  [VisibilityCases.cs](../examples/relation-loading/VisibilityCases.cs).
