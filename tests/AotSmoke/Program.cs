@@ -26,6 +26,12 @@ if (!query.BoundParameters.SequenceEqual(expected))
     return 1;
 }
 
+if (!CalculatedProbe.Run())
+{
+    Console.Error.WriteLine("calculated field smoke failed");
+    return 1;
+}
+
 // The runtime this binary was compiled for; the CI leg compares it with the .NET version it was started for.
 Console.WriteLine("aot runtime: " + Environment.Version);
 Console.WriteLine("aot smoke ok");

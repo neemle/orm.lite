@@ -35,6 +35,8 @@ internal sealed class EntityScan
 
     public List<Prop> Props { get; } = new();
 
+    public List<IPropertySymbol> Calculated { get; } = new();
+
     public List<Unmapped> UnmappedProps { get; } = new();
 
     public List<(Prop Prop, AttributeData Attribute)> OnProperties { get; } = new();
@@ -51,6 +53,7 @@ internal sealed class EntityScan
     /// <summary>Sorts one property into the list that it belongs to, or leaves it out.</summary>
     public void Visit(IPropertySymbol m)
     {
+        if (HasAttr(m, "Neemle.OrmLite.CalculatedLowerAttribute")) { Calculated.Add(m); return; }
         if (!AccessRules.IsMappable(m)) { Found.Exclude(m, KeyLoss.ReasonOf(m), true); return; }
         if (HasAttr(m, "Neemle.OrmLite.NotAColumnAttribute")) return;
         var reference = FirstAttr(m, "Neemle.OrmLite.ReferenceAttribute");
