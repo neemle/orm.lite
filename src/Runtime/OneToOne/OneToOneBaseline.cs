@@ -15,6 +15,7 @@ internal static class OneToOneBaseline
         var unique = new List<CreateIndex>();
         var names = entities.SelectMany(e => e.Indexes.Select(i => i.Name))
             .Concat(entities.SelectMany(e => e.ForeignKeys.Select(k => k.Name)))
+            .Concat(entities.SelectMany(e => e.LinkForeignKeys.Select(k => k.Declaration.Name)))
             .Concat(entities.SelectMany(e => e.OneToOnes.Select(r => r.Constraints.ForeignKeyName)))
             .ToHashSet(StringComparer.OrdinalIgnoreCase);
         foreach (var owner in entities) AddOwner(owner, entities, extra, unique, names);
