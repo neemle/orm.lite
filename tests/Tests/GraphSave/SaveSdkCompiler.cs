@@ -39,13 +39,15 @@ internal static class SaveSdkCompiler
         var root = new DirectoryInfo(runtime).Parent!.Parent!.Parent!.FullName;
         var sdk = Directory.GetDirectories(Path.Combine(root, "sdk")).Order(StringComparer.Ordinal).Last();
         var compiler = Path.Combine(sdk, "Roslyn", "bincore", "csc.dll");
+        var composer = Path.Combine(Path.GetDirectoryName(typeof(OrmGenerator).Assembly.Location)!,
+            "Neemle.CSharpComposer.dll");
         var start = new ProcessStartInfo("dotnet")
         {
             RedirectStandardOutput = true, RedirectStandardError = true, UseShellExecute = false,
         };
         foreach (var argument in new[] { compiler, "-nologo", "-target:library", "-langversion:13.0",
             "-nullable:enable", "-out:" + output, "-generatedfilesout:" + directory,
-            "-analyzer:" + typeof(OrmGenerator).Assembly.Location, source })
+            "-analyzer:" + typeof(OrmGenerator).Assembly.Location, "-analyzer:" + composer, source })
             start.ArgumentList.Add(argument);
         var platform = ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")!).Split(Path.PathSeparator);
         foreach (var reference in platform.Append(typeof(OrmContext).Assembly.Location).Distinct())
