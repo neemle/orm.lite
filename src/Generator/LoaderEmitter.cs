@@ -86,9 +86,11 @@ internal static class LoaderEmitter
         TypeBuilder<FileBuilder> cls, CsType entity, Prop? key, ManyToMany mm, bool pure)
     {
         var thisKey = Cs.Id("e").Dot(key?.Name ?? "Id");
-        var load = Syn.Static("OrmExec", "LoadLinkedAsync").Of(
-            Cs.Id("db"), Cs.Id("conn"), Cs.Id("Descriptor"), Syn.Str(mm.Nav), thisKey,
-            Cs.Id(mm.OtherType + "Orm").Dot("Map"));
+        var target = Cs.Id(mm.OtherType + "Orm");
+        var read = new CsExpression(ExpressionKind.New, "", new Values<CsExpression>([
+            Cs.Id("Descriptor"), Syn.Str(mm.Nav), thisKey, target.Dot("Descriptor"), target.Dot("Map"),
+        ])) { Type = Cs.Generic(Syn.LiteNamespace + "LinkedRead", Cs.Type(mm.OtherFull)) };
+        var load = Syn.Static("OrmExec", "LoadLinkedAsync").Of(Cs.Id("db"), Cs.Id("conn"), read);
         cls = cls.Method(Syn.TaskType, "Load" + mm.Nav + "Async").Public().Static().Async()
             .Parameter(Syn.Context, "db").Parameter(Syn.Connection, "conn").Parameter(entity, "e")
             .Body(Cs.Statement(Cs.Assign(Cs.Id("e").Dot(mm.Nav), Cs.Await(load)))).End();
