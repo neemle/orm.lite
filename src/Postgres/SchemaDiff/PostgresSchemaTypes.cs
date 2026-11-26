@@ -1,3 +1,4 @@
+using Data = global::Neemle.OrmLite.Postgres.PostgresSchemaDataLiterals;
 using System.Globalization;
 
 namespace Neemle.OrmLite.Postgres;
@@ -6,13 +7,14 @@ internal static class PostgresSchemaTypes
 {
     private static readonly HashSet<string> Plain = new(StringComparer.Ordinal)
     {
-        "integer", "bigint", "boolean", "double precision", "text", "uuid", "date", "timestamp with time zone", "jsonb",
+        "integer", "bigint", "boolean", Data.DoublePrecisionStorage, "text", "uuid", "date",
+             Data.TimestampStorage, "jsonb",
     };
 
     internal static SchemaFact<SchemaStorageType> Parse(string native)
     {
         if (Plain.Contains(native)) return SchemaFact<SchemaStorageType>.Known(new(native, null, null));
-        if (native.StartsWith("numeric(", StringComparison.Ordinal) && native.EndsWith(')'))
+        if (native.StartsWith(Data.NumericTypePrefix, StringComparison.Ordinal) && native.EndsWith(')'))
             return Numeric(native[8..^1]);
         return SchemaFact<SchemaStorageType>.Unsupported("native-type-grammar");
     }
@@ -31,11 +33,12 @@ internal static class PostgresSchemaTypes
     internal static SchemaFact<SchemaDefault> Default(string? expression) => expression switch
     {
         null => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.None)),
-        "0" or "0::integer" or "0::bigint" or "0::double precision" =>
+        "0" or "0::integer" or "0::bigint" or Data.ZeroDoublePrecision =>
             SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.Zero)),
         "false" => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.False)),
-        "''::text" => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.EmptyText)),
-        "now()" or "CURRENT_TIMESTAMP" => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.CurrentTime)),
+        Data.EmptyTextDefault => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.EmptyText)),
+        Data.CurrentTimeDefault or "CURRENT_TIMESTAMP" 
+            => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.CurrentTime)),
         _ => SchemaFact<SchemaDefault>.Unsupported("default-grammar"),
     };
 

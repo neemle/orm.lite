@@ -1,3 +1,4 @@
+using Data = global::Neemle.OrmLite.Sqlite.SqliteSchemaDataLiterals;
 using System.Data.Common;
 using Microsoft.Data.Sqlite;
 
@@ -23,10 +24,14 @@ internal static class SqliteSchemaInspect
         return observation!;
     }
 
+    internal static Task<SchemaDiffObservation> GuardedAsync(DbConnection connection,
+        DbTransaction transaction, SchemaDiffInspection request, CancellationToken ct) =>
+        CoreAsync(new SqliteSchemaRead(connection, transaction, request), ct);
+
     private static async Task<SchemaDiffObservation> CoreAsync(SqliteSchemaRead read, CancellationToken ct)
     {
         var databases = await SqliteSchemaAdmission.ValidateAsync(read, ct);
-        var schema = await read.RowsAsync("SELECT type,name,tbl_name,sql FROM main.sqlite_schema", [],
+        var schema = await read.RowsAsync(Data.Schema, [],
             read.Request.Target.Limits.MaxCatalogObjects, ct);
         foreach (var _ in schema) read.Object();
         var tables = new List<SchemaObservedTable>();
@@ -50,9 +55,25 @@ internal static class SqliteSchemaInspect
         if ((string)history[0]! != "table" || SqliteSchemaDefinition.IsVirtual((string?)history[3]))
             return new(SchemaFact<bool>.Unsupported("history-kind"),
             SchemaFact<IReadOnlyList<string>>.Unknown("history-kind"));
-        var versions = await read.RowsAsync("SELECT version FROM main.schema_migrations", [],
+        if (!await HistoryLayoutAsync(read, history, schema, ct))
+            return new(SchemaFact<bool>.Known(true),
+                SchemaFact<IReadOnlyList<string>>.Unsupported("history-layout-or-effects"));
+        var versions = await read.RowsAsync(Data.HistoryVersions, [],
             read.Request.Target.Limits.MaxCatalogObjects, ct);
         return new(SchemaFact<bool>.Known(true),
             SchemaFact<IReadOnlyList<string>>.Known(versions.Select(r => (string)r[0]!).ToArray()));
     }
+    private static async Task<bool> HistoryLayoutAsync(SqliteSchemaRead read, object?[] history,
+        IReadOnlyList<object?[]> schema, CancellationToken ct)
+    {
+        var definition = SqliteSchemaDefinition.Parse((string?)history[3]);
+        var columns = await SqliteSchemaColumns.ReadAsync(read, MigrationRunner.HistoryTable, definition, ct);
+        if (!SqliteHistoryLayout.Valid(columns)) return false;
+        var facts = await SqliteSchemaInventory.ReadAsync(read, MigrationRunner.HistoryTable, definition, schema, ct);
+        return Empty(facts.Constraints) && Empty(facts.Triggers) && Empty(facts.DependentObjects);
+    }
+
+    private static bool Empty(SchemaFact<IReadOnlyList<SchemaObjectStamp>> fact) =>
+        fact.Knowledge == SchemaKnowledge.Known && fact.GetKnown().Count == 0;
+
 }

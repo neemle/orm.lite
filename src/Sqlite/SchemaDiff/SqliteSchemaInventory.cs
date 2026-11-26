@@ -1,3 +1,4 @@
+using Data = global::Neemle.OrmLite.Sqlite.SqliteSchemaDataLiterals;
 namespace Neemle.OrmLite.Sqlite;
 
 internal static class SqliteSchemaInventory
@@ -29,14 +30,14 @@ internal static class SqliteSchemaInventory
     private static async Task<SchemaFact<IReadOnlyList<SchemaObjectStamp>>> IndexesAsync(
         SqliteSchemaRead read, string table, IReadOnlyList<object?[]> schema, CancellationToken ct)
     {
-        var indexes = await read.RowsAsync("SELECT name,\"unique\",origin,partial "
-            + "FROM pragma_index_list(@table,'main')",
+        var indexes = await read.RowsAsync(Data.IndexSelect
+            + Data.IndexPragma,
             SqliteSchemaRead.Parameter("table", table), read.Request.Target.Limits.MaxCatalogObjects, ct);
         var stamps = new List<SchemaObjectStamp>();
         foreach (var index in indexes)
         {
-            var terms = await read.RowsAsync("SELECT seqno,cid,name,desc,coll,\"key\" "
-                + "FROM pragma_index_xinfo(@index,'main')", SqliteSchemaRead.Parameter("index", (string)index[0]!),
+            var terms = await read.RowsAsync(Data.IndexTermSelect
+                + Data.IndexTermPragma, SqliteSchemaRead.Parameter("index", (string)index[0]!),
                 read.Request.Target.Limits.MaxCatalogObjects, ct);
             var definition = schema.SingleOrDefault(r => (string)r[0]! == "index"
                 && (string)r[1]! == (string)index[0]!);

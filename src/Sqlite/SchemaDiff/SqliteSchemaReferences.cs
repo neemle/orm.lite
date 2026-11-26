@@ -1,3 +1,4 @@
+using Data = global::Neemle.OrmLite.Sqlite.SqliteSchemaDataLiterals;
 namespace Neemle.OrmLite.Sqlite;
 
 internal static class SqliteSchemaReferences
@@ -12,7 +13,7 @@ internal static class SqliteSchemaReferences
         foreach (var source in schema.Where(r => (string)r[0]! == "table"))
         {
             var name = (string)source[1]!;
-            var keys = await read.RowsAsync("SELECT * FROM pragma_foreign_key_list(@table,'main')",
+            var keys = await read.RowsAsync(Data.ForeignKeys,
                 SqliteSchemaRead.Parameter("table", name), read.Request.Target.Limits.MaxCatalogObjects, ct);
             foreach (var key in keys.Where(k => string.Equals(
                 (string)k[2]!, table, StringComparison.OrdinalIgnoreCase)))

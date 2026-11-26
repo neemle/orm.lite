@@ -1,3 +1,4 @@
+using Data = global::Neemle.OrmLite.Sqlite.SqliteSchemaDataLiterals;
 namespace Neemle.OrmLite.Sqlite;
 
 internal static class SqliteSchemaTypes
@@ -15,8 +16,10 @@ internal static class SqliteSchemaTypes
         null => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.None)),
         "0" => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.Zero)),
         "FALSE" or "false" => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.False)),
-        "''" => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.EmptyText)),
-        "CURRENT_TIMESTAMP" => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.CurrentTime)),
+        Data.EmptyTextDefault => SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.EmptyText)),
+        "CURRENT_TIMESTAMP" or Data.ClockDefault
+            or Data.ParenthesizedClockDefault =>
+            SchemaFact<SchemaDefault>.Known(new(SchemaDefaultKind.CurrentTime)),
         _ => SchemaFact<SchemaDefault>.Unsupported("default-grammar"),
     };
 }

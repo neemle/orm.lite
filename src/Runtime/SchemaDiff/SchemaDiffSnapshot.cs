@@ -31,6 +31,7 @@ internal sealed class SchemaDiffSnapshot
         SchemaDiffBudget.Validate(target.Limits);
         var tables = SchemaDiffNames.Limited(target.Scope.OwnedTables, target.Limits.MaxTables);
         SchemaDiffNames.Unique(tables);
+        RefuseLibraryOwnership(tables);
         if (tables.Count == 0) throw new SchemaDiffException(SchemaDiffError.Ownership);
         var entities = SchemaDiffNames.Limited(target.Schema.Entities.Where(e => e.Managed), target.Limits.MaxTables);
         foreach (var entity in entities) SchemaDiffNames.Unique(entity.Columns.Select(c => c.Column));
@@ -46,4 +47,11 @@ internal sealed class SchemaDiffSnapshot
             e.Indexes.Count > 0 || e.Soft is not null || e.ManyToMany.Count > 0)).ToArray());
         return new SchemaDiffSnapshot(target, tables, baseline, desired);
     }
+    private static void RefuseLibraryOwnership(IReadOnlyList<string> tables)
+    {
+        if (tables.Any(t => string.Equals(t, MigrationRunner.HistoryTable, StringComparison.OrdinalIgnoreCase)
+            || string.Equals(t, RowHistoryDdl.TableName, StringComparison.OrdinalIgnoreCase)))
+            throw new SchemaDiffException(SchemaDiffError.Ownership);
+    }
+
 }

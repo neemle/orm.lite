@@ -1,18 +1,12 @@
+using Data = global::Neemle.OrmLite.Postgres.PostgresSchemaDataLiterals;
 using System.Globalization;
 
 namespace Neemle.OrmLite.Postgres;
 
 internal static class PostgresSchemaTable
 {
-    private const string RelationSql = """
-        SELECT c.oid,c.relkind::text,c.relpersistence::text,c.relispartition,c.relrowsecurity,c.reloptions
-        FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
-        WHERE n.nspname=current_schema() AND c.relname=@table
-        """;
-    private const string ResolutionSql = """
-        SELECT n.nspname FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
-        WHERE c.oid=pg_catalog.to_regclass(pg_catalog.quote_ident(@table))
-        """;
+    private const string RelationSql = Data.TableFacts;
+    private const string ResolutionSql = Data.ResolveTable;
 
     internal static async Task<SchemaObservedTable> ReadAsync(
         PostgresSchemaRead read, string table, CancellationToken ct)

@@ -2,6 +2,9 @@ namespace Neemle.OrmLite;
 
 public static class SchemaDiff
 {
+    public static Task<SchemaDiffObservation> ObserveAsync(OrmContext context, SchemaDiffTarget target,
+        CancellationToken ct = default) => SchemaObserve.RunAsync(context, target, ct);
+
     public static SchemaDiffReport Compare(SchemaDiffTarget target, SchemaDiffObservation observation)
     {
         ArgumentNullException.ThrowIfNull(observation);

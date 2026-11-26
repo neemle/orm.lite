@@ -1,3 +1,4 @@
+using Data = global::Neemle.OrmLite.Postgres.PostgresSchemaDataLiterals;
 using System.Data;
 using System.Data.Common;
 
@@ -13,20 +14,28 @@ internal static class PostgresSchemaInspect
         resources.Add(tx);
         SchemaDiffObservation? observation = null;
         Exception? primary = null;
-        try { observation = await CoreAsync(new PostgresSchemaRead(connection, tx, request), ct); }
+        try
+        {
+            var read = new PostgresSchemaRead(connection, tx, request);
+            await read.RowsAsync(Data.ReadOnlyTransaction, [], 1, ct);
+            observation = await CoreAsync(read, ct);
+        }
         catch (Exception error) { primary = error; }
         await resources.FinishAsync(primary, ct);
         return observation!;
     }
 
+    internal static Task<SchemaDiffObservation> GuardedAsync(DbConnection connection,
+        DbTransaction transaction, SchemaDiffInspection request, CancellationToken ct) =>
+        CoreAsync(new PostgresSchemaRead(connection, transaction, request), ct);
+
     private static async Task<SchemaDiffObservation> CoreAsync(PostgresSchemaRead read, CancellationToken ct)
     {
         var connection = read.Connection;
         var request = read.Request;
-        await read.RowsAsync("SET TRANSACTION READ ONLY", [], 1, ct);
-        var identity = await read.RowsAsync("SELECT current_database(),current_schema(),"
-            + "current_setting('server_version_num'),"
-            + "(SELECT oid FROM pg_catalog.pg_database WHERE datname=current_database())",
+        var identity = await read.RowsAsync(Data.DatabaseIdentityHead
+            + Data.DatabaseVersion
+            + Data.DatabaseOid,
             [], 1, ct);
         if (identity.Count == 1 && (!int.TryParse((string)identity[0][2]!, out var version)
             || version is < 190000 or >= 200000)) throw new SchemaDiffException(SchemaDiffError.UnsupportedProvider);

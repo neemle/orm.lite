@@ -1,3 +1,4 @@
+using Data = global::Neemle.OrmLite.Sqlite.SqliteSchemaDataLiterals;
 using System.Globalization;
 
 namespace Neemle.OrmLite.Sqlite;
@@ -7,8 +8,8 @@ internal static class SqliteSchemaColumns
     internal static async Task<IReadOnlyList<SchemaObservedColumn>> ReadAsync(
         SqliteSchemaRead read, string table, ParsedTable? definition, CancellationToken ct)
     {
-        var rows = await read.RowsAsync("SELECT name,type,\"notnull\",dflt_value,pk,hidden "
-            + "FROM pragma_table_xinfo(@table,'main')", SqliteSchemaRead.Parameter("table", table),
+        var rows = await read.RowsAsync(Data.ColumnSelect
+            + Data.ColumnPragma, SqliteSchemaRead.Parameter("table", table),
             read.Request.Target.Limits.MaxColumns, ct);
         return rows.Select(row => Column(row, definition)).ToArray();
     }
