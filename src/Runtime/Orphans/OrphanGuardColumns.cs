@@ -2,8 +2,18 @@ using Neemle.OrmLite.Nodes;
 
 namespace Neemle.OrmLite;
 
+/// <summary>Compares a table's catalog columns with the entity mapping the replacement writes through.</summary>
 public static class OrphanGuardColumns
 {
+    /// <summary>
+    /// Refuses unless the table has exactly the mapped columns, each with the mapped nullability, key membership and
+    /// type, and none of them computed.
+    /// </summary>
+    /// <param name="provider">The provider whose type spelling the catalog uses.</param>
+    /// <param name="entity">The mapped entity.</param>
+    /// <param name="columns">The columns the catalog reported.</param>
+    /// <exception cref="OrphanException"><see cref="OrphanError.UnsupportedMapping"/> on a mismatch,
+    /// <see cref="OrphanError.UnverifiedEffects"/> for a computed column.</exception>
     public static void Validate(ISqlProvider provider, EntityDescriptor entity,
         IReadOnlyList<OrphanGuardColumn> columns)
     {

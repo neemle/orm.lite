@@ -1,5 +1,9 @@
 namespace Neemle.OrmLite;
 
+/// <summary>
+/// The validated shape of one guard request: the parent, the owned child, and the child's single owner foreign key,
+/// which must reference the parent's key with the same type. Only the library builds it.
+/// </summary>
 public sealed class OrphanGuardShape
 {
     internal OrphanGuardShape(OrphanGuardRequest request)
@@ -22,13 +26,23 @@ public sealed class OrphanGuardShape
             throw OrphanRefusal.At(OrphanError.UnsupportedMapping);
     }
 
+    /// <summary>The request the shape was validated from.</summary>
     public OrphanGuardRequest Request { get; }
+    /// <summary>The parent entity's metadata.</summary>
     public EntityDescriptor Parent => Request.Parent;
+    /// <summary>The owned child entity's metadata.</summary>
     public EntityDescriptor Child => Request.Child;
+    /// <summary>The child's owner foreign-key column.</summary>
     public ColumnDescriptor Owner { get; }
     internal IOrphanEntity ParentBinding { get; }
     internal IOrphanEntity ChildBinding { get; }
 
+    /// <summary>
+    /// Refuses a mode the child mapping cannot honor: <see cref="OrphanMode.Disabled"/> or an undefined value, Nullify
+    /// over a NOT NULL owner key, SoftDelete without declared soft delete, and physical Delete of a soft-delete child.
+    /// </summary>
+    /// <param name="mode">The mode to check.</param>
+    /// <exception cref="OrphanException">The mode is refused.</exception>
     public void Mode(OrphanMode mode)
     {
         if (!Enum.IsDefined(mode) || mode == OrphanMode.Disabled)

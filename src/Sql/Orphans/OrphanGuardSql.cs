@@ -5,16 +5,17 @@ using L = Neemle.OrmLite.Sql.OrphanGuardDataLiterals;
 namespace Neemle.OrmLite.Sql;
 
 // The two observation reads of an orphan snapshot guard (the parent row and its LIVE owned children), written for
-// a provider that supplies its own qualified table names and row-lock suffix.
-public static class OrphanGuardSql
+// a provider that supplies its own qualified table names and row-lock suffix. Internal: only the two adapters use it,
+// through InternalsVisibleTo in Sql.csproj.
+internal static class OrphanGuardSql
 {
-    public static string Name(ISqlProvider provider, string name) =>
+    internal static string Name(ISqlProvider provider, string name) =>
         provider.CreateSerializer().Fragment(new ColumnRef(name));
 
-    public static string Live(ISqlProvider provider, EntityDescriptor descriptor) =>
+    private static string Live(ISqlProvider provider, EntityDescriptor descriptor) =>
         descriptor.Soft is { } soft ? L.And + Name(provider, soft.Column) + L.IsNull : "";
 
-    public static Statement Parent(ISqlProvider provider, OrphanGuardShape shape, string suffix,
+    internal static Statement Parent(ISqlProvider provider, OrphanGuardShape shape, string suffix,
         OrphanGuardTables tables)
     {
         var key = Name(provider, shape.Parent.SoleKey!.Column);
@@ -23,7 +24,7 @@ public static class OrphanGuardSql
         return Bound(sql, shape.Request.ParentKey);
     }
 
-    public static Statement Children(ISqlProvider provider, OrphanGuardShape shape, string suffix,
+    internal static Statement Children(ISqlProvider provider, OrphanGuardShape shape, string suffix,
         OrphanGuardTables tables)
     {
         var key = Name(provider, shape.Child.SoleKey!.Column);
@@ -34,6 +35,6 @@ public static class OrphanGuardSql
         return Bound(sql, shape.Request.ParentKey);
     }
 
-    public static Statement Bound(string sql, object value) =>
+    internal static Statement Bound(string sql, object value) =>
         new(sql, [new(0, "owner", value)], StatementKind.Read);
 }
