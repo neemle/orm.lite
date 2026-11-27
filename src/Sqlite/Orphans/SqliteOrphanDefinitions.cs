@@ -12,9 +12,11 @@ internal static class SqliteOrphanDefinitions
     {
         var actual = objects.SingleOrDefault(o => o.Type == "table");
         if (actual is null) throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
+        if (provider.CreateSerializer() is not ISchemaDiffDdlSerializer serializer)
+            throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
         var table = EntityStatements.CreateTables(entity).OfType<CreateTable>().Single();
-        var valid = new[] { false, true }.Select(explicitUpdate => Text(provider,
-            table with { Constraints = ForeignKeys(entity, explicitUpdate) }));
+        var valid = new[] { false, true }.Select(explicitUpdate => serializer.SerializeStrictCreate(
+            table with { Constraints = ForeignKeys(entity, explicitUpdate) }).Text.Trim().TrimEnd(';'));
         if (!valid.Contains(actual.Sql.Trim().TrimEnd(';'), StringComparer.Ordinal))
             throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
     }

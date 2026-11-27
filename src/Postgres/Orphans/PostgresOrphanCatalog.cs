@@ -115,17 +115,26 @@ internal sealed class PostgresOrphanCatalog(PostgresProvider provider, OrphanGua
 
     internal async Task IndexEffectsAsync(PostgresOrphanTable table, string? soft, CancellationToken ct)
     {
-        var sql = "SELECT EXISTS(SELECT 1 FROM pg_catalog.pg_index i WHERE i.indrelid=@owner::pg_catalog.oid AND "
-            + "(i.indexprs IS NOT NULL OR (i.indpred IS NOT NULL AND "
-            + "pg_catalog.pg_get_expr(i.indpred,i.indrelid) IS DISTINCT FROM "
-            + "'('||pg_catalog.quote_ident(@soft)||' IS NULL)'))) "
-            + "OR EXISTS(SELECT 1 FROM pg_catalog.pg_index i,"
-            + "LATERAL pg_catalog.unnest(i.indclass::pg_catalog.oid[]) classes(opclass) "
+        var sql = "SELECT i.indexprs IS NOT NULL,i.indpred::pg_catalog.text,EXISTS(SELECT 1 FROM "
+            + "pg_catalog.unnest(i.indclass::pg_catalog.oid[]) classes(opclass) "
             + "JOIN pg_catalog.pg_opclass o ON o.oid=classes.opclass "
             + "JOIN pg_catalog.pg_namespace n ON n.oid=o.opcnamespace "
-            + "WHERE i.indrelid=@owner::pg_catalog.oid AND n.nspname<>'pg_catalog')";
+            + "WHERE n.nspname<>'pg_catalog'),a.attnum,a.atttypid::pg_catalog.bigint,a.atttypmod, "
+            + "a.attcollation::pg_catalog.bigint FROM pg_catalog.pg_index i "
+            + "LEFT JOIN pg_catalog.pg_attribute a ON a.attrelid=i.indrelid AND a.attname=@soft "
+            + "AND NOT a.attisdropped WHERE i.indrelid=@owner::pg_catalog.oid "
+            + "ORDER BY i.indexrelid LIMIT 257";
         var query = new Statement(sql, [new(0, "owner", table.Oid), new(1, "soft", soft)], StatementKind.Read);
-        var rows = await session.ReadAsync(query, r => r.GetBoolean(0), 1, OrphanError.UnverifiedEffects, ct);
-        if (rows.Single()) throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
+        var rows = await session.ReadAsync(query, ReadIndex, 256, OrphanError.UnverifiedEffects, ct);
+        if (rows.Any(valid => !valid)) throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
+    }
+
+    private static bool ReadIndex(DbDataReader reader)
+    {
+        if (reader.GetBoolean(0) || reader.GetBoolean(2)) return false;
+        if (reader.IsDBNull(1)) return true;
+        if (reader.IsDBNull(3)) return false;
+        return PostgresOrphanPredicates.Matches(reader.GetString(1), reader.GetInt16(3), reader.GetInt64(4),
+            reader.GetInt32(5), reader.GetInt64(6));
     }
 }

@@ -20,6 +20,6 @@ internal static class OrphanGuardColumns
         }
     }
 
-    private static string Type(string type) => string.Concat(type.Where(c => !char.IsWhiteSpace(c)))
+    private static string Type(string type) => type.Trim(' ').Replace(", ", ",", StringComparison.Ordinal)
         .ToLowerInvariant();
 }
