@@ -24,4 +24,23 @@ public partial interface IMaintenanceProvider
     /// as <c>Entered = false</c>, never as an exception.
     /// </summary>
     ValueTask<MaintenanceWriteLease> TryEnterWriteAsync(DbDataSource source, TimeSpan timeout, CancellationToken ct);
+
+    /// <summary>
+    /// True when the provider serialises writers in process through a writer gate, so operations that write must take
+    /// it (and refuse a flow that already holds it). False by default.
+    /// </summary>
+    bool HasWriterGate => false;
+
+    /// <summary>
+    /// True when <paramref name="failure"/> is lock contention (the database was busy or a lock wait timed out), which
+    /// a maintenance call reports as <see cref="MaintenanceStatus.Busy"/> instead of throwing. False by default.
+    /// </summary>
+    bool IsContention(DbException failure) => false;
+
+    /// <summary>
+    /// The session statements that bound a lock wait to <paramref name="remaining"/> on the maintenance connection, or
+    /// null when the provider bounds it otherwise. They run on the same connection before and after the operation's
+    /// statement and are not reported to diagnostics.
+    /// </summary>
+    MaintenanceSessionGuard? RenderLockGuard(TimeSpan remaining) => null;
 }

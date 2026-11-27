@@ -25,6 +25,9 @@ public enum Capability
     IndexCollation,
     IndexExpression,
     WalCheckpoint,
+    Vacuum,
+    VacuumFull,
+    VacuumTable,
 }
 
 public enum Support

@@ -12,6 +12,11 @@ are listed here. The three packages always carry one version.
   `Full`, `Restart`, `Truncate`) and returns a structured `WalCheckpointResult`; PostgreSQL refuses it
   (`Capability.WalCheckpoint` is `None`). Diagnostics report maintenance statements as `StatementKind.Maintenance` with
   `StatementEvent.Operation` naming the operation.
+- `OrmContext.Maintenance.VacuumAsync` runs VACUUM in an explicit `VacuumMode` (`Plain`, or `Full` on PostgreSQL), of
+  the whole database or of one table on PostgreSQL. On SQLite it checkpoints the WAL (`Truncate`) first and reports
+  `NotRun` when a reader holds the log. New capabilities `Vacuum`, `VacuumFull`, `VacuumTable`; `PostgresProvider` now
+  implements `IMaintenanceProvider` (`DefaultMaintenanceTimeout` 30 s, a `lock_timeout` guard, SQLSTATE 55P03 reported as
+  `Busy`). `ThrowIfNotComplete()` turns an incomplete result into `MaintenanceIncompleteException`.
 
 ### Dependencies
 

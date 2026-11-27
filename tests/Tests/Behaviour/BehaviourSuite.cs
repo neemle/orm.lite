@@ -875,6 +875,57 @@ public abstract class BehaviourSuite<TFixture>(TFixture fixture) : IClassFixture
                 () => ctx.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(WalCheckpointMode.Passive))));
     }
 
+    [SkippableFact(DisplayName = "a plain VACUUM of the whole shared database completes, or is refused before any connection opens")]
+    public async Task Capability_Vacuum()
+    {
+        await ForCapabilityAsync(
+            Capability.Vacuum,
+            async () =>
+            {
+                var result = await Ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain));
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(MaintenanceOperation.Vacuum, result.Operation);
+            },
+            ctx => RefusedAsync(Capability.Vacuum, () => ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain))));
+    }
+
+    [SkippableFact(DisplayName = "VACUUM (FULL) of one table keeps its rows, or is refused by name before any connection opens")]
+    public async Task Capability_VacuumFull()
+    {
+        var counters = EntityDescriptor.Of("BehaveCounter", "behave_counters", true);
+        await ForCapabilityAsync(
+            Capability.VacuumFull,
+            async () =>
+            {
+                var id = Guid.NewGuid().ToString();
+                await Fixture.ExecuteAsync("INSERT INTO behave_counters VALUES ('" + id + "', 7)");
+
+                var result = await Ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Full) { Table = counters });
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(7L, Convert.ToInt64((await Fixture.RowsAsync("SELECT n FROM behave_counters WHERE id = '" + id + "'"))[0][0], System.Globalization.CultureInfo.InvariantCulture));
+            },
+            ctx => RefusedAsync(Capability.VacuumFull, () => ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Full))));
+    }
+
+    [SkippableFact(DisplayName = "a plain VACUUM of one table completes, or is refused by name before any connection opens")]
+    public async Task Capability_VacuumTable()
+    {
+        var counters = EntityDescriptor.Of("BehaveCounter", "behave_counters", true);
+        await ForCapabilityAsync(
+            Capability.VacuumTable,
+            async () =>
+            {
+                var result = await Ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain) { Table = counters });
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal("behave_counters", result.Table);
+            },
+            ctx => RefusedAsync(Capability.VacuumTable,
+                () => ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain) { Table = counters })));
+    }
+
     private static object? Normal(object? value) => value switch
     {
         long number => number,

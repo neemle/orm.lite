@@ -15,3 +15,7 @@ Neemle.OrmLite.Tests.Behaviour.PostgresRunValidationTests	server only, skipped b
 Neemle.OrmLite.Tests.Behaviour.PostgresMigrationLockTests	server only, skipped by the fixture
 Neemle.OrmLite.Tests.Behaviour.PostgresConcurrentRunnerTests	server only, skipped by the fixture
 Neemle.OrmLite.Tests.Behaviour.PostgresClosureUnaryTests	server only: closure unary executed suite, skipped by the fixture without a server
+Neemle.OrmLite.Tests.Maintenance.PostgresVacuumExecutionTests	server only, skipped by the PostgresFact attribute
+Neemle.OrmLite.Tests.Maintenance.PostgresVacuumContentionTests	server only, skipped by the PostgresFact attribute
+Neemle.OrmLite.Tests.Maintenance.PostgresVacuumHolderTests	server only, skipped by the PostgresFact attribute
+Neemle.OrmLite.Tests.Maintenance.PostgresVacuumCancellationTests	server only, skipped by the PostgresFact attribute

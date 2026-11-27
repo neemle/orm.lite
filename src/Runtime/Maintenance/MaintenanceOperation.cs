@@ -5,4 +5,7 @@ public enum MaintenanceOperation
 {
     /// <summary>A WAL checkpoint (<see cref="OrmMaintenance.CheckpointWalAsync"/>).</summary>
     WalCheckpoint = 1,
+
+    /// <summary>A VACUUM (<see cref="OrmMaintenance.VacuumAsync"/>).</summary>
+    Vacuum,
 }
