@@ -22,3 +22,4 @@ WalCheckpoint=Native
 Vacuum=Native
 VacuumFull=None
 VacuumTable=None
+Analyze=Native

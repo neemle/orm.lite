@@ -17,6 +17,8 @@ are listed here. The three packages always carry one version.
   `NotRun` when a reader holds the log. New capabilities `Vacuum`, `VacuumFull`, `VacuumTable`; `PostgresProvider` now
   implements `IMaintenanceProvider` (`DefaultMaintenanceTimeout` 30 s, a `lock_timeout` guard, SQLSTATE 55P03 reported as
   `Busy`). `ThrowIfNotComplete()` turns an incomplete result into `MaintenanceIncompleteException`.
+- `OrmContext.Maintenance.AnalyzeAsync` refreshes planner statistics for the whole database or one table
+  (`AnalyzeScope`), on SQLite and PostgreSQL (`Capability.Analyze`). SQLite takes the writer gate; contention is `Busy`.
 
 ### Dependencies
 

@@ -19,3 +19,5 @@ Neemle.OrmLite.Tests.Maintenance.PostgresVacuumExecutionTests	server only, skipp
 Neemle.OrmLite.Tests.Maintenance.PostgresVacuumContentionTests	server only, skipped by the PostgresFact attribute
 Neemle.OrmLite.Tests.Maintenance.PostgresVacuumHolderTests	server only, skipped by the PostgresFact attribute
 Neemle.OrmLite.Tests.Maintenance.PostgresVacuumCancellationTests	server only, skipped by the PostgresFact attribute
+Neemle.OrmLite.Tests.Maintenance.PostgresAnalyzeTests	server only, skipped by the PostgresFact attribute
+Neemle.OrmLite.Tests.Maintenance.PostgresAnalyzeContentionTests	server only, skipped by the PostgresFact attribute

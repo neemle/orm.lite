@@ -34,7 +34,7 @@ public sealed class CapabilityRosterTests
             Enum.GetValues<Capability>().Where(c => sqlite.Of(c) == Support.Emulated));
         Assert.All(
             Enum.GetValues<Capability>().Where(c => sqlite.Of(c) == Support.Native),
-            c => Assert.Contains(c, new[] { Capability.PartialIndex, Capability.NullSafeEquality, Capability.AggregateFilter, Capability.Upsert, Capability.Returning, Capability.IndexCollation, Capability.IndexExpression, Capability.WalCheckpoint, Capability.Vacuum }));
+            c => Assert.Contains(c, new[] { Capability.PartialIndex, Capability.NullSafeEquality, Capability.AggregateFilter, Capability.Upsert, Capability.Returning, Capability.IndexCollation, Capability.IndexExpression, Capability.WalCheckpoint, Capability.Vacuum, Capability.Analyze }));
     }
 }
 

@@ -16,6 +16,7 @@ var result = await db.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(Wa
 | --- | --- | --- | --- |
 | WAL checkpoint | `CheckpointWalAsync(WalCheckpointRequest)` | Native | None, refused |
 | VACUUM | `VacuumAsync(VacuumRequest)` | Plain of the whole database (checkpoint first) | Plain and FULL, whole database or one table |
+| ANALYZE | `AnalyzeAsync(AnalyzeRequest)` | whole database or one table | whole database or one table |
 
 An operation the provider does not support is refused with `CapabilityNotSupportedException`, naming the provider, the
 method and the capability, before any connection opens. A provider that does not implement `IMaintenanceProvider` is
@@ -193,4 +194,49 @@ var vacuum = await db.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain
 if (vacuum.Status == MaintenanceStatus.NotRun)
     Console.WriteLine($"a reader held the log (checkpoint {vacuum.Checkpoint?.Status}); VACUUM was not run");
 vacuum.ThrowIfNotComplete();
+```
+
+## Analyze
+
+`AnalyzeAsync` refreshes the statistics the query planner uses. `AnalyzeScope` is required:
+
+```csharp
+await db.Maintenance.AnalyzeAsync(new AnalyzeRequest(AnalyzeScope.Database));
+await db.Maintenance.AnalyzeAsync(new AnalyzeRequest(AnalyzeScope.Table) { Table = NoteOrm.Descriptor });
+```
+
+| Scope | SQLite | PostgreSQL |
+| --- | --- | --- |
+| `Database` | `ANALYZE main`: every table and index of the main schema | `ANALYZE`: every table the role may analyze |
+| `Table` | `ANALYZE main.<table>` | `ANALYZE <table>` |
+
+`Table` takes a generated descriptor; it must be set for `Table` and null for `Database`, and a view descriptor is
+refused (`ArgumentException`), all before any connection opens. There is no index scope (PostgreSQL has no ANALYZE of an
+index), and `PRAGMA optimize`, `analysis_limit`, column lists, `VERBOSE` and `SKIP_LOCKED` are not offered. ANALYZE
+never changes data. Both shipped providers support it (`Capability.Analyze` is `Native`); another provider is refused
+by name.
+
+**Locks.** SQLite's ANALYZE writes `sqlite_stat1`, so it takes the writer gate, like a write: an ORM write on the same
+database waits for it, and a call from a flow with an open `UnitOfWork` on the same database throws
+`InvalidOperationException` before any SQL runs. PostgreSQL takes no in-process gate and is allowed inside a unit of
+work's flow; ANALYZE takes `SHARE UPDATE EXCLUSIVE` on each table, which does not block reads or writes but waits for a
+lock such as `ACCESS EXCLUSIVE`; that wait is bounded by the budget through `lock_timeout`.
+
+**Busy.** Contention returns `Busy`: on SQLite the writer gate or a database lock (another connection's
+`BEGIN IMMEDIATE`, for example) that does not clear within the budget; on PostgreSQL a lock wait that reaches the
+budget (SQLSTATE `55P03`). A table that does not exist propagates the database's own error (SQLite `no such table`,
+PostgreSQL `42P01`).
+
+**Privileges on PostgreSQL.** `ANALYZE` of the whole database skips, with a server `WARNING`, every table the role may
+not analyze; that is not an error, so the result is still `Completed`. Run it as the table owner (or a role with the
+`MAINTAIN` privilege) when every table must be analyzed.
+
+`AnalyzeResult` carries `Scope`, `Table` (the table name, or null) and `Status`.
+
+A runnable example:
+
+```csharp
+var analyzed = await db.Maintenance.AnalyzeAsync(
+    new AnalyzeRequest(AnalyzeScope.Table) { Table = NoteOrm.Descriptor, Timeout = TimeSpan.FromSeconds(10) });
+Console.WriteLine(analyzed.IsComplete ? "statistics refreshed" : "busy, try again later");
 ```

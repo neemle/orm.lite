@@ -8,4 +8,7 @@ public enum MaintenanceOperation
 
     /// <summary>A VACUUM (<see cref="OrmMaintenance.VacuumAsync"/>).</summary>
     Vacuum,
+
+    /// <summary>An ANALYZE (<see cref="OrmMaintenance.AnalyzeAsync"/>).</summary>
+    Analyze,
 }

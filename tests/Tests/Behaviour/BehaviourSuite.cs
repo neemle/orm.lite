@@ -926,6 +926,26 @@ public abstract class BehaviourSuite<TFixture>(TFixture fixture) : IClassFixture
                 () => ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain) { Table = counters })));
     }
 
+    [SkippableFact(DisplayName = "ANALYZE of one table and of the whole shared database completes and changes no row, or is refused before any connection opens")]
+    public async Task Capability_Analyze()
+    {
+        var counters = EntityDescriptor.Of("BehaveCounter", "behave_counters", true);
+        await ForCapabilityAsync(
+            Capability.Analyze,
+            async () =>
+            {
+                var before = await Fixture.RowsAsync("SELECT id, n FROM behave_counters ORDER BY id");
+
+                var table = await Ctx.Maintenance.AnalyzeAsync(new AnalyzeRequest(AnalyzeScope.Table) { Table = counters });
+                var database = await Ctx.Maintenance.AnalyzeAsync(new AnalyzeRequest(AnalyzeScope.Database));
+
+                Assert.Equal(MaintenanceStatus.Completed, table.Status);
+                Assert.Equal(MaintenanceStatus.Completed, database.Status);
+                Assert.Equal(before, await Fixture.RowsAsync("SELECT id, n FROM behave_counters ORDER BY id"));
+            },
+            ctx => RefusedAsync(Capability.Analyze, () => ctx.Maintenance.AnalyzeAsync(new AnalyzeRequest(AnalyzeScope.Database))));
+    }
+
     private static object? Normal(object? value) => value switch
     {
         long number => number,
