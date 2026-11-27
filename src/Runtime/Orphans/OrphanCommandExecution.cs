@@ -18,7 +18,9 @@ internal static class OrphanCommandExecution
             owner.Active();
             owner.Budget.ObserveGuard(owner.Guard!.StatementsUsed);
             owner.Budget.Reserve(1);
-            var affected = await command.RunNonQueryAsync(StatementKind.Write, ct);
+            // SEC-113-01: orphan writes report like graph-save statements: fixed text, no parameter values, and no
+            // provider exception in the event or the Activity, whatever Diagnostics.LogParameters says.
+            var affected = await command.RunGraphSaveNonQueryAsync(ct);
             if (affected != 1)
                 throw OrphanRefusal.At(affected == 0 ? prepared.Missing : OrphanError.UnsupportedMapping);
             ct.ThrowIfCancellationRequested();
