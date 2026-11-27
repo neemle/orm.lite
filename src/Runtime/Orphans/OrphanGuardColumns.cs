@@ -2,9 +2,9 @@ using Neemle.OrmLite.Nodes;
 
 namespace Neemle.OrmLite;
 
-internal static class OrphanGuardColumns
+public static class OrphanGuardColumns
 {
-    internal static void Validate(ISqlProvider provider, EntityDescriptor entity,
+    public static void Validate(ISqlProvider provider, EntityDescriptor entity,
         IReadOnlyList<OrphanGuardColumn> columns)
     {
         if (columns.Count != entity.Columns.Count) throw OrphanRefusal.At(OrphanError.UnsupportedMapping);

@@ -1,6 +1,6 @@
 namespace Neemle.OrmLite;
 
-internal static class OrphanRefusal
+public static class OrphanRefusal
 {
-    internal static OrphanException At(OrphanError error) => new(error, OrphanOutcome.NotStarted);
+    public static OrphanException At(OrphanError error) => new(error, OrphanOutcome.NotStarted);
 }

@@ -1,4 +1,5 @@
 using Neemle.OrmLite.Nodes;
+using L = Neemle.OrmLite.Sqlite.SqliteOrphanDataLiterals;
 
 namespace Neemle.OrmLite.Sqlite;
 
@@ -38,8 +39,8 @@ internal static class SqliteOrphanDefinitions
     private static string IndexText(SqliteProvider provider, CreateIndex index)
     {
         var sql = Text(provider, index);
-        var create = index.Unique ? "CREATE UNIQUE INDEX " : "CREATE INDEX ";
-        var expected = create + "IF NOT EXISTS ";
+        var create = index.Unique ? L.DefinitionsUniqueIndex : L.DefinitionsIndex;
+        var expected = create + L.DefinitionsIfNotExists;
         if (!sql.StartsWith(expected, StringComparison.Ordinal))
             throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
         return create + sql[expected.Length..];

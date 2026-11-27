@@ -1,6 +1,8 @@
-using System.Data;
 using System.Data.Common;
+using System.Data;
+using Neemle.OrmLite.Sql;
 using Npgsql;
+using L = Neemle.OrmLite.Postgres.PostgresOrphanDataLiterals;
 
 namespace Neemle.OrmLite.Postgres;
 
@@ -18,7 +20,9 @@ public sealed partial class PostgresProvider : IOrphanSnapshotGuard
             var session = new OrphanGuardSession(connection, transaction, request);
             var catalog = new PostgresOrphanCatalog(this, session);
             var tables = await catalog.AcquireAsync(ct);
-            var keys = await OrphanGuardKeys.ObserveAsync(this, session, " FOR UPDATE", tables, ct);
+            var keys = await OrphanGuardKeys.ObserveAsync(session,
+                OrphanGuardSql.Parent(this, session.Shape, L.RowLockSuffix, tables),
+                OrphanGuardSql.Children(this, session.Shape, L.RowLockSuffix, tables), ct);
             return new PostgresOrphanLease(session, catalog, keys);
         }
         catch (Exception error) { throw OrphanGuardFailure.Safe(error, ct); }

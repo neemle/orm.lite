@@ -1,8 +1,8 @@
 namespace Neemle.OrmLite;
 
-internal static class OrphanGuardFailure
+public static class OrphanGuardFailure
 {
-    internal static Exception Safe(Exception error, CancellationToken ct) => error switch
+    public static Exception Safe(Exception error, CancellationToken ct) => error switch
     {
         OrphanException or OrphanCanceledException => error,
         OperationCanceledException when ct.IsCancellationRequested =>

@@ -3,14 +3,14 @@ using System.Data.Common;
 
 namespace Neemle.OrmLite;
 
-internal sealed class OrphanGuardSession
+public sealed class OrphanGuardSession
 {
     private readonly DbConnection _connection;
     private readonly DbTransaction _transaction;
     private bool _disposed;
     private int _statements;
 
-    internal OrphanGuardSession(DbConnection connection, DbTransaction transaction, OrphanGuardRequest request)
+    public OrphanGuardSession(DbConnection connection, DbTransaction transaction, OrphanGuardRequest request)
     {
         _connection = connection;
         _transaction = transaction;
@@ -18,16 +18,16 @@ internal sealed class OrphanGuardSession
         Active();
     }
 
-    internal OrphanGuardShape Shape { get; }
-    internal int StatementsUsed => Volatile.Read(ref _statements);
+    public OrphanGuardShape Shape { get; }
+    public int StatementsUsed => Volatile.Read(ref _statements);
 
-    internal static void ValidateInputs(DbConnection connection, DbTransaction transaction, OrphanGuardRequest request)
+    public static void ValidateInputs(DbConnection connection, DbTransaction transaction, OrphanGuardRequest request)
     {
         if (connection is null || transaction is null || request is null)
             throw OrphanRefusal.At(OrphanError.InvalidRequest);
     }
 
-    internal void Active()
+    public void Active()
     {
         if (Volatile.Read(ref _disposed) || _connection.State != ConnectionState.Open
             || !ReferenceEquals(_transaction.Connection, _connection))
@@ -36,9 +36,9 @@ internal sealed class OrphanGuardSession
         Shape.ChildBinding.ValidateCurrent();
     }
 
-    internal void End() => Volatile.Write(ref _disposed, true);
+    public void End() => Volatile.Write(ref _disposed, true);
 
-    internal async Task ExecuteAsync(string sql, CancellationToken ct)
+    public async Task ExecuteAsync(string sql, CancellationToken ct)
     {
         var command = Command(new(sql, [], StatementKind.Read), ct);
         Exception? primary = null;
@@ -47,7 +47,7 @@ internal sealed class OrphanGuardSession
         finally { await PolicyCleanup.DisposeAsync(command, primary); }
     }
 
-    internal async Task<IReadOnlyList<T>> ReadAsync<T>(Statement sql, Func<DbDataReader, T> map,
+    public async Task<IReadOnlyList<T>> ReadAsync<T>(Statement sql, Func<DbDataReader, T> map,
         int maximum, OrphanError overflow, CancellationToken ct)
     {
         var command = Command(sql, ct);

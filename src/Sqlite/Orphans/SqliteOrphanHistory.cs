@@ -1,3 +1,6 @@
+using Neemle.OrmLite.Sql;
+using L = Neemle.OrmLite.Sqlite.SqliteOrphanDataLiterals;
+
 namespace Neemle.OrmLite.Sqlite;
 
 internal sealed class SqliteOrphanHistory(SqliteProvider provider, OrphanGuardSession session,
@@ -27,24 +30,23 @@ internal sealed class SqliteOrphanHistory(SqliteProvider provider, OrphanGuardSe
     {
         var objects = await catalog.ObjectsAsync(RowHistoryDdl.TableName, ct);
         var expected = SqliteOrphanDefinitions.Text(provider, new SqliteHistoryStore())
-            .Replace("IF NOT EXISTS ", "", StringComparison.Ordinal);
+            .Replace(L.DefinitionsIfNotExists, "", StringComparison.Ordinal);
         var table = objects.SingleOrDefault(o => o.Type == "table");
         if (table?.Sql.Trim().TrimEnd(';') != expected || objects.Any(o => o.Type == "trigger"))
             throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
         foreach (var index in objects.Where(o => o.Type == "index")) await IndexAsync(index, ct);
         await catalog.IncomingAsync(RowHistoryDdl.TableName, ct);
-        var temporary = await session.ReadAsync(OrphanGuardSql.Bound("SELECT 1 FROM temp.sqlite_schema "
-            + "WHERE tbl_name=@owner LIMIT 1", RowHistoryDdl.TableName), r => r.GetInt32(0),
+        var temporary = await session.ReadAsync(OrphanGuardSql.Bound(L.CatalogRefuseTemp, RowHistoryDdl.TableName),
+            r => r.GetInt32(0),
             1, OrphanError.UnverifiedEffects, ct);
         if (temporary.Count != 0) throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
     }
 
     private async Task IndexAsync(SqliteOrphanObject index, CancellationToken ct)
     {
-        var query = "SELECT cid,coll,(SELECT partial FROM pragma_index_list('row_history','main') "
-            + "WHERE name=@owner) FROM ";
+        var query = L.HistoryIndex;
         var columns = await session.ReadAsync(OrphanGuardSql.Bound(query
-            + "pragma_index_xinfo(@owner,'main') WHERE key=1 LIMIT 257", index.Name),
+            + L.HistoryIndex2, index.Name),
             r => (Column: r.GetInt32(0), Collation: r.GetString(1), Partial: r.GetInt32(2)),
             256, OrphanError.UnverifiedEffects, ct);
         if (columns.Any(c => c.Column < 0 || c.Collation != "BINARY" || c.Partial != 0))

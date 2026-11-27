@@ -8,7 +8,8 @@ internal static class OrphanDescriptorCopy
         if (source.IsView) copy.View();
         foreach (var c in source.Columns)
             copy.Property(c.Property, c.Column, c.Type, c.Nullable, c.Key, c.Precision, c.Scale);
-        foreach (var c in source.Calculated) copy.CalculatedLower(c.Property, c.Alias, c.SourceColumn);
+        foreach (var c in source.Calculated)
+            copy.CalculatedLower(c.Property, c.Alias, source.Columns.First(s => s.Column == c.SourceColumn).Property);
         CopyIndexes(source, copy);
         foreach (var foreign in source.ForeignKeys) copy.ForeignKey(foreign with { });
         foreach (var link in source.ManyToMany)

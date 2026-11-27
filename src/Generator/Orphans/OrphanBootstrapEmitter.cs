@@ -41,9 +41,9 @@ internal sealed class OrphanBootstrapEmitter
 
     private ClassDeclarationSyntax Initialize(MethodDeclarationSyntax init)
     {
+        if (_calls.Count == 0) return _owner;
         var statements = init.Body!.Statements.Concat(_calls).ToArray();
-        if (statements.Length <= 20)
-            return _owner.ReplaceNode(init, init.WithBody(SyntaxFactory.Block(statements)));
+        if (statements.Length <= 20) return _owner.ReplaceNode(init, WithStatements(init, statements));
         var members = new List<MemberDeclarationSyntax>();
         var calls = new List<StatementSyntax>();
         foreach (var group in statements.Chunk(20))
@@ -51,10 +51,25 @@ internal sealed class OrphanBootstrapEmitter
             var name = Reserve("InitOrphanPhase" + calls.Count);
             members.Add(Parse("private static void " + name + "() { "
                 + string.Join(" ", group.Select(s => s.ToFullString())) + " }"));
-            calls.Add(SyntaxFactory.ParseStatement(name + "();"));
+            calls.Add(Call(name));
         }
-        return _owner.ReplaceNode(init, init.WithBody(SyntaxFactory.Block(calls))).AddMembers(members.ToArray());
+        return _owner.ReplaceNode(init, WithStatements(init, calls)).AddMembers(members.ToArray());
     }
+
+    // Keeps the braces of Init with their layout and puts every appended call on its own line.
+    private static MethodDeclarationSyntax WithStatements(MethodDeclarationSyntax init,
+        IReadOnlyList<StatementSyntax> statements)
+    {
+        var list = statements.Select(s => s.WithTrailingTrivia(
+            s.GetTrailingTrivia().Where(t => !t.IsKind(SyntaxKind.WhitespaceTrivia)))).ToList();
+        if (list.Count != 0) list[list.Count - 1] = list[list.Count - 1].WithTrailingTrivia(SyntaxFactory.LineFeed);
+        var body = init.Body!.WithStatements(SyntaxFactory.List(list));
+        return init.WithBody(body.WithCloseBraceToken(
+            body.CloseBraceToken.WithLeadingTrivia(SyntaxFactory.Whitespace("    "))));
+    }
+
+    private static StatementSyntax Call(string name) => SyntaxFactory.ParseStatement(name + "();")
+        .WithLeadingTrivia(SyntaxFactory.LineFeed, SyntaxFactory.Whitespace("        "));
 
     private void AddPhases(IEnumerable<string> statements, string prefix)
     {
@@ -63,7 +78,7 @@ internal sealed class OrphanBootstrapEmitter
             var name = Reserve(prefix + _calls.Count);
             _owner = _owner.AddMembers(Parse("private static void " + name + "() { "
                 + string.Join(" ", group) + " }"));
-            _calls.Add(SyntaxFactory.ParseStatement(name + "();"));
+            _calls.Add(Call(name));
         }
     }
 

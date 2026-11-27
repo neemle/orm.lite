@@ -11,7 +11,9 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-RegisterSave0();    }
+RegisterSave0();
+        RegisterOrphanEntities0();
+    }
 
     private static void RegisterEntities()
     {
@@ -28,5 +30,17 @@ RegisterSave0();    }
 private static void RegisterSave0()
 {
     TreeOrm.RegisterSave();
+}
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::Orchard, global::System.Guid> BindOrphan0() => new(
+    OrchardOrm.Descriptor, OrchardOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::Tree, global::System.Guid> BindOrphan1() => new(
+    TreeOrm.Descriptor, TreeOrm.Values, static e => e.@Id);
+
+private static void RegisterOrphanEntities0()
+{
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan0());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan1());
 }
 }

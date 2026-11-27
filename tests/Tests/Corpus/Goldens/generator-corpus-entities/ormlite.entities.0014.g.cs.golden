@@ -11,7 +11,9 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-RegisterSave0();    }
+RegisterSave0();
+        RegisterOrphanEntities0();
+    }
 
     private static void RegisterEntities()
     {
@@ -42,5 +44,29 @@ private static void RegisterSave0()
     LabelOrm.RegisterSave();
     EverythingOrm.RegisterSave();
     InternalEntityOrm.RegisterSave();
+}
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusEntities.Account, global::System.Guid>
+    BindOrphan0() => new(AccountOrm.Descriptor, AccountOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusEntities.Label, global::System.Guid> BindOrphan1
+    () => new(LabelOrm.Descriptor, LabelOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusEntities.Member, global::System.Guid>
+    BindOrphan2() => new(MemberOrm.Descriptor, MemberOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusEntities.Everything, global::System.Guid>
+    BindOrphan3() => new(EverythingOrm.Descriptor, EverythingOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusEntities.InternalEntity, global::System.Guid>
+    BindOrphan4() => new(InternalEntityOrm.Descriptor, InternalEntityOrm.Values, static e => e.@Id);
+
+private static void RegisterOrphanEntities0()
+{
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan0());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan1());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan2());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan3());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan4());
 }
 }

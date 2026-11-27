@@ -1,6 +1,6 @@
 namespace Neemle.OrmLite;
 
-internal sealed class OrphanGuardShape
+public sealed class OrphanGuardShape
 {
     internal OrphanGuardShape(OrphanGuardRequest request)
     {
@@ -22,14 +22,14 @@ internal sealed class OrphanGuardShape
             throw OrphanRefusal.At(OrphanError.UnsupportedMapping);
     }
 
-    internal OrphanGuardRequest Request { get; }
-    internal EntityDescriptor Parent => Request.Parent;
-    internal EntityDescriptor Child => Request.Child;
-    internal ColumnDescriptor Owner { get; }
+    public OrphanGuardRequest Request { get; }
+    public EntityDescriptor Parent => Request.Parent;
+    public EntityDescriptor Child => Request.Child;
+    public ColumnDescriptor Owner { get; }
     internal IOrphanEntity ParentBinding { get; }
     internal IOrphanEntity ChildBinding { get; }
 
-    internal void Mode(OrphanMode mode)
+    public void Mode(OrphanMode mode)
     {
         if (!Enum.IsDefined(mode) || mode == OrphanMode.Disabled)
             throw OrphanRefusal.At(OrphanError.InvalidRequest);

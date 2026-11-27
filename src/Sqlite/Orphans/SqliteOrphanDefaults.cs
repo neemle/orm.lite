@@ -1,4 +1,5 @@
 using Neemle.OrmLite.Nodes;
+using L = Neemle.OrmLite.Sqlite.SqliteOrphanDataLiterals;
 
 namespace Neemle.OrmLite.Sqlite;
 
@@ -14,10 +15,10 @@ internal static class SqliteOrphanDefaults
 
     private static bool Constant(ColumnType type, string expression) => type switch
     {
-        ColumnType.Text => expression == "''",
+        ColumnType.Text => expression == L.DefaultsEmptyText,
         ColumnType.Bool => expression == "false",
         ColumnType.Int32 or ColumnType.Int64 or ColumnType.Double => expression == "0",
-        ColumnType.Json => expression == "'{}'",
+        ColumnType.Json => expression == L.DefaultsEmptyJson,
         _ => false,
     };
 }
