@@ -14,4 +14,7 @@ public enum MaintenanceOperation
 
     /// <summary>A REINDEX (<see cref="OrmMaintenance.ReindexAsync"/>).</summary>
     Reindex,
+
+    /// <summary>An integrity check (<see cref="OrmMaintenance.CheckIntegrityAsync"/>).</summary>
+    IntegrityCheck,
 }

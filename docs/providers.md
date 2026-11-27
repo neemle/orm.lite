@@ -50,6 +50,7 @@ index or join table name over the limit as `ORMLITE034`. SQLite states no limit.
 | `Analyze` | `Maintenance.AnalyzeAsync` of the database or one table ([maintenance](maintenance.md#analyze)) | Native | Native |
 | `Reindex` | `Maintenance.ReindexAsync` of the database, a table or an index, blocking ([maintenance](maintenance.md#reindex)) | Native | Native |
 | `ReindexConcurrently` | `ReindexMode.Concurrent` (PostgreSQL `REINDEX ... CONCURRENTLY`) | Native | None, refused by name |
+| `IntegrityCheck` | `Maintenance.CheckIntegrityAsync` ([maintenance](maintenance.md#integrity-checks)) | None, refused by name (use `amcheck`) | Native |
 
 ### Grouped query behavior
 

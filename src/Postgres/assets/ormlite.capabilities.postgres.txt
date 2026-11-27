@@ -25,4 +25,5 @@ VacuumTable=Native
 Analyze=Native
 Reindex=Native
 ReindexConcurrently=Native
+IntegrityCheck=None
 MaxIdentifierBytes=63

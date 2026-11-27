@@ -982,6 +982,23 @@ public abstract class BehaviourSuite<TFixture>(TFixture fixture) : IClassFixture
                 () => ctx.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Table, ReindexMode.Concurrent) { Table = counters })));
     }
 
+    [SkippableFact(DisplayName = "a full integrity check of the sound shared database completes with no findings, or is refused before any connection opens")]
+    public async Task Capability_IntegrityCheck()
+    {
+        await ForCapabilityAsync(
+            Capability.IntegrityCheck,
+            async () =>
+            {
+                var result = await Ctx.Maintenance.CheckIntegrityAsync(new IntegrityCheckRequest(IntegrityCheckMode.Full));
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Empty(result.Findings);
+                Assert.False(result.Truncated);
+            },
+            ctx => RefusedAsync(Capability.IntegrityCheck,
+                () => ctx.Maintenance.CheckIntegrityAsync(new IntegrityCheckRequest(IntegrityCheckMode.Full))));
+    }
+
     private static object? Normal(object? value) => value switch
     {
         long number => number,

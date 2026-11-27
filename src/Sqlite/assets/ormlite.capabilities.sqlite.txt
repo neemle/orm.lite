@@ -25,3 +25,4 @@ VacuumTable=None
 Analyze=Native
 Reindex=Native
 ReindexConcurrently=None
+IntegrityCheck=Native
