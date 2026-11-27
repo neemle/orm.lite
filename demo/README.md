@@ -377,6 +377,17 @@ failure after an acknowledged commit reports `Committed` with `CommittedResult`.
 and `Outcome`; its message and `ToString()` are safe, while a privileged `InnerException` can contain provider data.
 Do not blindly retry an unknown outcome.
 
+Diagnostics redact orphan writes the way they redact graph-save statements: the statement event and the
+`db.statement` Activity tag read `graph-save`, no parameter values are published even when `LogParameters` is on,
+and a failed write reports a generic error instead of the provider exception.
+
+Known limitation (PostgreSQL, `SoftDelete` of a child with row history): the guard proves the history trigger
+stable only while no other transaction can be changing the catalog, and it cannot tell a catalog write from any
+other write. So while any other session on the server holds an open transaction that has written, even to an
+unrelated table, or a prepared transaction exists in the database, the replacement refuses with
+`UnverifiedEffects` and `RolledBack`; nothing is written. Retry once the other transaction ends. Narrowing this
+check is follow-up ORML-152.
+
 For NativeAOT, publish the same source for the machine that will execute it:
 
 ```sh

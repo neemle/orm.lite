@@ -14,7 +14,9 @@ internal static class OrphanDemo
         try
         {
             var expected = Environment.GetEnvironmentVariable("ORMLITE_EXPECT_DOTNET");
-            if (expected is not null && Environment.Version.Major.ToString() != expected)
+            // The CI legs name the SDK version (10.0.x, 11.0.x), a local run may name the bare major (10, 11): like
+            // TestHostRuntimeTests, compare only the major before the first dot.
+            if (expected is not null && Environment.Version.Major.ToString() != expected.Split('.')[0])
                 throw new InvalidOperationException("Unexpected runtime");
             scratch = await GraphDemoDatabase.OpenAsync(provider);
             await RunCasesAsync(scratch.Context);
