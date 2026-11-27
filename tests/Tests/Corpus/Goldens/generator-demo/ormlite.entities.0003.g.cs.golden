@@ -11,7 +11,7 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-    }
+RegisterJoin0();RegisterJoin1();    }
 
     private static void RegisterEntities()
     {
@@ -22,4 +22,45 @@ internal static class OrmMetaInit
     {
         NoteOrm.RegisterGraph();
     }
+
+private static void RegisterJoin0()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::OrmLiteDemo.Note, global::System.Guid>(NoteOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::OrmLiteDemo.Note, global::System.Guid>("Id", static (r, o)
+        =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::OrmLiteDemo.Note, global::System.Guid>(NoteOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::OrmLiteDemo.Note, global::System.Guid>("TenantId", static (
+        r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::OrmLiteDemo.Note, string>(NoteOrm.Descriptor, new global::
+        Neemle.OrmLite.JoinColumnBinding<global::OrmLiteDemo.Note, string>("Title", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::OrmLiteDemo.Note, string>(NoteOrm.Descriptor, new global::
+        Neemle.OrmLite.JoinColumnBinding<global::OrmLiteDemo.Note, string>("Body", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+}
+
+private static void RegisterJoin1()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::OrmLiteDemo.Note, int>(NoteOrm.Descriptor, new global::
+        Neemle.OrmLite.JoinColumnBinding<global::OrmLiteDemo.Note, int>("Stars", static (r, o) =>
+    {
+        return r.GetInt32(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::OrmLiteDemo.Note, global::System.DateTime?>(NoteOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::OrmLiteDemo.Note, global::System.DateTime?>(
+        "DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+}
 }
