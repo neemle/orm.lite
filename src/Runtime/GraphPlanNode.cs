@@ -10,4 +10,5 @@ internal sealed class GraphPlanNode(IGraphNavigationBinding edge, GraphEntitySna
     internal List<GraphPlanNode> Children { get; } = [];
     internal Select Shape { get; set; } = null!;
     internal int ReservedParameters { get; set; }
+    internal bool MayBePartial { get; set; }
 }

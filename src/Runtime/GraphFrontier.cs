@@ -18,7 +18,12 @@ internal static class GraphFrontier
             var statement = StatementCompiler.Compile(shape, context.Database.Provider,
                 StatementKind.Read, node.Target.Table);
             var rows = await GraphStatementRunner.ReadAsync(context, statement,
-                r => context.Identity.Intern(node.Target.Binding, node.Target.Binding.Map(r)));
+                r =>
+                {
+                    var entity = context.Identity.Intern(node.Target.Binding, node.Target.Binding.Map(r));
+                    OrphanReadOrigins.ObserveMapped(entity, node.Target.Binding, node.MayBePartial);
+                    return entity;
+                });
             result.AddRange(rows);
         }
         return result;

@@ -53,6 +53,16 @@ public static class OrphanModel
         Entities.TryAdd(binding.EntityType, binding);
     }
 
+    internal static bool CurrentForRead(Type type)
+    {
+        lock (Sync)
+        {
+            if (!Entities.TryGetValue(type, out var binding)) return false;
+            try { binding.ValidateCurrent(); return true; }
+            catch (OrphanException) { return false; }
+        }
+    }
+
     private static void ValidateEntity(IOrphanEntity binding)
     {
         binding.ValidateCurrent();

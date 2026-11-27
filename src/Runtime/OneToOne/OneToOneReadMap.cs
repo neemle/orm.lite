@@ -13,10 +13,11 @@ internal static class OneToOneReadMap
 
     internal static Func<DbDataReader, T> Wrap<T>(Func<DbDataReader, T> map, bool hasMasks)
     {
-        if (!OneToOneReadGuard.Eligible(typeof(T), map)) return map;
+        var read = OrphanReadOrigins.Wrap(map, hasMasks);
+        if (!OneToOneReadGuard.Eligible(typeof(T), map)) return read;
         return reader =>
         {
-            var entity = map(reader);
+            var entity = read(reader);
             OneToOneProvenance.MarkIfEligible(entity, map, hasMasks);
             return entity;
         };

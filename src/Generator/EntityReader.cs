@@ -56,6 +56,7 @@ internal static class EntityReader
             Full = FullNameOf(s), NameIssue = EntityNaming.NameIssueOf(s),
             ForeignKeyIntents = ForeignKeyReader.Read(s), Calculated = calculated,
             OneToOneIntents = OneToOneReader.Read(s),
+            OrphanSafety = Orphans.OrphanSafetyReader.Read(scan),
         };
     }
 

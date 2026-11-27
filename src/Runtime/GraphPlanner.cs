@@ -74,6 +74,7 @@ internal static class GraphPlanner
         var node = new GraphPlanNode(edge, target, edge.Navigation);
         CheckVisibility(plan, source, node);
         var masks = edge.Target == typeof(T) ? plan.Query.Masks : new Dictionary<string, Node>();
+        node.MayBePartial = masks.Count != 0;
         node.Shape = new Select(target.Projection(masks), new TableRef(target.Table),
             target.SoftColumn is null ? null : new Where([new IsNull(new ColumnRef(target.SoftColumn))]));
         node.ReservedParameters = StatementCompiler.Compile(node.Shape, plan.Query.Database.Provider,

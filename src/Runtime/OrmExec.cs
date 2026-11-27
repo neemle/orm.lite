@@ -78,6 +78,7 @@ public static class OrmExec
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
         if (!await r.ReadAsync()) return null;
         var entity = map(r);
+        OrphanReadOrigins.Observe(entity, map, !ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), d));
         if (ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), d))
             OneToOneProvenance.MarkIfEligible(entity, map, false);
         return entity;
@@ -112,7 +113,12 @@ public static class OrmExec
         await using var cmd = Command(conn, Compile(db, EntityStatements.LoadLinked(d, link, thisKey), StatementKind.
             Read, link.OtherTable));
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
-        while (await r.ReadAsync()) list.Add(map(r));
+        while (await r.ReadAsync())
+        {
+            var entity = map(r);
+            OrphanReadOrigins.Observe(entity, map, true);
+            list.Add(entity);
+        }
         return list;
     }
 
@@ -132,7 +138,7 @@ public static class OrmExec
         executor.On(conn, null);
         return executor.RowsAsync(Compile(db, tree, StatementKind.Read, link.OtherTable),
             ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), read.Target) && link.OtherTable == read.Target.Table
-                ? OneToOneReadMap.Wrap(read.Map, false) : read.Map);
+                ? OneToOneReadMap.Wrap(read.Map, false) : OrphanReadOrigins.Wrap(read.Map, true));
     }
 
     public static Task<List<T>> LoadLinkedAsync<T>(OrmContext db, DbConnection conn, LinkedRead<T> read,
