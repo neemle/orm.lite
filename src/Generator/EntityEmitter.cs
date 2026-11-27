@@ -40,6 +40,7 @@ internal static class EntityEmitter
         source = OneToOneEmitter.Augment(source, emitted);
         source = GraphSave.SaveSourceEmitter.Augment(source, emitted);
         source = Orphans.OrphanSourceEmitter.Augment(source, emitted, blocked);
+        source = Joins.JoinSourceEmitter.Augment(source, emitted);
         foreach (var (hint, text) in SourceLayout.Entities(source)) spc.AddSource(hint, text);
     }
 

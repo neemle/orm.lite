@@ -13,7 +13,7 @@ internal static class OrmMetaInit
         RegisterGraphs();
 RegisterSave0();
         RegisterOrphanEntities0();
-    }
+RegisterJoin0();RegisterJoin1();    }
 
     private static void RegisterEntities()
     {
@@ -42,5 +42,49 @@ private static void RegisterOrphanEntities0()
 {
     global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan0());
     global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan1());
+}
+
+private static void RegisterJoin0()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::Orchard, global::System.Guid>(OrchardOrm.Descriptor, new
+        global::Neemle.OrmLite.JoinColumnBinding<global::Orchard, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::Orchard, string>(OrchardOrm.Descriptor, new global::Neemle.
+        OrmLite.JoinColumnBinding<global::Orchard, string>("Name", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::Orchard, global::System.DateTime?>(OrchardOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::Orchard, global::System.DateTime?>("DeletedAt", static (r,
+        o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::Tree, global::System.Guid>(TreeOrm.Descriptor, new global::
+        Neemle.OrmLite.JoinColumnBinding<global::Tree, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+}
+
+private static void RegisterJoin1()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::Tree, global::System.Guid>(TreeOrm.Descriptor, new global::
+        Neemle.OrmLite.JoinColumnBinding<global::Tree, global::System.Guid>("OrchardId", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::Tree, string>(TreeOrm.Descriptor, new global::Neemle.OrmLite
+        .JoinColumnBinding<global::Tree, string>("Species", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::Tree, int>(TreeOrm.Descriptor, new global::Neemle.OrmLite.
+        JoinColumnBinding<global::Tree, int>("Age", static (r, o) =>
+    {
+        return r.GetInt32(o);
+    }));
 }
 }

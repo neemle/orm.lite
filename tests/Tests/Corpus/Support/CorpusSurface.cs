@@ -47,6 +47,9 @@ public static class CorpusSurface
         ["Query.GraphSnapshot/0"] =
             "internal graph-state capture beneath ToGraphListAsync; emits no SQL; "
             + "paging, masks and ownership pinned by GraphReadTests, metadata validation by GraphBindingTests",
+        ["Query.JoinSnapshot/0"] =
+            "internal join-source capture beneath AsJoinSource; emits no SQL; joined SQL, layout and refusals "
+            + "pinned by JoinCompilerSqlTests, JoinCompilerLayoutTests and JoinCaptureStateTests",
         ["Query.GraphFirstSnapshot/0"] =
             "internal first-root state capture beneath ordinary and policy FirstOrDefaultAsync; emits no SQL; "
             + "Take(0), order/offset and bindings witnessed by main54 narrow-sqlite (39 checks); "

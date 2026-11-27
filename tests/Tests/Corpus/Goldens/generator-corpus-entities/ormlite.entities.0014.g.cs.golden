@@ -13,7 +13,8 @@ internal static class OrmMetaInit
         RegisterGraphs();
 RegisterSave0();
         RegisterOrphanEntities0();
-    }
+RegisterJoin0();RegisterJoin1();RegisterJoin2();RegisterJoin3();RegisterJoin4();RegisterJoin5();RegisterJoin6();
+    RegisterJoin7();RegisterJoin8();    }
 
     private static void RegisterEntities()
     {
@@ -68,5 +69,242 @@ private static void RegisterOrphanEntities0()
     global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan2());
     global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan3());
     global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan4());
+}
+
+private static void RegisterJoin0()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Account, global::System.Guid>(AccountOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Account, global::System.Guid>(
+        "Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Account, string>(AccountOrm.Descriptor, new
+        global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Account, string>("Code", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Account, string>(AccountOrm.Descriptor, new
+        global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Account, string>("Name", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Account, global::System.DateTime?>(AccountOrm
+        .Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Account, global::System.
+        DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+}
+
+private static void RegisterJoin1()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Project, global::System.Guid>(ProjectOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Project, global::System.Guid>(
+        "Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Project, global::System.Guid>(ProjectOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Project, global::System.Guid>(
+        "TenantId", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Project, string>(ProjectOrm.Descriptor, new
+        global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Project, string>("Title", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Project, global::System.DateTime>(ProjectOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Project, global::System.DateTime
+        >("UpdatedAt", static (r, o) =>
+    {
+        return r.GetDateTime(o);
+    }));
+}
+
+private static void RegisterJoin2()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Project, global::System.DateTime?>(ProjectOrm
+        .Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Project, global::System.
+        DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.WorkItem, global::System.Guid>(WorkItemOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.WorkItem, global::System.Guid>(
+        "Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.WorkItem, global::System.Guid>(WorkItemOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.WorkItem, global::System.Guid>(
+        "OwnerScope", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.WorkItem, global::System.Guid>(WorkItemOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.WorkItem, global::System.Guid>(
+        "ProjectId", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+}
+
+private static void RegisterJoin3()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.WorkItem, global::System.Guid?>(WorkItemOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.WorkItem, global::System.Guid?>(
+        "ParentId", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.WorkItem, string>(WorkItemOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.WorkItem, string>("Name", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.WorkItem, global::System.DateTime?>(
+        WorkItemOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.WorkItem, global::
+        System.DateTime?>("RemovedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Label, global::System.Guid>(LabelOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Label, global::System.Guid>("Id"
+        , static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+}
+
+private static void RegisterJoin4()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Label, string>(LabelOrm.Descriptor, new
+        global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Label, string>("Text", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Member, global::System.Guid>(MemberOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Member, global::System.Guid>(
+        "Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Member, string>(MemberOrm.Descriptor, new
+        global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Member, string>("Handle", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Member, global::System.DateTime?>(MemberOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Member, global::System.DateTime?
+        >("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+}
+
+private static void RegisterJoin5()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, global::System.Guid>(
+        EverythingOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, global
+        ::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, global::System.Guid?>(
+        EverythingOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, global
+        ::System.Guid?>("OptionalGuid", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, string>(EverythingOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, string>("Text", static (r, o)
+        =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, string?>(EverythingOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, string?>("OptionalText",
+        static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetString(o);
+    }));
+}
+
+private static void RegisterJoin6()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, int>(EverythingOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, int>("Count", static (r, o) =>
+    {
+        return r.GetInt32(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, int?>(EverythingOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, int?>("OptionalCount", static (r
+        , o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetInt32(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, long>(EverythingOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, long>("Big", static (r, o) =>
+    {
+        return r.GetInt64(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, bool>(EverythingOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, bool>("Flag", static (r, o) =>
+    {
+        return r.GetBoolean(o);
+    }));
+}
+
+private static void RegisterJoin7()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, global::System.DateTime>(
+        EverythingOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, global
+        ::System.DateTime>("Stamp", static (r, o) =>
+    {
+        return r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, global::System.DateTime?>(
+        EverythingOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, global
+        ::System.DateTime?>("OptionalStamp", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, string>(EverythingOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, string>("Renamed", static (r,
+        o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, string>(EverythingOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, string>("Searchable", static (
+        r, o) =>
+    {
+        return r.GetString(o);
+    }));
+}
+
+private static void RegisterJoin8()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.Everything, string>(EverythingOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.Everything, string>("Unique", static (r, o
+        ) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.InternalEntity, global::System.Guid>(
+        InternalEntityOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.InternalEntity
+        , global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusEntities.InternalEntity, string>(InternalEntityOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusEntities.InternalEntity, string>("Name",
+        static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
 }
 }

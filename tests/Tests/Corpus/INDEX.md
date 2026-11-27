@@ -1013,7 +1013,7 @@ Method: the surface is every public method (and, for the types marked internal b
 | `OrmContext` | 5 | 3 | 2 |
 | `OrmEnum` | 2 | 2 | 0 |
 | `OrmLiteSettings` | 2 | 2 | 0 |
-| `Query` | 118 | 103 | 15 |
+| `Query` | 119 | 103 | 16 |
 | `Row` | 3 | 3 | 0 |
 | `RowHistoryDdl` | 10 | 7 | 3 |
 | `RowHistoryRead` | 6 | 6 | 0 |
@@ -1025,7 +1025,7 @@ Method: the surface is every public method (and, for the types marked internal b
 | `TableBuilder` | 5 | 4 | 1 |
 | `UnitOfWork` | 5 | 5 | 0 |
 | `UpsertSet` | 7 | 5 | 2 |
-| total | 244 | 209 | 35 |
+| total | 245 | 209 | 36 |
 
 Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `ConflictGuard`.
 
@@ -1057,6 +1057,7 @@ Surveyed types that are internal: `RowHistoryDdl`, `InsertManyChunks`, `Conflict
 | `Query.Definition/1` | internal factory of the provider-bound query that MigrationBuilder.From returns; its use is pinned by every ddl-builder view entry |
 | `Query.GraphFirstSnapshot/0` | internal first-root state capture beneath ordinary and policy FirstOrDefaultAsync; emits no SQL; Take(0), order/offset and bindings witnessed by main54 narrow-sqlite (39 checks); policy reads and visibility retained in ReadCases and BindingCases |
 | `Query.GraphSnapshot/0` | internal graph-state capture beneath ToGraphListAsync; emits no SQL; paging, masks and ownership pinned by GraphReadTests, metadata validation by GraphBindingTests |
+| `Query.JoinSnapshot/0` | internal join-source capture beneath AsJoinSource; emits no SQL; joined SQL, layout and refusals pinned by JoinCompilerSqlTests, JoinCompilerLayoutTests and JoinCaptureStateTests |
 | `Query.RenderScalar/1` | text of CompileScalar; pinned by the same executed entries and by ScalarRenderingTests on both providers |
 | `Query.get_SourceTable/0` | internal accessor read only by ViewColumns; the table it names is pinned by ddl-builder/create-view-over-a-filtered-query |
 | `Query.get_State/0` | internal accessor read only by ViewColumns; the scope it carries is pinned by ddl-builder/view-over-a-join-and-an-aggregate |

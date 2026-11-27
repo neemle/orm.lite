@@ -46,6 +46,7 @@ using Neemle.OrmLite;
 using Neemle.OrmLite.Generated;
 using OrmLiteDemo;
 
+if (args.FirstOrDefault() == "joins") return await JoinDemo.RunAsync(args.Skip(1).ToArray());
 if (args.FirstOrDefault() == "graph") return await GraphDemo.RunAsync(args.Skip(1).ToArray());
 if (args.FirstOrDefault() == "orphans") return await OrphanDemo.RunAsync(args.Skip(1).ToArray());
 if (args.FirstOrDefault() == "graph-save") return await GraphSaveDemo.RunAsync(args.Skip(1).ToArray());
