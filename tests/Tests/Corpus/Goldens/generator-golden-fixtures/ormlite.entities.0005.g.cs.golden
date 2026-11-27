@@ -11,7 +11,7 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-    }
+RegisterSave0();    }
 
     private static void RegisterEntities()
     {
@@ -28,4 +28,12 @@ internal static class OrmMetaInit
         GoldenBookOrm.RegisterGraph();
         GoldenTagOrm.RegisterGraph();
     }
+
+private static void RegisterSave0()
+{
+    FixtureNoteOrm.RegisterSave();
+    GoldenAuthorOrm.RegisterSave();
+    GoldenBookOrm.RegisterSave();
+    GoldenTagOrm.RegisterSave();
+}
 }

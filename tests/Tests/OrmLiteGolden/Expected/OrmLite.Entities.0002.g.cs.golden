@@ -181,4 +181,36 @@ public static async global::System.Threading.Tasks.Task LoadEditorAsync(global::
     else
         e.Editor = await GoldenAuthorOrm.GetAsync(db, conn, e.EditorId.Value, options, ct);
 }
+
+internal static void RegisterSave()
+{
+    global::Neemle.OrmLite.GraphSaveModel.Register(new global::Neemle.OrmLite.GraphSaveEntityBinding<global::
+        GoldenFixtures.GoldenBook, global::System.Guid>(Descriptor, Values, static e => e.@Id, Map, new global::Neemle.
+        OrmLite.GraphSaveRelationBinding<global::GoldenFixtures.GoldenBook>[] { new global::Neemle.OrmLite.
+        GraphSaveRelationBinding<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.GoldenAuthor>(new global::
+        Neemle.OrmLite.GraphSaveRelationShape("Author", global::Neemle.OrmLite.GraphSaveRelationKind.Reference, global::
+        Neemle.OrmLite.GraphSaveForeignKeyOwner.Source, "AuthorId"), static e => e.@Author is { } target ? new global::
+        GoldenFixtures.GoldenAuthor[] { target } : global::System.Array.Empty<global::GoldenFixtures.GoldenAuthor>()),
+        new global::Neemle.OrmLite.GraphSaveRelationBinding<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
+        GoldenAuthor>(new global::Neemle.OrmLite.GraphSaveRelationShape("Editor", global::Neemle.OrmLite.
+        GraphSaveRelationKind.Reference, global::Neemle.OrmLite.GraphSaveForeignKeyOwner.Source, "EditorId"), static e
+        => e.@Editor is { } target ? new global::GoldenFixtures.GoldenAuthor[] { target } : global::System.Array.Empty<
+        global::GoldenFixtures.GoldenAuthor>()) }));
+}
+
+public static __GraphSaveTokens SaveRelations { get; } = new __GraphSaveTokens();
+
+public sealed class __GraphSaveTokens
+{
+    internal __GraphSaveTokens()
+    {
+    }
+
+    public global::Neemle.OrmLite.SaveRelation<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.GoldenAuthor>
+        @Author => global::Neemle.OrmLite.SaveRelations.Edge<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
+        GoldenAuthor>("Author");
+    public global::Neemle.OrmLite.SaveRelation<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.GoldenAuthor>
+        @Editor => global::Neemle.OrmLite.SaveRelations.Edge<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
+        GoldenAuthor>("Editor");
+}
 }

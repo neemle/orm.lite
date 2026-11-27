@@ -78,6 +78,7 @@ public static class OrmExec
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
         if (!await r.ReadAsync()) return null;
         var entity = map(r);
+        GraphSaveOrigins.Observe(entity, map, !ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), d));
         if (ReferenceEquals(OrmMeta.ReadDescriptor(typeof(T)), d))
             OneToOneProvenance.MarkIfEligible(entity, map, false);
         return entity;
@@ -112,7 +113,12 @@ public static class OrmExec
         await using var cmd = Command(conn, Compile(db, EntityStatements.LoadLinked(d, link, thisKey), StatementKind.
             Read, link.OtherTable));
         await using var r = await cmd.RunReaderAsync(StatementKind.Read);
-        while (await r.ReadAsync()) list.Add(map(r));
+        while (await r.ReadAsync())
+        {
+            var entity = map(r);
+            GraphSaveOrigins.Observe(entity, map, OrmMeta.ReadDescriptor(typeof(T))?.Table != link.OtherTable);
+            list.Add(entity);
+        }
         return list;
     }
 

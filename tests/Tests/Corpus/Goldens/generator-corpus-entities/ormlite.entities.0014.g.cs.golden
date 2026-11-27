@@ -11,7 +11,7 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-    }
+RegisterSave0();    }
 
     private static void RegisterEntities()
     {
@@ -36,4 +36,11 @@ internal static class OrmMetaInit
         EverythingOrm.RegisterGraph();
         InternalEntityOrm.RegisterGraph();
     }
+
+private static void RegisterSave0()
+{
+    LabelOrm.RegisterSave();
+    EverythingOrm.RegisterSave();
+    InternalEntityOrm.RegisterSave();
+}
 }

@@ -1,0 +1,11 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Runtime/Runtime.csproj (in 873 ms).
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Runtime/GraphSave/GraphSaveAcquire.cs(16,30): error CS0136: A local or parameter named 'cleanup' cannot be declared in this scope because that name is used in an enclosing local scope to define a local or parameter [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Runtime/Runtime.csproj]
+
+Build FAILED.
+
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Runtime/GraphSave/GraphSaveAcquire.cs(16,30): error CS0136: A local or parameter named 'cleanup' cannot be declared in this scope because that name is used in an enclosing local scope to define a local or parameter [/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Runtime/Runtime.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:25.48

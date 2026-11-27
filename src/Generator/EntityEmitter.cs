@@ -38,6 +38,7 @@ internal static class EntityEmitter
         var source = EntitiesSource(emitted, asmToken, dropped, blocked, foreignKeys.Valid && pairs.Valid);
         source = PolicySourceEmitter.Augment(source, emitted, policyBlocked);
         source = OneToOneEmitter.Augment(source, emitted);
+        source = GraphSave.SaveSourceEmitter.Augment(source, emitted);
         foreach (var (hint, text) in SourceLayout.Entities(source)) spc.AddSource(hint, text);
     }
 

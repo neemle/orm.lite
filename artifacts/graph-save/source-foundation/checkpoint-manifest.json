@@ -1,0 +1,518 @@
+{
+  "schema": "ORML-112 source-only custody checkpoint v1",
+  "generated": "2026-11-26T21:07:36.923573+00:00",
+  "commit": "27d7974cf0bff5ffb929072f7b8356e1d11f03da",
+  "sourceTree": "ba146f90d716d85e2eaa2dbfe740f669078ca7ba",
+  "testsTree": "3eaf45bd706886943bdc208b78f62b02df54c91a",
+  "approvedMain": "138687d5688beb8fa9b49725505148cdb07235c5",
+  "sourcePhase": "S1-S5 source and safety wiring compiled; independent consumers/behavior not tested",
+  "sourcePaths": [
+    "src/Generator/EntityEmitter.cs",
+    "src/Generator/EntityReader.cs",
+    "src/Generator/GraphSave/SaveBindingEmitter.cs",
+    "src/Generator/GraphSave/SaveNavigation.cs",
+    "src/Generator/GraphSave/SaveNavigationEmitter.cs",
+    "src/Generator/GraphSave/SaveSafetyFacts.cs",
+    "src/Generator/GraphSave/SaveSafetyReader.cs",
+    "src/Generator/GraphSave/SaveSourceEmitter.cs",
+    "src/Generator/OrmGenerator.cs",
+    "src/Runtime/Diagnostics/OrmDiagnostics.cs",
+    "src/Runtime/GatedDataSource.cs",
+    "src/Runtime/GraphEntityBinding.cs",
+    "src/Runtime/GraphExecutor.cs",
+    "src/Runtime/GraphFrontier.cs",
+    "src/Runtime/GraphPlanNode.cs",
+    "src/Runtime/GraphPlanner.cs",
+    "src/Runtime/GraphSave/.editorconfig",
+    "src/Runtime/GraphSave/GraphSave.cs",
+    "src/Runtime/GraphSave/GraphSaveAcquire.cs",
+    "src/Runtime/GraphSave/GraphSaveActions.cs",
+    "src/Runtime/GraphSave/GraphSaveBudget.cs",
+    "src/Runtime/GraphSave/GraphSaveCanceledException.cs",
+    "src/Runtime/GraphSave/GraphSaveCapture.cs",
+    "src/Runtime/GraphSave/GraphSaveColumns.cs",
+    "src/Runtime/GraphSave/GraphSaveCommands.cs",
+    "src/Runtime/GraphSave/GraphSaveCompile.cs",
+    "src/Runtime/GraphSave/GraphSaveDeduplication.cs",
+    "src/Runtime/GraphSave/GraphSaveDependencies.cs",
+    "src/Runtime/GraphSave/GraphSaveDescriptors.cs",
+    "src/Runtime/GraphSave/GraphSaveDiagnosticError.cs",
+    "src/Runtime/GraphSave/GraphSaveDiagnosticOutcome.cs",
+    "src/Runtime/GraphSave/GraphSaveDiagnosticRun.cs",
+    "src/Runtime/GraphSave/GraphSaveEdge.cs",
+    "src/Runtime/GraphSave/GraphSaveEntityBinding.cs",
+    "src/Runtime/GraphSave/GraphSaveError.cs",
+    "src/Runtime/GraphSave/GraphSaveException.cs",
+    "src/Runtime/GraphSave/GraphSaveExecution.cs",
+    "src/Runtime/GraphSave/GraphSaveFailure.cs",
+    "src/Runtime/GraphSave/GraphSaveForeignKeyOwner.cs",
+    "src/Runtime/GraphSave/GraphSaveForeignKeys.cs",
+    "src/Runtime/GraphSave/GraphSaveIdentity.cs",
+    "src/Runtime/GraphSave/GraphSaveIntent.cs",
+    "src/Runtime/GraphSave/GraphSaveIntents.cs",
+    "src/Runtime/GraphSave/GraphSaveKeyBinding.cs",
+    "src/Runtime/GraphSave/GraphSaveKeyBytes.cs",
+    "src/Runtime/GraphSave/GraphSaveKeyComparer.cs",
+    "src/Runtime/GraphSave/GraphSaveLimits.cs",
+    "src/Runtime/GraphSave/GraphSaveLink.cs",
+    "src/Runtime/GraphSave/GraphSaveLinks.cs",
+    "src/Runtime/GraphSave/GraphSaveModel.cs",
+    "src/Runtime/GraphSave/GraphSaveNode.cs",
+    "src/Runtime/GraphSave/GraphSaveNodeOrder.cs",
+    "src/Runtime/GraphSave/GraphSaveOpen.cs",
+    "src/Runtime/GraphSave/GraphSaveOriginTag.cs",
+    "src/Runtime/GraphSave/GraphSaveOrigins.cs",
+    "src/Runtime/GraphSave/GraphSaveOutcome.cs",
+    "src/Runtime/GraphSave/GraphSaveOwnedCleanup.cs",
+    "src/Runtime/GraphSave/GraphSavePermissions.cs",
+    "src/Runtime/GraphSave/GraphSavePlan.cs",
+    "src/Runtime/GraphSave/GraphSavePreflight.cs",
+    "src/Runtime/GraphSave/GraphSavePrepared.cs",
+    "src/Runtime/GraphSave/GraphSavePublication.cs",
+    "src/Runtime/GraphSave/GraphSaveRefusal.cs",
+    "src/Runtime/GraphSave/GraphSaveRelationBinding.Typed.cs",
+    "src/Runtime/GraphSave/GraphSaveRelationBinding.cs",
+    "src/Runtime/GraphSave/GraphSaveRelationChecks.cs",
+    "src/Runtime/GraphSave/GraphSaveRelationKind.cs",
+    "src/Runtime/GraphSave/GraphSaveRelationShape.cs",
+    "src/Runtime/GraphSave/GraphSaveRequest.cs",
+    "src/Runtime/GraphSave/GraphSaveResult.cs",
+    "src/Runtime/GraphSave/GraphSaveResultEntry.cs",
+    "src/Runtime/GraphSave/GraphSaveRule.cs",
+    "src/Runtime/GraphSave/GraphSaveSession.cs",
+    "src/Runtime/GraphSave/GraphSaveShapes.cs",
+    "src/Runtime/GraphSave/GraphSaveSnapshot.cs",
+    "src/Runtime/GraphSave/GraphSaveStatement.cs",
+    "src/Runtime/GraphSave/GraphSaveTopological.cs",
+    "src/Runtime/GraphSave/GraphSaveTransactionMode.cs",
+    "src/Runtime/GraphSave/GraphSaveTraversalLimits.cs",
+    "src/Runtime/GraphSave/GraphSaveValues.cs",
+    "src/Runtime/GraphSave/GraphSaveWorkLimits.cs",
+    "src/Runtime/GraphSave/IGraphSaveEntity.cs",
+    "src/Runtime/GraphSave/IGraphSaveRelation.cs",
+    "src/Runtime/GraphSave/SaveRelation.cs",
+    "src/Runtime/GraphSave/SaveRelations.cs",
+    "src/Runtime/IGraphEntityBinding.cs",
+    "src/Runtime/OneToOne/OneToOneReadMap.cs",
+    "src/Runtime/OrmExec.cs",
+    "src/Runtime/Query.cs",
+    "src/Runtime/Streaming/QueryStreamCapture.cs",
+    "src/Runtime/UnitOfWork.cs"
+  ],
+  "incomingOnlyTrees": {
+    "tests": {
+      "head": "3eaf45bd706886943bdc208b78f62b02df54c91a",
+      "approvedMain": "3eaf45bd706886943bdc208b78f62b02df54c91a"
+    },
+    "demo": {
+      "head": "e01ab163ae6c1c1eb8e210938a2b7470b7ce3f7d",
+      "approvedMain": "e01ab163ae6c1c1eb8e210938a2b7470b7ce3f7d"
+    },
+    "docs": {
+      "head": "22af5eec3ceb4e980b67e541f0868c93a9490b18",
+      "approvedMain": "22af5eec3ceb4e980b67e541f0868c93a9490b18"
+    },
+    "examples": {
+      "head": "16875749eaa0ecef20a5b67a00699fe21f21d8bf",
+      "approvedMain": "16875749eaa0ecef20a5b67a00699fe21f21d8bf"
+    }
+  },
+  "claims": [
+    "a321d5fd-cc66-4bc3-b084-c2f7bbab8d7e",
+    "1278e89b-d60b-4dd3-b772-dc93bc614207",
+    "71f0bc86-10f9-4740-8cf7-0b437881696c",
+    "623141a9-b068-4937-906d-27eb4126e88e",
+    "dc6dea13-10a6-4930-9c36-914ded09a065"
+  ],
+  "runs": [
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--name",
+        "orml112-source-foundation-20261126",
+        "--label",
+        "orml.task=ORML-112",
+        "--label",
+        "orml.claim=a321d5fd-cc66-4bc3-b084-c2f7bbab8d7e",
+        "--memory=3g",
+        "--cpus=2",
+        "--cidfile",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/build.cid",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro",
+        "-v",
+        "orml-107-nuget:/nuget:ro",
+        "-w",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save",
+        "-e",
+        "PROOF=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation",
+        "-e",
+        "DOTNET_CLI_HOME=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/home",
+        "-e",
+        "NUGET_PACKAGES=/nuget",
+        "-e",
+        "NUGET_HTTP_CACHE_PATH=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/http",
+        "-e",
+        "TMPDIR=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/tmp",
+        "-e",
+        "DOTNET_CLI_TELEMETRY_OPTOUT=1",
+        "-e",
+        "DOTNET_NOLOGO=1",
+        "-e",
+        "GIT_CONFIG_COUNT=1",
+        "-e",
+        "GIT_CONFIG_KEY_0=safe.directory",
+        "-e",
+        "GIT_CONFIG_VALUE_0=*",
+        "sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27",
+        "bash",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/build.sh"
+      ],
+      "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save",
+      "commit": "3a9b5a114320b8415ce7f3552886f67260b4b230",
+      "sourceBefore": "0e75181c299a3f91ffffea3e7c451b25842fae21",
+      "start": "2026-11-26T20:49:22.914304+00:00",
+      "scope": [
+        "src/Runtime/Runtime.csproj",
+        "src/Generator/Generator.csproj"
+      ],
+      "script": "set -eu\ndotnet --info\ndotnet build src/Runtime/Runtime.csproj -c Release --artifacts-path \"$PROOF/build\" -m:1 -p:UseSharedCompilation=false --nologo\ndotnet build src/Generator/Generator.csproj -c Release --artifacts-path \"$PROOF/build\" -m:1 -p:UseSharedCompilation=false --nologo\n",
+      "exitCode": 0,
+      "finish": "2026-11-26T20:49:57.933023+00:00",
+      "sourceAfter": "0e75181c299a3f91ffffea3e7c451b25842fae21",
+      "containerId": "4ba944bb73586c454b7bc9fd10ca216293b5e492be5d50f9e16361565e0b902d",
+      "cleanupInspectExit": 1,
+      "cleanupInspectStderr": "error: no such object: 4ba944bb73586c454b7bc9fd10ca216293b5e492be5d50f9e16361565e0b902d\n",
+      "home": "artifacts/graph-save/source-foundation",
+      "disposition": "Retained initial immutable S1/S2 compile only; no new wiring/behavior claim",
+      "fullDockerCommand": "docker run --rm --name orml112-source-foundation-20261126 --label orml.task=ORML-112 --label orml.claim=a321d5fd-cc66-4bc3-b084-c2f7bbab8d7e --memory=3g --cpus=2 --cidfile /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/build.cid -v /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save -v /Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro -v orml-107-nuget:/nuget:ro -w /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save -e PROOF=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation -e DOTNET_CLI_HOME=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/home -e NUGET_PACKAGES=/nuget -e NUGET_HTTP_CACHE_PATH=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/http -e TMPDIR=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/tmp -e DOTNET_CLI_TELEMETRY_OPTOUT=1 -e DOTNET_NOLOGO=1 -e GIT_CONFIG_COUNT=1 -e GIT_CONFIG_KEY_0=safe.directory -e 'GIT_CONFIG_VALUE_0=*' sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27 bash /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/build.sh",
+      "projectCommands": [
+        [
+          "dotnet",
+          "build",
+          "src/Runtime/Runtime.csproj",
+          "-c",
+          "Release",
+          "--artifacts-path",
+          "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/build",
+          "-m:1",
+          "-p:UseSharedCompilation=false",
+          "--nologo"
+        ],
+        [
+          "dotnet",
+          "build",
+          "src/Generator/Generator.csproj",
+          "-c",
+          "Release",
+          "--artifacts-path",
+          "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/build",
+          "-m:1",
+          "-p:UseSharedCompilation=false",
+          "--nologo"
+        ]
+      ],
+      "attemptedProjects": [
+        "src/Runtime/Runtime.csproj",
+        "src/Generator/Generator.csproj"
+      ],
+      "binaries": [
+        {
+          "path": "artifacts/graph-save/source-foundation/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll",
+          "sha256": "f75295f4736bcbbdf4721bdfb7134a69e3b98e235bba11c903d134a8e5505dec"
+        },
+        {
+          "path": "artifacts/graph-save/source-foundation/build/bin/Generator/release/Neemle.OrmLite.Generator.dll",
+          "sha256": "49c140b4e78d044e557d24f100eea342cbf7cf9eb99a8b0cffbd3d76270c398a"
+        }
+      ]
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--name",
+        "orml112-composed-source-20261126",
+        "--label",
+        "orml.task=ORML-112",
+        "--label",
+        "orml.claim=a321d5fd-cc66-4bc3-b084-c2f7bbab8d7e",
+        "--memory=3g",
+        "--cpus=2",
+        "--cidfile",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/build.cid",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro",
+        "-v",
+        "orml-107-nuget:/nuget:ro",
+        "-w",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save",
+        "-e",
+        "PROOF=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source",
+        "-e",
+        "DOTNET_CLI_HOME=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/home",
+        "-e",
+        "NUGET_PACKAGES=/nuget",
+        "-e",
+        "NUGET_HTTP_CACHE_PATH=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/http",
+        "-e",
+        "TMPDIR=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/tmp",
+        "-e",
+        "DOTNET_CLI_TELEMETRY_OPTOUT=1",
+        "-e",
+        "DOTNET_NOLOGO=1",
+        "-e",
+        "GIT_CONFIG_COUNT=1",
+        "-e",
+        "GIT_CONFIG_KEY_0=safe.directory",
+        "-e",
+        "GIT_CONFIG_VALUE_0=*",
+        "sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27",
+        "bash",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/build.sh"
+      ],
+      "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save",
+      "commit": "9d88e7bc6d18ff953695b42e4234905467bba996",
+      "sourceBefore": "b438db64316e8603f576c6ed439e5789babcd4d4",
+      "start": "2026-11-26T21:03:48.143512+00:00",
+      "scope": [
+        "new112 complete Runtime+Generator source; compilation only, no behavior PASS"
+      ],
+      "script": "set -eu\ndotnet build src/Runtime/Runtime.csproj -c Release --artifacts-path \"$PROOF/build\" -m:1 -p:UseSharedCompilation=false --nologo\ndotnet build src/Generator/Generator.csproj -c Release --artifacts-path \"$PROOF/build\" -m:1 -p:UseSharedCompilation=false --nologo\n",
+      "exitCode": 1,
+      "finish": "2026-11-26T21:04:15.232668+00:00",
+      "sourceAfter": "b438db64316e8603f576c6ed439e5789babcd4d4",
+      "containerId": "b374dc25233e99de703b84fa0ebd2fd40668f9e40e0e4ee2a37a8a9b162cd396",
+      "cleanupInspectExit": 1,
+      "cleanupInspectStderr": "error: no such object: b374dc25233e99de703b84fa0ebd2fd40668f9e40e0e4ee2a37a8a9b162cd396\n",
+      "home": "artifacts/graph-save/source-foundation/composed-source",
+      "disposition": "FAIL CS0136 in Runtime; Generator NOT RUN; superseded by composed-fixed without altering this history",
+      "fullDockerCommand": "docker run --rm --name orml112-composed-source-20261126 --label orml.task=ORML-112 --label orml.claim=a321d5fd-cc66-4bc3-b084-c2f7bbab8d7e --memory=3g --cpus=2 --cidfile /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/build.cid -v /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save -v /Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro -v orml-107-nuget:/nuget:ro -w /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save -e PROOF=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source -e DOTNET_CLI_HOME=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/home -e NUGET_PACKAGES=/nuget -e NUGET_HTTP_CACHE_PATH=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/http -e TMPDIR=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/tmp -e DOTNET_CLI_TELEMETRY_OPTOUT=1 -e DOTNET_NOLOGO=1 -e GIT_CONFIG_COUNT=1 -e GIT_CONFIG_KEY_0=safe.directory -e 'GIT_CONFIG_VALUE_0=*' sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27 bash /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/build.sh",
+      "projectCommands": [
+        [
+          "dotnet",
+          "build",
+          "src/Runtime/Runtime.csproj",
+          "-c",
+          "Release",
+          "--artifacts-path",
+          "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/build",
+          "-m:1",
+          "-p:UseSharedCompilation=false",
+          "--nologo"
+        ],
+        [
+          "dotnet",
+          "build",
+          "src/Generator/Generator.csproj",
+          "-c",
+          "Release",
+          "--artifacts-path",
+          "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-source/build",
+          "-m:1",
+          "-p:UseSharedCompilation=false",
+          "--nologo"
+        ]
+      ],
+      "attemptedProjects": [
+        "src/Runtime/Runtime.csproj"
+      ],
+      "binaries": []
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--name",
+        "orml112-composed-fixed-20261126",
+        "--label",
+        "orml.task=ORML-112",
+        "--label",
+        "orml.claim=a321d5fd-cc66-4bc3-b084-c2f7bbab8d7e",
+        "--memory=3g",
+        "--cpus=2",
+        "--cidfile",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/build.cid",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save",
+        "-v",
+        "/Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro",
+        "-v",
+        "orml-107-nuget:/nuget:ro",
+        "-w",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save",
+        "-e",
+        "PROOF=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed",
+        "-e",
+        "DOTNET_CLI_HOME=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/home",
+        "-e",
+        "NUGET_PACKAGES=/nuget",
+        "-e",
+        "NUGET_HTTP_CACHE_PATH=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/http",
+        "-e",
+        "TMPDIR=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/tmp",
+        "-e",
+        "DOTNET_CLI_TELEMETRY_OPTOUT=1",
+        "-e",
+        "DOTNET_NOLOGO=1",
+        "-e",
+        "GIT_CONFIG_COUNT=1",
+        "-e",
+        "GIT_CONFIG_KEY_0=safe.directory",
+        "-e",
+        "GIT_CONFIG_VALUE_0=*",
+        "sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27",
+        "bash",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/build.sh"
+      ],
+      "cwd": "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save",
+      "commit": "27d7974cf0bff5ffb929072f7b8356e1d11f03da",
+      "sourceBefore": "ba146f90d716d85e2eaa2dbfe740f669078ca7ba",
+      "start": "2026-11-26T21:04:49.259373+00:00",
+      "scope": "Runtime plus newly wired Generator; prior actual CS0136 fixed, no old tests",
+      "script": "set -eu\ndotnet build src/Runtime/Runtime.csproj -c Release --artifacts-path \"$PROOF/build\" -m:1 -p:UseSharedCompilation=false --nologo\ndotnet build src/Generator/Generator.csproj -c Release --artifacts-path \"$PROOF/build\" -m:1 -p:UseSharedCompilation=false --nologo\n",
+      "exitCode": 0,
+      "finish": "2026-11-26T21:05:15.075408+00:00",
+      "sourceAfter": "ba146f90d716d85e2eaa2dbfe740f669078ca7ba",
+      "containerId": "74a2b70e17b275c7047a9ae6345fa470cb879a8f0b373ff224395e1bc082583d",
+      "cleanupInspectExit": 1,
+      "cleanupInspectStderr": "error: no such object: 74a2b70e17b275c7047a9ae6345fa470cb879a8f0b373ff224395e1bc082583d\n",
+      "home": "artifacts/graph-save/source-foundation/composed-fixed",
+      "disposition": "PASS Runtime and Generator compilation only, each zero warnings/errors; no behavioral/QA/Done claim",
+      "fullDockerCommand": "docker run --rm --name orml112-composed-fixed-20261126 --label orml.task=ORML-112 --label orml.claim=a321d5fd-cc66-4bc3-b084-c2f7bbab8d7e --memory=3g --cpus=2 --cidfile /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/build.cid -v /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save:/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save -v /Users/para/work/tskr/libs/orm.lite/.git:/Users/para/work/tskr/libs/orm.lite/.git:ro -v orml-107-nuget:/nuget:ro -w /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save -e PROOF=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed -e DOTNET_CLI_HOME=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/home -e NUGET_PACKAGES=/nuget -e NUGET_HTTP_CACHE_PATH=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/http -e TMPDIR=/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/tmp -e DOTNET_CLI_TELEMETRY_OPTOUT=1 -e DOTNET_NOLOGO=1 -e GIT_CONFIG_COUNT=1 -e GIT_CONFIG_KEY_0=safe.directory -e 'GIT_CONFIG_VALUE_0=*' sha256:0de25df463b973230c5fc00fceaebbcde86e2177f72afb37a2be62cba2322b27 bash /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/build.sh",
+      "projectCommands": [
+        [
+          "dotnet",
+          "build",
+          "src/Runtime/Runtime.csproj",
+          "-c",
+          "Release",
+          "--artifacts-path",
+          "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/build",
+          "-m:1",
+          "-p:UseSharedCompilation=false",
+          "--nologo"
+        ],
+        [
+          "dotnet",
+          "build",
+          "src/Generator/Generator.csproj",
+          "-c",
+          "Release",
+          "--artifacts-path",
+          "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/build",
+          "-m:1",
+          "-p:UseSharedCompilation=false",
+          "--nologo"
+        ]
+      ],
+      "attemptedProjects": [
+        "src/Runtime/Runtime.csproj",
+        "src/Generator/Generator.csproj"
+      ],
+      "binaries": [
+        {
+          "path": "artifacts/graph-save/source-foundation/composed-fixed/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll",
+          "sha256": "c1e764d0631e4f92cbd96eee12b795aae9971c9e7301e96ddab6d23b49719f55"
+        },
+        {
+          "path": "artifacts/graph-save/source-foundation/composed-fixed/build/bin/Generator/release/Neemle.OrmLite.Generator.dll",
+          "sha256": "42ada9a0fad60c886a42a6bc96cb3976c0432b0780f30f9f2a14aba15ae26b82"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "artifacts/graph-save/source-foundation/build.json",
+      "sha256": "e85e9333eef814edf7b375572bf01fbf38830e84f66df2ae1eccc0df10502168",
+      "bytes": 2883
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/build-start.json",
+      "sha256": "69cbebc96cde1efb4ab8ccfa31d0af6adabaa0126f648847b96f3ebf19fd5caf",
+      "bytes": 2526
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/build.log",
+      "sha256": "63eb14958733b4c452e365ac5d739ea63d31f315569383f40e11719aeead5fc8",
+      "bytes": 2421
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/build.sh",
+      "sha256": "f3d5c022eb82143615793a313c739f605b96652c44f6950e44bcad2600ddcc6f",
+      "bytes": 280
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/build.cid",
+      "sha256": "70c5cdb1e883cb752654d11fdfa137dd4c56b47d02cd9331852857c60aa011d3",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-source/build.json",
+      "sha256": "be6a0bc928713450114b6d33b8ab5375b21ea04da03cc9bd57e0e445fece628e",
+      "bytes": 2974
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-source/build-start.json",
+      "sha256": "72a7d34c0df44c6947754b4181f468feab8f48b64dc1e25e2af4932d2daec08d",
+      "bytes": 2617
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-source/build.log",
+      "sha256": "79bd4e1dc4469447f4fe71be1da268cfc2fc5f6cf6c17a8512f092fbc4421985",
+      "bytes": 1043
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-source/build.sh",
+      "sha256": "72c0ac6d1fd7b16d4518f6c0e76cb8089040c8fbe8c7e387bebf67ecc645848a",
+      "bytes": 266
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-source/build.cid",
+      "sha256": "c5a03ae2a63c3d301ff1e39ebf369cee647dec9c76dcc8fdb5b432d9442e5f4b",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-fixed/build.json",
+      "sha256": "13cd2b9ce1673343f251bccb214af372c67b700c51a92b23d67f21ef0c5454de",
+      "bytes": 2956
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-fixed/build-start.json",
+      "sha256": "e29675152383c932f36dcb62f70c3de74e64cb62ad6a8e994edfbdb7c9b736d5",
+      "bytes": 2599
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-fixed/build.log",
+      "sha256": "640203e00208fa5e301bd37aafad0e9d46042ca3e817f4ea559d7dcd33b2f689",
+      "bytes": 886
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-fixed/build.sh",
+      "sha256": "72c0ac6d1fd7b16d4518f6c0e76cb8089040c8fbe8c7e387bebf67ecc645848a",
+      "bytes": 266
+    },
+    {
+      "path": "artifacts/graph-save/source-foundation/composed-fixed/build.cid",
+      "sha256": "3eda41d592085100e9cb9f9522715dc3ce86ee3f436272cd36e568eccafa7853",
+      "bytes": 64
+    }
+  ],
+  "resources": "Only three own Docker SDK containers, each --rm and native post-run inspect exit1/no-such-object; no PG/network created, no running resources transferred. Foreign resources untouched.",
+  "limits": [
+    "No consumer/generator-emission or behavioral PASS",
+    "No new private test/public demo/pack/Native/fullsuite/coverage/census run",
+    "Independent SDET, actual shared public demo JIT/AOT PG/SQLite, docs, TL/security/CI and feature closure remain pending",
+    "HARD10h forecast, human budget UNKNOWN and decomposition debt retained; no status/admission/gate waiver",
+    "Source unpushed; parent owns lifecycle/run/claim/ledger"
+  ]
+}

@@ -31,7 +31,7 @@ public sealed class CompositeKeyNoRefusalTests
             [
                 "Column", "DeleteAsync", "DeleteAsync", "GetAsync", "GetAsync", "GetAsync", "GetAsync",
                 "InsertAsync", "InsertAsync", "Map",
-                "Query", "UpdateAsync", "UpdateAsync", "Values",
+                "Query", "UpdateAsync", "UpdateAsync", "Values", "get_SaveRelations",
             ],
             Members(output, entity));
         KeyedSignatures(output, entity, keyType);

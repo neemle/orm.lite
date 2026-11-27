@@ -11,7 +11,7 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-    }
+RegisterSave0();    }
 
     private static void RegisterEntities()
     {
@@ -51,4 +51,11 @@ internal static class OrmMetaInit
         SoftLabelNotTextOrm.RegisterGraph();
         SoftStatusPinnedOrm.RegisterGraph();
     }
+
+private static void RegisterSave0()
+{
+    UnmappedTypeOrm.RegisterSave();
+    LiveOnlyOnPlainEntityOrm.RegisterSave();
+    DuplicateIndexNameOrm.RegisterSave();
+}
 }

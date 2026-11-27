@@ -1,0 +1,593 @@
+{
+  "generated": "2026-11-26T22:20:42.133262+00:00",
+  "hostCommit": "1bf0d5787c19ca5388dabcfc27c2c555787d8a9c",
+  "functionalContainerGitCommit": "fffc5b9fa19bf250d76d21d71a86b6607ea6b81f",
+  "inheritedFirstCellManifestSha256": "6291cb26a9f149e749f35e672d350b9d516cbbce74c30eee39e26e1e46024712",
+  "builds": [
+    {
+      "step": "jit11-build",
+      "compileProperties": {
+        "TargetFramework": "net11.0",
+        "RuntimeIdentifier": ""
+      },
+      "applicationCompileCount": 33,
+      "sameFrozenApplicationInputs": true,
+      "inputs": [
+        {
+          "path": "demo/ForeignKeys/ForeignKeyChapter.cs",
+          "sha256": "3af503c75728a6ad67eaced720060ecefc10dc5817dcd1141a4d18baac1103a2"
+        },
+        {
+          "path": "demo/ForeignKeys/ForeignKeyChild.cs",
+          "sha256": "8956cf2aa9698d850eac64546ee4e3f6e96d9c182f43b406ddcdc3d6e3107483"
+        },
+        {
+          "path": "demo/ForeignKeys/ForeignKeyParent.cs",
+          "sha256": "d6a01fcccacc0a6a8a4009ccdecf6abe295c91934a29be8b585c4196260de9cb"
+        },
+        {
+          "path": "demo/Graph/GraphAuthor.cs",
+          "sha256": "fb37755dfb9aeaefce9e11809e6f67b659568cf80b3870871046b3dbd0931232"
+        },
+        {
+          "path": "demo/Graph/GraphBook.cs",
+          "sha256": "7384b0fd183a957e9c36992d3858fb5191d4065f435aa7e753b910f17fc077e7"
+        },
+        {
+          "path": "demo/Graph/GraphChapter.cs",
+          "sha256": "e0a9d9b6e1239ebfa9d32916f06f9a67ffc5140131105c0e7c8ffed865a965b7"
+        },
+        {
+          "path": "demo/Graph/GraphDemo.cs",
+          "sha256": "4f26fffbd20d4f6bc3cce2932ce2d0c2879c80af8c0d8a41f60628477af453a9"
+        },
+        {
+          "path": "demo/Graph/GraphDemoDatabase.cs",
+          "sha256": "65532548a4420a3e4eced20ddc1356b7d3a49dfd635bec2abf7c24c76359ca1c"
+        },
+        {
+          "path": "demo/Graph/GraphFixture.cs",
+          "sha256": "c18846aa76a54a1c5cc9a01ad221d4958ce2d29157eab793e77efc543ea7cb2a"
+        },
+        {
+          "path": "demo/Graph/GraphTag.cs",
+          "sha256": "2acf75009d9fdbbb658c428aa5c08220b34cc403c114953ce54d87533666c978"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveChecks.cs",
+          "sha256": "3f063b4a4a9d739e86cd643ec5f18d811a7b5a7816f347ee0bce5983429d6e95"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveCommandCounter.cs",
+          "sha256": "6735abd40ed3928c5cc2bc0f342f2b167e51065845aa053aa82e68b10809c862"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveDefaultCase.cs",
+          "sha256": "3025a31fa9e64e2017469fc09e7b7d5d7e0ba5c21959e156a17edb307fc7a584"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveDemo.cs",
+          "sha256": "2db96b0ac80dd4441f4bd1bc95eef0a7b9d4b9962f99380705f4073b763cf3a0"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveFixture.cs",
+          "sha256": "d7d069d27e67df8b5dd04a11ec21d50778ef5edd865b5b3b343f91cafd9d72f1"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveInsertCase.cs",
+          "sha256": "7b055411afe83c12dfc7240084372710c1500f9ada20fdbb5eb526bddac03bd8"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveProject.cs",
+          "sha256": "384b7a84243fbc648e622ccd311abb5c85f1edd33d382e5f7b30bde22e41fb94"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveRefusalCase.cs",
+          "sha256": "62af7604e3f3ea05e562afb09b2863eb5f56f0c23e5034f2c61f4565366813ce"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveRepeatCase.cs",
+          "sha256": "fab3d8cd917b4b241f01cc7a75478460eff13144520236743e1a82817b65a0eb"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveRollbackCase.cs",
+          "sha256": "3270a66a6e02c9977728fd532d07058241ec6b417fff210a7935672eb3533657"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveTag.cs",
+          "sha256": "81570f01650b97f7e76239f432faba0f0bee4531539100732279f436046a7957"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveTask.cs",
+          "sha256": "600a35ca9fad5c41e68ef02bd040dd2a522a8178233c8765de7ee70d2a33dbda"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveTeam.cs",
+          "sha256": "f48070ee089756d004c5a07af8e871856e06bacb7d7cbb7374e0cbb03276e5a0"
+        },
+        {
+          "path": "demo/Ledger.cs",
+          "sha256": "a38ee3ebac54023608928ae055d3fcb08f3c51e4fde73692eaf3f4ac14f0f1d9"
+        },
+        {
+          "path": "demo/Note.cs",
+          "sha256": "010e04520655999318288f9e138ce4a54d5ea0ef62cbe87ec89eadfb981eaad1"
+        },
+        {
+          "path": "demo/Program.cs",
+          "sha256": "3227f8ad50cf37922686688d34df3820b18f5d26e1ab3aac265da7c91299f928"
+        },
+        {
+          "path": "demo/ScratchDatabase.cs",
+          "sha256": "9c0a29c639776bceff393d6c457863cf8aaf1c8f06c40fd3314f4de5c8b0837b"
+        },
+        {
+          "path": "demo/SlowQueryReport.cs",
+          "sha256": "9b76fdf1875b23a031492f5cf71e88444b072192a89bffc794bb6397f7233128"
+        },
+        {
+          "path": "demo/Tracker/Chapters.cs",
+          "sha256": "a4a353f362ea9adee50b79cc0ad7729584b8cd99eb3ac89c7a93dd06a645cb1f"
+        },
+        {
+          "path": "demo/Tracker/Entities.cs",
+          "sha256": "3d1b3e3bb564e6f4b347bc1cba337472cd9109cb1d73909df27428dad1d88702"
+        },
+        {
+          "path": "demo/Tracker/Migrations.cs",
+          "sha256": "53a3f5ba572604fa28c1255513141ced0cb6080ea2f5da4d4ae579555f5c5be8"
+        },
+        {
+          "path": "demo/Tracker/Views.cs",
+          "sha256": "7ef6af516a8ba66a41587d15499e93c5b3bbf48672c3d962af008dc3f125dc3d"
+        },
+        {
+          "path": "demo/Trash.cs",
+          "sha256": "684bfe018f40eb61eb59ddd5cc5a039c6e6e93a66bf7c1deb9d8ab6b73dbaa18"
+        }
+      ],
+      "compileEvaluation": "artifacts/graph-save/public-matrix/recovery-1/jit11-build-compile.json",
+      "resolvedAssetsSha256": "01e38e7340aa1ee1d0756b9bf341822fb0b6d3e06ef9c87c6c67e7791aae32b6",
+      "packages": [
+        {
+          "id": "Neemle.OrmLite",
+          "version": "0.1.0-dev.gfffc5b9",
+          "sha512": "5Z7BbhqMhKOCJKONmx9a+L9dUHdpmserptOSwq9GfpfX5kFHo2RNpwBZg0DMUvdsvy93CSW56gASiOns9lgmHA==",
+          "binaries": [
+            {
+              "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+              "sha256": "0d5d9b99a823ba72718370eff50dadad30b0fc574eea5db12ff80f1017f10ea8"
+            },
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+              "sha256": "94a9e2e5d4f9561d5667fd10f615f374e180f7b1d8f648bb9454cad08c689da9"
+            },
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+              "sha256": "33d43f778c85620f4784cfe571496ad1905a6784429c53a2f7ceef288c0c3d51"
+            }
+          ]
+        },
+        {
+          "id": "Neemle.OrmLite.Postgres",
+          "version": "0.1.0-dev.gfffc5b9",
+          "sha512": "ega60BYHOgouOSPQKSOU2JTe6Ag1dLq7avyaIbIs5CfZDmrp0TOreC+HNpqM52VZWqDWOoGmBI9KvzMRHHuqww==",
+          "binaries": [
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+              "sha256": "32f24d6fd690c8d7ad2d0cb5f755a191ad39ee9751e6ee1d14efe08792a1d1f5"
+            }
+          ]
+        },
+        {
+          "id": "Neemle.OrmLite.Sqlite",
+          "version": "0.1.0-dev.gfffc5b9",
+          "sha512": "0/cEORYGS1/QoLHShZdy11+l/4OuA7mJlKDWZFhOsx092PZYPGGT2ZTGKwUB2NoQSubLmDgil7xawkDSgqKGdw==",
+          "binaries": [
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+              "sha256": "e35511b6197a412072e71e6d53a923b72f666b56dc07e723c2365af2f3fadbda"
+            }
+          ]
+        }
+      ],
+      "artifact": {
+        "path": "artifacts/graph-save/public-matrix/recovery-1/jit11/build/bin/OrmLiteDemo/release/OrmLiteDemo.dll",
+        "sha256": "d351ad8efedc1a5ff3861582a6adf27be9c7170b19ec03bd0d19e8bf7ebd13de",
+        "bytes": 308224,
+        "headerHex": "4d5a9000"
+      },
+      "aot": false
+    },
+    {
+      "step": "native10-build",
+      "compileProperties": {
+        "TargetFramework": "net10.0",
+        "RuntimeIdentifier": "linux-arm64"
+      },
+      "applicationCompileCount": 33,
+      "sameFrozenApplicationInputs": true,
+      "inputs": [
+        {
+          "path": "demo/ForeignKeys/ForeignKeyChapter.cs",
+          "sha256": "3af503c75728a6ad67eaced720060ecefc10dc5817dcd1141a4d18baac1103a2"
+        },
+        {
+          "path": "demo/ForeignKeys/ForeignKeyChild.cs",
+          "sha256": "8956cf2aa9698d850eac64546ee4e3f6e96d9c182f43b406ddcdc3d6e3107483"
+        },
+        {
+          "path": "demo/ForeignKeys/ForeignKeyParent.cs",
+          "sha256": "d6a01fcccacc0a6a8a4009ccdecf6abe295c91934a29be8b585c4196260de9cb"
+        },
+        {
+          "path": "demo/Graph/GraphAuthor.cs",
+          "sha256": "fb37755dfb9aeaefce9e11809e6f67b659568cf80b3870871046b3dbd0931232"
+        },
+        {
+          "path": "demo/Graph/GraphBook.cs",
+          "sha256": "7384b0fd183a957e9c36992d3858fb5191d4065f435aa7e753b910f17fc077e7"
+        },
+        {
+          "path": "demo/Graph/GraphChapter.cs",
+          "sha256": "e0a9d9b6e1239ebfa9d32916f06f9a67ffc5140131105c0e7c8ffed865a965b7"
+        },
+        {
+          "path": "demo/Graph/GraphDemo.cs",
+          "sha256": "4f26fffbd20d4f6bc3cce2932ce2d0c2879c80af8c0d8a41f60628477af453a9"
+        },
+        {
+          "path": "demo/Graph/GraphDemoDatabase.cs",
+          "sha256": "65532548a4420a3e4eced20ddc1356b7d3a49dfd635bec2abf7c24c76359ca1c"
+        },
+        {
+          "path": "demo/Graph/GraphFixture.cs",
+          "sha256": "c18846aa76a54a1c5cc9a01ad221d4958ce2d29157eab793e77efc543ea7cb2a"
+        },
+        {
+          "path": "demo/Graph/GraphTag.cs",
+          "sha256": "2acf75009d9fdbbb658c428aa5c08220b34cc403c114953ce54d87533666c978"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveChecks.cs",
+          "sha256": "3f063b4a4a9d739e86cd643ec5f18d811a7b5a7816f347ee0bce5983429d6e95"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveCommandCounter.cs",
+          "sha256": "6735abd40ed3928c5cc2bc0f342f2b167e51065845aa053aa82e68b10809c862"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveDefaultCase.cs",
+          "sha256": "3025a31fa9e64e2017469fc09e7b7d5d7e0ba5c21959e156a17edb307fc7a584"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveDemo.cs",
+          "sha256": "2db96b0ac80dd4441f4bd1bc95eef0a7b9d4b9962f99380705f4073b763cf3a0"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveFixture.cs",
+          "sha256": "d7d069d27e67df8b5dd04a11ec21d50778ef5edd865b5b3b343f91cafd9d72f1"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveInsertCase.cs",
+          "sha256": "7b055411afe83c12dfc7240084372710c1500f9ada20fdbb5eb526bddac03bd8"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveProject.cs",
+          "sha256": "384b7a84243fbc648e622ccd311abb5c85f1edd33d382e5f7b30bde22e41fb94"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveRefusalCase.cs",
+          "sha256": "62af7604e3f3ea05e562afb09b2863eb5f56f0c23e5034f2c61f4565366813ce"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveRepeatCase.cs",
+          "sha256": "fab3d8cd917b4b241f01cc7a75478460eff13144520236743e1a82817b65a0eb"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveRollbackCase.cs",
+          "sha256": "3270a66a6e02c9977728fd532d07058241ec6b417fff210a7935672eb3533657"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveTag.cs",
+          "sha256": "81570f01650b97f7e76239f432faba0f0bee4531539100732279f436046a7957"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveTask.cs",
+          "sha256": "600a35ca9fad5c41e68ef02bd040dd2a522a8178233c8765de7ee70d2a33dbda"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveTeam.cs",
+          "sha256": "f48070ee089756d004c5a07af8e871856e06bacb7d7cbb7374e0cbb03276e5a0"
+        },
+        {
+          "path": "demo/Ledger.cs",
+          "sha256": "a38ee3ebac54023608928ae055d3fcb08f3c51e4fde73692eaf3f4ac14f0f1d9"
+        },
+        {
+          "path": "demo/Note.cs",
+          "sha256": "010e04520655999318288f9e138ce4a54d5ea0ef62cbe87ec89eadfb981eaad1"
+        },
+        {
+          "path": "demo/Program.cs",
+          "sha256": "3227f8ad50cf37922686688d34df3820b18f5d26e1ab3aac265da7c91299f928"
+        },
+        {
+          "path": "demo/ScratchDatabase.cs",
+          "sha256": "9c0a29c639776bceff393d6c457863cf8aaf1c8f06c40fd3314f4de5c8b0837b"
+        },
+        {
+          "path": "demo/SlowQueryReport.cs",
+          "sha256": "9b76fdf1875b23a031492f5cf71e88444b072192a89bffc794bb6397f7233128"
+        },
+        {
+          "path": "demo/Tracker/Chapters.cs",
+          "sha256": "a4a353f362ea9adee50b79cc0ad7729584b8cd99eb3ac89c7a93dd06a645cb1f"
+        },
+        {
+          "path": "demo/Tracker/Entities.cs",
+          "sha256": "3d1b3e3bb564e6f4b347bc1cba337472cd9109cb1d73909df27428dad1d88702"
+        },
+        {
+          "path": "demo/Tracker/Migrations.cs",
+          "sha256": "53a3f5ba572604fa28c1255513141ced0cb6080ea2f5da4d4ae579555f5c5be8"
+        },
+        {
+          "path": "demo/Tracker/Views.cs",
+          "sha256": "7ef6af516a8ba66a41587d15499e93c5b3bbf48672c3d962af008dc3f125dc3d"
+        },
+        {
+          "path": "demo/Trash.cs",
+          "sha256": "684bfe018f40eb61eb59ddd5cc5a039c6e6e93a66bf7c1deb9d8ab6b73dbaa18"
+        }
+      ],
+      "compileEvaluation": "artifacts/graph-save/public-matrix/recovery-1/native10-build-compile.json",
+      "resolvedAssetsSha256": "e249b6eb0e42f49a279cb186e7169ecf0b4c9dd3a534dba40d1fef4871bbf261",
+      "packages": [
+        {
+          "id": "Neemle.OrmLite",
+          "version": "0.1.0-dev.gfffc5b9",
+          "sha512": "5Z7BbhqMhKOCJKONmx9a+L9dUHdpmserptOSwq9GfpfX5kFHo2RNpwBZg0DMUvdsvy93CSW56gASiOns9lgmHA==",
+          "binaries": [
+            {
+              "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+              "sha256": "0d5d9b99a823ba72718370eff50dadad30b0fc574eea5db12ff80f1017f10ea8"
+            },
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+              "sha256": "94a9e2e5d4f9561d5667fd10f615f374e180f7b1d8f648bb9454cad08c689da9"
+            },
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+              "sha256": "33d43f778c85620f4784cfe571496ad1905a6784429c53a2f7ceef288c0c3d51"
+            }
+          ]
+        },
+        {
+          "id": "Neemle.OrmLite.Postgres",
+          "version": "0.1.0-dev.gfffc5b9",
+          "sha512": "ega60BYHOgouOSPQKSOU2JTe6Ag1dLq7avyaIbIs5CfZDmrp0TOreC+HNpqM52VZWqDWOoGmBI9KvzMRHHuqww==",
+          "binaries": [
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+              "sha256": "32f24d6fd690c8d7ad2d0cb5f755a191ad39ee9751e6ee1d14efe08792a1d1f5"
+            }
+          ]
+        },
+        {
+          "id": "Neemle.OrmLite.Sqlite",
+          "version": "0.1.0-dev.gfffc5b9",
+          "sha512": "0/cEORYGS1/QoLHShZdy11+l/4OuA7mJlKDWZFhOsx092PZYPGGT2ZTGKwUB2NoQSubLmDgil7xawkDSgqKGdw==",
+          "binaries": [
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+              "sha256": "e35511b6197a412072e71e6d53a923b72f666b56dc07e723c2365af2f3fadbda"
+            }
+          ]
+        }
+      ],
+      "artifact": {
+        "path": "artifacts/graph-save/public-matrix/recovery-1/native10/publish/OrmLiteDemo",
+        "sha256": "a1154ca40f22310d9e9a54e5ba867348190196e9248ecf4a9d41521aee9ce50a",
+        "bytes": 18267096,
+        "headerHex": "7f454c46"
+      },
+      "aot": true
+    },
+    {
+      "step": "native11-build",
+      "compileProperties": {
+        "TargetFramework": "net11.0",
+        "RuntimeIdentifier": "linux-arm64"
+      },
+      "applicationCompileCount": 33,
+      "sameFrozenApplicationInputs": true,
+      "inputs": [
+        {
+          "path": "demo/ForeignKeys/ForeignKeyChapter.cs",
+          "sha256": "3af503c75728a6ad67eaced720060ecefc10dc5817dcd1141a4d18baac1103a2"
+        },
+        {
+          "path": "demo/ForeignKeys/ForeignKeyChild.cs",
+          "sha256": "8956cf2aa9698d850eac64546ee4e3f6e96d9c182f43b406ddcdc3d6e3107483"
+        },
+        {
+          "path": "demo/ForeignKeys/ForeignKeyParent.cs",
+          "sha256": "d6a01fcccacc0a6a8a4009ccdecf6abe295c91934a29be8b585c4196260de9cb"
+        },
+        {
+          "path": "demo/Graph/GraphAuthor.cs",
+          "sha256": "fb37755dfb9aeaefce9e11809e6f67b659568cf80b3870871046b3dbd0931232"
+        },
+        {
+          "path": "demo/Graph/GraphBook.cs",
+          "sha256": "7384b0fd183a957e9c36992d3858fb5191d4065f435aa7e753b910f17fc077e7"
+        },
+        {
+          "path": "demo/Graph/GraphChapter.cs",
+          "sha256": "e0a9d9b6e1239ebfa9d32916f06f9a67ffc5140131105c0e7c8ffed865a965b7"
+        },
+        {
+          "path": "demo/Graph/GraphDemo.cs",
+          "sha256": "4f26fffbd20d4f6bc3cce2932ce2d0c2879c80af8c0d8a41f60628477af453a9"
+        },
+        {
+          "path": "demo/Graph/GraphDemoDatabase.cs",
+          "sha256": "65532548a4420a3e4eced20ddc1356b7d3a49dfd635bec2abf7c24c76359ca1c"
+        },
+        {
+          "path": "demo/Graph/GraphFixture.cs",
+          "sha256": "c18846aa76a54a1c5cc9a01ad221d4958ce2d29157eab793e77efc543ea7cb2a"
+        },
+        {
+          "path": "demo/Graph/GraphTag.cs",
+          "sha256": "2acf75009d9fdbbb658c428aa5c08220b34cc403c114953ce54d87533666c978"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveChecks.cs",
+          "sha256": "3f063b4a4a9d739e86cd643ec5f18d811a7b5a7816f347ee0bce5983429d6e95"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveCommandCounter.cs",
+          "sha256": "6735abd40ed3928c5cc2bc0f342f2b167e51065845aa053aa82e68b10809c862"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveDefaultCase.cs",
+          "sha256": "3025a31fa9e64e2017469fc09e7b7d5d7e0ba5c21959e156a17edb307fc7a584"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveDemo.cs",
+          "sha256": "2db96b0ac80dd4441f4bd1bc95eef0a7b9d4b9962f99380705f4073b763cf3a0"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveFixture.cs",
+          "sha256": "d7d069d27e67df8b5dd04a11ec21d50778ef5edd865b5b3b343f91cafd9d72f1"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveInsertCase.cs",
+          "sha256": "7b055411afe83c12dfc7240084372710c1500f9ada20fdbb5eb526bddac03bd8"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveProject.cs",
+          "sha256": "384b7a84243fbc648e622ccd311abb5c85f1edd33d382e5f7b30bde22e41fb94"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveRefusalCase.cs",
+          "sha256": "62af7604e3f3ea05e562afb09b2863eb5f56f0c23e5034f2c61f4565366813ce"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveRepeatCase.cs",
+          "sha256": "fab3d8cd917b4b241f01cc7a75478460eff13144520236743e1a82817b65a0eb"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveRollbackCase.cs",
+          "sha256": "3270a66a6e02c9977728fd532d07058241ec6b417fff210a7935672eb3533657"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveTag.cs",
+          "sha256": "81570f01650b97f7e76239f432faba0f0bee4531539100732279f436046a7957"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveTask.cs",
+          "sha256": "600a35ca9fad5c41e68ef02bd040dd2a522a8178233c8765de7ee70d2a33dbda"
+        },
+        {
+          "path": "demo/GraphSave/GraphSaveTeam.cs",
+          "sha256": "f48070ee089756d004c5a07af8e871856e06bacb7d7cbb7374e0cbb03276e5a0"
+        },
+        {
+          "path": "demo/Ledger.cs",
+          "sha256": "a38ee3ebac54023608928ae055d3fcb08f3c51e4fde73692eaf3f4ac14f0f1d9"
+        },
+        {
+          "path": "demo/Note.cs",
+          "sha256": "010e04520655999318288f9e138ce4a54d5ea0ef62cbe87ec89eadfb981eaad1"
+        },
+        {
+          "path": "demo/Program.cs",
+          "sha256": "3227f8ad50cf37922686688d34df3820b18f5d26e1ab3aac265da7c91299f928"
+        },
+        {
+          "path": "demo/ScratchDatabase.cs",
+          "sha256": "9c0a29c639776bceff393d6c457863cf8aaf1c8f06c40fd3314f4de5c8b0837b"
+        },
+        {
+          "path": "demo/SlowQueryReport.cs",
+          "sha256": "9b76fdf1875b23a031492f5cf71e88444b072192a89bffc794bb6397f7233128"
+        },
+        {
+          "path": "demo/Tracker/Chapters.cs",
+          "sha256": "a4a353f362ea9adee50b79cc0ad7729584b8cd99eb3ac89c7a93dd06a645cb1f"
+        },
+        {
+          "path": "demo/Tracker/Entities.cs",
+          "sha256": "3d1b3e3bb564e6f4b347bc1cba337472cd9109cb1d73909df27428dad1d88702"
+        },
+        {
+          "path": "demo/Tracker/Migrations.cs",
+          "sha256": "53a3f5ba572604fa28c1255513141ced0cb6080ea2f5da4d4ae579555f5c5be8"
+        },
+        {
+          "path": "demo/Tracker/Views.cs",
+          "sha256": "7ef6af516a8ba66a41587d15499e93c5b3bbf48672c3d962af008dc3f125dc3d"
+        },
+        {
+          "path": "demo/Trash.cs",
+          "sha256": "684bfe018f40eb61eb59ddd5cc5a039c6e6e93a66bf7c1deb9d8ab6b73dbaa18"
+        }
+      ],
+      "compileEvaluation": "artifacts/graph-save/public-matrix/recovery-1/native11-build-compile.json",
+      "resolvedAssetsSha256": "3a49d71e2ef8389033bb71ce5980bdc3d1cfef38e4293f7b0aeef4fc1851d549",
+      "packages": [
+        {
+          "id": "Neemle.OrmLite",
+          "version": "0.1.0-dev.gfffc5b9",
+          "sha512": "5Z7BbhqMhKOCJKONmx9a+L9dUHdpmserptOSwq9GfpfX5kFHo2RNpwBZg0DMUvdsvy93CSW56gASiOns9lgmHA==",
+          "binaries": [
+            {
+              "entry": "analyzers/dotnet/cs/Neemle.OrmLite.Generator.dll",
+              "sha256": "0d5d9b99a823ba72718370eff50dadad30b0fc574eea5db12ff80f1017f10ea8"
+            },
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Runtime.dll",
+              "sha256": "94a9e2e5d4f9561d5667fd10f615f374e180f7b1d8f648bb9454cad08c689da9"
+            },
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Sql.dll",
+              "sha256": "33d43f778c85620f4784cfe571496ad1905a6784429c53a2f7ceef288c0c3d51"
+            }
+          ]
+        },
+        {
+          "id": "Neemle.OrmLite.Postgres",
+          "version": "0.1.0-dev.gfffc5b9",
+          "sha512": "ega60BYHOgouOSPQKSOU2JTe6Ag1dLq7avyaIbIs5CfZDmrp0TOreC+HNpqM52VZWqDWOoGmBI9KvzMRHHuqww==",
+          "binaries": [
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Postgres.dll",
+              "sha256": "32f24d6fd690c8d7ad2d0cb5f755a191ad39ee9751e6ee1d14efe08792a1d1f5"
+            }
+          ]
+        },
+        {
+          "id": "Neemle.OrmLite.Sqlite",
+          "version": "0.1.0-dev.gfffc5b9",
+          "sha512": "0/cEORYGS1/QoLHShZdy11+l/4OuA7mJlKDWZFhOsx092PZYPGGT2ZTGKwUB2NoQSubLmDgil7xawkDSgqKGdw==",
+          "binaries": [
+            {
+              "entry": "lib/net10.0/Neemle.OrmLite.Sqlite.dll",
+              "sha256": "e35511b6197a412072e71e6d53a923b72f666b56dc07e723c2365af2f3fadbda"
+            }
+          ]
+        }
+      ],
+      "artifact": {
+        "path": "artifacts/graph-save/public-matrix/recovery-1/native11/publish/OrmLiteDemo",
+        "sha256": "1962a6afc203b2882ef6dca405a3b8665e294dba8c570ed80a99d0268268d8f2",
+        "bytes": 18270448,
+        "headerHex": "7f454c46"
+      },
+      "aot": true
+    }
+  ]
+}

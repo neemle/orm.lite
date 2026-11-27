@@ -1,0 +1,10 @@
+/usr/bin/clang
+Ubuntu clang version 21.1.8 (6ubuntu1)
+Target: aarch64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/lib/llvm-21/bin
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj (in 3.29 sec).
+  OrmLiteDemo -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/public-matrix/recovery-1/native11/build/bin/OrmLiteDemo/release_linux-arm64/OrmLiteDemo.dll
+  Generating native code
+  OrmLiteDemo -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/public-matrix/recovery-1/native11/publish/
