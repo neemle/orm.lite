@@ -15,5 +15,5 @@ internal static class OrphanEligibility
         && entity.Props.Select(p => p.Name).Distinct().Count() == entity.Props.Length;
 
     private static bool Visible(Entity entity) => entity.SoftDeleteIssue is null
-        && (entity.Soft is not { } soft || soft.Platform && !soft.TenantDeclared && soft.OwnerColumns.IsEmpty);
+        && (entity.Soft is not { } soft || soft.Platform && soft.OwnerColumns.IsEmpty);
 }
