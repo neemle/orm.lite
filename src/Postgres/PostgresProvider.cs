@@ -13,7 +13,9 @@ public sealed partial class PostgresProvider : ISqlProvider, ISchemaDiffProvider
     // NAMEDATALEN is 64 and the server keeps the first 63 bytes of an identifier.
     public const int MaxIdentifierBytes = 63;
 
-    public CapabilitySet Capabilities { get; } = CapabilitySet.Everything().WithMaxIdentifierBytes(MaxIdentifierBytes);
+    public CapabilitySet Capabilities { get; } = CapabilitySet.Everything()
+        .With(Capability.WalCheckpoint, Support.None)
+        .WithMaxIdentifierBytes(MaxIdentifierBytes);
 
     public int MaxBindParameters => 65535;
 

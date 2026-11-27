@@ -18,4 +18,5 @@ ExactDecimal=Native
 IndexNullsOrdering=Native
 IndexCollation=Native
 IndexExpression=Native
+WalCheckpoint=None
 MaxIdentifierBytes=63

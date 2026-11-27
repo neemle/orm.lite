@@ -20,6 +20,7 @@ public sealed class UnitOfWork : IAsyncDisposable
 
     private bool _committed;
     private bool _disposed;
+    private WriterFlowMark? _mark;
 
     private UnitOfWork(DbConnection connection, ProviderTransaction started, ISqlProvider provider, TransactionTrace?
             trace)
@@ -31,11 +32,38 @@ public sealed class UnitOfWork : IAsyncDisposable
         _provider = provider;
     }
 
+    // The writer-flow mark is installed here, synchronously, so it flows to the caller; one installed inside the async
+    // core would not. Maintenance reads it to refuse taking a writer gate this flow already holds.
     public static Task<UnitOfWork> BeginAsync(OrmContext context, CancellationToken ct = default) =>
-        BeginCoreAsync(context, ct, false);
+        BeginMarkedAsync(context, ct, WriterFlow.Enter());
 
     internal static Task<UnitOfWork> BeginGraphSaveAsync(OrmContext context, CancellationToken ct) =>
         BeginCoreAsync(context, ct, true);
+
+    private static async Task<UnitOfWork> BeginMarkedAsync(OrmContext context, CancellationToken ct, WriterFlowMark mark)
+    {
+        UnitOfWork unit;
+        try
+        {
+            unit = await BeginCoreAsync(context, ct, false);
+        }
+        catch
+        {
+            mark.Close();
+            throw;
+        }
+        unit._mark = mark;
+        try
+        {
+            mark.Key = (context.Provider as IMaintenanceProvider)?.WriterKeyOf(context.DataSource);
+        }
+        catch
+        {
+            await unit.DisposeAsync();
+            throw;
+        }
+        return unit;
+    }
 
     private static async Task<UnitOfWork> BeginCoreAsync(OrmContext context, CancellationToken ct, bool graphSave)
     {
@@ -125,6 +153,7 @@ public sealed class UnitOfWork : IAsyncDisposable
         _committed = true;
         _trace?.Commit();
         await ReleaseAsync();
+        _mark?.Close();
     }
 
     private async ValueTask ReleaseAsync()
@@ -144,6 +173,7 @@ public sealed class UnitOfWork : IAsyncDisposable
         await cleanup.RunAsync(() => _transaction.DisposeAsync().AsTask());
         await cleanup.RunAsync(() => _connection.DisposeAsync().AsTask());
         await cleanup.RunAsync(() => ReleaseAsync().AsTask());
+        cleanup.Run(() => _mark?.Close());
         cleanup.ThrowIfFailed();
     }
 
