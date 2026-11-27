@@ -2,12 +2,12 @@ using Neemle.OrmLite.Nodes;
 
 namespace Neemle.OrmLite;
 
-internal sealed class QueryJoinSnapshot(JoinQueryInput input, JoinEntityMetadata metadata,
+internal sealed class QueryJoinSnapshot(JoinInput input, JoinEntityMetadata metadata,
     IReadOnlyDictionary<string, IJoinColumnBinding> columns, string alias, Select root)
 {
     internal object Occurrence { get; } = new();
     internal string Alias { get; } = alias;
-    internal JoinQueryInput Input { get; } = input;
+    internal JoinInput Input { get; } = input;
     internal JoinEntityMetadata Metadata { get; } = metadata;
     internal IReadOnlyDictionary<string, IJoinColumnBinding> Columns { get; } = columns;
     internal Select Root { get; } = root;

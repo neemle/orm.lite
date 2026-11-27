@@ -11,7 +11,8 @@ internal static class JoinSourceComparison
         var column = compare.Left as ColumnRef ?? compare.Right as ColumnRef
             ?? throw new JoinReadException(JoinError.UnsupportedExpression);
         var binding = JoinWhereNodes.Column(column, metadata, columns);
-        if (compare.Op is not (CompareOp.Equal or CompareOp.NotEqual)) JoinScalarTypes.Ordered(binding.ValueType);
+        var ordered = compare.Op is not (CompareOp.Equal or CompareOp.NotEqual);
+        if (ordered) JoinScalarTypes.Ordered(binding.ValueType);
         var other = ReferenceEquals(column, compare.Left) ? compare.Right : compare.Left;
         if (other is ColumnRef right)
         {
@@ -19,7 +20,7 @@ internal static class JoinSourceComparison
             if (matched.ValueType != binding.ValueType || matched.Column.Nullable != binding.Column.Nullable)
                 throw new JoinReadException(JoinError.UnsupportedType);
         }
-        else Constant(other, binding, compare.Op is not (CompareOp.Equal or CompareOp.NotEqual));
+        else Constant(other, binding, ordered);
     }
 
     private static void Constant(Node node, IJoinColumnBinding binding, bool ordered)
