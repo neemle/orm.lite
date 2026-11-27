@@ -10,11 +10,11 @@ public sealed class JoinCaptureStateTests
     public void Later_query_mutation_does_not_change_capture()
     {
         var io = new UnreachableDataSource();
-        var values = new[] { 7 };
+        var value = 7;
         var query = JoinUnitModel<JoinCaptureStateTests>.Query(io)
-            .Where(row => row.Rank == values[0]).OrderBy(row => row.Rank).Take(3).Skip(2);
+            .Where(row => row.Rank == value).OrderBy(row => row.Rank).Take(3).Skip(2);
         var captured = QueryJoinCapture.Capture(query, "first");
-        values[0] = 19;
+        value = 19;
         query.Where(row => row.Enabled).OrderByDescending(row => row.Name).Take(9).Skip(4).IncludingDeleted();
         var later = QueryJoinCapture.Capture(query, "later");
         Assert.Equal(3, captured.Root.Limit!.Count);
