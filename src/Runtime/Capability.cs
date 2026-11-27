@@ -29,6 +29,8 @@ public enum Capability
     VacuumFull,
     VacuumTable,
     Analyze,
+    Reindex,
+    ReindexConcurrently,
 }
 
 public enum Support

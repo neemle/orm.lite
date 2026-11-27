@@ -23,4 +23,6 @@ Vacuum=Native
 VacuumFull=Native
 VacuumTable=Native
 Analyze=Native
+Reindex=Native
+ReindexConcurrently=Native
 MaxIdentifierBytes=63

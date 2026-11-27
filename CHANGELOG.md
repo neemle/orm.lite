@@ -19,6 +19,10 @@ are listed here. The three packages always carry one version.
   `Busy`). `ThrowIfNotComplete()` turns an incomplete result into `MaintenanceIncompleteException`.
 - `OrmContext.Maintenance.AnalyzeAsync` refreshes planner statistics for the whole database or one table
   (`AnalyzeScope`), on SQLite and PostgreSQL (`Capability.Analyze`). SQLite takes the writer gate; contention is `Busy`.
+- `OrmContext.Maintenance.ReindexAsync` rebuilds the indexes of the database, a table or one declared index
+  (`ReindexScope`) in an explicit `ReindexMode` (`Blocking`, or `Concurrent` on PostgreSQL). New capabilities `Reindex`
+  and `ReindexConcurrently` (SQLite `None`, refused and never downgraded). The library never drops a leftover `_ccnew`
+  index.
 
 ### Dependencies
 

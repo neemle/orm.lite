@@ -11,4 +11,7 @@ public enum MaintenanceOperation
 
     /// <summary>An ANALYZE (<see cref="OrmMaintenance.AnalyzeAsync"/>).</summary>
     Analyze,
+
+    /// <summary>A REINDEX (<see cref="OrmMaintenance.ReindexAsync"/>).</summary>
+    Reindex,
 }
