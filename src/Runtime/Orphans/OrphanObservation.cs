@@ -4,11 +4,13 @@ public sealed class OrphanObservation<TKey> where TKey : notnull
 {
     internal OrphanObservation(IReadOnlyList<TKey> keys, bool authoritative)
     {
-        if (keys is null || keys.Any(k => k is null) || !authoritative && keys.Count != 0)
+        if (keys is null) throw OrphanRefusal.At(OrphanError.InvalidRequest);
+        var copied = keys.ToArray();
+        if (copied.Any(k => k is null) || !authoritative && copied.Length != 0)
             throw OrphanRefusal.At(OrphanError.InvalidRequest);
-        if (keys.Distinct(EqualityComparer<TKey>.Default).Count() != keys.Count)
+        if (copied.Distinct(EqualityComparer<TKey>.Default).Count() != copied.Length)
             throw OrphanRefusal.At(OrphanError.DuplicateIdentity);
-        OriginalKeys = Array.AsReadOnly(keys.ToArray());
+        OriginalKeys = Array.AsReadOnly(copied);
         IsAuthoritative = authoritative;
     }
 

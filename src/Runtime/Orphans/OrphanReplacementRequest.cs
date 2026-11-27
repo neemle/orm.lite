@@ -5,9 +5,11 @@ public sealed record OrphanReplacementRequest<TChild, TChildKey>
 {
     public OrphanReplacementRequest(IReadOnlyList<TChildKey> DesiredKeys, OrphanPresentWrites<TChild> PresentWrites)
     {
-        if (DesiredKeys is null || PresentWrites is null || DesiredKeys.Any(k => k is null))
+        if (DesiredKeys is null || PresentWrites is null)
             throw OrphanRefusal.At(OrphanError.InvalidRequest);
-        this.DesiredKeys = Array.AsReadOnly(DesiredKeys.ToArray());
+        var copied = DesiredKeys.ToArray();
+        if (copied.Any(k => k is null)) throw OrphanRefusal.At(OrphanError.InvalidRequest);
+        this.DesiredKeys = Array.AsReadOnly(copied);
         this.PresentWrites = PresentWrites;
     }
 
