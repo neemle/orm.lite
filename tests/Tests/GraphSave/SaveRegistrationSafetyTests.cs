@@ -38,7 +38,7 @@ public sealed class SaveRegistrationSafetyTests
         var descriptor = SaveRegistrationRow<long>.Descriptor();
         OrmMeta.Register<SaveRegistrationRow<long>>(descriptor);
         GraphSaveModel.Register(SaveRegistrationRow<long>.Binding(descriptor));
-        descriptor.Property("Extra", "extra", Nodes.ColumnType.Text, true, false);
+        descriptor.Property("Extra", "extra", global::Neemle.OrmLite.Nodes.ColumnType.Text, true, false);
         await Admission(new SaveRegistrationRow<long>(), false);
     }
 
