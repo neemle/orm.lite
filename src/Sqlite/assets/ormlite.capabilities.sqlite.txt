@@ -23,3 +23,5 @@ Vacuum=Native
 VacuumFull=None
 VacuumTable=None
 Analyze=Native
+Reindex=Native
+ReindexConcurrently=None

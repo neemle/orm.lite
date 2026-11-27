@@ -17,6 +17,7 @@ var result = await db.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(Wa
 | WAL checkpoint | `CheckpointWalAsync(WalCheckpointRequest)` | Native | None, refused |
 | VACUUM | `VacuumAsync(VacuumRequest)` | Plain of the whole database (checkpoint first) | Plain and FULL, whole database or one table |
 | ANALYZE | `AnalyzeAsync(AnalyzeRequest)` | whole database or one table | whole database or one table |
+| REINDEX | `ReindexAsync(ReindexRequest)` | Blocking: database, table or index | Blocking and Concurrent: database, table or index |
 
 An operation the provider does not support is refused with `CapabilityNotSupportedException`, naming the provider, the
 method and the capability, before any connection opens. A provider that does not implement `IMaintenanceProvider` is
@@ -240,3 +241,62 @@ var analyzed = await db.Maintenance.AnalyzeAsync(
     new AnalyzeRequest(AnalyzeScope.Table) { Table = NoteOrm.Descriptor, Timeout = TimeSpan.FromSeconds(10) });
 Console.WriteLine(analyzed.IsComplete ? "statistics refreshed" : "busy, try again later");
 ```
+
+## Reindex
+
+`ReindexAsync` rebuilds indexes. Both the scope and the mode are required:
+
+```csharp
+await db.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Database, ReindexMode.Blocking));
+await db.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Table, ReindexMode.Concurrent) { Table = NoteOrm.Descriptor });
+await db.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Index, ReindexMode.Blocking)
+{
+    Table = NoteOrm.Descriptor,
+    Index = NoteOrm.Descriptor.Indexes[0],
+});
+```
+
+| Scope | Targets | SQLite | PostgreSQL |
+| --- | --- | --- | --- |
+| `Database` | none | `REINDEX` | `REINDEX DATABASE [CONCURRENTLY]` (no name: system catalogs are skipped) |
+| `Table` | `Table` | `REINDEX main.<table>` | `REINDEX TABLE [CONCURRENTLY] <table>` |
+| `Index` | `Table` and one of its `Indexes` | `REINDEX main.<index>` | `REINDEX INDEX [CONCURRENTLY] <index>` |
+
+| Mode | SQLite | PostgreSQL |
+| --- | --- | --- |
+| `Blocking` | Native (`Capability.Reindex`) | Native (`Capability.Reindex`) |
+| `Concurrent` | None: refused with `Capability.ReindexConcurrently`, never downgraded | Native (`Capability.ReindexConcurrently`) |
+
+The targets are generated descriptors, quoted by the provider. `Table` scope reaches the implicit primary-key and
+unique indexes, which have no descriptor; `Index` scope takes an `IndexDescriptor` that belongs to the table's
+`Indexes`. A target that does not fit the scope, an index of another table and a view are refused with
+`ArgumentException` before any connection opens.
+
+**Locks per mode.**
+
+- SQLite: REINDEX needs the write lock, so it takes the writer gate. ORM writes on the same database wait for it, and a
+  call from a flow with an open `UnitOfWork` on the same database throws `InvalidOperationException` before any SQL.
+- PostgreSQL `Blocking`: a `SHARE` lock on the table, which blocks writes but not reads, and an `ACCESS EXCLUSIVE` lock on
+  each index being rebuilt, which blocks reads that would use it.
+- PostgreSQL `Concurrent`: reads and writes continue; the rebuild waits for transactions older than it to finish. Like
+  `DATABASE`, it cannot run inside a transaction block; the library runs every REINDEX on its own connection.
+
+PostgreSQL takes no in-process gate and is not refused inside a unit of work's flow; its lock waits are bounded by the
+budget through `lock_timeout`, and a wait that reaches the budget (SQLSTATE `55P03`) returns `Busy`. On SQLite a busy
+gate or database lock (another connection's `BEGIN IMMEDIATE`) returns `Busy`. Any other failure propagates as the
+database's own error: a table or index that no longer exists, a missing privilege (`42501`), or a unique violation a
+rebuild exposes.
+
+**Leftover `_ccnew` indexes.** A `Concurrent` rebuild that fails, is cancelled or returns `Busy` (the `lock_timeout` also
+bounds its waits for older transactions) can leave an invalid index named `<index>_ccnew` behind. The library never
+drops an index on its own and does not report the leftover. Find and drop leftovers yourself:
+
+```sql
+SELECT c.relname FROM pg_index i JOIN pg_class c ON c.oid = i.indexrelid WHERE NOT i.indisvalid;
+DROP INDEX CONCURRENTLY IF EXISTS "ix_notes_title_ccnew";
+```
+
+REINDEX does not refresh planner statistics; call `AnalyzeAsync` afterwards when you want them fresh (for example for
+expression indexes).
+
+`ReindexResult` carries `Scope`, `Mode`, `Table`, `Index` (names, or null) and `Status`. Table data is never changed.

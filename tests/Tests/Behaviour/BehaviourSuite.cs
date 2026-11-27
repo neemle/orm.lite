@@ -946,6 +946,42 @@ public abstract class BehaviourSuite<TFixture>(TFixture fixture) : IClassFixture
             ctx => RefusedAsync(Capability.Analyze, () => ctx.Maintenance.AnalyzeAsync(new AnalyzeRequest(AnalyzeScope.Database))));
     }
 
+    [SkippableFact(DisplayName = "a blocking REINDEX of one table keeps its rows and its unique index, or is refused before any connection opens")]
+    public async Task Capability_Reindex()
+    {
+        var notes = EntityDescriptor.Of("BehaveNote", "behave_notes", true);
+        await ForCapabilityAsync(
+            Capability.Reindex,
+            async () =>
+            {
+                var before = await Fixture.RowsAsync("SELECT id FROM behave_notes ORDER BY id");
+
+                var result = await Ctx.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Table, ReindexMode.Blocking) { Table = notes });
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(before, await Fixture.RowsAsync("SELECT id FROM behave_notes ORDER BY id"));
+            },
+            ctx => RefusedAsync(Capability.Reindex,
+                () => ctx.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Database, ReindexMode.Blocking))));
+    }
+
+    [SkippableFact(DisplayName = "a concurrent REINDEX of one table completes, or is refused by name and never downgraded before any connection opens")]
+    public async Task Capability_ReindexConcurrently()
+    {
+        var counters = EntityDescriptor.Of("BehaveCounter", "behave_counters", true);
+        await ForCapabilityAsync(
+            Capability.ReindexConcurrently,
+            async () =>
+            {
+                var result = await Ctx.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Table, ReindexMode.Concurrent) { Table = counters });
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(ReindexMode.Concurrent, result.Mode);
+            },
+            ctx => RefusedAsync(Capability.ReindexConcurrently,
+                () => ctx.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Table, ReindexMode.Concurrent) { Table = counters })));
+    }
+
     private static object? Normal(object? value) => value switch
     {
         long number => number,

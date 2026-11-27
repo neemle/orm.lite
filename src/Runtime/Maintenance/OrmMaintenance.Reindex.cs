@@ -1,0 +1,52 @@
+namespace Neemle.OrmLite;
+
+public sealed partial class OrmMaintenance
+{
+    /// <summary>
+    /// Rebuilds the indexes of the database, of one table or one declared index, in exactly the requested mode. It never
+    /// changes table data and never drops an index. <see cref="ReindexMode.Concurrent"/> on a provider without it is
+    /// refused with <see cref="CapabilityNotSupportedException"/> (<see cref="Capability.ReindexConcurrently"/>), never
+    /// downgraded. On a provider with a writer gate (SQLite) it takes the gate and refuses a flow whose open UnitOfWork
+    /// holds it. Contention is <see cref="MaintenanceStatus.Busy"/>; any other failure propagates unchanged.
+    /// </summary>
+    public Task<ReindexResult> ReindexAsync(ReindexRequest request, CancellationToken ct = default)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ValidateMode(request.Scope, nameof(request.Scope));
+        ValidateMode(request.Mode, nameof(request.Mode));
+        ValidateReindexTarget(request);
+        RefuseView(request.Table, nameof(ReindexAsync));
+        ValidateTimeout(request.Timeout);
+        ct.ThrowIfCancellationRequested();
+        var port = Require(Capability.Reindex, nameof(ReindexAsync));
+        if (request.Mode == ReindexMode.Concurrent) RequireOption(Capability.ReindexConcurrently, nameof(ReindexAsync));
+        return RunAsync(new MaintenanceStep<ReindexResult>(
+            MaintenanceOperation.Reindex, port, port.RenderReindex(request.Scope, request.Mode, request.Table, request.Index),
+            port.HasWriterGate,
+            async (reader, token) =>
+            {
+                while (await reader.ReadAsync(token)) { }
+                return Reindexed(request, MaintenanceStatus.Completed);
+            },
+            () => Reindexed(request, MaintenanceStatus.Busy)), Budget(port, request.Timeout), ct);
+    }
+
+    private static void ValidateReindexTarget(ReindexRequest request)
+    {
+        switch (request.Scope)
+        {
+            case ReindexScope.Database when request.Table is not null || request.Index is not null:
+                throw new ArgumentException("ReindexScope.Database rebuilds every index; leave Table and Index null.", nameof(request));
+            case ReindexScope.Table when request.Table is null || request.Index is not null:
+                throw new ArgumentException("ReindexScope.Table needs the table's descriptor in Table and no Index.", nameof(request));
+            case ReindexScope.Index when request.Table is null || request.Index is null:
+                throw new ArgumentException("ReindexScope.Index needs both the table's descriptor and one of its indexes.", nameof(request));
+            case ReindexScope.Index when !request.Table!.Indexes.Contains(request.Index!):
+                throw new ArgumentException(
+                    "the index '" + request.Index!.Name + "' is not one of the indexes declared on '" + request.Table.Table + "'.", nameof(request));
+        }
+    }
+
+    private ReindexResult Reindexed(ReindexRequest request, MaintenanceStatus status) =>
+        new(ProviderId, request.Scope, request.Mode, request.Table?.Table, request.Index?.Name, status);
+}
