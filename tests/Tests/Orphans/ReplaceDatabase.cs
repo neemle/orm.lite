@@ -13,6 +13,7 @@ internal sealed class ReplaceDatabase : IAsyncDisposable, IOrmDiagnosticsSink
     private readonly string _directory = Path.Combine(Path.GetTempPath(), "orep113-" + Guid.NewGuid().ToString("N"));
     private NpgsqlDataSource? _admin;
     private string? _database;
+    private OrmLiteOptions _options = null!;
     internal OrmContext Context { get; private set; } = null!;
     internal bool Postgres => _admin is not null;
     internal List<StatementEvent> Statements { get; } = [];
@@ -38,6 +39,7 @@ internal sealed class ReplaceDatabase : IAsyncDisposable, IOrmDiagnosticsSink
         options.Diagnostics.Sink = this;
         options.Diagnostics.StatementLevel = OrmLogLevel.Debug;
         options.Diagnostics.TransactionLevel = OrmLogLevel.Debug;
+        _options = options;
         Context = await OrmLite.OpenAsync(options);
         var schema = OrmSchema.Of("orep113", ReplaceModel.Parent, ReplaceModel.Child, ReplaceModel.Pin,
             ReplaceModel.Soft, ReplaceModel.Strict);
@@ -49,6 +51,20 @@ internal sealed class ReplaceDatabase : IAsyncDisposable, IOrmDiagnosticsSink
         for (var parent = 1; parent <= 2; parent++)
             await ExecuteAsync("INSERT INTO orep_parents(id,name) VALUES(@p0,@p1)", ReplaceModel.Key(parent), "p" + parent);
         ClearEvents();
+    }
+
+    // A second context over the same database whose provider is StaleGuardProvider: the real provider and guard, plus
+    // one statement run inside the scope after the guard verified. Built the way OrmLite.OpenAsync builds a context.
+    internal async Task<OrmContext> StaleContextAsync(string sql, params object?[] values)
+    {
+        var factory = ProviderRegistry.Resolve(_options);
+        var provider = new StaleGuardProvider(factory.CreateProvider(_options), sql, values);
+        var lanes = new[] { DbLaneKind.Request, DbLaneKind.Background, DbLaneKind.Ops }
+            .Select(lane => factory.CreateDataSource(_options, lane)).ToArray();
+        await factory.InitializeAsync(_options, lanes[1], CancellationToken.None);
+        var gated = new GatedDataSource(provider, lanes[0], lanes[1], lanes[2],
+            OrmDiagnostics.Create(provider, _options.Diagnostics));
+        return new OrmContext(gated, provider, lanes.Distinct().Cast<IAsyncDisposable>().ToList());
     }
 
     private string SqliteConnectionString()
