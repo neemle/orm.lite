@@ -22,6 +22,7 @@ internal static class JoinUnitModel<TMarker>
         Add<int?>("OptionalRank", static (r, o) => r.IsDBNull(o) ? null : r.GetInt32(o));
         Add<bool>("Enabled", static (r, o) => r.GetBoolean(o));
         Add<DateTime?>("Stamp", static (r, o) => r.IsDBNull(o) ? null : r.GetDateTime(o));
+        Add<DateTime?>("DeletedAt", static (r, o) => r.IsDBNull(o) ? null : r.GetDateTime(o));
         Add<string>("Lower", static (r, o) => r.GetString(o));
     }
 
