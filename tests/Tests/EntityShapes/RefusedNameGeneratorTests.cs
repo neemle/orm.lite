@@ -52,7 +52,8 @@ public sealed class RefusedNameGeneratorTests
         Assert.Equal(NameId, Assert.Single(diagnostics).Id);
         Assert.Empty(CompileErrors(output));
         Assert.Equal(
-            ["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "UpdateAsync", "Values"],
+            ["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "UpdateAsync", "Values",
+                "get_SaveRelations"],
             Methods(GeneratedModel.Of(output), "HolderOrm"));
     }
 

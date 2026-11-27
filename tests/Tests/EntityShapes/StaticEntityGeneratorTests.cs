@@ -31,7 +31,8 @@ public sealed class StaticEntityGeneratorTests
         Assert.DoesNotContain("SEOrm", generated, StringComparison.Ordinal);
         Assert.Equal(["sibs"], model.Schema.Entities.Select(e => e.Table).ToArray());
         Assert.Equal(
-            ["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "UpdateAsync", "Values"],
+            ["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "UpdateAsync", "Values",
+                "get_SaveRelations"],
             Methods(model, "SibOrm"));
     }
 

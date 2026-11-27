@@ -37,7 +37,7 @@ internal static class SaveSdkCompiler
     {
         var runtime = RuntimeEnvironment.GetRuntimeDirectory();
         var root = new DirectoryInfo(runtime).Parent!.Parent!.Parent!.FullName;
-        var sdk = Directory.GetDirectories(Path.Combine(root, "sdk")).Order(StringComparer.Ordinal).Last();
+        var sdk = LatestSdk(Directory.GetDirectories(Path.Combine(root, "sdk")), Environment.Version.Major);
         var compiler = Path.Combine(sdk, "Roslyn", "bincore", "csc.dll");
         var composer = Path.Combine(Path.GetDirectoryName(typeof(OrmGenerator).Assembly.Location)!,
             "Neemle.CSharpComposer.dll");
@@ -54,4 +54,12 @@ internal static class SaveSdkCompiler
             start.ArgumentList.Add("-r:" + reference);
         return start;
     }
+
+    internal static string LatestSdk(IEnumerable<string> directories, int runtimeMajor) => directories
+        .Select(path => (Path: path, Version: Version.TryParse(Path.GetFileName(path).Split('-')[0],
+            out var version) ? version : null))
+        .Where(sdk => sdk.Version is not null && sdk.Version.Major >= runtimeMajor)
+        .OrderBy(sdk => sdk.Version)
+        .Select(sdk => sdk.Path)
+        .Last();
 }

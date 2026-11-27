@@ -29,7 +29,8 @@ public sealed class CompositeKeyCollateralTests
 
         Assert.DoesNotContain("LoadPairAsync", members);
         Assert.Equal(
-            ["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "UpdateAsync", "Values"],
+            ["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "UpdateAsync", "Values",
+                "get_SaveRelations"],
             members);
     }
 
@@ -67,7 +68,8 @@ public sealed class CompositeKeyCollateralTests
         Assert.DoesNotContain("LoadPairsAsync", members);
         Assert.DoesNotContain("AddPairAsync", members);
         Assert.DoesNotContain("RemovePairAsync", members);
-        Assert.Equal(["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "Values"], members);
+        Assert.Equal(["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "Values",
+            "get_SaveRelations"], members);
     }
 
     [Fact(
@@ -110,13 +112,13 @@ public sealed class CompositeKeyCollateralTests
         Assert.Equal(
             [
                 "AddTagAsync", "Column", "DeleteAsync", "GetAsync", "InsertAsync", "LoadBooksAsync", "LoadTagsAsync",
-                "Map", "Query", "RemoveTagAsync", "UpdateAsync", "Values",
+                "Map", "Query", "RemoveTagAsync", "UpdateAsync", "Values", "get_SaveRelations",
             ],
             Members(OrdinaryNeighbours, "Author"));
         Assert.Equal(
             [
                 "Column", "DeleteAsync", "GetAsync", "InsertAsync", "LoadAuthorAsync", "Map", "Query", "UpdateAsync",
-                "Values",
+                "Values", "get_SaveRelations",
             ],
             Members(OrdinaryNeighbours, "Book"));
         Assert.Equal(["Column", "InsertAsync", "Map", "Query", "Values"], Members(OrdinaryNeighbours, "Pair"));
