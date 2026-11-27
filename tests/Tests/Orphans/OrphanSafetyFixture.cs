@@ -74,7 +74,7 @@ internal static class OrphanSafetyFixture
         {
             [Key] public Guid Id { get; set; }
             [Reference(nameof(CollectionChild.ParentId))]
-            public ICollection<CollectionChild> Children { get; set; } = new List<CollectionChild>();
+            public IList<CollectionChild> Children { get; set; } = new List<CollectionChild>();
         }
         [Table("u1_collection_child")]
         public sealed class CollectionChild
