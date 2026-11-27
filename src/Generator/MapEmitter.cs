@@ -75,7 +75,7 @@ internal static class MapEmitter
         }
     }
 
-    private static CsNode ReadOf(Prop p, CsNode ordinal, string table, string keyColumn)
+    internal static CsNode ReadOf(Prop p, CsNode ordinal, string table, string keyColumn)
     {
         var reader = Syn.Sym("r");
         if (Getters.TryGetValue(p.Read, out var getter)) return Syn.SymCall(reader, getter, ordinal);

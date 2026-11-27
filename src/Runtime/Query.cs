@@ -618,6 +618,18 @@ namespace Neemle.OrmLite;
             return new ViewDefinition(OrmMeta.Get(typeof(TView)).Table, projection.Build());
         }
 
+        internal JoinQueryInput JoinSnapshot() => new(_db, BuildSelect(), _map, StreamBorrowed,
+            _projection.Count != 0 || _aggregates.Count != 0)
+        {
+            Masked = _state.Redactions.Count != 0,
+            IncludingDeleted = !_live,
+            HasPolicy = JoinHasPolicy,
+        };
+
+        private static bool JoinHasPolicy() => RelationPolicies.Find(typeof(T)) is not null
+            || PolicyReadHooks<T>.Rows is not null || PolicyReadHooks<T>.First is not null
+            || PolicyReadHooks<T>.Snapshot is not null;
+
         internal GraphQueryState<T> GraphSnapshot() => new(_db, BuildSelect(), _map)
         {
             Connection = _exec.GraphConnection,
