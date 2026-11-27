@@ -2,25 +2,20 @@ namespace Neemle.OrmLite;
 
 internal static class OrphanMapperWitness
 {
-    internal static bool Full(Type type, Delegate mapper)
+    internal static bool Full(Type type, Delegate mapper) =>
+        Current(type) is { } binding && binding.Maps(mapper);
+
+    internal static bool Mapped(Type type, IGraphEntityBinding binding) =>
+        type == binding.EntityType && ReferenceEquals(Current(type), binding);
+
+    private static IGraphEntityBinding? Current(Type type)
     {
-        if (!OrphanModel.CurrentForRead(type)) return false;
+        if (!OrphanModel.CurrentForRead(type)) return null;
         try
         {
             var binding = GraphModel.Find(type);
-            return ReferenceEquals(binding.Descriptor, OrmMeta.ReadDescriptor(type)) && binding.Maps(mapper);
+            return ReferenceEquals(binding.Descriptor, OrmMeta.ReadDescriptor(type)) ? binding : null;
         }
-        catch (GraphRequestException) { return false; }
-    }
-
-    internal static bool Mapped(Type type, IGraphEntityBinding binding)
-    {
-        if (!OrphanModel.CurrentForRead(type) || type != binding.EntityType) return false;
-        try
-        {
-            return ReferenceEquals(GraphModel.Find(type), binding)
-                && ReferenceEquals(binding.Descriptor, OrmMeta.ReadDescriptor(type));
-        }
-        catch (GraphRequestException) { return false; }
+        catch (GraphRequestException) { return null; }
     }
 }
