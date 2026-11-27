@@ -18,9 +18,6 @@ public static class GraphSaveModel
                 if (!prior.Equivalent(candidate)) throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
                 return;
             }
-            if (Bindings.Values.Any(b => b.Descriptor.Table == candidate.Descriptor.Table
-                && b.EntityType.AssemblyQualifiedName == candidate.EntityType.AssemblyQualifiedName))
-                throw GraphSaveRefusal.At(GraphSaveError.UnsupportedMapping);
             Bindings.Add(typeof(T), candidate);
         }
     }
