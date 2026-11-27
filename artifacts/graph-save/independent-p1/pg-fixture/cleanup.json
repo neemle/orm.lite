@@ -1,0 +1,73 @@
+{
+  "start": "2026-11-26T21:31:00.669065+00:00",
+  "operations": [
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{.Name}} {{index .Config.Labels \"orml.claim\"}}",
+        "8c63edc7d8ffdd9e54dd786341ff9ee6f655ece36035b7369dfe74275e99ecbd"
+      ],
+      "exitCode": 0,
+      "stdout": "/orml112-sdet-pg-20261126 d3fb9340-8b01-488d-b58f-5cac3a6fa86a\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "logs",
+        "8c63edc7d8ffdd9e54dd786341ff9ee6f655ece36035b7369dfe74275e99ecbd"
+      ],
+      "exitCode": 0,
+      "stdout": "The files belonging to this database system will be owned by user \"postgres\".\nThis user must also own the server process.\n\nThe database cluster will be initialized with this locale configuration:\n  locale provider:   builtin\n  default collation: C.UTF-8\n  LC_COLLATE:  C\n  LC_CTYPE:    C.UTF-8\n  LC_MESSAGES: C\n  LC_MONETARY: C\n  LC_NUMERIC:  C\n  LC_TIME:     C\nThe default text search configuration will be set to \"english\".\n\nData page checksums are enabled.\n\nfixing permissions on existing directory /var/lib/postgresql/data ... ok\ncreating subdirectories ... ok\nselecting dynamic shared memory implementation ... posix\nselecting default \"max_connections\" ... 100\nselecting default \"shared_buffers\" ... 128MB\nselecting default time zone ... UTC\ncreating configuration files ... ok\nrunning bootstrap script ... ok\nperforming post-bootstrap initialization ... ok\nsyncing data to disk ... ok\n\nSuccess. You can now start the database server using:\n\n    /usr/local/pgsql/bin/pg_ctl -D /var/lib/postgresql/data -l logfile start\n\n",
+      "stderr": "********************************************************************************\nWARNING: POSTGRES_HOST_AUTH_METHOD has been set to \"trust\". This will allow\n         anyone with access to the Postgres port to access your database without\n         a password, even if POSTGRES_PASSWORD is set.\n********************************************************************************\n\nPostgreSQL init process complete; ready for start up.\n\n2026-11-26 21:27:02.796 UTC [1] LOG:  starting PostgreSQL 19.0 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit\n2026-11-26 21:27:02.798 UTC [1] LOG:  listening on IPv4 address \"0.0.0.0\", port 5432\n2026-11-26 21:27:02.798 UTC [1] LOG:  listening on IPv6 address \"::\", port 5432\n2026-11-26 21:27:02.819 UTC [1] LOG:  listening on Unix socket \"/tmp/.s.PGSQL.5432\"\n2026-11-26 21:27:02.831 UTC [52] LOG:  database system was shut down at 2026-11-26 21:27:01 UTC\n2026-11-26 21:27:02.840 UTC [1] LOG:  database system is ready to accept connections\n2026-11-26 21:29:30.025 UTC [210] ERROR:  new row for relation \"gs112_probe_node\" violates check constraint \"gs112_probe_node_name_check\"\n2026-11-26 21:29:30.025 UTC [210] DETAIL:  Failing row contains (000000ca-0000-0000-0000-000000000000, 000000c9-0000-0000-0000-000000000000, reject).\n2026-11-26 21:29:30.025 UTC [210] STATEMENT:  INSERT INTO \"gs112_probe_node\" (\"id\", \"parent_id\", \"name\") VALUES ($1, $2, $3)\n2026-11-26 21:29:30.046 UTC [50] LOG:  checkpoint starting: fast force wait\n2026-11-26 21:29:30.059 UTC [50] LOG:  checkpoint complete: fast force wait: wrote 45 buffers (0.3%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.004 s, total=0.014 s; sync files=14, longest=0.003 s, average=0.001 s; distance=4630 kB, estimate=4630 kB; lsn=0/01B84600, redo lsn=0/01B845A8\n2026-11-26 21:29:30.186 UTC [219] ERROR:  new row for relation \"gs112_probe_links\" violates check constraint \"gs112_probe_links_check\"\n2026-11-26 21:29:30.186 UTC [219] DETAIL:  Failing row contains (000000c9-0000-0000-0000-000000000000, 000000cb-0000-0000-0000-000000000000).\n2026-11-26 21:29:30.186 UTC [219] STATEMENT:  INSERT INTO \"gs112_probe_links\" (\"node_id\", \"tag_id\") VALUES ($1, $2) ON CONFLICT (\"node_id\", \"tag_id\") DO NOTHING\n2026-11-26 21:29:30.202 UTC [50] LOG:  checkpoint starting: fast force wait\n2026-11-26 21:29:30.340 UTC [50] LOG:  checkpoint complete: fast force wait: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 1 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.138 s; sync files=4, longest=0.001 s, average=0.001 s; distance=4305 kB, estimate=4597 kB; lsn=0/01FB8A30, redo lsn=0/01FB89D8\n2026-11-26 21:29:30.450 UTC [50] LOG:  checkpoint starting: fast force wait\n2026-11-26 21:29:30.457 UTC [50] LOG:  checkpoint complete: fast force wait: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.001 s, sync=0.001 s, total=0.008 s; sync files=4, longest=0.001 s, average=0.001 s; distance=4303 kB, estimate=4568 kB; lsn=0/023EC730, redo lsn=0/023EC6D8\n2026-11-26 21:29:30.543 UTC [50] LOG:  checkpoint starting: fast force wait\n2026-11-26 21:29:30.549 UTC [50] LOG:  checkpoint complete: fast force wait: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.007 s; sync files=4, longest=0.001 s, average=0.001 s; distance=4303 kB, estimate=4541 kB; lsn=0/02820510, redo lsn=0/028204B8\n2026-11-26 21:29:30.798 UTC [50] LOG:  checkpoint starting: fast force wait\n2026-11-26 21:29:30.806 UTC [50] LOG:  checkpoint complete: fast force wait: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.009 s; sync files=4, longest=0.001 s, average=0.001 s; distance=4305 kB, estimate=4517 kB; lsn=0/02C549A0, redo lsn=0/02C54948\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "8c63edc7d8ffdd9e54dd786341ff9ee6f655ece36035b7369dfe74275e99ecbd"
+      ],
+      "exitCode": 0,
+      "stdout": "8c63edc7d8ffdd9e54dd786341ff9ee6f655ece36035b7369dfe74275e99ecbd\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "orml112-sdet-net-20261126"
+      ],
+      "exitCode": 0,
+      "stdout": "orml112-sdet-net-20261126\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "8c63edc7d8ffdd9e54dd786341ff9ee6f655ece36035b7369dfe74275e99ecbd"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "error: no such object: 8c63edc7d8ffdd9e54dd786341ff9ee6f655ece36035b7369dfe74275e99ecbd\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "orml112-sdet-net-20261126"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "Error response from daemon: network orml112-sdet-net-20261126 not found\n"
+    }
+  ],
+  "containerAbsent": true,
+  "networkAbsent": true,
+  "finish": "2026-11-26T21:31:02.018576+00:00"
+}

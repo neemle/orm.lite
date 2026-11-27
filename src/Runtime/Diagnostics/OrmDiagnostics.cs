@@ -94,6 +94,50 @@ internal sealed class OrmDiagnostics
         }
     }
 
+    internal async Task<T> RunGraphSaveAsync<T>(GraphSaveDiagnosticRun request,
+        Func<Task<T>> run, Func<T, int?> rows)
+    {
+        using var activity = Source.StartActivity("orm.graph-save", ActivityKind.Client);
+        if (activity is { IsAllDataRequested: true })
+        {
+            activity.SetTag("db.system", _provider);
+            activity.SetTag("db.statement", "graph-save");
+        }
+        if (_sink is null) return await run();
+        var start = Stopwatch.GetTimestamp();
+        var failed = false;
+        int? affected = null;
+        try
+        {
+            var result = await run();
+            affected = rows(result);
+            return result;
+        }
+        catch { failed = true; throw; }
+        finally
+        {
+            ReportGraphSave(request, new GraphSaveDiagnosticOutcome(Stopwatch.GetElapsedTime(start), affected, failed));
+        }
+    }
+
+    private void ReportGraphSave(GraphSaveDiagnosticRun request, GraphSaveDiagnosticOutcome outcome)
+    {
+        var trace = request.Lease.Transaction;
+        trace?.Count();
+        var slow = _slow > TimeSpan.Zero && _slowLevel != OrmLogLevel.None && outcome.Elapsed >= _slow;
+        OrmLogLevel? level = outcome.Failed ? OrmLogLevel.Error : null;
+        if (slow) level = Raise(level, _slowLevel);
+        if (_statementLevel != OrmLogLevel.None && Sampled()) level = Raise(level, _statementLevel);
+        if (level is not { } reported) return;
+        try
+        {
+            _sink!.OnStatement(new StatementEvent(reported, _provider, request.Kind, "graph-save",
+                request.Command.Parameters.Count, null, outcome.Elapsed, outcome.Affected, request.Lease.ConnectionId,
+                trace?.Id, slow, outcome.Failed ? new GraphSaveDiagnosticError() : null));
+        }
+        catch { }
+    }
+
     internal void Emit(TransactionEvent transaction)
     {
         if (_sink is null || _transactionLevel == OrmLogLevel.None) return;
@@ -161,6 +205,18 @@ internal static class DbCommandDiagnostics
         Lease(command) is { } lease
             ? lease.Diagnostics.RunAsync(command, kind, lease, (c, t) => c.ExecuteReaderAsync(behavior, t), static _ => null, ct)
             : command.ExecuteReaderAsync(behavior, ct);
+
+    internal static Task<int> RunGraphSaveNonQueryAsync(this DbCommand command, CancellationToken ct) =>
+        Lease(command) is { } lease
+            ? lease.Diagnostics.RunGraphSaveAsync(new GraphSaveDiagnosticRun(command, StatementKind.Write, lease),
+                () => command.ExecuteNonQueryAsync(ct), static n => n)
+            : command.ExecuteNonQueryAsync(ct);
+
+    internal static Task<object?> RunGraphSaveScalarAsync(this DbCommand command, CancellationToken ct) =>
+        Lease(command) is { } lease
+            ? lease.Diagnostics.RunGraphSaveAsync(new GraphSaveDiagnosticRun(command, StatementKind.Read, lease),
+                () => command.ExecuteScalarAsync(ct), static _ => null)
+            : command.ExecuteScalarAsync(ct);
 
     private static readonly ConcurrentDictionary<Type, bool> s_connectionless = new();
 

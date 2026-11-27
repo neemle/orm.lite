@@ -8,6 +8,8 @@ For several roots and nested reads, [request an explicit graph](#5-load-an-expli
 paths and finite limits. The individual loaders and manual migration tutorial below remain available.
 Navigation declarations alone keep their loading behavior. Database foreign keys are an explicit choice:
 use opt-in attributes for a fresh generated baseline, or a migration for an existing database.
+For atomic related writes, [save an explicit related graph](#7-save-an-explicit-related-graph): navigation assignment
+alone still does not enable persistence.
 
 | Relation | Model declaration | Generated methods |
 | --- | --- | --- |
@@ -126,7 +128,8 @@ produces one constraint; conflicting declarations are refused.
 | `SetNull` | The database clears the referencing key; that key must be nullable. |
 
 Soft delete updates a row and does not invoke `ON DELETE`. Setting a navigation property also does not save
-its entities: call the generated insert/update methods for each row you intend to write.
+its entities: call the generated insert/update methods for each row, or explicitly opt in to
+[an atomic graph save](#7-save-an-explicit-related-graph).
 
 ### Runnable foreign-key cases
 
@@ -513,3 +516,102 @@ failure, independent cleanup attempts and cleanup-only refusal.
 Use the demo's [package preparation and JIT commands](../examples/one-to-one/README.md#prepare-and-run),
 [provider selection](../examples/one-to-one/README.md#choose-the-provider) and
 [NativeAOT/.NET 11 commands](../examples/one-to-one/README.md#nativeaot) for the same public cases.
+
+## 7. Save an explicit related graph
+
+`GraphSave.SaveAsync(context, request, cancellationToken)` saves a root and only the supplied related mutations
+selected by the request. It owns one connection and transaction for all entity writes, anchor checks and link additions.
+Navigation attributes and populated properties do not opt in by themselves.
+
+The [public GraphSave guide](../demo/GraphSave/README.md) contains the
+[package preparation and JIT/NativeAOT commands](../demo/GraphSave/README.md#run-with-jit-or-nativeaot).
+Its [entry point](../demo/GraphSave/GraphSaveDemo.cs), selected by [Program.cs](../demo/Program.cs), runs the same
+cases on PostgreSQL and SQLite with .NET 10 or 11. Use the current checkout's packed packages for this example.
+
+### Declare intent and allowed edges
+
+The sample models are a [project](../demo/GraphSave/GraphSaveProject.cs),
+[team](../demo/GraphSave/GraphSaveTeam.cs), [task](../demo/GraphSave/GraphSaveTask.cs) and
+[tag](../demo/GraphSave/GraphSaveTag.cs). The [fixture](../demo/GraphSave/GraphSaveFixture.cs) supplies their keys
+and navigation objects. `GraphSaveRequest<T>` supplies the root and its explicit root intent; `GraphSavePlan`
+supplies related intents, permissions, limits and `Owned` transaction mode.
+
+| Intent | Meaning |
+| --- | --- |
+| `Insert` | Insert this caller-keyed row. A duplicate Insert may fail; it never turns into an update. |
+| `Update` | Write this complete admitted physical payload to an existing row. A missing row fails instead of being inserted. |
+| `Unchanged` | Do not mutate this entity. When used as an enabled relation/link anchor, check that its key exists. |
+
+Keys never infer intent. Every reached related instance needs an explicit entry in `GraphSaveIntents`, which uses
+object reference identity. Typed generated `SaveRelations` tokens select an exact navigation; `Allow` separately
+permits `Insert`, `Update` and, for supported pure links, `AddLink`. Both intents and permissions return immutable
+copies. `GraphSavePermissions.None` skips all related getters and writes, even for populated navigations; the
+[default-off case](../demo/GraphSave/GraphSaveDefaultCase.cs) checks this against actual rows.
+
+This is the exact permission/intent/save excerpt from
+[GraphSaveInsertCase](../demo/GraphSave/GraphSaveInsertCase.cs). Here `db` is its open context and `f` is the
+prepared fixture; the [request helper](../demo/GraphSave/GraphSaveChecks.cs) supplies the root request and limits:
+
+```csharp
+var permissions = GraphSavePermissions.None
+    .Allow(GraphSaveProjectOrm.SaveRelations.Team,
+        new(GraphSaveActions.Insert, GraphSaveKeyBinding.BindInWriteBuffer))
+    .Allow(GraphSaveProjectOrm.SaveRelations.Tasks,
+        new(GraphSaveActions.Insert, GraphSaveKeyBinding.BindInWriteBuffer))
+    .Allow(GraphSaveProjectOrm.SaveRelations.Tags, new(GraphSaveActions.Insert | GraphSaveActions.AddLink));
+var intents = GraphSaveIntents.Empty.With(f.Team, GraphSaveIntent.Insert).With(f.First, GraphSaveIntent.Insert)
+    .With(f.Sibling, GraphSaveIntent.Insert).With(f.Tag, GraphSaveIntent.Insert);
+var result = await GraphSave.SaveAsync(db, GraphSaveChecks.Request(f.Project, GraphSaveIntent.Insert,
+    intents, permissions));
+```
+
+`RequireMatch` requires an FK to match the related key already. `BindInWriteBuffer` explicitly binds only the
+relation-owned FK in the detached write buffer; input FK properties stay unchanged. After an acknowledged commit,
+the fixture [explicitly adopts result bindings](../demo/GraphSave/GraphSaveFixture.cs) through
+`BoundForeignKey<TEntity,TKey>` before its subsequent updates. The library never changes keys, FKs, navigations
+or intents and does not mark an object as persisted.
+
+The [repeat case](../demo/GraphSave/GraphSaveRepeatCase.cs) uses `Unchanged` team/tag anchors and explicit updates.
+An enabled edge to an Unchanged anchor still needs a rule, which may allow `GraphSaveActions.None`;
+that rule does not license an entity write. Repeating the permitted Guid-key link adds no duplicate exact pair.
+Omitted children and links survive; omission never means delete, soft delete, orphan removal, unlink or FK clearing.
+
+### Bound work and supported shapes
+
+Every request supplies all six positive finite [traversal and work limits](../demo/GraphSave/README.md#limits-and-database-work).
+They count depth, encountered instances, examined allowed slots, unique entity writes, unique link pairs and
+planned write/link/anchor statements. Exceeded bounds fail before a transaction rather than save a prefix.
+Shared identities require matching intent and final physical/FK values; conflicts and remaining mutation cycles refuse.
+Only supplied safe auto-properties and concrete Lists are traversed; missing or disabled navigations trigger no discovery.
+
+Supported mappings are generated managed non-view entities with one supported caller-supplied scalar key, ordinary
+references/collections and pure managed Guid-key links with the known pair key. Unsupported generated/composite keys,
+custom/payload joins, unsafe getters/custom collections and policy-specialized mappings refuse. Known projected or
+masked partial input refuses before a transaction, with no hidden full-row reread or promotion. Manual objects remain
+explicit host-authorized full-payload requests; missing provenance is not authorization or proof of completeness.
+
+### Ownership, rollback and uncertain outcomes
+
+`Owned` is the supported transaction mode. `CallerJoined`, bare connections and caller-owned transaction/UoW
+participation are unsupported; no savepoint, hidden join or caller-commit safety is inferred.
+
+| Outcome | What the caller knows |
+| --- | --- |
+| `NotStarted` | Admission failed or was canceled before the transaction; no graph write occurred. |
+| `RolledBack` | A precommit failure had an acknowledged rollback; no new subset remains committed. |
+| `Committed` | Commit was acknowledged. Later cleanup failure can throw with `CommittedResult`; it does not undo the commit. |
+| `Unknown` | Rollback or commit response is unconfirmed. Reconcile with domain keys before deciding whether to retry. |
+
+The [rollback case](../demo/GraphSave/GraphSaveRollbackCase.cs) performs two successful writes before a third
+constraint conflict, then checks that no new prefix survived and that the conflicting existing row and input graph
+remain intact. The [refusal case](../demo/GraphSave/GraphSaveRefusalCase.cs) exercises action restrictions, a missing
+Unchanged anchor, an enforced physical FK, known partial input and pre-admission cancellation.
+
+Precommit cancellation after transaction admission initiates rollback independently of the canceled token. Once commit
+starts, await its actual outcome; late cancellation cannot establish rollback. There is no automatic retry, implicit upsert
+or stronger isolation promise. Caller edits are not rolled back or tracked; serialize edits during capture.
+
+Safe error/outcome formatting does not expose row values or raw native details. `InnerException` remains sensitive
+programmatic diagnostic data; avoid automatically serializing it. The public demo prints safe case results and checks
+the same insert/update/default-off/repeat/rollback/refusal assertions in all eight JIT/NativeAOT × provider × runtime
+combinations. It uses a new scratch database/file per invocation and requires successful cleanup before reporting success.

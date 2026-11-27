@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="8e9c2dde-720e-4c88-affb-a61a75828049" name="@4a58b19f8822 2026-11-26 21:35:30" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-26T21:35:30.6502168+00:00" queuing="2026-11-26T21:35:30.6502169+00:00" start="2026-11-26T21:35:30.1048860+00:00" finish="2026-11-26T21:35:30.6523648+00:00" />
+  <TestSettings name="default" id="eec99490-8b9b-4cc1-b5b3-f05e8a00fcac">
+    <Deployment runDeploymentRoot="_4a58b19f8822_2026-11-26_21_35_30" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="05c0ec3e-20c4-4347-adde-7e6d34c670a1" testId="ee366acb-7d2e-1e08-1e67-dc750b5440b2" testName="[UC-006][AC-112-03/09] preflight and successful-prefix cancellation preserve exact known rollback truth(afterPrefix: False)" computerName="4a58b19f8822" duration="00:00:00.0121450" startTime="2026-11-26T21:35:30.5861011+00:00" endTime="2026-11-26T21:35:30.5861082+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="05c0ec3e-20c4-4347-adde-7e6d34c670a1" />
+    <UnitTestResult executionId="0bd367ca-83e2-4a9c-a19c-e86f68d0b2d0" testId="a61c50ac-a14e-b3f3-545b-0f4286b970f1" testName="[UC-006][AC-112-03/09] preflight and successful-prefix cancellation preserve exact known rollback truth(afterPrefix: True)" computerName="4a58b19f8822" duration="00:00:00.0122234" startTime="2026-11-26T21:35:30.5980992+00:00" endTime="2026-11-26T21:35:30.5980992+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0bd367ca-83e2-4a9c-a19c-e86f68d0b2d0" />
+    <UnitTestResult executionId="6801ef82-19b1-48b3-9141-7ceccd03bc96" testId="e03bf95a-fe59-b351-d10a-62b2f4e8d125" testName="[UC-006][AC-112-09][SEC] primary plus every observed cleanup fault survive all cleanup attempts" computerName="4a58b19f8822" duration="00:00:00.0009749" startTime="2026-11-26T21:35:30.6037339+00:00" endTime="2026-11-26T21:35:30.6037340+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6801ef82-19b1-48b3-9141-7ceccd03bc96" />
+    <UnitTestResult executionId="9246e6ca-38a5-4090-ba2c-12316b352c12" testId="e64ecc95-aed1-d92d-c827-ea6f1a230fd5" testName="[UC-006][AC-112-09] unconfirmed rollback and lost commit response never become a false settled outcome(mode: &quot;rollback-unknown&quot;, expected: RollbackUnconfirmed)" computerName="4a58b19f8822" duration="00:00:00.0010245" startTime="2026-11-26T21:35:30.6025335+00:00" endTime="2026-11-26T21:35:30.6025335+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9246e6ca-38a5-4090-ba2c-12316b352c12" />
+    <UnitTestResult executionId="87f5555a-ab85-4fff-bda9-6b206e16e2fa" testId="fdfde8d9-de9e-f1af-72a9-c7c4a55d83c2" testName="[UC-006][AC-112-09] committed release failure retains the prebuilt typed result and forbids blind retry" computerName="4a58b19f8822" duration="00:00:00.0014337" startTime="2026-11-26T21:35:30.6014900+00:00" endTime="2026-11-26T21:35:30.6014901+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="87f5555a-ab85-4fff-bda9-6b206e16e2fa" />
+    <UnitTestResult executionId="70b7168a-8ed6-4b29-b9d2-b9eb001f3e1d" testId="e397b470-87b1-e362-7172-414cc3d0a5b7" testName="[UC-006][AC-112-09] cancellation racing after commit starts cannot turn acknowledged commit into rollback" computerName="4a58b19f8822" duration="00:00:00.0015320" startTime="2026-11-26T21:35:30.5996990+00:00" endTime="2026-11-26T21:35:30.5996991+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70b7168a-8ed6-4b29-b9d2-b9eb001f3e1d" />
+    <UnitTestResult executionId="1354abfd-d06a-4b0b-893a-2e167bcc10a3" testId="f7701eae-daad-a038-5377-993217215829" testName="[UC-006][AC-112-09] unconfirmed rollback and lost commit response never become a false settled outcome(mode: &quot;commit-unknown&quot;, expected: CommitUnknown)" computerName="4a58b19f8822" duration="00:00:00.0001789" startTime="2026-11-26T21:35:30.6027334+00:00" endTime="2026-11-26T21:35:30.6027335+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1354abfd-d06a-4b0b-893a-2e167bcc10a3" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="[UC-006][AC-112-09][SEC] primary plus every observed cleanup fault survive all cleanup attempts" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/tests/release/neemle.ormlite.tests.dll" id="e03bf95a-fe59-b351-d10a-62b2f4e8d125">
+      <Execution id="6801ef82-19b1-48b3-9141-7ceccd03bc96" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.GraphSave.SaveOutcomeTests" name="Multiple_cleanup_failures_do_not_replace_the_operation_primary" />
+    </UnitTest>
+    <UnitTest name="[UC-006][AC-112-09] committed release failure retains the prebuilt typed result and forbids blind retry" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/tests/release/neemle.ormlite.tests.dll" id="fdfde8d9-de9e-f1af-72a9-c7c4a55d83c2">
+      <Execution id="87f5555a-ab85-4fff-bda9-6b206e16e2fa" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.GraphSave.SaveOutcomeTests" name="Postcommit_failure_has_the_committed_result" />
+    </UnitTest>
+    <UnitTest name="[UC-006][AC-112-09] unconfirmed rollback and lost commit response never become a false settled outcome(mode: &quot;rollback-unknown&quot;, expected: RollbackUnconfirmed)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/tests/release/neemle.ormlite.tests.dll" id="e64ecc95-aed1-d92d-c827-ea6f1a230fd5">
+      <Execution id="9246e6ca-38a5-4090-ba2c-12316b352c12" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.GraphSave.SaveOutcomeTests" name="Uncertain_outcomes_stay_unknown" />
+    </UnitTest>
+    <UnitTest name="[UC-006][AC-112-09] cancellation racing after commit starts cannot turn acknowledged commit into rollback" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/tests/release/neemle.ormlite.tests.dll" id="e397b470-87b1-e362-7172-414cc3d0a5b7">
+      <Execution id="70b7168a-8ed6-4b29-b9d2-b9eb001f3e1d" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.GraphSave.SaveCancellationTests" name="Acknowledged_commit_wins_late_cancellation" />
+    </UnitTest>
+    <UnitTest name="[UC-006][AC-112-03/09] preflight and successful-prefix cancellation preserve exact known rollback truth(afterPrefix: True)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/tests/release/neemle.ormlite.tests.dll" id="a61c50ac-a14e-b3f3-545b-0f4286b970f1">
+      <Execution id="0bd367ca-83e2-4a9c-a19c-e86f68d0b2d0" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.GraphSave.SaveCancellationTests" name="Cancellation_before_commit_uses_uncancelled_rollback" />
+    </UnitTest>
+    <UnitTest name="[UC-006][AC-112-03/09] preflight and successful-prefix cancellation preserve exact known rollback truth(afterPrefix: False)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/tests/release/neemle.ormlite.tests.dll" id="ee366acb-7d2e-1e08-1e67-dc750b5440b2">
+      <Execution id="05c0ec3e-20c4-4347-adde-7e6d34c670a1" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.GraphSave.SaveCancellationTests" name="Cancellation_before_commit_uses_uncancelled_rollback" />
+    </UnitTest>
+    <UnitTest name="[UC-006][AC-112-09] unconfirmed rollback and lost commit response never become a false settled outcome(mode: &quot;commit-unknown&quot;, expected: CommitUnknown)" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/tests/release/neemle.ormlite.tests.dll" id="f7701eae-daad-a038-5377-993217215829">
+      <Execution id="1354abfd-d06a-4b0b-893a-2e167bcc10a3" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/independent-p1/run-02/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.GraphSave.SaveOutcomeTests" name="Uncertain_outcomes_stay_unknown" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="ee366acb-7d2e-1e08-1e67-dc750b5440b2" executionId="05c0ec3e-20c4-4347-adde-7e6d34c670a1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a61c50ac-a14e-b3f3-545b-0f4286b970f1" executionId="0bd367ca-83e2-4a9c-a19c-e86f68d0b2d0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e03bf95a-fe59-b351-d10a-62b2f4e8d125" executionId="6801ef82-19b1-48b3-9141-7ceccd03bc96" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e64ecc95-aed1-d92d-c827-ea6f1a230fd5" executionId="9246e6ca-38a5-4090-ba2c-12316b352c12" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fdfde8d9-de9e-f1af-72a9-c7c4a55d83c2" executionId="87f5555a-ab85-4fff-bda9-6b206e16e2fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e397b470-87b1-e362-7172-414cc3d0a5b7" executionId="70b7168a-8ed6-4b29-b9d2-b9eb001f3e1d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f7701eae-daad-a038-5377-993217215829" executionId="1354abfd-d06a-4b0b-893a-2e167bcc10a3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="7" executed="7" passed="7" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.08]   Discovering: Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.30]   Discovered:  Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.30]   Starting:    Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.35]   Finished:    Neemle.OrmLite.Tests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

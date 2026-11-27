@@ -1,0 +1,42 @@
+{
+  "generated": "2026-11-26T22:21:59.273834+00:00",
+  "review": "Read entire five-file diff. Entity0000\u20130003 only append safe Save binding/token members; moduleinit0005 adds RegisterSave0 and fourcalls. Schema0004 unchanged. Existing CRUD/Map/Values/Query/loader bytecontent otherwise unchanged. No fixture/assertion/threshold edits; expected source pins updated for actual additive generator change, no hash-forcing. Mixed existing generator line endings preserved, not normalized.",
+  "files": [
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0005.g.cs.golden",
+      "beforeSha256": "72b0acd224eba7dfa4704b6d3986878dfb5f725989bb399bfa87599d9182645f",
+      "afterSha256": "beffa9b5cba1a51077e3369817f7fcd82cf5cace7e51a0e5959513dc39241a48",
+      "changed": true
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden",
+      "beforeSha256": "20e238a4bab1a69b70ffdf74c7aabe71f2307dfa444d57c98132535c10165424",
+      "afterSha256": "5beae88ef27e82c568471b2f1fe98b114247b2ca1e1e72fc9d608b97175a78f3",
+      "changed": true
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden",
+      "beforeSha256": "bfd88a3df044c6892254d3ffccab70a2e4ea13a4d3b0d30b067eced1884f4449",
+      "afterSha256": "b66dea59cbaddca8df3eb0389f60672f8f34498c21f238c82b3f54a0b6ac88db",
+      "changed": true
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden",
+      "beforeSha256": "ca9fa19ed77d32d586b82be9456817fcf5e8bdaa5b28239f83eda7d96eb46ca0",
+      "afterSha256": "0e2b35b751c583c26051c4d87b6b96fbd19d9dbd1cdc65139a738e199fe9461f",
+      "changed": true
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0004.g.cs.golden",
+      "beforeSha256": "16c2d162f4b840d16434b7f10944da3156a4049d196baa335d0fbbc43f597153",
+      "afterSha256": "16c2d162f4b840d16434b7f10944da3156a4049d196baa335d0fbbc43f597153",
+      "changed": false
+    },
+    {
+      "path": "tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden",
+      "beforeSha256": "5d3753bb30a7f9afbfea167de0b38166f872a0a302d2314a7f0d0e0d070643fa",
+      "afterSha256": "a64a93c4933dd8f173a29a9de755d9be733c5a5c4cc3c0e736ab39917e3f2195",
+      "changed": true
+    }
+  ]
+}

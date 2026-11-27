@@ -1,0 +1,30 @@
+{
+  "start": "2026-11-26T21:28:29.721632+00:00",
+  "supersedesReadinessOnly": "setup.json (absent pg_isready, not a database failure)",
+  "operations": [
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{.State.Status}}",
+        "orml112-sdet-pg-20261126"
+      ],
+      "exitCode": 0,
+      "stdout": "running\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "logs",
+        "orml112-sdet-pg-20261126"
+      ],
+      "exitCode": 0,
+      "stdout": "The files belonging to this database system will be owned by user \"postgres\".\nThis user must also own the server process.\n\nThe database cluster will be initialized with this locale configuration:\n  locale provider:   builtin\n  default collation: C.UTF-8\n  LC_COLLATE:  C\n  LC_CTYPE:    C.UTF-8\n  LC_MESSAGES: C\n  LC_MONETARY: C\n  LC_NUMERIC:  C\n  LC_TIME:     C\nThe default text search configuration will be set to \"english\".\n\nData page checksums are enabled.\n\nfixing permissions on existing directory /var/lib/postgresql/data ... ok\ncreating subdirectories ... ok\nselecting dynamic shared memory implementation ... posix\nselecting default \"max_connections\" ... 100\nselecting default \"shared_buffers\" ... 128MB\nselecting default time zone ... UTC\ncreating configuration files ... ok\nrunning bootstrap script ... ok\nperforming post-bootstrap initialization ... ok\nsyncing data to disk ... ok\n\nSuccess. You can now start the database server using:\n\n    /usr/local/pgsql/bin/pg_ctl -D /var/lib/postgresql/data -l logfile start\n\n",
+      "stderr": "********************************************************************************\nWARNING: POSTGRES_HOST_AUTH_METHOD has been set to \"trust\". This will allow\n         anyone with access to the Postgres port to access your database without\n         a password, even if POSTGRES_PASSWORD is set.\n********************************************************************************\n\nPostgreSQL init process complete; ready for start up.\n\n2026-11-26 21:27:02.796 UTC [1] LOG:  starting PostgreSQL 19.0 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit\n2026-11-26 21:27:02.798 UTC [1] LOG:  listening on IPv4 address \"0.0.0.0\", port 5432\n2026-11-26 21:27:02.798 UTC [1] LOG:  listening on IPv6 address \"::\", port 5432\n2026-11-26 21:27:02.819 UTC [1] LOG:  listening on Unix socket \"/tmp/.s.PGSQL.5432\"\n2026-11-26 21:27:02.831 UTC [52] LOG:  database system was shut down at 2026-11-26 21:27:01 UTC\n2026-11-26 21:27:02.840 UTC [1] LOG:  database system is ready to accept connections\n"
+    }
+  ],
+  "ready": true,
+  "finish": "2026-11-26T21:28:29.779206+00:00"
+}

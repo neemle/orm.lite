@@ -15,6 +15,7 @@ The demo README lists each chapter and its source file.
 | Use PostgreSQL connection settings | [Switch to PostgreSQL](configuration.md#switch-to-postgresql) |
 | Page reads or select keys for a batched update or delete | [Paging and ordering](queries.md#paging-and-ordering-which-terminals-take-them) |
 | Load related entities or add foreign keys | [Relations sample](relations.md) |
+| Save a root and explicitly permitted related rows atomically | [GraphSave cases and JIT/NativeAOT commands](../demo/GraphSave/README.md), [entry point](../demo/GraphSave/GraphSaveDemo.cs) |
 | Seed a row with a reversible migration | [Write and apply a migration](migrations.md#write-and-apply-a-migration) |
 | Use a unit of work, group results, or query JSON | [Demo chapters](../demo/README.md#what-each-chapter-proves) |
 | Delete, restore, and inspect a row's history | [Soft delete, restore, and history](../demo/README.md#soft-delete-restore-and-history) |

@@ -103,4 +103,20 @@ public static global::System.Threading.Tasks.Task<global::CorpusDiagnostics.Dupl
     .OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.
     OrmLite.RelationReadOptions options, global::System.Threading.CancellationToken ct = default) => global::Neemle.
     OrmLite.RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
+
+internal static void RegisterSave()
+{
+    global::Neemle.OrmLite.GraphSaveModel.Register(new global::Neemle.OrmLite.GraphSaveEntityBinding<global::
+        CorpusDiagnostics.DuplicateIndexName, global::System.Guid>(Descriptor, Values, static e => e.@Id, Map, new
+        global::Neemle.OrmLite.GraphSaveRelationBinding<global::CorpusDiagnostics.DuplicateIndexName>[] { }));
+}
+
+public static __GraphSaveTokens SaveRelations { get; } = new __GraphSaveTokens();
+
+public sealed class __GraphSaveTokens
+{
+    internal __GraphSaveTokens()
+    {
+    }
+}
 }

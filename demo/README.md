@@ -43,6 +43,9 @@ and then `demo ok`.
 Each number is a chapter. Source comments explain the library features and steps that are not obvious.
 This section gives a reading order for someone who has not seen the library.
 
+The separately selected [graph-save chapter](#save-an-explicit-graph) uses the same project to demonstrate atomic
+related writes. Invoke it with `graph-save sqlite` or `graph-save postgres`; it is not part of the default numbered run.
+
 ### Order of reading
 
 1. **`Program.cs`**: the whole program in one screen, and the roadmap of chapters in its header comment. Read it first.
@@ -302,6 +305,33 @@ of their existing rows. The tracker's manually owned foreign keys and migrations
 loader-only `[Reference]` declaration adds no database constraint. See the
 [relation guide](../docs/relations.md#3-choose-how-to-create-foreign-keys) and
 [upgrade guidance](../docs/migrations.md#foreign-keys-fresh-baseline-and-existing-databases).
+
+## Save an explicit graph
+
+The [GraphSave guide](GraphSave/README.md) runs the same public cases and models with JIT or NativeAOT on
+SQLite and PostgreSQL, using .NET 10 or 11. Pack the current checkout as shown in [Run it](#run-it), then select it:
+
+```sh
+dotnet run --project demo/OrmLiteDemo.csproj -c Release -- graph-save sqlite
+ORMLITE_GRAPH_POSTGRES='Host=localhost;Port=55432;Username=postgres;Database=postgres' \
+  dotnet run --project demo/OrmLiteDemo.csproj -c Release -- graph-save postgres
+```
+
+[GraphSaveDemo](GraphSave/GraphSaveDemo.cs), selected by [Program.cs](Program.cs), creates a fresh scratch database
+and runs these checks before removing it:
+
+| Case | What it checks |
+| --- | --- |
+| [Default-off](GraphSave/GraphSaveDefaultCase.cs) | Populated navigations remain unwritten without an explicit rule. |
+| [Insert](GraphSave/GraphSaveInsertCase.cs) | Reference, collection and one exact Guid-key link commit together; FK binding leaves input objects untouched. |
+| [Repeat](GraphSave/GraphSaveRepeatCase.cs) | Explicit updates and Unchanged anchors preserve omitted siblings and links without duplicating the pair. |
+| [Rollback](GraphSave/GraphSaveRollbackCase.cs) | Two successful writes precede a third-statement constraint conflict; rollback removes the new prefix and preserves the existing row. |
+| [Refusal](GraphSave/GraphSaveRefusalCase.cs) | Wrong actions, missing anchors, enabled FK constraints, partial inputs and pre-cancellation have their expected outcomes. |
+
+Exit zero and `graph-save chapter ok; scratch removed` require every case and scratch cleanup to succeed.
+See the guide for [models and explicit intents](GraphSave/README.md#models-and-explicit-intents),
+[NativeAOT/.NET 11 commands](GraphSave/README.md#run-with-jit-or-nativeaot) and
+[outcome and ownership boundaries](GraphSave/README.md#outcome-and-ownership-boundaries).
 
 ## Soft delete, restore and history
 

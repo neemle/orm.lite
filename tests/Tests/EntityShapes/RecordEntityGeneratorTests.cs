@@ -48,7 +48,8 @@ public sealed class RecordEntityGeneratorTests
 
         Assert.Empty(diagnostics);
         Assert.Equal(
-            ["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "UpdateAsync", "Values"],
+            ["Column", "DeleteAsync", "GetAsync", "InsertAsync", "Map", "Query", "UpdateAsync", "Values",
+                "get_SaveRelations"],
             Methods(model, "AOrm"));
         Assert.Contains(
             "new global::Fixture.A() { Id = r.GetGuid(o0), Title = r.GetString(o1) }",

@@ -1,0 +1,34 @@
+cp: warning: behavior of -n is non-portable and may change in future; use --update=none instead
+  Determining projects to restore...
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite with version (= 0.1.0-dev.g1bf0d57)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Found 1 version(s) in local [ Nearest version: 0.1.0-dev.gfffc5b9 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from warm were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite.Sqlite with version (= 0.1.0-dev.g1bf0d57)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Found 1 version(s) in local [ Nearest version: 0.1.0-dev.gfffc5b9 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from warm were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite.Postgres with version (= 0.1.0-dev.g1bf0d57)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Found 1 version(s) in local [ Nearest version: 0.1.0-dev.gfffc5b9 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from warm were not considered
+  Failed to restore /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj (in 58 ms).
+
+Build FAILED.
+
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite with version (= 0.1.0-dev.g1bf0d57)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Found 1 version(s) in local [ Nearest version: 0.1.0-dev.gfffc5b9 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from warm were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite.Sqlite with version (= 0.1.0-dev.g1bf0d57)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Found 1 version(s) in local [ Nearest version: 0.1.0-dev.gfffc5b9 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from warm were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102: Unable to find package Neemle.OrmLite.Postgres with version (= 0.1.0-dev.g1bf0d57)
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Found 1 version(s) in local [ Nearest version: 0.1.0-dev.gfffc5b9 ]
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from nuget.org were not considered
+/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/demo/OrmLiteDemo.csproj : error NU1102:   - Versions from warm were not considered
+    0 Warning(s)
+    3 Error(s)
+
+Time Elapsed 00:00:01.45

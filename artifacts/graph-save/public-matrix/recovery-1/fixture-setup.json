@@ -1,0 +1,53 @@
+{
+  "generated": "2026-11-26T22:17:32.731172+00:00",
+  "operations": [
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--internal",
+        "--label",
+        "orml.task=ORML-112",
+        "--label",
+        "orml.claim=5c5d6c25-ef4d-405d-8e62-4d3ddd236fdc",
+        "orml112-public-net-20261126"
+      ],
+      "exitCode": 0,
+      "stdout": "6b1973c808217a47335f71ad07bbd964ae1cec2a2be1a952d751e25384b347bf\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--rm",
+        "--name",
+        "orml112-public-pg-20261126",
+        "--label",
+        "orml.task=ORML-112",
+        "--label",
+        "orml.claim=5c5d6c25-ef4d-405d-8e62-4d3ddd236fdc",
+        "--memory=1g",
+        "--cpus=1",
+        "--network",
+        "orml112-public-net-20261126",
+        "--tmpfs",
+        "/var/lib/postgresql/data:rw,size=512m,uid=70,gid=70,mode=0700",
+        "--cidfile",
+        "/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/public-matrix/recovery-1/pg.cid",
+        "-e",
+        "POSTGRES_HOST_AUTH_METHOD=trust",
+        "-e",
+        "POSTGRES_USER=postgres",
+        "-e",
+        "POSTGRES_DB=postgres",
+        "sha256:790e4afa39efa8fcb2edf47692c5330e7a36a5e89b0fa4f872848cbe4bf70117"
+      ],
+      "exitCode": 0,
+      "stdout": "539f1a13693127a7cbc40c97ae2178d67d06fd22a7a3e6d1cbca4b8586b3a5d4\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Graph-save declarations belong to the existing Neemle.OrmLite persistence API.
+# This folder groups implementation; it does not add a public namespace.
+[*.cs]
+dotnet_diagnostic.IDE0130.severity = none

@@ -1,0 +1,28 @@
+{
+  "generated": "2026-11-26T22:16:36.255726+00:00",
+  "checks": [
+    {
+      "argv": [
+        "docker",
+        "container",
+        "inspect",
+        "21d0c18a1bf3bd2234a59fdfeef6b412ee2d55d94973d9190c0fbced27cff65e"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "Error response from daemon: No such container: 21d0c18a1bf3bd2234a59fdfeef6b412ee2d55d94973d9190c0fbced27cff65e\n"
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "78a937da8cd98c6519cd5e6f4bff784bd59e730ac110412d0f9ae23d31c22ba4"
+      ],
+      "exitCode": 1,
+      "stdout": "[]\n",
+      "stderr": "Error response from daemon: get 78a937da8cd98c6519cd5e6f4bff784bd59e730ac110412d0f9ae23d31c22ba4: no such volume\n"
+    }
+  ],
+  "note": "Image-declared childPGDATA anonymous volume was transiently allocated despite parenttmpfs; --rm removedit. Recovery mounts exactPGDATA tmpfs. No fixturecompliance inferred retroactively."
+}

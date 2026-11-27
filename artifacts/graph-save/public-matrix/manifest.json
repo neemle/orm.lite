@@ -1,0 +1,589 @@
+{
+  "schema": "ORML-112 SAME public GraphSave eight-cell and affectedgolden evidence v1",
+  "generated": "2026-11-26T22:23:13.558039+00:00",
+  "functionalSourceCommit": "fffc5b9fa19bf250d76d21d71a86b6607ea6b81f",
+  "hostPublicRunCommit": "1bf0d5787c19ca5388dabcfc27c2c555787d8a9c",
+  "hostGoldenAssertCommit": "f9e44e607d49b43dd3e281c6bac0cec58ccfab6a",
+  "currentHeadTrees": {
+    "src": "7d481f0250ab9351deb479de519049e2b7213a41",
+    "src/Runtime": "3971e838e7d7e990b9e8d7303aaf9ca9f2410726",
+    "demo": "59b7ef29f66da9ce268774f5d976e7b69448a859",
+    "tests": "5a151408a6d2d707f7fbf851317e7df89e2642d8"
+  },
+  "currentProductSourceUnchanged": true,
+  "versionContext": "ExplicitDocker-onlyREADONLYfrozenGitHEAD overlay from recovery1. HostHEAD/index/refs/tags/source/project untouched; actualsource+demo equalfffc. Goldenassert uses newlycommitted pinsf9e44e6 with unchanged alreadybuilt testbinary/no-build; not a cleanfffcGitview claim.",
+  "packageVersion": "0.1.0-dev.gfffc5b9",
+  "reuse": "Existingthreecurrentpackages and JIT10DLL; no repack/R1/57/firstJIT10SQLite replay.",
+  "publicCells": [
+    {
+      "scope": "JIT10 SQLite",
+      "inherited": true,
+      "receipt": "artifacts/graph-save/r1-demo/jit10-sqlite.json",
+      "exitCode": 0,
+      "runtime": "10.0.15"
+    },
+    {
+      "scope": "jit10-pg",
+      "inherited": false,
+      "receipt": "artifacts/graph-save/public-matrix/jit10-pg.json",
+      "exitCode": 0,
+      "header": "graph-save provider=postgres runtime=10.0.15",
+      "fiveCaseGroups": true,
+      "scratchCleanup": true
+    },
+    {
+      "scope": "jit11-sqlite",
+      "inherited": false,
+      "receipt": "artifacts/graph-save/public-matrix/recovery-1/jit11-sqlite.json",
+      "exitCode": 0,
+      "header": "graph-save provider=sqlite runtime=11.0.0",
+      "fiveCaseGroups": true,
+      "scratchCleanup": true
+    },
+    {
+      "scope": "jit11-pg",
+      "inherited": false,
+      "receipt": "artifacts/graph-save/public-matrix/recovery-1/jit11-pg.json",
+      "exitCode": 0,
+      "header": "graph-save provider=postgres runtime=11.0.0",
+      "fiveCaseGroups": true,
+      "scratchCleanup": true
+    },
+    {
+      "scope": "native10-sqlite",
+      "inherited": false,
+      "receipt": "artifacts/graph-save/public-matrix/recovery-1/native10-sqlite.json",
+      "exitCode": 0,
+      "header": "graph-save provider=sqlite runtime=10.0.15",
+      "fiveCaseGroups": true,
+      "scratchCleanup": true
+    },
+    {
+      "scope": "native10-pg",
+      "inherited": false,
+      "receipt": "artifacts/graph-save/public-matrix/recovery-1/native10-pg.json",
+      "exitCode": 0,
+      "header": "graph-save provider=postgres runtime=10.0.15",
+      "fiveCaseGroups": true,
+      "scratchCleanup": true
+    },
+    {
+      "scope": "native11-sqlite",
+      "inherited": false,
+      "receipt": "artifacts/graph-save/public-matrix/recovery-1/native11-sqlite.json",
+      "exitCode": 0,
+      "header": "graph-save provider=sqlite runtime=11.0.0",
+      "fiveCaseGroups": true,
+      "scratchCleanup": true
+    },
+    {
+      "scope": "native11-pg",
+      "inherited": false,
+      "receipt": "artifacts/graph-save/public-matrix/recovery-1/native11-pg.json",
+      "exitCode": 0,
+      "header": "graph-save provider=postgres runtime=11.0.0",
+      "fiveCaseGroups": true,
+      "scratchCleanup": true
+    }
+  ],
+  "golden": [
+    {
+      "mode": "generate",
+      "path": "artifacts/graph-save/public-matrix/golden/results/golden-generate.trx",
+      "counters": {
+        "total": "1",
+        "executed": "1",
+        "passed": "1",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "meaning": "regeneration only"
+    },
+    {
+      "mode": "assert",
+      "path": "artifacts/graph-save/public-matrix/golden/results/golden-assert.trx",
+      "counters": {
+        "total": "1",
+        "executed": "1",
+        "passed": "1",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "meaning": "byte-exact assertion of reviewed committed additive pins"
+    }
+  ],
+  "goldenReview": "artifacts/graph-save/public-matrix/golden/review.json",
+  "failures": [
+    {
+      "receipt": "artifacts/graph-save/public-matrix/jit11-build.json",
+      "classification": "fixtureversion selection beforecompile",
+      "cause": "ResolveOrmLiteVersion rewrote pin from artifact-onlyhostHEAD1bf, notproductdefect",
+      "correction": "ROOT6ae90e39 frozenfunctionalGitHEAD ROoverlay, newretryname/output; no unchangedPASS replay"
+    }
+  ],
+  "fixtureDebt": "FirstPG parenttmpfs left image-declared transientanonymousPGDATA volume. --rm removedit/nativeabsence retained; correction exactPGDATAtmpfs uidgid70/Mounts empty. No retroactive no-volumecompliance.",
+  "ownSdkRuns": 13,
+  "ownSdkMeasuredWallSeconds": 205.99024799999998,
+  "completeComputeTokensHumanCost": "UNKNOWN",
+  "allOwnedResourcesAbsent": true,
+  "files": [
+    {
+      "path": "artifacts/graph-save/public-matrix/absence-before.json",
+      "sha256": "cdc6d6ee94832faa9b8f01938be6775b1f3acc84549ab17d2b1d8a26563da20d",
+      "bytes": 3748
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/build-provenance.json",
+      "sha256": "22ff4c7c5e68d2e3cd2752df6644c25b28b39b2562f3aa57636f3599e5823653",
+      "bytes": 23394
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/final-resource-absence.json",
+      "sha256": "e36820507e63110475bf2b5679c62863dfed67662ad482cdecccf2c4fb2577cf",
+      "bytes": 4806
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/fixture-cleanup.json",
+      "sha256": "6a4d4e6a599f554f173a7171fb930a56654bd96b0cea72aad1228ecd1624d8a5",
+      "bytes": 10796
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/fixture-final-absence.json",
+      "sha256": "df7a19ebb9a65d57890d0508e7df3eff8be4616448c1c074599b219d3f005000",
+      "bytes": 966
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/fixture-setup.json",
+      "sha256": "1bb0f4cc1c76748de2f169ff12777f1eac120a9fe26c2e567c971c5c1d2d4f24",
+      "bytes": 1442
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-assert-start.json",
+      "sha256": "83413dda7c8c524641ec4b3ed1f59152380a99d5e511c3e84d3a25c95cd90cd4",
+      "bytes": 3474
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-assert.cid",
+      "sha256": "77c792be6f375d7c992278c171fcf93923727b43f6b6b1c0d827c866ff4e3e12",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-assert.json",
+      "sha256": "8d6f6d22b789ea9da07fe2202bef8e8c08f24fb2b5ab87f5d524b9cdbe0f1b0e",
+      "bytes": 4221
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-assert.log",
+      "sha256": "0a48657261e2b592b6bb0d33394345416cc9e17d27ea56f6355915c360b6da5a",
+      "bytes": 546
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-assert.sh",
+      "sha256": "da674fce740fe06e2057b537227e33d6a12fb59b6b280a510c77e64b089b5212",
+      "bytes": 918
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-generate-start.json",
+      "sha256": "27b5d99ecfa5216a54c773de0c7d1c75e94f71e41e3b6dd02bc0e8a2829b69a1",
+      "bytes": 3527
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-generate.cid",
+      "sha256": "ea7478942624b9d255ac9bd48aa1743fa8594db100d661155974879e9173f24b",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-generate.json",
+      "sha256": "45ffc9e0b453276c485880455b9e9b74fecb22b4e8ead620bfb799007869dc84",
+      "bytes": 4274
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-generate.log",
+      "sha256": "d713ba0e3fb73c10b9e42c349478c0a10d7103da5c524a1989b5d1d777e9c430",
+      "bytes": 2829
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/golden-generate.sh",
+      "sha256": "8d214c14a0f466c5eda1bb02217b552d2f41c6f7a3a47ad9ad6329c7e18493fe",
+      "bytes": 1179
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/results/golden-assert.trx",
+      "sha256": "b1fd1aea7428b313bee5990c725bf399226a56b951d8312d4d72f3d21dd4e153",
+      "bytes": 3180
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/results/golden-generate.trx",
+      "sha256": "76f10d3814ffdada3ee8f078507803798dc5a76132700bea7397ce62fea141db",
+      "bytes": 3180
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/review.json",
+      "sha256": "188dc04e24f47ae3b3b39c590fd0411ab0a3a43626bb7a340348bdb2aab4ac7b",
+      "bytes": 2310
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/golden/reviewed.diff",
+      "sha256": "3f3952177d08af8fdec1c426a5c958f2fee4a58de258d7084e61f140750c4029",
+      "bytes": 8830
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/jit10-pg-start.json",
+      "sha256": "25c447168f9c7d40ae73521d6ecea1b42bed676ac3b108e83d774589cb3d570b",
+      "bytes": 3208
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/jit10-pg.cid",
+      "sha256": "73744a2e581aa501944a55d1aaa55195179f57f76fd6e26f80c75819bde6b672",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/jit10-pg.json",
+      "sha256": "bd664794b7a6b43d1f4bf0f9ad00959282c677e96aefb95bb1d20d6abaafcafb",
+      "bytes": 3955
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/jit10-pg.log",
+      "sha256": "3eecc00d421b7c116a2efea7906fad87bf215048a3d1a57d5bbd842fe656fa38",
+      "bytes": 529
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/jit11-build-start.json",
+      "sha256": "bb3dde0514bdc168668ac44e3ba7d4143352c1cbcabeb53261c2b50ccf7ae272",
+      "bytes": 2924
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/jit11-build.cid",
+      "sha256": "a550d1af86f2498c96be6075214b0be49dfa6134de67680d9968587de800bff0",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/jit11-build.json",
+      "sha256": "4517f1591d15996799a8e319324541e0c80a28b5fabe78116854efbfa449863c",
+      "bytes": 3671
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/jit11-build.log",
+      "sha256": "f9a221f9137b1fc8cea300d15c1e1aa4785e08411ae7b220d50643e692046af9",
+      "bytes": 4602
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/jit11-build.sh",
+      "sha256": "0c004307cef049eb9cf8f3ef3a03f55d042c948f9ea1b871eb2d0ee57dc95ac8",
+      "bytes": 1443
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/nuget.config",
+      "sha256": "b55c8f93856efc16f162b8e674a180119c5529f65bcee88ac1b80355530254ae",
+      "bytes": 601
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/pg-server.log",
+      "sha256": "7bc87eca993df5e4338b04032108a3e991e12e88bf4fb1d21e911be27f4ae529",
+      "bytes": 3174
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/pg.cid",
+      "sha256": "de599630b6ef67d92d4d9c84c56c6059a601ada64dc6d12ae8063d9b385fc7fe",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/readiness.json",
+      "sha256": "f4c05e0749b613652d055e208687c38f43bc377c1cb08784b19bbfae18959fc3",
+      "bytes": 164
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recover_matrix.py",
+      "sha256": "1c35f1e4370b5ad85f4ba23273f9d75795301f2e6affa1b3a890a32d4654f5c3",
+      "bytes": 2460
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/absence-before.json",
+      "sha256": "820531f13fb20496864867acdcb5be32615ab47cf82c2dbf8bc31a90b312b2ee",
+      "bytes": 3492
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/fixture-cleanup.json",
+      "sha256": "0849e30956917525c99b260aaebf1bee761e4938ec61a75d87eba7bbb410176b",
+      "bytes": 10324
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/fixture-setup.json",
+      "sha256": "b0dfc11c95213f90d36d1aaa070981e20d6d85d9d63a61639d391f535b8c0eec",
+      "bytes": 1482
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/frozen-public-head",
+      "sha256": "1eca3853eaced16d8b84de8f8fc262d5154d80dd68584a3450175fe6b381aab7",
+      "bytes": 41
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-build-compile.json",
+      "sha256": "f46c43b9373bd57dfc53aa23006a686e4f109053b0f218ec6a96a2befcfc2aff",
+      "bytes": 29741
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-build-start.json",
+      "sha256": "134784bc49c58e92e658759003023898bf6cee56b448297f92029a7cc644e04c",
+      "bytes": 3264
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-build.cid",
+      "sha256": "ffe0e21c6e54c2f0cba19d75d3c7c41a098cf52bc6b71ee69b457d23b16bb926",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-build.json",
+      "sha256": "052ae0c7f847d782f1df70745b3129e528aba4ebf49e625029dc2fdc1eecaa62",
+      "bytes": 4011
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-build.log",
+      "sha256": "575b718480c12940646d6db24bf7ef3e3c899532507e169c5a869f1136204a31",
+      "bytes": 526
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-build.sh",
+      "sha256": "ff5279d6b340874d96f7332402442311dd02fbcc94d37ea967eafad17860946a",
+      "bytes": 1520
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-pg-start.json",
+      "sha256": "2701fc623c2b81fbc7d6b737cb6500fea5a06c91892360f84ddb71019266dbe6",
+      "bytes": 3551
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-pg.cid",
+      "sha256": "f6749e805dfbb3ca18c2ddec924326d263daa2950be4c5bc317161bd8810f461",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-pg.json",
+      "sha256": "35b38cf55254a91239be48246482def3fc6f8daf5267125542f41e075bb3cd78",
+      "bytes": 4298
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-pg.log",
+      "sha256": "bfe537fa63f8172c043c3f7b0ae2eb09855494f49a3e78ca35fbc6c51d69ee14",
+      "bytes": 528
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-sqlite-start.json",
+      "sha256": "a1f8e480411b0e52d56f8970e64f3c916e37bd78cb290c7b0f270df870865195",
+      "bytes": 3377
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-sqlite.cid",
+      "sha256": "5cbfd20511175f61f4534dcdaaecabd00a7c9d53fc355245e7a006f67d14115c",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-sqlite.json",
+      "sha256": "909d39bee2954d6ef99a618dcd256bfe785f9ab9406a48b99c7cd5f4ea65c5b7",
+      "bytes": 4124
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/jit11-sqlite.log",
+      "sha256": "9c5a2a88ce4caf7d931dd00ce91ac7598555de8a0976ba252c8ad64f52605cf7",
+      "bytes": 526
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-build-compile.json",
+      "sha256": "878017e2f6261ecc7771b3d881e0d89810be35e9064aff28b547a964f9667a34",
+      "bytes": 29752
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-build-start.json",
+      "sha256": "be3c79845656424856e7f1c9515e98c6720033c35e138a6a639417ac7b20389c",
+      "bytes": 3273
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-build.cid",
+      "sha256": "7c1930f8d9eb6f2ec46a02c8646767f64163af7a3bf5f63b68093c58426da8ed",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-build.json",
+      "sha256": "7d27a8a82b12b6d7cfb67a661783072198b9f7cf5f12cc65359421fa221060b5",
+      "bytes": 4020
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-build.log",
+      "sha256": "25c9de5c907dca5ec04119de8e7c789c476e2a4c56c23f0d37fb531711709102",
+      "bytes": 685
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-build.sh",
+      "sha256": "d42e55b6c6c960648989b94f9a768ef90f713e72095218862e4b247e66473157",
+      "bytes": 1559
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-pg-start.json",
+      "sha256": "81aa3ab8dda2460adef50cf1725c170d13f6b0eb65c5eaabeabf3e56624edbb0",
+      "bytes": 3523
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-pg.cid",
+      "sha256": "dc1040ee87baa2f20e41d356a1ca8084249a16e5a35fbe74f6c3bd92ea7ba663",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-pg.json",
+      "sha256": "f06d2be564305f445923a21bc60efedd416e02e827e7cdcdab9b2627b9122c27",
+      "bytes": 4270
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-pg.log",
+      "sha256": "3eecc00d421b7c116a2efea7906fad87bf215048a3d1a57d5bbd842fe656fa38",
+      "bytes": 529
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-sqlite-start.json",
+      "sha256": "0a224ad37c315aa624d1ab455b2761ea5a8318e88a5b8326b14a0917dab371a2",
+      "bytes": 3349
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-sqlite.cid",
+      "sha256": "3c29fdf65edf3fc1cd01b929e319487970f3c71defbfc9876f1a136f8357f4ad",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-sqlite.json",
+      "sha256": "ae21c4daaed324168ef17a60c465976769e7d9175090c026e8d9088ac2209e31",
+      "bytes": 4096
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native10-sqlite.log",
+      "sha256": "086a3f8288c35bf92ba860c5a961a8806130650459e69e5fa765c773eb56ff8f",
+      "bytes": 527
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-build-compile.json",
+      "sha256": "31eacb07b2dc62dd94cf21d38a26667eaa67b52c50c633f90a1efbb54c74f8f6",
+      "bytes": 29752
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-build-start.json",
+      "sha256": "dbbbb834c426090d880db59a79f9ef8b9b9a95df1f74733ce3dca165c85592d0",
+      "bytes": 3273
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-build.cid",
+      "sha256": "3aa2baef77cb1c518d4507116dabe3d7e2457858e545e2e7122acd4b8a77dfd5",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-build.json",
+      "sha256": "f9d6025ed20dbaa362a32c7bf03dea7726ce7255083250971cb1c7e86fcfe576",
+      "bytes": 4020
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-build.log",
+      "sha256": "fc786654a20ce7f8f49013535cfa512fd2e9737f8977ad2d5a96f52ebad932bd",
+      "bytes": 697
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-build.sh",
+      "sha256": "68fa463aff43fefed42f690cbc890a91263cfa5fe1a65562afd04344f32a8769",
+      "bytes": 1559
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-pg-start.json",
+      "sha256": "0b2715447a3a26f034108e26d7d7dad64ddb2caa83253c985e86344a41bc8d97",
+      "bytes": 3523
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-pg.cid",
+      "sha256": "5583ed9fe3e93e22dd4a7a27cd2709c87e6729ba353ed52e0026b0a36db81386",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-pg.json",
+      "sha256": "4e23fc940cec9a9d8a5170e55cb5905c1fd96dd9e3338c63cb64e371e7e195f5",
+      "bytes": 4270
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-pg.log",
+      "sha256": "bfe537fa63f8172c043c3f7b0ae2eb09855494f49a3e78ca35fbc6c51d69ee14",
+      "bytes": 528
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-sqlite-start.json",
+      "sha256": "e496da46461416f01aba8bf5839cea6ed3abb09b52d1622d020e0918712340c2",
+      "bytes": 3349
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-sqlite.cid",
+      "sha256": "10afc19cb1517239319541d04a9430f514da3266699be55a0860eb412bfe6e48",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-sqlite.json",
+      "sha256": "fd975bcbf7fb6655e8225f1f9963d34b128138da97d465daf712385a136648bb",
+      "bytes": 4096
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/native11-sqlite.log",
+      "sha256": "9c5a2a88ce4caf7d931dd00ce91ac7598555de8a0976ba252c8ad64f52605cf7",
+      "bytes": 526
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/pg-server.log",
+      "sha256": "9c5df238edacf417acd41c569ea80eb47258f2df57b1e4419e879a8784a8b033",
+      "bytes": 5478
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/pg.cid",
+      "sha256": "77a6e35efdd7a097b8d81ae7316acfc9848cdff6ae3fee680fecb491a170aa44",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/readiness.json",
+      "sha256": "9fc37df5d23c24d6fd2ac4124c9f549874b3c93abafffe14c8d94d46d7a7e9fa",
+      "bytes": 164
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/recovery-1/version-context.json",
+      "sha256": "01ed8a4a07512189fb67061e31dea28bcc1a02774a8adfee38f0a9bab04489a0",
+      "bytes": 1033
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/run_golden.py",
+      "sha256": "64ac8eff4dca3b89f23360b547af754fb42c279527727808df41687913bacd46",
+      "bytes": 1918
+    },
+    {
+      "path": "artifacts/graph-save/public-matrix/run_matrix.py",
+      "sha256": "88ec256876b3b3e330cbc7bd17ee18afc432b0b6f9ed93e6e873944a88e2d586",
+      "bytes": 8507
+    }
+  ],
+  "limitations": [
+    "Eightpubliccells passed; this is not wholefeature/QA/security/coverage/review/CI/merge/Done certification.",
+    "Old57runtime/provenance/fault/provider checks and currentR1PASS inherited unchangedruntime; never relabeled as newruns.",
+    "README DEVroledebt pending MARKETING adoption and directdocumentation links.",
+    "HARD/UNKNOWNbudget/decomposition/admission debt ROOT-owned."
+  ]
+}

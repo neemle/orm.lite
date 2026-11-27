@@ -1,0 +1,145 @@
+[
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-jit11-build-r1-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-jit11-build-r1-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-jit11-sqlite-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-jit11-sqlite-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-jit11-pg-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-jit11-pg-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-native10-build-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-native10-build-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-native10-sqlite-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-native10-sqlite-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-native10-pg-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-native10-pg-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-native11-build-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-native11-build-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-native11-sqlite-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-native11-sqlite-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-native11-pg-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-native11-pg-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-golden-generate-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-golden-generate-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-golden-assert-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-golden-assert-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "orml112-public-pg-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: orml112-public-pg-20261126\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "network",
+      "inspect",
+      "orml112-public-net-20261126"
+    ],
+    "exitCode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: network orml112-public-net-20261126 not found\n"
+  }
+]

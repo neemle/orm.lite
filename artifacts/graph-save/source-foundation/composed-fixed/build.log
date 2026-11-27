@@ -1,0 +1,18 @@
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Runtime/Runtime.csproj (in 947 ms).
+  Runtime -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/build/bin/Runtime/release/Neemle.OrmLite.Runtime.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:14.35
+  Determining projects to restore...
+  Restored /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/src/Generator/Generator.csproj (in 194 ms).
+  Generator -> /Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/source-foundation/composed-fixed/build/bin/Generator/release/Neemle.OrmLite.Generator.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:09.18

@@ -1,0 +1,5 @@
+{
+  "generated": "2026-11-26T22:15:18.198075+00:00",
+  "readyLog": true,
+  "protocol": "first actual public Npgsql chapter connection, no pg_isready/shell probe"
+}

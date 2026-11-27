@@ -13,6 +13,7 @@ internal interface IGraphEntityBinding
     object Key(object value);
     object ReadKey(DbDataReader reader, int ordinal);
     object Map(DbDataReader reader);
+    Delegate OriginalMapper { get; }
     bool Maps(Delegate map);
     bool Equivalent(IGraphEntityBinding other);
 }

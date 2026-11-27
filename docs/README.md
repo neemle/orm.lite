@@ -12,6 +12,7 @@
 
 - [Entities and mapping](entities.md) — declare tables and understand the generated API.
 - [Relations](relations.md) — load related entities, manage join rows, and add foreign keys.
+- [Save an explicit graph](relations.md#7-save-an-explicit-related-graph) — choose mutation intents and relation permissions, with a runnable JIT/NativeAOT case.
 - [Queries](queries.md) — filter, project, page, aggregate, and lock rows.
 - [Streaming reads](streaming.md) — process rows on demand and observe cleanup, cancellation, and resource ownership.
 - [Migrations](migrations.md) — apply and revert schema changes and seed data.

@@ -18,15 +18,20 @@ internal static class GraphFrontier
             var statement = StatementCompiler.Compile(shape, context.Database.Provider,
                 StatementKind.Read, node.Target.Table);
             var rows = await GraphStatementRunner.ReadAsync(context, statement,
-                r =>
-                {
-                    var entity = context.Identity.Intern(node.Target.Binding, node.Target.Binding.Map(r));
-                    OrphanReadOrigins.ObserveMapped(entity, node.Target.Binding, node.MayBePartial);
-                    return entity;
-                });
+                r => Map(context, node, r));
             result.AddRange(rows);
         }
         return result;
+    }
+
+    private static object Map(GraphReadContext context, GraphPlanNode node, System.Data.Common.DbDataReader reader)
+    {
+        var mapped = node.Target.Binding.Map(reader);
+        GraphSaveOrigins.Observe(mapped, node.Target.Binding.OriginalMapper, node.MayBePartial);
+        var canonical = context.Identity.Intern(node.Target.Binding, mapped);
+        GraphSaveOrigins.Observe(canonical, node.Target.Binding.OriginalMapper, node.MayBePartial);
+        OrphanReadOrigins.ObserveMapped(canonical, node.Target.Binding, node.MayBePartial);
+        return canonical;
     }
 
     internal static Select Filter(Select shape, string column, object[] keys, long remaining)

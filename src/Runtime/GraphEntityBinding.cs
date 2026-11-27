@@ -34,6 +34,7 @@ public sealed class GraphEntityBinding<T> : IGraphEntityBinding where T : class
     object IGraphEntityBinding.Key(object value) => value is T typed ? _key.Read(typed) : throw Invalid();
     object IGraphEntityBinding.ReadKey(DbDataReader reader, int ordinal) => _key.Read(reader, ordinal);
     object IGraphEntityBinding.Map(DbDataReader reader) => _map(reader);
+    Delegate IGraphEntityBinding.OriginalMapper => _map;
 
     bool IGraphEntityBinding.Maps(Delegate map) => _map.Equals(map);
 

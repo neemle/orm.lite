@@ -28,6 +28,7 @@ dotnet add package Neemle.OrmLite.Sqlite --version 0.1.0
 Follow the [SQLite quickstart](docs/quickstart.md) to create a table and run your first query.
 
 - [Relations](docs/relations.md) covers navigation properties, join tables, and foreign keys.
+- [Explicit graph saves](demo/GraphSave/README.md) demonstrates atomic related inserts and updates with the current checkout's packages.
 - [Streaming reads](docs/streaming.md) covers cold row consumption, early cleanup, and transaction lifetime.
 - [Migrations](docs/migrations.md) shows how to change a schema and roll back a migration.
 - [Provider capabilities](docs/providers.md) compares PostgreSQL and SQLite behavior.

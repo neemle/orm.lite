@@ -1,0 +1,7 @@
+graph-save provider=postgres runtime=10.0.15
+graph-save/default-off: root only; populated navigations untouched
+graph-save/insert: reference, collection and unique Guid link committed; input FKs unchanged
+graph-save/repeat: unchanged anchors, explicit updates, one link; omitted sibling/link preserved
+graph-save/rollback: two writes succeeded before conflict; no committed subset or input mutation
+graph-save/refusal: action, anchor, FK, partial origin and pre-cancellation stay unwritten
+graph-save chapter ok; scratch removed

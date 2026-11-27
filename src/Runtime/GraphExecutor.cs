@@ -29,12 +29,20 @@ internal static class GraphExecutor
     internal static Task<List<T>> ReadRootsAsync<T>(GraphExecutionPlan<T> plan, GraphReadContext context,
         Func<System.Data.Common.DbDataReader, T> map) where T : class =>
         GraphStatementRunner.ReadAsync(context, plan.RootStatement,
-            reader =>
-            {
-                var entity = context.Identity.Intern(plan.Root.Binding, map(reader));
-                OrphanReadOrigins.Observe(entity, map, plan.Query.Masks.Count != 0);
-                return GraphFrontier.Typed<T>(entity);
-            }, true);
+            reader => MapRoot(plan, context, map, reader), true);
+
+    private static T MapRoot<T>(GraphExecutionPlan<T> plan, GraphReadContext context,
+        Func<System.Data.Common.DbDataReader, T> map, System.Data.Common.DbDataReader reader) where T : class
+    {
+        var entity = map(reader);
+        var original = plan.Query.Map;
+        var partial = plan.Query.Masks.Count != 0;
+        GraphSaveOrigins.Observe(entity, original, partial);
+        var canonical = context.Identity.Intern(plan.Root.Binding, entity);
+        GraphSaveOrigins.Observe(canonical, original, partial);
+        OrphanReadOrigins.Observe(canonical, map, partial);
+        return GraphFrontier.Typed<T>(canonical);
+    }
 
     private static async Task ExpandAsync(GraphReadContext context, IEnumerable<GraphPlanNode> nodes,
         IReadOnlyList<object> parents)

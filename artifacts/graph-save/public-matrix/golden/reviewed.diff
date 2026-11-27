@@ -1,0 +1,157 @@
+diff --git a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden
+index fc1a1d5..87610ba 100644
+--- a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden
++++ b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0000.g.cs.golden
+@@ -103,4 +103,20 @@ public static global::System.Threading.Tasks.Task<global::GoldenFixtures.Fixture
+     OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.
+     RelationReadOptions options, global::System.Threading.CancellationToken ct = default) => global::Neemle.OrmLite.
+     RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
++
++internal static void RegisterSave()
++{
++    global::Neemle.OrmLite.GraphSaveModel.Register(new global::Neemle.OrmLite.GraphSaveEntityBinding<global::
++        GoldenFixtures.FixtureNote, global::System.Guid>(Descriptor, Values, static e => e.@Id, Map, new global::Neemle.
++        OrmLite.GraphSaveRelationBinding<global::GoldenFixtures.FixtureNote>[] { }));
++}
++
++public static __GraphSaveTokens SaveRelations { get; } = new __GraphSaveTokens();
++
++public sealed class __GraphSaveTokens
++{
++    internal __GraphSaveTokens()
++    {
++    }
++}
+ }
+diff --git a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden
+index 0e7ef2f..a5e1312 100644
+--- a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden
++++ b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0001.g.cs.golden
+@@ -157,4 +157,35 @@ public static async global::System.Threading.Tasks.Task LoadTagsAsync(global::Ne
+     e.Tags = await global::Neemle.OrmLite.OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<global
+         ::GoldenFixtures.GoldenTag>(Descriptor, "Tags", e.Id, GoldenTagOrm.Descriptor, GoldenTagOrm.Map), options, ct);
+ }
++
++internal static void RegisterSave()
++{
++    global::Neemle.OrmLite.GraphSaveModel.Register(new global::Neemle.OrmLite.GraphSaveEntityBinding<global::
++        GoldenFixtures.GoldenAuthor, global::System.Guid>(Descriptor, Values, static e => e.@Id, Map, new global::Neemle
++        .OrmLite.GraphSaveRelationBinding<global::GoldenFixtures.GoldenAuthor>[] { new global::Neemle.OrmLite.
++        GraphSaveRelationBinding<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenBook>(new global::
++        Neemle.OrmLite.GraphSaveRelationShape("Books", global::Neemle.OrmLite.GraphSaveRelationKind.Collection, global::
++        Neemle.OrmLite.GraphSaveForeignKeyOwner.Target, "AuthorId"), static e => e.@Books ?? new global::System.
++        Collections.Generic.List<global::GoldenFixtures.GoldenBook>()), new global::Neemle.OrmLite.
++        GraphSaveRelationBinding<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenTag>(new global::
++        Neemle.OrmLite.GraphSaveRelationShape("Tags", global::Neemle.OrmLite.GraphSaveRelationKind.Link, global::Neemle.
++        OrmLite.GraphSaveForeignKeyOwner.None, null), static e => e.@Tags ?? new global::System.Collections.Generic.List
++        <global::GoldenFixtures.GoldenTag>()) }));
++}
++
++public static __GraphSaveTokens SaveRelations { get; } = new __GraphSaveTokens();
++
++public sealed class __GraphSaveTokens
++{
++    internal __GraphSaveTokens()
++    {
++    }
++
++    public global::Neemle.OrmLite.SaveRelation<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenBook>
++        @Books => global::Neemle.OrmLite.SaveRelations.Edge<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.
++        GoldenBook>("Books");
++    public global::Neemle.OrmLite.SaveRelation<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.GoldenTag>
++        @Tags => global::Neemle.OrmLite.SaveRelations.Edge<global::GoldenFixtures.GoldenAuthor, global::GoldenFixtures.
++        GoldenTag>("Tags");
++}
+ }
+diff --git a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden
+index 5d1b697..9f51b02 100644
+--- a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden
++++ b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0002.g.cs.golden
+@@ -181,4 +181,36 @@ public static async global::System.Threading.Tasks.Task LoadEditorAsync(global::
+     else
+         e.Editor = await GoldenAuthorOrm.GetAsync(db, conn, e.EditorId.Value, options, ct);
+ }
++
++internal static void RegisterSave()
++{
++    global::Neemle.OrmLite.GraphSaveModel.Register(new global::Neemle.OrmLite.GraphSaveEntityBinding<global::
++        GoldenFixtures.GoldenBook, global::System.Guid>(Descriptor, Values, static e => e.@Id, Map, new global::Neemle.
++        OrmLite.GraphSaveRelationBinding<global::GoldenFixtures.GoldenBook>[] { new global::Neemle.OrmLite.
++        GraphSaveRelationBinding<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.GoldenAuthor>(new global::
++        Neemle.OrmLite.GraphSaveRelationShape("Author", global::Neemle.OrmLite.GraphSaveRelationKind.Reference, global::
++        Neemle.OrmLite.GraphSaveForeignKeyOwner.Source, "AuthorId"), static e => e.@Author is { } target ? new global::
++        GoldenFixtures.GoldenAuthor[] { target } : global::System.Array.Empty<global::GoldenFixtures.GoldenAuthor>()),
++        new global::Neemle.OrmLite.GraphSaveRelationBinding<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
++        GoldenAuthor>(new global::Neemle.OrmLite.GraphSaveRelationShape("Editor", global::Neemle.OrmLite.
++        GraphSaveRelationKind.Reference, global::Neemle.OrmLite.GraphSaveForeignKeyOwner.Source, "EditorId"), static e
++        => e.@Editor is { } target ? new global::GoldenFixtures.GoldenAuthor[] { target } : global::System.Array.Empty<
++        global::GoldenFixtures.GoldenAuthor>()) }));
++}
++
++public static __GraphSaveTokens SaveRelations { get; } = new __GraphSaveTokens();
++
++public sealed class __GraphSaveTokens
++{
++    internal __GraphSaveTokens()
++    {
++    }
++
++    public global::Neemle.OrmLite.SaveRelation<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.GoldenAuthor>
++        @Author => global::Neemle.OrmLite.SaveRelations.Edge<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
++        GoldenAuthor>("Author");
++    public global::Neemle.OrmLite.SaveRelation<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.GoldenAuthor>
++        @Editor => global::Neemle.OrmLite.SaveRelations.Edge<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
++        GoldenAuthor>("Editor");
++}
+ }
+diff --git a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden
+index 28bbd70..91466b8 100644
+--- a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden
++++ b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0003.g.cs.golden
+@@ -100,4 +100,20 @@ public static global::System.Threading.Tasks.Task<global::GoldenFixtures.GoldenT
+     OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key, global::Neemle.OrmLite.
+     RelationReadOptions options, global::System.Threading.CancellationToken ct = default) => global::Neemle.OrmLite.
+     RelationQueryExtensions.FirstOrDefaultAsync(Query(db).Where(e => e.Id == key), conn, options, ct);
++
++internal static void RegisterSave()
++{
++    global::Neemle.OrmLite.GraphSaveModel.Register(new global::Neemle.OrmLite.GraphSaveEntityBinding<global::
++        GoldenFixtures.GoldenTag, global::System.Guid>(Descriptor, Values, static e => e.@Id, Map, new global::Neemle.
++        OrmLite.GraphSaveRelationBinding<global::GoldenFixtures.GoldenTag>[] { }));
++}
++
++public static __GraphSaveTokens SaveRelations { get; } = new __GraphSaveTokens();
++
++public sealed class __GraphSaveTokens
++{
++    internal __GraphSaveTokens()
++    {
++    }
++}
+ }
+diff --git a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0005.g.cs.golden b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0005.g.cs.golden
+index cd0aca0..29606d9 100644
+--- a/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0005.g.cs.golden
++++ b/tests/Tests/OrmLiteGolden/Expected/OrmLite.Entities.0005.g.cs.golden
+@@ -11,7 +11,7 @@ internal static class OrmMetaInit
+     {
+         RegisterEntities();
+         RegisterGraphs();
+-    }
++RegisterSave0();    }
+ 
+     private static void RegisterEntities()
+     {
+@@ -28,4 +28,12 @@ internal static class OrmMetaInit
+         GoldenBookOrm.RegisterGraph();
+         GoldenTagOrm.RegisterGraph();
+     }
++
++private static void RegisterSave0()
++{
++    FixtureNoteOrm.RegisterSave();
++    GoldenAuthorOrm.RegisterSave();
++    GoldenBookOrm.RegisterSave();
++    GoldenTagOrm.RegisterSave();
++}
+ }

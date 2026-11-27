@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="bd5d65ff-1c97-4c9b-891d-8f786c2006fb" name="@e6a2f9de0de9 2026-11-26 22:22:10" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-26T22:22:10.2748330+00:00" queuing="2026-11-26T22:22:10.2748331+00:00" start="2026-11-26T22:22:07.4187518+00:00" finish="2026-11-26T22:22:10.2811681+00:00" />
+  <TestSettings name="default" id="3a080b19-bce5-412c-8afa-92237e84a83b">
+    <Deployment runDeploymentRoot="_e6a2f9de0de9_2026-11-26_22_22_10" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="a58a9e5a-28ad-4f81-8f17-b47771a1f030" testId="8b904b24-43fa-6040-643c-44e49bb37393" testName="Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte" computerName="e6a2f9de0de9" duration="00:00:01.4559650" startTime="2026-11-26T22:22:10.1139832+00:00" endTime="2026-11-26T22:22:10.1139987+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a58a9e5a-28ad-4f81-8f17-b47771a1f030" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests.The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte" storage="/users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/public-matrix/golden/build/bin/tests/release/neemle.ormlite.tests.dll" id="8b904b24-43fa-6040-643c-44e49bb37393">
+      <Execution id="a58a9e5a-28ad-4f81-8f17-b47771a1f030" />
+      <TestMethod codeBase="/Users/para/work/tskr/libs/orm.lite/.git/agent-worktrees/orml-112-graph-save/artifacts/graph-save/public-matrix/golden/build/bin/Tests/release/Neemle.OrmLite.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Neemle.OrmLite.Tests.OrmLiteGolden.OrmLiteGoldenTests" name="The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="8b904b24-43fa-6040-643c-44e49bb37393" executionId="a58a9e5a-28ad-4f81-8f17-b47771a1f030" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.15)
+[xUnit.net 00:00:00.20]   Discovering: Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.60]   Discovered:  Neemle.OrmLite.Tests
+[xUnit.net 00:00:00.61]   Starting:    Neemle.OrmLite.Tests
+[xUnit.net 00:00:02.18]   Finished:    Neemle.OrmLite.Tests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
