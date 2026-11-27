@@ -7,4 +7,5 @@ internal interface IJoinColumnBinding
     bool Calculated { get; }
     Type ValueType { get; }
     Delegate Reader { get; }
+    JoinResultEntry Decode(JoinDecodeInput input);
 }

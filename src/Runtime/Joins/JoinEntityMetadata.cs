@@ -28,6 +28,9 @@ internal sealed class JoinEntityMetadata
     internal IReadOnlyList<ColumnDescriptor> Columns => Array.AsReadOnly(_columns);
     internal string KeyColumn => Binding.KeyColumn;
 
+    internal string ProjectionSource(IJoinColumnBinding column) => column.Calculated
+        ? _calculated.Single(c => c.Property == column.Property).Source : column.Column.Column;
+
     internal void Descriptor(EntityDescriptor descriptor)
     {
         Current();

@@ -7,6 +7,7 @@ public sealed class JoinSource<T> where T : class
 {
     private readonly QueryJoinSnapshot _source;
     internal JoinSource(QueryJoinSnapshot source) => _source = source;
+    internal QueryJoinSnapshot Snapshot => _source;
 
     public JoinColumn<TValue> Column<TValue>(Expression<Func<T, TValue>> property)
     {
