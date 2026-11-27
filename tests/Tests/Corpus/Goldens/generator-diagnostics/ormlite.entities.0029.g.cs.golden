@@ -11,8 +11,10 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-RegisterSave0();    RegisterJoin0();RegisterJoin1();RegisterJoin2();RegisterJoin3();RegisterJoin4();RegisterJoin5();
-    RegisterJoin6();RegisterJoin7();RegisterJoin8();}
+RegisterSave0();
+        RegisterOrphanEntities0();
+RegisterJoin0();RegisterJoin1();RegisterJoin2();RegisterJoin3();RegisterJoin4();RegisterJoin5();RegisterJoin6();
+    RegisterJoin7();RegisterJoin8();    }
 
     private static void RegisterEntities()
     {
@@ -58,6 +60,43 @@ private static void RegisterSave0()
     UnmappedTypeOrm.RegisterSave();
     LiveOnlyOnPlainEntityOrm.RegisterSave();
     DuplicateIndexNameOrm.RegisterSave();
+}
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusDiagnostics.UnmappedType, global::System.Guid>
+    BindOrphan0() => new(UnmappedTypeOrm.Descriptor, UnmappedTypeOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusDiagnostics.LiveOnlyOnPlainEntity, global::
+    System.Guid> BindOrphan1() => new(LiveOnlyOnPlainEntityOrm.Descriptor, LiveOnlyOnPlainEntityOrm.Values, static e =>
+    e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusDiagnostics.LiveOnlyNotUnique, global::System.
+    Guid> BindOrphan2() => new(LiveOnlyNotUniqueOrm.Descriptor, LiveOnlyNotUniqueOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusDiagnostics.DuplicateIndexName, global::System.
+    Guid> BindOrphan3() => new(DuplicateIndexNameOrm.Descriptor, DuplicateIndexNameOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusDiagnostics.SoftKeyNotGuid, int> BindOrphan4()
+    => new(SoftKeyNotGuidOrm.Descriptor, SoftKeyNotGuidOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusDiagnostics.SoftUnknownNames, global::System.
+    Guid> BindOrphan5() => new(SoftUnknownNamesOrm.Descriptor, SoftUnknownNamesOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusDiagnostics.SoftLabelNotText, global::System.
+    Guid> BindOrphan6() => new(SoftLabelNotTextOrm.Descriptor, SoftLabelNotTextOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::CorpusDiagnostics.SoftStatusPinned, global::System.
+    Guid> BindOrphan7() => new(SoftStatusPinnedOrm.Descriptor, SoftStatusPinnedOrm.Values, static e => e.@Id);
+
+private static void RegisterOrphanEntities0()
+{
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan0());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan1());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan2());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan3());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan4());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan5());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan6());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan7());
 }
 
 private static void RegisterJoin0()

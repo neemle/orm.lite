@@ -11,7 +11,9 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-RegisterSave0();    RegisterJoin0();RegisterJoin1();RegisterJoin2();RegisterJoin3();}
+RegisterSave0();
+        RegisterOrphanEntities0();
+RegisterJoin0();RegisterJoin1();RegisterJoin2();RegisterJoin3();    }
 
     private static void RegisterEntities()
     {
@@ -35,6 +37,26 @@ private static void RegisterSave0()
     GoldenAuthorOrm.RegisterSave();
     GoldenBookOrm.RegisterSave();
     GoldenTagOrm.RegisterSave();
+}
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::GoldenFixtures.FixtureNote, global::System.Guid>
+    BindOrphan0() => new(FixtureNoteOrm.Descriptor, FixtureNoteOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::GoldenFixtures.GoldenAuthor, global::System.Guid>
+    BindOrphan1() => new(GoldenAuthorOrm.Descriptor, GoldenAuthorOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::GoldenFixtures.GoldenBook, global::System.Guid>
+    BindOrphan2() => new(GoldenBookOrm.Descriptor, GoldenBookOrm.Values, static e => e.@Id);
+
+private static global::Neemle.OrmLite.OrphanEntityBinding<global::GoldenFixtures.GoldenTag, global::System.Guid>
+    BindOrphan3() => new(GoldenTagOrm.Descriptor, GoldenTagOrm.Values, static e => e.@Id);
+
+private static void RegisterOrphanEntities0()
+{
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan0());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan1());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan2());
+    global::Neemle.OrmLite.OrphanModel.RegisterEntity(BindOrphan3());
 }
 
 private static void RegisterJoin0()

@@ -12,4 +12,10 @@
     <ProjectReference Include="../Runtime/Runtime.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- The orphan guard SQL builder (Orphans/OrphanGuardSql.cs) is internal; the two adapters consume it. -->
+    <InternalsVisibleTo Include="$(OrmLiteRoot).Postgres" />
+    <InternalsVisibleTo Include="$(OrmLiteRoot).Sqlite" />
+  </ItemGroup>
+
 </Project>

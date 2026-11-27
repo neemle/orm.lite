@@ -49,6 +49,8 @@ internal sealed class OrmSqliteConnection(string connectionString, Version minim
 
     private SqliteTransaction? _transaction;
 
+    private bool _writeTransaction;
+
     private long _transactionId;
 
     private string _transactionAt = "";
@@ -97,6 +99,7 @@ internal sealed class OrmSqliteConnection(string connectionString, Version minim
     {
         Actor = null;
         _transaction = null;
+        _writeTransaction = false;
         _transactionId = 0;
         _transactionAt = "";
         _statementId = 0;
@@ -129,11 +132,16 @@ internal sealed class OrmSqliteConnection(string connectionString, Version minim
     {
         var transaction = BeginTransaction(deferred: false);
         Track(transaction);
+        _writeTransaction = true;
         return transaction;
     }
 
+    internal bool OwnsWriteTransaction(DbTransaction transaction) => _writeTransaction
+        && ReferenceEquals(_transaction, transaction) && ReferenceEquals(transaction.Connection, this);
+
     private void Track(SqliteTransaction transaction)
     {
+        _writeTransaction = false;
         _transactionId = Interlocked.Increment(ref s_transactions);
         _transactionAt = SqliteValueCodec.Timestamp(DateTime.UtcNow);
         _transaction = transaction;

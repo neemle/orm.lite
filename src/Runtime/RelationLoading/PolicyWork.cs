@@ -23,6 +23,7 @@ internal sealed class PolicyWork
 
     private void Observe(object entity)
     {
+        OrphanReadOrigins.MarkPartial(entity);
         lock (_scope.Gate)
             if (!_participants.ContainsKey(entity)) _participants.Add(entity, _scope.Attachments.Capture(entity));
     }

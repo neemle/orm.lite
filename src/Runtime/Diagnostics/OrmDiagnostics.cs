@@ -270,6 +270,12 @@ internal sealed class TransactionTrace : IDisposable
 
     internal void Commit() => Finish(TransactionPhase.Commit);
 
+    internal void Abandon()
+    {
+        if (Interlocked.Exchange(ref _finished, 1) != 0) return;
+        if (ReferenceEquals(_lease.Transaction, this)) _lease.Transaction = null;
+    }
+
     public void Dispose() => Finish(TransactionPhase.Rollback);
 
     private void Finish(TransactionPhase phase)
