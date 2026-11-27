@@ -21,8 +21,11 @@ internal sealed class JoinExecutionConnection(JoinExecutionProbe probe) : DbConn
         state = ConnectionState.Open;
     }
     public override void Close() { probe.Event("close"); state = ConnectionState.Closed; }
-    protected override DbTransaction BeginDbTransaction(IsolationLevel level) =>
-        new JoinExecutionTransaction(this, probe);
+    protected override DbTransaction BeginDbTransaction(IsolationLevel level)
+    {
+        Interlocked.Increment(ref probe.Transactions);
+        return new JoinExecutionTransaction(this, probe);
+    }
     protected override DbCommand CreateDbCommand()
     {
         Interlocked.Increment(ref probe.Commands);
@@ -32,7 +35,7 @@ internal sealed class JoinExecutionConnection(JoinExecutionProbe probe) : DbConn
     }
     public override ValueTask DisposeAsync()
     {
-        probe.ConnectionDisposals++; probe.Event("connection"); state = ConnectionState.Closed;
+        Interlocked.Increment(ref probe.ConnectionDisposals); probe.Event("connection"); state = ConnectionState.Closed;
         return probe.ConnectionError is { } error ? ValueTask.FromException(error) : ValueTask.CompletedTask;
     }
 }

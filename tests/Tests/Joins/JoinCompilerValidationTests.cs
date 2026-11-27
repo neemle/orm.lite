@@ -38,14 +38,14 @@ public sealed class JoinCompilerValidationTests
     }
     [Fact] public void Requested_take_respects_materialization_bound()
     {
-        var f = Fixture(); var plan = f.Plan().OrderBy(f.A.Column(x => x.Id)); _ = f.Build(plan.Take(10));
+        var f = Fixture(); var plan = f.Plan().OrderBy(f.A.Column(x => x.Rank)); _ = f.Build(plan.Take(10));
         Error(() => f.Build(plan.Take(11)), JoinError.LimitExceeded);
     }
     [Fact] public void Take_zero_cannot_hide_foreign_projection()
     {
         var f = Fixture(); var foreign = f.Query().IncludingDeleted().AsJoinSource("foreign");
         var select = new JoinSelection(); select.Add(foreign.Column(x => x.Name), "foreignName");
-        Error(() => f.Build(f.Plan().OrderBy(f.A.Column(x => x.Id)).Take(0), select), JoinError.OutOfScopeSource);
+        Error(() => f.Build(f.Plan().OrderBy(f.A.Column(x => x.Rank)).Take(0), select), JoinError.OutOfScopeSource);
         Assert.Equal(0, f.Probe.Connections);
     }
     [Fact] public void On_must_reference_new_right_and_an_admitted_left()

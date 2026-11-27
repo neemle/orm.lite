@@ -31,7 +31,7 @@ internal sealed class JoinExecutionCommand(DbConnection connection, JoinExecutio
     }
     public override ValueTask DisposeAsync()
     {
-        probe.CommandDisposals++; probe.Event("command");
+        Interlocked.Increment(ref probe.CommandDisposals); probe.Event("command");
         return probe.CommandError is { } error ? ValueTask.FromException(error) : ValueTask.CompletedTask;
     }
 }

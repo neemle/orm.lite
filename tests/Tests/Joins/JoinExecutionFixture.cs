@@ -22,11 +22,13 @@ internal sealed class JoinExecutionFixture
     {
         Assert.Equal(readers, Probe.ReaderDisposals); Assert.Equal(commands, Probe.CommandDisposals);
         Assert.Equal(1, Probe.ConnectionDisposals);
+        Assert.Equal(0, Probe.Transactions);
         Assert.Equal(0, Probe.Commits + Probe.Rollbacks + Probe.TxDisposals);
     }
     internal void Borrowed()
     {
         Assert.Equal(ConnectionState.Open, BoundConnection!.State);
+        Assert.Equal(1, Probe.Transactions);
         Assert.Same(BoundConnection, BoundTransaction!.Connection);
         Assert.Equal(0, Probe.Opens + Probe.Connections + Probe.ConnectionDisposals);
         Assert.Equal(0, Probe.Commits + Probe.Rollbacks + Probe.TxDisposals);

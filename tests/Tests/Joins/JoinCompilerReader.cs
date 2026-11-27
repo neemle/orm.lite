@@ -32,22 +32,23 @@ internal sealed class JoinCompilerReader : DbDataReader
     public override bool IsDBNull(int ordinal) => inner.IsDBNull(ordinal);
     public override string GetString(int ordinal)
     {
-        probe.Decodes++;
-        if (probe.Decodes == probe.DecodeFaultAt) throw probe.DecodeError ?? new InvalidOperationException("decode");
+        var decoded = Interlocked.Increment(ref probe.Decodes);
+        if (decoded == probe.DecodeFaultAt) throw probe.DecodeError ?? new InvalidOperationException("decode");
         return inner.GetString(ordinal);
     }
-    public override Guid GetGuid(int ordinal) { probe.GuidDecodes++; return inner.GetGuid(ordinal); }
+    public override Guid GetGuid(int ordinal) { Interlocked.Increment(ref probe.GuidDecodes);
+    return inner.GetGuid(ordinal); }
     public override async Task<bool> ReadAsync(CancellationToken ct)
     {
-        probe.Reads++; probe.ReadToken = ct;
+        var read = Interlocked.Increment(ref probe.Reads); probe.ReadToken = ct;
         if (probe.Reading is { } hook) await hook(ct);
-        if (probe.Reads == probe.ReadFaultAt) throw probe.ReadError ?? new InvalidOperationException("read");
+        if (read == probe.ReadFaultAt) throw probe.ReadError ?? new InvalidOperationException("read");
         ct.ThrowIfCancellationRequested(); var available = await inner.ReadAsync(ct);
         probe.AfterRead?.Invoke(available); return available;
     }
     public override ValueTask DisposeAsync()
     {
-        probe.ReaderDisposals++; probe.Event("reader"); inner.Dispose();
+        Interlocked.Increment(ref probe.ReaderDisposals); probe.Event("reader"); inner.Dispose();
         return probe.ReaderError is { } error ? ValueTask.FromException(error) : ValueTask.CompletedTask;
     }
     public override bool GetBoolean(int ordinal) => inner.GetBoolean(ordinal);

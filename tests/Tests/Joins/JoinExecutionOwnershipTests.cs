@@ -69,5 +69,6 @@ public sealed class JoinExecutionOwnershipTests
         Assert.Equal(7, f.Probe.Issued[0].Parameters[0].Value); Assert.Equal(7, f.Probe.Issued[1].Parameters[0].Value);
         Assert.Equal(2, f.Probe.ReaderDisposals); Assert.Equal(2, f.Probe.CommandDisposals);
         Assert.Equal(2, f.Probe.ConnectionDisposals);
+        Assert.Equal(0, f.Probe.Transactions);
     }
 }
