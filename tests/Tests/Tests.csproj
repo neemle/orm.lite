@@ -38,4 +38,33 @@
     <ProjectReference Include="../../src/Generator/Generator.csproj" />
   </ItemGroup>
 
+  <!-- The composer-only gate (Gates/ComposerEscapeScan.cs) must see what the generator compiles, and a call under
+       #if NET or #if DEBUG is compiled. So the preprocessor symbols are read from the Generator project itself, for each
+       configuration it is built in, and carried into this assembly as metadata; nothing here lists a symbol. -->
+  <PropertyGroup>
+    <_OrmLiteGeneratorProject>$(MSBuildThisFileDirectory)../../src/Generator/Generator.csproj</_OrmLiteGeneratorProject>
+    <_OrmLiteDefineConstantsTargets>$(MSBuildThisFileDirectory)Gates/GeneratorDefineConstants.targets</_OrmLiteDefineConstantsTargets>
+  </PropertyGroup>
+
+  <Target Name="ReadGeneratorDefineConstants" BeforeTargets="GetAssemblyAttributes">
+    <MSBuild Projects="$(_OrmLiteGeneratorProject)" Targets="OrmLiteGeneratorDefineConstants"
+             Properties="Configuration=Release;CustomAfterMicrosoftCommonTargets=$(_OrmLiteDefineConstantsTargets)">
+      <Output TaskParameter="TargetOutputs" ItemName="_OrmLiteGeneratorReleaseSymbol" />
+    </MSBuild>
+    <MSBuild Projects="$(_OrmLiteGeneratorProject)" Targets="OrmLiteGeneratorDefineConstants"
+             Properties="Configuration=Debug;CustomAfterMicrosoftCommonTargets=$(_OrmLiteDefineConstantsTargets)">
+      <Output TaskParameter="TargetOutputs" ItemName="_OrmLiteGeneratorDebugSymbol" />
+    </MSBuild>
+    <ItemGroup>
+      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+        <_Parameter1>OrmLite.GeneratorDefineConstants.Release</_Parameter1>
+        <_Parameter2>@(_OrmLiteGeneratorReleaseSymbol)</_Parameter2>
+      </AssemblyAttribute>
+      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+        <_Parameter1>OrmLite.GeneratorDefineConstants.Debug</_Parameter1>
+        <_Parameter2>@(_OrmLiteGeneratorDebugSymbol)</_Parameter2>
+      </AssemblyAttribute>
+    </ItemGroup>
+  </Target>
+
 </Project>
