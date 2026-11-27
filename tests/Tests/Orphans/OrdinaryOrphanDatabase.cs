@@ -24,8 +24,11 @@ internal sealed class OrdinaryOrphanDatabase(ForeignKeyDatabase database, bool s
         var schema = OrmSchema.Of("ordinary_guard", GuardNativeModel.Parent, Child);
         var nodes = schema.Baseline().Concat(schema.Indexes()).ToList();
         if (soft) nodes.Add(RowHistoryDdl.Install(schema.HistoryTables));
-        foreach (var sql in DdlCompiler.Render(nodes, Context.Provider))
-            await database.ExecuteAsync(sql);
+        if (soft && Context.Provider is Neemle.OrmLite.Sqlite.SqliteProvider)
+            await MigrationRunner.ApplyAsync(Context.DataSource, Context.Provider, nodes);
+        else
+            foreach (var sql in DdlCompiler.Render(nodes, Context.Provider))
+                await database.ExecuteAsync(sql);
         await database.ExecuteAsync("INSERT INTO guard_parents(id,name) VALUES(@p0,'ordinary parent')",
             GuardNativeModel.Key(1));
         var insert = soft ? "INSERT INTO ordinary_soft(id,parent_id,name) VALUES(@p0,@p1,'ordinary')"
