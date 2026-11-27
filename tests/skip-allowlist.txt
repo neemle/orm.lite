@@ -9,3 +9,11 @@ Neemle.OrmLite.Tests.Behaviour.PostgresIndexTests.An_unknown_sqlite_collation_is
 # ScalarSuite.cs, Skip.IfNot sqlite: PostgreSQL hands a boolean over as Boolean, so reading it as a number is refused
 # there; the test pins the SQLite reading only.
 Neemle.OrmLite.Tests.Behaviour.PostgresScalarTests.A_bool_column_read_as_a_number_returns_one_on_sqlite	SQLite-only
+# Orphans/OrphanAttackReviewTests.cs, F3: a §803 reviewer test HELD per §803.8 (ORML-113 FULL r1, triage e45e083a).
+# An unrelated PostgreSQL writer still makes history-backed SoftDelete refuse with UnverifiedEffects; ORML-152 owes the
+# redesign. Remove this line together with the test's Skip when ORML-152 lands; the test must then pass.
+Neemle.OrmLite.Tests.Orphans.OrphanAttackReviewTests.F3_Unrelated_writer_must_not_disable_soft_replacement	HELD for ORML-152
+# Orphans/OrphanAttackReviewTests.cs, F5: a §803 reviewer test HELD per §803.8 (ORML-113 FULL r1, triage e45e083a).
+# The orphan emitters parse generated C# with Roslyn instead of building it through Composer, as main's generator does;
+# ORML-150 owes the redesign. Remove this line together with the test's Skip when ORML-150 lands.
+Neemle.OrmLite.Tests.Orphans.OrphanAttackReviewTests.F5_Orphan_emission_must_not_parse_generated_csharp	HELD for ORML-150
