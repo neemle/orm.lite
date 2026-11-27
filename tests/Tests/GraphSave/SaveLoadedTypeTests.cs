@@ -1,5 +1,4 @@
 using System.Reflection;
-using Neemle.OrmLite.Postgres;
 using Xunit;
 using static Neemle.OrmLite.Tests.MigrationReversibility.MigrationGeneratorRun;
 
@@ -47,17 +46,11 @@ public sealed class SaveLoadedTypeTests
     private static Type EntityType(GeneratedModel model) =>
         model.Class("LoadedRootOrm").Assembly.GetType("Fixture.LoadedRoot", true)!;
 
-    private static async Task Admitted(GeneratedModel model)
+    private static Task Admitted(GeneratedModel model)
     {
         var entry = model.Class("LoadedRootOrm").Assembly.GetType("Fixture.LoadedEntry", true)!;
-        await using var source = new SaveProbeSource();
-        await using var context = new OrmContext(source, PostgresProvider.Instance);
-        var call = (Task<GraphSaveResult>)entry.GetMethod("Save", BindingFlags.Public | BindingFlags.Static)!
-            .Invoke(null, [context])!;
-        var error = await Assert.ThrowsAsync<GraphSaveException>(() => call);
-        Assert.Equal(GraphSaveError.ProviderFailure, error.Error);
-        Assert.Equal(GraphSaveOutcome.NotStarted, error.Outcome);
-        Assert.Same(source.Stop, error.InnerException);
-        Assert.Equal(1, source.Opens);
+        return SaveAdmissionProbe.Run(context =>
+            (Task<GraphSaveResult>)entry.GetMethod("Save", BindingFlags.Public | BindingFlags.Static)!
+                .Invoke(null, [context])!, null);
     }
 }

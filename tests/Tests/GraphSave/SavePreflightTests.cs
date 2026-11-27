@@ -1,4 +1,3 @@
-using Neemle.OrmLite.Postgres;
 using Xunit;
 
 namespace Neemle.OrmLite.Tests.GraphSave;
@@ -46,14 +45,6 @@ public sealed class SavePreflightTests
         Assert.Single(root.Children);
     }
 
-    internal static async Task Admission(GraphSaveRequest<SaveProbeNode> request, GraphSaveError? refusal)
-    {
-        await using var source = new SaveProbeSource();
-        await using var context = new OrmContext(source, PostgresProvider.Instance);
-        var error = await Assert.ThrowsAsync<GraphSaveException>(() => global::Neemle.OrmLite.GraphSave.SaveAsync(context, request));
-        Assert.Equal(GraphSaveOutcome.NotStarted, error.Outcome);
-        Assert.Equal(refusal ?? GraphSaveError.ProviderFailure, error.Error);
-        Assert.Equal(refusal is null ? 1 : 0, source.Opens);
-        if (refusal is null) Assert.Same(source.Stop, error.InnerException);
-    }
+    internal static Task Admission(GraphSaveRequest<SaveProbeNode> request, GraphSaveError? refusal) =>
+        SaveAdmissionProbe.Run(context => global::Neemle.OrmLite.GraphSave.SaveAsync(context, request), refusal);
 }

@@ -1,4 +1,3 @@
-using Neemle.OrmLite.Postgres;
 using Xunit;
 
 namespace Neemle.OrmLite.Tests.GraphSave;
@@ -71,17 +70,11 @@ public sealed class SaveRegistrationSafetyTests
         finally { PolicyReadHooks<SaveRegistrationRow<bool>>.Snapshot = null; }
     }
 
-    private static async Task Admission<T>(T row, bool admitted) where T : class
+    private static Task Admission<T>(T row, bool admitted) where T : class
     {
-        await using var source = new SaveProbeSource();
-        await using var context = new OrmContext(source, PostgresProvider.Instance);
         var request = new GraphSaveRequest<T>(row, GraphSaveIntent.Insert,
             new(GraphSaveIntents.Empty, GraphSavePermissions.None, SaveProbeModel.Room));
-        var error = await Assert.ThrowsAsync<GraphSaveException>(() =>
-            global::Neemle.OrmLite.GraphSave.SaveAsync(context, request));
-        Assert.Equal(GraphSaveOutcome.NotStarted, error.Outcome);
-        Assert.Equal(admitted ? GraphSaveError.ProviderFailure : GraphSaveError.UnsupportedMapping, error.Error);
-        Assert.Equal(admitted ? 1 : 0, source.Opens);
-        if (admitted) Assert.Same(source.Stop, error.InnerException);
+        return SaveAdmissionProbe.Run(context => global::Neemle.OrmLite.GraphSave.SaveAsync(context, request),
+            admitted ? null : GraphSaveError.UnsupportedMapping);
     }
 }
