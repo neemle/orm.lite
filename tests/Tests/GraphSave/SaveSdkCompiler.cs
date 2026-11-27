@@ -12,14 +12,16 @@ internal static class SaveSdkCompiler
     private static readonly Lazy<Task<Assembly>> Compiled = new(CompileAsync);
     internal static Task<Assembly> Fixture() => Compiled.Value;
 
-    private static async Task<Assembly> CompileAsync()
+    private static Task<Assembly> CompileAsync() => CompileFixture(SavePartialFixture.Source, "PartialSaveFixture");
+
+    internal static async Task<Assembly> CompileFixture(string sourceText, string assemblyName)
     {
         var parent = Environment.GetEnvironmentVariable("ORMLITE_SDK_FIXTURE_OUTPUT") ?? Path.GetTempPath();
         var directory = Path.Combine(parent, "partial-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(directory);
         var source = Path.Combine(directory, "Fixture.cs");
-        var output = Path.Combine(directory, "PartialSaveFixture.dll");
-        await File.WriteAllTextAsync(source, SavePartialFixture.Source);
+        var output = Path.Combine(directory, assemblyName + ".dll");
+        await File.WriteAllTextAsync(source, sourceText);
         var start = Start(source, output, directory);
         using var process = Process.Start(start)!;
         var stdout = process.StandardOutput.ReadToEndAsync();
