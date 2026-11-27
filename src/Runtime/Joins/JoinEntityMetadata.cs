@@ -15,6 +15,7 @@ internal sealed class JoinEntityMetadata
         _calculated = descriptor.Calculated.Select(c => (c.Property, c.Alias, c.SourceColumn)).ToArray();
         _soft = descriptor.SoftColumn;
         Binding = GraphModel.Find(type);
+        _ = JoinScalarTypes.Kind(Binding.KeyType);
         if (descriptor.IsView || descriptor.SoleKey is not { Nullable: false })
             throw new JoinReadException(JoinError.UnsupportedSource);
         if (!ReferenceEquals(Binding.Descriptor, descriptor)) throw new JoinReadException(JoinError.UnsupportedSource);
