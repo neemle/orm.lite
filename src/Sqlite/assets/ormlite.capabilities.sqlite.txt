@@ -19,3 +19,6 @@ IndexNullsOrdering=None
 IndexCollation=Native
 IndexExpression=Native
 WalCheckpoint=Native
+Vacuum=Native
+VacuumFull=None
+VacuumTable=None

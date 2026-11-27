@@ -19,4 +19,7 @@ IndexNullsOrdering=Native
 IndexCollation=Native
 IndexExpression=Native
 WalCheckpoint=None
+Vacuum=Native
+VacuumFull=Native
+VacuumTable=Native
 MaxIdentifierBytes=63

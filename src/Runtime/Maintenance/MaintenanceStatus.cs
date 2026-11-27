@@ -14,4 +14,10 @@ public enum MaintenanceStatus
 
     /// <summary>The database is not in WAL mode, so there was nothing to checkpoint.</summary>
     NotWal,
+
+    /// <summary>
+    /// A prerequisite step did not complete, so the operation's own statement was not issued; the result carries the
+    /// prerequisite's outcome (for VACUUM on SQLite, the WAL checkpoint).
+    /// </summary>
+    NotRun,
 }

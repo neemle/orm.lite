@@ -75,16 +75,56 @@ public sealed partial class OrmMaintenance
             using (DbLane.Enter(DbLaneKind.Ops))
             {
                 await using var connection = await source.OpenConnectionAsync(ct);
-                await using var command = connection.CreateCommand();
-                command.CommandText = step.Text;
-                command.CommandTimeout = budget.CommandSeconds(0);
-                await using var reader = await command.RunMaintenanceReaderAsync(step.Operation, ct);
-                return await step.Read(reader, ct);
+                var guard = step.Port.RenderLockGuard(budget.Remaining);
+                try
+                {
+                    if (guard is not null) await RunSessionAsync(connection, guard.Setup, budget, ct);
+                    await using var command = connection.CreateCommand();
+                    command.CommandText = step.Text;
+                    // With a server-side lock timeout set, the command timeout gets a second of grace so the lock
+                    // timeout fires first and is reported as contention, not as a command timeout.
+                    command.CommandTimeout = budget.CommandSeconds(guard is null ? 0 : 1);
+                    await using var reader = await command.RunMaintenanceReaderAsync(step.Operation, ct);
+                    return await step.Read(reader, ct);
+                }
+                catch (DbException failure) when (step.Port.IsContention(failure))
+                {
+                    return step.Busy();
+                }
+                finally
+                {
+                    if (guard is not null) await TearDownAsync(connection, guard.Teardown);
+                }
             }
         }
         finally
         {
             if (lease.Release is { } release) await release.DisposeAsync();
+        }
+    }
+
+    // Session plumbing rendered from a time span only: it runs on the maintenance connection without a diagnostics
+    // event, so a call still reports exactly one statement.
+    private static async Task RunSessionAsync(DbConnection connection, string text, MaintenanceBudget budget, CancellationToken ct)
+    {
+        await using var command = connection.CreateCommand();
+        command.CommandText = text;
+        command.CommandTimeout = budget.CommandSeconds(0);
+        await command.ExecuteNonQueryAsync(ct);
+    }
+
+    // A teardown that fails is swallowed: the connection is disposed next, and the provider's reset on close is the
+    // second line.
+    private static async Task TearDownAsync(DbConnection connection, string text)
+    {
+        try
+        {
+            await using var command = connection.CreateCommand();
+            command.CommandText = text;
+            await command.ExecuteNonQueryAsync(CancellationToken.None);
+        }
+        catch (Exception)
+        {
         }
     }
 }

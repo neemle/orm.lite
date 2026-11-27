@@ -15,6 +15,7 @@ var result = await db.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(Wa
 | Operation | Method | SQLite | PostgreSQL |
 | --- | --- | --- | --- |
 | WAL checkpoint | `CheckpointWalAsync(WalCheckpointRequest)` | Native | None, refused |
+| VACUUM | `VacuumAsync(VacuumRequest)` | Plain of the whole database (checkpoint first) | Plain and FULL, whole database or one table |
 
 An operation the provider does not support is refused with `CapabilityNotSupportedException`, naming the provider, the
 method and the capability, before any connection opens. A provider that does not implement `IMaintenanceProvider` is
@@ -38,9 +39,28 @@ Every operation runs in the same order:
    is never reused, and the call does not consume Request-lane admission.
 7. The gate and the connection are released on success, failure and cancellation.
 
-`Timeout` on a request is the budget of the whole call, gate wait and statement included. It defaults to the
+`Timeout` on a request is ONE budget for the whole call: every gate wait, every lock wait and every statement spend
+from it, also when an operation runs more than one statement (VACUUM on SQLite checkpoints first). It defaults to the
 provider's maintenance timeout: on SQLite that is the busy timeout (`OrmLite:BusyTimeoutSeconds`, 30 seconds by
-default). The statement's command timeout is what is left of the budget, rounded up to whole seconds.
+default), on PostgreSQL `PostgresProvider.DefaultMaintenanceTimeout`, 30 seconds. The statement's command timeout is
+what is left of the budget, rounded up to whole seconds. A long `VACUUM (FULL)` or blocking `REINDEX` of a big table
+needs a longer `Timeout`; on PostgreSQL a longer budget also lets a queued lock request wait longer, and while it waits
+for an `ACCESS EXCLUSIVE` or `SHARE` lock it blocks other sessions queued behind it.
+
+On PostgreSQL the lock wait is bounded on the server: before the statement the maintenance connection runs
+`SET lock_timeout = '<remaining>ms'` and after it `RESET lock_timeout`. These two session statements are not reported
+to diagnostics, so a call still reports exactly one statement. The command timeout gets one second of grace over the
+budget so the server's lock timeout fires first and is reported as `Busy`. SQLite's wait for a busy database is bounded
+by the command timeout, through the driver's busy retry.
+
+What counts as contention, reported as `Busy`:
+
+| Provider | Contention |
+| --- | --- |
+| SQLite | the writer gate was not free within the budget; `SQLITE_BUSY` (5) or `SQLITE_LOCKED` (6), extended codes included |
+| PostgreSQL | SQLSTATE `55P03` (`lock_not_available`), raised when the `lock_timeout` above runs out |
+
+A command timeout during a long statement is not contention: it propagates as the driver's exception.
 
 While a writing operation holds the gate, ORM writes on the same database wait for it and then complete, the same as
 they wait for a unit of work. Writes to another database file are not delayed.
@@ -59,9 +79,13 @@ Every result implements `IMaintenanceResult`: `Operation`, `Provider`, `Status` 
 | --- | --- |
 | The work was done | `Status = Completed` |
 | Contention that did not clear within the budget | `Status = Busy`, never an exception |
+| A prerequisite step did not complete, so the statement was not issued | `Status = NotRun` |
 | The calling flow holds the writer gate | `InvalidOperationException`, before any SQL |
 | The provider lacks the operation or option | `CapabilityNotSupportedException`, before any connection |
 | Any other database failure | the original `DbException`, unwrapped |
+
+If you want an incomplete result to be an exception, call `result.ThrowIfNotComplete()`: it throws
+`MaintenanceIncompleteException`, whose `Result` is the result itself, unless `Status` is `Completed`.
 
 ## WAL checkpoint
 
@@ -122,4 +146,51 @@ switch (checkpoint.Status)
         Console.WriteLine("not a WAL database; nothing to checkpoint");
         break;
 }
+```
+
+## VACUUM
+
+`VacuumAsync` reclaims the space of deleted rows. `VacuumMode` is required: `Plain` or `Full`. `Plain` is never turned
+into `FULL`.
+
+| | SQLite | PostgreSQL |
+| --- | --- | --- |
+| `Plain`, whole database | `VACUUM`, after a WAL checkpoint (below) | `VACUUM` |
+| `Plain`, one table (`Table = NoteOrm.Descriptor`) | refused: `Capability.VacuumTable` | `VACUUM <table>` |
+| `Full` | refused: `Capability.VacuumFull` | `VACUUM (FULL)` or `VACUUM (FULL) <table>` |
+
+The table is named only by its generated descriptor and quoted by the provider, exactly as every other statement names
+it. A refused option throws `CapabilityNotSupportedException` before any connection opens; the operation's own
+capability (`Capability.Vacuum`) is checked first.
+
+**SQLite: checkpoint, then VACUUM.** In WAL mode VACUUM writes the rebuilt database through the log, so `VacuumAsync`
+first runs `CheckpointWalAsync` in `Truncate` mode, then:
+
+- If the checkpoint is `Completed`, or `NotWal` (a rollback-journal or in-memory database has nothing to checkpoint),
+  it runs `VACUUM`.
+- If the checkpoint is `Partial` or `Busy` (a reader still needs frames), VACUUM is not issued: the result is
+  `NotRun`, and `Checkpoint` carries the checkpoint result.
+- If the writer gate was not free for the checkpoint, the result is `Busy` and `Checkpoint` is null.
+
+Each step enters the writer gate for itself and releases it after, so another writer may run between the checkpoint and
+VACUUM. Both steps share the one budget, and each reports its own diagnostics statement (`WalCheckpoint`, then
+`Vacuum`). After VACUUM the main file is smaller but the `-wal` file may stay large until the next checkpoint:
+`VacuumAsync` does not checkpoint again, so call `CheckpointWalAsync(new(WalCheckpointMode.Truncate))` afterwards if you
+want the log truncated.
+
+**PostgreSQL.** `Plain` marks dead rows reusable without blocking reads or writes. `Full` rewrites the table into a new
+file, returns the freed space to the operating system, and holds an `ACCESS EXCLUSIVE` lock on the table for the whole
+run, so every read and write of that table waits. VACUUM cannot run inside a transaction block; the library runs it on
+its own connection, never in a unit of work.
+
+On both providers `VacuumAsync` from a flow with an open `UnitOfWork` on the same database throws
+`InvalidOperationException` before any SQL runs.
+
+`VacuumResult` carries `Mode`, `Table` (the table name, or null), `Status` and `Checkpoint`.
+
+```csharp
+var vacuum = await db.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain) { Timeout = TimeSpan.FromMinutes(2) });
+if (vacuum.Status == MaintenanceStatus.NotRun)
+    Console.WriteLine($"a reader held the log (checkpoint {vacuum.Checkpoint?.Status}); VACUUM was not run");
+vacuum.ThrowIfNotComplete();
 ```
