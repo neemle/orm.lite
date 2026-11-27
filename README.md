@@ -29,6 +29,7 @@ Follow the [SQLite quickstart](docs/quickstart.md) to create a table and run you
 
 - [Relations](docs/relations.md) covers navigation properties, join tables, and foreign keys.
 - [Explicit graph saves](demo/GraphSave/README.md) demonstrates atomic related inserts and updates with the current checkout's packages.
+- [Typed joined reads](demo/README.md#typed-joined-reads) demonstrates INNER/LEFT/self joins, explicit result cells and joined-row paging, with working cases and JIT/NativeAOT commands for the current checkout.
 - [Streaming reads](docs/streaming.md) covers cold row consumption, early cleanup, and transaction lifetime.
 - [Migrations](docs/migrations.md) shows how to change a schema and roll back a migration.
 - [Provider capabilities](docs/providers.md) compares PostgreSQL and SQLite behavior.
