@@ -63,6 +63,18 @@ public static class OrphanModel
         }
     }
 
+    internal static IOrphanEntity GuardEntity(EntityDescriptor descriptor)
+    {
+        lock (Sync)
+        {
+            var matches = Entities.Values.Where(e =>
+                OrphanDescriptorEquality.Same(e.Metadata.Copy(), descriptor)).Take(2).ToArray();
+            if (matches.Length != 1) throw OrphanRefusal.At(OrphanError.UnsupportedMapping);
+            matches[0].ValidateCurrent();
+            return matches[0];
+        }
+    }
+
     private static void ValidateEntity(IOrphanEntity binding)
     {
         binding.ValidateCurrent();
