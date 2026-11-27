@@ -19,7 +19,7 @@ public sealed class OrphanLoadedTypeTests
         {
             [Key] public Guid Id { get; set; }
             public Guid ParentId { get; set; }
-            [ForeignKey("fk_u1_loaded", ReferentialAction.Cascade)]
+            [ForeignKey("fk_u1_loaded", Neemle.OrmLite.Nodes.ReferentialAction.Cascade)]
             public LoadedParent? Parent { get; set; }
         }
         """;

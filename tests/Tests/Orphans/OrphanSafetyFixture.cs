@@ -12,6 +12,7 @@ internal static class OrphanSafetyFixture
         using System;
         using System.Collections.Generic;
         using Neemle.OrmLite;
+        using Neemle.OrmLite.Nodes;
         namespace OrphanSafetyConsumer;
 
         public static class Witness { public static int Scalar; public static int Navigation; }
@@ -86,12 +87,14 @@ internal static class OrphanSafetyFixture
         [Table("u1_record_parent")]
         public sealed record RecordParent([property: Key] Guid Id)
         {
+            public RecordParent() : this(Guid.Empty) { }
             [Reference(nameof(RecordChild.ParentId))]
             public List<RecordChild> Children { get; set; } = new();
         }
         [Table("u1_record_child")]
         public sealed record RecordChild([property: Key] Guid Id, Guid ParentId, string Name)
         {
+            public RecordChild() : this(Guid.Empty, Guid.Empty, "") { }
             [ForeignKey("fk_record", ReferentialAction.Cascade)]
             public RecordParent? Parent { get; set; }
         }
