@@ -11,7 +11,8 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-RegisterSave0();    }
+RegisterSave0();    RegisterJoin0();RegisterJoin1();RegisterJoin2();RegisterJoin3();RegisterJoin4();RegisterJoin5();
+    RegisterJoin6();RegisterJoin7();RegisterJoin8();}
 
     private static void RegisterEntities()
     {
@@ -57,5 +58,239 @@ private static void RegisterSave0()
     UnmappedTypeOrm.RegisterSave();
     LiveOnlyOnPlainEntityOrm.RegisterSave();
     DuplicateIndexNameOrm.RegisterSave();
+}
+
+private static void RegisterJoin0()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.UnmappedType, global::System.Guid>(
+        UnmappedTypeOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.UnmappedType
+        , global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftColumnMissing, global::System.Guid>(
+        SoftColumnMissingOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftColumnMissing, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftColumnMissing, global::System.Guid>(
+        SoftColumnMissingOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftColumnMissing, global::System.Guid>("TenantId", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftColumnWrongType, global::System.Guid>(
+        SoftColumnWrongTypeOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftColumnWrongType, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+}
+
+private static void RegisterJoin1()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftColumnWrongType, global::System.Guid>(
+        SoftColumnWrongTypeOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftColumnWrongType, global::System.Guid>("TenantId", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftColumnWrongType, int>(
+        SoftColumnWrongTypeOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftColumnWrongType, int>("Removed", static (r, o) =>
+    {
+        return r.GetInt32(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftColumnNotMapped, global::System.Guid>(
+        SoftColumnNotMappedOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftColumnNotMapped, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftColumnNotMapped, global::System.Guid>(
+        SoftColumnNotMappedOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftColumnNotMapped, global::System.Guid>("TenantId", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+}
+
+private static void RegisterJoin2()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.LiveOnlyOnPlainEntity, global::System.Guid
+        >(LiveOnlyOnPlainEntityOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        LiveOnlyOnPlainEntity, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.LiveOnlyOnPlainEntity, string>(
+        LiveOnlyOnPlainEntityOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        LiveOnlyOnPlainEntity, string>("Name", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.LiveOnlyNotUnique, global::System.Guid>(
+        LiveOnlyNotUniqueOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        LiveOnlyNotUnique, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.LiveOnlyNotUnique, string>(
+        LiveOnlyNotUniqueOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        LiveOnlyNotUnique, string>("Name", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+}
+
+private static void RegisterJoin3()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.LiveOnlyNotUnique, global::System.DateTime
+        ?>(LiveOnlyNotUniqueOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        LiveOnlyNotUnique, global::System.DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.DuplicateIndexName, global::System.Guid>(
+        DuplicateIndexNameOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        DuplicateIndexName, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.DuplicateIndexName, string>(
+        DuplicateIndexNameOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        DuplicateIndexName, string>("Name", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.DuplicateIndexName, string>(
+        DuplicateIndexNameOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        DuplicateIndexName, string>("Code", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+}
+
+private static void RegisterJoin4()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftWithoutTenant, global::System.Guid>(
+        SoftWithoutTenantOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftWithoutTenant, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftWithoutTenant, global::System.DateTime
+        ?>(SoftWithoutTenantOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftWithoutTenant, global::System.DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftTenantWrongType, global::System.Guid>(
+        SoftTenantWrongTypeOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftTenantWrongType, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftTenantWrongType, string>(
+        SoftTenantWrongTypeOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftTenantWrongType, string>("TenantId", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+}
+
+private static void RegisterJoin5()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftTenantWrongType, global::System.
+        DateTime?>(SoftTenantWrongTypeOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::
+        CorpusDiagnostics.SoftTenantWrongType, global::System.DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftNamedTenantMissing, global::System.
+        Guid>(SoftNamedTenantMissingOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::
+        CorpusDiagnostics.SoftNamedTenantMissing, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftNamedTenantMissing, global::System.
+        DateTime?>(SoftNamedTenantMissingOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::
+        CorpusDiagnostics.SoftNamedTenantMissing, global::System.DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftKeyNotGuid, int>(SoftKeyNotGuidOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.SoftKeyNotGuid, int>("Id",
+        static (r, o) =>
+    {
+        return r.GetInt32(o);
+    }));
+}
+
+private static void RegisterJoin6()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftKeyNotGuid, global::System.DateTime?>(
+        SoftKeyNotGuidOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftKeyNotGuid, global::System.DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftUnknownNames, global::System.Guid>(
+        SoftUnknownNamesOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftUnknownNames, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftUnknownNames, global::System.DateTime?
+        >(SoftUnknownNamesOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftUnknownNames, global::System.DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftLabelNotText, global::System.Guid>(
+        SoftLabelNotTextOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftLabelNotText, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+}
+
+private static void RegisterJoin7()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftLabelNotText, int>(SoftLabelNotTextOrm
+        .Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.SoftLabelNotText, int>(
+        "Rank", static (r, o) =>
+    {
+        return r.GetInt32(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftLabelNotText, global::System.DateTime?
+        >(SoftLabelNotTextOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftLabelNotText, global::System.DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftStatusPinned, global::System.Guid>(
+        SoftStatusPinnedOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftStatusPinned, global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftStatusPinned, string>(
+        SoftStatusPinnedOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftStatusPinned, string>("State", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+}
+
+private static void RegisterJoin8()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::CorpusDiagnostics.SoftStatusPinned, global::System.DateTime?
+        >(SoftStatusPinnedOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::CorpusDiagnostics.
+        SoftStatusPinned, global::System.DateTime?>("DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
 }
 }

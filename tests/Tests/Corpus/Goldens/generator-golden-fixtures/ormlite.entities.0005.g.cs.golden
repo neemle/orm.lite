@@ -11,7 +11,7 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-RegisterSave0();    }
+RegisterSave0();    RegisterJoin0();RegisterJoin1();RegisterJoin2();RegisterJoin3();}
 
     private static void RegisterEntities()
     {
@@ -35,5 +35,114 @@ private static void RegisterSave0()
     GoldenAuthorOrm.RegisterSave();
     GoldenBookOrm.RegisterSave();
     GoldenTagOrm.RegisterSave();
+}
+
+private static void RegisterJoin0()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.FixtureNote, global::System.Guid>(
+        FixtureNoteOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.FixtureNote,
+        global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.FixtureNote, string>(FixtureNoteOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.FixtureNote, string>("Title",
+        static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.FixtureNote, int>(FixtureNoteOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.FixtureNote, int>("Revision", static (r, o)
+        =>
+    {
+        return r.GetInt32(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenAuthor, global::System.Guid>(
+        GoldenAuthorOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenAuthor,
+        global::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+}
+
+private static void RegisterJoin1()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenAuthor, string>(GoldenAuthorOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenAuthor, string>("Name",
+        static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenAuthor, int>(GoldenAuthorOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenAuthor, int>("Rank", static (r, o)
+        =>
+    {
+        return r.GetInt32(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenBook, global::System.Guid>(
+        GoldenBookOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenBook, global
+        ::System.Guid>("Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenBook, global::System.Guid>(
+        GoldenBookOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenBook, global
+        ::System.Guid>("AuthorId", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+}
+
+private static void RegisterJoin2()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenBook, global::System.Guid?>(
+        GoldenBookOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenBook, global
+        ::System.Guid?>("EditorId", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenBook, string>(GoldenBookOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenBook, string>("Title", static (r, o
+        ) =>
+    {
+        return r.GetString(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenBook, int>(GoldenBookOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenBook, int>("Pages", static (r, o) =>
+    {
+        return r.GetInt32(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenBook, long>(GoldenBookOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenBook, long>("Copies", static (r, o) =>
+    {
+        return r.GetInt64(o);
+    }));
+}
+
+private static void RegisterJoin3()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenBook, bool>(GoldenBookOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenBook, bool>("InPrint", static (r, o)
+        =>
+    {
+        return r.GetBoolean(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenBook, global::System.DateTime>(
+        GoldenBookOrm.Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenBook, global
+        ::System.DateTime>("PublishedAt", static (r, o) =>
+    {
+        return r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenTag, global::System.Guid>(GoldenTagOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenTag, global::System.Guid>(
+        "Id", static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::GoldenFixtures.GoldenTag, string>(GoldenTagOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::GoldenFixtures.GoldenTag, string>("Label", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
 }
 }
