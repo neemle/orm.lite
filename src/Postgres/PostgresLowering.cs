@@ -220,7 +220,7 @@ internal static class PostgresLowering
         return new PgBlock("sd", L(new PgDeclare("soft_rows", "bigint")), L(LockTimeout(), drop));
     }
 
-    private static string CaptureFunction(string actorSetting)
+    internal static string CaptureFunction(string actorSetting)
     {
         foreach (var ch in actorSetting)
             if (!(ch is >= 'a' and <= 'z' or >= '0' and <= '9' or '_' or '.'))

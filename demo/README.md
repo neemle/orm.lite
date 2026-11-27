@@ -333,6 +333,64 @@ See the guide for [models and explicit intents](GraphSave/README.md#models-and-e
 [NativeAOT/.NET 11 commands](GraphSave/README.md#run-with-jit-or-nativeaot) and
 [outcome and ownership boundaries](GraphSave/README.md#outcome-and-ownership-boundaries).
 
+## Replace an owned collection
+
+[OrphanDemo](Orphans/OrphanDemo.cs), selected by [Program.cs](Program.cs), uses ordinary public APIs and a fresh
+scratch database. The same [parent](Orphans/OrphanDemoParent.cs), [child](Orphans/OrphanDemoChild.cs),
+[soft child](Orphans/OrphanDemoSoftChild.cs) and assertions are used for either provider and runtime mode.
+Pack the current checkout as shown in [Run it](#run-it), then select this chapter:
+
+```sh
+dotnet run --project demo/OrmLiteDemo.csproj -c Release -p:DemoTfm=net10.0 -- orphans sqlite
+ORMLITE_GRAPH_POSTGRES='Host=localhost;Port=55432;Username=postgres;Database=postgres' \
+  dotnet run --project demo/OrmLiteDemo.csproj -c Release -p:DemoTfm=net10.0 -- orphans postgres
+```
+
+`OrphanCollections.Relation<TParent,TChild,TParentKey,TChildKey>(navigation)` resolves a generated, typed owner-FK
+binding. `BeginAsync(context, relation, parentKey, options, ct)` opens and owns one transaction, observes the complete
+ordinary LIVE membership and returns an `OrphanReplacement<TChild,TChildKey>`. Its immutable `Observation` identifies
+the original keys; `ApplyAsync(request, ct)` consumes that scope once. Supply five positive finite `OrphanLimits`
+and explicitly select `Nullify`, physical `Delete`, or declared `SoftDelete`; the default `Disabled` mode grants no
+authority and performs no database work. Nullify requires a nullable owner FK, and protected soft rows cannot be
+physically purged by this API.
+
+`OrphanReplacementRequest` carries desired keys and an immutable `OrphanPresentWrites<T>` builder: explicitly
+`Insert` new desired children or `Update` observed ones, or pass `None`. Omitted original keys alone become removal
+candidates. Present writes and exact candidates commit together; input objects, keys, FKs and collections remain
+unchanged. Merely omitting a navigation in an ordinary graph save does not request removal.
+
+| Case | What it checks |
+| --- | --- |
+| [Disabled](Orphans/OrphanDemoDisabled.cs) | No authority or implicit removal; explicit dormant writes and repeated apply are refused. |
+| [Replacement](Orphans/OrphanDemoReplacement.cs) | Exact nullify and physical delete, duplicate collapse, unrelated owners and authoritative empty observation. |
+| [Present writes](Orphans/OrphanDemoPresent.cs) | Insert, update and candidate removal commit together without mutating inputs. |
+| [Soft delete](Orphans/OrphanDemoSoft.cs) | LIVE hides the retained row; native history records the actor and original owner. |
+| [Refusals](Orphans/OrphanDemoRefusals.cs) | CallerJoined, unsupported mode/purge, unobserved membership and wrong owner are refused. |
+| [Bounds](Orphans/OrphanDemoBounds.cs) | Observed, desired, candidate, write and cumulative statement bounds refuse atomically. |
+| [Rollback](Orphans/OrphanDemoRollback.cs) | A later PK conflict rolls back a successful present-write prefix and preserves existing membership. |
+| [Cancellation](Orphans/OrphanDemoCancellation.cs) | The caller token survives cancellation; abandoned scopes roll back and release their resources. |
+
+Exit zero and `orphans chapter ok; scratch removed` require all assertions and cleanup to succeed. The API owns its
+connection and transaction; `CallerJoined` is refused. Dispose scopes with `await using`. A rollback acknowledgement
+means `RolledBack`; disposal alone does not prove rollback. A lost commit response means `Unknown`, while cleanup
+failure after an acknowledged commit reports `Committed` with `CommittedResult`. Inspect `OrphanException.Error`
+and `Outcome`; its message and `ToString()` are safe, while a privileged `InnerException` can contain provider data.
+Do not blindly retry an unknown outcome.
+
+For NativeAOT, publish the same source for the machine that will execute it:
+
+```sh
+dotnet publish demo/OrmLiteDemo.csproj -c Release -p:DemoTfm=net10.0 -r linux-arm64 \
+  -p:PublishAot=true -o artifacts/orphans-native-net10
+artifacts/orphans-native-net10/OrmLiteDemo orphans sqlite
+ORMLITE_GRAPH_POSTGRES='Host=localhost;Port=55432;Username=postgres;Database=postgres' \
+  artifacts/orphans-native-net10/OrmLiteDemo orphans postgres
+```
+
+For .NET 11 use its SDK, `-p:DemoTfm=net11.0` and a separate `artifacts/orphans-native-net11` output directory.
+The same chapter, models and assertions have passed all eight Linux-arm64 combinations of JIT/NativeAOT,
+PostgreSQL/SQLite and .NET 10/11. Every run required the public assertions and scratch cleanup to succeed.
+
 ## Soft delete, restore and history
 
 `Draft` (`Trash.cs`) is a `[SoftDelete]` entity: deleting it moves the row to the trash, `IncludingDeleted()` still

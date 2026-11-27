@@ -18,6 +18,7 @@ internal static class OneToOneReadMap
         {
             var entity = map(reader);
             GraphSaveOrigins.Observe(entity, map, hasMasks);
+            OrphanReadOrigins.Observe(entity, map, hasMasks);
             if (eligible) OneToOneProvenance.MarkIfEligible(entity, map, hasMasks);
             return entity;
         };

@@ -286,7 +286,8 @@ namespace Neemle.OrmLite;
         public async Task<List<TOut>> ProjectAsync<TOut>(
             IReadOnlyList<Expression<Func<T, object?>>> columns,
             Func<DbDataReader, TOut> map) =>
-            await _exec.RowsAsync(CompileProject(columns), GraphSaveOrigins.Wrap(map, true));
+            await _exec.RowsAsync(CompileProject(columns),
+                GraphSaveOrigins.Wrap(OrphanReadOrigins.Wrap(map, true), true));
 
         public Statement CompileProject(IReadOnlyList<Expression<Func<T, object?>>> columns) =>
             CompileTree(BuildProject(columns));
@@ -320,7 +321,8 @@ namespace Neemle.OrmLite;
         }
 
         public async Task<List<TOut>> ProjectionAsync<TOut>(Func<DbDataReader, TOut> map) =>
-            await _exec.RowsAsync(CompileProjection(), GraphSaveOrigins.Wrap(map, true));
+            await _exec.RowsAsync(CompileProjection(),
+                GraphSaveOrigins.Wrap(OrphanReadOrigins.Wrap(map, true), true));
 
         public Task<T?> FirstOrDefaultAsync() => QueryPolicyReads<T>.FirstAsync(this, _exec);
 

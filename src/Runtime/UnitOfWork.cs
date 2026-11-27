@@ -77,6 +77,18 @@ public sealed class UnitOfWork : IAsyncDisposable
 
     public bool Committed => _committed;
 
+    internal static UnitOfWork AttachOrphan(OrphanUnitAcquire acquired)
+    {
+        var connection = acquired.Connection!;
+        var started = acquired.Started!.Value;
+        acquired.Trace = TransactionTrace.Begin(connection);
+        var unit = new UnitOfWork(connection, started, acquired.Operation.Provider, acquired.Trace);
+        acquired.Unit = unit;
+        s_open.Add(connection, started);
+        PolicyOrigins.Record(connection, acquired.Operation.Context, unit);
+        return unit;
+    }
+
     internal ISqlProvider Provider => _provider;
 
     internal static bool IsOpenOn(DbConnection connection) => s_open.TryGetValue(connection, out _);

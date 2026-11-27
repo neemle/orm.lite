@@ -40,6 +40,7 @@ internal static class GraphExecutor
         GraphSaveOrigins.Observe(entity, original, partial);
         var canonical = context.Identity.Intern(plan.Root.Binding, entity);
         GraphSaveOrigins.Observe(canonical, original, partial);
+        OrphanReadOrigins.Observe(canonical, map, partial);
         return GraphFrontier.Typed<T>(canonical);
     }
 

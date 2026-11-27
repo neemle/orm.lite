@@ -29,6 +29,7 @@ Follow the [SQLite quickstart](docs/quickstart.md) to create a table and run you
 
 - [Relations](docs/relations.md) covers navigation properties, join tables, and foreign keys.
 - [Explicit graph saves](demo/GraphSave/README.md) demonstrates atomic related inserts and updates with the current checkout's packages.
+- [Explicit orphan replacement](demo/README.md#replace-an-owned-collection) demonstrates bounded collection removal and present writes in one owned transaction, using the current checkout's packages.
 - [Streaming reads](docs/streaming.md) covers cold row consumption, early cleanup, and transaction lifetime.
 - [Migrations](docs/migrations.md) shows how to change a schema and roll back a migration.
 - [Provider capabilities](docs/providers.md) compares PostgreSQL and SQLite behavior.

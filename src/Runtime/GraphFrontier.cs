@@ -30,6 +30,7 @@ internal static class GraphFrontier
         GraphSaveOrigins.Observe(mapped, node.Target.Binding.OriginalMapper, node.MayBePartial);
         var canonical = context.Identity.Intern(node.Target.Binding, mapped);
         GraphSaveOrigins.Observe(canonical, node.Target.Binding.OriginalMapper, node.MayBePartial);
+        OrphanReadOrigins.ObserveMapped(canonical, node.Target.Binding, node.MayBePartial);
         return canonical;
     }
 
