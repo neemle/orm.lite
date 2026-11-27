@@ -22,4 +22,5 @@ WalCheckpoint=None
 Vacuum=Native
 VacuumFull=Native
 VacuumTable=Native
+Analyze=Native
 MaxIdentifierBytes=63

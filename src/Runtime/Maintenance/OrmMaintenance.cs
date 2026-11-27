@@ -44,6 +44,13 @@ public sealed partial class OrmMaintenance
             throw new CapabilityNotSupportedException(ProviderId, node, option);
     }
 
+    // A target named by a generated descriptor must be a table: a view has no statistics, indexes or pages of its own.
+    private static void RefuseView(EntityDescriptor? table, string operation)
+    {
+        if (table is { IsView: true })
+            throw new ArgumentException(operation + " targets tables; '" + table.Table + "' is a view.", "Table");
+    }
+
     private MaintenanceBudget Budget(IMaintenanceProvider port, TimeSpan? timeout) => new(timeout ?? port.MaintenanceTimeout);
 
     // D6 step 4: a gate-taking operation called from a flow whose open UnitOfWork holds that gate would wait on itself.

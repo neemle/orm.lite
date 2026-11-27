@@ -47,6 +47,7 @@ index or join table name over the limit as `ORMLITE034`. SQLite states no limit.
 | `Vacuum` | `Maintenance.VacuumAsync` in `Plain` mode ([maintenance](maintenance.md#vacuum)) | Native | Native (checkpoint, then VACUUM) |
 | `VacuumFull` | `VacuumMode.Full`, which rewrites the table | Native | None, refused by name |
 | `VacuumTable` | a VACUUM of one table (`VacuumRequest.Table`) | Native | None, refused by name |
+| `Analyze` | `Maintenance.AnalyzeAsync` of the database or one table ([maintenance](maintenance.md#analyze)) | Native | Native |
 
 ### Grouped query behavior
 

@@ -28,6 +28,7 @@ public enum Capability
     Vacuum,
     VacuumFull,
     VacuumTable,
+    Analyze,
 }
 
 public enum Support
