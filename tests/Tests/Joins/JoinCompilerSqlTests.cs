@@ -16,7 +16,8 @@ public sealed class JoinCompilerSqlTests
             "SELECT j0.\"name\" AS \"__orm_join_0\", j1.\"note\" AS \"__orm_join_1\" "
             + "FROM \"join_unit\" j0 JOIN \"join_unit\" j1 "
             + "ON ((j0.\"id\" = j1.\"id\" AND j0.\"rank\" > @p0) AND j1.\"rank\" < @p1) "
-            + "WHERE j0.\"rank\" > @p2 AND j1.\"rank\" < @p3 ORDER BY j0.\"rank\" ASC LIMIT 2 OFFSET 1",
+            + "WHERE j0.\"rank\" > @p2 AND j1.\"rank\" < @p3 "
+            + "ORDER BY j0.\"rank\" ASC NULLS LAST LIMIT 2 OFFSET 1",
             13, 11, 7, 17);
     }
     [Theory] [InlineData("postgres")] [InlineData("sqlite")]
