@@ -119,8 +119,8 @@ internal sealed class PostgresOrphanCatalog(PostgresProvider provider, OrphanGua
             + "pg_catalog.unnest(i.indclass::pg_catalog.oid[]) classes(opclass) "
             + "JOIN pg_catalog.pg_opclass o ON o.oid=classes.opclass "
             + "JOIN pg_catalog.pg_namespace n ON n.oid=o.opcnamespace "
-            + "WHERE n.nspname<>'pg_catalog'),a.attnum,a.atttypid::pg_catalog.bigint,a.atttypmod, "
-            + "a.attcollation::pg_catalog.bigint FROM pg_catalog.pg_index i "
+            + "WHERE n.nspname<>'pg_catalog'),a.attnum,a.atttypid::pg_catalog.int8,a.atttypmod, "
+            + "a.attcollation::pg_catalog.int8 FROM pg_catalog.pg_index i "
             + "LEFT JOIN pg_catalog.pg_attribute a ON a.attrelid=i.indrelid AND a.attname=@soft "
             + "AND NOT a.attisdropped WHERE i.indrelid=@owner::pg_catalog.oid "
             + "ORDER BY i.indexrelid LIMIT 257";
