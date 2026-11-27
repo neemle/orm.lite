@@ -12,6 +12,13 @@ internal static class NodeRoster
 
     internal static IReadOnlyList<Node> Samples => [.. CoreSamples, .. DdlNodeRoster.Samples];
 
+    // Nodes that INodeVisitor deliberately does not cover: each dispatches only through its additive extension visitor
+    // (LeftJoin through ILeftJoinNodeVisitor), so an existing INodeVisitor implementation keeps compiling and loading.
+    internal static IReadOnlyList<Node> ExtensionSamples { get; } =
+    [
+        new LeftJoin(new TableRef("o", "b"), new Compare(CompareOp.Equal, Column, Bound)),
+    ];
+
     private static IReadOnlyList<Node> CoreSamples { get; } =
     [
         new Star(),
