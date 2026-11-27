@@ -18,6 +18,7 @@ var result = await db.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(Wa
 | VACUUM | `VacuumAsync(VacuumRequest)` | Plain of the whole database (checkpoint first) | Plain and FULL, whole database or one table |
 | ANALYZE | `AnalyzeAsync(AnalyzeRequest)` | whole database or one table | whole database or one table |
 | REINDEX | `ReindexAsync(ReindexRequest)` | Blocking: database, table or index | Blocking and Concurrent: database, table or index |
+| Integrity check | `CheckIntegrityAsync(IntegrityCheckRequest)` | Full, Quick and ForeignKeys, database or table | None, refused |
 
 An operation the provider does not support is refused with `CapabilityNotSupportedException`, naming the provider, the
 method and the capability, before any connection opens. A provider that does not implement `IMaintenanceProvider` is
@@ -82,6 +83,7 @@ Every result implements `IMaintenanceResult`: `Operation`, `Provider`, `Status` 
 | The work was done | `Status = Completed` |
 | Contention that did not clear within the budget | `Status = Busy`, never an exception |
 | A prerequisite step did not complete, so the statement was not issued | `Status = NotRun` |
+| A check ran and found problems | `Status = IssuesFound`, with the findings |
 | The calling flow holds the writer gate | `InvalidOperationException`, before any SQL |
 | The provider lacks the operation or option | `CapabilityNotSupportedException`, before any connection |
 | Any other database failure | the original `DbException`, unwrapped |
@@ -300,3 +302,56 @@ REINDEX does not refresh planner statistics; call `AnalyzeAsync` afterwards when
 expression indexes).
 
 `ReindexResult` carries `Scope`, `Mode`, `Table`, `Index` (names, or null) and `Status`. Table data is never changed.
+
+## Integrity checks
+
+`CheckIntegrityAsync` asks the database whether its file and its data are sound, and returns what it finds as data.
+`IntegrityCheckMode` is required.
+
+| Mode | SQLite statement | What it detects | Relative cost |
+| --- | --- | --- | --- |
+| `Full` | `PRAGMA integrity_check` | the file structure, every index against its table rows, `NOT NULL` and `CHECK` constraints | highest: reads every table and index |
+| `Quick` | `PRAGMA quick_check` | the file structure, without comparing indexes with their tables | lower: about linear in the file size |
+| `ForeignKeys` | `PRAGMA foreign_key_check` | rows whose declared foreign key references a missing parent row | proportional to the rows with foreign keys |
+
+Foreign-key violations are reported ONLY by `ForeignKeys`: `Full` and `Quick` return `Completed` on a database whose
+only problem is a dangling foreign key. Violations arise when rows are written with `PRAGMA foreign_keys=OFF` (SQLite's
+default for a connection that does not turn it on), by another client or tool that does not enforce them, or by a
+schema change that added the key after the rows.
+
+`Table = NoteOrm.Descriptor` limits any mode to one table; the name is quoted by the provider. Table-scoped `Full` and
+`Quick` need SQLite 3.33 or later. The SQLite package ships a bundled engine far newer than that; if you swap the
+SQLitePCL provider for an older system SQLite, the engine's own error propagates.
+
+`IntegrityCheckResult` carries `Mode`, `Status`, `Findings` and `Truncated`:
+
+- `Completed`: no findings; `IsComplete` is true.
+- `IssuesFound`: at least one finding; `IsComplete` is false. Each `IntegrityFinding` has `Kind` (the mode) and a
+  `Message` that is never null. For `Full` and `Quick` the message is SQLite's text, verbatim. For `ForeignKeys` the
+  finding also carries `Table`, `RowId` (null for a `WITHOUT ROWID` table), `ReferencedTable` and `ForeignKeyId`, and the
+  message reads `<table> row <rowid> references a missing row in <parent> (foreign key <fkid>)`, without `row <rowid>`
+  when there is no rowid.
+- `Busy`: the database was locked (`SQLITE_BUSY` or `SQLITE_LOCKED`) for longer than the budget, for example by another
+  connection's `BEGIN EXCLUSIVE`.
+
+`MaxFindings` (default 100, from 1 to `IntegrityCheckRequest.MaxFindingsLimit`, 10,000; anything else throws
+`ArgumentOutOfRangeException`) bounds the findings returned. The whole-database `Full` and `Quick` checks ask SQLite for
+`MaxFindings + 1` messages, so the engine stops early; every other form is read for at most `MaxFindings + 1` rows.
+`Truncated` is true when there were more than `MaxFindings`.
+
+Problems found are data, `IssuesFound`; a file the engine cannot read at all (not a database, `SQLITE_NOTADB`) throws
+the original `DbException`. The check is read-only and never changes the file. It takes no writer gate, so it runs
+inside the flow of an open `UnitOfWork` too, on its own connection: it sees committed data only and does not wait for
+the unit of work.
+
+PostgreSQL is refused (`Capability.IntegrityCheck` is `None`). For PostgreSQL, use the `amcheck` extension or the
+`pg_amcheck` tool.
+
+A runnable example:
+
+```csharp
+var check = await db.Maintenance.CheckIntegrityAsync(
+    new IntegrityCheckRequest(IntegrityCheckMode.ForeignKeys) { MaxFindings = 20 });
+foreach (var finding in check.Findings) Console.WriteLine(finding.Message);
+if (check.Truncated) Console.WriteLine("more than 20 violations; narrow the check with Table");
+```

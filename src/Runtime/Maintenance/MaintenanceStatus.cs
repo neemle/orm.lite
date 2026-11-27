@@ -20,4 +20,7 @@ public enum MaintenanceStatus
     /// prerequisite's outcome (for VACUUM on SQLite, the WAL checkpoint).
     /// </summary>
     NotRun,
+
+    /// <summary>The check ran and reported problems; they are in the result, not an exception.</summary>
+    IssuesFound,
 }

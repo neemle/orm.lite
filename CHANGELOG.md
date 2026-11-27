@@ -23,6 +23,9 @@ are listed here. The three packages always carry one version.
   (`ReindexScope`) in an explicit `ReindexMode` (`Blocking`, or `Concurrent` on PostgreSQL). New capabilities `Reindex`
   and `ReindexConcurrently` (SQLite `None`, refused and never downgraded). The library never drops a leftover `_ccnew`
   index.
+- `OrmContext.Maintenance.CheckIntegrityAsync` runs SQLite's `integrity_check`, `quick_check` or `foreign_key_check`
+  (`IntegrityCheckMode`) of the database or one table and returns structured findings (`IssuesFound`), bounded by
+  `MaxFindings`. Read-only and gate-free. New capability `IntegrityCheck` (PostgreSQL `None`).
 
 ### Dependencies
 

@@ -31,6 +31,7 @@ public enum Capability
     Analyze,
     Reindex,
     ReindexConcurrently,
+    IntegrityCheck,
 }
 
 public enum Support

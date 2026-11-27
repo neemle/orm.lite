@@ -15,6 +15,7 @@ public sealed partial class PostgresProvider : ISqlProvider, ISchemaDiffProvider
 
     public CapabilitySet Capabilities { get; } = CapabilitySet.Everything()
         .With(Capability.WalCheckpoint, Support.None)
+        .With(Capability.IntegrityCheck, Support.None)
         .WithMaxIdentifierBytes(MaxIdentifierBytes);
 
     public int MaxBindParameters => 65535;
