@@ -1,0 +1,8 @@
+namespace Neemle.OrmLite.Tests.Orphans;
+
+internal sealed class GuardNativeChild
+{
+    public Guid Id { get; set; }
+    public Guid? ParentId { get; set; }
+    public string Name { get; set; } = "";
+}
