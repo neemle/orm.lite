@@ -1,3 +1,5 @@
+using System.Data.Common;
+
 namespace Neemle.OrmLite.Sqlite;
 
 internal sealed class SqliteOrphanCatalog(SqliteProvider provider, OrphanGuardSession session)
@@ -17,10 +19,16 @@ internal sealed class SqliteOrphanCatalog(SqliteProvider provider, OrphanGuardSe
     {
         var query = OrphanGuardSql.Bound("SELECT name,type,\"notnull\",pk,hidden,dflt_value "
             + "FROM pragma_table_xinfo(@owner,'main') LIMIT 257", entity.Table);
-        var columns = await session.ReadAsync(query, r => new OrphanGuardColumn(r.GetString(0), r.GetString(1),
-            r.GetInt32(2) == 0 && r.GetInt32(3) == 0, r.GetInt32(3) != 0,
-            r.GetInt32(4) != 0 || !r.IsDBNull(5)), 256, OrphanError.UnverifiedEffects, ct);
+        var columns = await session.ReadAsync(query, r => ReadColumn(entity, r),
+            256, OrphanError.UnverifiedEffects, ct);
         OrphanGuardColumns.Validate(provider, entity, columns);
+    }
+
+    private static OrphanGuardColumn ReadColumn(EntityDescriptor entity, DbDataReader reader)
+    {
+        SqliteOrphanDefaults.Validate(entity, reader.GetString(0), reader.IsDBNull(5) ? null : reader.GetString(5));
+        return new(reader.GetString(0), reader.GetString(1), reader.GetInt32(2) == 0 && reader.GetInt32(3) == 0,
+            reader.GetInt32(3) != 0, reader.GetInt32(4) != 0);
     }
 
     internal async Task<IReadOnlyList<SqliteOrphanObject>> ObjectsAsync(string table, CancellationToken ct) =>

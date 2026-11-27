@@ -1,3 +1,5 @@
+using System.Data.Common;
+
 namespace Neemle.OrmLite.Postgres;
 
 internal sealed class PostgresOrphanCatalog(PostgresProvider provider, OrphanGuardSession session)
@@ -45,15 +47,26 @@ internal sealed class PostgresOrphanCatalog(PostgresProvider provider, OrphanGua
         var sql = "SELECT a.attname,pg_catalog.format_type(a.atttypid,a.atttypmod),NOT a.attnotnull, "
             + "EXISTS(SELECT 1 FROM pg_catalog.pg_constraint k WHERE k.conrelid=a.attrelid "
             + "AND k.contype='p' AND k.conkey=ARRAY[a.attnum]), "
-            + "a.atthasdef OR a.attidentity<>'' OR a.attgenerated<>'' "
-            + "FROM pg_catalog.pg_attribute a WHERE a.attrelid=@owner::pg_catalog.oid AND a.attnum>0 "
+            + "a.attidentity<>'' OR a.attgenerated<>'',a.atthasdef,pg_catalog.pg_get_expr(d.adbin,d.adrelid) "
+            + "FROM pg_catalog.pg_attribute a LEFT JOIN pg_catalog.pg_attrdef d "
+            + "ON d.adrelid=a.attrelid AND d.adnum=a.attnum "
+            + "WHERE a.attrelid=@owner::pg_catalog.oid AND a.attnum>0 "
             + "AND NOT a.attisdropped ORDER BY a.attnum LIMIT 257";
         var columns = await session.ReadAsync(OrphanGuardSql.Bound(sql, table.Oid),
-            r => new OrphanGuardColumn(r.GetString(0), r.GetString(1), r.GetBoolean(2), r.GetBoolean(3),
-                r.GetBoolean(4)), 256, OrphanError.UnverifiedEffects, ct);
+            r => ReadColumn(entity, r), 256, OrphanError.UnverifiedEffects, ct);
         OrphanGuardColumns.Validate(provider, entity, columns);
         var current = await ResolveAsync(entity.Table, ct);
         if (current != table) throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
+    }
+
+    private static OrphanGuardColumn ReadColumn(EntityDescriptor entity, DbDataReader reader)
+    {
+        var expression = reader.IsDBNull(6) ? null : reader.GetString(6);
+        if (reader.GetBoolean(5) != (expression is not null))
+            throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
+        PostgresOrphanDefaults.Validate(entity, reader.GetString(0), expression);
+        return new(reader.GetString(0), reader.GetString(1), reader.GetBoolean(2), reader.GetBoolean(3),
+            reader.GetBoolean(4));
     }
 
     private async Task OwnerAsync(PostgresOrphanTable parent, PostgresOrphanTable child, CancellationToken ct)
