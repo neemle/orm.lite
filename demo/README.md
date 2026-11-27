@@ -388,9 +388,8 @@ ORMLITE_GRAPH_POSTGRES='Host=localhost;Port=55432;Username=postgres;Database=pos
 ```
 
 For .NET 11 use its SDK, `-p:DemoTfm=net11.0` and a separate `artifacts/orphans-native-net11` output directory.
-These are execution instructions, not a claim that every combination has passed: this implementation's first
-recorded public leg is .NET 10 JIT on SQLite; the other seven JIT/NativeAOT × PostgreSQL/SQLite × .NET 10/11 legs
-still require their own receipts.
+The same chapter, models and assertions have passed all eight Linux-arm64 combinations of JIT/NativeAOT,
+PostgreSQL/SQLite and .NET 10/11. Every run required the public assertions and scratch cleanup to succeed.
 
 ## Soft delete, restore and history
 
