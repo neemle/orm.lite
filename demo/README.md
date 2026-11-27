@@ -333,6 +333,128 @@ See the guide for [models and explicit intents](GraphSave/README.md#models-and-e
 [NativeAOT/.NET 11 commands](GraphSave/README.md#run-with-jit-or-nativeaot) and
 [outcome and ownership boundaries](GraphSave/README.md#outcome-and-ownership-boundaries).
 
+## Typed joined reads
+
+The `joins` chapter runs ordinary typed INNER and LEFT reads over two to four source occurrences, including self
+joins and a four-occurrence chain. [Program.cs](Program.cs) selects [JoinDemo](Joins/JoinDemo.cs), which runs the
+[cases](Joins/JoinDemoCases.cs) against a fresh scratch database. It reuses the generated
+[GraphAuthor](Graph/GraphAuthor.cs), [GraphBook](Graph/GraphBook.cs) and [GraphTag](Graph/GraphTag.cs) models;
+the [join fixture](Joins/JoinDemoFixture.cs) seeds three authors and three books.
+
+### Run the same cases with JIT or NativeAOT
+
+From the repository root, first pack this checkout as described in [Run it](#run-it). The demo consumes those three
+packages through the local feed in [nuget.config](../nuget.config), rather than project references or the published
+release. Keep the checkout unchanged between packing and running: package versions are derived from Git.
+Use the .NET 10 SDK/runtime for the .NET 10 examples, and the .NET 11 SDK/runtime for the .NET 11 examples.
+
+SQLite needs no server. For PostgreSQL, start the disposable server from [compose.yaml](compose.yaml); its account
+must be able to create and drop databases. The [scratch helper](Graph/GraphDemoDatabase.cs) uses
+`ORMLITE_GRAPH_POSTGRES`, independently of the numbered demo's `OrmLite__*` configuration, and removes its uniquely
+named database or SQLite folder after each invocation.
+
+```sh
+docker compose -f demo/compose.yaml up -d --wait
+export ORMLITE_GRAPH_POSTGRES='Host=localhost;Port=55432;Username=postgres;Database=postgres'
+
+ORMLITE_EXPECT_DOTNET=10 dotnet run --project demo/OrmLiteDemo.csproj -c Release -p:DemoTfm=net10.0 -- joins sqlite
+ORMLITE_EXPECT_DOTNET=10 dotnet run --project demo/OrmLiteDemo.csproj -c Release -p:DemoTfm=net10.0 -- joins postgres
+ORMLITE_EXPECT_DOTNET=11 dotnet run --project demo/OrmLiteDemo.csproj -c Release -p:DemoTfm=net11.0 -- joins sqlite
+ORMLITE_EXPECT_DOTNET=11 dotnet run --project demo/OrmLiteDemo.csproj -c Release -p:DemoTfm=net11.0 -- joins postgres
+```
+
+With the platform's NativeAOT prerequisites installed, publish the same [project](OrmLiteDemo.csproj) for its
+execution machine. These commands use `linux-arm64`; substitute the RID matching your machine and native toolchain.
+
+```sh
+dotnet publish demo/OrmLiteDemo.csproj -c Release -r linux-arm64 -p:DemoTfm=net10.0 -p:PublishAot=true -o artifacts/joins-native10
+ORMLITE_EXPECT_DOTNET=10 artifacts/joins-native10/OrmLiteDemo joins sqlite
+ORMLITE_EXPECT_DOTNET=10 artifacts/joins-native10/OrmLiteDemo joins postgres
+
+dotnet publish demo/OrmLiteDemo.csproj -c Release -r linux-arm64 -p:DemoTfm=net11.0 -p:PublishAot=true -o artifacts/joins-native11
+ORMLITE_EXPECT_DOTNET=11 artifacts/joins-native11/OrmLiteDemo joins sqlite
+ORMLITE_EXPECT_DOTNET=11 artifacts/joins-native11/OrmLiteDemo joins postgres
+
+docker compose -f demo/compose.yaml down -v
+```
+
+Each invocation prints the actual runtime/provider and nine case results. Exit zero and
+`joins chapter ok; scratch removed` require all assertions and cleanup to succeed. The same cases, models and
+assertions have run in all eight combinations on Linux ARM64: JIT/NativeAOT, .NET 10.0.15/11.0.0 and
+SQLite 3.53.3/PostgreSQL 19.0. Publishing alone does not run them; other platform/version profiles need their own run.
+
+### Read the projection
+
+This is the LEFT query from [BasicAsync](Joins/JoinDemoCases.cs), with the same explicit limits and typed slots:
+
+```csharp
+var a = GraphAuthorOrm.Query(db).AsJoinSource("author");
+var b = GraphBookOrm.Query(db).AsJoinSource("book");
+var select = new JoinSelection();
+var name = select.AddRequired(a.Column(x => x.Name), "authorName");
+var title = select.Add(b.Column(x => x.Title), "bookTitle");
+var editor = select.Add(b.Column(x => x.EditorId), "editorId");
+var query = Joined.From(a, new JoinLimits(4, 8, 128, 32, 32))
+    .LeftJoin(b, a.Column(x => x.Id).Equal(b.Column(x => x.AuthorId)))
+    .OrderBy(a.Column(x => x.Name)).ThenBy(b.Column(x => x.Title));
+var rows = await query.ToListAsync(select);
+```
+
+Use the demo's `OrmLiteDemo` models and the `Neemle.OrmLite` / `Neemle.OrmLite.Generated` namespaces.
+`rows[0].Get(editor)` is a typed cell: inspect `SourcePresent` and `IsNull` before reading `Value`.
+A matched book with a NULL editor is present and null; Cedar's missing book is absent and null.
+`Value` throws `MissingValue` for either null or absence, including nullable CLR types. `AddRequired` refuses a
+potentially absent LEFT-side result with `RequiredNullable`; it does not infer non-nullability from a later WHERE.
+Slots belong to the selection captured at execution; an unrelated or subsequently added slot produces `WrongSlot`.
+
+### What the nine cases check
+
+All cases are in [JoinDemoCases.cs](Joins/JoinDemoCases.cs); [JoinDemoChecks](Joins/JoinDemoChecks.cs) contains the
+assertion and safe result-reporting helpers.
+
+| Printed case | Expected behavior |
+| --- | --- |
+| `left-presence` | Four rows, including unmatched Cedar; matched NULL editor differs from absent book. |
+| `inner-multiplicity` | Three matching book rows; Aster appears twice, without deduplication. |
+| `right-on-and-outer-where` | A captured right filter preserves unmatched LEFT rows; explicit result WHERE removes them. |
+| `captured-parameters-and-joined-page` | Bound hostile-looking text, frozen source query and a two-row joined page; later selection mutation cannot change the result. |
+| `four-occurrences-previous-edge-chain` | A mixed four-occurrence chain references previous edges and returns five exact rows. |
+| `self-join` | Two distinct tokens for the same model return three exact pairs. |
+| `borrowed-root-unbound-right` | One read uses the root's supplied connection/transaction; both remain caller-owned. |
+| `required-limit-overflow-and-take-zero` | Required nullable projection and oversized Take refuse; Take(0) sends no command; overflow returns no partial list. |
+| `pre-canceled` | The caller's canceled token is preserved and no command is attempted. |
+
+### Semantics and limits
+
+Each `AsJoinSource` captures an independent occurrence and its supported query state; later query edits do not alter
+it. Give every occurrence a distinct ASCII identifier alias, including repeated types. Column tokens bind to that
+exact occurrence. Typed constants are bound parameters, and predicates use SQL three-valued NULL semantics.
+The root's captured filters remain in WHERE; each right source's captured filters/live scope belong to its own ON.
+An explicit `JoinQuery.Where` filters the joined result, so a right-side comparison can remove unmatched LEFT rows.
+
+Supported joins execute one SQL read, preserving one-to-many multiplicity. Order and Skip/Take apply to joined rows
+after filtering, with no root deduplication, navigation assembly or client-side join. Supply a total order for stable
+paging; this fixture's author-name/book-title pairs are unique. Paging without any order refuses, and ties in a
+non-total order remain unspecified. Joins do not save entities or populate navigations.
+
+`JoinLimits` supplies five positive finite bounds: sources (at most four), selected columns, predicate nodes,
+parameters and materialized rows. The example values are fixture budgets, not production defaults. Provider parameter
+capacity also applies. Take above the row bound refuses; overflow throws without returning a successful prefix.
+These bounds do not bound database join cardinality, execution-plan cost or latency.
+
+The supported source is an ordinary registered table with one nonnullable scalar primary key and generated scalar
+bindings. Physical Guid/string/bool/int/long/UTC DateTime columns and mapped nullable forms are admitted; ordering
+excludes Guid and bool. Declared calculated Lower text is projection-only. Views, composite/keyless sources,
+arbitrary LINQ/calculations, nonroot paging and RIGHT/FULL/CROSS/grouped/write joins are outside this surface.
+Any source mask or conditional mask refuses `UnsupportedVisibility` before I/O, even on an unselected field;
+do not remove a policy to make a join succeed. Joining grants no new source authorization.
+
+An unbound root owns its opened connection, command and reader; a bound root retains the caller's exact connection
+and transaction, with no automatic commit, rollback, replacement or retry. Cancellation/provider/mapping failure
+discards the result list and cleans up owned resources. Original errors remain sensitive programmatic diagnostics;
+do not automatically log their inner exceptions. The public chapter checks pre-cancellation and ordinary ownership,
+not injected native transport or cleanup failures.
+
 ## Soft delete, restore and history
 
 `Draft` (`Trash.cs`) is a `[SoftDelete]` entity: deleting it moves the row to the trash, `IncludingDeleted()` still

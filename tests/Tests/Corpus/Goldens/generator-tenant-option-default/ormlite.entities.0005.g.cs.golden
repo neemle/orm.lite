@@ -11,7 +11,7 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-    }
+RegisterJoin0();RegisterJoin1();RegisterJoin2();    }
 
     private static void RegisterEntities()
     {
@@ -24,4 +24,69 @@ internal static class OrmMetaInit
         NoteOrm.RegisterGraph();
         NamedOrm.RegisterGraph();
     }
+
+private static void RegisterJoin0()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::TenantOption.Note, global::System.Guid>(NoteOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::TenantOption.Note, global::System.Guid>("Id", static (r, o
+        ) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::TenantOption.Note, global::System.Guid>(NoteOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::TenantOption.Note, global::System.Guid>("ScopeId", static (
+        r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::TenantOption.Note, global::System.Guid>(NoteOrm.Descriptor,
+        new global::Neemle.OrmLite.JoinColumnBinding<global::TenantOption.Note, global::System.Guid>("TenantId", static
+        (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::TenantOption.Note, string>(NoteOrm.Descriptor, new global::
+        Neemle.OrmLite.JoinColumnBinding<global::TenantOption.Note, string>("Title", static (r, o) =>
+    {
+        return r.GetString(o);
+    }));
+}
+
+private static void RegisterJoin1()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::TenantOption.Note, global::System.DateTime?>(NoteOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::TenantOption.Note, global::System.DateTime?>(
+        "DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::TenantOption.Named, global::System.Guid>(NamedOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::TenantOption.Named, global::System.Guid>("Id", static (r
+        , o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::TenantOption.Named, global::System.Guid>(NamedOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::TenantOption.Named, global::System.Guid>("ScopeId",
+        static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::TenantOption.Named, global::System.Guid>(NamedOrm.Descriptor
+        , new global::Neemle.OrmLite.JoinColumnBinding<global::TenantOption.Named, global::System.Guid>("TenantId",
+        static (r, o) =>
+    {
+        return r.GetGuid(o);
+    }));
+}
+
+private static void RegisterJoin2()
+{
+    global::Neemle.OrmLite.JoinModel.RegisterColumn<global::TenantOption.Named, global::System.DateTime?>(NamedOrm.
+        Descriptor, new global::Neemle.OrmLite.JoinColumnBinding<global::TenantOption.Named, global::System.DateTime?>(
+        "DeletedAt", static (r, o) =>
+    {
+        return r.IsDBNull(o) ? null : r.GetDateTime(o);
+    }));
+}
 }

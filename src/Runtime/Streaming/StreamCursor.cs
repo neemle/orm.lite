@@ -4,15 +4,20 @@ namespace Neemle.OrmLite;
 
 internal sealed class StreamCursor<T>(StreamReadSnapshot<T> snapshot)
 {
+    private readonly Action? _currentCheck;
     private DbConnection? _connection;
     private DbCommand? _command;
     private DbDataReader? _reader;
     private BorrowedStreamLease? _lease;
 
+    internal StreamCursor(StreamReadSnapshot<T> snapshot, Action currentCheck) : this(snapshot) =>
+        _currentCheck = currentCheck;
+
     internal DbDataReader Reader => _reader ?? throw new QueryStreamException(QueryStreamError.InvalidState);
 
     internal void Validate()
     {
+        _currentCheck?.Invoke();
         if (snapshot.Borrowed is { } borrowed) StreamResourceChecks.Validate(snapshot.Binding, borrowed);
     }
 

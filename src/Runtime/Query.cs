@@ -618,6 +618,9 @@ namespace Neemle.OrmLite;
             return new ViewDefinition(OrmMeta.Get(typeof(TView)).Table, projection.Build());
         }
 
+        internal JoinInput JoinSnapshot() =>
+            JoinInput.Of(GraphSnapshot, _state, StreamBorrowed, _aggregates.Count, _live);
+
         internal GraphQueryState<T> GraphSnapshot() => new(_db, BuildSelect(), _map)
         {
             Connection = _exec.GraphConnection,
@@ -626,8 +629,7 @@ namespace Neemle.OrmLite;
             Unsupported = _projection.Count != 0,
         };
 
-        internal GraphQueryState<T> GraphFirstSnapshot() =>
-            QueryPolicyReads<T>.FirstSnapshot(GraphSnapshot());
+        internal GraphQueryState<T> GraphFirstSnapshot() => QueryPolicyReads<T>.FirstSnapshot(GraphSnapshot());
 
         internal Select BuildSelect() => _select.Build(SelectedColumns(), WhereNode());
 

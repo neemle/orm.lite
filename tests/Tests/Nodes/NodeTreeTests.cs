@@ -36,21 +36,36 @@ public sealed class NodeTreeTests
         }
     }
 
+    // Amended for ORML-114 with user approval (§701.1, 2026-11-27): LeftJoin is covered by the additive
+    // ILeftJoinNodeVisitor instead of INodeVisitor, so the roster and the visitor coverage have a core and an extension half.
+    private static IReadOnlyList<Type> SortedTypes(IEnumerable<Type> types) =>
+        types.OrderBy(t => t.Name, StringComparer.Ordinal).ToList();
+
+    private static IReadOnlyList<Type> DeclaredOverloads(Type visitor) =>
+        SortedTypes(visitor.GetMethods().Select(m => m.GetParameters().Single().ParameterType));
+
     [Fact(DisplayName = "the roster holds one sample of every concrete node type, so a node added without a sample fails here")]
     public void The_roster_covers_every_concrete_node()
     {
-        var sampled = NodeRoster.Samples.Select(n => n.GetType()).Distinct().OrderBy(t => t.Name, StringComparer.Ordinal).ToList();
+        var core = NodeRoster.Samples.Select(n => n.GetType()).ToList();
+        var extension = NodeRoster.ExtensionSamples.Select(n => n.GetType()).ToList();
+        var sampled = SortedTypes(core.Concat(extension).Distinct());
 
         Assert.Equal(ConcreteNodeTypes(), sampled);
-        Assert.Equal(sampled.Count, NodeRoster.Samples.Count);
+        Assert.Equal(sampled.Count, core.Count + extension.Count);
+        Assert.Empty(core.Intersect(extension));
     }
 
-    [Fact(DisplayName = "the visitor is closed: it has exactly one Visit overload per concrete node, so a provider cannot forget one and no node is missing a rule")]
+    [Fact(DisplayName = "the visitor is closed: INodeVisitor has one Visit overload per core node and ILeftJoinNodeVisitor one per extension node, so every concrete node has exactly one rule")]
     public void The_visitor_has_one_overload_per_node()
     {
-        var overloads = typeof(INodeVisitor).GetMethods().Select(m => m.GetParameters().Single().ParameterType).OrderBy(t => t.Name, StringComparer.Ordinal).ToList();
+        var core = DeclaredOverloads(typeof(INodeVisitor));
+        var extension = DeclaredOverloads(typeof(ILeftJoinNodeVisitor));
 
-        Assert.Equal(ConcreteNodeTypes(), overloads);
+        Assert.Equal(SortedTypes(NodeRoster.Samples.Select(n => n.GetType())), core);
+        Assert.Equal(SortedTypes(NodeRoster.ExtensionSamples.Select(n => n.GetType())), extension);
+        Assert.Empty(core.Intersect(extension));
+        Assert.Equal(ConcreteNodeTypes(), SortedTypes(core.Concat(extension)));
     }
 
     [Fact(DisplayName = "every node dispatches to the visitor overload of its own type")]
@@ -63,6 +78,21 @@ public sealed class NodeTreeTests
 
         Assert.Equal(NodeRoster.Samples.Count, recorder.Calls.Count);
         Assert.All(recorder.Calls, call => Assert.Equal(call.Declared, call.Seen));
+    }
+
+    [Fact(DisplayName = "every extension node dispatches to its own overload of the extension visitor and refuses a core-only visitor")]
+    public void Every_extension_node_dispatches_to_its_own_overload()
+    {
+        var proxy = DispatchProxy.Create<ILeftJoinNodeVisitor, Recorder>();
+        var recorder = (Recorder)(object)proxy;
+        var coreOnly = DispatchProxy.Create<INodeVisitor, Recorder>();
+
+        foreach (var node in NodeRoster.ExtensionSamples) node.Accept(proxy);
+
+        Assert.Equal(NodeRoster.ExtensionSamples.Select(n => n.GetType()), recorder.Calls.Select(c => c.Seen));
+        Assert.All(recorder.Calls, call => Assert.Equal(call.Declared, call.Seen));
+        Assert.All(NodeRoster.ExtensionSamples, node => Assert.Throws<NotSupportedException>(() => node.Accept(coreOnly)));
+        Assert.Empty(((Recorder)(object)coreOnly).Calls);
     }
 
     [Fact(DisplayName = "a node's name is its own type name and nothing else")]
