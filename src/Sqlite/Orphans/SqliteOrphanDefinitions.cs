@@ -29,9 +29,19 @@ internal static class SqliteOrphanDefinitions
     internal static void Indexes(SqliteProvider provider, EntityDescriptor entity,
         IReadOnlyList<SqliteOrphanObject> objects)
     {
-        var expected = EntityStatements.CreateIndexes(entity).Select(n => Text(provider, n)).ToArray();
+        var expected = EntityStatements.CreateIndexes(entity).Select(n => IndexText(provider, n)).ToArray();
         if (objects.Where(o => o.Type == "index").Any(o =>
             !expected.Contains(o.Sql.Trim().TrimEnd(';'), StringComparer.Ordinal)))
             throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
+    }
+
+    private static string IndexText(SqliteProvider provider, CreateIndex index)
+    {
+        var sql = Text(provider, index);
+        var create = index.Unique ? "CREATE UNIQUE INDEX " : "CREATE INDEX ";
+        var expected = create + "IF NOT EXISTS ";
+        if (!sql.StartsWith(expected, StringComparison.Ordinal))
+            throw OrphanRefusal.At(OrphanError.UnverifiedEffects);
+        return create + sql[expected.Length..];
     }
 }
