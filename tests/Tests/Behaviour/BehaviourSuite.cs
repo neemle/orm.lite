@@ -857,6 +857,24 @@ public abstract class BehaviourSuite<TFixture>(TFixture fixture) : IClassFixture
             }));
     }
 
+    [SkippableFact(DisplayName = "a truncating WAL checkpoint of the shared database completes and leaves an empty log, or is refused before any connection opens")]
+    public async Task Capability_WalCheckpoint()
+    {
+        await ForCapabilityAsync(
+            Capability.WalCheckpoint,
+            async () =>
+            {
+                await Fixture.ExecuteAsync("INSERT INTO behave_counters VALUES ('wal-" + Guid.NewGuid().ToString("N") + "', 1)");
+
+                var result = await Ctx.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(WalCheckpointMode.Truncate));
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(result.WalFrames, result.CheckpointedFrames);
+            },
+            ctx => RefusedAsync(Capability.WalCheckpoint,
+                () => ctx.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(WalCheckpointMode.Passive))));
+    }
+
     private static object? Normal(object? value) => value switch
     {
         long number => number,

@@ -9,6 +9,9 @@ internal sealed class OrmDiagnostics
 {
     internal const string SourceName = "Neemle.OrmLite";
 
+    // The activity tag that names the maintenance operation of a StatementKind.Maintenance statement.
+    internal const string OperationTag = "orm.operation";
+
     internal static readonly ActivitySource Source = new(SourceName);
 
     private static int s_active;
@@ -64,13 +67,14 @@ internal sealed class OrmDiagnostics
 
     internal async Task<T> RunAsync<T>(
         DbCommand command, StatementKind kind, GatedDataSource.Lease lease,
-        Func<DbCommand, CancellationToken, Task<T>> run, Func<T, int?> rows, CancellationToken ct)
+        Func<DbCommand, CancellationToken, Task<T>> run, Func<T, int?> rows, CancellationToken ct, string? operation = null)
     {
         using var activity = Source.StartActivity("orm.statement", ActivityKind.Client);
         if (activity is { IsAllDataRequested: true })
         {
             activity.SetTag("db.system", _provider);
             activity.SetTag("db.statement", command.CommandText);
+            if (operation is not null) activity.SetTag(OperationTag, operation);
         }
         if (_sink is null) return await run(command, ct);
 
@@ -90,7 +94,7 @@ internal sealed class OrmDiagnostics
         }
         finally
         {
-            Report(command, kind, lease, Stopwatch.GetElapsedTime(start), affected, error);
+            Report(command, kind, lease, Stopwatch.GetElapsedTime(start), affected, error, operation);
         }
     }
 
@@ -152,7 +156,8 @@ internal sealed class OrmDiagnostics
 
     internal string Provider => _provider;
 
-    private void Report(DbCommand command, StatementKind kind, GatedDataSource.Lease lease, TimeSpan elapsed, int? affected, Exception? error)
+    private void Report(DbCommand command, StatementKind kind, GatedDataSource.Lease lease, TimeSpan elapsed, int? affected, Exception? error,
+        string? operation)
     {
         var trace = lease.Transaction;
         trace?.Count();
@@ -167,7 +172,7 @@ internal sealed class OrmDiagnostics
             _sink!.OnStatement(new StatementEvent(
                 reported, _provider, kind, command.CommandText, command.Parameters.Count,
                 _logParameters ? Describe(command.Parameters) : null,
-                elapsed, affected, lease.ConnectionId, trace?.Id, slow, error));
+                elapsed, affected, lease.ConnectionId, trace?.Id, slow, error) { Operation = operation });
         }
         catch
         {
@@ -205,6 +210,14 @@ internal static class DbCommandDiagnostics
         Lease(command) is { } lease
             ? lease.Diagnostics.RunAsync(command, kind, lease, (c, t) => c.ExecuteReaderAsync(behavior, t), static _ => null, ct)
             : command.ExecuteReaderAsync(behavior, ct);
+
+    // A maintenance statement: one event of kind Maintenance that names its operation.
+    internal static Task<DbDataReader> RunMaintenanceReaderAsync(
+        this DbCommand command, MaintenanceOperation operation, CancellationToken ct) =>
+        Lease(command) is { } lease
+            ? lease.Diagnostics.RunAsync(command, StatementKind.Maintenance, lease,
+                static (c, t) => c.ExecuteReaderAsync(t), static _ => null, ct, operation.ToString())
+            : command.ExecuteReaderAsync(ct);
 
     internal static Task<int> RunGraphSaveNonQueryAsync(this DbCommand command, CancellationToken ct) =>
         Lease(command) is { } lease

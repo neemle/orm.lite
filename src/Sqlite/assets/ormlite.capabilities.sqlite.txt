@@ -18,3 +18,4 @@ ExactDecimal=Emulated
 IndexNullsOrdering=None
 IndexCollation=Native
 IndexExpression=Native
+WalCheckpoint=Native

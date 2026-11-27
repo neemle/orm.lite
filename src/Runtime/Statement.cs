@@ -5,6 +5,7 @@ public enum StatementKind
     Read,
     Write,
     Ddl,
+    Maintenance,
 }
 
 public sealed record StatementParameter(int Ordinal, string Name, object? Value);

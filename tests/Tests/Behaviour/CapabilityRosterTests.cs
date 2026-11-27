@@ -20,8 +20,12 @@ public sealed class CapabilityRosterTests
         var sqlite = Sqlite.SqliteProvider.Instance.Capabilities;
         var postgres = Postgres.PostgresProvider.Instance.Capabilities;
 
-        foreach (var capability in Enum.GetValues<Capability>())
-            Assert.Equal(Support.Native, postgres.Of(capability));
+        Assert.Equal(
+            [Capability.WalCheckpoint],
+            Enum.GetValues<Capability>().Where(c => postgres.Of(c) == Support.None));
+        Assert.All(
+            Enum.GetValues<Capability>().Where(c => postgres.Of(c) != Support.None),
+            c => Assert.Equal(Support.Native, postgres.Of(c)));
         Assert.Equal(
             [Capability.SessionLock, Capability.IndexNullsOrdering],
             Enum.GetValues<Capability>().Where(c => sqlite.Of(c) == Support.None));
@@ -30,7 +34,7 @@ public sealed class CapabilityRosterTests
             Enum.GetValues<Capability>().Where(c => sqlite.Of(c) == Support.Emulated));
         Assert.All(
             Enum.GetValues<Capability>().Where(c => sqlite.Of(c) == Support.Native),
-            c => Assert.Contains(c, new[] { Capability.PartialIndex, Capability.NullSafeEquality, Capability.AggregateFilter, Capability.Upsert, Capability.Returning, Capability.IndexCollation, Capability.IndexExpression }));
+            c => Assert.Contains(c, new[] { Capability.PartialIndex, Capability.NullSafeEquality, Capability.AggregateFilter, Capability.Upsert, Capability.Returning, Capability.IndexCollation, Capability.IndexExpression, Capability.WalCheckpoint }));
     }
 }
 

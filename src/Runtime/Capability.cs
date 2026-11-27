@@ -24,6 +24,7 @@ public enum Capability
     IndexNullsOrdering,
     IndexCollation,
     IndexExpression,
+    WalCheckpoint,
 }
 
 public enum Support

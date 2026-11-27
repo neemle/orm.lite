@@ -5,6 +5,14 @@ are listed here. The three packages always carry one version.
 
 ## Unreleased
 
+### Added
+
+- `OrmContext.Maintenance` runs explicit database maintenance through the optional `IMaintenanceProvider` port
+  ([maintenance](docs/maintenance.md)). `CheckpointWalAsync` checkpoints a SQLite WAL in an explicit mode (`Passive`,
+  `Full`, `Restart`, `Truncate`) and returns a structured `WalCheckpointResult`; PostgreSQL refuses it
+  (`Capability.WalCheckpoint` is `None`). Diagnostics report maintenance statements as `StatementKind.Maintenance` with
+  `StatementEvent.Operation` naming the operation.
+
 ### Dependencies
 
 - `Neemle.OrmLite` now depends on Neemle.CSharpComposer 0.6.0 (was 0.5.0), which the generator renders through. Its
