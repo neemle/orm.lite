@@ -123,4 +123,20 @@ public static async global::System.Threading.Tasks.Task LoadOrchardAsync(global:
     ct.ThrowIfCancellationRequested();
     e.Orchard = await OrchardOrm.GetAsync(db, conn, e.OrchardId, options, ct);
 }
+
+internal static void RegisterSave()
+{
+    global::Neemle.OrmLite.GraphSaveModel.Register(new global::Neemle.OrmLite.GraphSaveEntityBinding<global::Tree,
+        global::System.Guid>(Descriptor, Values, static e => e.@Id, Map, new global::Neemle.OrmLite.
+        GraphSaveRelationBinding<global::Tree>[] { }));
+}
+
+public static __GraphSaveTokens SaveRelations { get; } = new __GraphSaveTokens();
+
+public sealed class __GraphSaveTokens
+{
+    internal __GraphSaveTokens()
+    {
+    }
+}
 }

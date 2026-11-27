@@ -11,7 +11,7 @@ internal static class OrmMetaInit
     {
         RegisterEntities();
         RegisterGraphs();
-    }
+RegisterSave0();    }
 
     private static void RegisterEntities()
     {
@@ -24,4 +24,9 @@ internal static class OrmMetaInit
         OrchardOrm.RegisterGraph();
         TreeOrm.RegisterGraph();
     }
+
+private static void RegisterSave0()
+{
+    TreeOrm.RegisterSave();
+}
 }
