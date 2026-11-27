@@ -70,7 +70,9 @@ public sealed class OrphanReplacementProviderTests
         var writes = db.Statements.Where(s => s.Kind == StatementKind.Write).ToArray();
         Assert.Equal(3, writes.Length);
         Assert.All(writes.Take(2), s => Assert.Equal((1, (Exception?)null), (s.RowsAffected ?? -1, s.Error)));
-        Assert.StartsWith("DELETE", writes[1].Text.TrimStart(), StringComparison.OrdinalIgnoreCase);
+        // SEC-113-01: orphan writes are redacted like graph-save statements, so the events carry no SQL text or
+        // values; the update, the successful delete and the failing delete are told apart by order and outcome.
+        Assert.All(writes, s => { Assert.Equal("graph-save", s.Text); Assert.Null(s.Parameters); });
         Assert.NotNull(writes[2].Error);
         OneOwnedTransaction(db, TransactionPhase.Rollback);
         Assert.Equal(before, await db.ChildrenAsync());
