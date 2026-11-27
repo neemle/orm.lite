@@ -3,6 +3,14 @@
 All notable changes to the three packages (`Neemle.OrmLite`, `Neemle.OrmLite.Sqlite`, `Neemle.OrmLite.Postgres`)
 are listed here. The three packages always carry one version.
 
+## Unreleased
+
+### Dependencies
+
+- `Neemle.OrmLite` now depends on Neemle.CSharpComposer 0.6.0 (was 0.5.0), which the generator renders through. Its
+  [release notes](https://github.com/neemle/cs-composer/releases/tag/v0.6.0) list a parse nesting limit, parser fixes
+  and edit layout taken from the source; the generated code is byte-identical to the code 0.5.0 produced.
+
 ## 0.1.0
 
 The first public release. The API, the emitted code shape, the runtime type names and the namespaces may change in any
