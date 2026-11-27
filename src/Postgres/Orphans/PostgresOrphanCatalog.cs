@@ -47,7 +47,7 @@ internal sealed class PostgresOrphanCatalog(PostgresProvider provider, OrphanGua
         var sql = "SELECT a.attname,pg_catalog.format_type(a.atttypid,a.atttypmod),NOT a.attnotnull, "
             + "EXISTS(SELECT 1 FROM pg_catalog.pg_constraint k WHERE k.conrelid=a.attrelid "
             + "AND k.contype='p' AND k.conkey=ARRAY[a.attnum]), "
-            + "a.attidentity<>'' OR a.attgenerated<>'',a.atthasdef,pg_catalog.pg_get_expr(d.adbin,d.adrelid) "
+            + "a.attidentity<>'' OR a.attgenerated<>'',a.atthasdef,d.adbin::pg_catalog.text "
             + "FROM pg_catalog.pg_attribute a LEFT JOIN pg_catalog.pg_attrdef d "
             + "ON d.adrelid=a.attrelid AND d.adnum=a.attnum "
             + "WHERE a.attrelid=@owner::pg_catalog.oid AND a.attnum>0 "
