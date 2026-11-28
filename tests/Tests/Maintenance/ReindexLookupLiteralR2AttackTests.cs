@@ -1,6 +1,4 @@
 // §803 provenance: item ORML-138, pass FULL, round 2. Reviewer-authored proposal, placed unchanged.
-// HELD (§803.8): admitted FAILS, routed by NINE-FIVE-ROUTING 7cd5d189 on ORML-138 to fix list item 1, the REINDEX lookup literal
-// (TL fix list 6b33e96e on ORML-137). The Skip below is the HELD marker; the commit that turns it green removes it.
 using System.Data.Common;
 using System.Globalization;
 using Neemle.OrmLite.Postgres;
@@ -11,7 +9,7 @@ namespace Neemle.OrmLite.Tests.Maintenance;
 
 public sealed class ReindexLookupLiteralR2AttackTests
 {
-    [PostgresFact(Skip = "HELD: routing 7cd5d189 on ORML-138 and ORML-137 (fix list 6b33e96e item 1)", DisplayName =
+    [PostgresFact(DisplayName =
         "R2-F3 803 FULL round 2: lookup preserves backslashes with standard_conforming_strings off")]
     public async Task Lookup_does_not_rebuild_a_different_tables_index()
     {

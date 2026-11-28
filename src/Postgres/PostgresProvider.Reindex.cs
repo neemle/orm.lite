@@ -1,3 +1,4 @@
+using Neemle.OrmLite.Nodes;
 using Neemle.OrmLite.Sql;
 
 namespace Neemle.OrmLite.Postgres;
@@ -38,10 +39,12 @@ public sealed partial class PostgresProvider
     /// <summary>
     /// The schema of <paramref name="table"/>, resolved the way every other statement resolves the table's name:
     /// <c>SELECT n.nspname FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.oid = '&lt;table&gt;'::regclass</c>.
-    /// A PostgreSQL index always lives in its table's schema. A missing table raises 42P01.
+    /// A PostgreSQL index always lives in its table's schema. A missing table raises 42P01. The quoted name is emitted as a
+    /// string literal by the provider serializer, so a backslash in it is written as <c>E'..'</c> with the backslash
+    /// doubled and reads the same whatever <c>standard_conforming_strings</c> the session has.
     /// </summary>
     public string? RenderIndexSchemaLookup(EntityDescriptor table) =>
         new SqlWriter().Atom("SELECT").Bare("n.nspname").Atom("FROM").Bare("pg_class").Bare("c").Atom("JOIN").Bare("pg_namespace")
             .Bare("n").Atom("ON").Bare("n.oid").Atom("=").Bare("c.relnamespace").Atom("WHERE").Bare("c.oid").Atom("=")
-            .Str(QuotedTable(table)).Attach("::regclass").ToString();
+            .Atom(CreateSerializer().Fragment(new StringLit(QuotedTable(table)))).Attach("::regclass").ToString();
 }

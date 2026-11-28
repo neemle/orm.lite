@@ -121,6 +121,7 @@ jobs:
           ORMLITE_TEST_POSTGRES: Host=127.0.0.1;Port=55433;Username=postgres
         run: >-
           dotnet test tests/Tests/Tests.csproj -c Release --no-build
+          --filter "FullyQualifiedName!~ReindexLookupQuotingR2AttackTests&FullyQualifiedName!~ReindexLookupLiteralR2AttackTests"
           --logger "trx;LogFileName=tests.trx" --logger "console;verbosity=detailed"
           --results-directory TestResults
           --blame-crash --blame-crash-dump-type mini
@@ -158,6 +159,32 @@ jobs:
         run: >-
           dotnet run scripts/SkipGate.cs -- check TestResults/ports.trx tests/ports-allowlist.txt
           --require-postgres tests/ports-witness.txt
+      # The pinned PostgreSQL leg (ORML-136 R2-F1, ORML-138 R2-F3; TL fix list 6b33e96e): two REINDEX lookup classes need
+      # standard_conforming_strings off, which PostgreSQL 19 refuses (0A000). The main run above excludes them by name;
+      # here the same compose file runs a pinned 18.7 server on the same port, they run against it, and their own gate
+      # fails when either class did not run and pass. scripts/WorkflowShape.cs allows the exclusion only for such a leg.
+      - name: Replace the throwaway PostgreSQL with the pinned PostgreSQL 18.7 of the REINDEX lookup leg
+        env:
+          ORMLITE_TEST_PG_IMAGE: neemle/pg.lite:18.7
+        run: >-
+          docker compose -f tests/compose.yaml down &&
+          docker compose -f tests/compose.yaml up -d --wait --wait-timeout 120
+      - name: Run the REINDEX lookup literal tests against PostgreSQL 18.7, one at a time
+        timeout-minutes: 10
+        env:
+          ORMLITE_TEST_POSTGRES: Host=127.0.0.1;Port=55433;Username=postgres
+        run: >-
+          dotnet test tests/Tests/Tests.csproj -c Release --no-build
+          --filter "FullyQualifiedName~ReindexLookupQuotingR2AttackTests|FullyQualifiedName~ReindexLookupLiteralR2AttackTests"
+          --logger "trx;LogFileName=pg18.trx" --logger "console;verbosity=detailed"
+          --results-directory TestResults
+          --blame-crash --blame-crash-dump-type mini
+          --blame-hang-timeout 5m --blame-hang-dump-type mini
+          -- xUnit.MaxParallelThreads=1
+      - name: Fail when a test of the PostgreSQL 18.7 leg skipped or one of its classes did not run and pass
+        run: >-
+          dotnet run scripts/SkipGate.cs -- check TestResults/pg18.trx tests/pg18-allowlist.txt
+          --require-postgres tests/pg18-witness.txt
       - name: Keep the TRX files and the crash and hang dumps of this leg
         if: always()
         uses: actions/upload-artifact@v7

@@ -31,9 +31,6 @@ Neemle.OrmLite.Tests.Maintenance.IntegrityCancellationBoundaryR2AttackTests.Clas
 Neemle.OrmLite.Tests.Maintenance.IntegrityLateOpenR2AttackTests.Expired_open_returns_busy_without_sql	HELD: 7cd5d189 ORML-138
 Neemle.OrmLite.Tests.Maintenance.ReindexCancellationRaceR2AttackTests.Cancellation_keeps_the_contention_exception	HELD: f0f156f4 ORML-136
 Neemle.OrmLite.Tests.Maintenance.ReindexExpiredBudgetR2AttackTests.Exhaustion_prevents_reindex	HELD: f0f156f4 ORML-136
-Neemle.OrmLite.Tests.Maintenance.ReindexLookupLiteralR2AttackTests.Lookup_does_not_rebuild_a_different_tables_index	HELD: 7cd5d189 ORML-138
-Neemle.OrmLite.Tests.Maintenance.ReindexLookupQuotingR2AttackTests.Blocking	HELD: f0f156f4 ORML-136
-Neemle.OrmLite.Tests.Maintenance.ReindexLookupQuotingR2AttackTests.Concurrent	HELD: f0f156f4 ORML-136
 Neemle.OrmLite.Tests.Maintenance.VacuumCancellationCauseR2AttackTests.Cancellation_retains_the_original_contention_exception	HELD: cb51f7f9 ORML-134
 Neemle.OrmLite.Tests.Maintenance.VacuumLateOpenR2AttackTests.Late_open_returns_busy_without_vacuum	HELD: cb51f7f9 ORML-134
 Neemle.OrmLite.Tests.Maintenance.WalContentionCancellationRaceR2AttackTests.Cancellation_preserves_the_original_open_failure	HELD: 9199497d ORML-137

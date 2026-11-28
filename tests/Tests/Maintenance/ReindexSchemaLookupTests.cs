@@ -30,6 +30,17 @@ public sealed class ReindexSchemaLookupTests
             SqliteProvider.Instance.RenderReindex(ReindexScope.Index, ReindexMode.Blocking, ReindexFixture.A, ReindexFixture.Unique, "ignored"));
     }
 
+    [Fact(DisplayName = "ORML-136 D12.5 a backslash in the table name reaches the lookup as an E'' literal with the backslash doubled")]
+    public void The_lookup_literal_doubles_a_backslash()
+    {
+        var lookup = PostgresProvider.Instance.RenderIndexSchemaLookup(Descriptors.Table(@"a\n"));
+
+        Assert.NotNull(lookup);
+        Assert.Contains("E'", lookup, StringComparison.Ordinal);
+        Assert.Contains(@"\\", lookup, StringComparison.Ordinal);
+        Assert.EndsWith(@"WHERE c.oid = E'""a\\n""'::regclass", lookup, StringComparison.Ordinal);
+    }
+
     [PostgresFact(DisplayName = "ORML-136 D12.5 the schema lookup emits no event: an Index REINDEX on PostgreSQL reports one statement, qualified")]
     public async Task The_lookup_is_not_reported()
     {
