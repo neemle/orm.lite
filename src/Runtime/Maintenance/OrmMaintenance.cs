@@ -176,7 +176,7 @@ public sealed partial class OrmMaintenance
         DbDataSource source, IMaintenanceProvider port, MaintenanceBudget budget, CancellationToken ct)
     {
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
-        deadline.CancelAfter(budget.Remaining);
+        deadline.CancelAfter(budget.TimerDelay);
         try
         {
             return (await source.OpenConnectionAsync(deadline.Token), null);

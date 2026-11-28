@@ -23,6 +23,11 @@ internal sealed class MaintenanceBudget(TimeSpan total)
     // ADR D12.3: a spent budget starts nothing more; the caller reports Busy.
     internal bool IsSpent => Remaining == TimeSpan.Zero;
 
+    // What is left as a timer delay, rounded up to whole milliseconds. CancelAfter truncates to whole milliseconds, so
+    // a timer set to Remaining could fire up to a millisecond before IsSpent turns true and let a late open through
+    // (ADR D12.2: the open timer's expiry is Busy); set to this it fires only once the budget is spent.
+    internal TimeSpan TimerDelay => TimeSpan.FromMilliseconds(Math.Ceiling(Remaining.TotalMilliseconds));
+
     // A whole number of seconds, at least one, for a budget with time left: callers check IsSpent first and start
     // nothing on a spent budget (D12.3), so the floor only keeps a nearly spent budget from rounding down to zero, which
     // a driver reads as no timeout. With a retry slice, no more than the slice.
