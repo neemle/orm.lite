@@ -1,6 +1,6 @@
 # Characterization corpus of the PostgreSQL output
 
-Every file under `Goldens/` is the live output of the library as it was before the redesign, recorded as text. Nothing here is hand-written: `scripts/CorpusCapture.cs` writes the goldens and this index, and `CorpusGoldenTests` compares the live output with them on every test run. The goldens were recorded from `src/` at base commit `0adff7e`, before the redesign; every later slice is proven against them and does not re-record them.
+Every file under `Goldens/` is the live output of the library as it was before the redesign, recorded as text. Nothing here is hand-written: `scripts/CorpusCapture.cs` writes the goldens and this index, and `CorpusGoldenTests` compares the live output with them on every test run: a generated C# source (`*.g.cs`) as code, by Roslyn, token for token with every directive and comment in its place and only whitespace and line ends ignored, because Neemle.CSharpComposer promises equivalent code rather than a fixed layout; every other entry as text. The goldens were recorded from `src/` at base commit `0adff7e`, before the redesign; every later slice is proven against them and does not re-record them.
 
 ## Use
 

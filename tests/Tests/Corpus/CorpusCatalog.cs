@@ -64,8 +64,10 @@ public static class CorpusCatalog
             var path = PathOf(root, entry);
             if (!File.Exists(path)) { problems.Add(RelativeOf(entry) + ": captured but has no golden"); continue; }
             var pinned = File.ReadAllText(path);
-            if (!string.Equals(pinned, entry.Text, StringComparison.Ordinal))
-                problems.Add(RelativeOf(entry) + ": " + FirstDifference(pinned, entry.Text));
+            var difference = IsGeneratedSource(entry)
+                ? GeneratedCodeEquivalence.Difference(pinned, entry.Text)
+                : string.Equals(pinned, entry.Text, StringComparison.Ordinal) ? null : FirstDifference(pinned, entry.Text);
+            if (difference is not null) problems.Add(RelativeOf(entry) + ": " + difference);
         }
         foreach (var stale in ExistingGoldens(root).Where(g => !expected.Contains(g)))
             problems.Add(stale + ": pinned but no longer captured");
@@ -76,15 +78,29 @@ public static class CorpusCatalog
         return problems;
     }
 
+    // A generated C# source (its golden is named after the generator's hint, `*.g.cs`) is judged as code: Composer
+    // promises equivalent code, not the same bytes. Every other entry (SQL, diagnostics, dumps) stays compared as text.
+    public static bool IsGeneratedSource(CorpusEntry entry) => entry.Name.EndsWith(".g.cs", StringComparison.Ordinal);
+
     public static void Write(string root, CorpusResult result)
     {
         var directory = Path.Combine(root, GoldenDirectory.Replace('/', Path.DirectorySeparatorChar));
+        // A generated source whose golden is still the same code keeps its pinned text, so a formatting change of the
+        // generator never churns the corpus.
+        var kept = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var entry in result.Entries.Where(IsGeneratedSource))
+        {
+            var path = PathOf(root, entry);
+            if (!File.Exists(path)) continue;
+            var pinned = File.ReadAllText(path);
+            if (GeneratedCodeEquivalence.AreEquivalent(pinned, entry.Text)) kept[RelativeOf(entry)] = pinned;
+        }
         if (Directory.Exists(directory)) Directory.Delete(directory, recursive: true);
         foreach (var entry in result.Entries)
         {
             var path = PathOf(root, entry);
             Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-            File.WriteAllText(path, entry.Text, new System.Text.UTF8Encoding(false));
+            File.WriteAllText(path, kept.GetValueOrDefault(RelativeOf(entry), entry.Text), new System.Text.UTF8Encoding(false));
         }
         File.WriteAllText(Path.Combine(root, IndexFile.Replace('/', Path.DirectorySeparatorChar)), result.Index, new System.Text.UTF8Encoding(false));
     }

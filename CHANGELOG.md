@@ -7,9 +7,24 @@ are listed here. The three packages always carry one version.
 
 ### Dependencies
 
-- `Neemle.OrmLite` now depends on Neemle.CSharpComposer 0.6.0 (was 0.5.0), which the generator renders through. Its
-  [release notes](https://github.com/neemle/cs-composer/releases/tag/v0.6.0) list a parse nesting limit, parser fixes
-  and edit layout taken from the source. The existing generator tests and corpus pass unchanged.
+- `Neemle.OrmLite` now depends on Neemle.CSharpComposer 0.7.0 (was 0.5.0 in 0.1.0), which the generator renders
+  through. The release notes of [0.6.0](https://github.com/neemle/cs-composer/releases/tag/v0.6.0),
+  [0.6.1](https://github.com/neemle/cs-composer/releases/tag/v0.6.1) and
+  [0.7.0](https://github.com/neemle/cs-composer/releases/tag/v0.7.0) list a parse nesting limit, parser and edit
+  fixes, and, in 0.7.0, one formatter behind every render. The generator builds its documents and renders them, so no
+  API change of these releases touches it; the generated code now comes in the 0.7.0 layout, a single untyped lambda
+  parameter is written without parentheses (`e => e.Id`) and `value` is no longer written as `@value`. Neither changes
+  what the code means.
+
+### Tests
+
+- The goldens of generated C# (the generator golden and the `*.g.cs` entries of the corpus) are now compared as code:
+  both sides are parsed with Roslyn and read as one run of tokens and trivia, which must match unit for unit: every
+  token by kind and text, every directive and every inactive `#if` branch as its own tokens, every comment by its
+  content with whitespace collapsed, each at its place. Only whitespace and line ends are ignored, and a verbatim `@` only
+  where it cannot change the meaning. Composer promises equivalent code, not a fixed layout, so a different identifier,
+  operator, keyword, literal, directive or comment, or one that moved, still fails and a formatting change passes. Regenerating keeps a
+  golden that is still the same code. Every other corpus entry (SQL, diagnostics, dumps) is still compared as text.
 
 ## 0.1.0
 

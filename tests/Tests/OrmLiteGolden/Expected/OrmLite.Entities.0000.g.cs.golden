@@ -7,11 +7,14 @@ namespace Neemle.OrmLite.Generated;
 public static class FixtureNoteOrm
 {
     public const string Table = "fixture_notes";
-
     public static readonly global::Neemle.OrmLite.EntityDescriptor Descriptor = EntityDescriptor.Of(
-        "global::GoldenFixtures.FixtureNote", Table, true).Property("Id", "id", Nodes.ColumnType.Uuid, false, true).
-        Property("Title", "title", Nodes.ColumnType.Text, false, false).Property("Revision", "revision", Nodes.
-        ColumnType.Int32, false, false).Index("ix_fixture_notes_title", false, false, "title");
+        "global::GoldenFixtures.FixtureNote",
+        Table,
+        true)
+        .Property("Id", "id", Nodes.ColumnType.Uuid, false, true)
+        .Property("Title", "title", Nodes.ColumnType.Text, false, false)
+        .Property("Revision", "revision", Nodes.ColumnType.Int32, false, false)
+        .Index("ix_fixture_notes_title", false, false, "title");
 
     public static global::GoldenFixtures.FixtureNote Map(global::System.Data.Common.DbDataReader r)
     {
@@ -29,67 +32,83 @@ public static class FixtureNoteOrm
 
     public static string Column(string prop) => Descriptor.ColumnOf(prop);
 
-    public static global::Neemle.OrmLite.Query<global::GoldenFixtures.FixtureNote> Query(global::Neemle.OrmLite.
-        OrmContext db)
+    public static global::Neemle.OrmLite.Query<global::GoldenFixtures.FixtureNote> Query(
+        global::Neemle.OrmLite.OrmContext db)
     {
         return new global::Neemle.OrmLite.Query<global::GoldenFixtures.FixtureNote>(db, Map);
     }
 
     internal static void RegisterGraph()
     {
-        GraphModel.Register<global::GoldenFixtures.FixtureNote>(new global::Neemle.OrmLite.GraphEntityBinding<global::
-            GoldenFixtures.FixtureNote>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::
-            GoldenFixtures.FixtureNote, global::System.Guid>("id", (e) => e.Id)));
+        GraphModel.Register<global::GoldenFixtures.FixtureNote>(
+            new global::Neemle.OrmLite.GraphEntityBinding<global::GoldenFixtures.FixtureNote>(
+                Descriptor,
+                Map,
+                new global::Neemle.OrmLite.GraphKeyBinding<global::GoldenFixtures.FixtureNote, global::System.Guid>(
+                    "id",
+                    e => e.Id)));
     }
 
     public static class Paths
     {
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        GoldenFixtures.FixtureNote e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::GoldenFixtures.FixtureNote e)
     {
         await OrmExec.InsertAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        GoldenFixtures.FixtureNote e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::GoldenFixtures.FixtureNote e)
     {
         await OrmExec.UpdateAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
         global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::GoldenFixtures.FixtureNote e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::GoldenFixtures.FixtureNote e)
     {
         await OrmExec.InsertAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<global::GoldenFixtures.FixtureNote?> GetAsync(global::Neemle
-        .OrmLite.OrmContext db, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::GoldenFixtures.FixtureNote?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task<global::GoldenFixtures.FixtureNote?> GetAsync(global::Neemle
-        .OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::GoldenFixtures.FixtureNote?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, conn, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::GoldenFixtures.FixtureNote e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::GoldenFixtures.FixtureNote e)
     {
         await OrmExec.UpdateAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }

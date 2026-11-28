@@ -11,7 +11,7 @@
     <OrmLiteRoot>Neemle.OrmLite</OrmLiteRoot>
     <!-- The one place the version of the code generation library is written: the generator project and the core
          package project both take it, scripts/PackCheck.cs compares the packed dependency with it. -->
-    <OrmLiteComposerVersion>0.6.0</OrmLiteComposerVersion>
+    <OrmLiteComposerVersion>0.7.0</OrmLiteComposerVersion>
     <InvariantGlobalization>true</InvariantGlobalization>
     <IsAotCompatible>true</IsAotCompatible>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

@@ -7,11 +7,13 @@ namespace Neemle.OrmLite.Generated;
 public static class SoftKeyNotGuidOrm
 {
     public const string Table = "cd_key_not_guid";
-
     public static readonly global::Neemle.OrmLite.EntityDescriptor Descriptor = EntityDescriptor.Of(
-        "global::CorpusDiagnostics.SoftKeyNotGuid", Table, true).Property("Id", "id", Nodes.ColumnType.Int32, false,
-        true).Property("DeletedAt", "deleted_at", Nodes.ColumnType.Timestamp, true, false).SoftDelete("DeletedAt",
-        "deleted_at", "soft_key_not_guid");
+        "global::CorpusDiagnostics.SoftKeyNotGuid",
+        Table,
+        true)
+        .Property("Id", "id", Nodes.ColumnType.Int32, false, true)
+        .Property("DeletedAt", "deleted_at", Nodes.ColumnType.Timestamp, true, false)
+        .SoftDelete("DeletedAt", "deleted_at", "soft_key_not_guid");
 
     public static global::CorpusDiagnostics.SoftKeyNotGuid Map(global::System.Data.Common.DbDataReader r)
     {
@@ -27,55 +29,68 @@ public static class SoftKeyNotGuidOrm
 
     public static string Column(string prop) => Descriptor.ColumnOf(prop);
 
-    public static global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftKeyNotGuid> Query(global::Neemle.OrmLite.
-        OrmContext db)
+    public static global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftKeyNotGuid> Query(
+        global::Neemle.OrmLite.OrmContext db)
     {
         return new global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftKeyNotGuid>(db, Map);
     }
 
     internal static void RegisterGraph()
     {
-        GraphModel.Register<global::CorpusDiagnostics.SoftKeyNotGuid>(new global::Neemle.OrmLite.GraphEntityBinding<
-            global::CorpusDiagnostics.SoftKeyNotGuid>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global
-            ::CorpusDiagnostics.SoftKeyNotGuid, int>("id", (e) => e.Id)));
+        GraphModel.Register<global::CorpusDiagnostics.SoftKeyNotGuid>(
+            new global::Neemle.OrmLite.GraphEntityBinding<global::CorpusDiagnostics.SoftKeyNotGuid>(
+                Descriptor,
+                Map,
+                new global::Neemle.OrmLite.GraphKeyBinding<global::CorpusDiagnostics.SoftKeyNotGuid, int>(
+                    "id",
+                    e => e.Id)));
     }
 
     public static class Paths
     {
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        CorpusDiagnostics.SoftKeyNotGuid e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::CorpusDiagnostics.SoftKeyNotGuid e)
     {
         await OrmExec.InsertAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db, int
-        key)
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        int key)
     {
         return await OrmExec.DeleteAsync(db, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::CorpusDiagnostics.SoftKeyNotGuid e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::CorpusDiagnostics.SoftKeyNotGuid e)
     {
         await OrmExec.InsertAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<global::CorpusDiagnostics.SoftKeyNotGuid?> GetAsync(global::
-        Neemle.OrmLite.OrmContext db, int key)
+    public static async global::System.Threading.Tasks.Task<global::CorpusDiagnostics.SoftKeyNotGuid?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        int key)
     {
         return await OrmExec.GetAsync(db, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task<global::CorpusDiagnostics.SoftKeyNotGuid?> GetAsync(global::
-        Neemle.OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, int key)
+    public static async global::System.Threading.Tasks.Task<global::CorpusDiagnostics.SoftKeyNotGuid?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        int key)
     {
         return await OrmExec.GetAsync(db, conn, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, int key)
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        int key)
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }

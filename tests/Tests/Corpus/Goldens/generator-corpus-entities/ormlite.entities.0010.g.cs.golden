@@ -7,24 +7,33 @@ namespace Neemle.OrmLite.Generated;
 public static class EverythingOrm
 {
     public const string Table = "ce_everything";
-
     public static readonly global::Neemle.OrmLite.EntityDescriptor Descriptor = EntityDescriptor.Of(
-        "global::CorpusEntities.Everything", Table, true).Property("Id", "id", Nodes.ColumnType.Uuid, false, true).
-        Property("OptionalGuid", "optional_guid", Nodes.ColumnType.Uuid, true, false).Property("Text", "text", Nodes.
-        ColumnType.Text, false, false).Property("OptionalText", "optional_text", Nodes.ColumnType.Text, true, false).
-        Property("Count", "count", Nodes.ColumnType.Int32, false, false).Property("OptionalCount", "optional_count",
-        Nodes.ColumnType.Int32, true, false).Property("Big", "big", Nodes.ColumnType.Int64, false, false).Property(
-        "Flag", "flag", Nodes.ColumnType.Bool, false, false).Property("Ratio", "ratio", Nodes.ColumnType.Double, false,
-        false).Property("Amount", "amount", Nodes.ColumnType.Decimal, false, false).Property("Stamp", "stamp", Nodes.
-        ColumnType.Timestamp, false, false).Property("OptionalStamp", "optional_stamp", Nodes.ColumnType.Timestamp, true
-        , false).Property("Day", "day", Nodes.ColumnType.Date, false, false).Property("OptionalDay", "optional_day",
-        Nodes.ColumnType.Date, true, false).Property("Level", "level", Nodes.ColumnType.Text, false, false).Property(
-        "OptionalLevel", "optional_level", Nodes.ColumnType.Text, true, false).Property("Document", "document", Nodes.
-        ColumnType.Json, false, false).Property("OptionalDocument", "optional_document", Nodes.ColumnType.Json, true,
-        false).Property("Renamed", "custom_name", Nodes.ColumnType.Text, false, false).Property("Searchable",
-        "searchable", Nodes.ColumnType.Text, false, false).Property("Unique", "unique", Nodes.ColumnType.Text, false,
-        false).Index("ix_ce_everything_searchable", false, false, "searchable").Index("ix_ce_everything_unique", true,
-        false, "unique");
+        "global::CorpusEntities.Everything",
+        Table,
+        true)
+        .Property("Id", "id", Nodes.ColumnType.Uuid, false, true)
+        .Property("OptionalGuid", "optional_guid", Nodes.ColumnType.Uuid, true, false)
+        .Property("Text", "text", Nodes.ColumnType.Text, false, false)
+        .Property("OptionalText", "optional_text", Nodes.ColumnType.Text, true, false)
+        .Property("Count", "count", Nodes.ColumnType.Int32, false, false)
+        .Property("OptionalCount", "optional_count", Nodes.ColumnType.Int32, true, false)
+        .Property("Big", "big", Nodes.ColumnType.Int64, false, false)
+        .Property("Flag", "flag", Nodes.ColumnType.Bool, false, false)
+        .Property("Ratio", "ratio", Nodes.ColumnType.Double, false, false)
+        .Property("Amount", "amount", Nodes.ColumnType.Decimal, false, false)
+        .Property("Stamp", "stamp", Nodes.ColumnType.Timestamp, false, false)
+        .Property("OptionalStamp", "optional_stamp", Nodes.ColumnType.Timestamp, true, false)
+        .Property("Day", "day", Nodes.ColumnType.Date, false, false)
+        .Property("OptionalDay", "optional_day", Nodes.ColumnType.Date, true, false)
+        .Property("Level", "level", Nodes.ColumnType.Text, false, false)
+        .Property("OptionalLevel", "optional_level", Nodes.ColumnType.Text, true, false)
+        .Property("Document", "document", Nodes.ColumnType.Json, false, false)
+        .Property("OptionalDocument", "optional_document", Nodes.ColumnType.Json, true, false)
+        .Property("Renamed", "custom_name", Nodes.ColumnType.Text, false, false)
+        .Property("Searchable", "searchable", Nodes.ColumnType.Text, false, false)
+        .Property("Unique", "unique", Nodes.ColumnType.Text, false, false)
+        .Index("ix_ce_everything_searchable", false, false, "searchable")
+        .Index("ix_ce_everything_unique", true, false, "unique");
 
     public static global::CorpusEntities.Everything Map(global::System.Data.Common.DbDataReader r)
     {
@@ -65,7 +74,12 @@ public static class EverythingOrm
         e.Day = r.GetFieldValue<global::System.DateOnly>(o12);
         e.OptionalDay = r.IsDBNull(o13) ? null : r.GetFieldValue<global::System.DateOnly>(o13);
         e.Level = OrmEnum.Read<global::CorpusEntities.Severity>(r, o14, "ce_everything", "level", "id");
-        e.OptionalLevel = r.IsDBNull(o15) ? null : OrmEnum.Read<global::CorpusEntities.Severity>(r, o15, "ce_everything", "optional_level", "id");
+        e.OptionalLevel = r.IsDBNull(o15) ? null : OrmEnum.Read<global::CorpusEntities.Severity>(
+            r,
+            o15,
+            "ce_everything",
+            "optional_level",
+            "id");
         e.Document = Jsonb.FromStorage(r.GetString(o16));
         e.OptionalDocument = r.IsDBNull(o17) ? null : Jsonb.FromStorage(r.GetString(o17));
         e.Renamed = r.GetString(o18);
@@ -74,73 +88,108 @@ public static class EverythingOrm
         return e;
     }
 
-    public static object?[] Values(global::CorpusEntities.Everything e) => OrmExec.Row(e.Id, e.OptionalGuid, e.Text, e.
-        OptionalText, e.Count, e.OptionalCount, e.Big, e.Flag, e.Ratio, e.Amount, e.Stamp, e.OptionalStamp, e.Day, e.
-        OptionalDay, e.Level, e.OptionalLevel, e.Document, e.OptionalDocument, e.Renamed, e.Searchable, e.Unique);
+    public static object?[] Values(global::CorpusEntities.Everything e) => OrmExec.Row(
+        e.Id,
+        e.OptionalGuid,
+        e.Text,
+        e.OptionalText,
+        e.Count,
+        e.OptionalCount,
+        e.Big,
+        e.Flag,
+        e.Ratio,
+        e.Amount,
+        e.Stamp,
+        e.OptionalStamp,
+        e.Day,
+        e.OptionalDay,
+        e.Level,
+        e.OptionalLevel,
+        e.Document,
+        e.OptionalDocument,
+        e.Renamed,
+        e.Searchable,
+        e.Unique);
 
     public static string Column(string prop) => Descriptor.ColumnOf(prop);
 
-    public static global::Neemle.OrmLite.Query<global::CorpusEntities.Everything> Query(global::Neemle.OrmLite.
-        OrmContext db)
+    public static global::Neemle.OrmLite.Query<global::CorpusEntities.Everything> Query(
+        global::Neemle.OrmLite.OrmContext db)
     {
         return new global::Neemle.OrmLite.Query<global::CorpusEntities.Everything>(db, Map);
     }
 
     internal static void RegisterGraph()
     {
-        GraphModel.Register<global::CorpusEntities.Everything>(new global::Neemle.OrmLite.GraphEntityBinding<global::
-            CorpusEntities.Everything>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::
-            CorpusEntities.Everything, global::System.Guid>("id", (e) => e.Id)));
+        GraphModel.Register<global::CorpusEntities.Everything>(
+            new global::Neemle.OrmLite.GraphEntityBinding<global::CorpusEntities.Everything>(
+                Descriptor,
+                Map,
+                new global::Neemle.OrmLite.GraphKeyBinding<global::CorpusEntities.Everything, global::System.Guid>(
+                    "id",
+                    e => e.Id)));
     }
 
     public static class Paths
     {
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        CorpusEntities.Everything e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::CorpusEntities.Everything e)
     {
         await OrmExec.InsertAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        CorpusEntities.Everything e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::CorpusEntities.Everything e)
     {
         await OrmExec.UpdateAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
         global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::CorpusEntities.Everything e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::CorpusEntities.Everything e)
     {
         await OrmExec.InsertAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<global::CorpusEntities.Everything?> GetAsync(global::Neemle.
-        OrmLite.OrmContext db, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::CorpusEntities.Everything?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task<global::CorpusEntities.Everything?> GetAsync(global::Neemle.
-        OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::CorpusEntities.Everything?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, conn, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::CorpusEntities.Everything e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::CorpusEntities.Everything e)
     {
         await OrmExec.UpdateAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }

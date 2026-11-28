@@ -5,7 +5,7 @@ their licenses are those declared in their own NuGet packages at the versions th
 
 ## Declared dependency of the Neemle.OrmLite package
 
-- Neemle.CSharpComposer 0.6.0, declared as a NuGet dependency of Neemle.OrmLite and resolved by NuGet; not redistributed inside the package.
+- Neemle.CSharpComposer 0.7.0, declared as a NuGet dependency of Neemle.OrmLite and resolved by NuGet; not redistributed inside the package.
   License MIT, `Copyright (c) 2026 Neemle`. Project: https://github.com/neemle/cs-composer. The full license text it ships in its package is:
 
 ```
