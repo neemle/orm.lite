@@ -17,3 +17,7 @@ Neemle.OrmLite.Tests.Orphans.OrphanAttackReviewTests.F3_Unrelated_writer_must_no
 # The orphan emitters parse generated C# with Roslyn instead of building it through Composer, as main's generator does;
 # ORML-150 owes the redesign. Remove this line together with the test's Skip when ORML-150 lands.
 Neemle.OrmLite.Tests.Orphans.OrphanAttackReviewTests.F5_Orphan_emission_must_not_parse_generated_csharp	HELD for ORML-150
+# AnalyzeIndexCollisionAttackTests.cs: a section 803 round-1 reviewer test that FAILS on SQLite ANALYZE of a dropped
+# table whose name an index of another table now carries. HELD under section 803.8: the TL routed the fix to follow-up
+# ORML-155, and the Skip is the HELD marker until it lands.
+Neemle.OrmLite.Tests.Maintenance.AnalyzeIndexCollisionAttackTests.Missing_table_with_matching_index_throws_native_error	HELD: ORML-155

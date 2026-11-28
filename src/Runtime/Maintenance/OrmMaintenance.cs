@@ -69,8 +69,30 @@ public sealed partial class OrmMaintenance
     // host or credential.
     private static string DatabaseName(string key) => key[(key.LastIndexOfAny(['/', '\\', ':']) + 1)..];
 
-    // D6 steps 4 to 9 for one statement.
+    // ADR D12.4(a): once the caller's token is cancelled, cancellation wins over every other outcome of the run: a Busy
+    // result or any failure surfaces as OperationCanceledException carrying that token, with the failure as its inner
+    // exception. Contention is Busy only while the token is live.
     private async Task<TResult> RunAsync<TResult>(MaintenanceStep<TResult> step, MaintenanceBudget budget, CancellationToken ct)
+        where TResult : IMaintenanceResult
+    {
+        TResult result;
+        try
+        {
+            result = await RunStepsAsync(step, budget, ct);
+        }
+        catch (Exception failure) when (ct.IsCancellationRequested && !IsCancellationOf(failure, ct))
+        {
+            throw new OperationCanceledException("the maintenance call was cancelled.", failure, ct);
+        }
+        if (result.Status == MaintenanceStatus.Busy) ct.ThrowIfCancellationRequested();
+        return result;
+    }
+
+    private static bool IsCancellationOf(Exception failure, CancellationToken ct) =>
+        failure is OperationCanceledException cancelled && cancelled.CancellationToken == ct;
+
+    // D6 steps 4 to 9 for one statement.
+    private async Task<TResult> RunStepsAsync<TResult>(MaintenanceStep<TResult> step, MaintenanceBudget budget, CancellationToken ct)
     {
         var source = _context.DataSource;
         var lease = new MaintenanceWriteLease(true, null);
@@ -95,12 +117,15 @@ public sealed partial class OrmMaintenance
                     await using var command = connection.CreateCommand();
                     command.CommandText = step.Text;
                     // With a server-side lock timeout set, the command timeout gets a second of grace so the lock
-                    // timeout fires first and is reported as contention, not as a command timeout.
-                    command.CommandTimeout = budget.CommandSeconds(guard is null ? 0 : GuardGraceSeconds);
-                    await using var reader = await command.RunMaintenanceReaderAsync(step.Operation, ct);
+                    // timeout fires first and is reported as contention, not as a command timeout. Without one, a
+                    // provider with a retry slice waits one slice at a time (D12.4(b)).
+                    var slice = guard is null ? step.Port.ContentionRetrySlice : null;
+                    command.CommandTimeout = budget.CommandSeconds(guard is null ? 0 : GuardGraceSeconds, slice);
+                    await using var reader = await command.RunMaintenanceReaderAsync(step.Operation,
+                        slice is { } each ? failure => RetriesContention(command, step.Port, failure, each, budget, ct) : null, ct);
                     return await step.Read(reader, ct);
                 }
-                catch (DbException failure) when (step.Port.IsContention(failure))
+                catch (DbException failure) when (!ct.IsCancellationRequested && step.Port.IsContention(failure))
                 {
                     return step.Busy();
                 }
@@ -114,6 +139,16 @@ public sealed partial class OrmMaintenance
         {
             if (lease.Release is { } release) await release.DisposeAsync();
         }
+    }
+
+    // ADR D12.4(b): contention is waited out one slice at a time on the same connection, inside the one diagnosed
+    // execution, while the budget lasts and the caller has not cancelled; then it is the caller's to report.
+    private static bool RetriesContention(
+        DbCommand command, IMaintenanceProvider port, DbException failure, TimeSpan slice, MaintenanceBudget budget, CancellationToken ct)
+    {
+        if (ct.IsCancellationRequested || budget.IsSpent || !port.IsContention(failure)) return false;
+        command.CommandTimeout = budget.CommandSeconds(0, slice);
+        return true;
     }
 
     // ADR D12.2: opening the connection spends the same budget. The budget running out while the caller's token is live,

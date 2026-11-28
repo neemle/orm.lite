@@ -43,4 +43,12 @@ public partial interface IMaintenanceProvider
     /// statement and are not reported to diagnostics.
     /// </summary>
     MaintenanceSessionGuard? RenderLockGuard(TimeSpan remaining) => null;
+
+    /// <summary>
+    /// The longest one wait for a lock may take when the provider bounds lock waits only by the command timeout, or null
+    /// when it bounds them otherwise. When set and no lock guard is rendered, the statement runs with a command timeout
+    /// of at most this slice, and contention is retried on the same connection while the budget lasts and the call is
+    /// not cancelled, so a cancellation is seen within about one slice. Null by default.
+    /// </summary>
+    TimeSpan? ContentionRetrySlice => null;
 }
