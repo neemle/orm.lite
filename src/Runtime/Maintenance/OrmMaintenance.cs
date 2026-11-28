@@ -105,6 +105,7 @@ public sealed partial class OrmMaintenance
         }
         try
         {
+            TResult result;
             using (DbLane.Enter(DbLaneKind.Ops))
             {
                 if (budget.IsSpent) return step.Busy();
@@ -126,17 +127,18 @@ public sealed partial class OrmMaintenance
                     command.CommandTimeout = budget.CommandSeconds(guard is null ? 0 : GuardGraceSeconds, slice);
                     await using var reader = await command.RunMaintenanceReaderAsync(step.Operation,
                         slice is { } each ? failure => RetriesContention(command, step.Port, failure, each, budget, ct) : null, ct);
-                    return await step.Read(reader, ct);
+                    result = await step.Read(reader, ct);
                 }
                 catch (DbException failure) when (!ct.IsCancellationRequested && step.Port.IsContention(failure))
                 {
-                    return step.Busy();
+                    result = step.Busy();
                 }
                 finally
                 {
                     if (guard is not null) await TearDownAsync(connection, guard.Teardown);
                 }
             }
+            return result;
         }
         finally
         {
