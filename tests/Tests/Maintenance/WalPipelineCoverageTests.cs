@@ -86,6 +86,97 @@ public sealed class WalPipelineCoverageTests
         Assert.Equal(MaintenanceStatus.NotWal, result.Status);
     }
 
+    [Fact(DisplayName = "ORML-137 D12.2/D12.4 a cancellation during the open throws OperationCanceledException carrying the caller's token")]
+    public async Task A_cancelled_open_is_cancellation()
+    {
+        await using var db = await WalFixture.WithItemsAsync(1);
+        await using var source = new ScriptedOpenSource(db.Context.DataSource);
+        await using var context = new OrmContext(source, db.Context.Provider);
+        using var cancel = new CancellationTokenSource();
+        source.OnOpen = async token =>
+        {
+            await cancel.CancelAsync();
+            await Task.Delay(Timeout.Infinite, token);
+        };
+
+        var failure = await Assert.ThrowsAnyAsync<OperationCanceledException>(
+            () => context.Maintenance.CheckpointWalAsync(WalFixture.Request(WalCheckpointMode.Truncate, 5000), cancel.Token));
+
+        Assert.Equal(cancel.Token, failure.CancellationToken);
+        await db.WriteAsync().WaitAsync(SqliteMaintenanceDatabase.Margin);
+    }
+
+    [Fact(DisplayName = "ORML-137 D12.2 an open that fails with contention after the caller cancelled is cancellation, with the failure inside")]
+    public async Task Contention_after_cancellation_is_cancellation()
+    {
+        await using var db = await WalFixture.WithItemsAsync(1);
+        await using var source = new ScriptedOpenSource(db.Context.DataSource);
+        await using var context = new OrmContext(source, db.Context.Provider);
+        using var cancel = new CancellationTokenSource();
+        var busy = new SqliteException("busy while opening", 5);
+        source.OnOpen = async _ =>
+        {
+            await cancel.CancelAsync();
+            throw busy;
+        };
+
+        var failure = await Assert.ThrowsAnyAsync<OperationCanceledException>(
+            () => context.Maintenance.CheckpointWalAsync(WalFixture.Request(WalCheckpointMode.Truncate, 5000), cancel.Token));
+
+        Assert.Equal(cancel.Token, failure.CancellationToken);
+        Assert.Same(busy, failure.InnerException);
+    }
+
+    [Fact(DisplayName = "ORML-137 D12.2 an open failure that is not contention, or a cancellation the budget did not cause, propagates unchanged")]
+    public async Task Other_open_failures_propagate()
+    {
+        await using var db = await WalFixture.WithItemsAsync(1);
+        await using var source = new ScriptedOpenSource(db.Context.DataSource);
+        await using var context = new OrmContext(source, db.Context.Provider);
+        var refused = new SqliteException("cannot open", 14);
+        var own = new OperationCanceledException("the source gave up on its own");
+
+        source.OnOpen = _ => throw refused;
+        Assert.Same(refused, await Assert.ThrowsAsync<SqliteException>(
+            () => context.Maintenance.CheckpointWalAsync(WalFixture.Request(WalCheckpointMode.Passive, 5000))));
+
+        source.OnOpen = _ => throw own;
+        Assert.Same(own, await Assert.ThrowsAsync<OperationCanceledException>(
+            () => context.Maintenance.CheckpointWalAsync(WalFixture.Request(WalCheckpointMode.Passive, 5000))));
+
+        await db.WriteAsync().WaitAsync(SqliteMaintenanceDatabase.Margin);
+    }
+
+    [Fact(DisplayName = "ORML-137 a UnitOfWork on a provider without the maintenance port marks no writer key")]
+    public async Task A_unit_without_the_port_has_no_key()
+    {
+        await using var db = await WalFixture.WithItemsAsync(0);
+        await using var context = new OrmContext(db.Context.DataSource, new PortlessProvider());
+
+        await using (var unit = await UnitOfWork.BeginAsync(context))
+        {
+            // The unit's mark carries no key, so maintenance in this flow on the same file is not refused by it.
+            Assert.False(WriterFlow.Holds(SqliteProvider.Instance.WriterKeyOf(db.Context.DataSource)!));
+            await unit.CommitAsync();
+        }
+    }
+
+    // Opens through the wrapped source unless OnOpen says otherwise.
+    private sealed class ScriptedOpenSource(DbDataSource inner) : DbDataSource
+    {
+        internal Func<CancellationToken, Task>? OnOpen { get; set; }
+
+        public override string ConnectionString => inner.ConnectionString;
+
+        protected override DbConnection CreateDbConnection() => inner.CreateConnection();
+
+        protected override async ValueTask<DbConnection> OpenDbConnectionAsync(CancellationToken cancellationToken = default)
+        {
+            if (OnOpen is { } script) await script(cancellationToken);
+            return await inner.OpenConnectionAsync(cancellationToken);
+        }
+    }
+
     private sealed class RefusingSource : DbDataSource
     {
         public override string ConnectionString => "Data Source=refused.db";
