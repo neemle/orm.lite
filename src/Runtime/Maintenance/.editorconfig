@@ -1,0 +1,4 @@
+# The maintenance surface (OrmContext.Maintenance) belongs to the Neemle.OrmLite public API beside OrmContext.
+# This folder groups its implementation; it does not add a public namespace.
+[*.cs]
+dotnet_diagnostic.IDE0130.severity = none

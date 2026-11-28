@@ -1,0 +1,4 @@
+# Tests the PostgreSQL 18.7 gate allows to skip: none. The pinned leg of the CI test job runs only the classes its
+# filter names, each against a live server, so a skipped test there is a defect. The file exists because
+# scripts/SkipGate.cs always reads an allow-list; an empty one makes every skip a failure.
+# Format as tests/skip-allowlist.txt: <class>.<test method> TAB <reason>.

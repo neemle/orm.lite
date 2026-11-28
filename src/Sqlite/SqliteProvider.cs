@@ -29,7 +29,10 @@ public sealed partial class SqliteProvider(TimeSpan busyTimeout, ISqliteTriggerR
         .With(Capability.RowHistoryTriggers, Support.Emulated)
         .With(Capability.CatalogGuard, Support.Emulated)
         .With(Capability.ExactDecimal, Support.Emulated)
-        .With(Capability.IndexNullsOrdering, Support.None);
+        .With(Capability.IndexNullsOrdering, Support.None)
+        .With(Capability.VacuumFull, Support.None)
+        .With(Capability.VacuumTable, Support.None)
+        .With(Capability.ReindexConcurrently, Support.None);
 
     public int MaxBindParameters => BindParameterLimit;
 

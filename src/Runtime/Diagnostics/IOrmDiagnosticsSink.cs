@@ -32,7 +32,14 @@ public sealed record StatementEvent(
     long ConnectionId,
     long? TransactionId,
     bool Slow,
-    Exception? Error);
+    Exception? Error)
+{
+    /// <summary>
+    /// The maintenance operation a <see cref="StatementKind.Maintenance"/> statement ran for; null for every other
+    /// statement.
+    /// </summary>
+    public MaintenanceOperation? Operation { get; init; }
+}
 
 public sealed record TransactionEvent(
     OrmLogLevel Level,

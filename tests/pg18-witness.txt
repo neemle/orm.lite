@@ -1,0 +1,8 @@
+# Classes that must have a Passed result in the pinned PostgreSQL 18.7 leg of the CI test job, one per line:
+# <class> TAB <reason>. They attack the REINDEX index-schema lookup with standard_conforming_strings off, a setting
+# PostgreSQL 19 refuses (0A000), so the main run on the compose file's major excludes them by name and this leg runs
+# them (ORML-136 R2-F1, ORML-138 R2-F3; TL fix list 6b33e96e on ORML-137). With --require-postgres the skip gate fails
+# when a class listed here is absent from TestResults/pg18.trx or has no Passed result. Written by hand from the test
+# source, never captured from a run.
+Neemle.OrmLite.Tests.Maintenance.ReindexLookupQuotingR2AttackTests	server only, skipped by the PostgresFact attribute
+Neemle.OrmLite.Tests.Maintenance.ReindexLookupLiteralR2AttackTests	server only, skipped by the PostgresFact attribute

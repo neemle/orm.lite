@@ -43,6 +43,14 @@ index or join table name over the limit as `ORMLITE034`. SQLite states no limit.
 | `JsonDocument` | `Jsonb` properties and the `Db.Json*` markers | Native | Emulated |
 | `RowHistoryTriggers` | the change history of a `[SoftDelete]` table | Native | Emulated |
 | `ExactDecimal` | exact `decimal` columns (`[Numeric(p, s)]`): compare, order, index, sum | Native | Emulated |
+| `WalCheckpoint` | `Maintenance.CheckpointWalAsync`, a WAL checkpoint in an explicit mode ([maintenance](maintenance.md#wal-checkpoint)) | None, refused by name | Native |
+| `Vacuum` | `Maintenance.VacuumAsync` in `Plain` mode ([maintenance](maintenance.md#vacuum)) | Native | Native (checkpoint, then VACUUM) |
+| `VacuumFull` | `VacuumMode.Full`, which rewrites the table | Native | None, refused by name |
+| `VacuumTable` | a VACUUM of one table (`VacuumRequest.Table`) | Native | None, refused by name |
+| `Analyze` | `Maintenance.AnalyzeAsync` of the database or one table ([maintenance](maintenance.md#analyze)) | Native | Native |
+| `Reindex` | `Maintenance.ReindexAsync` of the database, a table or an index, blocking ([maintenance](maintenance.md#reindex)) | Native | Native |
+| `ReindexConcurrently` | `ReindexMode.Concurrent` (PostgreSQL `REINDEX ... CONCURRENTLY`) | Native | None, refused by name |
+| `IntegrityCheck` | `Maintenance.CheckIntegrityAsync` ([maintenance](maintenance.md#integrity-checks)) | None, refused by name (use `amcheck`) | Native |
 
 ### Grouped query behavior
 
