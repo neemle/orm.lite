@@ -513,4 +513,11 @@ public sealed class WalCheckpointDocsTests
         Assert.Contains("Ops lane", MaintenanceDocs.Page, StringComparison.Ordinal);
         Assert.Contains("(maintenance.md)", File.ReadAllText(Path.Combine(RuntimeSources.LibraryRoot(), "docs", "README.md")), StringComparison.Ordinal);
     }
+
+    [Fact(DisplayName = "ORML-137 D12.4(a) docs/maintenance.md says cancellation wins over a finished outcome, that the exception does not prove the statement did not run, and that a spent budget starts nothing")]
+    public void Cancellation_and_the_spent_budget()
+    {
+        foreach (var phrase in new[] { "Cancellation wins over every outcome", "finished with `Completed`", "not prove the statement did not run", "safe to run again", "never to a spent one" })
+            Assert.Contains(phrase, MaintenanceDocs.Page, StringComparison.Ordinal);
+    }
 }

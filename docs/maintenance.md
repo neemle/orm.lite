@@ -67,8 +67,10 @@ var busy = await db.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(WalC
 from it, also when an operation runs more than one statement (VACUUM on SQLite checkpoints first). It defaults to the
 provider's maintenance timeout: on SQLite that is the busy timeout (`OrmLite:BusyTimeoutSeconds`, 30 seconds by
 default), on PostgreSQL `PostgresProvider.DefaultMaintenanceTimeout`, 30 seconds. Once the budget is spent, nothing more
-starts: the call returns `MaintenanceStatus.Busy` before it would enter the gate or open a connection. The statement's
-command timeout is what is left of the budget, rounded up to whole seconds (at least one). A long `VACUUM (FULL)` or blocking `REINDEX` of a big table
+starts: the call returns `MaintenanceStatus.Busy` before it would enter the gate or open a connection, and also when the
+budget runs out while the connection opens or while the PostgreSQL session setup or schema lookup runs, before the
+statement is issued. The statement's command timeout is what is left of the budget, rounded up to whole seconds (at
+least one); that floor applies only to a budget with time left, never to a spent one. A long `VACUUM (FULL)` or blocking `REINDEX` of a big table
 needs a longer `Timeout`; on PostgreSQL a longer budget also lets a queued lock request wait longer, and while it waits
 for an `ACCESS EXCLUSIVE` or `SHARE` lock it blocks other sessions queued behind it.
 
@@ -85,10 +87,14 @@ statement's command timeout is at most one second, and a busy or locked answer i
 the budget lasts and the call is not cancelled. The retries stay one statement, with one diagnostics event whose
 duration covers every attempt.
 
-Cancellation wins over contention. Once the token passed to the call is cancelled, the call throws
-`OperationCanceledException` carrying that token, also when the cancellation arrives during a lock wait, during the open
-or when the result would have been `Busy`; the original exception, if any, is its inner exception. On SQLite a
-cancellation during a lock wait is seen within about one second.
+Cancellation wins over every outcome. Once the token passed to the call is cancelled, the call throws
+`OperationCanceledException` carrying that token, whatever the run would have answered: also when the cancellation
+arrives during a lock wait, during the open, when the result would have been `Busy`, and when the statement had already
+finished with `Completed`, `IssuesFound` or any other status. The original exception, if any (the failure, or the
+contention or the expired open behind a `Busy`), is its inner exception. An `OperationCanceledException` therefore does
+not prove the statement did not run: it may have run in full. Every maintenance operation is safe to run again, so
+the usual answer to a cancelled call is to call it again. On SQLite a cancellation during a lock wait is seen within
+about one second.
 
 What counts as contention, reported as `Busy`:
 
@@ -119,7 +125,7 @@ Every result implements `IMaintenanceResult`: `Operation`, `Provider`, `Status` 
 | A prerequisite step did not complete, so the statement was not issued | `Status = NotRun` |
 | A check ran and found problems | `Status = IssuesFound`, with the findings |
 | The calling flow holds the writer gate | `InvalidOperationException`, before any SQL |
-| The call was cancelled | `OperationCanceledException`, never `Busy` |
+| The call was cancelled | `OperationCanceledException`, never `Busy` nor a result, even if the statement ran |
 | The provider lacks the operation or option | `CapabilityNotSupportedException`, before any connection |
 | Any other database failure | the original `DbException`, unwrapped |
 

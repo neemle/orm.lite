@@ -23,8 +23,9 @@ internal sealed class MaintenanceBudget(TimeSpan total)
     // ADR D12.3: a spent budget starts nothing more; the caller reports Busy.
     internal bool IsSpent => Remaining == TimeSpan.Zero;
 
-    // A whole number of seconds, at least one, so a budget that is nearly spent still lets the statement start; with a
-    // retry slice, no more than the slice.
+    // A whole number of seconds, at least one, for a budget with time left: callers check IsSpent first and start
+    // nothing on a spent budget (D12.3), so the floor only keeps a nearly spent budget from rounding down to zero, which
+    // a driver reads as no timeout. With a retry slice, no more than the slice.
     internal int CommandSeconds(int grace, TimeSpan? slice = null)
     {
         var remaining = Remaining;
