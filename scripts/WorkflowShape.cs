@@ -8,7 +8,9 @@
 // action pins, runner class, no ORMLITE_TEST_PG_* override of the image policy). One exception is written out: a pinned
 // PostgreSQL leg after the main gate (a compose step that pins ORMLITE_TEST_PG_IMAGE to one neemle/pg.lite:<major>.<minor>
 // tag, a filtered test step on that server and a gate of its own) may take classes out of the main run by name, and only
-// classes it runs itself (ORML-136, TL fix list 6b33e96e: a server setting the current major refuses).
+// classes it runs itself (ORML-136, TL fix list 6b33e96e: a server setting the current major refuses). Every required
+// step (build, the main compose, test and gate steps, and each pinned leg's compose, test and gate steps) and job test
+// itself run unconditionally: no `if:` other than `success()` (ADR e8c50bcc v7 D14.6).
 //   dotnet run scripts/WorkflowShape.cs -- check [<ci.yml> [<tests-compose> [<demo-compose>]]]
 //                                                               exit 0 pass, 1 shape failure, 2 usage
 //   dotnet run scripts/WorkflowShape.cs -- self-test          no workflow needed; every assertion has a negative case
@@ -245,6 +247,7 @@ void TestJob(List<Node> n, int job, List<string> f)
     if (labels.Contains("self-hosted", StringComparison.OrdinalIgnoreCase))
         f.Add("job test runs on a self-hosted runner (trust authentication is accepted on hosted runners only)");
     if (Text(n, Kid(n, job, "needs")) != "static") f.Add("job test must have `needs: static`");
+    Unconditional(n, job, f);
     foreach (var i in Under(n, job).Where(i => n[i].Key == "continue-on-error"))
         f.Add($"line {n[i].Line}: continue-on-error inside job test");
     Steps(n, job, f);
@@ -269,9 +272,7 @@ void Steps(List<Node> n, int job, List<string> f)
         if (at[k] < 0) f.Add("job test has no step running `" + order[k] + "`");
         else if (k > 0 && at[k - 1] >= at[k])
             f.Add("the step `" + order[k] + "` must come after `" + order[k - 1] + "`");
-    foreach (var s in at.Where(s => s >= 0).Select(s => steps[s]))
-        if (Text(n, Kid(n, s, "if")) is { Length: > 0 } c && c != "success()")
-            f.Add($"line {n[s].Line}: a step has `if: {c}`");
+    foreach (var s in at.Where(s => s >= 0).Select(s => steps[s])) Unconditional(n, s, f);
     var legs = at[3] >= 0 ? Legs(n, steps, at[3], f) : [];
     if (at[2] >= 0) TestStep(n, steps[at[2]], legs.SelectMany(l => l.Names).ToHashSet(), f);
     if (at[3] >= 0) GateStep(Run(n, steps[at[3]]), f);
@@ -327,17 +328,27 @@ List<(int Compose, int Test, string[] Names)> Legs(List<Node> n, List<int> steps
             f.Add($"line {n[steps[test]].Line}: the pinned leg test step needs one --filter of FullyQualifiedName~ terms");
             continue;
         }
-        var gated = trx.Success && trx.Groups[1].Value != "tests" && steps.Skip(test + 1).Any(g =>
+        var own = !trx.Success || trx.Groups[1].Value == "tests" ? -1 : steps.FindIndex(test + 1, g =>
             Run(n, g).Contains("SkipGate.cs -- check TestResults/" + trx.Groups[1].Value + ".trx", StringComparison.Ordinal)
             && Run(n, g).Contains("--require-postgres", StringComparison.Ordinal));
-        if (!gated)
+        if (own < 0)
         {
             f.Add($"line {n[steps[test]].Line}: the pinned leg has no gate step checking its own TRX with --require-postgres");
             continue;
         }
+        foreach (var required in new[] { steps[s], steps[test], steps[own] }) Unconditional(n, required, f);
         legs.Add((steps[s], steps[test], names.Select(t => t["FullyQualifiedName~".Length..]).ToArray()));
     }
     return legs;
+}
+
+// A required step or job runs unconditionally: no `if:` at all, or exactly `success()`, the default written out.
+// Anything else (`false`, `${{ false }}`, `0`, an expression, `always()`, `cancelled()`) can switch it off or run it
+// on failure.
+void Unconditional(List<Node> n, int node, List<string> f)
+{
+    if (Text(n, Kid(n, node, "if")) is { Length: > 0 } c && c != "success()")
+        f.Add($"line {n[node].Line}: {(n[node].Key == "-" ? "a step" : "job " + n[node].Key)} has `if: {c}`");
 }
 
 void TestStep(List<Node> n, int step, HashSet<string> pinned, List<string> f)
@@ -647,12 +658,23 @@ List<Case> LegCases() =>
         "ORMLITE_TEST_PG_IMAGE must not be set"),
     ("port on the leg compose step", "ins", "ORMLITE_TEST_PG_IMAGE: neemle", "          ORMLITE_TEST_PG_PORT: 1",
         "ORMLITE_TEST_PG_PORT must not be set"),
+    // D14.6: a required leg cannot be switched off.
+    ("if false on the leg compose step", "ins", "- name: Pin", "        if: false", "a step has `if: false`"),
+    ("if false on the leg test step", "ins", "- name: Leg", "        if: false", "a step has `if: false`"),
+    ("if false on the leg gate step", "ins", "check TestResults/pg18.trx", "        if: false",
+        "a step has `if: false`"),
+    ("an expression false on the leg test step", "ins", "- name: Leg", "        if: ${{ false }}",
+        "a step has `if: ${{ false }}`"),
+    ("an expression on the leg gate step", "ins", "check TestResults/pg18.trx",
+        "        if: github.event_name == 'none'", "a step has `if: github.event_name == 'none'`"),
+    ("success() on a leg step is the default written out", "ins", "- name: Leg", "        if: success()", ""),
 ];
 
 List<Case> PostureCases() => Cases("""
     no timeout~drop~timeout-minutes~~no numeric timeout-minutes
     a self-hosted runner~sub~runs-on: ubuntu-latest~runs-on: self-hosted~self-hosted runner
     no needs on the test job~drop~    needs: static~~job test must have `needs: static`
+    if false on the test job~ins~    timeout-minutes: 30~    if: false~job test has `if: false`
     the wrong needs on the test job~sub~    needs: static~    needs: demo-postgres~job test must have `needs: static`
     a list of needs on the test job~sub~    needs: static~    needs: [static]~job test must have `needs: static`
     a write permission~sub~contents: read~contents: write~is not read
