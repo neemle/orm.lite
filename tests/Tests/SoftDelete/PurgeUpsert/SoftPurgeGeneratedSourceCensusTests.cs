@@ -41,6 +41,13 @@ public sealed partial class SoftPurgeGeneratedSourceCensusTests
         return next < 0 ? Run.Generated[start..] : Run.Generated[start..next];
     }
 
+    [GeneratedRegex(@"\s+|@(?=[A-Za-z_])")]
+    private static partial Regex LayoutAndVerbatim();
+
+    private static string Code(string text) => LayoutAndVerbatim().Replace(text, "");
+
+    private static int Count(string code, string shape) => Regex.Matches(code, Regex.Escape(Code(shape))).Count;
+
     private static IEnumerable<string> PhysicalDeletes()
     {
         foreach (var type in new[] { "CensusSoft", "CensusOwner", "CensusTag", "CensusPlain" })
@@ -75,12 +82,15 @@ public sealed partial class SoftPurgeGeneratedSourceCensusTests
     public void A_soft_entity_gets_a_purge_surface(string entity)
     {
         var body = ClassBody(entity + "Purge");
+        // Composer promises equivalent code, not a layout: the shape is matched with whitespace and the verbatim `@` of
+        // an identifier taken out, so a line break or `@where` against `where` does not decide it.
+        var code = Code(body);
 
-        Assert.Equal(2, Regex.Matches(body, "public static async global::System.Threading.Tasks.Task<int> DeleteWhereAsync\\(").Count);
-        Assert.Equal(2, Regex.Matches(body, Regex.Escape("Orm.Query(db)")).Count);
-        Assert.Equal(2, Regex.Matches(body, Regex.Escape(".Where(@where).PurgeAsync()")).Count);
-        Assert.Contains("global::System.Linq.Expressions.Expression<global::System.Func<global::Fixture." + entity + ", bool>> @where", body);
-        Assert.Contains("global::Neemle.OrmLite.UnitOfWork uow", body);
+        Assert.Equal(2, Count(code, "public static async global::System.Threading.Tasks.Task<int> DeleteWhereAsync("));
+        Assert.Equal(2, Count(code, "Orm.Query(db)"));
+        Assert.Equal(2, Count(code, ".Where(@where).PurgeAsync()"));
+        Assert.Contains(Code("global::System.Linq.Expressions.Expression<global::System.Func<global::Fixture." + entity + ", bool>> @where"), code);
+        Assert.Contains(Code("global::Neemle.OrmLite.UnitOfWork uow"), code);
         Assert.DoesNotContain("DELETE", body);
         Assert.DoesNotContain("CommandText", body);
     }
