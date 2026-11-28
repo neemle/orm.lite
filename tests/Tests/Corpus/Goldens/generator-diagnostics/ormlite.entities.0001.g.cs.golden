@@ -7,10 +7,12 @@ namespace Neemle.OrmLite.Generated;
 public static class SoftColumnMissingOrm
 {
     public const string Table = "cd_soft_missing";
-
     public static readonly global::Neemle.OrmLite.EntityDescriptor Descriptor = EntityDescriptor.Of(
-        "global::CorpusDiagnostics.SoftColumnMissing", Table, true).Property("Id", "id", Nodes.ColumnType.Uuid, false,
-        true).Property("TenantId", "tenant_id", Nodes.ColumnType.Uuid, false, false);
+        "global::CorpusDiagnostics.SoftColumnMissing",
+        Table,
+        true)
+        .Property("Id", "id", Nodes.ColumnType.Uuid, false, true)
+        .Property("TenantId", "tenant_id", Nodes.ColumnType.Uuid, false, false);
 
     public static global::CorpusDiagnostics.SoftColumnMissing Map(global::System.Data.Common.DbDataReader r)
     {
@@ -26,67 +28,83 @@ public static class SoftColumnMissingOrm
 
     public static string Column(string prop) => Descriptor.ColumnOf(prop);
 
-    public static global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftColumnMissing> Query(global::Neemle.OrmLite
-        .OrmContext db)
+    public static global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftColumnMissing> Query(
+        global::Neemle.OrmLite.OrmContext db)
     {
         return new global::Neemle.OrmLite.Query<global::CorpusDiagnostics.SoftColumnMissing>(db, Map);
     }
 
     internal static void RegisterGraph()
     {
-        GraphModel.Register<global::CorpusDiagnostics.SoftColumnMissing>(new global::Neemle.OrmLite.GraphEntityBinding<
-            global::CorpusDiagnostics.SoftColumnMissing>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<
-            global::CorpusDiagnostics.SoftColumnMissing, global::System.Guid>("id", (e) => e.Id)));
+        GraphModel.Register<global::CorpusDiagnostics.SoftColumnMissing>(
+            new global::Neemle.OrmLite.GraphEntityBinding<global::CorpusDiagnostics.SoftColumnMissing>(
+                Descriptor,
+                Map,
+                new global::Neemle.OrmLite.GraphKeyBinding<
+                    global::CorpusDiagnostics.SoftColumnMissing,
+                    global::System.Guid>("id", e => e.Id)));
     }
 
     public static class Paths
     {
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        CorpusDiagnostics.SoftColumnMissing e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::CorpusDiagnostics.SoftColumnMissing e)
     {
         await OrmExec.InsertAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        CorpusDiagnostics.SoftColumnMissing e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::CorpusDiagnostics.SoftColumnMissing e)
     {
         await OrmExec.UpdateAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
         global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::CorpusDiagnostics.SoftColumnMissing e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::CorpusDiagnostics.SoftColumnMissing e)
     {
         await OrmExec.InsertAsync(db, conn, Descriptor, Values(e));
     }
 
     public static async global::System.Threading.Tasks.Task<global::CorpusDiagnostics.SoftColumnMissing?> GetAsync(
-        global::Neemle.OrmLite.OrmContext db, global::System.Guid key)
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, Descriptor, key, Map);
     }
 
     public static async global::System.Threading.Tasks.Task<global::CorpusDiagnostics.SoftColumnMissing?> GetAsync(
-        global::Neemle.OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key)
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, conn, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::CorpusDiagnostics.SoftColumnMissing e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::CorpusDiagnostics.SoftColumnMissing e)
     {
         await OrmExec.UpdateAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }

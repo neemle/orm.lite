@@ -21,7 +21,9 @@ public static class CorpusIndex
         sb.Append("# Characterization corpus of the PostgreSQL output\n\n");
         sb.Append("Every file under `Goldens/` is the live output of the library as it was before the redesign, recorded as text. ");
         sb.Append("Nothing here is hand-written: `scripts/CorpusCapture.cs` writes the goldens and this index, and ");
-        sb.Append("`CorpusGoldenTests` compares the live output with them on every test run. ");
+        sb.Append("`CorpusGoldenTests` compares the live output with them on every test run: a generated C# source (`*.g.cs`) as code, ");
+        sb.Append("by Roslyn syntax equivalence with directives and comments kept and formatting ignored, because Neemle.CSharpComposer ");
+        sb.Append("promises equivalent code rather than a fixed layout; every other entry as text. ");
         sb.Append("The goldens were recorded from `src/` at base commit `0adff7e`, before the redesign; every later slice is proven against them and does not re-record them.\n\n");
         sb.Append("## Use\n\n");
         sb.Append("- Refresh: `dotnet run scripts/CorpusCapture.cs -- capture` (inside the SDK container).\n");

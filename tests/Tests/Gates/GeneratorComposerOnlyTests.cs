@@ -56,6 +56,6 @@ public sealed class GeneratorComposerOnlyTests
         Assert.Contains("<PackageReference Include=\"Neemle.CSharpComposer\" Version=\"$(OrmLiteComposerVersion)\"",
             project, StringComparison.Ordinal);
         var props = File.ReadAllText(Path.Combine(RuntimeSources.LibraryRoot(), "Directory.Build.props"));
-        Assert.Contains("<OrmLiteComposerVersion>0.6.0</OrmLiteComposerVersion>", props, StringComparison.Ordinal);
+        Assert.Contains("<OrmLiteComposerVersion>0.7.0</OrmLiteComposerVersion>", props, StringComparison.Ordinal);
     }
 }

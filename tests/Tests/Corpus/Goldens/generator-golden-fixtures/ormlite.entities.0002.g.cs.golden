@@ -7,17 +7,23 @@ namespace Neemle.OrmLite.Generated;
 public static class GoldenBookOrm
 {
     public const string Table = "golden_books";
-
     public static readonly global::Neemle.OrmLite.EntityDescriptor Descriptor = EntityDescriptor.Of(
-        "global::GoldenFixtures.GoldenBook", Table, true).Property("Id", "id", Nodes.ColumnType.Uuid, false, true).
-        Property("AuthorId", "author_id", Nodes.ColumnType.Uuid, false, false).Property("EditorId", "editor_id", Nodes.
-        ColumnType.Uuid, true, false).Property("Title", "title", Nodes.ColumnType.Text, false, false).Property("Pages",
-        "pages", Nodes.ColumnType.Int32, false, false).Property("Copies", "copies", Nodes.ColumnType.Int64, false, false
-        ).Property("Weight", "weight", Nodes.ColumnType.Double, false, false).Property("Price", "price", Nodes.
-        ColumnType.Decimal, false, false).Property("InPrint", "in_print", Nodes.ColumnType.Bool, false, false).Property(
-        "Format", "format", Nodes.ColumnType.Text, false, false).Property("PublishedAt", "published_at", Nodes.
-        ColumnType.Timestamp, false, false).Property("ReleasedOn", "released_on", Nodes.ColumnType.Date, true, false).
-        Property("Extras", "extras", Nodes.ColumnType.Json, true, false);
+        "global::GoldenFixtures.GoldenBook",
+        Table,
+        true)
+        .Property("Id", "id", Nodes.ColumnType.Uuid, false, true)
+        .Property("AuthorId", "author_id", Nodes.ColumnType.Uuid, false, false)
+        .Property("EditorId", "editor_id", Nodes.ColumnType.Uuid, true, false)
+        .Property("Title", "title", Nodes.ColumnType.Text, false, false)
+        .Property("Pages", "pages", Nodes.ColumnType.Int32, false, false)
+        .Property("Copies", "copies", Nodes.ColumnType.Int64, false, false)
+        .Property("Weight", "weight", Nodes.ColumnType.Double, false, false)
+        .Property("Price", "price", Nodes.ColumnType.Decimal, false, false)
+        .Property("InPrint", "in_print", Nodes.ColumnType.Bool, false, false)
+        .Property("Format", "format", Nodes.ColumnType.Text, false, false)
+        .Property("PublishedAt", "published_at", Nodes.ColumnType.Timestamp, false, false)
+        .Property("ReleasedOn", "released_on", Nodes.ColumnType.Date, true, false)
+        .Property("Extras", "extras", Nodes.ColumnType.Json, true, false);
 
     public static global::GoldenFixtures.GoldenBook Map(global::System.Data.Common.DbDataReader r)
     {
@@ -51,97 +57,145 @@ public static class GoldenBookOrm
         return e;
     }
 
-    public static object?[] Values(global::GoldenFixtures.GoldenBook e) => OrmExec.Row(e.Id, e.AuthorId, e.EditorId, e.
-        Title, e.Pages, e.Copies, e.Weight, e.Price, e.InPrint, e.Format, e.PublishedAt, e.ReleasedOn, e.Extras);
+    public static object?[] Values(global::GoldenFixtures.GoldenBook e) => OrmExec.Row(
+        e.Id,
+        e.AuthorId,
+        e.EditorId,
+        e.Title,
+        e.Pages,
+        e.Copies,
+        e.Weight,
+        e.Price,
+        e.InPrint,
+        e.Format,
+        e.PublishedAt,
+        e.ReleasedOn,
+        e.Extras);
 
     public static string Column(string prop) => Descriptor.ColumnOf(prop);
 
-    public static global::Neemle.OrmLite.Query<global::GoldenFixtures.GoldenBook> Query(global::Neemle.OrmLite.
-        OrmContext db)
+    public static global::Neemle.OrmLite.Query<global::GoldenFixtures.GoldenBook> Query(
+        global::Neemle.OrmLite.OrmContext db)
     {
         return new global::Neemle.OrmLite.Query<global::GoldenFixtures.GoldenBook>(db, Map);
     }
 
     internal static void RegisterGraph()
     {
-        GraphModel.Register<global::GoldenFixtures.GoldenBook>(new global::Neemle.OrmLite.GraphEntityBinding<global::
-            GoldenFixtures.GoldenBook>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::
-            GoldenFixtures.GoldenBook, global::System.Guid>("id", (e) => e.Id), new global::Neemle.OrmLite.
-            GraphReferenceBinding<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.GoldenAuthor, global::System
-            .Guid>("Author", "author_id", (e) => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(true, e.
-            AuthorId), (e, @value) => e.Author = @value), new global::Neemle.OrmLite.GraphReferenceBinding<global::
-            GoldenFixtures.GoldenBook, global::GoldenFixtures.GoldenAuthor, global::System.Guid>("Editor", "editor_id",
-            (e) => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(e.EditorId != null, e.EditorId.
-            GetValueOrDefault()), (e, @value) => e.Editor = @value)));
+        GraphModel.Register<global::GoldenFixtures.GoldenBook>(
+            new global::Neemle.OrmLite.GraphEntityBinding<global::GoldenFixtures.GoldenBook>(
+                Descriptor,
+                Map,
+                new global::Neemle.OrmLite.GraphKeyBinding<global::GoldenFixtures.GoldenBook, global::System.Guid>(
+                    "id",
+                    e => e.Id),
+                new global::Neemle.OrmLite.GraphReferenceBinding<
+                    global::GoldenFixtures.GoldenBook,
+                    global::GoldenFixtures.GoldenAuthor,
+                    global::System.Guid>(
+                    "Author",
+                    "author_id",
+                    e => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(true, e.AuthorId),
+                    (e, value) => e.Author = value),
+                new global::Neemle.OrmLite.GraphReferenceBinding<
+                    global::GoldenFixtures.GoldenBook,
+                    global::GoldenFixtures.GoldenAuthor,
+                    global::System.Guid>(
+                    "Editor",
+                    "editor_id",
+                    e => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(
+                        e.EditorId != null,
+                        e.EditorId.GetValueOrDefault()),
+                    (e, value) => e.Editor = value)));
     }
 
     public static class Paths
     {
-        public static global::Neemle.OrmLite.GraphPath<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
-            GoldenAuthor> Author => GraphPaths.Edge<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
-            GoldenAuthor>("Author");
+        public static global::Neemle.OrmLite.GraphPath<
+            global::GoldenFixtures.GoldenBook,
+            global::GoldenFixtures.GoldenAuthor> Author => GraphPaths.Edge<
+            global::GoldenFixtures.GoldenBook,
+            global::GoldenFixtures.GoldenAuthor>("Author");
 
-        public static global::Neemle.OrmLite.GraphPath<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
-            GoldenAuthor> Editor => GraphPaths.Edge<global::GoldenFixtures.GoldenBook, global::GoldenFixtures.
-            GoldenAuthor>("Editor");
+        public static global::Neemle.OrmLite.GraphPath<
+            global::GoldenFixtures.GoldenBook,
+            global::GoldenFixtures.GoldenAuthor> Editor => GraphPaths.Edge<
+            global::GoldenFixtures.GoldenBook,
+            global::GoldenFixtures.GoldenAuthor>("Editor");
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        GoldenFixtures.GoldenBook e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::GoldenFixtures.GoldenBook e)
     {
         await OrmExec.InsertAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        GoldenFixtures.GoldenBook e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::GoldenFixtures.GoldenBook e)
     {
         await OrmExec.UpdateAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
         global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::GoldenFixtures.GoldenBook e)
     {
         await OrmExec.InsertAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<global::GoldenFixtures.GoldenBook?> GetAsync(global::Neemle.
-        OrmLite.OrmContext db, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::GoldenFixtures.GoldenBook?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task<global::GoldenFixtures.GoldenBook?> GetAsync(global::Neemle.
-        OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::GoldenFixtures.GoldenBook?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, conn, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::GoldenFixtures.GoldenBook e)
     {
         await OrmExec.UpdateAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task LoadAuthorAsync(global::Neemle.OrmLite.OrmContext db, global
-        ::System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e)
+    public static async global::System.Threading.Tasks.Task LoadAuthorAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::GoldenFixtures.GoldenBook e)
     {
         e.Author = await GoldenAuthorOrm.GetAsync(db, conn, e.AuthorId);
     }
 
-    public static async global::System.Threading.Tasks.Task LoadEditorAsync(global::Neemle.OrmLite.OrmContext db, global
-        ::System.Data.Common.DbConnection conn, global::GoldenFixtures.GoldenBook e)
+    public static async global::System.Threading.Tasks.Task LoadEditorAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::GoldenFixtures.GoldenBook e)
     {
         if (e.EditorId == null)
         {
