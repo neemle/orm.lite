@@ -40,29 +40,24 @@ public sealed class UnitOfWork : IAsyncDisposable
     internal static Task<UnitOfWork> BeginGraphSaveAsync(OrmContext context, CancellationToken ct) =>
         BeginCoreAsync(context, ct, true);
 
+    // The writer key is read before the transaction begins, so a provider that cannot name it leaves nothing open; the
+    // mark carries it only once the transaction has begun. Any failure closes the mark.
     private static async Task<UnitOfWork> BeginMarkedAsync(OrmContext context, CancellationToken ct, WriterFlowMark mark)
     {
-        UnitOfWork unit;
         try
         {
-            unit = await BeginCoreAsync(context, ct, false);
+            ArgumentNullException.ThrowIfNull(context);
+            var key = (context.Provider as IMaintenanceProvider)?.WriterKeyOf(context.DataSource);
+            var unit = await BeginCoreAsync(context, ct, false);
+            unit._mark = mark;
+            mark.Key = key;
+            return unit;
         }
         catch
         {
             mark.Close();
             throw;
         }
-        unit._mark = mark;
-        try
-        {
-            mark.Key = (context.Provider as IMaintenanceProvider)?.WriterKeyOf(context.DataSource);
-        }
-        catch
-        {
-            await unit.DisposeAsync();
-            throw;
-        }
-        return unit;
     }
 
     private static async Task<UnitOfWork> BeginCoreAsync(OrmContext context, CancellationToken ct, bool graphSave)

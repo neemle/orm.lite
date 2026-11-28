@@ -41,7 +41,7 @@ public sealed class WalPipelineCoverageTests
         probe.Close();
     }
 
-    [Fact(DisplayName = "ORML-137 a UnitOfWork whose writer key cannot be read is disposed and its mark closed")]
+    [Fact(DisplayName = "ORML-137 a UnitOfWork whose writer key cannot be read opens nothing and closes its mark")]
     public async Task A_failed_writer_key_disposes_the_unit()
     {
         await using var db = await WalFixture.WithItemsAsync(0);
@@ -54,7 +54,7 @@ public sealed class WalPipelineCoverageTests
         Assert.Null(probe.Previous);
         probe.Close();
 
-        // The unit was disposed: its writer gate is free for the next write.
+        // Nothing was left open: the next write proceeds.
         await db.WriteAsync().WaitAsync(SqliteMaintenanceDatabase.Margin);
     }
 
