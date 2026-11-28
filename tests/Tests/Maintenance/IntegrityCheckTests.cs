@@ -81,7 +81,7 @@ public sealed class IntegrityCleanTests
         Assert.True(result.IsComplete);
         Assert.Equal(mode, result.Mode);
         var statement = Assert.Single(db.Sink.Maintenance);
-        Assert.Equal(nameof(MaintenanceOperation.IntegrityCheck), statement.Operation);
+        Assert.Equal(MaintenanceOperation.IntegrityCheck, statement.Operation);
         Assert.DoesNotContain("Data Source", statement.Text, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain(db.Path, statement.Text, StringComparison.Ordinal);
     }

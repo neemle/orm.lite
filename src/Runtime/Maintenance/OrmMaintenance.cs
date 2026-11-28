@@ -81,7 +81,8 @@ public sealed partial class OrmMaintenance
         {
             using (DbLane.Enter(DbLaneKind.Ops))
             {
-                await using var connection = await source.OpenConnectionAsync(ct);
+                if (await OpenWithinAsync(source, step.Port, budget, ct) is not { } opened) return step.Busy();
+                await using var connection = opened;
                 var guard = step.Port.RenderLockGuard(budget.Remaining);
                 try
                 {
@@ -107,6 +108,27 @@ public sealed partial class OrmMaintenance
         finally
         {
             if (lease.Release is { } release) await release.DisposeAsync();
+        }
+    }
+
+    // ADR D12.2: opening the connection spends the same budget. The budget running out while the caller's token is live,
+    // or a failure the provider calls contention, is null: the caller reports Busy. Anything else propagates.
+    private static async Task<DbConnection?> OpenWithinAsync(
+        DbDataSource source, IMaintenanceProvider port, MaintenanceBudget budget, CancellationToken ct)
+    {
+        using var deadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        deadline.CancelAfter(budget.Remaining);
+        try
+        {
+            return await source.OpenConnectionAsync(deadline.Token);
+        }
+        catch (OperationCanceledException) when (!ct.IsCancellationRequested && deadline.IsCancellationRequested)
+        {
+            return null;
+        }
+        catch (DbException failure) when (!ct.IsCancellationRequested && port.IsContention(failure))
+        {
+            return null;
         }
     }
 

@@ -39,8 +39,29 @@ Every operation runs in the same order:
    `UnitOfWork` take, so it is never a second lock. If the gate is not free within the budget the call returns
    `MaintenanceStatus.Busy` without opening a connection.
 6. The statement runs on its own connection from the Ops lane, outside any transaction. A unit of work's connection
-   is never reused, and the call does not consume Request-lane admission.
+   is never reused, and the call does not consume Request-lane admission. Opening that connection spends the same
+   budget: if the budget runs out while the connection is still opening, or the open fails with contention, the call
+   returns `MaintenanceStatus.Busy` and releases the gate.
 7. The gate and the connection are released on success, failure and cancellation.
+
+The refusal in step 4 sees a unit of work only in the flow that began it. The library marks the flow when
+`UnitOfWork.BeginAsync` is called, and that mark travels with the async flow into the methods it calls, not back out of
+them. A unit of work begun inside an `async` helper, or inside `Task.Run`, and handed back to its caller therefore
+leaves the caller's flow unmarked. A writing operation called there is not refused: it waits for the writer gate the
+unit of work holds, for at most its budget, and then returns `MaintenanceStatus.Busy`. It never waits past the budget,
+and the gate is free again once the unit of work ends. To keep the refusal, begin the unit of work in the flow that uses
+it:
+
+```csharp
+// Refused with InvalidOperationException: the unit of work was begun in this flow.
+await using var unit = await UnitOfWork.BeginAsync(db);
+await db.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(WalCheckpointMode.Truncate));
+
+// Not refused: the unit of work was begun in another flow and returned. The call waits for the gate for its budget
+// and returns Busy.
+await using var handedBack = await Task.Run(() => UnitOfWork.BeginAsync(db));
+var busy = await db.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(WalCheckpointMode.Truncate));
+```
 
 `Timeout` on a request is ONE budget for the whole call: every gate wait, every lock wait and every statement spend
 from it, also when an operation runs more than one statement (VACUUM on SQLite checkpoints first). It defaults to the

@@ -35,10 +35,10 @@ public sealed record StatementEvent(
     Exception? Error)
 {
     /// <summary>
-    /// The maintenance operation a <see cref="StatementKind.Maintenance"/> statement ran for (a
-    /// <see cref="MaintenanceOperation"/> name); null for every other statement.
+    /// The maintenance operation a <see cref="StatementKind.Maintenance"/> statement ran for; null for every other
+    /// statement.
     /// </summary>
-    public string? Operation { get; init; }
+    public MaintenanceOperation? Operation { get; init; }
 }
 
 public sealed record TransactionEvent(

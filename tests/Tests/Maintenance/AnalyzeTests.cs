@@ -297,7 +297,7 @@ public sealed class AnalyzeFailureTests
         await db.Maintenance.AnalyzeAsync(AnalyzeFixture.Table(AnalyzeFixture.A));
 
         var statement = Assert.Single(db.Sink.Maintenance);
-        Assert.Equal(nameof(MaintenanceOperation.Analyze), statement.Operation);
+        Assert.Equal(MaintenanceOperation.Analyze, statement.Operation);
         Assert.Equal("ANALYZE main.\"a\"", statement.Text);
         Assert.DoesNotContain("Data Source", statement.Text, StringComparison.OrdinalIgnoreCase);
     }
