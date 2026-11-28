@@ -67,14 +67,14 @@ internal sealed class OrmDiagnostics
 
     internal async Task<T> RunAsync<T>(
         DbCommand command, StatementKind kind, GatedDataSource.Lease lease,
-        Func<DbCommand, CancellationToken, Task<T>> run, Func<T, int?> rows, CancellationToken ct, string? operation = null)
+        Func<DbCommand, CancellationToken, Task<T>> run, Func<T, int?> rows, CancellationToken ct, MaintenanceOperation? operation = null)
     {
         using var activity = Source.StartActivity("orm.statement", ActivityKind.Client);
         if (activity is { IsAllDataRequested: true })
         {
             activity.SetTag("db.system", _provider);
             activity.SetTag("db.statement", command.CommandText);
-            if (operation is not null) activity.SetTag(OperationTag, operation);
+            if (operation is { } named) activity.SetTag(OperationTag, named.ToString());
         }
         if (_sink is null) return await run(command, ct);
 
@@ -157,7 +157,7 @@ internal sealed class OrmDiagnostics
     internal string Provider => _provider;
 
     private void Report(DbCommand command, StatementKind kind, GatedDataSource.Lease lease, TimeSpan elapsed, int? affected, Exception? error,
-        string? operation)
+        MaintenanceOperation? operation)
     {
         var trace = lease.Transaction;
         trace?.Count();
@@ -216,7 +216,7 @@ internal static class DbCommandDiagnostics
         this DbCommand command, MaintenanceOperation operation, CancellationToken ct) =>
         Lease(command) is { } lease
             ? lease.Diagnostics.RunAsync(command, StatementKind.Maintenance, lease,
-                static (c, t) => c.ExecuteReaderAsync(t), static _ => null, ct, operation.ToString())
+                static (c, t) => c.ExecuteReaderAsync(t), static _ => null, ct, operation)
             : command.ExecuteReaderAsync(ct);
 
     internal static Task<int> RunGraphSaveNonQueryAsync(this DbCommand command, CancellationToken ct) =>

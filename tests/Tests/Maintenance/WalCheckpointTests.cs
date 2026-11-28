@@ -473,7 +473,7 @@ public sealed class WalCheckpointDiagnosticsTests
 
         var statement = Assert.Single(db.Sink.Maintenance);
         Assert.Equal(StatementKind.Maintenance, statement.Kind);
-        Assert.Equal(nameof(MaintenanceOperation.WalCheckpoint), statement.Operation);
+        Assert.Equal(MaintenanceOperation.WalCheckpoint, statement.Operation);
         Assert.Equal("sqlite", statement.Provider);
         Assert.DoesNotContain("Data Source", statement.Text, StringComparison.OrdinalIgnoreCase);
         Assert.DoesNotContain(db.Path, statement.Text, StringComparison.Ordinal);

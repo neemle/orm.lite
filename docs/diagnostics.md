@@ -20,8 +20,8 @@ transaction ids, and the transaction begin, commit and rollback events to a sink
 those over a threshold, or a sample.
 
 A statement run by [`OrmContext.Maintenance`](maintenance.md) arrives with `Kind = StatementKind.Maintenance` and
-`Operation` set to the maintenance operation it ran for (for example `WalCheckpoint`); `Operation` is null on every
-other statement.
+`Operation` set to the `MaintenanceOperation` it ran for (for example `MaintenanceOperation.WalCheckpoint`); `Operation`
+is null on every other statement. The OpenTelemetry activity carries the operation's name in the `orm.operation` tag.
 
 ## Parameter values and redaction
 

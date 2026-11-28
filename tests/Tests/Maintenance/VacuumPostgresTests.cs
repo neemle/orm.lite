@@ -127,7 +127,7 @@ public sealed class PostgresVacuumExecutionTests
         Assert.Equal(["VACUUM", "VACUUM \"vac_notes\"", "VACUUM (FULL) \"vac_notes\""], db.Sink.Maintenance.Select(s => s.Text));
         Assert.All(db.Sink.Maintenance, s =>
         {
-            Assert.Equal(nameof(MaintenanceOperation.Vacuum), s.Operation);
+            Assert.Equal(MaintenanceOperation.Vacuum, s.Operation);
             Assert.Null(s.TransactionId);
             Assert.Null(s.Error);
             Assert.DoesNotContain("Host=", s.Text, StringComparison.OrdinalIgnoreCase);

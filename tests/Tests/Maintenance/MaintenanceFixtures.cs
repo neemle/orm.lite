@@ -22,7 +22,7 @@ internal sealed class MaintenanceSink : IOrmDiagnosticsSink
     internal IReadOnlyList<StatementEvent> Maintenance =>
         _statements.Where(s => s.Kind == StatementKind.Maintenance).ToList();
 
-    internal IReadOnlyList<string?> Operations => Maintenance.Select(s => s.Operation).ToList();
+    internal IReadOnlyList<string?> Operations => Maintenance.Select(s => s.Operation?.ToString()).ToList();
 
     internal void Clear() => _statements.Clear();
 }
@@ -82,7 +82,10 @@ internal sealed partial class TunedSqliteProvider(CapabilitySet capabilities) : 
     public ValueTask<MaintenanceWriteLease> TryEnterWriteAsync(DbDataSource source, TimeSpan timeout, CancellationToken ct) =>
         Inner.TryEnterWriteAsync(source, timeout, ct);
 
-    public string RenderWalCheckpoint(WalCheckpointMode mode) => Inner.RenderWalCheckpoint(mode);
+    // A statement text that replaces SQLite's checkpoint.
+    internal string? CheckpointText { get; init; }
+
+    public string RenderWalCheckpoint(WalCheckpointMode mode) => CheckpointText ?? Inner.RenderWalCheckpoint(mode);
 }
 
 // Runs an action, in the flow that set it, when the library starts a statement activity: the statement's gate (if any) is

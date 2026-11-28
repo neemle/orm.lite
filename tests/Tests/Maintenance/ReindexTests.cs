@@ -145,7 +145,7 @@ public sealed class ReindexSqlitePreservationTests
         var duplicate = await Assert.ThrowsAsync<SqliteException>(() => db.ExecAsync("INSERT INTO a (u, k) VALUES ('u1', 'x')"));
         Assert.Equal(19, duplicate.SqliteErrorCode);
         Assert.Equal(["ok"], await db.DumpAsync("PRAGMA integrity_check"));
-        Assert.Equal(nameof(MaintenanceOperation.Reindex), Assert.Single(db.Sink.Maintenance).Operation);
+        Assert.Equal(MaintenanceOperation.Reindex, Assert.Single(db.Sink.Maintenance).Operation);
     }
 }
 
@@ -325,7 +325,7 @@ public sealed class ReindexFailureTests
         Assert.Equal("ix_a_u", result.Index);
         Assert.True(result.IsComplete);
         var statement = Assert.Single(db.Sink.Maintenance);
-        Assert.Equal(nameof(MaintenanceOperation.Reindex), statement.Operation);
+        Assert.Equal(MaintenanceOperation.Reindex, statement.Operation);
         Assert.Equal("REINDEX main.\"ix_a_u\"", statement.Text);
         Assert.DoesNotContain("Data Source", statement.Text, StringComparison.OrdinalIgnoreCase);
     }
