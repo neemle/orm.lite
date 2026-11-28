@@ -1,0 +1,2 @@
+# Tests of the Integration tier (tests/Integration/Neemle.OrmLite.Tests.Integration) that are skipped ON PURPOSE, one
+# per line: <class>.<test method> TAB <reason>. Empty: the CI step gives them their PostgreSQL, so a skip is a fault.

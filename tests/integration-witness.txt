@@ -1,0 +1,5 @@
+# Classes of the Integration tier that must have a Passed result in the Integration step of the CI test job, one per
+# line: <class> TAB <reason>. The PostgreSQL classes skip without ORMLITE_TEST_POSTGRES, so this list is what proves
+# they ran. Written by hand from the test source, never captured from a run; compared byte for byte.
+Neemle.OrmLite.Tests.Integration.Joins.PostgresTypedJoinTests	typed INNER and LEFT joins and the predicate depth bound on a real PostgreSQL (ORML-149, ORML-151)
+Neemle.OrmLite.Tests.Integration.Joins.SqliteTypedJoinTests	typed INNER and LEFT joins and the predicate depth bound on a real SQLite (ORML-149, ORML-151)

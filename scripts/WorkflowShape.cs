@@ -290,12 +290,15 @@ void GateStep(string run, List<string> f)
         if (!run.Contains(token, StringComparison.Ordinal)) f.Add("the gate step lacks `" + token + "`");
 }
 
+// The variable belongs on the env of the main test step and of the Integration-tier test step of job test, nowhere else.
 void Variable(List<Node> n, int job, List<string> f)
 {
     var steps = Kids(n, Kid(n, job, "steps"));
     var test = Find(n, steps, "dotnet test");
+    var integration = Find(n, steps, "dotnet test tests/Integration/");
+    var owners = new[] { test, integration }.Where(s => s >= 0).Select(s => steps[s]).ToHashSet();
     foreach (var i in Enumerable.Range(0, n.Count).Where(i => n[i].Key == "ORMLITE_TEST_POSTGRES"))
-        if (n[n[i].Parent].Key != "env" || test < 0 || n[n[i].Parent].Parent != steps[test])
+        if (n[n[i].Parent].Key != "env" || !owners.Contains(n[n[i].Parent].Parent))
             f.Add($"line {n[i].Line}: ORMLITE_TEST_POSTGRES belongs on the env of the test step of job test only");
     foreach (var x in n.Where(x => x.Key.StartsWith("ORMLITE_TEST_PG_", StringComparison.Ordinal)))
         f.Add($"line {x.Line}: {x.Key} must not be set in ci.yml (the defaults of tests/compose.yaml are the policy)");
@@ -341,6 +344,10 @@ string FxTest() => """
           dotnet test Neemle.OrmLite.slnx -c Release --no-build --logger "trx;LogFileName=tests.trx"
           --results-directory TestResults --blame-crash --blame-hang-timeout 10m
       - run: dotnet run scripts/SkipGate.cs -- check TestResults/tests.trx tests/skip-allowlist.txt --require-postgres w
+      - name: Integration
+        env:
+          ORMLITE_TEST_POSTGRES: Host=127.0.0.1;Port=55433;Username=postgres
+        run: dotnet test tests/Integration/I.csproj --no-build
 """ + "\n";
 
 string FxAot() => """
@@ -508,6 +515,7 @@ List<Case> StepCases() => Cases("""
     variable removed~drop~ORMLITE_TEST_POSTGRES~~does not set ORMLITE_TEST_POSTGRES
     variable blank~sub~Host=127.0.0.1;Port=55433;Username=postgres~""~non-blank
     variable at job level~ins~    timeout-minutes: 30~    env:\n      ORMLITE_TEST_POSTGRES: Host=a~belongs on the env
+    variable on an Integration step that runs another project~sub~tests/Integration/I.csproj~tests/Other/I.csproj~belongs on the env
     variable on the demo job~ins@demo~  demo-postgres:~    env:\n      ORMLITE_TEST_POSTGRES: Host=a~belongs on the env
     no logger~sub~ --logger "trx;LogFileName=tests.trx"~~lacks `trx;LogFileName=tests.trx`
     another log file name~sub~LogFileName=tests.trx~LogFileName=other.trx~lacks `trx;LogFileName=tests.trx`
