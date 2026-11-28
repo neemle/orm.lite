@@ -11,11 +11,11 @@ public sealed class SaveSdkSelectionTests
     public void Compatible_sdk_versions_are_ordered_numerically(int major, string expected, string names)
     {
         var paths = names.Split(',').Select(name => Path.Combine("sdk", name)).ToArray();
-        Assert.Equal(Path.Combine("sdk", expected), SaveSdkCompiler.LatestSdk(paths, major));
-        Assert.Equal(Path.Combine("sdk", expected), SaveSdkCompiler.LatestSdk(paths.Reverse(), major));
+        Assert.Equal(Path.Combine("sdk", expected), SdkFixtureCompiler.LatestSdk(paths, major));
+        Assert.Equal(Path.Combine("sdk", expected), SdkFixtureCompiler.LatestSdk(paths.Reverse(), major));
     }
 
     [Fact(DisplayName = "SDK fixture compiler refuses an installation with only older runtimes")]
     public void An_incompatible_sdk_is_not_used_as_a_fallback() =>
-        Assert.Throws<InvalidOperationException>(() => SaveSdkCompiler.LatestSdk(["8.0.428", "9.0.305"], 10));
+        Assert.Throws<InvalidOperationException>(() => SdkFixtureCompiler.LatestSdk(["8.0.428", "9.0.305"], 10));
 }
