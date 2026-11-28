@@ -1,11 +1,12 @@
-using System.Text.RegularExpressions;
 using Xunit;
 
 namespace Neemle.OrmLite.Tests.Gates;
 
 public sealed class GeneratorComposerOnlyTests
 {
-    private static readonly Regex RawEscape = new(@"\bRaw[A-Z][A-Za-z]*\s*\(|\bCs\s*\.\s*Parse(Tree)?\s*\(|\.\s*Reformat\s*\(", RegexOptions.CultureInvariant);
+    // The guard resolves calls with Roslyn rather than matching text: see ComposerEscapeScan.
+    private static IReadOnlyList<string> Escapes(IEnumerable<(string Path, string Text)> sources) =>
+        ComposerEscapeScan.Find(sources);
 
     private static string GeneratorDirectory() => Path.Combine(RuntimeSources.LibraryRoot(), "src", "Generator");
 
@@ -14,9 +15,7 @@ public sealed class GeneratorComposerOnlyTests
     [Fact(DisplayName = "no source of the generator calls a Composer Raw escape, parses text into a document or reformats one")]
     public void No_generator_source_uses_a_raw_escape()
     {
-        var hits = Sources()
-            .SelectMany(f => RawEscape.Matches(File.ReadAllText(f)).Select(m => Path.GetFileName(f) + ": " + m.Value))
-            .ToList();
+        var hits = Escapes(Sources().Select(f => (f, File.ReadAllText(f))));
 
         Assert.True(hits.Count == 0, string.Join("\n", hits));
     }
@@ -29,7 +28,8 @@ public sealed class GeneratorComposerOnlyTests
     [InlineData("builder.RawBody(\"x\");")]
     [InlineData("var p = Cs.Parse(text);")]
     [InlineData("var d = document.Reformat();")]
-    public void The_guard_catches_planted_escapes(string planted) => Assert.Matches(RawEscape, planted);
+    public void The_guard_catches_planted_escapes(string planted) =>
+        Assert.True(Escapes([("Planted.cs", planted)]).Count > 0, "the guard did not report: " + planted);
 
     [Fact(DisplayName = "the generator holds no template engine, no template file and no embedded resource, and the runtime no [Sql] or [Repository] attribute")]
     public void No_template_remains()
@@ -56,6 +56,6 @@ public sealed class GeneratorComposerOnlyTests
         Assert.Contains("<PackageReference Include=\"Neemle.CSharpComposer\" Version=\"$(OrmLiteComposerVersion)\"",
             project, StringComparison.Ordinal);
         var props = File.ReadAllText(Path.Combine(RuntimeSources.LibraryRoot(), "Directory.Build.props"));
-        Assert.Contains("<OrmLiteComposerVersion>0.5.0</OrmLiteComposerVersion>", props, StringComparison.Ordinal);
+        Assert.Contains("<OrmLiteComposerVersion>0.6.0</OrmLiteComposerVersion>", props, StringComparison.Ordinal);
     }
 }

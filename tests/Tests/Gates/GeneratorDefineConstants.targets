@@ -1,0 +1,10 @@
+<Project>
+
+  <!-- Imported into the Generator project only by tests/Tests/Tests.csproj (through CustomAfterMicrosoftCommonTargets),
+       never by the Generator's own build. It returns the preprocessor symbols that project compiles with once the SDK
+       has added its implicit ones (NET, NET10_0, NET10_0_OR_GREATER, ...), so the composer-only gate parses the
+       generator's sources exactly as its build does. -->
+  <Target Name="OrmLiteGeneratorDefineConstants" DependsOnTargets="AddImplicitDefineConstants"
+          Returns="$(DefineConstants)" />
+
+</Project>

@@ -113,6 +113,8 @@ public sealed class OrmGenerator : IIncrementalGenerator
 
         public GraphSave.SaveSafetyFacts? SaveSafety { get; init; }
 
+        public Orphans.OrphanSafetyFacts? OrphanSafety { get; init; }
+
         public EquatableArray<OneToOneIntent> OneToOneIntents { get; init; } = default;
 
         public EquatableArray<OneToOneModel> OneToOnePairs { get; init; } = default;
