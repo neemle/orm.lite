@@ -5,6 +5,28 @@ are listed here. The three packages always carry one version.
 
 ## Unreleased
 
+### Added
+
+- `OrmContext.Maintenance` runs explicit database maintenance through the optional `IMaintenanceProvider` port
+  ([maintenance](docs/maintenance.md)). `CheckpointWalAsync` checkpoints a SQLite WAL in an explicit mode (`Passive`,
+  `Full`, `Restart`, `Truncate`) and returns a structured `WalCheckpointResult`; PostgreSQL refuses it
+  (`Capability.WalCheckpoint` is `None`). Diagnostics report maintenance statements as `StatementKind.Maintenance` with
+  `StatementEvent.Operation` naming the operation.
+- `OrmContext.Maintenance.VacuumAsync` runs VACUUM in an explicit `VacuumMode` (`Plain`, or `Full` on PostgreSQL), of
+  the whole database or of one table on PostgreSQL. On SQLite it checkpoints the WAL (`Truncate`) first and reports
+  `NotRun` when a reader holds the log. New capabilities `Vacuum`, `VacuumFull`, `VacuumTable`; `PostgresProvider` now
+  implements `IMaintenanceProvider` (`DefaultMaintenanceTimeout` 30 s, a `lock_timeout` guard, SQLSTATE 55P03 reported as
+  `Busy`). `ThrowIfNotComplete()` turns an incomplete result into `MaintenanceIncompleteException`.
+- `OrmContext.Maintenance.AnalyzeAsync` refreshes planner statistics for the whole database or one table
+  (`AnalyzeScope`), on SQLite and PostgreSQL (`Capability.Analyze`). SQLite takes the writer gate; contention is `Busy`.
+- `OrmContext.Maintenance.ReindexAsync` rebuilds the indexes of the database, a table or one declared index
+  (`ReindexScope`) in an explicit `ReindexMode` (`Blocking`, or `Concurrent` on PostgreSQL). New capabilities `Reindex`
+  and `ReindexConcurrently` (SQLite `None`, refused and never downgraded). The library never drops a leftover `_ccnew`
+  index.
+- `OrmContext.Maintenance.CheckIntegrityAsync` runs SQLite's `integrity_check`, `quick_check` or `foreign_key_check`
+  (`IntegrityCheckMode`) of the database or one table and returns structured findings (`IssuesFound`), bounded by
+  `MaxFindings`. Read-only and gate-free. New capability `IntegrityCheck` (PostgreSQL `None`).
+
 ### Dependencies
 
 - `Neemle.OrmLite` now depends on Neemle.CSharpComposer 0.6.0 (was 0.5.0), which the generator renders through. Its

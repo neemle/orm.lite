@@ -857,6 +857,148 @@ public abstract class BehaviourSuite<TFixture>(TFixture fixture) : IClassFixture
             }));
     }
 
+    [SkippableFact(DisplayName = "a truncating WAL checkpoint of the shared database completes and leaves an empty log, or is refused before any connection opens")]
+    public async Task Capability_WalCheckpoint()
+    {
+        await ForCapabilityAsync(
+            Capability.WalCheckpoint,
+            async () =>
+            {
+                await Fixture.ExecuteAsync("INSERT INTO behave_counters VALUES ('wal-" + Guid.NewGuid().ToString("N") + "', 1)");
+
+                var result = await Ctx.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(WalCheckpointMode.Truncate));
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(result.WalFrames, result.CheckpointedFrames);
+            },
+            ctx => RefusedAsync(Capability.WalCheckpoint,
+                () => ctx.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(WalCheckpointMode.Passive))));
+    }
+
+    [SkippableFact(DisplayName = "a plain VACUUM of the whole shared database completes, or is refused before any connection opens")]
+    public async Task Capability_Vacuum()
+    {
+        await ForCapabilityAsync(
+            Capability.Vacuum,
+            async () =>
+            {
+                var result = await Ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain));
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(MaintenanceOperation.Vacuum, result.Operation);
+            },
+            ctx => RefusedAsync(Capability.Vacuum, () => ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain))));
+    }
+
+    [SkippableFact(DisplayName = "VACUUM (FULL) of one table keeps its rows, or is refused by name before any connection opens")]
+    public async Task Capability_VacuumFull()
+    {
+        var counters = EntityDescriptor.Of("BehaveCounter", "behave_counters", true);
+        await ForCapabilityAsync(
+            Capability.VacuumFull,
+            async () =>
+            {
+                var id = Guid.NewGuid().ToString();
+                await Fixture.ExecuteAsync("INSERT INTO behave_counters VALUES ('" + id + "', 7)");
+
+                var result = await Ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Full) { Table = counters });
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(7L, Convert.ToInt64((await Fixture.RowsAsync("SELECT n FROM behave_counters WHERE id = '" + id + "'"))[0][0], System.Globalization.CultureInfo.InvariantCulture));
+            },
+            ctx => RefusedAsync(Capability.VacuumFull, () => ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Full))));
+    }
+
+    [SkippableFact(DisplayName = "a plain VACUUM of one table completes, or is refused by name before any connection opens")]
+    public async Task Capability_VacuumTable()
+    {
+        var counters = EntityDescriptor.Of("BehaveCounter", "behave_counters", true);
+        await ForCapabilityAsync(
+            Capability.VacuumTable,
+            async () =>
+            {
+                var result = await Ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain) { Table = counters });
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal("behave_counters", result.Table);
+            },
+            ctx => RefusedAsync(Capability.VacuumTable,
+                () => ctx.Maintenance.VacuumAsync(new VacuumRequest(VacuumMode.Plain) { Table = counters })));
+    }
+
+    [SkippableFact(DisplayName = "ANALYZE of one table and of the whole shared database completes and changes no row, or is refused before any connection opens")]
+    public async Task Capability_Analyze()
+    {
+        var counters = EntityDescriptor.Of("BehaveCounter", "behave_counters", true);
+        await ForCapabilityAsync(
+            Capability.Analyze,
+            async () =>
+            {
+                var before = await Fixture.RowsAsync("SELECT id, n FROM behave_counters ORDER BY id");
+
+                var table = await Ctx.Maintenance.AnalyzeAsync(new AnalyzeRequest(AnalyzeScope.Table) { Table = counters });
+                var database = await Ctx.Maintenance.AnalyzeAsync(new AnalyzeRequest(AnalyzeScope.Database));
+
+                Assert.Equal(MaintenanceStatus.Completed, table.Status);
+                Assert.Equal(MaintenanceStatus.Completed, database.Status);
+                Assert.Equal(before, await Fixture.RowsAsync("SELECT id, n FROM behave_counters ORDER BY id"));
+            },
+            ctx => RefusedAsync(Capability.Analyze, () => ctx.Maintenance.AnalyzeAsync(new AnalyzeRequest(AnalyzeScope.Database))));
+    }
+
+    [SkippableFact(DisplayName = "a blocking REINDEX of one table keeps its rows and its unique index, or is refused before any connection opens")]
+    public async Task Capability_Reindex()
+    {
+        var notes = EntityDescriptor.Of("BehaveNote", "behave_notes", true);
+        await ForCapabilityAsync(
+            Capability.Reindex,
+            async () =>
+            {
+                var before = await Fixture.RowsAsync("SELECT id FROM behave_notes ORDER BY id");
+
+                var result = await Ctx.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Table, ReindexMode.Blocking) { Table = notes });
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(before, await Fixture.RowsAsync("SELECT id FROM behave_notes ORDER BY id"));
+            },
+            ctx => RefusedAsync(Capability.Reindex,
+                () => ctx.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Database, ReindexMode.Blocking))));
+    }
+
+    [SkippableFact(DisplayName = "a concurrent REINDEX of one table completes, or is refused by name and never downgraded before any connection opens")]
+    public async Task Capability_ReindexConcurrently()
+    {
+        var counters = EntityDescriptor.Of("BehaveCounter", "behave_counters", true);
+        await ForCapabilityAsync(
+            Capability.ReindexConcurrently,
+            async () =>
+            {
+                var result = await Ctx.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Table, ReindexMode.Concurrent) { Table = counters });
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Equal(ReindexMode.Concurrent, result.Mode);
+            },
+            ctx => RefusedAsync(Capability.ReindexConcurrently,
+                () => ctx.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Table, ReindexMode.Concurrent) { Table = counters })));
+    }
+
+    [SkippableFact(DisplayName = "a full integrity check of the sound shared database completes with no findings, or is refused before any connection opens")]
+    public async Task Capability_IntegrityCheck()
+    {
+        await ForCapabilityAsync(
+            Capability.IntegrityCheck,
+            async () =>
+            {
+                var result = await Ctx.Maintenance.CheckIntegrityAsync(new IntegrityCheckRequest(IntegrityCheckMode.Full));
+
+                Assert.Equal(MaintenanceStatus.Completed, result.Status);
+                Assert.Empty(result.Findings);
+                Assert.False(result.Truncated);
+            },
+            ctx => RefusedAsync(Capability.IntegrityCheck,
+                () => ctx.Maintenance.CheckIntegrityAsync(new IntegrityCheckRequest(IntegrityCheckMode.Full))));
+    }
+
     private static object? Normal(object? value) => value switch
     {
         long number => number,

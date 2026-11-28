@@ -18,6 +18,7 @@
 - [Migrations](migrations.md) — apply and revert schema changes and seed data.
 - [Soft delete and row history](row-history.md) — read history, restore rows, and scope by tenant.
 - [SQL diagnostics](diagnostics.md) — send statement and transaction events to a sink.
+- [Database maintenance](maintenance.md) — checkpoint the SQLite WAL, run VACUUM, ANALYZE, REINDEX and integrity checks on demand, with explicit modes and structured results.
 - [Examples](examples.md) — run the demo and find a complete example for a concrete task.
 
 ## Look up behavior

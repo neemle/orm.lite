@@ -30,6 +30,17 @@ namespace Neemle.OrmLite;
             _owned = owned;
         }
 
+        private OrmMaintenance? _maintenance;
+
+        /// <summary>
+        /// Explicit database maintenance (WAL checkpoint and the operations that follow it) for this context's database.
+        /// One instance per context, created on first use.
+        /// </summary>
+        public OrmMaintenance Maintenance =>
+            Volatile.Read(ref _maintenance)
+            ?? Interlocked.CompareExchange(ref _maintenance, new OrmMaintenance(this), null)
+            ?? _maintenance!;
+
         public const int PingTimeoutSeconds = 2;
 
         public async Task<bool> PingAsync()

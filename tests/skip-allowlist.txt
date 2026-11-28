@@ -9,3 +9,7 @@ Neemle.OrmLite.Tests.Behaviour.PostgresIndexTests.An_unknown_sqlite_collation_is
 # ScalarSuite.cs, Skip.IfNot sqlite: PostgreSQL hands a boolean over as Boolean, so reading it as a number is refused
 # there; the test pins the SQLite reading only.
 Neemle.OrmLite.Tests.Behaviour.PostgresScalarTests.A_bool_column_read_as_a_number_returns_one_on_sqlite	SQLite-only
+# AnalyzeIndexCollisionAttackTests.cs: a section 803 round-1 reviewer test that FAILS on SQLite ANALYZE of a dropped
+# table whose name an index of another table now carries. HELD under section 803.8: the TL routed the fix to follow-up
+# ORML-155, and the Skip is the HELD marker until it lands.
+Neemle.OrmLite.Tests.Maintenance.AnalyzeIndexCollisionAttackTests.Missing_table_with_matching_index_throws_native_error	HELD: ORML-155

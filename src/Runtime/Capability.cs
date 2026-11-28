@@ -24,6 +24,14 @@ public enum Capability
     IndexNullsOrdering,
     IndexCollation,
     IndexExpression,
+    WalCheckpoint,
+    Vacuum,
+    VacuumFull,
+    VacuumTable,
+    Analyze,
+    Reindex,
+    ReindexConcurrently,
+    IntegrityCheck,
 }
 
 public enum Support
