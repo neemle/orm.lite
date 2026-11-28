@@ -29,8 +29,10 @@ public class OrmLiteGoldenTests
             .Select(p => (MetadataReference)MetadataReference.CreateFromFile(p))
     ];
 
+    // Composer renders through its formatter and promises the same code, not the same bytes: the golden is compared as
+    // C# by GeneratedCodeEquivalence, so formatting may move while any token or meaningful trivia may not.
     [Fact]
-    public void The_generated_source_of_the_non_soft_fixture_entities_matches_the_golden_byte_for_byte()
+    public void The_generated_source_of_the_non_soft_fixture_entities_is_the_same_code_as_the_golden()
     {
         var root = RuntimeSources.LibraryRoot();
         var golden = Path.Combine(root, GoldenDirectory.Replace('/', Path.DirectorySeparatorChar));
@@ -38,9 +40,15 @@ public class OrmLiteGoldenTests
 
         if (Environment.GetEnvironmentVariable(RegenerateVariable) == "1")
         {
+            // A golden that is still the same code is kept as it is, so a formatting change never churns the pins.
             Directory.CreateDirectory(golden);
-            foreach (var stale in Directory.GetFiles(golden, "*" + GoldenSuffix)) File.Delete(stale);
-            foreach (var (name, text) in actual) File.WriteAllBytes(Path.Combine(golden, name + GoldenSuffix), Utf8(text));
+            foreach (var stale in Directory.GetFiles(golden, "*" + GoldenSuffix).Where(f => actual.All(a => a.Name + GoldenSuffix != Path.GetFileName(f))))
+                File.Delete(stale);
+            foreach (var (name, text) in actual)
+            {
+                var path = Path.Combine(golden, name + GoldenSuffix);
+                if (!File.Exists(path) || !GeneratedCodeEquivalence.AreEquivalent(File.ReadAllText(path), text)) File.WriteAllBytes(path, Utf8(text));
+            }
             return;
         }
 
@@ -52,16 +60,14 @@ public class OrmLiteGoldenTests
         {
             var path = Path.Combine(golden, name + GoldenSuffix);
             if (!File.Exists(path)) { problems.Add($"{name}: generated but has no golden file"); continue; }
-            var pinned = File.ReadAllBytes(path);
-            var generated = Utf8(text);
-            if (pinned.AsSpan().SequenceEqual(generated)) continue;
-            problems.Add($"{name}: {FirstDifference(Encoding.UTF8.GetString(pinned), text)}");
+            var difference = GeneratedCodeEquivalence.Difference(File.ReadAllText(path), text);
+            if (difference is not null) problems.Add($"{name}: {difference}");
         }
         foreach (var name in expectedNames.Where(n => actual.All(a => a.Name != n)))
             problems.Add($"{name}: pinned but no longer generated");
 
         Assert.True(problems.Count == 0,
-            "the generated source of the non-soft fixture entities no longer matches " + GoldenDirectory + ":\n  "
+            "the generated source of the non-soft fixture entities is no longer the same code as " + GoldenDirectory + ":\n  "
             + string.Join("\n  ", problems)
             + "\nIf the generator change is intended, regenerate with `" + RegenerateCommand + "`, review the diff of "
             + GoldenDirectory + " and commit it with the generator change.");
@@ -102,17 +108,4 @@ public class OrmLiteGoldenTests
             .Select(f => (Path.GetRelativePath(root, f).Replace('\\', '/'), File.ReadAllText(f)));
 
     private static byte[] Utf8(string text) => new UTF8Encoding(false).GetBytes(text);
-
-    private static string FirstDifference(string pinned, string generated)
-    {
-        var a = pinned.Split('\n');
-        var b = generated.Split('\n');
-        for (var i = 0; i < Math.Max(a.Length, b.Length); i++)
-        {
-            var left = i < a.Length ? a[i] : "<end of file>";
-            var right = i < b.Length ? b[i] : "<end of file>";
-            if (left != right) return $"line {i + 1} differs\n      golden:    {left.TrimEnd('\r')}\n      generated: {right.TrimEnd('\r')}";
-        }
-        return "differs only in bytes the line split does not show (BOM or line endings)";
-    }
 }

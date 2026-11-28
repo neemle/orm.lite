@@ -7,12 +7,17 @@ namespace Neemle.OrmLite.Generated;
 public static class OrchardOrm
 {
     public const string Table = "gn_orchards";
-
-    public static readonly global::Neemle.OrmLite.EntityDescriptor Descriptor = EntityDescriptor.Of("global::Orchard",
-        Table, true).Property("Id", "id", Nodes.ColumnType.Uuid, false, true).Property("Name", "name", Nodes.ColumnType.
-        Text, false, false).Property("Climate", "climate", Nodes.ColumnType.Text, false, false).Property("DeletedAt",
-        "deleted_at", Nodes.ColumnType.Timestamp, true, false).Index("ix_gn_orchards_name_live", true, true, "name").
-        SoftDelete("DeletedAt", "deleted_at", "orchard").Label("name");
+    public static readonly global::Neemle.OrmLite.EntityDescriptor Descriptor = EntityDescriptor.Of(
+        "global::Orchard",
+        Table,
+        true)
+        .Property("Id", "id", Nodes.ColumnType.Uuid, false, true)
+        .Property("Name", "name", Nodes.ColumnType.Text, false, false)
+        .Property("Climate", "climate", Nodes.ColumnType.Text, false, false)
+        .Property("DeletedAt", "deleted_at", Nodes.ColumnType.Timestamp, true, false)
+        .Index("ix_gn_orchards_name_live", true, true, "name")
+        .SoftDelete("DeletedAt", "deleted_at", "orchard")
+        .Label("name");
 
     public static global::Orchard Map(global::System.Data.Common.DbDataReader r)
     {
@@ -39,71 +44,91 @@ public static class OrchardOrm
 
     internal static void RegisterGraph()
     {
-        GraphModel.Register<global::Orchard>(new global::Neemle.OrmLite.GraphEntityBinding<global::Orchard>(Descriptor,
-            Map, new global::Neemle.OrmLite.GraphKeyBinding<global::Orchard, global::System.Guid>("id", (e) => e.Id),
-            new global::Neemle.OrmLite.GraphCollectionBinding<global::Orchard, global::Tree, global::System.Guid>(
-            "Trees", "orchard_id", (e) => e.Id, (e) => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(true, e.
-            OrchardId), (e, @value) => e.Trees = @value)));
+        GraphModel.Register<global::Orchard>(
+            new global::Neemle.OrmLite.GraphEntityBinding<global::Orchard>(
+                Descriptor,
+                Map,
+                new global::Neemle.OrmLite.GraphKeyBinding<global::Orchard, global::System.Guid>("id", e => e.Id),
+                new global::Neemle.OrmLite.GraphCollectionBinding<global::Orchard, global::Tree, global::System.Guid>(
+                    "Trees",
+                    "orchard_id",
+                    e => e.Id,
+                    e => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(true, e.OrchardId),
+                    (e, value) => e.Trees = value)));
     }
 
     public static class Paths
     {
-        public static global::Neemle.OrmLite.GraphPath<global::Orchard, global::Tree> Trees => GraphPaths.Edge<global::
-            Orchard, global::Tree>("Trees");
+        public static global::Neemle.OrmLite.GraphPath<global::Orchard, global::Tree> Trees => GraphPaths.Edge<
+            global::Orchard,
+            global::Tree>("Trees");
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        Orchard e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::Orchard e)
     {
         await OrmExec.InsertAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        Orchard e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::Orchard e)
     {
         await OrmExec.UpdateAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
         global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::Orchard e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::Orchard e)
     {
         await OrmExec.InsertAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<global::Orchard?> GetAsync(global::Neemle.OrmLite.
-        OrmContext db, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::Orchard?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task<global::Orchard?> GetAsync(global::Neemle.OrmLite.
-        OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::Orchard?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, conn, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::Orchard e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::Orchard e)
     {
         await OrmExec.UpdateAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task LoadTreesAsync(global::Neemle.OrmLite.OrmContext db, global
-        ::Orchard e)
+    public static async global::System.Threading.Tasks.Task LoadTreesAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::Orchard e)
     {
-        e.Trees = await TreeOrm.Query(db).Where((c) => c.OrchardId == e.Id).ToListAsync();
+        e.Trees = await TreeOrm.Query(db).Where(c => c.OrchardId == e.Id).ToListAsync();
     }
 
 public static global::System.Threading.Tasks.Task<global::Orchard?> GetAsync(global::Neemle.OrmLite.OrmContext db,

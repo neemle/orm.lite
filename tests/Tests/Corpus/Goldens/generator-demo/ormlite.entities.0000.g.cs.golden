@@ -7,14 +7,19 @@ namespace Neemle.OrmLite.Generated;
 public static class NoteOrm
 {
     public const string Table = "notes";
-
     public static readonly global::Neemle.OrmLite.EntityDescriptor Descriptor = EntityDescriptor.Of(
-        "global::OrmLiteDemo.Note", Table, true).Property("Id", "id", Nodes.ColumnType.Uuid, false, true).Property(
-        "TenantId", "tenant_id", Nodes.ColumnType.Uuid, false, false).Property("Title", "title", Nodes.ColumnType.Text,
-        false, false).Property("Body", "body", Nodes.ColumnType.Text, false, false).Property("Stars", "stars", Nodes.
-        ColumnType.Int32, false, false).Property("DeletedAt", "deleted_at", Nodes.ColumnType.Timestamp, true, false).
-        Index("ix_notes_tenant_id_title_live", true, true, "tenant_id", "title").SoftDelete("DeletedAt", "deleted_at",
-        "note").Tenant("tenant_id");
+        "global::OrmLiteDemo.Note",
+        Table,
+        true)
+        .Property("Id", "id", Nodes.ColumnType.Uuid, false, true)
+        .Property("TenantId", "tenant_id", Nodes.ColumnType.Uuid, false, false)
+        .Property("Title", "title", Nodes.ColumnType.Text, false, false)
+        .Property("Body", "body", Nodes.ColumnType.Text, false, false)
+        .Property("Stars", "stars", Nodes.ColumnType.Int32, false, false)
+        .Property("DeletedAt", "deleted_at", Nodes.ColumnType.Timestamp, true, false)
+        .Index("ix_notes_tenant_id_title_live", true, true, "tenant_id", "title")
+        .SoftDelete("DeletedAt", "deleted_at", "note")
+        .Tenant("tenant_id");
 
     public static global::OrmLiteDemo.Note Map(global::System.Data.Common.DbDataReader r)
     {
@@ -34,8 +39,13 @@ public static class NoteOrm
         return e;
     }
 
-    public static object?[] Values(global::OrmLiteDemo.Note e) => OrmExec.Row(e.Id, e.TenantId, e.Title, e.Body, e.Stars
-        , e.DeletedAt);
+    public static object?[] Values(global::OrmLiteDemo.Note e) => OrmExec.Row(
+        e.Id,
+        e.TenantId,
+        e.Title,
+        e.Body,
+        e.Stars,
+        e.DeletedAt);
 
     public static string Column(string prop) => Descriptor.ColumnOf(prop);
 
@@ -46,59 +56,75 @@ public static class NoteOrm
 
     internal static void RegisterGraph()
     {
-        GraphModel.Register<global::OrmLiteDemo.Note>(new global::Neemle.OrmLite.GraphEntityBinding<global::OrmLiteDemo.
-            Note>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::OrmLiteDemo.Note, global::System.
-            Guid>("id", (e) => e.Id)));
+        GraphModel.Register<global::OrmLiteDemo.Note>(
+            new global::Neemle.OrmLite.GraphEntityBinding<global::OrmLiteDemo.Note>(
+                Descriptor,
+                Map,
+                new global::Neemle.OrmLite.GraphKeyBinding<global::OrmLiteDemo.Note, global::System.Guid>(
+                    "id",
+                    e => e.Id)));
     }
 
     public static class Paths
     {
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        OrmLiteDemo.Note e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::OrmLiteDemo.Note e)
     {
         await OrmExec.InsertAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        OrmLiteDemo.Note e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::OrmLiteDemo.Note e)
     {
         await OrmExec.UpdateAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
         global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::OrmLiteDemo.Note e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::OrmLiteDemo.Note e)
     {
         await OrmExec.InsertAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<global::OrmLiteDemo.Note?> GetAsync(global::Neemle.OrmLite.
-        OrmContext db, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::OrmLiteDemo.Note?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task<global::OrmLiteDemo.Note?> GetAsync(global::Neemle.OrmLite.
-        OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::OrmLiteDemo.Note?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, conn, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::OrmLiteDemo.Note e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::OrmLiteDemo.Note e)
     {
         await OrmExec.UpdateAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }

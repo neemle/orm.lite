@@ -7,18 +7,27 @@ namespace Neemle.OrmLite.Generated;
 public static class ProjectOrm
 {
     public const string Table = "ce_projects";
-
     public static readonly global::Neemle.OrmLite.EntityDescriptor Descriptor = EntityDescriptor.Of(
-        "global::CorpusEntities.Project", Table, true).Property("Id", "id", Nodes.ColumnType.Uuid, false, true).Property
-        ("TenantId", "tenant_id", Nodes.ColumnType.Uuid, false, false).Property("Title", "title", Nodes.ColumnType.Text
-        , false, false).Property("State", "state", Nodes.ColumnType.Text, false, false).Property("UpdatedAt",
-        "updated_at", Nodes.ColumnType.Timestamp, false, false).Property("DeletedAt", "deleted_at", Nodes.ColumnType.
-        Timestamp, true, false).Index("ix_ce_projects_title", false, false, "title").Index(
-        "ix_ce_projects_tenant_id_title_live", true, true, "tenant_id", "title").Index("ix_projects_state", false, false
-        , "tenant_id", "state").Link("Labels", "ce_project_labels", "project_id", "label_id", "ce_labels", "id", null,
-        true).Link("Members", "ce_project_members", "project_id", "member_id", "ce_members", "id", "deleted_at", false).
-        SoftDelete("DeletedAt", "deleted_at", "project").Tenant("tenant_id").Label("title").Unversioned("updated_at").
-        Pinned("title").StatusColumns("state");
+        "global::CorpusEntities.Project",
+        Table,
+        true)
+        .Property("Id", "id", Nodes.ColumnType.Uuid, false, true)
+        .Property("TenantId", "tenant_id", Nodes.ColumnType.Uuid, false, false)
+        .Property("Title", "title", Nodes.ColumnType.Text, false, false)
+        .Property("State", "state", Nodes.ColumnType.Text, false, false)
+        .Property("UpdatedAt", "updated_at", Nodes.ColumnType.Timestamp, false, false)
+        .Property("DeletedAt", "deleted_at", Nodes.ColumnType.Timestamp, true, false)
+        .Index("ix_ce_projects_title", false, false, "title")
+        .Index("ix_ce_projects_tenant_id_title_live", true, true, "tenant_id", "title")
+        .Index("ix_projects_state", false, false, "tenant_id", "state")
+        .Link("Labels", "ce_project_labels", "project_id", "label_id", "ce_labels", "id", null, true)
+        .Link("Members", "ce_project_members", "project_id", "member_id", "ce_members", "id", "deleted_at", false)
+        .SoftDelete("DeletedAt", "deleted_at", "project")
+        .Tenant("tenant_id")
+        .Label("title")
+        .Unversioned("updated_at")
+        .Pinned("title")
+        .StatusColumns("state");
 
     public static global::CorpusEntities.Project Map(global::System.Data.Common.DbDataReader r)
     {
@@ -38,122 +47,196 @@ public static class ProjectOrm
         return e;
     }
 
-    public static object?[] Values(global::CorpusEntities.Project e) => OrmExec.Row(e.Id, e.TenantId, e.Title, e.State,
-        e.UpdatedAt, e.DeletedAt);
+    public static object?[] Values(global::CorpusEntities.Project e) => OrmExec.Row(
+        e.Id,
+        e.TenantId,
+        e.Title,
+        e.State,
+        e.UpdatedAt,
+        e.DeletedAt);
 
     public static string Column(string prop) => Descriptor.ColumnOf(prop);
 
-    public static global::Neemle.OrmLite.Query<global::CorpusEntities.Project> Query(global::Neemle.OrmLite.OrmContext
-        db)
+    public static global::Neemle.OrmLite.Query<global::CorpusEntities.Project> Query(
+        global::Neemle.OrmLite.OrmContext db)
     {
         return new global::Neemle.OrmLite.Query<global::CorpusEntities.Project>(db, Map);
     }
 
     internal static void RegisterGraph()
     {
-        GraphModel.Register<global::CorpusEntities.Project>(new global::Neemle.OrmLite.GraphEntityBinding<global::
-            CorpusEntities.Project>(Descriptor, Map, new global::Neemle.OrmLite.GraphKeyBinding<global::CorpusEntities.
-            Project, global::System.Guid>("id", (e) => e.Id), new global::Neemle.OrmLite.GraphCollectionBinding<global::
-            CorpusEntities.Project, global::CorpusEntities.WorkItem, global::System.Guid>("Tasks", "project_id", (e) =>
-            e.Id, (e) => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(true, e.ProjectId), (e, @value) => e.
-            Tasks = @value), new global::Neemle.OrmLite.GraphLinkBinding<global::CorpusEntities.Project, global::
-            CorpusEntities.Label, global::System.Guid, global::System.Guid>("Labels", new global::Neemle.OrmLite.
-            GraphLinkSource("ce_project_labels", "project_id", "label_id"), (e) => e.Id, (e, @value) => e.Labels =
-            @value), new global::Neemle.OrmLite.GraphLinkBinding<global::CorpusEntities.Project, global::CorpusEntities.
-            Member, global::System.Guid, global::System.Guid>("Members", new global::Neemle.OrmLite.GraphLinkSource(
-            "ce_project_members", "project_id", "member_id"), (e) => e.Id, (e, @value) => e.Members = @value)));
+        GraphModel.Register<global::CorpusEntities.Project>(
+            new global::Neemle.OrmLite.GraphEntityBinding<global::CorpusEntities.Project>(
+                Descriptor,
+                Map,
+                new global::Neemle.OrmLite.GraphKeyBinding<global::CorpusEntities.Project, global::System.Guid>(
+                    "id",
+                    e => e.Id),
+                new global::Neemle.OrmLite.GraphCollectionBinding<
+                    global::CorpusEntities.Project,
+                    global::CorpusEntities.WorkItem,
+                    global::System.Guid>(
+                    "Tasks",
+                    "project_id",
+                    e => e.Id,
+                    e => new global::Neemle.OrmLite.GraphKey<global::System.Guid>(true, e.ProjectId),
+                    (e, value) => e.Tasks = value),
+                new global::Neemle.OrmLite.GraphLinkBinding<
+                    global::CorpusEntities.Project,
+                    global::CorpusEntities.Label,
+                    global::System.Guid,
+                    global::System.Guid>(
+                    "Labels",
+                    new global::Neemle.OrmLite.GraphLinkSource("ce_project_labels", "project_id", "label_id"),
+                    e => e.Id,
+                    (e, value) => e.Labels = value),
+                new global::Neemle.OrmLite.GraphLinkBinding<
+                    global::CorpusEntities.Project,
+                    global::CorpusEntities.Member,
+                    global::System.Guid,
+                    global::System.Guid>(
+                    "Members",
+                    new global::Neemle.OrmLite.GraphLinkSource("ce_project_members", "project_id", "member_id"),
+                    e => e.Id,
+                    (e, value) => e.Members = value)));
     }
 
     public static class Paths
     {
-        public static global::Neemle.OrmLite.GraphPath<global::CorpusEntities.Project, global::CorpusEntities.WorkItem>
-            Tasks => GraphPaths.Edge<global::CorpusEntities.Project, global::CorpusEntities.WorkItem>("Tasks");
+        public static global::Neemle.OrmLite.GraphPath<
+            global::CorpusEntities.Project,
+            global::CorpusEntities.WorkItem> Tasks => GraphPaths.Edge<
+            global::CorpusEntities.Project,
+            global::CorpusEntities.WorkItem>("Tasks");
 
-        public static global::Neemle.OrmLite.GraphPath<global::CorpusEntities.Project, global::CorpusEntities.Label>
-            Labels => GraphPaths.Edge<global::CorpusEntities.Project, global::CorpusEntities.Label>("Labels");
+        public static global::Neemle.OrmLite.GraphPath<
+            global::CorpusEntities.Project,
+            global::CorpusEntities.Label> Labels => GraphPaths.Edge<
+            global::CorpusEntities.Project,
+            global::CorpusEntities.Label>("Labels");
 
-        public static global::Neemle.OrmLite.GraphPath<global::CorpusEntities.Project, global::CorpusEntities.Member>
-            Members => GraphPaths.Edge<global::CorpusEntities.Project, global::CorpusEntities.Member>("Members");
+        public static global::Neemle.OrmLite.GraphPath<
+            global::CorpusEntities.Project,
+            global::CorpusEntities.Member> Members => GraphPaths.Edge<
+            global::CorpusEntities.Project,
+            global::CorpusEntities.Member>("Members");
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        CorpusEntities.Project e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::CorpusEntities.Project e)
     {
         await OrmExec.InsertAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        CorpusEntities.Project e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::CorpusEntities.Project e)
     {
         await OrmExec.UpdateAsync(db, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
         global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task InsertAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::CorpusEntities.Project e)
+    public static async global::System.Threading.Tasks.Task InsertAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::CorpusEntities.Project e)
     {
         await OrmExec.InsertAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<global::CorpusEntities.Project?> GetAsync(global::Neemle.
-        OrmLite.OrmContext db, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::CorpusEntities.Project?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task<global::CorpusEntities.Project?> GetAsync(global::Neemle.
-        OrmLite.OrmContext db, global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<global::CorpusEntities.Project?> GetAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.GetAsync(db, conn, Descriptor, key, Map);
     }
 
-    public static async global::System.Threading.Tasks.Task UpdateAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::CorpusEntities.Project e)
+    public static async global::System.Threading.Tasks.Task UpdateAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::CorpusEntities.Project e)
     {
         await OrmExec.UpdateAsync(db, conn, Descriptor, Values(e));
     }
 
-    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, global::System.Guid key)
+    public static async global::System.Threading.Tasks.Task<int> DeleteAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid key)
     {
         return await OrmExec.DeleteAsync(db, conn, Descriptor, key);
     }
 
-    public static async global::System.Threading.Tasks.Task LoadTasksAsync(global::Neemle.OrmLite.OrmContext db, global
-        ::CorpusEntities.Project e)
+    public static async global::System.Threading.Tasks.Task LoadTasksAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::CorpusEntities.Project e)
     {
-        e.Tasks = await WorkItemOrm.Query(db).Where((c) => c.ProjectId == e.Id).ToListAsync();
+        e.Tasks = await WorkItemOrm.Query(db).Where(c => c.ProjectId == e.Id).ToListAsync();
     }
 
-    public static async global::System.Threading.Tasks.Task LoadLabelsAsync(global::Neemle.OrmLite.OrmContext db, global
-        ::System.Data.Common.DbConnection conn, global::CorpusEntities.Project e)
+    public static async global::System.Threading.Tasks.Task LoadLabelsAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::CorpusEntities.Project e)
     {
-        e.Labels = await OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<global::CorpusEntities.
-            Label>(Descriptor, "Labels", e.Id, LabelOrm.Descriptor, LabelOrm.Map));
+        e.Labels = await OrmExec.LoadLinkedAsync(
+            db,
+            conn,
+            new global::Neemle.OrmLite.LinkedRead<global::CorpusEntities.Label>(
+                Descriptor,
+                "Labels",
+                e.Id,
+                LabelOrm.Descriptor,
+                LabelOrm.Map));
     }
 
-    public static async global::System.Threading.Tasks.Task AddLabelAsync(global::Neemle.OrmLite.OrmContext db, global::
-        System.Data.Common.DbConnection conn, global::System.Guid thisId, global::System.Guid otherId)
+    public static async global::System.Threading.Tasks.Task AddLabelAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid thisId,
+        global::System.Guid otherId)
     {
         await OrmExec.AddLinkAsync(db, conn, Descriptor, "Labels", thisId, otherId);
     }
 
-    public static async global::System.Threading.Tasks.Task RemoveLabelAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, global::System.Guid thisId, global::System.Guid otherId)
+    public static async global::System.Threading.Tasks.Task RemoveLabelAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::System.Guid thisId,
+        global::System.Guid otherId)
     {
         await OrmExec.RemoveLinkAsync(db, conn, Descriptor, "Labels", thisId, otherId);
     }
 
-    public static async global::System.Threading.Tasks.Task LoadMembersAsync(global::Neemle.OrmLite.OrmContext db,
-        global::System.Data.Common.DbConnection conn, global::CorpusEntities.Project e)
+    public static async global::System.Threading.Tasks.Task LoadMembersAsync(
+        global::Neemle.OrmLite.OrmContext db,
+        global::System.Data.Common.DbConnection conn,
+        global::CorpusEntities.Project e)
     {
-        e.Members = await OrmExec.LoadLinkedAsync(db, conn, new global::Neemle.OrmLite.LinkedRead<global::CorpusEntities
-            .Member>(Descriptor, "Members", e.Id, MemberOrm.Descriptor, MemberOrm.Map));
+        e.Members = await OrmExec.LoadLinkedAsync(
+            db,
+            conn,
+            new global::Neemle.OrmLite.LinkedRead<global::CorpusEntities.Member>(
+                Descriptor,
+                "Members",
+                e.Id,
+                MemberOrm.Descriptor,
+                MemberOrm.Map));
     }
 
 public static global::System.Threading.Tasks.Task<global::CorpusEntities.Project?> GetAsync(global::Neemle.OrmLite.
