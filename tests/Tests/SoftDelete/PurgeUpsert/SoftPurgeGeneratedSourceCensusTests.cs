@@ -1,6 +1,8 @@
 using System.Text.RegularExpressions;
 using Neemle.OrmLite.Tests.MigrationReversibility;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Xunit;
 
 namespace Neemle.OrmLite.Tests.SoftDelete.PurgeUpsert;
@@ -33,20 +35,34 @@ public sealed partial class SoftPurgeGeneratedSourceCensusTests
     [GeneratedRegex(@"DELETE FROM ""([^""]+)""")]
     private static partial Regex DeleteTarget();
 
-    private static string ClassBody(string name)
+    // The generated class named `name`, found as a declaration in the generated syntax trees, so neither the layout nor
+    // a verbatim `@` in its header decides whether it is found.
+    private static ClassDeclarationSyntax ClassBody(string name)
     {
-        var start = Run.Generated.IndexOf("public static class " + name + "\n", StringComparison.Ordinal);
-        Assert.True(start >= 0, name);
-        var next = Run.Generated.IndexOf("\npublic static class ", start + 1, StringComparison.Ordinal);
-        return next < 0 ? Run.Generated[start..] : Run.Generated[start..next];
+        var found = Run.Output.SyntaxTrees.Select(t => Declaration(t.GetRoot(), name)).OfType<ClassDeclarationSyntax>().ToList();
+        Assert.True(found.Count == 1, name + ": expected one generated class, found " + found.Count);
+        return found[0];
     }
 
-    [GeneratedRegex(@"\s+|@(?=[A-Za-z_])")]
-    private static partial Regex LayoutAndVerbatim();
+    internal static ClassDeclarationSyntax? Declaration(SyntaxNode root, string name) =>
+        root.DescendantNodes().OfType<ClassDeclarationSyntax>().SingleOrDefault(c => c.Identifier.ValueText == name);
 
-    private static string Code(string text) => LayoutAndVerbatim().Replace(text, "");
+    // Code as its run of tokens, one space apart: an identifier by its value (`@where` is `where`), every other token by
+    // its text. Composer promises equivalent code, not a layout, so a shape is matched as a run of tokens.
+    private static string Code(IEnumerable<SyntaxToken> tokens) =>
+        " " + string.Join(" ", tokens.Where(t => !t.IsKind(SyntaxKind.EndOfFileToken))
+            .Select(t => t.IsKind(SyntaxKind.IdentifierToken) ? t.ValueText : t.Text)) + " ";
 
-    private static int Count(string code, string shape) => Regex.Matches(code, Regex.Escape(Code(shape))).Count;
+    private static string Code(string shape) => Code(SyntaxFactory.ParseTokens(shape));
+
+    private static int Count(string code, string shape)
+    {
+        var run = Code(shape);
+        var count = 0;
+        for (var at = code.IndexOf(run, StringComparison.Ordinal); at >= 0; at = code.IndexOf(run, at + run.Length - 1, StringComparison.Ordinal))
+            count++;
+        return count;
+    }
 
     private static IEnumerable<string> PhysicalDeletes()
     {
@@ -82,17 +98,15 @@ public sealed partial class SoftPurgeGeneratedSourceCensusTests
     public void A_soft_entity_gets_a_purge_surface(string entity)
     {
         var body = ClassBody(entity + "Purge");
-        // Composer promises equivalent code, not a layout: the shape is matched with whitespace and the verbatim `@` of
-        // an identifier taken out, so a line break or `@where` against `where` does not decide it.
-        var code = Code(body);
+        var code = Code(body.DescendantTokens());
 
         Assert.Equal(2, Count(code, "public static async global::System.Threading.Tasks.Task<int> DeleteWhereAsync("));
-        Assert.Equal(2, Count(code, "Orm.Query(db)"));
+        Assert.Equal(2, Count(code, entity + "Orm.Query(db)"));
         Assert.Equal(2, Count(code, ".Where(@where).PurgeAsync()"));
         Assert.Contains(Code("global::System.Linq.Expressions.Expression<global::System.Func<global::Fixture." + entity + ", bool>> @where"), code);
         Assert.Contains(Code("global::Neemle.OrmLite.UnitOfWork uow"), code);
-        Assert.DoesNotContain("DELETE", body);
-        Assert.DoesNotContain("CommandText", body);
+        Assert.DoesNotContain("DELETE", body.ToFullString());
+        Assert.DoesNotContain("CommandText", body.ToFullString());
     }
 
     [Fact(DisplayName = "AC7 control: a non-soft entity gets no Purge class and keeps its physical DeleteAsync statement")]
@@ -106,7 +120,7 @@ public sealed partial class SoftPurgeGeneratedSourceCensusTests
     [Fact(DisplayName = "AC7: the Orm class of a soft entity carries no DELETE statement and no purge member, and its DeleteAsync statement is the soft one")]
     public void The_orm_class_of_a_soft_entity_exposes_no_physical_delete()
     {
-        var body = ClassBody("CensusSoftOrm");
+        var body = ClassBody("CensusSoftOrm").ToFullString();
 
         Assert.DoesNotContain("DELETE", body);
         Assert.DoesNotContain("Purge", body);

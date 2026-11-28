@@ -19,9 +19,11 @@ are listed here. The three packages always carry one version.
 ### Tests
 
 - The goldens of generated C# (the generator golden and the `*.g.cs` entries of the corpus) are now compared as code:
-  both sides are parsed with Roslyn and must be syntax-equivalent, with every directive and comment kept in order, while
-  whitespace, indentation and line breaks are ignored. Composer promises equivalent code, not a fixed layout, so a
-  different identifier, operator, keyword or literal still fails and a formatting change passes. Regenerating keeps a
+  both sides are parsed with Roslyn and read as one run of tokens and trivia, which must match unit for unit: every
+  token by kind and text, every directive and every inactive `#if` branch as its own tokens, every comment by its
+  content with whitespace collapsed, each at its place. Only whitespace and line ends are ignored, and a verbatim `@` only
+  where it cannot change the meaning. Composer promises equivalent code, not a fixed layout, so a different identifier,
+  operator, keyword, literal, directive or comment, or one that moved, still fails and a formatting change passes. Regenerating keeps a
   golden that is still the same code. Every other corpus entry (SQL, diagnostics, dumps) is still compared as text.
 
 ## 0.1.0
