@@ -77,8 +77,16 @@ On PostgreSQL the lock wait is bounded on the server: before the statement the m
 to diagnostics, so a call still reports exactly one statement. `RESET lock_timeout` gets a command timeout of one
 second; if it fails, the failure is ignored and the connection is disposed, and the driver's reset on close is the
 second line. The command timeout gets one second of grace over the
-budget so the server's lock timeout fires first and is reported as `Busy`. SQLite's wait for a busy database is bounded
-by the command timeout, through the driver's busy retry.
+budget so the server's lock timeout fires first and is reported as `Busy`. On SQLite the driver's busy retry is bounded
+only by the command timeout and does not stop for a cancellation, so the library waits one second at a time: the
+statement's command timeout is at most one second, and a busy or locked answer is retried on the same connection while
+the budget lasts and the call is not cancelled. The retries stay one statement, with one diagnostics event whose
+duration covers every attempt.
+
+Cancellation wins over contention. Once the token passed to the call is cancelled, the call throws
+`OperationCanceledException` carrying that token, also when the cancellation arrives during a lock wait, during the open
+or when the result would have been `Busy`; the original exception, if any, is its inner exception. On SQLite a
+cancellation during a lock wait is seen within about one second.
 
 What counts as contention, reported as `Busy`:
 
@@ -109,6 +117,7 @@ Every result implements `IMaintenanceResult`: `Operation`, `Provider`, `Status` 
 | A prerequisite step did not complete, so the statement was not issued | `Status = NotRun` |
 | A check ran and found problems | `Status = IssuesFound`, with the findings |
 | The calling flow holds the writer gate | `InvalidOperationException`, before any SQL |
+| The call was cancelled | `OperationCanceledException`, never `Busy` |
 | The provider lacks the operation or option | `CapabilityNotSupportedException`, before any connection |
 | Any other database failure | the original `DbException`, unwrapped |
 

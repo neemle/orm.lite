@@ -32,6 +32,12 @@ public sealed partial class SqliteProvider : IMaintenanceProvider
     public bool IsContention(DbException failure) =>
         failure is SqliteException { SqliteErrorCode: var code } && (code & 0xFF) is SqliteBusy or SqliteLocked;
 
+    /// <summary>
+    /// One second: Microsoft.Data.Sqlite bounds its busy retry only by the command timeout, and a cancellation
+    /// (sqlite3_interrupt) does not stop that loop, so a lock wait is taken one second at a time.
+    /// </summary>
+    public TimeSpan? ContentionRetrySlice => TimeSpan.FromSeconds(1);
+
     public string RenderWalCheckpoint(WalCheckpointMode mode) =>
         new SqlWriter().Atom("PRAGMA").Func("wal_checkpoint").Attach(CheckpointMode(mode)).Close().ToString();
 

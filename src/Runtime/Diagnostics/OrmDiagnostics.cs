@@ -211,13 +211,32 @@ internal static class DbCommandDiagnostics
             ? lease.Diagnostics.RunAsync(command, kind, lease, (c, t) => c.ExecuteReaderAsync(behavior, t), static _ => null, ct)
             : command.ExecuteReaderAsync(behavior, ct);
 
-    // A maintenance statement: one event of kind Maintenance that names its operation.
+    // A maintenance statement: one event of kind Maintenance that names its operation. A failure that retry accepts runs
+    // the command again inside the same event, so the event's duration covers every attempt.
     internal static Task<DbDataReader> RunMaintenanceReaderAsync(
-        this DbCommand command, MaintenanceOperation operation, CancellationToken ct) =>
-        Lease(command) is { } lease
-            ? lease.Diagnostics.RunAsync(command, StatementKind.Maintenance, lease,
-                static (c, t) => c.ExecuteReaderAsync(t), static _ => null, ct, operation)
-            : command.ExecuteReaderAsync(ct);
+        this DbCommand command, MaintenanceOperation operation, Func<DbException, bool>? retry, CancellationToken ct)
+    {
+        Func<DbCommand, CancellationToken, Task<DbDataReader>> run = retry is null
+            ? static (c, t) => c.ExecuteReaderAsync(t)
+            : (c, t) => ExecuteRetryingAsync(c, retry, t);
+        return Lease(command) is { } lease
+            ? lease.Diagnostics.RunAsync(command, StatementKind.Maintenance, lease, run, static _ => null, ct, operation)
+            : run(command, ct);
+    }
+
+    private static async Task<DbDataReader> ExecuteRetryingAsync(DbCommand command, Func<DbException, bool> retry, CancellationToken ct)
+    {
+        while (true)
+        {
+            try
+            {
+                return await command.ExecuteReaderAsync(ct);
+            }
+            catch (DbException failure) when (retry(failure))
+            {
+            }
+        }
+    }
 
     internal static Task<int> RunGraphSaveNonQueryAsync(this DbCommand command, CancellationToken ct) =>
         Lease(command) is { } lease
