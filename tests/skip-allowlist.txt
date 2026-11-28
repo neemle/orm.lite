@@ -24,10 +24,4 @@ Neemle.OrmLite.Tests.Maintenance.AnalyzeIndexCollisionAttackTests.Missing_table_
 # Maintenance/*R2AttackTests.cs: section 803 FULL round-2 reviewer tests that FAIL at 4c88975, HELD under section 803.8
 # by the routing records on ORML-134..138 (TL fix list 6b33e96e on ORML-137). Each line goes with its Skip in the commit
 # that turns the test green; AnalyzeSetupBudgetR2AttackTests stays HELD until the reviewer's replacement lands.
-Neemle.OrmLite.Tests.Maintenance.AnalyzeContentionCancellationR2AttackTests.Cancellation_preserves_the_open_contention_exception	HELD: aa572379 ORML-135
 Neemle.OrmLite.Tests.Maintenance.AnalyzeSetupBudgetR2AttackTests.Exhausted_setup_budget_does_not_start_analyze	HELD: aa572379 ORML-135
-Neemle.OrmLite.Tests.Maintenance.IntegrityCancellationBoundaryR2AttackTests.Cancellation_on_the_extra_finding_is_not_success	HELD: 7cd5d189 ORML-138
-Neemle.OrmLite.Tests.Maintenance.IntegrityCancellationBoundaryR2AttackTests.Classification_race_keeps_the_original_failure	HELD: 7cd5d189 ORML-138
-Neemle.OrmLite.Tests.Maintenance.ReindexCancellationRaceR2AttackTests.Cancellation_keeps_the_contention_exception	HELD: f0f156f4 ORML-136
-Neemle.OrmLite.Tests.Maintenance.VacuumCancellationCauseR2AttackTests.Cancellation_retains_the_original_contention_exception	HELD: cb51f7f9 ORML-134
-Neemle.OrmLite.Tests.Maintenance.WalContentionCancellationRaceR2AttackTests.Cancellation_preserves_the_original_open_failure	HELD: 9199497d ORML-137

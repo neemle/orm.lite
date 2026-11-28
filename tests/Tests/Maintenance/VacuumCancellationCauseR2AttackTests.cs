@@ -1,6 +1,4 @@
 // §803 provenance: item ORML-134, pass FULL, round 2. Reviewer-authored proposal, placed unchanged.
-// HELD (§803.8): admitted FAILS, routed by NINE-FIVE-ROUTING cb51f7f9 on ORML-134 to fix list item 3, the Busy cause
-// (TL fix list 6b33e96e on ORML-137). The Skip below is the HELD marker; the commit that turns it green removes it.
 using System.Data.Common;
 using Microsoft.Data.Sqlite;
 using Neemle.OrmLite.Sqlite;
@@ -10,7 +8,7 @@ namespace Neemle.OrmLite.Tests.Maintenance;
 
 public sealed class VacuumCancellationCauseR2AttackTests
 {
-    [Fact(Skip = "HELD: routing cb51f7f9 on ORML-134 and ORML-137 (fix list 6b33e96e item 3)", DisplayName =
+    [Fact(DisplayName =
         "R2-F2 803 FULL round 2: cancellation during teardown preserves contention")]
     public async Task Cancellation_retains_the_original_contention_exception()
     {

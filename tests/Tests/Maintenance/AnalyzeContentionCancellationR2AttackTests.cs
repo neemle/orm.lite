@@ -1,6 +1,4 @@
 // §803 provenance: item ORML-135, pass FULL, round 2. Reviewer-authored proposal, placed unchanged.
-// HELD (§803.8): admitted FAILS, routed by NINE-FIVE-ROUTING aa572379 on ORML-135 to fix list item 3, the Busy cause
-// (TL fix list 6b33e96e on ORML-137). The Skip below is the HELD marker; the commit that turns it green removes it.
 using System.Data.Common;
 using Microsoft.Data.Sqlite;
 using Neemle.OrmLite.Sqlite;
@@ -10,7 +8,7 @@ namespace Neemle.OrmLite.Tests.Maintenance;
 
 public sealed class AnalyzeContentionCancellationR2AttackTests
 {
-    [Fact(Skip = "HELD: routing aa572379 on ORML-135 and ORML-137 (fix list 6b33e96e item 3)", DisplayName =
+    [Fact(DisplayName =
         "R2-F1 — 803 FULL round 2 — cancellation during contention classification preserves the native exception")]
     public async Task Cancellation_preserves_the_open_contention_exception()
     {

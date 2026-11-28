@@ -69,50 +69,58 @@ public sealed partial class OrmMaintenance
     // host or credential.
     private static string DatabaseName(string key) => key[(key.LastIndexOfAny(['/', '\\', ':']) + 1)..];
 
-    // ADR D12.4(a): once the caller's token is cancelled, cancellation wins over every other outcome of the run: a Busy
-    // result or any failure surfaces as OperationCanceledException carrying that token, with the failure as its inner
-    // exception. Contention is Busy only while the token is live.
+    // ADR D12.4(a): once the caller's token is cancelled, cancellation wins over every other outcome of the run, a
+    // finished one included: a result of any status or any failure surfaces as OperationCanceledException carrying that
+    // token, with the failure, or the contention or deadline behind a Busy, as its inner exception. Contention is Busy
+    // only while the token is live.
     private async Task<TResult> RunAsync<TResult>(MaintenanceStep<TResult> step, MaintenanceBudget budget, CancellationToken ct)
         where TResult : IMaintenanceResult
     {
         TResult result;
+        Exception? cause;
         try
         {
-            result = await RunStepsAsync(step, budget, ct);
+            (result, cause) = await RunStepsAsync(step, budget, ct);
         }
         catch (Exception failure) when (ct.IsCancellationRequested && !IsCancellationOf(failure, ct))
         {
-            throw new OperationCanceledException("the maintenance call was cancelled.", failure, ct);
+            throw new OperationCanceledException(Cancelled, failure, ct);
         }
-        if (result.Status == MaintenanceStatus.Busy) ct.ThrowIfCancellationRequested();
+        if (ct.IsCancellationRequested) throw new OperationCanceledException(Cancelled, cause, ct);
         return result;
     }
+
+    private const string Cancelled = "the maintenance call was cancelled.";
 
     private static bool IsCancellationOf(Exception failure, CancellationToken ct) =>
         failure is OperationCanceledException cancelled && cancelled.CancellationToken == ct;
 
-    // D6 steps 4 to 9 for one statement.
-    private async Task<TResult> RunStepsAsync<TResult>(MaintenanceStep<TResult> step, MaintenanceBudget budget, CancellationToken ct)
+    // D6 steps 4 to 9 for one statement. A Busy result carries its cause when there is one: the contention failure of
+    // the open or of the statement, or the deadline that ended the open. A gate miss or a spent budget has none.
+    private async Task<(TResult Result, Exception? Cause)> RunStepsAsync<TResult>(
+        MaintenanceStep<TResult> step, MaintenanceBudget budget, CancellationToken ct)
     {
         var source = _context.DataSource;
         var lease = new MaintenanceWriteLease(true, null);
         if (step.TakesGate)
         {
             RefuseHolder(step.Port, step.Operation);
-            if (budget.IsSpent) return step.Busy();
+            if (budget.IsSpent) return (step.Busy(), null);
             lease = await step.Port.TryEnterWriteAsync(source, budget.Remaining, ct);
-            if (!lease.Entered) return step.Busy();
+            if (!lease.Entered) return (step.Busy(), null);
         }
         try
         {
             TResult result;
+            Exception? cause = null;
             using (DbLane.Enter(DbLaneKind.Ops))
             {
-                if (budget.IsSpent) return step.Busy();
-                if (await OpenWithinAsync(source, step.Port, budget, ct) is not { } opened) return step.Busy();
+                if (budget.IsSpent) return (step.Busy(), null);
+                var (opened, refused) = await OpenWithinAsync(source, step.Port, budget, ct);
+                if (opened is null) return (step.Busy(), refused);
                 await using var connection = opened;
                 // ADR D12.2/D12.3: an open that succeeds after the budget ran out starts nothing.
-                if (budget.IsSpent) return step.Busy();
+                if (budget.IsSpent) return (step.Busy(), null);
                 var guard = step.Port.RenderLockGuard(budget.Remaining);
                 try
                 {
@@ -121,7 +129,7 @@ public sealed partial class OrmMaintenance
                         ? lookup.Render(await LookUpAsync(connection, lookup.Text, budget, guard is null ? 0 : GuardGraceSeconds, ct))
                         : step.Text!;
                     // A guard setup or a lookup that spent the budget starts no statement; the guard is still torn down.
-                    if (budget.IsSpent) return step.Busy();
+                    if (budget.IsSpent) return (step.Busy(), null);
                     await using var command = connection.CreateCommand();
                     command.CommandText = text;
                     // With a server-side lock timeout set, the command timeout gets a second of grace so the lock
@@ -136,13 +144,14 @@ public sealed partial class OrmMaintenance
                 catch (DbException failure) when (!ct.IsCancellationRequested && step.Port.IsContention(failure))
                 {
                     result = step.Busy();
+                    cause = failure;
                 }
                 finally
                 {
                     if (guard is not null) await TearDownAsync(connection, guard.Teardown);
                 }
             }
-            return result;
+            return (result, cause);
         }
         finally
         {
@@ -161,23 +170,24 @@ public sealed partial class OrmMaintenance
     }
 
     // ADR D12.2: opening the connection spends the same budget. The budget running out while the caller's token is live,
-    // or a failure the provider calls contention, is null: the caller reports Busy. Anything else propagates.
-    private static async Task<DbConnection?> OpenWithinAsync(
+    // or a failure the provider calls contention, is no connection: the caller reports Busy, keeping that exception as
+    // its cause (D12.4(a)). Anything else propagates.
+    private static async Task<(DbConnection? Connection, Exception? Cause)> OpenWithinAsync(
         DbDataSource source, IMaintenanceProvider port, MaintenanceBudget budget, CancellationToken ct)
     {
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
         deadline.CancelAfter(budget.Remaining);
         try
         {
-            return await source.OpenConnectionAsync(deadline.Token);
+            return (await source.OpenConnectionAsync(deadline.Token), null);
         }
-        catch (OperationCanceledException) when (!ct.IsCancellationRequested && deadline.IsCancellationRequested)
+        catch (OperationCanceledException expired) when (!ct.IsCancellationRequested && deadline.IsCancellationRequested)
         {
-            return null;
+            return (null, expired);
         }
         catch (DbException failure) when (!ct.IsCancellationRequested && port.IsContention(failure))
         {
-            return null;
+            return (null, failure);
         }
     }
 
