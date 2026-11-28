@@ -33,7 +33,10 @@ public sealed class WalPipelineCoverageTests
     {
         await using var context = new OrmContext(new RefusingSource(), SqliteProvider.Instance);
 
-        await Assert.ThrowsAsync<SqliteException>(() => UnitOfWork.BeginAsync(context));
+        // BeginAsync installs its mark in the flow that calls it, so it is called here, in the test's own flow; called
+        // inside the ThrowsAsync lambda, the mark would live in ThrowsAsync's flow and the probe below could not see it.
+        var begin = UnitOfWork.BeginAsync(context);
+        await Assert.ThrowsAsync<SqliteException>(() => begin);
 
         // The mark BeginAsync installed in this flow is closed, so the next one has no live predecessor.
         var probe = WriterFlow.Enter();
@@ -47,7 +50,9 @@ public sealed class WalPipelineCoverageTests
         await using var db = await WalFixture.WithItemsAsync(0);
         await using var context = new OrmContext(db.Context.DataSource, new KeyFailingProvider());
 
-        var failure = await Assert.ThrowsAsync<InvalidOperationException>(() => UnitOfWork.BeginAsync(context));
+        // Called in the test's own flow, so the probe below sees the mark BeginAsync installed (see above).
+        var begin = UnitOfWork.BeginAsync(context);
+        var failure = await Assert.ThrowsAsync<InvalidOperationException>(() => begin);
         Assert.Equal(KeyFailingProvider.Message, failure.Message);
 
         var probe = WriterFlow.Enter();
