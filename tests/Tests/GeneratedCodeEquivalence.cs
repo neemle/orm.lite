@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Neemle.OrmLite.Tests;
 
@@ -47,7 +48,11 @@ namespace Neemle.OrmLite.Tests;
 /// <c>_</c> a discard and <c>field</c> the backing field of C# 14 (which this Roslyn still parses as a name); with the
 /// <c>@</c> each always names a declared symbol, and which reading applies depends on what is in scope, which syntax
 /// cannot see. For these words the spelling is compared, <c>@</c> included. <c>dynamic</c> is not one of them: the
-/// compiler binds <c>@dynamic</c> as <c>dynamic</c>.
+/// compiler binds <c>@dynamic</c> as <c>dynamic</c>. The other place an <c>@</c> counts is the name of an
+/// attribute: bare, the compiler looks up <c>[Foo]</c> as <c>FooAttribute</c> too, and the <c>@</c> turns that lookup
+/// off, so <c>[@Foo]</c> names only a type called <c>Foo</c>. The rightmost identifier of an attribute's name
+/// (<c>Foo</c> in <c>[Foo]</c>, <c>[A.Foo]</c>, <c>[global::Foo]</c> or <c>[Foo&lt;int&gt;]</c>) is compared by its
+/// spelling, <c>@</c> included.
 /// </para>
 /// </remarks>
 public static class GeneratedCodeEquivalence
@@ -117,7 +122,21 @@ public static class GeneratedCodeEquivalence
     }
 
     private static string TextOf(SyntaxToken token) =>
-        token.IsKind(SyntaxKind.IdentifierToken) && !SpelledWords.Contains(token.ValueText) ? token.ValueText : token.Text;
+        token.IsKind(SyntaxKind.IdentifierToken) && !SpelledWords.Contains(token.ValueText) && !NamesAnAttribute(token)
+            ? token.ValueText
+            : token.Text;
+
+    // The rightmost identifier of an attribute's name, where the `@` turns off the `Attribute`-suffix lookup.
+    private static bool NamesAnAttribute(SyntaxToken token) =>
+        token.Parent is SimpleNameSyntax name && name.Identifier == token && name.Parent switch
+        {
+            AttributeSyntax attribute => attribute.Name == name,
+            QualifiedNameSyntax qualified =>
+                qualified.Right == name && qualified.Parent is AttributeSyntax attribute && attribute.Name == qualified,
+            AliasQualifiedNameSyntax alias =>
+                alias.Name == name && alias.Parent is AttributeSyntax attribute && attribute.Name == alias,
+            _ => false,
+        };
 
     // A comment without its delimiters; a documentation comment without its `///` or `*` line markers.
     private static string Content(SyntaxTrivia trivia)
