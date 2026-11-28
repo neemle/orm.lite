@@ -11,6 +11,9 @@ namespace Neemle.OrmLite;
 /// </summary>
 public sealed partial class OrmMaintenance
 {
+    // The second of grace a lock-guarded statement gets over the budget, and all a guard's teardown gets.
+    private const int GuardGraceSeconds = 1;
+
     private readonly OrmContext _context;
 
     internal OrmMaintenance(OrmContext context) => _context = context;
@@ -74,6 +77,7 @@ public sealed partial class OrmMaintenance
         if (step.TakesGate)
         {
             RefuseHolder(step.Port, step.Operation);
+            if (budget.IsSpent) return step.Busy();
             lease = await step.Port.TryEnterWriteAsync(source, budget.Remaining, ct);
             if (!lease.Entered) return step.Busy();
         }
@@ -81,6 +85,7 @@ public sealed partial class OrmMaintenance
         {
             using (DbLane.Enter(DbLaneKind.Ops))
             {
+                if (budget.IsSpent) return step.Busy();
                 if (await OpenWithinAsync(source, step.Port, budget, ct) is not { } opened) return step.Busy();
                 await using var connection = opened;
                 var guard = step.Port.RenderLockGuard(budget.Remaining);
@@ -91,7 +96,7 @@ public sealed partial class OrmMaintenance
                     command.CommandText = step.Text;
                     // With a server-side lock timeout set, the command timeout gets a second of grace so the lock
                     // timeout fires first and is reported as contention, not as a command timeout.
-                    command.CommandTimeout = budget.CommandSeconds(guard is null ? 0 : 1);
+                    command.CommandTimeout = budget.CommandSeconds(guard is null ? 0 : GuardGraceSeconds);
                     await using var reader = await command.RunMaintenanceReaderAsync(step.Operation, ct);
                     return await step.Read(reader, ct);
                 }
@@ -142,14 +147,15 @@ public sealed partial class OrmMaintenance
         await command.ExecuteNonQueryAsync(ct);
     }
 
-    // A teardown that fails is swallowed: the connection is disposed next, and the provider's reset on close is the
-    // second line.
+    // A teardown gets one second (the guard grace) and a failure is swallowed: the connection is disposed next, and the
+    // provider's reset on close is the second line.
     private static async Task TearDownAsync(DbConnection connection, string text)
     {
         try
         {
             await using var command = connection.CreateCommand();
             command.CommandText = text;
+            command.CommandTimeout = GuardGraceSeconds;
             await command.ExecuteNonQueryAsync(CancellationToken.None);
         }
         catch (Exception)

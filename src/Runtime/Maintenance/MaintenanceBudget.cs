@@ -20,6 +20,9 @@ internal sealed class MaintenanceBudget(TimeSpan total)
         }
     }
 
+    // ADR D12.3: a spent budget starts nothing more; the caller reports Busy.
+    internal bool IsSpent => Remaining == TimeSpan.Zero;
+
     // A whole number of seconds, at least one, so a budget that is nearly spent still lets the statement start.
     internal int CommandSeconds(int grace)
     {
