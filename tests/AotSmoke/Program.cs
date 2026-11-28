@@ -38,6 +38,31 @@ if (!await GraphProbe.RunAsync())
     return 1;
 }
 
+// Typed joins under NativeAOT (ORML-149): SQLite always; PostgreSQL when ORMLITE_AOT_POSTGRES names a server, which the
+// CI leg sets and then requires both lines.
+var joinDirectory = Path.Combine(Path.GetTempPath(), "aot-joins-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(joinDirectory);
+try
+{
+    if (!await JoinProbe.RunAsync(new OrmLiteOptions
+        { Provider = "sqlite", Path = Path.Combine(joinDirectory, "joins.db"), Pooling = false }))
+    {
+        Console.Error.WriteLine("typed join smoke failed on sqlite");
+        return 1;
+    }
+}
+finally { Directory.Delete(joinDirectory, true); }
+Console.WriteLine("aot joins sqlite ok");
+if (Environment.GetEnvironmentVariable("ORMLITE_AOT_POSTGRES") is { Length: > 0 } joinServer)
+{
+    if (!await JoinProbe.RunAsync(new OrmLiteOptions { Provider = "postgres", ConnectionString = joinServer }))
+    {
+        Console.Error.WriteLine("typed join smoke failed on postgres");
+        return 1;
+    }
+    Console.WriteLine("aot joins postgres ok");
+}
+
 // The runtime this binary was compiled for; the CI leg compares it with the .NET version it was started for.
 Console.WriteLine("aot runtime: " + Environment.Version);
 Console.WriteLine("aot smoke ok");

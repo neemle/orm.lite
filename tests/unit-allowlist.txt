@@ -1,0 +1,2 @@
+# Tests of the Unit tier (tests/Unit/Neemle.OrmLite.Tests.Unit) that are skipped ON PURPOSE, one per line:
+# <class>.<test method> TAB <reason>. Empty: they run on doubles only, so a skip is a fault, not a choice.

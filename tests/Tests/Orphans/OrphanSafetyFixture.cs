@@ -1,12 +1,11 @@
 using System.Reflection;
-using Neemle.OrmLite.Tests.GraphSave;
 
 namespace Neemle.OrmLite.Tests.Orphans;
 
 internal static class OrphanSafetyFixture
 {
     internal static readonly Lazy<Task<Assembly>> Compiled = new(() =>
-        SaveSdkCompiler.CompileFixture(Source, "OrphanSafetyConsumer"));
+        SdkFixtureCompiler.CompileFixture(Source, "OrphanSafetyConsumer"));
 
     private const string Source = """
         using System;

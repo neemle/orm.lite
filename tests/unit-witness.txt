@@ -1,0 +1,7 @@
+# Classes of the Unit tier that must have a Passed result in the Unit step of the CI test job, one per line:
+# <class> TAB <reason>. The flag name of the gate says "postgres"; for this list it names the classes that must have
+# run. Written by hand from the test source, never captured from a run; compared byte for byte.
+Neemle.OrmLite.Tests.Unit.Gates.GeneratorRoslynParseCensusTests	every Roslyn parse of emitted text in the generator is a recorded exception (ORML-150)
+Neemle.OrmLite.Tests.Unit.Joins.JoinPlanValidationTests	a joined read validates its plan per execution, never per row (ORML-151)
+Neemle.OrmLite.Tests.Unit.Joins.JoinPredicateDepthTests	a join predicate nests at most 128 levels at any node limit (ORML-151)
+Neemle.OrmLite.Tests.Unit.Joins.QueryStreamCursorTests	a query stream reads through the cursor joined reads share, without a plan check (ORML-151)

@@ -4,6 +4,7 @@ namespace Neemle.OrmLite;
 
 internal sealed class StreamCursor<T>(StreamReadSnapshot<T> snapshot)
 {
+    // Run once per open, after the connection is open and before the command exists; never per row.
     private readonly Action? _currentCheck;
     private DbConnection? _connection;
     private DbCommand? _command;
@@ -17,7 +18,6 @@ internal sealed class StreamCursor<T>(StreamReadSnapshot<T> snapshot)
 
     internal void Validate()
     {
-        _currentCheck?.Invoke();
         if (snapshot.Borrowed is { } borrowed) StreamResourceChecks.Validate(snapshot.Binding, borrowed);
     }
 
@@ -36,6 +36,7 @@ internal sealed class StreamCursor<T>(StreamReadSnapshot<T> snapshot)
                 ? await gated.OpenStreamConnectionAsync(ct) : await source.OpenConnectionAsync(ct);
         }
         ct.ThrowIfCancellationRequested();
+        _currentCheck?.Invoke();
         Validate();
         _command = _connection.CreateCommand();
         var statement = snapshot.FreshStatement();

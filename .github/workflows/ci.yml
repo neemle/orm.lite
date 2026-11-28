@@ -158,6 +158,37 @@ jobs:
         run: >-
           dotnet run scripts/SkipGate.cs -- check TestResults/ports.trx tests/ports-allowlist.txt
           --require-postgres tests/ports-witness.txt
+      # The Unit tier runs on doubles only; the Integration tier runs against real SQLite and this PostgreSQL. Each tier
+      # is its own project, step and TRX, and its gate fails on a skip and on a witness class that did not pass.
+      - name: Run the Unit tier, which runs on doubles only
+        timeout-minutes: 10
+        run: >-
+          dotnet test tests/Unit/Neemle.OrmLite.Tests.Unit/Neemle.OrmLite.Tests.Unit.csproj -c Release --no-build
+          --logger "trx;LogFileName=unit.trx" --logger "console;verbosity=detailed"
+          --results-directory TestResults
+          --blame-crash --blame-crash-dump-type mini
+          --blame-hang-timeout 5m --blame-hang-dump-type mini
+          -- xUnit.MaxParallelThreads=1
+      - name: Fail when a Unit test skipped or a Unit witness class did not run and pass
+        run: >-
+          dotnet run scripts/SkipGate.cs -- check TestResults/unit.trx tests/unit-allowlist.txt
+          --require-postgres tests/unit-witness.txt
+      - name: Run the Integration tier against real SQLite and that PostgreSQL
+        timeout-minutes: 10
+        env:
+          ORMLITE_TEST_POSTGRES: Host=127.0.0.1;Port=55433;Username=postgres
+        run: >-
+          dotnet test tests/Integration/Neemle.OrmLite.Tests.Integration/Neemle.OrmLite.Tests.Integration.csproj
+          -c Release --no-build
+          --logger "trx;LogFileName=integration.trx" --logger "console;verbosity=detailed"
+          --results-directory TestResults
+          --blame-crash --blame-crash-dump-type mini
+          --blame-hang-timeout 5m --blame-hang-dump-type mini
+          -- xUnit.MaxParallelThreads=1
+      - name: Fail when an Integration test skipped or an Integration class, PostgreSQL included, did not run and pass
+        run: >-
+          dotnet run scripts/SkipGate.cs -- check TestResults/integration.trx tests/integration-allowlist.txt
+          --require-postgres tests/integration-witness.txt
       - name: Keep the TRX files and the crash and hang dumps of this leg
         if: always()
         uses: actions/upload-artifact@v7
@@ -219,13 +250,18 @@ jobs:
           dotnet-version: ${{ matrix.dotnet }}
       - name: Print the SDK and the runtimes this leg runs on
         run: dotnet --info
-      - name: Publish a NativeAOT consumer that renders a Where() over closure unaries, then run it
+      - name: Start the throwaway PostgreSQL of tests/compose.yaml for the typed joins of the AOT binary
+        run: docker compose -f tests/compose.yaml up -d --wait --wait-timeout 120
+      - name: Publish a NativeAOT consumer that renders a Where() over closure unaries and runs typed joins, then run it
         shell: bash
         env:
           AOT_TFM: ${{ matrix.tfm }}
+          ORMLITE_AOT_POSTGRES: Host=127.0.0.1;Port=55433;Username=postgres
         run: |
           dotnet publish tests/AotSmoke -c Release -r linux-x64 -p:AotSmokeTfm=${{ matrix.tfm }} -o aot-out
           ./aot-out/AotSmoke | tee aot.log
+          grep -qx 'aot joins sqlite ok' aot.log
+          grep -qx 'aot joins postgres ok' aot.log
           grep -qx 'aot smoke ok' aot.log
           grep -q "^aot runtime: ${AOT_TFM#net}" aot.log
 
