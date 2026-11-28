@@ -67,13 +67,33 @@ public sealed class JoinPredicateDepthTests
         NothingRan();
     }
 
-    [Theory(DisplayName = "a captured source WHERE is bounded by the same depth")]
+    [Theory(DisplayName = "a captured root WHERE is bounded by the same depth")]
     [InlineData(128, false)]
     [InlineData(129, true)]
     public void A_captured_source_where_is_bounded_by_the_same_depth(int depth, bool refused)
     {
+        var root = _db.Query().Where(OrElse(depth)).AsJoinSource("root");
+        var right = _db.Right();
+        var on = root.Column(x => x.Id).Equal(right.Column(x => x.Id));
+
+        var error = Record.Exception(() => Joined.From(root, Unbounded).InnerJoin(right, on));
+
+        if (refused) Assert.Equal(JoinError.LimitExceeded, Assert.IsType<JoinReadException>(error).Error);
+        else Assert.Null(error);
+        NothingRan();
+    }
+
+    // The right source's captured filters are ANDed onto the ON one level each when the join is rendered, so the bound
+    // holds for that folded tree: a one-level ON under 127 captured filters is 128 deep, under 128 it is 129 (§803 F1).
+    [Theory(DisplayName = "the right source's captured filters count toward the depth of the ON they are folded into")]
+    [InlineData(127, false)]
+    [InlineData(128, true)]
+    public void Captured_right_filters_count_toward_the_folded_on(int filters, bool refused)
+    {
         var root = _db.Root();
-        var right = _db.Query().Where(OrElse(depth)).AsJoinSource("right");
+        var query = _db.Query();
+        for (var i = 0; i < filters; i++) query = query.Where(x => x.Name != "");
+        var right = query.AsJoinSource("right");
         var on = root.Column(x => x.Id).Equal(right.Column(x => x.Id));
 
         var error = Record.Exception(() => Joined.From(root, Unbounded).InnerJoin(right, on));

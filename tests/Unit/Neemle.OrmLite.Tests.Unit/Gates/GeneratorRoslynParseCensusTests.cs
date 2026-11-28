@@ -24,10 +24,15 @@ public sealed class GeneratorRoslynParseCensusTests
     }
 
     // The calls of one source, as "<call>" keys: "CSharpSyntaxTree.ParseText", "SyntaxFactory.ParseStatement",
-    // ".NormalizeWhitespace".
-    internal static IEnumerable<string> Calls(string text)
+    // ".NormalizeWhitespace". A receiver may be spelled through a using alias (this file's or a global one of another
+    // file, in `aliases`), and the text of every inactive #if branch is read too, so no build configuration hides a
+    // site.
+    internal static IEnumerable<string> Calls(string text, IReadOnlyDictionary<string, string>? aliases = null)
     {
         var root = CSharpSyntaxTree.ParseText(text).GetCompilationUnitRoot();
+        var names = new Dictionary<string, string>(aliases ?? new Dictionary<string, string>(), StringComparer.Ordinal);
+        foreach (var (alias, parser) in Aliases(root)) names[alias] = parser;
+        foreach (var parser in Parsers) names[parser] = parser;
         var imported = root.Usings.Where(u => u.StaticKeyword.IsKind(SyntaxKind.StaticKeyword))
             .Select(u => u.Name!.ToString().Split('.').Last()).Where(Parsers.Contains).ToArray();
         foreach (var call in root.DescendantNodes().OfType<InvocationExpressionSyntax>())
@@ -39,7 +44,7 @@ public sealed class GeneratorRoslynParseCensusTests
                     break;
                 case MemberAccessExpressionSyntax access
                     when access.Name.Identifier.ValueText.StartsWith("Parse", StringComparison.Ordinal)
-                    && Parsers.FirstOrDefault(p => access.Expression.ToString().Split('.').Last() == p) is { } parser:
+                    && names.TryGetValue(access.Expression.ToString().Split('.').Last(), out var parser):
                     yield return parser + "." + access.Name.Identifier.ValueText;
                     break;
                 case IdentifierNameSyntax name when imported.Length > 0
@@ -48,16 +53,31 @@ public sealed class GeneratorRoslynParseCensusTests
                     break;
             }
         }
+        foreach (var disabled in root.DescendantTrivia().Where(t => t.IsKind(SyntaxKind.DisabledTextTrivia)))
+            foreach (var inner in Calls(disabled.ToString(), names)) yield return inner;
     }
 
+    // `using X = ...CSharpSyntaxTree;` or `...SyntaxFactory;`: alias -> parser; only the global ones when asked.
+    internal static IEnumerable<(string Alias, string Parser)> Aliases(CompilationUnitSyntax root, bool globalOnly = false) =>
+        root.Usings.Where(u => u.Alias is not null && Parsers.Contains(u.Name!.ToString().Split('.').Last())
+                && (!globalOnly || u.GlobalKeyword.IsKind(SyntaxKind.GlobalKeyword)))
+            .Select(u => (u.Alias!.Name.Identifier.ValueText, u.Name!.ToString().Split('.').Last()));
+
     // "<path>\t<call>" -> count, over the files of src/Generator (bin and obj excluded).
-    internal static Dictionary<string, int> Census(string generator) =>
-        Directory.GetFiles(generator, "*.cs", SearchOption.AllDirectories)
+    internal static Dictionary<string, int> Census(string generator)
+    {
+        var files = Directory.GetFiles(generator, "*.cs", SearchOption.AllDirectories)
             .Select(f => Path.GetRelativePath(generator, f).Replace('\\', '/'))
             .Where(f => !f.StartsWith("bin/", StringComparison.Ordinal) && !f.StartsWith("obj/", StringComparison.Ordinal))
-            .SelectMany(f => Calls(File.ReadAllText(Path.Combine(generator, f))).Select(c => f + "\t" + c))
+            .ToDictionary(f => f, f => File.ReadAllText(Path.Combine(generator, f)), StringComparer.Ordinal);
+        var global = files.Values
+            .SelectMany(t => Aliases(CSharpSyntaxTree.ParseText(t).GetCompilationUnitRoot(), globalOnly: true))
+            .GroupBy(a => a.Alias, StringComparer.Ordinal)
+            .ToDictionary(g => g.Key, g => g.First().Parser, StringComparer.Ordinal);
+        return files.SelectMany(f => Calls(f.Value, global).Select(c => f.Key + "\t" + c))
             .GroupBy(k => k, StringComparer.Ordinal)
             .ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal);
+    }
 
     // "<path>\t<call>" -> (count, reason) from the list; a line without a reason is a problem.
     internal static Dictionary<string, (int Count, string Reason)> Recorded(IEnumerable<string> lines, List<string> problems)
@@ -101,8 +121,21 @@ public sealed class GeneratorRoslynParseCensusTests
     [InlineData("class C { void M(string s) { var t = SyntaxFactory.ParseExpression(s); } }", "SyntaxFactory.ParseExpression")]
     [InlineData("using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory; class C { void M(string s) { var t = ParseTypeName(s); } }", "SyntaxFactory.ParseTypeName")]
     [InlineData("class C { void M(Microsoft.CodeAnalysis.SyntaxNode n) { n = n.NormalizeWhitespace(); } }", ".NormalizeWhitespace")]
+    [InlineData("using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory; class C { void M(string s) { var t = SF.ParseExpression(s); } }", "SyntaxFactory.ParseExpression")]
+    [InlineData("class C { void M(string s) {\n#if NET10_0\n var t = SyntaxFactory.ParseExpression(s);\n#endif\n } }", "SyntaxFactory.ParseExpression")]
     public void The_census_finds_each_spelling(string source, string expected) =>
         Assert.Equal(new[] { expected }, Calls(source));
+
+    [Fact(DisplayName = "a global alias declared in one file reaches a call in another")]
+    public void A_global_alias_reaches_another_file()
+    {
+        var aliases = Aliases(CSharpSyntaxTree.ParseText(
+            "global using SF = Microsoft.CodeAnalysis.CSharp.SyntaxFactory;").GetCompilationUnitRoot(), globalOnly: true)
+            .ToDictionary(a => a.Alias, a => a.Parser);
+
+        Assert.Equal(new[] { "SyntaxFactory.ParseName" },
+            Calls("class C { void M(string s) { _ = SF.ParseName(s); } }", aliases));
+    }
 
     [Theory(DisplayName = "the census leaves alone what is not a Roslyn parse")]
     [InlineData("class C { static int Parse(string s) => 0; void M() { _ = Parse(\"1\"); _ = int.Parse(\"1\"); } }")]

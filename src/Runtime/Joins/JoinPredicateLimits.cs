@@ -19,20 +19,22 @@ internal sealed class JoinPredicateLimits(int maximum)
     internal static void Validate(JoinQueryPlan plan)
     {
         var budget = new JoinPredicateLimits(plan.Limits.MaxPredicateNodes);
-        foreach (var source in plan.Sources)
-            if (source.Root.Where is { } where) budget.Source(where.Terms);
+        if (plan.Root.Root.Where is { } where) budget.Source(where.Terms.Select(term => (term, 1)));
         foreach (var edge in plan.Edges)
         {
-            budget.Typed(edge.On);
-            if (edge.Source.Root.Where is { } where)
-                foreach (var _ in where.Terms) budget.Next(1);
+            // Rendered as And(...And(And(ON, t1), t2)..., tn): an And above the typed ON for each captured filter of
+            // the right source, so the ON starts n levels down and filter k sits n - k + 2 levels down.
+            var terms = edge.Source.Root.Where?.Terms.ToArray() ?? [];
+            for (var k = 1; k <= terms.Length; k++) budget.Next(terms.Length - k + 1);
+            budget.Typed(edge.On, terms.Length + 1);
+            budget.Source(terms.Select((term, i) => (term, terms.Length - i + 1)));
         }
-        foreach (var predicate in plan.Filters) budget.Typed(predicate);
+        foreach (var predicate in plan.Filters) budget.Typed(predicate, 1);
     }
 
-    private void Source(IEnumerable<Node> roots)
+    private void Source(IEnumerable<(Node Node, int Depth)> roots)
     {
-        var pending = new Stack<(Node Node, int Depth)>(roots.Select(root => (root, 1)));
+        var pending = new Stack<(Node Node, int Depth)>(roots);
         while (pending.TryPop(out var entry))
         {
             Next(entry.Depth);
@@ -41,10 +43,10 @@ internal sealed class JoinPredicateLimits(int maximum)
         }
     }
 
-    private void Typed(JoinPredicate root)
+    private void Typed(JoinPredicate root, int depth)
     {
         var pending = new Stack<(JoinPredicate Node, int Depth)>();
-        pending.Push((root, 1));
+        pending.Push((root, depth));
         while (pending.TryPop(out var entry))
         {
             Next(entry.Depth);

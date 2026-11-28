@@ -8,7 +8,8 @@ are listed here. The three packages always carry one version.
 ### Typed joins
 
 - A join predicate (an ON, a result WHERE or a captured source filter) nests at most 128 levels deep, whatever
-  `JoinLimits.MaxPredicateNodes` allows; a deeper one is refused with `JoinError.LimitExceeded` before any SQL is built.
+  `JoinLimits.MaxPredicateNodes` allows, and an ON counts one more level for each captured filter of its right source;
+  a deeper one is refused with `JoinError.LimitExceeded` before any SQL is built.
 - A joined read validates its plan when it is compiled, before its command and before it publishes the rows, no longer
   once more for every row it reads.
 
