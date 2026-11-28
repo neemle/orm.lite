@@ -362,8 +362,8 @@ only problem is a dangling foreign key. Violations arise when rows are written w
 default for a connection that does not turn it on), by another client or tool that does not enforce them, or by a
 schema change that added the key after the rows.
 
-`Table = NoteOrm.Descriptor` limits any mode to one table; the name is quoted by the provider. Table-scoped `Full` and
-`Quick` need SQLite 3.33 or later. The SQLite package ships a bundled engine far newer than that; if you swap the
+`Table = NoteOrm.Descriptor` limits any mode to one table; the name is quoted by the provider, and a view descriptor is
+refused with `ArgumentException` before the capability check. Table-scoped `Full` and `Quick` need SQLite 3.33 or later. The SQLite package ships a bundled engine far newer than that; if you swap the
 SQLitePCL provider for an older system SQLite, the engine's own error propagates.
 
 `IntegrityCheckResult` carries `Mode`, `Status`, `Findings` and `Truncated`:
@@ -380,12 +380,21 @@ SQLitePCL provider for an older system SQLite, the engine's own error propagates
 `MaxFindings` (default 100, from 1 to `IntegrityCheckRequest.MaxFindingsLimit`, 10,000; anything else throws
 `ArgumentOutOfRangeException`) bounds the findings returned. The whole-database `Full` and `Quick` checks ask SQLite for
 `MaxFindings + 1` messages, so the engine stops early; every other form is read for at most `MaxFindings + 1` rows.
-`Truncated` is true when there were more than `MaxFindings`.
+
+A table-scoped `Full` or `Quick` check reports at most 100 findings, whatever `MaxFindings` says: SQLite's table form
+takes the table name where the limit would go, so the engine stops at its own maximum of 100 messages. A `MaxFindings`
+above 100 is accepted there and still returns at most 100. To see more findings, run the whole-database check, which
+honours `MaxFindings` up to 10,000.
+
+`Truncated` is true when the list may be incomplete: there were more than `MaxFindings` findings, or the engine's own
+cap was reached (100 findings from a table-scoped `Full` or `Quick`).
 
 Problems found are data, `IssuesFound`; a file the engine cannot read at all (not a database, `SQLITE_NOTADB`) throws
 the original `DbException`. The check is read-only and never changes the file. It takes no writer gate, so it runs
-inside the flow of an open `UnitOfWork` too, on its own connection: it sees committed data only and does not wait for
-the unit of work.
+inside the flow of an open `UnitOfWork` too, on its own connection, and sees committed data only. In WAL mode (every
+file database opened through `OrmLite.OpenAsync`) it reads beside the unit of work and does not wait for it. In
+rollback-journal mode a unit of work that holds the database's write lock can lock readers out, so the check may wait
+for it within its budget and can return `Busy`.
 
 PostgreSQL is refused (`Capability.IntegrityCheck` is `None`). For PostgreSQL, use the `amcheck` extension or the
 `pg_amcheck` tool.

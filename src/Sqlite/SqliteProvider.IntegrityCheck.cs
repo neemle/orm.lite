@@ -26,6 +26,15 @@ public sealed partial class SqliteProvider
         return sql.Func(pragma).Int((long)maxFindings + 1).Close().ToString();
     }
 
+    /// <summary>
+    /// 100 for a table-scoped <c>Full</c> or <c>Quick</c> check: that form takes the table name where the limit would go,
+    /// so the engine stops at its own error maximum (SQLITE_INTEGRITY_CHECK_ERROR_MAX); null for every other form.
+    /// </summary>
+    public int? IntegrityEngineCap(IntegrityCheckMode mode, EntityDescriptor? table) =>
+        table is not null && mode is IntegrityCheckMode.Full or IntegrityCheckMode.Quick ? TableCheckMessageCap : null;
+
+    private const int TableCheckMessageCap = 100;
+
     public IntegrityFinding? ReadIntegrityFinding(IntegrityCheckMode mode, DbDataReader row)
     {
         if (mode != IntegrityCheckMode.ForeignKeys)
