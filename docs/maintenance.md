@@ -73,8 +73,10 @@ needs a longer `Timeout`; on PostgreSQL a longer budget also lets a queued lock 
 for an `ACCESS EXCLUSIVE` or `SHARE` lock it blocks other sessions queued behind it.
 
 On PostgreSQL the lock wait is bounded on the server: before the statement the maintenance connection runs
-`SET lock_timeout = '<remaining>ms'` and after it `RESET lock_timeout`. These two session statements are not reported
-to diagnostics, so a call still reports exactly one statement. `RESET lock_timeout` gets a command timeout of one
+`SET lock_timeout = '<remaining>ms'` and after it `RESET lock_timeout`. A `REINDEX` of one index also runs, after the
+`SET`, `SELECT n.nspname FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.oid = '<table>'::regclass`
+to find the index's schema (see [Reindex](#reindex)). These session statements are not reported to diagnostics, so a
+call still reports exactly one statement. `RESET lock_timeout` gets a command timeout of one
 second; if it fails, the failure is ignored and the connection is disposed, and the driver's reset on close is the
 second line. The command timeout gets one second of grace over the
 budget so the server's lock timeout fires first and is reported as `Busy`. On SQLite the driver's busy retry is bounded
@@ -297,7 +299,7 @@ await db.Maintenance.ReindexAsync(new ReindexRequest(ReindexScope.Index, Reindex
 | --- | --- | --- | --- |
 | `Database` | none | `REINDEX` | `REINDEX DATABASE [CONCURRENTLY]` (no name: system catalogs are skipped) |
 | `Table` | `Table` | `REINDEX main.<table>` | `REINDEX TABLE [CONCURRENTLY] <table>` |
-| `Index` | `Table` and one of its `Indexes` | `REINDEX main.<index>` | `REINDEX INDEX [CONCURRENTLY] <index>` |
+| `Index` | `Table` and one of its `Indexes` | `REINDEX main.<index>` | `REINDEX INDEX [CONCURRENTLY] <schema>.<index>` |
 
 | Mode | SQLite | PostgreSQL |
 | --- | --- | --- |
@@ -308,6 +310,12 @@ The targets are generated descriptors, quoted by the provider. `Table` scope rea
 unique indexes, which have no descriptor; `Index` scope takes an `IndexDescriptor` that belongs to the table's
 `Indexes`. A target that does not fit the scope, an index of another table and a view are refused with
 `ArgumentException` before any connection opens.
+
+On PostgreSQL an index always lives in its table's schema, but a bare index name is resolved through `search_path` and
+can name another table's index. So for `Index` scope the maintenance connection first asks for the table's schema, after
+the lock guard and resolving the table exactly as every other statement names it, and the REINDEX names the index in
+that schema. A table that no longer exists raises `42P01`, and so does an index missing from that schema; both propagate.
+SQLite index names are unique per schema, so SQLite needs no lookup.
 
 **Locks per mode.**
 

@@ -60,10 +60,10 @@ public sealed class ReindexRenderTests
     [Fact(DisplayName = "AC-136-01 SQLite renders REINDEX, REINDEX main.<table> and REINDEX main.<index>")]
     public void Sqlite_forms()
     {
-        Assert.Equal("REINDEX", SqliteProvider.Instance.RenderReindex(ReindexScope.Database, ReindexMode.Blocking, null, null));
-        Assert.Equal("REINDEX main.\"a\"", SqliteProvider.Instance.RenderReindex(ReindexScope.Table, ReindexMode.Blocking, ReindexFixture.A, null));
-        Assert.Equal("REINDEX main.\"ix_a_u\"", SqliteProvider.Instance.RenderReindex(ReindexScope.Index, ReindexMode.Blocking, ReindexFixture.A, ReindexFixture.Unique));
-        Assert.Throws<ArgumentOutOfRangeException>(() => SqliteProvider.Instance.RenderReindex(ReindexScope.Table, ReindexMode.Concurrent, ReindexFixture.A, null));
+        Assert.Equal("REINDEX", SqliteProvider.Instance.RenderReindex(ReindexScope.Database, ReindexMode.Blocking, null, null, null));
+        Assert.Equal("REINDEX main.\"a\"", SqliteProvider.Instance.RenderReindex(ReindexScope.Table, ReindexMode.Blocking, ReindexFixture.A, null, null));
+        Assert.Equal("REINDEX main.\"ix_a_u\"", SqliteProvider.Instance.RenderReindex(ReindexScope.Index, ReindexMode.Blocking, ReindexFixture.A, ReindexFixture.Unique, null));
+        Assert.Throws<ArgumentOutOfRangeException>(() => SqliteProvider.Instance.RenderReindex(ReindexScope.Table, ReindexMode.Concurrent, ReindexFixture.A, null, null));
     }
 
     [Theory(DisplayName = "AC-136-01 PostgreSQL renders REINDEX DATABASE|TABLE|INDEX, with CONCURRENTLY exactly in Concurrent mode")]
@@ -77,7 +77,7 @@ public sealed class ReindexRenderTests
     {
         var request = ReindexFixture.Request(scope, mode);
 
-        Assert.Equal(expected, PostgresProvider.Instance.RenderReindex(scope, mode, request.Table, request.Index));
+        Assert.Equal(expected, PostgresProvider.Instance.RenderReindex(scope, mode, request.Table, request.Index, null));
     }
 
     [Fact(DisplayName = "AC-136-01 the scope and mode enums have no zero member")]
