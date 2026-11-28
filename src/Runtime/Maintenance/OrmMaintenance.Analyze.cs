@@ -20,14 +20,11 @@ public sealed partial class OrmMaintenance
         ValidateTimeout(request.Timeout);
         ct.ThrowIfCancellationRequested();
         var port = Require(Capability.Analyze, nameof(AnalyzeAsync));
-        return RunAsync(new MaintenanceStep<AnalyzeResult>(
-            MaintenanceOperation.Analyze, port, port.RenderAnalyze(request.Scope, request.Table), port.HasWriterGate,
-            async (reader, token) =>
-            {
-                while (await reader.ReadAsync(token)) { }
-                return Analyzed(request, MaintenanceStatus.Completed);
-            },
-            () => Analyzed(request, MaintenanceStatus.Busy)), Budget(port, request.Timeout), ct);
+        return Execution(port, request.Timeout, ct).RunAsync(new MaintenanceStep<AnalyzeResult>(
+            MaintenanceOperation.Analyze, port, port.HasWriterGate,
+            () => port.RenderAnalyze(request.Scope, request.Table),
+            () => new DrainedRows<AnalyzeResult>(() => Analyzed(request, MaintenanceStatus.Completed)),
+            () => Analyzed(request, MaintenanceStatus.Busy)));
     }
 
     private AnalyzeResult Analyzed(AnalyzeRequest request, MaintenanceStatus status) =>

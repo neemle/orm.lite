@@ -1,6 +1,7 @@
 using System.Data.Common;
 using Microsoft.Data.Sqlite;
 using Neemle.OrmLite.Sqlite;
+using Neemle.OrmLite.Tests.Maintenance.Execution;
 using Xunit;
 
 namespace Neemle.OrmLite.Tests.Maintenance;
@@ -35,17 +36,23 @@ public sealed class WalLateOpenGuardTests
     [Fact(DisplayName = "ORML-137 D12.2 the open timer's delay is the remaining budget rounded up to whole milliseconds, zero once spent")]
     public async Task The_timer_delay_never_undercuts_the_budget()
     {
-        var budget = new MaintenanceBudget(TimeSpan.FromTicks(10_000 * 400 + 7));
-        var delay = budget.TimerDelay;
-        var after = budget.Remaining;
+        // ADR D14.3/C8 moved the timer into the executor's deadline: read through the port on the manual clock. The
+        // timer is armed at the remainder rounded up; fired early, it re-arms at the new remainder rounded up and latches
+        // nothing.
+        var rig = new ExecutionRig().WithCompletedCheckpoint();
+        rig.Source.OnOpen = _ =>
+        {
+            rig.Clock.Skip(TimeSpan.FromMilliseconds(200));
+            rig.Clock.Timer.Fire();
+            return Task.CompletedTask;
+        };
 
-        Assert.Equal(0, delay.Ticks % TimeSpan.TicksPerMillisecond);
-        Assert.True(delay >= after, delay + " < " + after);
-        Assert.True(delay <= TimeSpan.FromMilliseconds(401), delay.ToString());
+        var result = await rig.Maintenance.CheckpointWalAsync(
+            new WalCheckpointRequest(WalCheckpointMode.Truncate) { Timeout = TimeSpan.FromTicks(10_000 * 400 + 7) });
 
-        var spent = new MaintenanceBudget(TimeSpan.FromMilliseconds(1));
-        await Task.Delay(20);
-        Assert.Equal(TimeSpan.Zero, spent.TimerDelay);
+        Assert.Equal([TimeSpan.FromMilliseconds(401), TimeSpan.FromMilliseconds(201)], rig.Clock.Timer.Arms);
+        Assert.All(rig.Clock.Timer.Arms, delay => Assert.Equal(0, delay.Ticks % TimeSpan.TicksPerMillisecond));
+        Assert.Equal(MaintenanceStatus.Completed, result.Status);
     }
 
     // Opens for real, then holds the open until its token fires and a little longer, and returns the connection anyway:

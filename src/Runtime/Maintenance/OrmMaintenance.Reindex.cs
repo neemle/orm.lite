@@ -25,17 +25,14 @@ public sealed partial class OrmMaintenance
         var lookup = request.Scope == ReindexScope.Index && port.RenderIndexSchemaLookup(request.Table!) is { } query
             ? new MaintenanceLookup(query, schema => port.RenderReindex(request.Scope, request.Mode, request.Table, request.Index, schema))
             : null;
-        return RunAsync(new MaintenanceStep<ReindexResult>(
-            MaintenanceOperation.Reindex, port,
-            lookup is null ? port.RenderReindex(request.Scope, request.Mode, request.Table, request.Index, null) : null,
-            port.HasWriterGate,
-            async (reader, token) =>
-            {
-                while (await reader.ReadAsync(token)) { }
-                return Reindexed(request, MaintenanceStatus.Completed);
-            },
+        return Execution(port, request.Timeout, ct).RunAsync(new MaintenanceStep<ReindexResult>(
+            MaintenanceOperation.Reindex, port, port.HasWriterGate,
+            lookup is null
+                ? () => port.RenderReindex(request.Scope, request.Mode, request.Table, request.Index, null)
+                : null,
+            () => new DrainedRows<ReindexResult>(() => Reindexed(request, MaintenanceStatus.Completed)),
             () => Reindexed(request, MaintenanceStatus.Busy),
-            lookup), Budget(port, request.Timeout), ct);
+            lookup));
     }
 
     private static void ValidateReindexTarget(ReindexRequest request)

@@ -1,19 +1,15 @@
-using System.Data.Common;
-
 namespace Neemle.OrmLite;
 
 /// <summary>
-/// One statement of a maintenance operation, as the shared pipeline runs it: its text, or, when it needs a value only the
-/// database knows (ADR D12.5), a lookup to run first and a render of the text from the lookup's answer.
+/// One statement of a maintenance operation, as data for <see cref="MaintenanceExecution"/>: how to render its text
+/// or, when it needs a value only the database knows (ADR D12.5), a lookup to run first and a render of the text from
+/// the lookup's answer; the synchronous reducer of its rows; and the result it reports as Busy.
 /// </summary>
 internal sealed record MaintenanceStep<TResult>(
     MaintenanceOperation Operation,
     IMaintenanceProvider Port,
-    string? Text,
     bool TakesGate,
-    Func<DbDataReader, CancellationToken, Task<TResult>> Read,
+    Func<string>? Render,
+    Func<IMaintenanceRows<TResult>> Rows,
     Func<TResult> Busy,
-    MaintenanceLookup? Lookup = null);
-
-/// <summary>A non-diagnosed session query answering one value, and the statement text rendered from that value.</summary>
-internal sealed record MaintenanceLookup(string Text, Func<string?, string> Render);
+    MaintenanceLookup? Lookup = null) where TResult : IMaintenanceResult;

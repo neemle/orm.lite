@@ -22,29 +22,18 @@ public sealed partial class OrmMaintenance
         var port = Require(Capability.Vacuum, nameof(VacuumAsync));
         if (request.Mode == VacuumMode.Full) RequireOption(Capability.VacuumFull, nameof(VacuumAsync));
         if (request.Table is not null) RequireOption(Capability.VacuumTable, nameof(VacuumAsync));
-        return VacuumCoreAsync(port, request, Budget(port, request.Timeout), ct);
-    }
-
-    private async Task<VacuumResult> VacuumCoreAsync(
-        IMaintenanceProvider port, VacuumRequest request, MaintenanceBudget budget, CancellationToken ct)
-    {
-        WalCheckpointResult? checkpoint = null;
-        if (_context.Provider.Capabilities.Of(Capability.WalCheckpoint) != Support.None)
-        {
-            RefuseHolder(port, MaintenanceOperation.Vacuum);
-            checkpoint = await CheckpointAsync(port, WalCheckpointMode.Truncate, budget, ct);
-            if (checkpoint is { Status: MaintenanceStatus.Busy, WalFrames: null })
-                return Vacuumed(request, MaintenanceStatus.Busy, null);
-            if (!CheckpointLetsVacuumRun(checkpoint)) return Vacuumed(request, MaintenanceStatus.NotRun, checkpoint);
-        }
-        return await RunAsync(new MaintenanceStep<VacuumResult>(
-            MaintenanceOperation.Vacuum, port, port.RenderVacuum(request.Mode, request.Table), true,
-            async (reader, token) =>
-            {
-                while (await reader.ReadAsync(token)) { }
-                return Vacuumed(request, MaintenanceStatus.Completed, checkpoint);
-            },
-            () => Vacuumed(request, MaintenanceStatus.Busy, checkpoint)), budget, ct);
+        // A provider that checkpoints runs a Truncate checkpoint first, in the same execution (ADR D14.3).
+        var checkpoint = _context.Provider.Capabilities.Of(Capability.WalCheckpoint) != Support.None
+            ? CheckpointStep(port, WalCheckpointMode.Truncate)
+            : null;
+        return Execution(port, request.Timeout, ct).RunVacuumAsync(
+            checkpoint,
+            prior => new MaintenanceStep<VacuumResult>(
+                MaintenanceOperation.Vacuum, port, true,
+                () => port.RenderVacuum(request.Mode, request.Table),
+                () => new DrainedRows<VacuumResult>(() => Vacuumed(request, MaintenanceStatus.Completed, prior)),
+                () => Vacuumed(request, MaintenanceStatus.Busy, prior)),
+            (status, prior) => Vacuumed(request, status, prior));
     }
 
     // ADR D5 (v2): a database with no WAL has nothing to checkpoint, so NotWal meets the prerequisite as Completed does.

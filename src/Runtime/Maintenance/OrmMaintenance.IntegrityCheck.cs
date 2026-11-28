@@ -23,28 +23,36 @@ public sealed partial class OrmMaintenance
         ValidateTimeout(request.Timeout);
         ct.ThrowIfCancellationRequested();
         var port = Require(Capability.IntegrityCheck, nameof(CheckIntegrityAsync));
-        return RunAsync(new MaintenanceStep<IntegrityCheckResult>(
-            MaintenanceOperation.IntegrityCheck, port, port.RenderIntegrityCheck(request.Mode, request.Table, request.MaxFindings),
-            false,
-            (reader, token) => ReadFindingsAsync(port, request, reader, token),
-            () => new IntegrityCheckResult(ProviderId, request.Mode, MaintenanceStatus.Busy, [], false)), Budget(port, request.Timeout), ct);
+        return Execution(port, request.Timeout, ct).RunAsync(new MaintenanceStep<IntegrityCheckResult>(
+            MaintenanceOperation.IntegrityCheck, port, false,
+            () => port.RenderIntegrityCheck(request.Mode, request.Table, request.MaxFindings),
+            () => new FindingRows(port, request, ProviderId),
+            () => new IntegrityCheckResult(ProviderId, request.Mode, MaintenanceStatus.Busy, [], false)));
     }
 
-    // Reads at most MaxFindings + 1 reporting rows: the extra one only tells that there were more. A form the engine caps
-    // (ADR D12.6) is truncated too once the cap is reached: the engine may have stopped there.
-    private async Task<IntegrityCheckResult> ReadFindingsAsync(
-        IMaintenanceProvider port, IntegrityCheckRequest request, DbDataReader reader, CancellationToken ct)
+    // Takes at most MaxFindings + 1 reporting rows: the extra one only tells that there were more. A form the engine
+    // caps (ADR D12.6) is truncated too once the cap is reached: the engine may have stopped there.
+    private sealed class FindingRows(IMaintenanceProvider port, IntegrityCheckRequest request, string provider)
+        : IMaintenanceRows<IntegrityCheckResult>
     {
-        var findings = new List<IntegrityFinding>();
-        var seen = 0;
-        while (seen <= request.MaxFindings && await reader.ReadAsync(ct))
+        private readonly List<IntegrityFinding> _findings = [];
+
+        private int _seen;
+
+        public bool Accept(DbDataReader row)
         {
-            if (port.ReadIntegrityFinding(request.Mode, reader) is not { } finding) continue;
-            seen++;
-            if (seen <= request.MaxFindings) findings.Add(finding);
+            if (port.ReadIntegrityFinding(request.Mode, row) is not { } finding) return true;
+            _seen++;
+            if (_seen <= request.MaxFindings) _findings.Add(finding);
+            return _seen <= request.MaxFindings;
         }
-        var status = findings.Count == 0 ? MaintenanceStatus.Completed : MaintenanceStatus.IssuesFound;
-        var truncated = seen > request.MaxFindings || port.IntegrityEngineCap(request.Mode, request.Table) is { } cap && seen >= cap;
-        return new IntegrityCheckResult(ProviderId, request.Mode, status, findings, truncated);
+
+        public IntegrityCheckResult Complete()
+        {
+            var status = _findings.Count == 0 ? MaintenanceStatus.Completed : MaintenanceStatus.IssuesFound;
+            var truncated = _seen > request.MaxFindings
+                || port.IntegrityEngineCap(request.Mode, request.Table) is { } cap && _seen >= cap;
+            return new IntegrityCheckResult(provider, request.Mode, status, _findings, truncated);
+        }
     }
 }

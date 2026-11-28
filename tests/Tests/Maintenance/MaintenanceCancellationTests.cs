@@ -2,6 +2,7 @@ using System.Data.Common;
 using System.Diagnostics;
 using Neemle.OrmLite.Postgres;
 using Neemle.OrmLite.Sqlite;
+using Neemle.OrmLite.Tests.Maintenance.Execution;
 using Xunit;
 
 namespace Neemle.OrmLite.Tests.Maintenance;
@@ -120,8 +121,15 @@ public sealed class MaintenanceCancellationTests
     [InlineData(300, 1_000, 1)]
     [InlineData(3_400, 10_000, 4)]
     [InlineData(30_000, 2_500, 3)]
-    public void The_slice_bounds_the_command_timeout(int budgetMs, int sliceMs, int seconds) =>
-        Assert.Equal(seconds, new MaintenanceBudget(TimeSpan.FromMilliseconds(budgetMs)).CommandSeconds(0, TimeSpan.FromMilliseconds(sliceMs)));
+    public async Task The_slice_bounds_the_command_timeout(int budgetMs, int sliceMs, int seconds)
+    {
+        // ADR D14.3 moved the computation into the executor's admission: read through the port.
+        var rig = new ExecutionRig { Provider = { ContentionRetrySlice = TimeSpan.FromMilliseconds(sliceMs) } };
+
+        await rig.WithCompletedCheckpoint().CheckpointAsync(budgetMs);
+
+        Assert.Equal(seconds, Assert.Single(rig.Source.Of(ScriptedProvider.Checkpoint)).CommandTimeout);
+    }
 
     [Fact(DisplayName = "ORML-135 D12.4 SQLite takes lock waits one second at a time; PostgreSQL and the default port do not slice")]
     public void Retry_slices()

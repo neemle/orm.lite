@@ -18,28 +18,37 @@ public sealed partial class OrmMaintenance
         ValidateTimeout(request.Timeout);
         ct.ThrowIfCancellationRequested();
         var port = Require(Capability.WalCheckpoint, nameof(CheckpointWalAsync));
-        return CheckpointAsync(port, request.Mode, Budget(port, request.Timeout), ct);
+        return Execution(port, request.Timeout, ct).RunAsync(CheckpointStep(port, request.Mode));
     }
 
-    private Task<WalCheckpointResult> CheckpointAsync(
-        IMaintenanceProvider port, WalCheckpointMode mode, MaintenanceBudget budget, CancellationToken ct) =>
-        RunAsync(new MaintenanceStep<WalCheckpointResult>(
-            MaintenanceOperation.WalCheckpoint, port, port.RenderWalCheckpoint(mode), mode != WalCheckpointMode.Passive,
-            (reader, token) => ReadCheckpointAsync(reader, mode, token),
-            () => new WalCheckpointResult(ProviderId, mode, MaintenanceStatus.Busy, null, null)), budget, ct);
+    private MaintenanceStep<WalCheckpointResult> CheckpointStep(IMaintenanceProvider port, WalCheckpointMode mode) =>
+        new(MaintenanceOperation.WalCheckpoint, port, mode != WalCheckpointMode.Passive,
+            () => port.RenderWalCheckpoint(mode),
+            () => new CheckpointRow(mode, ProviderId),
+            () => new WalCheckpointResult(ProviderId, mode, MaintenanceStatus.Busy, null, null));
 
     // SQLite answers with one row (busy, log, checkpointed); log = -1 means the database is not in WAL mode.
-    private async Task<WalCheckpointResult> ReadCheckpointAsync(DbDataReader reader, WalCheckpointMode mode, CancellationToken ct)
+    private sealed class CheckpointRow(WalCheckpointMode mode, string provider) : IMaintenanceRows<WalCheckpointResult>
     {
-        if (!await reader.ReadAsync(ct))
-            throw new InvalidOperationException("the provider's WAL checkpoint returned no row; it must return busy, log and checkpointed.");
-        var busy = reader.GetInt64(0);
-        var log = reader.GetInt64(1);
-        var checkpointed = reader.GetInt64(2);
-        if (log == -1) return new WalCheckpointResult(ProviderId, mode, MaintenanceStatus.NotWal, null, null);
-        var status = busy != 0 ? MaintenanceStatus.Busy
-            : checkpointed == log ? MaintenanceStatus.Completed
-            : MaintenanceStatus.Partial;
-        return new WalCheckpointResult(ProviderId, mode, status, log, checkpointed);
+        private WalCheckpointResult? _result;
+
+        public bool Accept(DbDataReader row)
+        {
+            var busy = row.GetInt64(0);
+            var log = row.GetInt64(1);
+            var checkpointed = row.GetInt64(2);
+            var status = log == -1 ? MaintenanceStatus.NotWal
+                : busy != 0 ? MaintenanceStatus.Busy
+                : checkpointed == log ? MaintenanceStatus.Completed
+                : MaintenanceStatus.Partial;
+            _result = status == MaintenanceStatus.NotWal
+                ? new WalCheckpointResult(provider, mode, status, null, null)
+                : new WalCheckpointResult(provider, mode, status, log, checkpointed);
+            return false;
+        }
+
+        public WalCheckpointResult Complete() =>
+            _result ?? throw new InvalidOperationException(
+                "the provider's WAL checkpoint returned no row; it must return busy, log and checkpointed.");
     }
 }

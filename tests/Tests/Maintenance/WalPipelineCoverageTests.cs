@@ -1,6 +1,7 @@
 using System.Data.Common;
 using Microsoft.Data.Sqlite;
 using Neemle.OrmLite.Sqlite;
+using Neemle.OrmLite.Tests.Maintenance.Execution;
 using Xunit;
 
 namespace Neemle.OrmLite.Tests.Maintenance;
@@ -10,22 +11,35 @@ namespace Neemle.OrmLite.Tests.Maintenance;
 public sealed class WalPipelineCoverageTests
 {
     [Fact(DisplayName = "ORML-137 a budget longer than int.MaxValue milliseconds is held to it, and so is its command timeout")]
-    public void A_long_budget_is_clamped()
+    public async Task A_long_budget_is_clamped()
     {
-        var budget = new MaintenanceBudget(TimeSpan.FromDays(30));
+        // ADR D14.3 moved the budget into the executor's deadline: the same three numbers, read through the port.
+        var rig = new ExecutionRig { Provider = { Guarded = true } }.WithCompletedCheckpoint();
 
-        Assert.Equal(TimeSpan.FromMilliseconds(int.MaxValue), budget.Remaining);
-        Assert.Equal(2_147_484, budget.CommandSeconds(0));
-        Assert.Equal(2_147_485, budget.CommandSeconds(1));
+        var request = new WalCheckpointRequest(WalCheckpointMode.Truncate) { Timeout = TimeSpan.FromDays(30) };
+        await rig.Maintenance.CheckpointWalAsync(request);
+
+        Assert.Equal(TimeSpan.FromMilliseconds(int.MaxValue), Assert.Single(rig.Provider.GateTimeouts));
+        Assert.Equal(2_147_484, Assert.Single(rig.Source.Of(ScriptedProvider.Set)).CommandTimeout);
+        Assert.Equal(2_147_485, Assert.Single(rig.Source.Of(ScriptedProvider.Checkpoint)).CommandTimeout);
     }
 
     [Fact(DisplayName = "ORML-137 a spent budget has nothing remaining")]
     public async Task A_spent_budget_is_zero()
     {
-        var budget = new MaintenanceBudget(TimeSpan.FromMilliseconds(1));
-        await Task.Delay(20);
+        // ADR D14.3: read through the port. The open outlasts the budget; what the guard is then rendered from is zero.
+        var rig = new ExecutionRig { Provider = { Guarded = true } };
+        rig.Source.OnOpen = _ =>
+        {
+            rig.Clock.Skip(TimeSpan.FromMilliseconds(20));
+            return Task.CompletedTask;
+        };
 
-        Assert.Equal(TimeSpan.Zero, budget.Remaining);
+        var result = await rig.CheckpointAsync(1);
+
+        Assert.Equal(TimeSpan.Zero, Assert.Single(rig.Provider.GuardRenders));
+        Assert.Equal(MaintenanceStatus.Busy, result.Status);
+        Assert.Empty(rig.Source.Dispatches);
     }
 
     [Fact(DisplayName = "ORML-137 a UnitOfWork whose begin fails closes the flow mark it installed")]
