@@ -6,9 +6,10 @@ public sealed partial class SqliteProvider
 {
     /// <summary>
     /// <c>REINDEX</c>, <c>REINDEX main.&lt;table&gt;</c> or <c>REINDEX main.&lt;index&gt;</c>, blocking only; Concurrent is
-    /// refused by capability first.
+    /// refused by capability first. Index names are unique per SQLite schema, so there is no schema lookup and
+    /// <paramref name="indexSchema"/> is not used.
     /// </summary>
-    public string RenderReindex(ReindexScope scope, ReindexMode mode, EntityDescriptor? table, IndexDescriptor? index)
+    public string RenderReindex(ReindexScope scope, ReindexMode mode, EntityDescriptor? table, IndexDescriptor? index, string? indexSchema)
     {
         if (mode != ReindexMode.Blocking)
             throw new ArgumentOutOfRangeException(nameof(mode), mode, "SQLite rebuilds indexes only in Blocking mode.");

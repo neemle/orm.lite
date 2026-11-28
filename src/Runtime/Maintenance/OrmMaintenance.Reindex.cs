@@ -20,15 +20,22 @@ public sealed partial class OrmMaintenance
         ct.ThrowIfCancellationRequested();
         var port = Require(Capability.Reindex, nameof(ReindexAsync));
         if (request.Mode == ReindexMode.Concurrent) RequireOption(Capability.ReindexConcurrently, nameof(ReindexAsync));
+        // ADR D12.5: an index is named through its table's schema where the provider asks for it, never through
+        // search_path alone.
+        var lookup = request.Scope == ReindexScope.Index && port.RenderIndexSchemaLookup(request.Table!) is { } query
+            ? new MaintenanceLookup(query, schema => port.RenderReindex(request.Scope, request.Mode, request.Table, request.Index, schema))
+            : null;
         return RunAsync(new MaintenanceStep<ReindexResult>(
-            MaintenanceOperation.Reindex, port, port.RenderReindex(request.Scope, request.Mode, request.Table, request.Index),
+            MaintenanceOperation.Reindex, port,
+            lookup is null ? port.RenderReindex(request.Scope, request.Mode, request.Table, request.Index, null) : null,
             port.HasWriterGate,
             async (reader, token) =>
             {
                 while (await reader.ReadAsync(token)) { }
                 return Reindexed(request, MaintenanceStatus.Completed);
             },
-            () => Reindexed(request, MaintenanceStatus.Busy)), Budget(port, request.Timeout), ct);
+            () => Reindexed(request, MaintenanceStatus.Busy),
+            lookup), Budget(port, request.Timeout), ct);
     }
 
     private static void ValidateReindexTarget(ReindexRequest request)

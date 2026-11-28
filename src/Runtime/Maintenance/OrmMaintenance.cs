@@ -114,8 +114,11 @@ public sealed partial class OrmMaintenance
                 try
                 {
                     if (guard is not null) await RunSessionAsync(connection, guard.Setup, budget, ct);
+                    var text = step.Lookup is { } lookup
+                        ? lookup.Render(await LookUpAsync(connection, lookup.Text, budget, guard is null ? 0 : GuardGraceSeconds, ct))
+                        : step.Text!;
                     await using var command = connection.CreateCommand();
-                    command.CommandText = step.Text;
+                    command.CommandText = text;
                     // With a server-side lock timeout set, the command timeout gets a second of grace so the lock
                     // timeout fires first and is reported as contention, not as a command timeout. Without one, a
                     // provider with a retry slice waits one slice at a time (D12.4(b)).
@@ -180,6 +183,16 @@ public sealed partial class OrmMaintenance
         command.CommandText = text;
         command.CommandTimeout = budget.CommandSeconds(0);
         await command.ExecuteNonQueryAsync(ct);
+    }
+
+    // ADR D12.5: provider plumbing rendered from a descriptor only, run after the guard on the operation's connection and,
+    // like the guard, not reported to diagnostics. It answers one value.
+    private static async Task<string?> LookUpAsync(DbConnection connection, string text, MaintenanceBudget budget, int grace, CancellationToken ct)
+    {
+        await using var command = connection.CreateCommand();
+        command.CommandText = text;
+        command.CommandTimeout = budget.CommandSeconds(grace);
+        return await command.ExecuteScalarAsync(ct) as string;
     }
 
     // A teardown gets one second (the guard grace) and a failure is swallowed: the connection is disposed next, and the
