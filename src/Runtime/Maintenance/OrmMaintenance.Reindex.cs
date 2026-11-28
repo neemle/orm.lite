@@ -40,18 +40,16 @@ public sealed partial class OrmMaintenance
 
     private static void ValidateReindexTarget(ReindexRequest request)
     {
-        switch (request.Scope)
-        {
-            case ReindexScope.Database when request.Table is not null || request.Index is not null:
-                throw new ArgumentException("ReindexScope.Database rebuilds every index; leave Table and Index null.", nameof(request));
-            case ReindexScope.Table when request.Table is null || request.Index is not null:
-                throw new ArgumentException("ReindexScope.Table needs the table's descriptor in Table and no Index.", nameof(request));
-            case ReindexScope.Index when request.Table is null || request.Index is null:
-                throw new ArgumentException("ReindexScope.Index needs both the table's descriptor and one of its indexes.", nameof(request));
-            case ReindexScope.Index when !request.Table!.Indexes.Contains(request.Index!):
-                throw new ArgumentException(
-                    "the index '" + request.Index!.Name + "' is not one of the indexes declared on '" + request.Table.Table + "'.", nameof(request));
-        }
+        if (request.Scope == ReindexScope.Database && (request.Table is not null || request.Index is not null))
+            throw new ArgumentException("ReindexScope.Database rebuilds every index; leave Table and Index null.", nameof(request));
+        if (request.Scope == ReindexScope.Table && (request.Table is null || request.Index is not null))
+            throw new ArgumentException("ReindexScope.Table needs the table's descriptor in Table and no Index.", nameof(request));
+        if (request.Scope != ReindexScope.Index) return;
+        if (request.Table is null || request.Index is null)
+            throw new ArgumentException("ReindexScope.Index needs both the table's descriptor and one of its indexes.", nameof(request));
+        if (!request.Table.Indexes.Contains(request.Index))
+            throw new ArgumentException(
+                "the index '" + request.Index.Name + "' is not one of the indexes declared on '" + request.Table.Table + "'.", nameof(request));
     }
 
     private ReindexResult Reindexed(ReindexRequest request, MaintenanceStatus status) =>
