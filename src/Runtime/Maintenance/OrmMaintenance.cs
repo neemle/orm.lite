@@ -111,6 +111,8 @@ public sealed partial class OrmMaintenance
                 if (budget.IsSpent) return step.Busy();
                 if (await OpenWithinAsync(source, step.Port, budget, ct) is not { } opened) return step.Busy();
                 await using var connection = opened;
+                // ADR D12.2/D12.3: an open that succeeds after the budget ran out starts nothing.
+                if (budget.IsSpent) return step.Busy();
                 var guard = step.Port.RenderLockGuard(budget.Remaining);
                 try
                 {
@@ -118,6 +120,8 @@ public sealed partial class OrmMaintenance
                     var text = step.Lookup is { } lookup
                         ? lookup.Render(await LookUpAsync(connection, lookup.Text, budget, guard is null ? 0 : GuardGraceSeconds, ct))
                         : step.Text!;
+                    // A guard setup or a lookup that spent the budget starts no statement; the guard is still torn down.
+                    if (budget.IsSpent) return step.Busy();
                     await using var command = connection.CreateCommand();
                     command.CommandText = text;
                     // With a server-side lock timeout set, the command timeout gets a second of grace so the lock

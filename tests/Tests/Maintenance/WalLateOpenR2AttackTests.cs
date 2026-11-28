@@ -1,6 +1,4 @@
 // §803 provenance: item ORML-137, pass FULL, round 2. Reviewer-authored proposal, placed unchanged.
-// HELD (§803.8): admitted FAILS, routed by NINE-FIVE-ROUTING 9199497d on ORML-137 to fix list item 2, the late open
-// (TL fix list 6b33e96e on ORML-137). The Skip below is the HELD marker; the commit that turns it green removes it.
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
@@ -10,7 +8,7 @@ namespace Neemle.OrmLite.Tests.Maintenance;
 
 public sealed class WalLateOpenR2AttackTests
 {
-    [Fact(Skip = "HELD: routing 9199497d on ORML-137 and ORML-137 (fix list 6b33e96e item 2)", DisplayName =
+    [Fact(DisplayName =
         "R2-F1 803 FULL round 2: successful open after deadline cannot start SQL")]
     public async Task Late_successful_open_returns_busy_and_releases_resources()
     {

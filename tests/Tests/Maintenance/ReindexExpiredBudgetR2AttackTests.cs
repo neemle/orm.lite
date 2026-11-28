@@ -1,6 +1,4 @@
 // §803 provenance: item ORML-136, pass FULL, round 2. Reviewer-authored proposal, placed unchanged.
-// HELD (§803.8): admitted FAILS, routed by NINE-FIVE-ROUTING f0f156f4 on ORML-136 to fix list item 2, the late open
-// (TL fix list 6b33e96e on ORML-137). The Skip below is the HELD marker; the commit that turns it green removes it.
 using System.Data.Common;
 using System.Diagnostics;
 using Microsoft.Data.Sqlite;
@@ -13,7 +11,7 @@ public sealed class ReindexExpiredBudgetR2AttackTests
 {
     private static readonly TimeSpan Budget = TimeSpan.FromMilliseconds(500);
 
-    [Theory(Skip = "HELD: routing f0f156f4 on ORML-136 and ORML-137 (fix list 6b33e96e item 2)", DisplayName =
+    [Theory(DisplayName =
         "R2-F2 803 FULL round 2: an expired open or lookup cannot start REINDEX")]
     [InlineData(false)]
     [InlineData(true)]
