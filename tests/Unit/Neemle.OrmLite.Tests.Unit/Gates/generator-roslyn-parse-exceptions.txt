@@ -1,0 +1,39 @@
+# Sites of src/Generator that turn emitted C# text into a Roslyn tree (CSharpSyntaxTree.Parse*, SyntaxFactory.Parse*)
+# or reformat one (NormalizeWhitespace) instead of building it through Neemle.CSharpComposer (ORML-150).
+# The Composer-only gate (tests/Tests/Gates/GeneratorComposerOnlyTests) refuses every Composer escape; these Roslyn
+# sites are the recorded exceptions to building through Composer, each with its reason, and
+# GeneratorRoslynParseCensusTests keeps this list exact: a site that is not listed fails, a count that differs fails,
+# and a listed site that is gone fails, so a new site needs a line and a reason here and a converted one takes its line
+# away.
+# One line per file and call: <path under src/Generator> TAB <call> TAB <count> TAB <reason>.
+#
+# Why they are exceptions: EntityEmitter.EmitEntities renders ONE Composer document for all entities and then runs
+# five augment passes over the rendered text (relation-loading policies, one-to-one loaders, graph-save bindings,
+# orphan registrations, join columns). Each pass parses that text with Roslyn, adds members whose source its emitter
+# writes as strings, and prints the tree again; GeneratedSourceLayout then splits the text into one file per type and
+# GeneratedLineWrap wraps its long lines. Building these members through Composer means rewriting the string emitters
+# (SaveBindingEmitter, OrphanBootstrapEmitter, Policy*Emitter, OneToOneLoader, JoinCodecEmitter) as typed Composer
+# builders applied before the one render, and splitting into per-type documents before rendering: a generator rewrite
+# with no change in the code it generates, left out of ORML-150 under process:keep-it-simple-speed.
+GeneratedSourceLayout/GeneratedLineWrap.cs	CSharpSyntaxTree.ParseText	1	wraps lines over 120 characters of the final text, after the augment passes; Composer's RenderOptions.MaxLineLength cannot reach members Composer did not render
+GeneratedSourceLayout/GeneratedSourceLayout.cs	CSharpSyntaxTree.ParseText	1	splits the one rendered and augmented document into one hint file per type (OrmLite.Entities.NNNN.g.cs)
+GraphSave/SaveSourceEmitter.cs	.NormalizeWhitespace	1	graph-save augment pass: lays out each member parsed from SaveBindingEmitter's strings
+GraphSave/SaveSourceEmitter.cs	CSharpSyntaxTree.ParseText	1	graph-save augment pass: reads the rendered document to add the save bindings to the entity classes
+GraphSave/SaveSourceEmitter.cs	SyntaxFactory.ParseMemberDeclaration	1	graph-save augment pass: the binding members and RegisterSaveN methods are emitted as strings
+GraphSave/SaveSourceEmitter.cs	SyntaxFactory.ParseStatement	1	graph-save augment pass: the RegisterSaveN() calls added to OrmMetaInit.Init
+Joins/JoinSourceEmitter.cs	.NormalizeWhitespace	1	join augment pass: lays out each RegisterJoinN method parsed from JoinCodecEmitter's strings
+Joins/JoinSourceEmitter.cs	CSharpSyntaxTree.ParseText	1	join augment pass: reads the rendered document to add the join column registrations to OrmMetaInit
+Joins/JoinSourceEmitter.cs	SyntaxFactory.ParseMemberDeclaration	1	join augment pass: the RegisterJoinN methods are emitted as strings
+Joins/JoinSourceEmitter.cs	SyntaxFactory.ParseStatement	1	join augment pass: the RegisterJoinN() calls added to OrmMetaInit.Init
+OneToOne/OneToOneEmitter.cs	.NormalizeWhitespace	1	one-to-one augment pass: lays out the whole augmented document again
+OneToOne/OneToOneEmitter.cs	CSharpSyntaxTree.ParseText	1	one-to-one augment pass: reads the rendered document to add the loaders to the entity classes
+OneToOne/OneToOneEmitter.cs	SyntaxFactory.ParseMemberDeclaration	2	one-to-one augment pass: OneToOneLoader's members and the InitPhaseN methods are emitted as strings
+OneToOne/OneToOneEmitter.cs	SyntaxFactory.ParseStatement	2	one-to-one augment pass: the OneToOneReadGuard registrations and InitPhaseN() calls added to OrmMetaInit.Init
+Orphans/OrphanBootstrapEmitter.cs	.NormalizeWhitespace	1	orphan augment pass: lays out each registration method parsed from strings
+Orphans/OrphanBootstrapEmitter.cs	SyntaxFactory.ParseMemberDeclaration	1	orphan augment pass: the registration phase methods are emitted as strings
+Orphans/OrphanBootstrapEmitter.cs	SyntaxFactory.ParseStatement	1	orphan augment pass: the phase calls added to OrmMetaInit.Init
+Orphans/OrphanSourceEmitter.cs	CSharpSyntaxTree.ParseText	1	orphan augment pass: reads the rendered document to find OrmMetaInit
+RelationLoading/PolicySourceEmitter.cs	.NormalizeWhitespace	1	policy augment pass: lays out each member parsed from the Policy*Emitter strings
+RelationLoading/PolicySourceEmitter.cs	CSharpSyntaxTree.ParseText	1	policy augment pass: reads the rendered document to add the loaders and registrations to the entity classes
+RelationLoading/PolicySourceEmitter.cs	SyntaxFactory.ParseMemberDeclaration	1	policy augment pass: the keyed loaders, policy loaders and RegisterPolicies methods are emitted as strings
+RelationLoading/PolicySourceEmitter.cs	SyntaxFactory.ParseStatement	1	policy augment pass: the RegisterPolicies() call added to OrmMetaInit.Init
