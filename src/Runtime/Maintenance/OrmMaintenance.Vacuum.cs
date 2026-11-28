@@ -7,7 +7,8 @@ public sealed partial class OrmMaintenance
     /// <see cref="WalCheckpointMode.Truncate"/> checkpoint and issues VACUUM only when that completed or the database is
     /// not in WAL mode; otherwise the result is <see cref="MaintenanceStatus.NotRun"/> and carries the checkpoint. The
     /// writer gate is taken for each step and released between them; the request's timeout is one budget for both.
-    /// FULL, or a table, on a provider without that option is refused with <see cref="CapabilityNotSupportedException"/>
+    /// A view descriptor is refused with <see cref="ArgumentException"/> during validation. FULL, or a table, on a
+    /// provider without that option is refused with <see cref="CapabilityNotSupportedException"/>
     /// before any connection opens; so is a call from a flow whose open UnitOfWork is on the same database
     /// (<see cref="InvalidOperationException"/>).
     /// </summary>
@@ -15,6 +16,7 @@ public sealed partial class OrmMaintenance
     {
         ArgumentNullException.ThrowIfNull(request);
         ValidateMode(request.Mode, nameof(request.Mode));
+        RefuseView(request.Table, nameof(VacuumAsync));
         ValidateTimeout(request.Timeout);
         ct.ThrowIfCancellationRequested();
         var port = Require(Capability.Vacuum, nameof(VacuumAsync));

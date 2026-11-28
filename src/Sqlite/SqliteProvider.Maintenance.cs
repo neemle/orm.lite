@@ -1,10 +1,18 @@
 using System.Data.Common;
+using Microsoft.Data.Sqlite;
+using Neemle.OrmLite.Nodes;
 using Neemle.OrmLite.Sql;
 
 namespace Neemle.OrmLite.Sqlite;
 
 public sealed partial class SqliteProvider : IMaintenanceProvider
 {
+    private const int SqliteBusy = 5;
+
+    private const int SqliteLocked = 6;
+
+    private const string MainSchema = "main";
+
     /// <summary>The maintenance budget when a request names none: the provider's busy timeout.</summary>
     public TimeSpan MaintenanceTimeout => BusyTimeout;
 
@@ -17,6 +25,13 @@ public sealed partial class SqliteProvider : IMaintenanceProvider
         return new MaintenanceWriteLease(release is not null, release);
     }
 
+    /// <summary>SQLite serialises in-process writers through the per-database writer gate.</summary>
+    public bool HasWriterGate => true;
+
+    /// <summary>SQLITE_BUSY and SQLITE_LOCKED, extended codes included, are contention.</summary>
+    public bool IsContention(DbException failure) =>
+        failure is SqliteException { SqliteErrorCode: var code } && (code & 0xFF) is SqliteBusy or SqliteLocked;
+
     public string RenderWalCheckpoint(WalCheckpointMode mode) =>
         new SqlWriter().Atom("PRAGMA").Func("wal_checkpoint").Attach(CheckpointMode(mode)).Close().ToString();
 
@@ -28,4 +43,7 @@ public sealed partial class SqliteProvider : IMaintenanceProvider
         WalCheckpointMode.Truncate => "TRUNCATE",
         _ => throw new ArgumentOutOfRangeException(nameof(mode), mode, "not a WAL checkpoint mode."),
     };
+
+    // The table exactly as every other statement of the provider names it.
+    private string QuotedTable(EntityDescriptor table) => CreateSerializer().Fragment(new TableRef(table.Table));
 }

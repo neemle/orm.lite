@@ -66,14 +66,17 @@ var busy = await db.Maintenance.CheckpointWalAsync(new WalCheckpointRequest(WalC
 `Timeout` on a request is ONE budget for the whole call: every gate wait, every lock wait and every statement spend
 from it, also when an operation runs more than one statement (VACUUM on SQLite checkpoints first). It defaults to the
 provider's maintenance timeout: on SQLite that is the busy timeout (`OrmLite:BusyTimeoutSeconds`, 30 seconds by
-default), on PostgreSQL `PostgresProvider.DefaultMaintenanceTimeout`, 30 seconds. The statement's command timeout is
-what is left of the budget, rounded up to whole seconds. A long `VACUUM (FULL)` or blocking `REINDEX` of a big table
+default), on PostgreSQL `PostgresProvider.DefaultMaintenanceTimeout`, 30 seconds. Once the budget is spent, nothing more
+starts: the call returns `MaintenanceStatus.Busy` before it would enter the gate or open a connection. The statement's
+command timeout is what is left of the budget, rounded up to whole seconds (at least one). A long `VACUUM (FULL)` or blocking `REINDEX` of a big table
 needs a longer `Timeout`; on PostgreSQL a longer budget also lets a queued lock request wait longer, and while it waits
 for an `ACCESS EXCLUSIVE` or `SHARE` lock it blocks other sessions queued behind it.
 
 On PostgreSQL the lock wait is bounded on the server: before the statement the maintenance connection runs
 `SET lock_timeout = '<remaining>ms'` and after it `RESET lock_timeout`. These two session statements are not reported
-to diagnostics, so a call still reports exactly one statement. The command timeout gets one second of grace over the
+to diagnostics, so a call still reports exactly one statement. `RESET lock_timeout` gets a command timeout of one
+second; if it fails, the failure is ignored and the connection is disposed, and the driver's reset on close is the
+second line. The command timeout gets one second of grace over the
 budget so the server's lock timeout fires first and is reported as `Busy`. SQLite's wait for a busy database is bounded
 by the command timeout, through the driver's busy retry.
 
@@ -185,7 +188,7 @@ into `FULL`.
 | `Full` | refused: `Capability.VacuumFull` | `VACUUM (FULL)` or `VACUUM (FULL) <table>` |
 
 The table is named only by its generated descriptor and quoted by the provider, exactly as every other statement names
-it. A refused option throws `CapabilityNotSupportedException` before any connection opens; the operation's own
+it. A view descriptor is refused with `ArgumentException` before the capability check. A refused option throws `CapabilityNotSupportedException` before any connection opens; the operation's own
 capability (`Capability.Vacuum`) is checked first.
 
 **SQLite: checkpoint, then VACUUM.** In WAL mode VACUUM writes the rebuilt database through the log, so `VacuumAsync`
@@ -196,6 +199,8 @@ first runs `CheckpointWalAsync` in `Truncate` mode, then:
 - If the checkpoint is `Partial` or `Busy` (a reader still needs frames), VACUUM is not issued: the result is
   `NotRun`, and `Checkpoint` carries the checkpoint result.
 - If the writer gate was not free for the checkpoint, the result is `Busy` and `Checkpoint` is null.
+- If the checkpoint completed but spent the whole budget, VACUUM is not issued: the result is `Busy`, and `Checkpoint`
+  carries the checkpoint result.
 
 Each step enters the writer gate for itself and releases it after, so another writer may run between the checkpoint and
 VACUUM. Both steps share the one budget, and each reports its own diagnostics statement (`WalCheckpoint`, then

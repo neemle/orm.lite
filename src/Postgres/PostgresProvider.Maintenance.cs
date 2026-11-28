@@ -23,13 +23,14 @@ public sealed partial class PostgresProvider : IMaintenanceProvider
 
     /// <summary>
     /// <c>postgres:host:port/database</c>, from the source's connection string. It never carries credentials or any
-    /// other keyword.
+    /// other keyword. The host is lower-cased (DNS names are case-insensitive); the database name keeps its case, as
+    /// PostgreSQL does.
     /// </summary>
     public string? WriterKeyOf(DbDataSource source) =>
         WriterKeys.GetValue(source, static each =>
         {
             var builder = new NpgsqlConnectionStringBuilder(each.ConnectionString);
-            return "postgres:" + builder.Host + ":" + builder.Port.ToString(CultureInfo.InvariantCulture) + "/" + builder.Database;
+            return "postgres:" + builder.Host?.ToLowerInvariant() + ":" + builder.Port.ToString(CultureInfo.InvariantCulture) + "/" + builder.Database;
         });
 
     /// <summary>PostgreSQL has no in-process writer gate: the lease is always entered and holds nothing.</summary>
@@ -42,9 +43,9 @@ public sealed partial class PostgresProvider : IMaintenanceProvider
     public MaintenanceSessionGuard? RenderLockGuard(TimeSpan remaining)
     {
         var milliseconds = Math.Max(1, (long)Math.Ceiling(remaining.TotalMilliseconds));
-        var setup = new SqlWriter().Atom("SET").Atom("lock_timeout").Atom("=")
+        var setup = new SqlWriter().Atom("SET").Atom(PostgresDdlDataLiterals.LockTimeoutSetting).Atom("=")
             .Str(milliseconds.ToString(CultureInfo.InvariantCulture) + "ms").ToString();
-        var teardown = new SqlWriter().Atom("RESET").Atom("lock_timeout").ToString();
+        var teardown = new SqlWriter().Atom("RESET").Atom(PostgresDdlDataLiterals.LockTimeoutSetting).ToString();
         return new MaintenanceSessionGuard(setup, teardown);
     }
 
