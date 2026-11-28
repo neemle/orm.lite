@@ -43,4 +43,24 @@ public sealed class RetryTests
         Assert.Single(rig.Source.Connections);
         rig.AssertUnwound();
     }
+
+    [Fact(DisplayName = "ORML-137 D14 C4 a cancel inside a retried attempt publishes the earlier contention as the "
+        + "cause")]
+    public async Task A_cancel_inside_a_retry_keeps_the_contention()
+    {
+        var rig = new ExecutionRig { Provider = { ContentionRetrySlice = TimeSpan.FromSeconds(1) } };
+        var busy = new ScriptedDbException("busy", true);
+        rig.Source.Script(Analyze, dispatch =>
+        {
+            if (dispatch.Attempt == 1) throw busy;
+            rig.Caller.Cancel();
+            throw new OperationCanceledException(dispatch.Token);
+        });
+
+        await rig.CancelledAsync(rig.AnalyzeAsync(5000), busy);
+
+        Assert.Equal(2, rig.Source.Of(Analyze).Count);
+        Assert.Equal(1, rig.Provider.Classifications);
+        rig.AssertUnwound();
+    }
 }

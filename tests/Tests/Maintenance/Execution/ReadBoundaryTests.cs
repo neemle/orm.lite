@@ -18,6 +18,45 @@ public sealed class ReadBoundaryTests
             await rig.CancelledAsync(rig.CheckIntegrityAsync(), null);
             Assert.Equal(0, rig.Provider.Findings);
         },
+        // Cancelled while the statement ran, though it answered a reader: nothing is read from it.
+        ["dispatch"] = async rig =>
+        {
+            rig.Source.Script(Integrity, _ =>
+            {
+                rig.Caller.Cancel();
+                return new ScriptedReader(rig.Source, [["bad"]])
+                {
+                    OnRead = (_, _) => throw new InvalidOperationException("a row was read after the cancel"),
+                };
+            });
+            await rig.CancelledAsync(rig.CheckIntegrityAsync(), null);
+            Assert.Equal(0, rig.Provider.Findings);
+        },
+        // A failed read is captured and classified once like any effect: unchanged, Busy, or the caller's cancel.
+        ["read-fails"] = async rig =>
+        {
+            var failure = new ScriptedDbException("the read failed", false);
+            rig.Source.Script(Integrity, _ => FailingRead(rig, () => failure));
+            Assert.Same(failure, await Record.ExceptionAsync(() => rig.CheckIntegrityAsync()));
+            Assert.Equal(1, rig.Provider.Classifications);
+        },
+        ["read-busy"] = async rig =>
+        {
+            rig.Source.Script(Integrity, _ => FailingRead(rig, () => new ScriptedDbException("read busy", true)));
+            Assert.Equal(MaintenanceStatus.Busy, (await rig.CheckIntegrityAsync()).Status);
+            Assert.Equal(1, rig.Provider.Classifications);
+        },
+        ["read-cancelled"] = async rig =>
+        {
+            var cancelled = new OperationCanceledException(rig.Caller.Token);
+            rig.Source.Script(Integrity, _ => FailingRead(rig, () =>
+            {
+                rig.Caller.Cancel();
+                return cancelled;
+            }));
+            Assert.Same(cancelled, await rig.CancelledAsync(rig.CheckIntegrityAsync(), null));
+            Assert.Equal(0, rig.Provider.Classifications);
+        },
         ["accept"] = async rig =>
         {
             rig.Source.Script(Integrity, _ => rig.Rows(["bad"], ["ok"]));
@@ -52,6 +91,10 @@ public sealed class ReadBoundaryTests
     [Theory(DisplayName = "ORML-137 D14 C5 read boundary: a cancel while reading is cancellation; the budget never "
         + "ends an admitted statement")]
     [InlineData("read")]
+    [InlineData("dispatch")]
+    [InlineData("read-fails")]
+    [InlineData("read-busy")]
+    [InlineData("read-cancelled")]
     [InlineData("accept")]
     [InlineData("complete")]
     [InlineData("expire")]
@@ -63,4 +106,8 @@ public sealed class ReadBoundaryTests
 
         rig.AssertUnwound();
     }
+
+    // A reader whose first read fails with what `failure` answers.
+    private static ScriptedReader FailingRead(ExecutionRig rig, Func<Exception> failure) =>
+        new(rig.Source, [["bad"]]) { OnRead = (_, _) => throw failure() };
 }
