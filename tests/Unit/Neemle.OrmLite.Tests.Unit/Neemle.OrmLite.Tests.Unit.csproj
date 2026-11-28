@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- The Unit tier: tests that run on doubles only. No database, no server, no driver connection: a test that needs a
+       real SQLite or PostgreSQL belongs to tests/Integration/Neemle.OrmLite.Tests.Integration. A test lives in exactly
+       one tier, and each tier's coverage is measured on its own. The project reaches the library through its public
+       API only (no InternalsVisibleTo). The folder carries the full name, so the assembly name is set here. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsAotCompatible>false</IsAotCompatible>
+    <AssemblyName>Neemle.OrmLite.Tests.Unit</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <!-- Read-only parsing of src/Generator by the generator census (Gates), never a compilation of it. -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../../src/Runtime/Runtime.csproj" />
+    <ProjectReference Include="../../../src/Sql/Sql.csproj" />
+    <ProjectReference Include="../../../src/Postgres/Postgres.csproj" />
+  </ItemGroup>
+
+</Project>

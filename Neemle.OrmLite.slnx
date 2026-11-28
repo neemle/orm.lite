@@ -9,6 +9,8 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Ports.Tests/Ports.Tests.csproj" />
+    <Project Path="tests/Integration/Neemle.OrmLite.Tests.Integration/Neemle.OrmLite.Tests.Integration.csproj" />
     <Project Path="tests/Tests/Tests.csproj" />
+    <Project Path="tests/Unit/Neemle.OrmLite.Tests.Unit/Neemle.OrmLite.Tests.Unit.csproj" />
   </Folder>
 </Solution>

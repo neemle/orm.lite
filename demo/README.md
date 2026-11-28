@@ -508,7 +508,8 @@ non-total order remain unspecified. Joins do not save entities or populate navig
 
 `JoinLimits` supplies five positive finite bounds: sources (at most four), selected columns, predicate nodes,
 parameters and materialized rows. The example values are fixture budgets, not production defaults. Provider parameter
-capacity also applies. Take above the row bound refuses; overflow throws without returning a successful prefix.
+capacity also applies. Whatever the predicate-node bound, a predicate (an ON, a result WHERE or a captured source
+filter) nests at most 128 levels deep; a deeper one is refused with `LimitExceeded` before any SQL is built. Take above the row bound refuses; overflow throws without returning a successful prefix.
 These bounds do not bound database join cardinality, execution-plan cost or latency.
 
 The supported source is an ordinary registered table with one nonnullable scalar primary key and generated scalar

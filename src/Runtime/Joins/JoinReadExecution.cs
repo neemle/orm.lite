@@ -60,9 +60,11 @@ internal sealed class JoinReadExecution
         _cursor.Validate();
     }
 
+    // The plan is validated when the read is compiled, before the command (StreamCursor) and here, before the rows are
+    // published: a fixed number of times per execution, never per row.
     private List<JoinedRow> Publish(List<JoinedRow> rows)
     {
-        try { Check(); return rows; }
+        try { Check(); _plan.ValidateCurrent(); return rows; }
         catch (Exception error) { throw JoinReadFailures.Observed(error, _token, _cleanup); }
     }
 }

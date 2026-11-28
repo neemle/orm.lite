@@ -5,6 +5,13 @@ are listed here. The three packages always carry one version.
 
 ## Unreleased
 
+### Typed joins
+
+- A join predicate (an ON, a result WHERE or a captured source filter) nests at most 128 levels deep, whatever
+  `JoinLimits.MaxPredicateNodes` allows; a deeper one is refused with `JoinError.LimitExceeded` before any SQL is built.
+- A joined read validates its plan when it is compiled, before its command and before it publishes the rows, no longer
+  once more for every row it reads.
+
 ### Dependencies
 
 - `Neemle.OrmLite` now depends on Neemle.CSharpComposer 0.7.0 (was 0.5.0 in 0.1.0), which the generator renders
